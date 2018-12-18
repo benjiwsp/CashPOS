@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccountProgram.Properties
+namespace CashPOS.Properties
 {
 
 
