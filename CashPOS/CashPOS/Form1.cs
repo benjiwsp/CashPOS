@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CashPOS
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         ArrayList itemList = new ArrayList();
 
@@ -32,10 +32,22 @@ namespace CashPOS
             itemList.Add("redBrick8");
             itemList.Add("redBrick9");
             itemList.Add("redBrick10");
-            createButton(50, 3, 1, itemList);
+           // createButton(50, 3, 1, itemList);
         }
 
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            selectedPanel.Top = HomeBtn.Top;
+            selectedPanel.Height = HomeBtn.Height;
+        }
 
+        private void CashBtn_Click(object sender, EventArgs e)
+        {
+            selectedPanel.Top = cashBtn.Top;
+            selectedPanel.Height = cashBtn.Height;
+        }
+
+/*
         //create buttons based on the given starting row and col
         private void createButton(int numOfBtn, int startRow, int startCol, ArrayList itemList)
         {
@@ -111,6 +123,6 @@ namespace CashPOS
             return new Font(btn.Font.FontFamily, best_size);
         }
 
-        
+        */
     }
 }
