@@ -20,7 +20,7 @@ namespace CashPOS
         {
 
             InitializeComponent();
-
+           // itemBtnPanel.VerticalScroll.
             itemList.Add("redBrickaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             itemList.Add("紅磚");
             itemList.Add("redBrick2");
@@ -45,6 +45,31 @@ namespace CashPOS
         {
             selectedPanel.Top = cashBtn.Top;
             selectedPanel.Height = cashBtn.Height;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+
         }
 
 /*
