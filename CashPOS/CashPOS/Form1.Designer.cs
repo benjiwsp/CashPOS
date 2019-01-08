@@ -46,6 +46,7 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
             this.cashSales1 = new CashPOS.CashSales();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.checkBox1);
             this.mainPanel.Controls.Add(this.cashSales1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.mainPanel.Location = new System.Drawing.Point(246, 60);
@@ -214,6 +216,16 @@
             this.cashSales1.Size = new System.Drawing.Size(1654, 1000);
             this.cashSales1.TabIndex = 1;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(402, 75);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,12 +238,12 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Form1";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.sideBarSelectionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -255,6 +267,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel sideBarSelectionPanel;
         private CashSales cashSales1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
