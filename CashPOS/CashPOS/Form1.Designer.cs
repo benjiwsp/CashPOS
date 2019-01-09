@@ -44,8 +44,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
             this.cashSales1 = new CashPOS.CashSales();
+            this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -197,6 +197,14 @@
             this.mainPanel.Size = new System.Drawing.Size(1654, 1000);
             this.mainPanel.TabIndex = 4;
             // 
+            // cashSales1
+            // 
+            this.cashSales1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cashSales1.Location = new System.Drawing.Point(0, 0);
+            this.cashSales1.Name = "cashSales1";
+            this.cashSales1.Size = new System.Drawing.Size(1654, 1000);
+            this.cashSales1.TabIndex = 0;
+            // 
             // sideBarSelectionPanel
             // 
             this.sideBarSelectionPanel.Controls.Add(this.selectedPanel);
@@ -205,14 +213,6 @@
             this.sideBarSelectionPanel.Name = "sideBarSelectionPanel";
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
-            // 
-            // cashSales1
-            // 
-            this.cashSales1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cashSales1.Location = new System.Drawing.Point(0, 0);
-            this.cashSales1.Name = "cashSales1";
-            this.cashSales1.Size = new System.Drawing.Size(1654, 1000);
-            this.cashSales1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -223,7 +223,6 @@
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Form1";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
