@@ -30,46 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.itemBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.itemBtn1 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn2 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn3 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn4 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn5 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn6 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn7 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn8 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn9 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn10 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn11 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn12 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn13 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn14 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn15 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn16 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn17 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn18 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn19 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn20 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn21 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn22 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn23 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn24 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn25 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn26 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn27 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn28 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn29 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn30 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn31 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn32 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn33 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn34 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn35 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn36 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn37 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn38 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn39 = new MetroFramework.Controls.MetroButton();
-            this.itemBtn40 = new MetroFramework.Controls.MetroButton();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton41 = new MetroFramework.Controls.MetroButton();
@@ -96,7 +56,6 @@
             this.metroTextBox6 = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
@@ -108,423 +67,23 @@
             this.metroTextBox5 = new MetroFramework.Controls.MetroTextBox();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.itemBtnPanel.SuspendLayout();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // itemBtnPanel
             // 
             this.itemBtnPanel.AutoScroll = true;
             this.itemBtnPanel.BackColor = System.Drawing.Color.PapayaWhip;
-            this.itemBtnPanel.Controls.Add(this.itemBtn1);
-            this.itemBtnPanel.Controls.Add(this.itemBtn2);
-            this.itemBtnPanel.Controls.Add(this.itemBtn3);
-            this.itemBtnPanel.Controls.Add(this.itemBtn4);
-            this.itemBtnPanel.Controls.Add(this.itemBtn5);
-            this.itemBtnPanel.Controls.Add(this.itemBtn6);
-            this.itemBtnPanel.Controls.Add(this.itemBtn7);
-            this.itemBtnPanel.Controls.Add(this.itemBtn8);
-            this.itemBtnPanel.Controls.Add(this.itemBtn9);
-            this.itemBtnPanel.Controls.Add(this.itemBtn10);
-            this.itemBtnPanel.Controls.Add(this.itemBtn11);
-            this.itemBtnPanel.Controls.Add(this.itemBtn12);
-            this.itemBtnPanel.Controls.Add(this.itemBtn13);
-            this.itemBtnPanel.Controls.Add(this.itemBtn14);
-            this.itemBtnPanel.Controls.Add(this.itemBtn15);
-            this.itemBtnPanel.Controls.Add(this.itemBtn16);
-            this.itemBtnPanel.Controls.Add(this.itemBtn17);
-            this.itemBtnPanel.Controls.Add(this.itemBtn18);
-            this.itemBtnPanel.Controls.Add(this.itemBtn19);
-            this.itemBtnPanel.Controls.Add(this.itemBtn20);
-            this.itemBtnPanel.Controls.Add(this.itemBtn21);
-            this.itemBtnPanel.Controls.Add(this.itemBtn22);
-            this.itemBtnPanel.Controls.Add(this.itemBtn23);
-            this.itemBtnPanel.Controls.Add(this.itemBtn24);
-            this.itemBtnPanel.Controls.Add(this.itemBtn25);
-            this.itemBtnPanel.Controls.Add(this.itemBtn26);
-            this.itemBtnPanel.Controls.Add(this.itemBtn27);
-            this.itemBtnPanel.Controls.Add(this.itemBtn28);
-            this.itemBtnPanel.Controls.Add(this.itemBtn29);
-            this.itemBtnPanel.Controls.Add(this.itemBtn30);
-            this.itemBtnPanel.Controls.Add(this.itemBtn31);
-            this.itemBtnPanel.Controls.Add(this.itemBtn32);
-            this.itemBtnPanel.Controls.Add(this.itemBtn33);
-            this.itemBtnPanel.Controls.Add(this.itemBtn34);
-            this.itemBtnPanel.Controls.Add(this.itemBtn35);
-            this.itemBtnPanel.Controls.Add(this.itemBtn36);
-            this.itemBtnPanel.Controls.Add(this.itemBtn37);
-            this.itemBtnPanel.Controls.Add(this.itemBtn38);
-            this.itemBtnPanel.Controls.Add(this.itemBtn39);
-            this.itemBtnPanel.Controls.Add(this.itemBtn40);
             this.itemBtnPanel.Location = new System.Drawing.Point(578, 0);
             this.itemBtnPanel.Name = "itemBtnPanel";
             this.itemBtnPanel.Size = new System.Drawing.Size(1076, 849);
             this.itemBtnPanel.TabIndex = 3;
-            // 
-            // itemBtn1
-            // 
-            this.itemBtn1.Location = new System.Drawing.Point(3, 3);
-            this.itemBtn1.Name = "itemBtn1";
-            this.itemBtn1.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn1.TabIndex = 0;
-            this.itemBtn1.Text = "itemBtn1";
-            this.itemBtn1.UseSelectable = true;
-            // 
-            // itemBtn2
-            // 
-            this.itemBtn2.Location = new System.Drawing.Point(212, 3);
-            this.itemBtn2.Name = "itemBtn2";
-            this.itemBtn2.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn2.TabIndex = 0;
-            this.itemBtn2.Text = "metroButton1";
-            this.itemBtn2.UseSelectable = true;
-            // 
-            // itemBtn3
-            // 
-            this.itemBtn3.Location = new System.Drawing.Point(421, 3);
-            this.itemBtn3.Name = "itemBtn3";
-            this.itemBtn3.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn3.TabIndex = 0;
-            this.itemBtn3.Text = "metroButton1";
-            this.itemBtn3.UseSelectable = true;
-            // 
-            // itemBtn4
-            // 
-            this.itemBtn4.Location = new System.Drawing.Point(630, 3);
-            this.itemBtn4.Name = "itemBtn4";
-            this.itemBtn4.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn4.TabIndex = 0;
-            this.itemBtn4.Text = "metroButton1";
-            this.itemBtn4.UseSelectable = true;
-            // 
-            // itemBtn5
-            // 
-            this.itemBtn5.Location = new System.Drawing.Point(839, 3);
-            this.itemBtn5.Name = "itemBtn5";
-            this.itemBtn5.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn5.TabIndex = 0;
-            this.itemBtn5.Text = "metroButton1";
-            this.itemBtn5.UseSelectable = true;
-            // 
-            // itemBtn6
-            // 
-            this.itemBtn6.Location = new System.Drawing.Point(3, 141);
-            this.itemBtn6.Name = "itemBtn6";
-            this.itemBtn6.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn6.TabIndex = 0;
-            this.itemBtn6.Text = "metroButton1";
-            this.itemBtn6.UseSelectable = true;
-            // 
-            // itemBtn7
-            // 
-            this.itemBtn7.Location = new System.Drawing.Point(212, 141);
-            this.itemBtn7.Name = "itemBtn7";
-            this.itemBtn7.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn7.TabIndex = 0;
-            this.itemBtn7.Text = "metroButton1";
-            this.itemBtn7.UseSelectable = true;
-            // 
-            // itemBtn8
-            // 
-            this.itemBtn8.Location = new System.Drawing.Point(421, 141);
-            this.itemBtn8.Name = "itemBtn8";
-            this.itemBtn8.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn8.TabIndex = 0;
-            this.itemBtn8.Text = "metroButton1";
-            this.itemBtn8.UseSelectable = true;
-            // 
-            // itemBtn9
-            // 
-            this.itemBtn9.Location = new System.Drawing.Point(630, 141);
-            this.itemBtn9.Name = "itemBtn9";
-            this.itemBtn9.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn9.TabIndex = 0;
-            this.itemBtn9.Text = "metroButton1";
-            this.itemBtn9.UseSelectable = true;
-            // 
-            // itemBtn10
-            // 
-            this.itemBtn10.Location = new System.Drawing.Point(839, 141);
-            this.itemBtn10.Name = "itemBtn10";
-            this.itemBtn10.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn10.TabIndex = 0;
-            this.itemBtn10.Text = "metroButton1";
-            this.itemBtn10.UseSelectable = true;
-            // 
-            // itemBtn11
-            // 
-            this.itemBtn11.Location = new System.Drawing.Point(3, 279);
-            this.itemBtn11.Name = "itemBtn11";
-            this.itemBtn11.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn11.TabIndex = 0;
-            this.itemBtn11.Text = "metroButton1";
-            this.itemBtn11.UseSelectable = true;
-            // 
-            // itemBtn12
-            // 
-            this.itemBtn12.Location = new System.Drawing.Point(212, 279);
-            this.itemBtn12.Name = "itemBtn12";
-            this.itemBtn12.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn12.TabIndex = 0;
-            this.itemBtn12.Text = "metroButton1";
-            this.itemBtn12.UseSelectable = true;
-            // 
-            // itemBtn13
-            // 
-            this.itemBtn13.Location = new System.Drawing.Point(421, 279);
-            this.itemBtn13.Name = "itemBtn13";
-            this.itemBtn13.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn13.TabIndex = 0;
-            this.itemBtn13.Text = "metroButton1";
-            this.itemBtn13.UseSelectable = true;
-            // 
-            // itemBtn14
-            // 
-            this.itemBtn14.Location = new System.Drawing.Point(630, 279);
-            this.itemBtn14.Name = "itemBtn14";
-            this.itemBtn14.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn14.TabIndex = 0;
-            this.itemBtn14.Text = "metroButton1";
-            this.itemBtn14.UseSelectable = true;
-            // 
-            // itemBtn15
-            // 
-            this.itemBtn15.Location = new System.Drawing.Point(839, 279);
-            this.itemBtn15.Name = "itemBtn15";
-            this.itemBtn15.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn15.TabIndex = 0;
-            this.itemBtn15.Text = "metroButton1";
-            this.itemBtn15.UseSelectable = true;
-            // 
-            // itemBtn16
-            // 
-            this.itemBtn16.Location = new System.Drawing.Point(3, 417);
-            this.itemBtn16.Name = "itemBtn16";
-            this.itemBtn16.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn16.TabIndex = 0;
-            this.itemBtn16.Text = "metroButton1";
-            this.itemBtn16.UseSelectable = true;
-            // 
-            // itemBtn17
-            // 
-            this.itemBtn17.Location = new System.Drawing.Point(212, 417);
-            this.itemBtn17.Name = "itemBtn17";
-            this.itemBtn17.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn17.TabIndex = 0;
-            this.itemBtn17.Text = "metroButton1";
-            this.itemBtn17.UseSelectable = true;
-            // 
-            // itemBtn18
-            // 
-            this.itemBtn18.Location = new System.Drawing.Point(421, 417);
-            this.itemBtn18.Name = "itemBtn18";
-            this.itemBtn18.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn18.TabIndex = 0;
-            this.itemBtn18.Text = "metroButton1";
-            this.itemBtn18.UseSelectable = true;
-            // 
-            // itemBtn19
-            // 
-            this.itemBtn19.Location = new System.Drawing.Point(630, 417);
-            this.itemBtn19.Name = "itemBtn19";
-            this.itemBtn19.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn19.TabIndex = 0;
-            this.itemBtn19.Text = "metroButton1";
-            this.itemBtn19.UseSelectable = true;
-            // 
-            // itemBtn20
-            // 
-            this.itemBtn20.Location = new System.Drawing.Point(839, 417);
-            this.itemBtn20.Name = "itemBtn20";
-            this.itemBtn20.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn20.TabIndex = 0;
-            this.itemBtn20.Text = "metroButton1";
-            this.itemBtn20.UseSelectable = true;
-            // 
-            // itemBtn21
-            // 
-            this.itemBtn21.Location = new System.Drawing.Point(3, 555);
-            this.itemBtn21.Name = "itemBtn21";
-            this.itemBtn21.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn21.TabIndex = 0;
-            this.itemBtn21.Text = "metroButton1";
-            this.itemBtn21.UseSelectable = true;
-            // 
-            // itemBtn22
-            // 
-            this.itemBtn22.Location = new System.Drawing.Point(212, 555);
-            this.itemBtn22.Name = "itemBtn22";
-            this.itemBtn22.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn22.TabIndex = 0;
-            this.itemBtn22.Text = "metroButton1";
-            this.itemBtn22.UseSelectable = true;
-            // 
-            // itemBtn23
-            // 
-            this.itemBtn23.Location = new System.Drawing.Point(421, 555);
-            this.itemBtn23.Name = "itemBtn23";
-            this.itemBtn23.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn23.TabIndex = 0;
-            this.itemBtn23.Text = "metroButton1";
-            this.itemBtn23.UseSelectable = true;
-            // 
-            // itemBtn24
-            // 
-            this.itemBtn24.Location = new System.Drawing.Point(630, 555);
-            this.itemBtn24.Name = "itemBtn24";
-            this.itemBtn24.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn24.TabIndex = 0;
-            this.itemBtn24.Text = "metroButton1";
-            this.itemBtn24.UseSelectable = true;
-            // 
-            // itemBtn25
-            // 
-            this.itemBtn25.Location = new System.Drawing.Point(839, 555);
-            this.itemBtn25.Name = "itemBtn25";
-            this.itemBtn25.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn25.TabIndex = 0;
-            this.itemBtn25.Text = "metroButton1";
-            this.itemBtn25.UseSelectable = true;
-            // 
-            // itemBtn26
-            // 
-            this.itemBtn26.Location = new System.Drawing.Point(3, 693);
-            this.itemBtn26.Name = "itemBtn26";
-            this.itemBtn26.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn26.TabIndex = 0;
-            this.itemBtn26.Text = "metroButton1";
-            this.itemBtn26.UseSelectable = true;
-            // 
-            // itemBtn27
-            // 
-            this.itemBtn27.Location = new System.Drawing.Point(212, 693);
-            this.itemBtn27.Name = "itemBtn27";
-            this.itemBtn27.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn27.TabIndex = 0;
-            this.itemBtn27.Text = "metroButton1";
-            this.itemBtn27.UseSelectable = true;
-            // 
-            // itemBtn28
-            // 
-            this.itemBtn28.Location = new System.Drawing.Point(421, 693);
-            this.itemBtn28.Name = "itemBtn28";
-            this.itemBtn28.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn28.TabIndex = 0;
-            this.itemBtn28.Text = "metroButton1";
-            this.itemBtn28.UseSelectable = true;
-            // 
-            // itemBtn29
-            // 
-            this.itemBtn29.Location = new System.Drawing.Point(630, 693);
-            this.itemBtn29.Name = "itemBtn29";
-            this.itemBtn29.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn29.TabIndex = 0;
-            this.itemBtn29.Text = "metroButton1";
-            this.itemBtn29.UseSelectable = true;
-            // 
-            // itemBtn30
-            // 
-            this.itemBtn30.Location = new System.Drawing.Point(839, 693);
-            this.itemBtn30.Name = "itemBtn30";
-            this.itemBtn30.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn30.TabIndex = 0;
-            this.itemBtn30.Text = "metroButton1";
-            this.itemBtn30.UseSelectable = true;
-            // 
-            // itemBtn31
-            // 
-            this.itemBtn31.Location = new System.Drawing.Point(3, 831);
-            this.itemBtn31.Name = "itemBtn31";
-            this.itemBtn31.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn31.TabIndex = 0;
-            this.itemBtn31.Text = "metroButton1";
-            this.itemBtn31.UseSelectable = true;
-            // 
-            // itemBtn32
-            // 
-            this.itemBtn32.Location = new System.Drawing.Point(212, 831);
-            this.itemBtn32.Name = "itemBtn32";
-            this.itemBtn32.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn32.TabIndex = 0;
-            this.itemBtn32.Text = "metroButton1";
-            this.itemBtn32.UseSelectable = true;
-            // 
-            // itemBtn33
-            // 
-            this.itemBtn33.Location = new System.Drawing.Point(421, 831);
-            this.itemBtn33.Name = "itemBtn33";
-            this.itemBtn33.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn33.TabIndex = 0;
-            this.itemBtn33.Text = "metroButton1";
-            this.itemBtn33.UseSelectable = true;
-            // 
-            // itemBtn34
-            // 
-            this.itemBtn34.Location = new System.Drawing.Point(630, 831);
-            this.itemBtn34.Name = "itemBtn34";
-            this.itemBtn34.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn34.TabIndex = 0;
-            this.itemBtn34.Text = "metroButton1";
-            this.itemBtn34.UseSelectable = true;
-            // 
-            // itemBtn35
-            // 
-            this.itemBtn35.Location = new System.Drawing.Point(839, 831);
-            this.itemBtn35.Name = "itemBtn35";
-            this.itemBtn35.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn35.TabIndex = 0;
-            this.itemBtn35.Text = "metroButton1";
-            this.itemBtn35.UseSelectable = true;
-            // 
-            // itemBtn36
-            // 
-            this.itemBtn36.Location = new System.Drawing.Point(3, 969);
-            this.itemBtn36.Name = "itemBtn36";
-            this.itemBtn36.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn36.TabIndex = 0;
-            this.itemBtn36.Text = "metroButton1";
-            this.itemBtn36.UseSelectable = true;
-            // 
-            // itemBtn37
-            // 
-            this.itemBtn37.Location = new System.Drawing.Point(212, 969);
-            this.itemBtn37.Name = "itemBtn37";
-            this.itemBtn37.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn37.TabIndex = 0;
-            this.itemBtn37.Text = "metroButton1";
-            this.itemBtn37.UseSelectable = true;
-            // 
-            // itemBtn38
-            // 
-            this.itemBtn38.Location = new System.Drawing.Point(421, 969);
-            this.itemBtn38.Name = "itemBtn38";
-            this.itemBtn38.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn38.TabIndex = 0;
-            this.itemBtn38.Text = "metroButton1";
-            this.itemBtn38.UseSelectable = true;
-            // 
-            // itemBtn39
-            // 
-            this.itemBtn39.Location = new System.Drawing.Point(630, 969);
-            this.itemBtn39.Name = "itemBtn39";
-            this.itemBtn39.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn39.TabIndex = 1;
-            this.itemBtn39.Text = "metroButton1";
-            this.itemBtn39.UseSelectable = true;
-            // 
-            // itemBtn40
-            // 
-            this.itemBtn40.Location = new System.Drawing.Point(839, 969);
-            this.itemBtn40.Name = "itemBtn40";
-            this.itemBtn40.Size = new System.Drawing.Size(203, 132);
-            this.itemBtn40.TabIndex = 2;
-            this.itemBtn40.Text = "metroButton2";
-            this.itemBtn40.UseSelectable = true;
             // 
             // infoPanel
             // 
@@ -1159,14 +718,13 @@
             this.Controls.Add(this.itemBtnPanel);
             this.Name = "CashSales";
             this.Size = new System.Drawing.Size(1654, 1000);
-            this.itemBtnPanel.ResumeLayout(false);
             this.infoPanel.ResumeLayout(false);
             this.customerDetailPanel.ResumeLayout(false);
             this.customerDetailPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1174,46 +732,8 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel itemBtnPanel;
-        private MetroFramework.Controls.MetroButton itemBtn1;
-        private MetroFramework.Controls.MetroButton itemBtn2;
-        private MetroFramework.Controls.MetroButton itemBtn3;
-        private MetroFramework.Controls.MetroButton itemBtn4;
-        private MetroFramework.Controls.MetroButton itemBtn5;
-        private MetroFramework.Controls.MetroButton itemBtn6;
-        private MetroFramework.Controls.MetroButton itemBtn7;
-        private MetroFramework.Controls.MetroButton itemBtn8;
-        private MetroFramework.Controls.MetroButton itemBtn9;
-        private MetroFramework.Controls.MetroButton itemBtn10;
-        private MetroFramework.Controls.MetroButton itemBtn11;
-        private MetroFramework.Controls.MetroButton itemBtn12;
-        private MetroFramework.Controls.MetroButton itemBtn13;
-        private MetroFramework.Controls.MetroButton itemBtn14;
-        private MetroFramework.Controls.MetroButton itemBtn15;
-        private MetroFramework.Controls.MetroButton itemBtn16;
-        private MetroFramework.Controls.MetroButton itemBtn17;
-        private MetroFramework.Controls.MetroButton itemBtn18;
-        private MetroFramework.Controls.MetroButton itemBtn19;
-        private MetroFramework.Controls.MetroButton itemBtn20;
-        private MetroFramework.Controls.MetroButton itemBtn21;
-        private MetroFramework.Controls.MetroButton itemBtn22;
-        private MetroFramework.Controls.MetroButton itemBtn23;
-        private MetroFramework.Controls.MetroButton itemBtn24;
-        private MetroFramework.Controls.MetroButton itemBtn25;
-        private MetroFramework.Controls.MetroButton itemBtn26;
-        private MetroFramework.Controls.MetroButton itemBtn27;
-        private MetroFramework.Controls.MetroButton itemBtn28;
-        private MetroFramework.Controls.MetroButton itemBtn29;
-        private MetroFramework.Controls.MetroButton itemBtn30;
-        private MetroFramework.Controls.MetroButton itemBtn31;
-        private MetroFramework.Controls.MetroButton itemBtn32;
-        private MetroFramework.Controls.MetroButton itemBtn33;
-        private MetroFramework.Controls.MetroButton itemBtn37;
-        private MetroFramework.Controls.MetroButton itemBtn38;
         private MetroFramework.Controls.MetroPanel infoPanel;
         private System.Windows.Forms.TableLayoutPanel customerDetailPanel;
-        private MetroFramework.Controls.MetroButton itemBtn34;
-        private MetroFramework.Controls.MetroButton itemBtn35;
-        private MetroFramework.Controls.MetroButton itemBtn36;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroButton newBtn;
@@ -1250,7 +770,5 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private MetroFramework.Controls.MetroTextBox metroTextBox6;
         private MetroFramework.Controls.MetroTextBox metroTextBox7;
-        private MetroFramework.Controls.MetroButton itemBtn39;
-        private MetroFramework.Controls.MetroButton itemBtn40;
     }
 }

@@ -37,19 +37,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.cashBtn = new System.Windows.Forms.Button();
+            this.settingBtn = new System.Windows.Forms.Button();
+            this.cashSalesBtn = new System.Windows.Forms.Button();
             this.HomeBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.cashSales1 = new CashPOS.CashSales();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.mainPanel.SuspendLayout();
             this.sideBarSelectionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,8 +82,8 @@
             // 
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.cashBtn);
+            this.panel1.Controls.Add(this.settingBtn);
+            this.panel1.Controls.Add(this.cashSalesBtn);
             this.panel1.Controls.Add(this.HomeBtn);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -120,32 +118,33 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // settingBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(0, 325);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 103);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Home";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = false;
+            this.settingBtn.BackColor = System.Drawing.Color.White;
+            this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingBtn.Image")));
+            this.settingBtn.Location = new System.Drawing.Point(0, 325);
+            this.settingBtn.Name = "settingBtn";
+            this.settingBtn.Size = new System.Drawing.Size(197, 103);
+            this.settingBtn.TabIndex = 1;
+            this.settingBtn.Text = "設定";
+            this.settingBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.settingBtn.UseVisualStyleBackColor = false;
+            this.settingBtn.Click += new System.EventHandler(this.settingBtn_Click);
             // 
-            // cashBtn
+            // cashSalesBtn
             // 
-            this.cashBtn.BackColor = System.Drawing.Color.White;
-            this.cashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cashBtn.Image = ((System.Drawing.Image)(resources.GetObject("cashBtn.Image")));
-            this.cashBtn.Location = new System.Drawing.Point(0, 216);
-            this.cashBtn.Name = "cashBtn";
-            this.cashBtn.Size = new System.Drawing.Size(197, 103);
-            this.cashBtn.TabIndex = 1;
-            this.cashBtn.Text = "Cash";
-            this.cashBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cashBtn.UseVisualStyleBackColor = false;
-            this.cashBtn.Click += new System.EventHandler(this.CashBtn_Click);
+            this.cashSalesBtn.BackColor = System.Drawing.Color.White;
+            this.cashSalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cashSalesBtn.Image = ((System.Drawing.Image)(resources.GetObject("cashSalesBtn.Image")));
+            this.cashSalesBtn.Location = new System.Drawing.Point(3, 216);
+            this.cashSalesBtn.Name = "cashSalesBtn";
+            this.cashSalesBtn.Size = new System.Drawing.Size(197, 103);
+            this.cashSalesBtn.TabIndex = 1;
+            this.cashSalesBtn.Text = "開單";
+            this.cashSalesBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cashSalesBtn.UseVisualStyleBackColor = false;
+            this.cashSalesBtn.Click += new System.EventHandler(this.CashBtn_Click);
             // 
             // HomeBtn
             // 
@@ -190,20 +189,11 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.cashSales1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.mainPanel.Location = new System.Drawing.Point(246, 60);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1654, 1000);
             this.mainPanel.TabIndex = 4;
-            // 
-            // cashSales1
-            // 
-            this.cashSales1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cashSales1.Location = new System.Drawing.Point(0, 0);
-            this.cashSales1.Name = "cashSales1";
-            this.cashSales1.Size = new System.Drawing.Size(1654, 1000);
-            this.cashSales1.TabIndex = 0;
             // 
             // sideBarSelectionPanel
             // 
@@ -230,7 +220,6 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.mainPanel.ResumeLayout(false);
             this.sideBarSelectionPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -245,15 +234,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button cashBtn;
+        private System.Windows.Forms.Button settingBtn;
+        private System.Windows.Forms.Button cashSalesBtn;
         private System.Windows.Forms.Button HomeBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel selectedPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel sideBarSelectionPanel;
-        private CashSales cashSales1;
     }
 }
 

@@ -68,6 +68,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PriceSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PriceSetting.Designer.cs">
+      <DependentUpon>PriceSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="setting pages\InfoSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="setting pages\InfoSettings.Designer.cs">
+      <DependentUpon>InfoSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CashSales.resx">
@@ -75,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PriceSetting.resx">
+      <DependentUpon>PriceSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="setting pages\InfoSettings.resx">
+      <DependentUpon>InfoSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

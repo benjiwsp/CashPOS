@@ -12,28 +12,48 @@ namespace CashPOS
 {
     public partial class CashSales : UserControl
     {
+        
+        /*
+         * each item will have 3 types of price, selfpick/deliver to warehouse/deliver to site.
+         * price will be different based on differnet customer
+         */
+        List<String> itemList = new List<String>();
+        List<MetroFramework.Controls.MetroButton> btnList = new List<MetroFramework.Controls.MetroButton>();
+
+
         public CashSales()
         {
             InitializeComponent();
+            itemList.Add("RedBrick1");
+            itemList.Add("RedBrick2");
+            itemList.Add("RedBrick3");
+            itemList.Add("RedBrick4");
+            itemList.Add("RedBrick5");
+            itemList.Add("RedBrick6");
+            itemList.Add("RedBrick7");
+            itemList.Add("RedBrick8");
 
-            List<MetroFramework.Controls.MetroButton> buttons = new List<MetroFramework.Controls.MetroButton>();
-            for (int i = 0; i < 10; i++)
+
+            createItemBtn(itemList);
+        }
+
+
+        //create number of itemBtn based on the amount of item from the itemList
+        private void createItemBtn(List<String> itemList){
+            for (int i = 0; i < itemList.Count; i++)
             {
-                MetroFramework.Controls.MetroButton  newButton = new MetroFramework.Controls.MetroButton();
+                MetroFramework.Controls.MetroButton newButton = new MetroFramework.Controls.MetroButton();
                 newButton.Width = 203;
                 newButton.Height = 132;
                 newButton.AutoSize = false;
                 newButton.Name = "newBtn" + i;
-                buttons.Add(newButton);
+                newButton.Text = itemList[i].ToString();
+                btnList.Add(newButton);
                 this.itemBtnPanel.Controls.Add(newButton);
             }
-
-            foreach (MetroFramework.Controls.MetroButton i in buttons)
-            {
-                MessageBox.Show(i.Name);
-            }
         }
-
-       
+        
+        
+        
     }
 }
