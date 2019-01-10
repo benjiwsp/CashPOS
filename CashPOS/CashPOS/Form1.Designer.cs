@@ -36,7 +36,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.invBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
             this.cashSalesBtn = new System.Windows.Forms.Button();
             this.HomeBtn = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.invBtn);
             this.panel1.Controls.Add(this.settingBtn);
             this.panel1.Controls.Add(this.cashSalesBtn);
             this.panel1.Controls.Add(this.HomeBtn);
@@ -106,26 +106,26 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.ButtonClicked);
             // 
-            // button4
+            // invBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(0, 434);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 103);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Home";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.ButtonClicked);
+            this.invBtn.BackColor = System.Drawing.Color.White;
+            this.invBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.invBtn.Image = ((System.Drawing.Image)(resources.GetObject("invBtn.Image")));
+            this.invBtn.Location = new System.Drawing.Point(3, 325);
+            this.invBtn.Name = "invBtn";
+            this.invBtn.Size = new System.Drawing.Size(197, 103);
+            this.invBtn.TabIndex = 1;
+            this.invBtn.Text = "倉儲";
+            this.invBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.invBtn.UseVisualStyleBackColor = false;
+            this.invBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // settingBtn
             // 
             this.settingBtn.BackColor = System.Drawing.Color.White;
             this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingBtn.Image")));
-            this.settingBtn.Location = new System.Drawing.Point(0, 325);
+            this.settingBtn.Location = new System.Drawing.Point(3, 434);
             this.settingBtn.Name = "settingBtn";
             this.settingBtn.Size = new System.Drawing.Size(197, 103);
             this.settingBtn.TabIndex = 1;
@@ -234,7 +234,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button invBtn;
         private System.Windows.Forms.Button settingBtn;
         private System.Windows.Forms.Button cashSalesBtn;
         private System.Windows.Forms.Button HomeBtn;

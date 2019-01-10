@@ -51,9 +51,25 @@ namespace CashPOS
                 btnList.Add(newButton);
                 this.itemBtnPanel.Controls.Add(newButton);
             }
+
+            //add event handler to ecah button 
+            foreach (Button btn in btnList)
+            {
+                btn.Click += new EventHandler(itemBtnClicked);
+            }
         }
-        
-        
+
+
+        /*
+         * each button click will update the price based on different customer.
+         */
+        protected  void itemBtnClicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            metroTile3.Text = btn.Text;
+            
+            
+        }
         
     }
 }

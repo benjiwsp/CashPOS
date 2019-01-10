@@ -14,19 +14,21 @@ namespace CashPOS
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         InfoSettings infoSetting;
-        CashSales cashSales; 
+        CashSales cashSales;
         PriceSetting priceSetting;
         HomeScreen homeScreen;
+        Inventory inventory;
         public Form1()
         {
             InitializeComponent();
-            infoSetting  = new InfoSettings();
+            infoSetting = new InfoSettings();
             cashSales = new CashSales();
             priceSetting = new PriceSetting();
             homeScreen = new HomeScreen();
+            inventory = new Inventory();
         }
 
-    
+
         protected void ButtonClicked(object sender, EventArgs e)
         {
 
@@ -62,6 +64,11 @@ namespace CashPOS
                         mainPanel.Controls.Add(priceSetting);
                         break;
 
+                    case "invBtn":
+                        inventory.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(inventory);
+                        break;
+
                     default:
                         mainPanel.Controls.Clear();
                         break;
@@ -70,7 +77,7 @@ namespace CashPOS
         }
 
 
-      
+
         /*
                 // the biggest font that will fit.
                 private Font SizeLabelFont(Button btn)
