@@ -11,6 +11,7 @@ namespace CashPOS
 {
     public partial class PriceSetting : UserControl
     {
+
         public PriceSetting()
         {
             InitializeComponent();

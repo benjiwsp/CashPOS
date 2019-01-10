@@ -104,6 +104,7 @@
             this.button5.Text = "Home";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // button4
             // 
@@ -117,6 +118,7 @@
             this.button4.Text = "Home";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // settingBtn
             // 
@@ -130,7 +132,7 @@
             this.settingBtn.Text = "設定";
             this.settingBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.settingBtn.UseVisualStyleBackColor = false;
-            this.settingBtn.Click += new System.EventHandler(this.settingBtn_Click);
+            this.settingBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // cashSalesBtn
             // 
@@ -144,7 +146,7 @@
             this.cashSalesBtn.Text = "開單";
             this.cashSalesBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cashSalesBtn.UseVisualStyleBackColor = false;
-            this.cashSalesBtn.Click += new System.EventHandler(this.CashBtn_Click);
+            this.cashSalesBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // HomeBtn
             // 
@@ -158,7 +160,7 @@
             this.HomeBtn.Text = "Home";
             this.HomeBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.HomeBtn.UseVisualStyleBackColor = false;
-            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            this.HomeBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // panel3
             // 
@@ -215,7 +217,6 @@
             this.Name = "Form1";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Form1";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

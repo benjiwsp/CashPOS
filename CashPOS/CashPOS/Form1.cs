@@ -13,73 +13,65 @@ namespace CashPOS
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
-        InfoSettings infoSetting = new InfoSettings();
-        CashSales cashSales = new CashSales();
-        //PriceSetting priceSetting = new PriceSetting();
+        InfoSettings infoSetting;
+        CashSales cashSales; 
+        PriceSetting priceSetting;
+        HomeScreen homeScreen;
         public Form1()
         {
             InitializeComponent();
-
+            infoSetting  = new InfoSettings();
+            cashSales = new CashSales();
+            priceSetting = new PriceSetting();
+            homeScreen = new HomeScreen();
         }
 
-        private void HomeBtn_Click(object sender, EventArgs e)
+    
+        protected void ButtonClicked(object sender, EventArgs e)
         {
-            selectedPanel.Top = HomeBtn.Top;
-            selectedPanel.Height = HomeBtn.Height;
-            mainPanel.Controls.Clear();
+
+            buttonHandler(sender);
         }
 
-        private void CashBtn_Click(object sender, EventArgs e)
+        public void buttonHandler(object sender)
         {
-            selectedPanel.Top = cashSalesBtn.Top;
-            selectedPanel.Height = cashSalesBtn.Height;
+            Button button = sender as Button;
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(cashSales);
-        }
 
-        private void settingBtn_Click(object sender, EventArgs e)
-        {
-            selectedPanel.Top = settingBtn.Top;
-            selectedPanel.Height = settingBtn.Height;
-            mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(infoSetting);
-
-        }
-
-        /*
-                //create buttons based on the given starting row and col
-                private void createButton(int numOfBtn, int startRow, int startCol, ArrayList itemList)
+            if (button != null)
+            {
+                switch (button.Name)
                 {
+                    case "HomeBtn":
+                        homeScreen.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(homeScreen);
+                        break;
 
-                    int toRow = startRow;
-                    int toCol = startCol;
-                    for (int i = 0; i < itemList.Count; i++)
-                    {
-                        Button btn = new Button();
-                        btn.Name = "button";
-                        btn.Text = itemList[i].ToString();
-                        btn.ForeColor = Color.White;
-                        btn.BackColor = Color.Green;
-                        btn.Font = SizeLabelFont(btn);
-                        btn.Width = 170;
-                        btn.Height = 80;
-                        btn.TextAlign = ContentAlignment.MiddleCenter;
-                        btn.Margin = new Padding(5);
-                        tableLayoutPanel1.Controls.Add(btn, toRow, toCol);
+                    case "cashSalesBtn":
+                        cashSales.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(cashSales);
+                        break;
 
-                        //  if the current row has reached the end, jump to the next col at the same starting row
-                        if (toRow < tableLayoutPanel1.RowCount - 1)
-                        {
-                            toRow += 1;
-                        }
-                        else
-                        {
-                            toCol += 1;
-                            toRow = startRow;
-                        }
-                    }
+                    case "settingBtn":
+                        infoSetting.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(infoSetting);
+                        break;
+
+                    case "priceSettingBtn":
+                        priceSetting.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(priceSetting);
+                        break;
+
+                    default:
+                        mainPanel.Controls.Clear();
+                        break;
                 }
+            }
+        }
 
+
+      
+        /*
                 // the biggest font that will fit.
                 private Font SizeLabelFont(Button btn)
                 {

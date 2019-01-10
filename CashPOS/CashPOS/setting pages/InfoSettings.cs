@@ -11,8 +11,7 @@ namespace CashPOS
 {
     public partial class InfoSettings : UserControl
     {
-        PriceSetting priceSetting = new PriceSetting();
-        CashSales cashSales = new CashSales();
+        
 
         public InfoSettings()
         {
@@ -21,13 +20,9 @@ namespace CashPOS
         
         private void priceSettingBtn_Click(object sender, EventArgs e)
         {
-            // link this to PriceSetting class
-           
-           // this.Parent.Controls.Add(cashSales);
-          //this.Parent.Controls["mainPanel"].ControlAdded(cashSales);
-
-         //                   mainPanel.Controls.Clear();
-       //     mainPanel.Controls.Add(cashSales);
+            Form1 form1 = (Form1)this.Parent.Parent;
+            form1.buttonHandler(sender);
+            
         }
     }
 }
