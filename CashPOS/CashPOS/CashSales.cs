@@ -27,37 +27,38 @@ namespace CashPOS
          * itemNotes, amountText
          */
         List<String> itemList = new List<String>();
-        List<MetroFramework.Controls.MetroButton> btnList = new List<MetroFramework.Controls.MetroButton>();
+        List<Button> btnList = new List<Button>();
 
 
         public CashSales()
         {
             InitializeComponent();
-            createItemBtn(itemList);
+            addItemToList();
+            createItemBtn(itemList, itemBtnPanel, itemBtnClicked);
             updateGridCol();
         }
 
 
         #region initialize related
         //create number of itemBtn based on the amount of item from the itemList
-        private void createItemBtn(List<String> itemList)
+        public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
         {
             for (int i = 0; i < itemList.Count; i++)
             {
-                MetroFramework.Controls.MetroButton newButton = new MetroFramework.Controls.MetroButton();
+                Button newButton = new Button();
                 newButton.Width = 203;
                 newButton.Height = 132;
                 newButton.AutoSize = false;
                 newButton.Name = "newBtn" + i;
                 newButton.Text = itemList[i].ToString();
                 btnList.Add(newButton);
-                this.itemBtnPanel.Controls.Add(newButton);
+                panel.Controls.Add(newButton);
             }
 
             //add event handler to ecah button 
             foreach (Button btn in btnList)
             {
-                btn.Click += new EventHandler(itemBtnClicked);
+                btn.Click += new EventHandler(handler);
             }
         }
         private void addItemToList()
@@ -82,6 +83,8 @@ namespace CashPOS
             float unitPrice = 0.0f;
             Button btn = sender as Button;
             string itemSelected = btn.Text;
+            SubItems sub = new SubItems();
+            sub.Show();
             /*
              * get selected item unit price from database
              */
@@ -143,7 +146,7 @@ namespace CashPOS
 #region order panel related
 
 
-        private void cancelBtn_Click(object sender, EventArgs e)
+        public void cancelBtn_Click(object sender, EventArgs e)
         {
             clearAll();
         }

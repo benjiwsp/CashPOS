@@ -67,8 +67,8 @@
             this.itemNotesTxt = new System.Windows.Forms.TextBox();
             this.itemUnit = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
