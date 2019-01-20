@@ -33,8 +33,7 @@
             this.allProdGrid = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.insertBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProdGrid)).BeginInit();
@@ -54,8 +53,7 @@
             this.tableLayoutPanel1.Controls.Add(this.allProdGrid, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -112,25 +110,17 @@
             this.button2.Text = "清空";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // insertBtn
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(711, 253);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(230, 244);
-            this.button3.TabIndex = 4;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(711, 503);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(230, 244);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "<";
-            this.button4.UseVisualStyleBackColor = true;
+            this.insertBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.insertBtn.Location = new System.Drawing.Point(711, 253);
+            this.insertBtn.Name = "insertBtn";
+            this.tableLayoutPanel1.SetRowSpan(this.insertBtn, 2);
+            this.insertBtn.Size = new System.Drawing.Size(230, 494);
+            this.insertBtn.TabIndex = 4;
+            this.insertBtn.Text = "新增 >";
+            this.insertBtn.UseVisualStyleBackColor = true;
+            this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
             // ProdMgm
             // 
@@ -153,7 +143,6 @@
         private System.Windows.Forms.DataGridView allProdGrid;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button insertBtn;
     }
 }
