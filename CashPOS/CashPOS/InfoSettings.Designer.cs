@@ -31,7 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.priceSettingBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
@@ -48,7 +48,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.metroButton1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.priceSettingBtn, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.metroButton3, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.prodMgmBtn, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroButton4, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroButton5, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroButton6, 3, 2);
@@ -87,15 +87,16 @@
             this.priceSettingBtn.UseSelectable = true;
             this.priceSettingBtn.Click += new System.EventHandler(this.priceSettingBtn_Click);
             // 
-            // metroButton3
+            // prodMgmBtn
             // 
-            this.metroButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton3.Location = new System.Drawing.Point(663, 335);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(324, 160);
-            this.metroButton3.TabIndex = 0;
-            this.metroButton3.Text = "貨品";
-            this.metroButton3.UseSelectable = true;
+            this.prodMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prodMgmBtn.Location = new System.Drawing.Point(663, 335);
+            this.prodMgmBtn.Name = "prodMgmBtn";
+            this.prodMgmBtn.Size = new System.Drawing.Size(324, 160);
+            this.prodMgmBtn.TabIndex = 0;
+            this.prodMgmBtn.Text = "貨品";
+            this.prodMgmBtn.UseSelectable = true;
+            this.prodMgmBtn.Click += new System.EventHandler(this.prodMgmBtn_Click);
             // 
             // metroButton4
             // 
@@ -144,7 +145,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton priceSettingBtn;
-        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton prodMgmBtn;
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton metroButton6;

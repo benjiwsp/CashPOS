@@ -1,84 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace CashPOS
 {
-    public partial class SubItems : Form
+    public partial class SubItems : UserControl
     {
-        CashSales cashSalesForm;
-        List<string> itemList= new List<String>();
-        public SubItems()
+        List<Button> btnList = new List<Button>();
+        List<String> itemList = new List<String>();
+        CashSales myParent = null;
+
+        public SubItems(string typeSelected, CashSales myParent)
         {
             InitializeComponent();
-           addItemToList();
-            getMainFormInfo();
-
-        }
-        private void getMainFormInfo(){
-            cashSalesForm = new CashSales();
-            subItemPanel.Controls.Add(cashSalesForm);
-            //eateItemBtn(itemList, subItemPanel, itemBtnClicked);
+            this.myParent = myParent; 
+            addSubItems();
+            createItemBtn(itemList, subItemPanel, itemBtnClicked);
         }
 
-        private void addItemToList()
+        private void addSubItems()
         {
-            itemList.Add("abc12");
-            itemList.Add("abc13");
-            itemList.Add("abc14");
-            itemList.Add("abc15");
-            itemList.Add("abc16");
-            itemList.Add("abc17");
-            itemList.Add("abc18");
-            itemList.Add("abc19");
-            itemList.Add("abc20");
-            itemList.Add("abc21");
-            itemList.Add("abc22");
-            itemList.Add("abc23");
-            itemList.Add("abc24");
-            itemList.Add("abc25");
-            itemList.Add("abc26");
-            itemList.Add("abc27");
-            itemList.Add("abc28");
-            itemList.Add("abc29");
-            itemList.Add("abc30");
-            itemList.Add("abc31");
-            itemList.Add("abc32");
-            itemList.Add("abc33");
-            itemList.Add("abc34");
-            itemList.Add("abc35");
-            itemList.Add("abc36");
-            itemList.Add("abc37");
-            itemList.Add("abc38");
-            itemList.Add("abc39");
-
+            itemList.Add("red1");
+            itemList.Add("磚red1");
+            itemList.Add("泥red1");
+            itemList.Add("膠red1水");
+            itemList.Add("其red1他");
+            itemList.Add("Emred1ix");
+            itemList.Add("Tyred1p7");
+            itemList.Add("Typred18");
         }
-        protected void itemBtnClicked(object sender, EventArgs e)
-        {
-            float unitPrice = 0.0f;
-            Button btn = sender as Button;
-            string itemSelected = btn.Text;
 
-        
-        }
+        //create number of itemBtn based on the amount of item from the itemList
         public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < itemList.Count; i++)
             {
                 Button newButton = new Button();
                 newButton.Width = 203;
                 newButton.Height = 132;
                 newButton.AutoSize = false;
                 newButton.Name = "newBtn" + i;
-              //  newButton.Text = itemList[i].ToString();
-               // btnList.Add(newButton);
+                newButton.Text = itemList[i].ToString();
+                btnList.Add(newButton);
                 panel.Controls.Add(newButton);
-            }        
+            }
+            //add event handler to ecah button 
+            foreach (Button btn in btnList)
+            {
+                btn.Click += new EventHandler(handler);
+            }
+        }
+
+        
+        protected void itemBtnClicked(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            string itemSelected = btn.Text;
+            //TO-DO: read price from database and update it to the unitPriceBox
+            myParent.selectLblValue = itemSelected;
+            myParent.unitPriceValue = "abc";
+        //       unitPriceTxt.Text = unitPrice.ToString("#.##");
         }
     }
 }

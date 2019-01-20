@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.itemBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton41 = new MetroFramework.Controls.MetroButton();
             this.metroButton40 = new MetroFramework.Controls.MetroButton();
             this.newBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton39 = new MetroFramework.Controls.MetroButton();
+            this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
             this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.customerTxt = new MetroFramework.Controls.MetroComboBox();
             this.addressTxt = new MetroFramework.Controls.MetroComboBox();
@@ -68,6 +68,7 @@
             this.itemUnit = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.subPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
@@ -77,14 +78,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // itemBtnPanel
+            // itemTypePanel
             // 
-            this.itemBtnPanel.AutoScroll = true;
-            this.itemBtnPanel.BackColor = System.Drawing.Color.PapayaWhip;
-            this.itemBtnPanel.Location = new System.Drawing.Point(578, 0);
-            this.itemBtnPanel.Name = "itemBtnPanel";
-            this.itemBtnPanel.Size = new System.Drawing.Size(1076, 849);
-            this.itemBtnPanel.TabIndex = 3;
+            this.itemTypePanel.AutoScroll = true;
+            this.itemTypePanel.BackColor = System.Drawing.Color.PapayaWhip;
+            this.itemTypePanel.Location = new System.Drawing.Point(578, 0);
+            this.itemTypePanel.Name = "itemTypePanel";
+            this.itemTypePanel.Size = new System.Drawing.Size(1076, 127);
+            this.itemTypePanel.TabIndex = 3;
             // 
             // infoPanel
             // 
@@ -114,7 +115,7 @@
             this.customerDetailPanel.Controls.Add(this.metroButton41, 4, 13);
             this.customerDetailPanel.Controls.Add(this.metroButton40, 2, 13);
             this.customerDetailPanel.Controls.Add(this.newBtn, 0, 13);
-            this.customerDetailPanel.Controls.Add(this.metroButton39, 0, 12);
+            this.customerDetailPanel.Controls.Add(this.orderConfirmBtn, 0, 12);
             this.customerDetailPanel.Controls.Add(this.cancelBtn, 3, 12);
             this.customerDetailPanel.Controls.Add(this.customerTxt, 0, 2);
             this.customerDetailPanel.Controls.Add(this.addressTxt, 3, 2);
@@ -189,18 +190,19 @@
             this.newBtn.Text = "現沽";
             this.newBtn.UseSelectable = true;
             // 
-            // metroButton39
+            // orderConfirmBtn
             // 
-            this.metroButton39.BackColor = System.Drawing.Color.Magenta;
-            this.customerDetailPanel.SetColumnSpan(this.metroButton39, 3);
-            this.metroButton39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton39.Location = new System.Drawing.Point(3, 855);
-            this.metroButton39.Name = "metroButton39";
-            this.metroButton39.Size = new System.Drawing.Size(282, 65);
-            this.metroButton39.TabIndex = 0;
-            this.metroButton39.Text = "發送";
-            this.metroButton39.UseCustomBackColor = true;
-            this.metroButton39.UseSelectable = true;
+            this.orderConfirmBtn.BackColor = System.Drawing.Color.Magenta;
+            this.customerDetailPanel.SetColumnSpan(this.orderConfirmBtn, 3);
+            this.orderConfirmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderConfirmBtn.Location = new System.Drawing.Point(3, 855);
+            this.orderConfirmBtn.Name = "orderConfirmBtn";
+            this.orderConfirmBtn.Size = new System.Drawing.Size(282, 65);
+            this.orderConfirmBtn.TabIndex = 0;
+            this.orderConfirmBtn.Text = "發送";
+            this.orderConfirmBtn.UseCustomBackColor = true;
+            this.orderConfirmBtn.UseSelectable = true;
+            this.orderConfirmBtn.Click += new System.EventHandler(this.orderConfirmBtn_Click);
             // 
             // cancelBtn
             // 
@@ -439,6 +441,7 @@
             // 
             // selectedItemList
             // 
+            this.selectedItemList.AllowUserToAddRows = false;
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
@@ -653,14 +656,24 @@
             // 
             this.toolTip1.ToolTipTitle = "hi";
             // 
+            // subPanel
+            // 
+            this.subPanel.BackColor = System.Drawing.Color.MistyRose;
+            this.subPanel.Location = new System.Drawing.Point(578, 129);
+            this.subPanel.Name = "subPanel";
+            this.subPanel.Size = new System.Drawing.Size(1076, 720);
+            this.subPanel.TabIndex = 7;
+            // 
             // CashSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Controls.Add(this.subPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.infoPanel);
-            this.Controls.Add(this.itemBtnPanel);
+            this.Controls.Add(this.itemTypePanel);
             this.Name = "CashSales";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.infoPanel.ResumeLayout(false);
@@ -677,7 +690,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel itemBtnPanel;
+        private System.Windows.Forms.FlowLayoutPanel itemTypePanel;
         private MetroFramework.Controls.MetroPanel infoPanel;
         private System.Windows.Forms.TableLayoutPanel customerDetailPanel;
         private System.Windows.Forms.Panel panel2;
@@ -685,7 +698,7 @@
         private MetroFramework.Controls.MetroButton newBtn;
         private MetroFramework.Controls.MetroButton metroButton40;
         private MetroFramework.Controls.MetroButton metroButton41;
-        private MetroFramework.Controls.MetroButton metroButton39;
+        private MetroFramework.Controls.MetroButton orderConfirmBtn;
         private MetroFramework.Controls.MetroButton cancelBtn;
         private MetroFramework.Controls.MetroComboBox customerTxt;
         private MetroFramework.Controls.MetroComboBox addressTxt;
@@ -717,5 +730,6 @@
         private System.Windows.Forms.TextBox itemNotesTxt;
         private System.Windows.Forms.ComboBox itemUnit;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.FlowLayoutPanel subPanel;
     }
 }

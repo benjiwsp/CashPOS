@@ -18,6 +18,7 @@ namespace CashPOS
         PriceSetting priceSetting;
         HomeScreen homeScreen;
         Inventory inventory;
+        ProdMgm prodMgm;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace CashPOS
             priceSetting = new PriceSetting();
             homeScreen = new HomeScreen();
             inventory = new Inventory();
+            prodMgm = new ProdMgm();
         }
 
 
@@ -67,6 +69,11 @@ namespace CashPOS
                     case "invBtn":
                         inventory.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(inventory);
+                        break;
+
+                    case "prodMgmBtn":
+                        prodMgm.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(prodMgm);
                         break;
 
                     default:

@@ -26,72 +26,97 @@ namespace CashPOS
          * Others:
          * itemNotes, amountText
          */
-        List<String> itemList = new List<String>();
-        List<Button> btnList = new List<Button>();
-
+        List<String> typeList = new List<String>();
+        List<Label> lblList = new List<Label>();
+        SubItems subItems;
 
         public CashSales()
         {
             InitializeComponent();
-            addItemToList();
-            createItemBtn(itemList, itemBtnPanel, itemBtnClicked);
+            addTypeToList();
+            createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
             updateGridCol();
         }
 
 
         #region initialize related
-        //create number of itemBtn based on the amount of item from the itemList
-        public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
-        {
-            for (int i = 0; i < itemList.Count; i++)
-            {
-                Button newButton = new Button();
-                newButton.Width = 203;
-                newButton.Height = 132;
-                newButton.AutoSize = false;
-                newButton.Name = "newBtn" + i;
-                newButton.Text = itemList[i].ToString();
-                btnList.Add(newButton);
-                panel.Controls.Add(newButton);
-            }
 
-            //add event handler to ecah button 
-            foreach (Button btn in btnList)
-            {
-                btn.Click += new EventHandler(handler);
-            }
-        }
-        private void addItemToList()
+        //initialize main grid
+        private void updateGridCol()
         {
-            itemList.Add("RedBrick1");
-            itemList.Add("RedBrick2");
-            itemList.Add("RedBrick3");
-            itemList.Add("RedBrick4");
-            itemList.Add("RedBrick5");
-            itemList.Add("RedBrick6");
-            itemList.Add("RedBrick7");
-            itemList.Add("RedBrick8");
+            addGridCol("itemSelectedCol", "貨品");
+            addGridCol("amountCol", "數量");
+            addGridCol("unitCol", "單位");
+            addGridCol("unitPriceCol", "單價");
+            addGridCol("totalPriceCol", "總額");
+        }
+        private void addGridCol(string colName, string header)
+        {
+            selectedItemList.Columns.Add(colName, header);
+        }
+
+
+        //insert type into the list.
+        private void addTypeToList()
+        {
+            /* 
+             * TO-DO:  read data from database to set the typeList         
+             */
+            typeList.Add("常用");
+            typeList.Add("磚");
+            typeList.Add("泥");
+            typeList.Add("膠水");
+            typeList.Add("其他");
+            typeList.Add("Emix");
+            typeList.Add("Typ7");
+            typeList.Add("Typ8");
+        }
+
+        //create type label, set handler to each label 
+        public void createTypeLbl(List<String> typeList, Control panel, EventHandler handler)
+        {
+            for (int i = 0; i < typeList.Count; i++)
+            {
+                Label lbl = new Label();
+                lbl.Width = 144;
+                lbl.Height = 40;
+                lbl.AutoSize = false;
+                lbl.Font = new Font("Arial", 24, FontStyle.Bold);
+                lbl.Name = "type" + i;
+                lbl.Margin = new Padding(4, 4, 4, 4);
+                lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                lbl.BackColor = Color.White;
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
+                lbl.Text = typeList[i].ToString();
+                lblList.Add(lbl);
+                panel.Controls.Add(lbl);
+            }
+            //add event handler to ecah button 
+            foreach (Label lbl in lblList)
+            {
+                lbl.Click += new EventHandler(handler);
+            }
         }
         #endregion
 
-        #region item panel Related
-        /*
-         * each button click will update the price based on different customer.
-         */
-        protected void itemBtnClicked(object sender, EventArgs e)
+
+
+        //show corresponding User Control into subPanel on type Clicked
+        protected void typeLabelClicked(object sender, EventArgs e)
         {
-            float unitPrice = 0.0f;
-            Button btn = sender as Button;
-            string itemSelected = btn.Text;
-            SubItems sub = new SubItems();
-            sub.Show();
-            /*
-             * get selected item unit price from database
-             */
-            unitPriceTxt.Text = unitPrice.ToString("#.##");
-            selectedItemLabel.Text = btn.Text;
+            Label selectedType = sender as Label;
+            subItems = new SubItems(selectedType.Text, this);
+            subPanel.Controls.Add(subItems);
+
+            foreach (Label l in itemTypePanel.Controls)
+            {
+                if (l.Text == selectedType.Text) { l.BackColor = Color.Pink; }
+                else { l.BackColor = Color.White; }
+            }
+
         }
 
+        //send confirmed item with details to the grid for final review
         private void itemConfirmBtn_Click(object sender, EventArgs e)
         {
             float amount;// = float.Parse(amountText.Text);
@@ -119,18 +144,19 @@ namespace CashPOS
             }
         }
 
-        private void updateGridCol()
+
+        public string selectLblValue
         {
-            addGridCol("itemSelectedCol", "貨品");
-            addGridCol("amountCol", "數量");
-            addGridCol("unitCol", "單位");
-            addGridCol("unitPriceCol", "單價");
-            addGridCol("totalPriceCol", "總額");
+            get { return selectedItemLabel.Text; }
+            set { selectedItemLabel.Text = value; }
         }
-        private void addGridCol(string colName, string header)
+
+        public string unitPriceValue
         {
-            selectedItemList.Columns.Add(colName, header);
+            get { return unitPriceTxt.Text; }
+            set { unitPriceTxt.Text = value; }
         }
+
 
         private void clearItemPanel()
         {
@@ -139,11 +165,8 @@ namespace CashPOS
             itemNotesTxt.Text = "";
             itemUnit.Text = "";
         }
-        #endregion
 
-     
-
-#region order panel related
+        #region order panel related
 
 
         public void cancelBtn_Click(object sender, EventArgs e)
@@ -168,7 +191,13 @@ namespace CashPOS
         }
 
 
-    
-#endregion 
+
+        #endregion
+
+        private void orderConfirmBtn_Click(object sender, EventArgs e)
+        {
+
+            //TO-DO: check if orderID already exist, get all grid info and insert them into database
+        }
     }
 }

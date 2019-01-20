@@ -56,12 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonInterface.cs" />
     <Compile Include="CashSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CashSales.Designer.cs">
       <DependentUpon>CashSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dataDiagram.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dataDiagram.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -87,16 +91,22 @@
     <Compile Include="PriceSetting.Designer.cs">
       <DependentUpon>PriceSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="setting pages\InfoSettings.cs">
+    <Compile Include="ProdMgm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="setting pages\InfoSettings.Designer.cs">
+    <Compile Include="ProdMgm.Designer.cs">
+      <DependentUpon>ProdMgm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoSettings.Designer.cs">
       <DependentUpon>InfoSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubItems.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SubItems.Designer.cs">
       <DependentUpon>SubItems.cs</DependentUpon>
@@ -116,7 +126,10 @@
     <EmbeddedResource Include="PriceSetting.resx">
       <DependentUpon>PriceSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="setting pages\InfoSettings.resx">
+    <EmbeddedResource Include="ProdMgm.resx">
+      <DependentUpon>ProdMgm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoSettings.resx">
       <DependentUpon>InfoSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -132,6 +145,17 @@
     <EmbeddedResource Include="SubItems.resx">
       <DependentUpon>SubItems.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="dataDiagram.xsc">
+      <DependentUpon>dataDiagram.xsd</DependentUpon>
+    </None>
+    <None Include="dataDiagram.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dataDiagram.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataDiagram.xss">
+      <DependentUpon>dataDiagram.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,6 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="setting pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

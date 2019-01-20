@@ -11,18 +11,26 @@ namespace CashPOS
 {
     public partial class InfoSettings : UserControl
     {
-        
+        Form1 mainForm=  null;
+
 
         public InfoSettings()
         {
             InitializeComponent();
+         
         }
         
         private void priceSettingBtn_Click(object sender, EventArgs e)
         {
-            Form1 form1 = (Form1)this.Parent.Parent;
-            form1.buttonHandler(sender);
+            mainForm = (Form1)this.Parent.Parent;
+            mainForm.buttonHandler(sender);
             
+        }
+
+        private void prodMgmBtn_Click(object sender, EventArgs e)
+        {
+            mainForm = (Form1)this.Parent.Parent;
+            mainForm.buttonHandler(sender);
         }
     }
 }
