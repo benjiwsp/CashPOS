@@ -28,12 +28,13 @@ namespace CashPOS
             homeScreen = new HomeScreen();
             inventory = new Inventory();
             prodMgm = new ProdMgm();
+            mainPanel.Controls.Add(homeScreen);
+
         }
 
 
         protected void ButtonClicked(object sender, EventArgs e)
         {
-
             buttonHandler(sender);
         }
 

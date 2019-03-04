@@ -101,7 +101,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(197, 103);
             this.button5.TabIndex = 1;
-            this.button5.Text = "Home";
+            this.button5.Text = "查單";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.ButtonClicked);

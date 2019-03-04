@@ -1,6 +1,6 @@
 ﻿namespace CashPOS
 {
-    partial class HomeScreen
+    partial class InvoiceMgm
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,34 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1654, 1000);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "富資建業有限公司";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // HomeScreen
+            // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Name = "HomeScreen";
+            this.Name = "InvoiceMgm";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }

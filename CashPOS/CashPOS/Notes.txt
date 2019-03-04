@@ -7,4 +7,13 @@ able to make "fake" receipt (driver might wanna get a fake receipt)
 stock transfering to other location
 able to track where the stock is going out from 
 insert general price and edit them after
- 
+group increase/ decrease price
+	
+
+price setting page:
+	show all customer
+	show only cash
+	show only monthly
+	show door only
+	show by code
+	show by item

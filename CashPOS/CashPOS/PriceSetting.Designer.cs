@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.customerPriceGrid = new System.Windows.Forms.DataGridView();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
-            this.metroButton7 = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton8 = new MetroFramework.Controls.MetroButton();
+            this.metroButton7 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.customerPriceGrid = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -58,15 +62,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1654, 100);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // customerPriceGrid
-            // 
-            this.customerPriceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customerPriceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customerPriceGrid.Location = new System.Drawing.Point(0, 0);
-            this.customerPriceGrid.Name = "customerPriceGrid";
-            this.customerPriceGrid.Size = new System.Drawing.Size(1654, 900);
-            this.customerPriceGrid.TabIndex = 1;
-            // 
             // metroButton1
             // 
             this.metroButton1.Location = new System.Drawing.Point(3, 3);
@@ -75,15 +70,6 @@
             this.metroButton1.TabIndex = 0;
             this.metroButton1.Text = "metroButton1";
             this.metroButton1.UseSelectable = true;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(3, 103);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(203, 94);
-            this.metroButton2.TabIndex = 0;
-            this.metroButton2.Text = "metroButton1";
-            this.metroButton2.UseSelectable = true;
             // 
             // metroButton3
             // 
@@ -103,15 +89,6 @@
             this.metroButton4.Text = "metroButton1";
             this.metroButton4.UseSelectable = true;
             // 
-            // metroButton5
-            // 
-            this.metroButton5.Location = new System.Drawing.Point(943, 3);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(229, 94);
-            this.metroButton5.TabIndex = 0;
-            this.metroButton5.Text = "metroButton1";
-            this.metroButton5.UseSelectable = true;
-            // 
             // metroButton6
             // 
             this.metroButton6.Location = new System.Drawing.Point(708, 3);
@@ -121,14 +98,14 @@
             this.metroButton6.Text = "metroButton1";
             this.metroButton6.UseSelectable = true;
             // 
-            // metroButton7
+            // metroButton5
             // 
-            this.metroButton7.Location = new System.Drawing.Point(1413, 3);
-            this.metroButton7.Name = "metroButton7";
-            this.metroButton7.Size = new System.Drawing.Size(229, 94);
-            this.metroButton7.TabIndex = 0;
-            this.metroButton7.Text = "metroButton1";
-            this.metroButton7.UseSelectable = true;
+            this.metroButton5.Location = new System.Drawing.Point(943, 3);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(229, 94);
+            this.metroButton5.TabIndex = 0;
+            this.metroButton5.Text = "metroButton1";
+            this.metroButton5.UseSelectable = true;
             // 
             // metroButton8
             // 
@@ -139,16 +116,86 @@
             this.metroButton8.Text = "metroButton1";
             this.metroButton8.UseSelectable = true;
             // 
+            // metroButton7
+            // 
+            this.metroButton7.Location = new System.Drawing.Point(1413, 3);
+            this.metroButton7.Name = "metroButton7";
+            this.metroButton7.Size = new System.Drawing.Size(229, 94);
+            this.metroButton7.TabIndex = 0;
+            this.metroButton7.Text = "metroButton1";
+            this.metroButton7.UseSelectable = true;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(3, 103);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(203, 94);
+            this.metroButton2.TabIndex = 0;
+            this.metroButton2.Text = "metroButton1";
+            this.metroButton2.UseSelectable = true;
+            // 
+            // customerPriceGrid
+            // 
+            this.customerPriceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.customerPriceGrid, 3);
+            this.customerPriceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customerPriceGrid.Location = new System.Drawing.Point(3, 3);
+            this.customerPriceGrid.Name = "customerPriceGrid";
+            this.tableLayoutPanel1.SetRowSpan(this.customerPriceGrid, 4);
+            this.customerPriceGrid.Size = new System.Drawing.Size(1383, 894);
+            this.customerPriceGrid.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.Controls.Add(this.customerPriceGrid, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.333333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.55556F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 900);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1392, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "加";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1524, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "減";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // PriceSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.customerPriceGrid);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "PriceSetting";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -165,5 +212,8 @@
         private MetroFramework.Controls.MetroButton metroButton8;
         private MetroFramework.Controls.MetroButton metroButton7;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
