@@ -32,5 +32,11 @@ namespace CashPOS
             mainForm = (Form1)this.Parent.Parent;
             mainForm.buttonHandler(sender);
         }
+
+        private void CustMgmBtn_Click(object sender, EventArgs e)
+        {
+            mainForm = (Form1)this.Parent.Parent;
+            mainForm.buttonHandler(sender);
+        }
     }
 }

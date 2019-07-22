@@ -17,3 +17,30 @@ price setting page:
 	show door only
 	show by code
 	show by item
+
+Items:
+	ID
+	name
+	unit
+	package/unit
+	package price
+	unit price
+	time
+
+Price List:
+	buttons to set/reset defeault price for an item
+	choose items to set price -> show all customers' price 
+
+
+
+
+Database - tables:
+CustData -	Code, 
+			Name, 
+			Phone1, 
+			Phone2, 
+			Fax, 
+			Address, 
+			payMethod, 
+			payDay(how long before they have to pay),
+			belongTo(which company)

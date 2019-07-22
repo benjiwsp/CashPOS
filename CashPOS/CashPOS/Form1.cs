@@ -19,6 +19,7 @@ namespace CashPOS
         HomeScreen homeScreen;
         Inventory inventory;
         ProdMgm prodMgm;
+        CustMgm custMgm;
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace CashPOS
             homeScreen = new HomeScreen();
             inventory = new Inventory();
             prodMgm = new ProdMgm();
+            custMgm = new CustMgm();
             mainPanel.Controls.Add(homeScreen);
 
         }
@@ -77,11 +79,20 @@ namespace CashPOS
                         mainPanel.Controls.Add(prodMgm);
                         break;
 
+                    case "custMgmBtn":
+                        custMgm.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(custMgm);
+                        break;
                     default:
                         mainPanel.Controls.Clear();
                         break;
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
 

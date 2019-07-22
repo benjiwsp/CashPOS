@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            MetroFramework.Controls.MetroButton custMgmBtn;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.priceSettingBtn = new MetroFramework.Controls.MetroButton();
             this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
-            this.metroButton6 = new MetroFramework.Controls.MetroButton();
+            custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.tableLayoutPanel1.Controls.Add(this.prodMgmBtn, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroButton4, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroButton5, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.metroButton6, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(custMgmBtn, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -118,15 +119,16 @@
             this.metroButton5.Text = "metroButton1";
             this.metroButton5.UseSelectable = true;
             // 
-            // metroButton6
+            // custMgmBtn
             // 
-            this.metroButton6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton6.Location = new System.Drawing.Point(993, 335);
-            this.metroButton6.Name = "metroButton6";
-            this.metroButton6.Size = new System.Drawing.Size(324, 160);
-            this.metroButton6.TabIndex = 0;
-            this.metroButton6.Text = "metroButton1";
-            this.metroButton6.UseSelectable = true;
+            custMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            custMgmBtn.Location = new System.Drawing.Point(993, 335);
+            custMgmBtn.Name = "custMgmBtn";
+            custMgmBtn.Size = new System.Drawing.Size(324, 160);
+            custMgmBtn.TabIndex = 0;
+            custMgmBtn.Text = "客戶";
+            custMgmBtn.UseSelectable = true;
+            custMgmBtn.Click += new System.EventHandler(this.CustMgmBtn_Click);
             // 
             // InfoSettings
             // 
@@ -148,6 +150,5 @@
         private MetroFramework.Controls.MetroButton prodMgmBtn;
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton5;
-        private MetroFramework.Controls.MetroButton metroButton6;
     }
 }

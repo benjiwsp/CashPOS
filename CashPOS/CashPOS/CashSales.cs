@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 namespace CashPOS
 {
     public partial class CashSales : UserControl
     {
+
 
         /*
          * each item will have 3 types of price, selfpick/deliver to warehouse/deliver to site.
@@ -26,13 +29,37 @@ namespace CashPOS
          * Others:
          * itemNotes, amountText
          */
+
+        /*
+         *    myConnection = new MySqlConnection("Server=mydbinstance.c7pvwaixaizr.ap-southeast-1.rds.amazonaws.com;Port=3306;Database=SaveFundDevelopmentDB;Uid=root;Pwd=SFAdmin123;charset=utf8; allow zero datetime=true;");
+            myConnection.Open(); 
+         */
+        private MySqlConnection myConnection;
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
-
+        string value;
         public CashSales()
         {
             InitializeComponent();
+
+            value = ConfigurationManager.AppSettings["my_conn"];
+            //  MessageBox.Show(value);
+            myConnection = new MySqlConnection(value);
+
+            /*
+           myConnection.Open();
+           MySqlCommand myCommand3 = new MySqlCommand("Select * from CashPOSDB.new_table where itemid = '1'", myConnection);
+           MySqlDataReader rdr = myCommand3.ExecuteReader();
+           if (rdr.HasRows == true)
+           {
+               if (rdr.Read())
+               {
+                   MessageBox.Show(rdr["porduct"].ToString());
+               }
+           } rdr.Close();
+            */
+
             addTypeToList();
             createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
             updateGridCol();
@@ -198,6 +225,12 @@ namespace CashPOS
         {
 
             //TO-DO: check if orderID already exist, get all grid info and insert them into database
+        }
+
+        //load customer to list
+        private void loadCustomerList()
+        {
+
         }
     }
 }
