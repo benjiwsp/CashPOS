@@ -31,8 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.newProdGrid = new System.Windows.Forms.DataGridView();
             this.allProdGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.saerchBtn = new System.Windows.Forms.Button();
+            this.clearAllDataBtn = new System.Windows.Forms.Button();
             this.insertBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
@@ -51,8 +51,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Controls.Add(this.newProdGrid, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.allProdGrid, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.saerchBtn, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.clearAllDataBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -90,25 +90,27 @@
             this.allProdGrid.Size = new System.Drawing.Size(704, 994);
             this.allProdGrid.TabIndex = 1;
             // 
-            // button1
+            // saerchBtn
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(711, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(230, 244);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "更新";
-            this.button1.UseVisualStyleBackColor = true;
+            this.saerchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.saerchBtn.Location = new System.Drawing.Point(711, 3);
+            this.saerchBtn.Name = "saerchBtn";
+            this.saerchBtn.Size = new System.Drawing.Size(230, 244);
+            this.saerchBtn.TabIndex = 2;
+            this.saerchBtn.Text = "搜尋所有資料";
+            this.saerchBtn.UseVisualStyleBackColor = true;
+            this.saerchBtn.Click += new System.EventHandler(this.saerchBtn_Click);
             // 
-            // button2
+            // clearAllDataBtn
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(711, 753);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(230, 244);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "清空";
-            this.button2.UseVisualStyleBackColor = true;
+            this.clearAllDataBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearAllDataBtn.Location = new System.Drawing.Point(711, 753);
+            this.clearAllDataBtn.Name = "clearAllDataBtn";
+            this.clearAllDataBtn.Size = new System.Drawing.Size(230, 244);
+            this.clearAllDataBtn.TabIndex = 3;
+            this.clearAllDataBtn.Text = "清空";
+            this.clearAllDataBtn.UseVisualStyleBackColor = true;
+            this.clearAllDataBtn.Click += new System.EventHandler(this.clearAllDataBtn_Click);
             // 
             // insertBtn
             // 
@@ -141,8 +143,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView newProdGrid;
         private System.Windows.Forms.DataGridView allProdGrid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button saerchBtn;
+        private System.Windows.Forms.Button clearAllDataBtn;
         private System.Windows.Forms.Button insertBtn;
     }
 }

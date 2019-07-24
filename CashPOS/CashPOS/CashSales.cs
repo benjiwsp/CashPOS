@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+
 namespace CashPOS
 {
     public partial class CashSales : UserControl
@@ -34,18 +35,34 @@ namespace CashPOS
          *    myConnection = new MySqlConnection("Server=mydbinstance.c7pvwaixaizr.ap-southeast-1.rds.amazonaws.com;Port=3306;Database=SaveFundDevelopmentDB;Uid=root;Pwd=SFAdmin123;charset=utf8; allow zero datetime=true;");
             myConnection.Open(); 
          */
-        private MySqlConnection myConnection;
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
+
+        private MySqlConnection myConnection;
         string value;
+        MySqlCommand myCommand;
+        MySqlDataReader rdr;
         public CashSales()
         {
             InitializeComponent();
 
             value = ConfigurationManager.AppSettings["my_conn"];
-            //  MessageBox.Show(value);
             myConnection = new MySqlConnection(value);
+
+
+            myConnection.Open();
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.CustData", myConnection);
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    customerTxt.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+
 
             /*
            myConnection.Open();

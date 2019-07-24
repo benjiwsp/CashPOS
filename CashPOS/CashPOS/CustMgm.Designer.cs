@@ -43,6 +43,7 @@
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.updateCustBtn = new System.Windows.Forms.Button();
             this.clearCustList = new System.Windows.Forms.Button();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -50,17 +51,20 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.81016F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.189843F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.10762F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.892382F));
             this.tableLayoutPanel1.Controls.Add(this.custDataGrid, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.updateCustBtn, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.clearCustList, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.updateCustBtn, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.clearCustList, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.searchBtn, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
@@ -84,8 +88,8 @@
             this.custDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custDataGrid.Location = new System.Drawing.Point(3, 3);
             this.custDataGrid.Name = "custDataGrid";
-            this.tableLayoutPanel1.SetRowSpan(this.custDataGrid, 2);
-            this.custDataGrid.Size = new System.Drawing.Size(1496, 994);
+            this.tableLayoutPanel1.SetRowSpan(this.custDataGrid, 3);
+            this.custDataGrid.Size = new System.Drawing.Size(1534, 994);
             this.custDataGrid.TabIndex = 0;
             // 
             // Column1
@@ -146,9 +150,9 @@
             // updateCustBtn
             // 
             this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateCustBtn.Location = new System.Drawing.Point(1505, 3);
+            this.updateCustBtn.Location = new System.Drawing.Point(1543, 336);
             this.updateCustBtn.Name = "updateCustBtn";
-            this.updateCustBtn.Size = new System.Drawing.Size(146, 494);
+            this.updateCustBtn.Size = new System.Drawing.Size(108, 327);
             this.updateCustBtn.TabIndex = 1;
             this.updateCustBtn.Text = "更新";
             this.updateCustBtn.UseVisualStyleBackColor = true;
@@ -157,13 +161,24 @@
             // clearCustList
             // 
             this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearCustList.Location = new System.Drawing.Point(1505, 503);
+            this.clearCustList.Location = new System.Drawing.Point(1543, 669);
             this.clearCustList.Name = "clearCustList";
-            this.clearCustList.Size = new System.Drawing.Size(146, 494);
+            this.clearCustList.Size = new System.Drawing.Size(108, 328);
             this.clearCustList.TabIndex = 2;
             this.clearCustList.Text = "清除";
             this.clearCustList.UseVisualStyleBackColor = true;
             this.clearCustList.Click += new System.EventHandler(this.clearCustList_Click);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBtn.Location = new System.Drawing.Point(1543, 3);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(108, 327);
+            this.searchBtn.TabIndex = 3;
+            this.searchBtn.Text = "搜尋";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // CustMgm
             // 
@@ -195,6 +210,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
         private System.Windows.Forms.Button updateCustBtn;
         private System.Windows.Forms.Button clearCustList;
+        private System.Windows.Forms.Button searchBtn;
 
 
     }

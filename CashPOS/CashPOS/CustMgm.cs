@@ -27,7 +27,8 @@ namespace CashPOS
         ArrayList custList;
         private MySqlConnection myConnection;
         string value;
-
+        MySqlCommand myCommand;
+        MySqlDataReader rdr;
         public CustMgm()
         {
             InitializeComponent();
@@ -54,7 +55,7 @@ namespace CashPOS
 
         private void clearCustList_Click(object sender, EventArgs e)
         {
-            custDataGrid.Rows.Clear();
+            clearGrid();
         }
 
         private void updateCustBtn_Click(object sender, EventArgs e)
@@ -65,7 +66,6 @@ namespace CashPOS
                 // each row to insert into db
                 foreach (DataGridViewRow row in custDataGrid.Rows)
                 {
-                    
                     if (row.Cells[0].Value != null)
                     {
                         for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
@@ -83,15 +83,43 @@ namespace CashPOS
                         }
 
                         myConnection.Open();
-                        MySqlCommand myCommand = new MySqlCommand("insert into CashPOSDB.CustData values('" + code + "','" + name + "','" + phone1 + "','" +
-                                       phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "')", myConnection);
+                        myCommand = new MySqlCommand("insert into CashPOSDB.CustData values('" + code + "','" + name + "','" + phone1 + "','" +
+                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                         clearData();
                     }
                 }
-
             }
+            else
+            {
+                MessageBox.Show("沒有可更新的資料");
+            }
+            clearGrid();
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            myCommand = new MySqlCommand("Select * from CashPOSDB.CustData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
+                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                        rdr["email"].ToString(), rdr["Address"].ToString(), rdr["payMethod"].ToString(),
+                        rdr["payDay"].ToString(), rdr["belongTo"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+        }
+
+        private void clearGrid()
+        {
+            custDataGrid.Rows.Clear();
         }
         private void clearData()
         {
@@ -106,5 +134,7 @@ namespace CashPOS
             payDay = 0;
             belongTo = "";
         }
+
+
     }
 }

@@ -44,3 +44,8 @@ CustData -	Code,
 			payMethod, 
 			payDay(how long before they have to pay),
 			belongTo(which company)
+
+
+ProdMgm:
+	left data grid for updating current prod/ adding new products
+	right data grid for selecting items to differnet locations. (required additional buttons)
