@@ -30,6 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.custDataGrid = new System.Windows.Forms.DataGridView();
+            this.updateCustBtn = new System.Windows.Forms.Button();
+            this.clearCustList = new System.Windows.Forms.Button();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,9 +44,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.updateCustBtn = new System.Windows.Forms.Button();
-            this.clearCustList = new System.Windows.Forms.Button();
-            this.searchBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +92,39 @@
             this.custDataGrid.Size = new System.Drawing.Size(1534, 994);
             this.custDataGrid.TabIndex = 0;
             // 
+            // updateCustBtn
+            // 
+            this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateCustBtn.Location = new System.Drawing.Point(1543, 336);
+            this.updateCustBtn.Name = "updateCustBtn";
+            this.updateCustBtn.Size = new System.Drawing.Size(108, 327);
+            this.updateCustBtn.TabIndex = 1;
+            this.updateCustBtn.Text = "更新";
+            this.updateCustBtn.UseVisualStyleBackColor = true;
+            this.updateCustBtn.Click += new System.EventHandler(this.updateCustBtn_Click);
+            // 
+            // clearCustList
+            // 
+            this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearCustList.Location = new System.Drawing.Point(1543, 669);
+            this.clearCustList.Name = "clearCustList";
+            this.clearCustList.Size = new System.Drawing.Size(108, 328);
+            this.clearCustList.TabIndex = 2;
+            this.clearCustList.Text = "清除";
+            this.clearCustList.UseVisualStyleBackColor = true;
+            this.clearCustList.Click += new System.EventHandler(this.clearCustList_Click);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBtn.Location = new System.Drawing.Point(1543, 3);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(108, 327);
+            this.searchBtn.TabIndex = 3;
+            this.searchBtn.Text = "搜尋";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "客戶編號";
@@ -134,7 +167,7 @@
             // 
             // Column9
             // 
-            this.Column9.HeaderText = "付款期限";
+            this.Column9.HeaderText = "付款期限(日數)";
             this.Column9.Name = "Column9";
             // 
             // Column10
@@ -146,39 +179,6 @@
             // 
             this.Column11.HeaderText = "取消";
             this.Column11.Name = "Column11";
-            // 
-            // updateCustBtn
-            // 
-            this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateCustBtn.Location = new System.Drawing.Point(1543, 336);
-            this.updateCustBtn.Name = "updateCustBtn";
-            this.updateCustBtn.Size = new System.Drawing.Size(108, 327);
-            this.updateCustBtn.TabIndex = 1;
-            this.updateCustBtn.Text = "更新";
-            this.updateCustBtn.UseVisualStyleBackColor = true;
-            this.updateCustBtn.Click += new System.EventHandler(this.updateCustBtn_Click);
-            // 
-            // clearCustList
-            // 
-            this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearCustList.Location = new System.Drawing.Point(1543, 669);
-            this.clearCustList.Name = "clearCustList";
-            this.clearCustList.Size = new System.Drawing.Size(108, 328);
-            this.clearCustList.TabIndex = 2;
-            this.clearCustList.Text = "清除";
-            this.clearCustList.UseVisualStyleBackColor = true;
-            this.clearCustList.Click += new System.EventHandler(this.clearCustList_Click);
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBtn.Location = new System.Drawing.Point(1543, 3);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(108, 327);
-            this.searchBtn.TabIndex = 3;
-            this.searchBtn.Text = "搜尋";
-            this.searchBtn.UseVisualStyleBackColor = true;
-            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // CustMgm
             // 
@@ -197,6 +197,9 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView custDataGrid;
+        private System.Windows.Forms.Button updateCustBtn;
+        private System.Windows.Forms.Button clearCustList;
+        private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -208,9 +211,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
-        private System.Windows.Forms.Button updateCustBtn;
-        private System.Windows.Forms.Button clearCustList;
-        private System.Windows.Forms.Button searchBtn;
 
 
     }

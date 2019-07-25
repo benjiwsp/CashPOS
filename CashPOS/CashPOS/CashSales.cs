@@ -249,5 +249,10 @@ namespace CashPOS
         {
 
         }
+
+        private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
