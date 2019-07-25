@@ -35,7 +35,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.InvoiceCheckBtn = new System.Windows.Forms.Button();
             this.invBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
             this.cashSalesBtn = new System.Windows.Forms.Button();
@@ -80,7 +80,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.InvoiceCheckBtn);
             this.panel1.Controls.Add(this.invBtn);
             this.panel1.Controls.Add(this.settingBtn);
             this.panel1.Controls.Add(this.cashSalesBtn);
@@ -92,19 +92,19 @@
             this.panel1.Size = new System.Drawing.Size(200, 1000);
             this.panel1.TabIndex = 1;
             // 
-            // button5
+            // InvoiceCheckBtn
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(0, 543);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(197, 103);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "查單";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.ButtonClicked);
+            this.InvoiceCheckBtn.BackColor = System.Drawing.Color.White;
+            this.InvoiceCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InvoiceCheckBtn.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceCheckBtn.Image")));
+            this.InvoiceCheckBtn.Location = new System.Drawing.Point(0, 543);
+            this.InvoiceCheckBtn.Name = "InvoiceCheckBtn";
+            this.InvoiceCheckBtn.Size = new System.Drawing.Size(200, 103);
+            this.InvoiceCheckBtn.TabIndex = 1;
+            this.InvoiceCheckBtn.Text = "查單";
+            this.InvoiceCheckBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.InvoiceCheckBtn.UseVisualStyleBackColor = false;
+            this.InvoiceCheckBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // invBtn
             // 
@@ -234,7 +234,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button InvoiceCheckBtn;
         private System.Windows.Forms.Button invBtn;
         private System.Windows.Forms.Button settingBtn;
         private System.Windows.Forms.Button cashSalesBtn;

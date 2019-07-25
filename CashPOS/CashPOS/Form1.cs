@@ -20,6 +20,7 @@ namespace CashPOS
         Inventory inventory;
         ProdMgm prodMgm;
         CustMgm custMgm;
+        InvoiceMgm invoiceMgm;
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace CashPOS
             inventory = new Inventory();
             prodMgm = new ProdMgm();
             custMgm = new CustMgm();
+            invoiceMgm = new InvoiceMgm();
             mainPanel.Controls.Add(homeScreen);
 
         }
@@ -82,6 +84,10 @@ namespace CashPOS
                     case "custMgmBtn":
                         custMgm.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(custMgm);
+                        break;
+                    case "InvoiceCheckBtn":
+                        invoiceMgm.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(invoiceMgm);
                         break;
                     default:
                         mainPanel.Controls.Clear();
