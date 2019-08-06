@@ -60,6 +60,59 @@ namespace CashPOS
 
         private void updateCustBtn_Click(object sender, EventArgs e)
         {
+            if (currCompLab.Text == "超誠")
+                insertCust("CashPOSDB.csCustData");
+            else if (currCompLab.Text == "富資")
+                insertCust("CashPOSDB.sfCustData");
+            clearGrid();
+        }
+
+        private void searchCSBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            searchCustData("CashPOSDB.csCustData");
+            currCompLab.Text = "超誠";
+        }
+        private void serachSFBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            searchCustData("CashPOSDB.sfCustData");
+            currCompLab.Text = "富資";
+        }
+        private void addCSBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            currCompLab.Text = "超誠";
+
+        }
+        private void addSFBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            currCompLab.Text = "富資";
+
+        }
+
+        private void searchCustData(string table)
+        {
+            clearGrid();
+            myCommand = new MySqlCommand("Select * from " + table, myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
+                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                        rdr["email"].ToString(), rdr["Address"].ToString(), rdr["payMethod"].ToString(),
+                        rdr["payDay"].ToString(), rdr["belongTo"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+        }
+
+        private void insertCust(string table)
+        {
             //check if there is anything in the grid to update
             if ((custDataGrid.Rows.Count - 1) > 0)
             {
@@ -80,10 +133,12 @@ namespace CashPOS
                             if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
                             if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
                             if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") belongTo = row.Cells[9].Value.ToString();
+                            //    MessageBox.Show(belongTo);
+
                         }
 
                         myConnection.Open();
-                        myCommand = new MySqlCommand("insert into CashPOSDB.CustData values('" + code + "','" + name + "','" + phone1 + "','" +
+                        myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
                                       phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
@@ -97,29 +152,10 @@ namespace CashPOS
             }
             clearGrid();
         }
-
-        private void searchBtn_Click(object sender, EventArgs e)
-        {
-            clearGrid();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.CustData", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
-            {
-                while (rdr.Read())
-                {
-                    custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
-                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
-                        rdr["email"].ToString(), rdr["Address"].ToString(), rdr["payMethod"].ToString(),
-                        rdr["payDay"].ToString(), rdr["belongTo"].ToString());
-                }
-            } rdr.Close();
-            myConnection.Close();
-        }
-
         private void clearGrid()
         {
             custDataGrid.Rows.Clear();
+            currCompLab.Text = "";
         }
         private void clearData()
         {
@@ -134,6 +170,22 @@ namespace CashPOS
             payDay = 0;
             belongTo = "";
         }
+
+        private void changeCompany(string comp)
+        {
+            foreach (DataGridViewRow row in custDataGrid.Rows)
+            {
+
+                for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
+                {
+                    row.Cells[9].Value = comp;
+                }
+            }
+        }
+
+
+
+
 
 
     }

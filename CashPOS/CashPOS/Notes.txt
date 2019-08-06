@@ -49,3 +49,17 @@ CustData -	Code,
 ProdMgm:
 	left data grid for updating current prod/ adding new products
 	right data grid for selecting items to differnet locations. (required additional buttons)
+
+notes: 
+另外  個SYSTEM 係處埋還款既時候 可以SET 埋入去 
+現時既簽單客分左幾類 我試總結一下:
+
+1.  門口散簽單    流水帳
+2. 門口散簽單     以單計算清數
+3. 月結 / 半月結/ 10日結   有STATEMENT 的客戶 
+4. 放預付款倒扣客戶 
+
+找收方法 係 現金過戶支票都有
+
+New order:
+Confirm order -> print -> select paid or not

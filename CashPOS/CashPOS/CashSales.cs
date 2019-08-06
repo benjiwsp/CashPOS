@@ -50,7 +50,7 @@ namespace CashPOS
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
 
-
+            /*
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.CustData", myConnection);
             rdr = myCommand.ExecuteReader();
@@ -62,20 +62,9 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
-
-
-            /*
-           myConnection.Open();
-           MySqlCommand myCommand3 = new MySqlCommand("Select * from CashPOSDB.new_table where itemid = '1'", myConnection);
-           MySqlDataReader rdr = myCommand3.ExecuteReader();
-           if (rdr.HasRows == true)
-           {
-               if (rdr.Read())
-               {
-                   MessageBox.Show(rdr["porduct"].ToString());
-               }
-           } rdr.Close();
             */
+
+
 
             addTypeToList();
             createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
@@ -253,6 +242,33 @@ namespace CashPOS
         private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void chiuOrdBtn_Click(object sender, EventArgs e)
+        {
+            //To-do:    load chiu's customer to customerTxt(Combo Box)
+            getCustomerList("CashPOSDB.csCustData");
+        }
+
+        private void sfOrdBtn_Click(object sender, EventArgs e)
+        {
+            getCustomerList("CashPOSDB.sfCustData");
+        }
+        private void getCustomerList(string cust)
+        {
+            //cust = CashPOSDB.CustData;
+            customerTxt.Items.Clear();
+            myConnection.Open();
+            myCommand = new MySqlCommand("Select Code, Name from " + cust, myConnection);
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    customerTxt.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
         }
     }
 }

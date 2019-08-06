@@ -55,6 +55,8 @@
             this.selectedItemList = new System.Windows.Forms.DataGridView();
             this.sandReceiptTxt = new MetroFramework.Controls.MetroTextBox();
             this.invoiceNoteTxt = new MetroFramework.Controls.MetroTextBox();
+            this.chiuOrdBtn = new System.Windows.Forms.Button();
+            this.sfOrdBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -68,12 +70,8 @@
             this.itemUnit = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.subPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.subPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -139,10 +137,8 @@
             this.customerDetailPanel.Controls.Add(this.selectedItemList, 0, 6);
             this.customerDetailPanel.Controls.Add(this.sandReceiptTxt, 0, 10);
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 0, 11);
-            this.customerDetailPanel.Controls.Add(this.button1, 2, 0);
-            this.customerDetailPanel.Controls.Add(this.button2, 3, 0);
-            this.customerDetailPanel.Controls.Add(this.button3, 4, 0);
-            this.customerDetailPanel.Controls.Add(this.button4, 5, 0);
+            this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
+            this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -527,6 +523,30 @@
             this.invoiceNoteTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.invoiceNoteTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // chiuOrdBtn
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.chiuOrdBtn, 2);
+            this.chiuOrdBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chiuOrdBtn.Location = new System.Drawing.Point(195, 3);
+            this.chiuOrdBtn.Name = "chiuOrdBtn";
+            this.chiuOrdBtn.Size = new System.Drawing.Size(178, 65);
+            this.chiuOrdBtn.TabIndex = 22;
+            this.chiuOrdBtn.Text = "超城";
+            this.chiuOrdBtn.UseVisualStyleBackColor = true;
+            this.chiuOrdBtn.Click += new System.EventHandler(this.chiuOrdBtn_Click);
+            // 
+            // sfOrdBtn
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.sfOrdBtn, 2);
+            this.sfOrdBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfOrdBtn.Location = new System.Drawing.Point(379, 3);
+            this.sfOrdBtn.Name = "sfOrdBtn";
+            this.sfOrdBtn.Size = new System.Drawing.Size(196, 65);
+            this.sfOrdBtn.TabIndex = 24;
+            this.sfOrdBtn.Text = "富資";
+            this.sfOrdBtn.UseVisualStyleBackColor = true;
+            this.sfOrdBtn.Click += new System.EventHandler(this.sfOrdBtn_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Tan;
@@ -673,46 +693,6 @@
             this.subPanel.Size = new System.Drawing.Size(1076, 720);
             this.subPanel.TabIndex = 7;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(195, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 65);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "公司";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(291, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 65);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "公司";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(379, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 65);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "公司";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(483, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 65);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "公司";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // CashSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -779,10 +759,8 @@
         private System.Windows.Forms.TextBox itemNotesTxt;
         private System.Windows.Forms.ComboBox itemUnit;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button sfOrdBtn;
         private System.Windows.Forms.FlowLayoutPanel subPanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button chiuOrdBtn;
     }
 }

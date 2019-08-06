@@ -89,6 +89,11 @@ namespace CashPOS
                         invoiceMgm.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(invoiceMgm);
                         break;
+                    //   case "printInvBtn":
+                    //      invoiceMgm.Dock = DockStyle.Fill;
+                    //      mainPanel.Controls.Add(invoiceMgm);
+                    //      break;
+
                     default:
                         mainPanel.Controls.Clear();
                         break;

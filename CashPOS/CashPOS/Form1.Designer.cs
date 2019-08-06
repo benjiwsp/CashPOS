@@ -45,6 +45,7 @@
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
+            this.printInvBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.printInvBtn);
             this.panel1.Controls.Add(this.InvoiceCheckBtn);
             this.panel1.Controls.Add(this.invBtn);
             this.panel1.Controls.Add(this.settingBtn);
@@ -206,6 +208,20 @@
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
             // 
+            // printInvBtn
+            // 
+            this.printInvBtn.BackColor = System.Drawing.Color.White;
+            this.printInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printInvBtn.Image = ((System.Drawing.Image)(resources.GetObject("printInvBtn.Image")));
+            this.printInvBtn.Location = new System.Drawing.Point(0, 652);
+            this.printInvBtn.Name = "printInvBtn";
+            this.printInvBtn.Size = new System.Drawing.Size(200, 103);
+            this.printInvBtn.TabIndex = 1;
+            this.printInvBtn.Text = "印單";
+            this.printInvBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.printInvBtn.UseVisualStyleBackColor = false;
+            this.printInvBtn.Click += new System.EventHandler(this.ButtonClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +260,7 @@
         private System.Windows.Forms.Panel selectedPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel sideBarSelectionPanel;
+        private System.Windows.Forms.Button printInvBtn;
     }
 }
 
