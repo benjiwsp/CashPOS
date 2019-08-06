@@ -98,6 +98,7 @@
             this.custDataGrid.Name = "custDataGrid";
             this.custDataGrid.Size = new System.Drawing.Size(1648, 794);
             this.custDataGrid.TabIndex = 0;
+            this.custDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellContentClick);
             this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
             // 
             // tableLayoutPanel2

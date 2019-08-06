@@ -185,6 +185,7 @@ namespace CashPOS
             myConnection.Close();
         }
 
+        //insert new record into db
         private void insertCust(string table)
         {
             //check if there is anything in the grid to update
@@ -226,7 +227,7 @@ namespace CashPOS
             clearGrid();
         }
 
-
+        //get records and update pervious uploaded data
         private void updateCust(string table)
         {
             // string beforeEditCode = "";
@@ -237,11 +238,8 @@ namespace CashPOS
                 // each row to insert into db
                 foreach (DataGridViewRow row in custDataGrid.Rows)
                 {
-
                     if (row.Cells[0].Value != null)
                     {
-
-
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                         if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                         if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
@@ -253,12 +251,9 @@ namespace CashPOS
                         if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
                         belongTo = currCompLab.Text;
                         if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
-
-
                         if (needEdit == "y")
                         {
                             myConnection.Open();
-
                             myCommand = new MySqlCommand("update  " + table + " set Code ='" + code + "', Name = '" + name + "', Phone1 = '" + phone1 + "', Phone2 = '" +
                                           phone2 + "', Fax = '" + fax + "', email = '" + email + "', Address = '" + address + "', payMethod = '" + payMethod + "', payDay = '" + payDay + "', belongTo = '" + belongTo + "' where Code = '" + code + "'", myConnection);
                             myCommand.ExecuteNonQuery();
@@ -275,6 +270,14 @@ namespace CashPOS
             clearGrid();
         }
 
+        private void deleteCustRow(string table, string code)
+        {
+            myConnection.Open();
+            myCommand = new MySqlCommand("Delete from " + table + " where Code = '" + code + "'", myConnection);
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
+            clearData();
+        }
 
         //if any items changed, update the cell to indiciate changes for update
         private void custDataGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -285,11 +288,25 @@ namespace CashPOS
             }
         }
 
+        private void custDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (custDataGrid.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    if (getIsUpdate())
+                    {
+                        string code = custDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        if (currCompLab.Text == "超誠")
+                            deleteCustRow("CashPOSDB.csCustData",code);
 
-
-
-
-
-
+                        else if (currCompLab.Text == "富資")
+                            deleteCustRow("CashPOSDB.sfCustData", code);
+                        custDataGrid.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
+            }
+        }
     }
 }
