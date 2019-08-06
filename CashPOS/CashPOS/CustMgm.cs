@@ -29,6 +29,8 @@ namespace CashPOS
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
+        Boolean isUpdate = false;
+
         public CustMgm()
         {
             InitializeComponent();
@@ -61,12 +63,25 @@ namespace CashPOS
 
         private void updateCustBtn_Click(object sender, EventArgs e)
         {
-            if (currCompLab.Text == "超誠")
-                insertCust("CashPOSDB.csCustData");
+            if (getIsUpdate() == false)
+            {
+                if (currCompLab.Text == "超誠")
+                    insertCust("CashPOSDB.csCustData");
 
-            else if (currCompLab.Text == "富資")
-                insertCust("CashPOSDB.sfCustData");
-            clearGrid();
+                else if (currCompLab.Text == "富資")
+                    insertCust("CashPOSDB.sfCustData");
+                clearGrid();
+            }
+            else
+            {
+                if (currCompLab.Text == "超誠")
+                    updateCust("CashPOSDB.csCustData");
+
+                else if (currCompLab.Text == "富資")
+                    updateCust("CashPOSDB.sfCustData");
+                clearGrid();
+
+            }
         }
 
         private void searchCSBtn_Click(object sender, EventArgs e)
@@ -75,6 +90,7 @@ namespace CashPOS
             searchCustData("CashPOSDB.csCustData");
             currCompLab.Text = "超誠";
             custDataGrid.AllowUserToAddRows = false;
+            setUpdate(true);
         }
         private void serachSFBtn_Click(object sender, EventArgs e)
         {
@@ -82,7 +98,7 @@ namespace CashPOS
             searchCustData("CashPOSDB.sfCustData");
             currCompLab.Text = "富資";
             custDataGrid.AllowUserToAddRows = false;
-
+            setUpdate(true);
         }
 
         private void serachAllBtn_Click(object sender, EventArgs e)
@@ -92,7 +108,7 @@ namespace CashPOS
             searchCustData("CashPOSDB.csCustData");
             currCompLab.Text = "全部";
             custDataGrid.AllowUserToAddRows = false;
-
+            setUpdate(true);
 
         }
         private void addCSBtn_Click(object sender, EventArgs e)
@@ -100,7 +116,7 @@ namespace CashPOS
             clearGrid();
             currCompLab.Text = "超誠";
             custDataGrid.AllowUserToAddRows = true;
-
+            setUpdate(false);
 
         }
         private void addSFBtn_Click(object sender, EventArgs e)
@@ -108,11 +124,48 @@ namespace CashPOS
             clearGrid();
             currCompLab.Text = "富資";
             custDataGrid.AllowUserToAddRows = true;
+            setUpdate(false);
 
         }
 
+        private void changeCompany(string comp)
+        {
+            foreach (DataGridViewRow row in custDataGrid.Rows)
+            {
+                for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
+                    row.Cells[9].Value = comp;
+            }
+        }
+        private void clearGrid()
+        {
+            custDataGrid.Rows.Clear();
+            currCompLab.Text = "";
+            setUpdate(false);
+        }
+        private void clearData()
+        {
+            code = "";
+            name = "";
+            phone1 = "";
+            phone2 = "";
+            fax = "";
+            email = "";
+            address = "";
+            payMethod = "";
+            payDay = 0;
+            belongTo = "";
+            setUpdate(false);
+        }
+        //set the boolean to true of its a search then update action, else set it to false
+        private void setUpdate(Boolean b)
+        {
+            isUpdate = b;
+        }
 
-
+        private Boolean getIsUpdate()
+        {
+            return isUpdate;
+        }
         private void searchCustData(string table)
         {
 
@@ -157,7 +210,6 @@ namespace CashPOS
                             //    MessageBox.Show(belongTo);
 
                         }
-
                         myConnection.Open();
                         myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
                                       phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "')", myConnection);
@@ -173,36 +225,66 @@ namespace CashPOS
             }
             clearGrid();
         }
-        private void clearGrid()
-        {
-            custDataGrid.Rows.Clear();
-            currCompLab.Text = "";
-        }
-        private void clearData()
-        {
-            code = "";
-            name = "";
-            phone1 = "";
-            phone2 = "";
-            fax = "";
-            email = "";
-            address = "";
-            payMethod = "";
-            payDay = 0;
-            belongTo = "";
-        }
 
-        private void changeCompany(string comp)
+
+        private void updateCust(string table)
         {
-            foreach (DataGridViewRow row in custDataGrid.Rows)
+            // string beforeEditCode = "";
+            string needEdit = "";
+            //check if there is anything in the grid to update
+            if ((custDataGrid.Rows.Count - 1) > 0)
             {
-
-                for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
+                // each row to insert into db
+                foreach (DataGridViewRow row in custDataGrid.Rows)
                 {
-                    row.Cells[9].Value = comp;
+
+                    if (row.Cells[0].Value != null)
+                    {
+
+
+                        if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
+                        if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
+                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
+                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") phone2 = row.Cells[3].Value.ToString();
+                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") fax = row.Cells[4].Value.ToString();
+                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") email = row.Cells[5].Value.ToString();
+                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") address = row.Cells[6].Value.ToString();
+                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
+                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
+                        belongTo = currCompLab.Text;
+                        if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
+
+
+                        if (needEdit == "y")
+                        {
+                            myConnection.Open();
+
+                            myCommand = new MySqlCommand("update  " + table + " set Code ='" + code + "', Name = '" + name + "', Phone1 = '" + phone1 + "', Phone2 = '" +
+                                          phone2 + "', Fax = '" + fax + "', email = '" + email + "', Address = '" + address + "', payMethod = '" + payMethod + "', payDay = '" + payDay + "', belongTo = '" + belongTo + "' where Code = '" + code + "'", myConnection);
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                            clearData();
+                        }
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("沒有可更新的資料");
+            }
+            clearGrid();
         }
+
+
+        //if any items changed, update the cell to indiciate changes for update
+        private void custDataGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (getIsUpdate())
+            {
+                custDataGrid.Rows[e.RowIndex].Cells[10].Value = "y";
+            }
+        }
+
 
 
 

@@ -50,6 +50,7 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BelongCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
@@ -90,12 +91,14 @@
             this.Column8,
             this.Column9,
             this.BelongCol,
+            this.updated,
             this.Column11});
             this.custDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custDataGrid.Location = new System.Drawing.Point(3, 103);
             this.custDataGrid.Name = "custDataGrid";
             this.custDataGrid.Size = new System.Drawing.Size(1648, 794);
             this.custDataGrid.TabIndex = 0;
+            this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
             // 
             // tableLayoutPanel2
             // 
@@ -261,6 +264,7 @@
             // 
             this.Column8.HeaderText = "付款方式";
             this.Column8.Name = "Column8";
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column9
             // 
@@ -273,6 +277,11 @@
             this.BelongCol.Name = "BelongCol";
             this.BelongCol.ReadOnly = true;
             this.BelongCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // updated
+            // 
+            this.updated.HeaderText = "已更新";
+            this.updated.Name = "updated";
             // 
             // Column11
             // 
@@ -319,6 +328,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn BelongCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updated;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
 
 
