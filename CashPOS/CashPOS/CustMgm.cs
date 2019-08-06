@@ -56,12 +56,14 @@ namespace CashPOS
         private void clearCustList_Click(object sender, EventArgs e)
         {
             clearGrid();
+            clearData();
         }
 
         private void updateCustBtn_Click(object sender, EventArgs e)
         {
             if (currCompLab.Text == "超誠")
                 insertCust("CashPOSDB.csCustData");
+
             else if (currCompLab.Text == "富資")
                 insertCust("CashPOSDB.sfCustData");
             clearGrid();
@@ -72,29 +74,48 @@ namespace CashPOS
             clearGrid();
             searchCustData("CashPOSDB.csCustData");
             currCompLab.Text = "超誠";
+            custDataGrid.AllowUserToAddRows = false;
         }
         private void serachSFBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
             searchCustData("CashPOSDB.sfCustData");
             currCompLab.Text = "富資";
+            custDataGrid.AllowUserToAddRows = false;
+
+        }
+
+        private void serachAllBtn_Click(object sender, EventArgs e)
+        {
+            clearGrid();
+            searchCustData("CashPOSDB.sfCustData");
+            searchCustData("CashPOSDB.csCustData");
+            currCompLab.Text = "全部";
+            custDataGrid.AllowUserToAddRows = false;
+
+
         }
         private void addCSBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
             currCompLab.Text = "超誠";
+            custDataGrid.AllowUserToAddRows = true;
+
 
         }
         private void addSFBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
             currCompLab.Text = "富資";
+            custDataGrid.AllowUserToAddRows = true;
 
         }
 
+
+
         private void searchCustData(string table)
         {
-            clearGrid();
+
             myCommand = new MySqlCommand("Select * from " + table, myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -132,7 +153,7 @@ namespace CashPOS
                             if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") address = row.Cells[6].Value.ToString();
                             if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
                             if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
-                            if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") belongTo = row.Cells[9].Value.ToString();
+                            belongTo = currCompLab.Text;
                             //    MessageBox.Show(belongTo);
 
                         }
