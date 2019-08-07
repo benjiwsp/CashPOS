@@ -42,6 +42,7 @@
             this.saerchBtn = new System.Windows.Forms.Button();
             this.clearAllDataBtn = new System.Windows.Forms.Button();
             this.insertBtn = new System.Windows.Forms.Button();
+            this.catListBox = new System.Windows.Forms.ListBox();
             this.codeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,7 @@
             this.unitPrePackCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packUnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packPriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProdGrid)).BeginInit();
@@ -67,19 +68,18 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Controls.Add(this.newProdGrid, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.allProdGrid, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.saerchBtn, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.saerchBtn, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.clearAllDataBtn, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.catListBox, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -107,6 +107,7 @@
             // allProdGrid
             // 
             this.allProdGrid.AllowUserToAddRows = false;
+            this.allProdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.allProdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.allProdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -168,9 +169,9 @@
             // saerchBtn
             // 
             this.saerchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saerchBtn.Location = new System.Drawing.Point(711, 3);
+            this.saerchBtn.Location = new System.Drawing.Point(711, 343);
             this.saerchBtn.Name = "saerchBtn";
-            this.saerchBtn.Size = new System.Drawing.Size(230, 244);
+            this.saerchBtn.Size = new System.Drawing.Size(230, 214);
             this.saerchBtn.TabIndex = 2;
             this.saerchBtn.Text = "搜尋所有資料";
             this.saerchBtn.UseVisualStyleBackColor = true;
@@ -179,9 +180,9 @@
             // clearAllDataBtn
             // 
             this.clearAllDataBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearAllDataBtn.Location = new System.Drawing.Point(711, 753);
+            this.clearAllDataBtn.Location = new System.Drawing.Point(711, 783);
             this.clearAllDataBtn.Name = "clearAllDataBtn";
-            this.clearAllDataBtn.Size = new System.Drawing.Size(230, 244);
+            this.clearAllDataBtn.Size = new System.Drawing.Size(230, 214);
             this.clearAllDataBtn.TabIndex = 3;
             this.clearAllDataBtn.Text = "清空";
             this.clearAllDataBtn.UseVisualStyleBackColor = true;
@@ -190,14 +191,24 @@
             // insertBtn
             // 
             this.insertBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.insertBtn.Location = new System.Drawing.Point(711, 253);
+            this.insertBtn.Location = new System.Drawing.Point(711, 563);
             this.insertBtn.Name = "insertBtn";
-            this.tableLayoutPanel1.SetRowSpan(this.insertBtn, 2);
-            this.insertBtn.Size = new System.Drawing.Size(230, 494);
+            this.insertBtn.Size = new System.Drawing.Size(230, 214);
             this.insertBtn.TabIndex = 4;
             this.insertBtn.Text = "新增 >";
             this.insertBtn.UseVisualStyleBackColor = true;
             this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
+            // 
+            // catListBox
+            // 
+            this.catListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.catListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catListBox.FormattingEnabled = true;
+            this.catListBox.ItemHeight = 20;
+            this.catListBox.Location = new System.Drawing.Point(711, 3);
+            this.catListBox.Name = "catListBox";
+            this.catListBox.Size = new System.Drawing.Size(230, 334);
+            this.catListBox.TabIndex = 5;
             // 
             // codeCol
             // 
@@ -239,7 +250,6 @@
             this.Column8.HeaderText = "類別";
             this.Column8.Name = "Column8";
             this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ProdMgm
             // 
@@ -271,6 +281,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.ListBox catListBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitCol;
@@ -278,6 +289,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrePackCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn packUnitCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn packPriceCol;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }
