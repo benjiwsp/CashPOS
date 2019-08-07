@@ -297,13 +297,17 @@ namespace CashPOS
                 {
                     if (getIsUpdate())
                     {
-                        string code = custDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                        if (currCompLab.Text == "超誠")
-                            deleteCustRow("CashPOSDB.csCustData",code);
+                        DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            string code = custDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            if (currCompLab.Text == "超誠")
+                                deleteCustRow("CashPOSDB.csCustData", code);
 
-                        else if (currCompLab.Text == "富資")
-                            deleteCustRow("CashPOSDB.sfCustData", code);
-                        custDataGrid.Rows.RemoveAt(e.RowIndex);
+                            else if (currCompLab.Text == "富資")
+                                deleteCustRow("CashPOSDB.sfCustData", code);
+                            custDataGrid.Rows.RemoveAt(e.RowIndex);
+                        }
                     }
                 }
             }
