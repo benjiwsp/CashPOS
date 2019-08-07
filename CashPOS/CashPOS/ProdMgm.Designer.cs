@@ -31,6 +31,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.newProdGrid = new System.Windows.Forms.DataGridView();
             this.allProdGrid = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saerchBtn = new System.Windows.Forms.Button();
             this.clearAllDataBtn = new System.Windows.Forms.Button();
             this.insertBtn = new System.Windows.Forms.Button();
@@ -41,15 +49,7 @@
             this.unitPrePackCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packUnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packPriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProdGrid)).BeginInit();
@@ -125,6 +125,46 @@
             this.allProdGrid.Size = new System.Drawing.Size(704, 994);
             this.allProdGrid.TabIndex = 1;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "貨品ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "貨品";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "單位";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "單價";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "包裝件數";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "包裝單位";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "包裝價錢";
+            this.Column7.Name = "Column7";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "類別";
+            this.Column9.Name = "Column9";
+            // 
             // saerchBtn
             // 
             this.saerchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -198,46 +238,8 @@
             // 
             this.Column8.HeaderText = "類別";
             this.Column8.Name = "Column8";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "貨品ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "貨品";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "單位";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "單價";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "包裝件數";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "包裝單位";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "包裝價錢";
-            this.Column7.Name = "Column7";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "類別";
-            this.Column9.Name = "Column9";
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ProdMgm
             // 
@@ -261,14 +263,6 @@
         private System.Windows.Forms.Button saerchBtn;
         private System.Windows.Forms.Button clearAllDataBtn;
         private System.Windows.Forms.Button insertBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrePackCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn packUnitCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn packPriceCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -277,5 +271,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrePackCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packUnitCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packPriceCol;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column8;
     }
 }

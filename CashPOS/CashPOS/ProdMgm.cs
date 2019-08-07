@@ -26,6 +26,7 @@ namespace CashPOS
         string packUnit;
         decimal packPrice;
         string catagory;
+        Boolean isSearch = false;
 
         public ProdMgm()
         {
@@ -115,7 +116,6 @@ namespace CashPOS
                     newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
                         rdr["unit"].ToString(), rdr["UnitPrice"].ToString(), rdr["Package"].ToString(),
                         rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["catagory"].ToString());
-
                 } rdr.Close();
                 myConnection.Close();
             }
@@ -123,6 +123,8 @@ namespace CashPOS
 
         private void saerchBtn_Click(object sender, EventArgs e)
         {
+            isSearch = true;
+
             serachProd();
         }
         private void clearAllData()
@@ -135,5 +137,62 @@ namespace CashPOS
         {
             clearAllData();
         }
+
+ 
+   /*     private void addCatToCombo(DataGridViewRowsAddedEventArgs e)
+        {
+            if (isSearch == false)
+            {
+                DataGridViewComboBoxCell comboBoxCell = (newProdGrid.Rows[e.RowIndex].Cells[7] as DataGridViewComboBoxCell);
+                //Set the Default Value as the Selected Value.
+                comboBoxCell.Value = "選擇類別";
+
+                //Insert the Default Item to ComboBoxCell.
+                comboBoxCell.Items.Add("選擇類別");
+
+                myCommand = new MySqlCommand("Select * from CashPOSDB.prodCat", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
+                    {
+                        comboBoxCell.Items.Add(rdr["prodCat"]);
+
+
+                    } rdr.Close();
+                    myConnection.Close();
+                }
+            }
+        }
+        private void initCatToCombo()
+        {
+            foreach (DataGridViewRow row in newProdGrid.Rows)
+            {
+                //Reference the ComboBoxCell.
+                DataGridViewComboBoxCell comboBoxCell = (row.Cells[7] as DataGridViewComboBoxCell);
+
+                //Insert the Default Item to ComboBoxCell.
+                comboBoxCell.Items.Add("選擇類別");
+                //Set the Default Value as the Selected Value.
+                comboBoxCell.Value = "選擇類別";
+                //Fetch the Countries from Database.
+                myCommand = new MySqlCommand("Select * from CashPOSDB.prodCat", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
+                    {
+                        comboBoxCell.Items.Add(rdr["prodCat"]);
+
+
+                    } rdr.Close();
+                    myConnection.Close();
+                }
+
+            }
+        }
+    * */
     }
 }
