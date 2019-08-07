@@ -25,41 +25,15 @@ namespace CashPOS
         int package;
         string packUnit;
         decimal packPrice;
+        string catagory;
 
         public ProdMgm()
         {
             InitializeComponent();
-            setupGrid();
-
             value = ConfigurationManager.AppSettings["my_conn"];
             //  MessageBox.Show(value);
             myConnection = new MySqlConnection(value);
         }
-
-
-        private void setupGrid()
-        {
-            addGridCol(newProdGrid, "codeCol", "貨品ID");
-            addGridCol(newProdGrid, "nameCol", "貨品");
-            addGridCol(newProdGrid, "unitCol", "單位");
-            addGridCol(newProdGrid, "unitPriceCol", "單價");
-            addGridCol(newProdGrid, "unitPrePackCol", "包裝件數");
-            addGridCol(newProdGrid, "packUnitCol", "包裝單位");
-            addGridCol(newProdGrid, "packPriceCol", "包裝價錢");
-            //addGridCol(newProdGrid, "insertTimeCol", "加入時間");
-            newProdGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            addGridCol(allProdGrid, "codeCol", "貨品ID");
-            addGridCol(allProdGrid, "nameCol", "貨品");
-            addGridCol(allProdGrid, "unitCol", "單位");
-            addGridCol(allProdGrid, "unitPriceCol", "單價");
-            addGridCol(allProdGrid, "unitPrePackCol", "包裝件數");
-            addGridCol(allProdGrid, "packUnitCol", "包裝單位");
-            addGridCol(allProdGrid, "packPriceCol", "包裝價錢");
-            // addGridCol(allProdGrid, "insertTimeCol", "加入時間");
-            allProdGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
 
         private void addGridCol(DataGridView grid, string colName, string header)
         {
@@ -85,11 +59,12 @@ namespace CashPOS
                             if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
                             if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
                             if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") catagory = row.Cells[7].Value.ToString();
                         }
 
                         myConnection.Open();
                         myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values('" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
-                                      package + "','" + packUnit + "','" + packPrice + "')", myConnection);
+                                      package + "','" + packUnit + "','" + packPrice + "','" + catagory + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                         //TO-DO  clear data
@@ -139,7 +114,7 @@ namespace CashPOS
                 {
                     newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
                         rdr["unit"].ToString(), rdr["UnitPrice"].ToString(), rdr["Package"].ToString(),
-                        rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString());
+                        rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["catagory"].ToString());
 
                 } rdr.Close();
                 myConnection.Close();

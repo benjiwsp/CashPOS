@@ -91,18 +91,18 @@ namespace CashPOS
 
         //insert type into the list.
         private void addTypeToList()
-        {
-            /* 
-             * TO-DO:  read data from database to set the typeList         
-             */
-            typeList.Add("常用");
-            typeList.Add("磚");
-            typeList.Add("泥");
-            typeList.Add("膠水");
-            typeList.Add("其他");
-            typeList.Add("Emix");
-            typeList.Add("Typ7");
-            typeList.Add("Typ8");
+        { 
+            myCommand = new MySqlCommand("Select prodCat from CashPOSDB.prodCat", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    typeList.Add(rdr["prodCat"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
         }
 
         //create type label, set handler to each label 
@@ -114,7 +114,7 @@ namespace CashPOS
                 lbl.Width = 144;
                 lbl.Height = 40;
                 lbl.AutoSize = false;
-                lbl.Font = new Font("Arial", 24, FontStyle.Bold);
+                lbl.Font = new Font("Arial", 12, FontStyle.Regular);
                 lbl.Name = "type" + i;
                 lbl.Margin = new Padding(4, 4, 4, 4);
                 lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -231,12 +231,6 @@ namespace CashPOS
         {
 
             //TO-DO: check if orderID already exist, get all grid info and insert them into database
-        }
-
-        //load customer to list
-        private void loadCustomerList()
-        {
-
         }
 
         private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)

@@ -34,6 +34,22 @@
             this.saerchBtn = new System.Windows.Forms.Button();
             this.clearAllDataBtn = new System.Windows.Forms.Button();
             this.insertBtn = new System.Windows.Forms.Button();
+            this.codeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrePackCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packUnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packPriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProdGrid)).BeginInit();
@@ -69,7 +85,17 @@
             // 
             // newProdGrid
             // 
+            this.newProdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.newProdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.newProdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeCol,
+            this.nameCol,
+            this.unitCol,
+            this.unitPriceCol,
+            this.unitPrePackCol,
+            this.packUnitCol,
+            this.packPriceCol,
+            this.Column8});
             this.tableLayoutPanel1.SetColumnSpan(this.newProdGrid, 3);
             this.newProdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newProdGrid.Location = new System.Drawing.Point(3, 3);
@@ -82,6 +108,15 @@
             // 
             this.allProdGrid.AllowUserToAddRows = false;
             this.allProdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.allProdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column9});
             this.tableLayoutPanel1.SetColumnSpan(this.allProdGrid, 3);
             this.allProdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.allProdGrid.Location = new System.Drawing.Point(947, 3);
@@ -124,6 +159,86 @@
             this.insertBtn.UseVisualStyleBackColor = true;
             this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
+            // codeCol
+            // 
+            this.codeCol.HeaderText = "貨品ID";
+            this.codeCol.Name = "codeCol";
+            // 
+            // nameCol
+            // 
+            this.nameCol.HeaderText = "貨品";
+            this.nameCol.Name = "nameCol";
+            // 
+            // unitCol
+            // 
+            this.unitCol.HeaderText = "單位";
+            this.unitCol.Name = "unitCol";
+            // 
+            // unitPriceCol
+            // 
+            this.unitPriceCol.HeaderText = "單價";
+            this.unitPriceCol.Name = "unitPriceCol";
+            // 
+            // unitPrePackCol
+            // 
+            this.unitPrePackCol.HeaderText = "包裝件數";
+            this.unitPrePackCol.Name = "unitPrePackCol";
+            // 
+            // packUnitCol
+            // 
+            this.packUnitCol.HeaderText = "包裝單位";
+            this.packUnitCol.Name = "packUnitCol";
+            // 
+            // packPriceCol
+            // 
+            this.packPriceCol.HeaderText = "包裝價錢";
+            this.packPriceCol.Name = "packPriceCol";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "類別";
+            this.Column8.Name = "Column8";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "貨品ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "貨品";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "單位";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "單價";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "包裝件數";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "包裝單位";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "包裝價錢";
+            this.Column7.Name = "Column7";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "類別";
+            this.Column9.Name = "Column9";
+            // 
             // ProdMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,5 +261,21 @@
         private System.Windows.Forms.Button saerchBtn;
         private System.Windows.Forms.Button clearAllDataBtn;
         private System.Windows.Forms.Button insertBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrePackCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packUnitCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packPriceCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

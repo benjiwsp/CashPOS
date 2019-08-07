@@ -30,7 +30,7 @@
         {
             MetroFramework.Controls.MetroButton custMgmBtn;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.otherSettingBtn = new MetroFramework.Controls.MetroButton();
             this.priceSettingBtn = new MetroFramework.Controls.MetroButton();
             this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
@@ -38,6 +38,17 @@
             custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // custMgmBtn
+            // 
+            custMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            custMgmBtn.Location = new System.Drawing.Point(993, 335);
+            custMgmBtn.Name = "custMgmBtn";
+            custMgmBtn.Size = new System.Drawing.Size(324, 160);
+            custMgmBtn.TabIndex = 0;
+            custMgmBtn.Text = "客戶";
+            custMgmBtn.UseSelectable = true;
+            custMgmBtn.Click += new System.EventHandler(this.CustMgmBtn_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -47,7 +58,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.metroButton1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.otherSettingBtn, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.priceSettingBtn, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.prodMgmBtn, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroButton4, 2, 3);
@@ -66,15 +77,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // metroButton1
+            // otherSettingBtn
             // 
-            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton1.Location = new System.Drawing.Point(333, 501);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(324, 160);
-            this.metroButton1.TabIndex = 0;
-            this.metroButton1.Text = "metroButton1";
-            this.metroButton1.UseSelectable = true;
+            this.otherSettingBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.otherSettingBtn.Location = new System.Drawing.Point(333, 501);
+            this.otherSettingBtn.Name = "otherSettingBtn";
+            this.otherSettingBtn.Size = new System.Drawing.Size(324, 160);
+            this.otherSettingBtn.TabIndex = 0;
+            this.otherSettingBtn.Text = "其他設定";
+            this.otherSettingBtn.UseSelectable = true;
+            this.otherSettingBtn.Click += new System.EventHandler(this.otherSettingBtn_Click);
             // 
             // priceSettingBtn
             // 
@@ -119,17 +131,6 @@
             this.metroButton5.Text = "metroButton1";
             this.metroButton5.UseSelectable = true;
             // 
-            // custMgmBtn
-            // 
-            custMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            custMgmBtn.Location = new System.Drawing.Point(993, 335);
-            custMgmBtn.Name = "custMgmBtn";
-            custMgmBtn.Size = new System.Drawing.Size(324, 160);
-            custMgmBtn.TabIndex = 0;
-            custMgmBtn.Text = "客戶";
-            custMgmBtn.UseSelectable = true;
-            custMgmBtn.Click += new System.EventHandler(this.CustMgmBtn_Click);
-            // 
             // InfoSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +146,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton otherSettingBtn;
         private MetroFramework.Controls.MetroButton priceSettingBtn;
         private MetroFramework.Controls.MetroButton prodMgmBtn;
         private MetroFramework.Controls.MetroButton metroButton4;

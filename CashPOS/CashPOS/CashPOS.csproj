@@ -135,6 +135,12 @@
     <Compile Include="InvoiceMgm.Designer.cs">
       <DependentUpon>InvoiceMgm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OtherSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OtherSetting.Designer.cs">
+      <DependentUpon>OtherSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="PriceSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceMgm.resx">
       <DependentUpon>InvoiceMgm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherSetting.resx">
+      <DependentUpon>OtherSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PriceSetting.resx">
       <DependentUpon>PriceSetting.cs</DependentUpon>
