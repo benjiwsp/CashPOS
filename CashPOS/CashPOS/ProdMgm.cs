@@ -25,9 +25,9 @@ namespace CashPOS
         int package;
         string packUnit;
         decimal packPrice;
-        string catagory;
+        string category;
         Boolean isSearch = false;
-
+        Boolean isUpdate = false;
         public ProdMgm()
         {
             InitializeComponent();
@@ -44,40 +44,46 @@ namespace CashPOS
 
         private void insertBtn_Click(object sender, EventArgs e)
         {
-            // insert into database   
-            if ((newProdGrid.Rows.Count - 1) > 0)
+            if (isSearch)
             {
-                // each row to insert into db
-                foreach (DataGridViewRow row in newProdGrid.Rows)
-                {
-                    if (row.Cells[0].Value != null)
-                    {
-                        for (int i = 0; i < newProdGrid.ColumnCount - 1; i++)
-                        {
-                            if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
-                            if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
-                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
-                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
-                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") catagory = row.Cells[7].Value.ToString();
-                        }
-
-                        myConnection.Open();
-                        myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values('" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
-                                      package + "','" + packUnit + "','" + packPrice + "','" + catagory + "')", myConnection);
-                        myCommand.ExecuteNonQuery();
-                        myConnection.Close();
-                        //TO-DO  clear data
-                    }
-                }
+                updateProd("CashPOSDB.ProdData"); 
             }
             else
             {
-                MessageBox.Show("沒有可更新的資料");
-            }
+                // insert into database   
+                if ((newProdGrid.Rows.Count - 1) > 0)
+                {
+                    // each row to insert into db
+                    foreach (DataGridViewRow row in newProdGrid.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            for (int i = 0; i < newProdGrid.ColumnCount - 1; i++)
+                            {
+                                if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
+                                if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
+                                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
+                                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
+                                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
+                                if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                                if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
+                            }
 
+                            myConnection.Open();
+                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values('" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
+                                          package + "','" + packUnit + "','" + packPrice + "','" + category + "')", myConnection);
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                            //TO-DO  clear data
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("沒有可更新的資料");
+                }
+            }
             //Boolean success = false;
             /*
             //copy road to the allProdGrid
@@ -116,7 +122,7 @@ namespace CashPOS
                 {
                     newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
                         rdr["unit"].ToString(), rdr["UnitPrice"].ToString(), rdr["Package"].ToString(),
-                        rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["catagory"].ToString());
+                        rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["Category"].ToString());
                 } rdr.Close();
                 myConnection.Close();
             }
@@ -125,6 +131,7 @@ namespace CashPOS
         private void saerchBtn_Click(object sender, EventArgs e)
         {
             isSearch = true;
+            setUpdate(true);
 
             serachProd();
         }
@@ -154,6 +161,91 @@ namespace CashPOS
             }
         }
 
+        private void newProdGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (newProdGrid.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    if (getIsUpdate())
+                    {
+                        DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            string prodID = newProdGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            deleteProdRow("CashPOSDB.ProdData", prodID);
+                            newProdGrid.Rows.RemoveAt(e.RowIndex);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void deleteProdRow(string table, string prodID)
+        {
+            myConnection.Open();
+            myCommand = new MySqlCommand("Delete from " + table + " where ProdID = '" + prodID + "'", myConnection);
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
+
+        }
+        private void setUpdate(Boolean b)
+        {
+            isUpdate = b;
+        }
+
+        private Boolean getIsUpdate()
+        {
+            return isUpdate;
+        }
+
+        private void newProdGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (getIsUpdate())
+            {
+                newProdGrid.Rows[e.RowIndex].Cells[8].Value = "y";
+            }
+        }
+
+        private void updateProd(string table)
+        {
+            // string beforeEditCode = "";
+            string needEdit = "";
+            //check if there is anything in the grid to update
+            if ((newProdGrid.Rows.Count - 1) > 0)
+            {
+                // each row to insert into db
+                foreach (DataGridViewRow row in newProdGrid.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+
+                        if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
+                        if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
+                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
+                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
+                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
+                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
+                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[8].Value.ToString();
+                        if (needEdit == "y")
+                        {
+                            myConnection.Open();
+                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', Unit = '" + unit + "', UnitPrice = '" +
+                                          uPrice + "', Package = '" + package + "', PackUnit = '" + packUnit + "', PackPrice = '" + packPrice + "', Category = '" + category + "' where ProdID = '" + prodID + "'", myConnection);
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("沒有可更新的資料");
+            }
+        }
         /*     private void addCatToCombo(DataGridViewRowsAddedEventArgs e)
              {
                  if (isSearch == false)
