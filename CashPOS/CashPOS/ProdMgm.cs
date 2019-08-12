@@ -83,6 +83,7 @@ namespace CashPOS
                 {
                     MessageBox.Show("沒有可更新的資料");
                 }
+                isSearch = false;
             }
             //Boolean success = false;
             /*
@@ -124,8 +125,9 @@ namespace CashPOS
                         rdr["unit"].ToString(), rdr["UnitPrice"].ToString(), rdr["Package"].ToString(),
                         rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["Category"].ToString());
                 } rdr.Close();
-                myConnection.Close();
             }
+            myConnection.Close();
+
         }
 
         private void saerchBtn_Click(object sender, EventArgs e)
@@ -144,6 +146,7 @@ namespace CashPOS
         private void clearAllDataBtn_Click(object sender, EventArgs e)
         {
             clearAllData();
+            isSearch = false;
         }
 
         private void loadCatList()
@@ -159,6 +162,7 @@ namespace CashPOS
                 } rdr.Close();
                 myConnection.Close();
             }
+            isSearch = false;
         }
 
         private void newProdGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)

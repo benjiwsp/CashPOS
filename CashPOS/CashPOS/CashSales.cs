@@ -91,7 +91,7 @@ namespace CashPOS
 
         //insert type into the list.
         private void addTypeToList()
-        { 
+        {
             myCommand = new MySqlCommand("Select prodCat from CashPOSDB.prodCat", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -138,7 +138,8 @@ namespace CashPOS
         protected void typeLabelClicked(object sender, EventArgs e)
         {
             Label selectedType = sender as Label;
-            subItems = new SubItems(selectedType.Text, this);
+            subItems = new SubItems(selectedType.Text, this, "6");
+
             subPanel.Controls.Add(subItems);
 
             foreach (Label l in itemTypePanel.Controls)
@@ -264,5 +265,6 @@ namespace CashPOS
             } rdr.Close();
             myConnection.Close();
         }
+
     }
 }

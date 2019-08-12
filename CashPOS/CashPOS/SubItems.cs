@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace CashPOS
 {
@@ -14,18 +17,41 @@ namespace CashPOS
         List<Button> btnList = new List<Button>();
         List<String> itemList = new List<String>();
         CashSales myParent = null;
-
-        public SubItems(string typeSelected, CashSales myParent)
+        private MySqlConnection myConnection;
+        string value;
+        MySqlCommand myCommand;
+        MySqlDataReader rdr;
+        string category;
+        public SubItems(string typeSelected, CashSales myParent, string category)
         {
             InitializeComponent();
-            this.myParent = myParent; 
-            addSubItems();
+            this.myParent = myParent;
+            this.category = category;
+
+            value = ConfigurationManager.AppSettings["my_conn"];
+
+            //  MessageBox.Show(value);
+            myConnection = new MySqlConnection(value);
+
+            addSubItems(category);
             createItemBtn(itemList, subItemPanel, itemBtnClicked);
+
         }
 
-        private void addSubItems()
+        private void addSubItems(string category)
         {
-            itemList.Add("red1");
+            myCommand = new MySqlCommand("Select * from ProdData where Category = '" + category + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    itemList.Add(rdr["ProdName"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+/*            itemList.Add("red1");
             itemList.Add("磚red1");
             itemList.Add("泥red1");
             itemList.Add("膠red1水");
@@ -33,6 +59,7 @@ namespace CashPOS
             itemList.Add("Emred1ix");
             itemList.Add("Tyred1p7");
             itemList.Add("Typred18");
+ * */
         }
 
         //create number of itemBtn based on the amount of item from the itemList
