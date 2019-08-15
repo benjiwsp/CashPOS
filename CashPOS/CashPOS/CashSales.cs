@@ -138,9 +138,43 @@ namespace CashPOS
         protected void typeLabelClicked(object sender, EventArgs e)
         {
             Label selectedType = sender as Label;
-            subItems = new SubItems(selectedType.Text, this, "6");
+            string selectedName = selectedType.Text;
+            string id = "";
+            myCommand = new MySqlCommand("Select catID from CashPOSDB.prodCat where prodCat = '" + selectedName + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    id = rdr["catID"].ToString();
+                    // To do: read all prodID and ProdName, get the ID and compare to the clicked ID || get the type name and get its' ID instead 
 
-            subPanel.Controls.Add(subItems);
+                }
+            }
+            myConnection.Close();
+
+            myCommand = new MySqlCommand("Select ProdName from CashPOSDB.ProdData where Category = '" + id + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                subPanel.Controls.Clear();
+                while (rdr.Read())
+                {
+                    subItems = new SubItems(rdr["ProdName"].ToString(), this, id);
+                    subPanel.Controls.Add(subItems);
+
+                }
+            }
+            else
+            {
+                subPanel.Controls.Clear();
+            }
+            myConnection.Close();
+
+
+
 
             foreach (Label l in itemTypePanel.Controls)
             {
