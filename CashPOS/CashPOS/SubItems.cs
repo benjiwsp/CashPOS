@@ -22,7 +22,7 @@ namespace CashPOS
         MySqlCommand myCommand;
         MySqlDataReader rdr;
         string category;
-        public SubItems(string typeSelected, CashSales myParent, string category)
+        public SubItems( CashSales myParent, string category)
         {
             InitializeComponent();
             this.myParent = myParent;

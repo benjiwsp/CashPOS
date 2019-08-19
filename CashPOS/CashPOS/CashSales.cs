@@ -38,6 +38,7 @@ namespace CashPOS
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
+        Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
 
         private MySqlConnection myConnection;
         string value;
@@ -49,7 +50,7 @@ namespace CashPOS
 
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
-
+            updateCatList();
             /*
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.CustData", myConnection);
@@ -132,56 +133,37 @@ namespace CashPOS
         }
         #endregion
 
-
+        private void updateCatList()
+        {
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodCat", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    prodCatDic.Add(rdr["prodCat"].ToString(), rdr["catID"].ToString());
+                } rdr.Close();
+            }
+            myConnection.Close();
+        }
 
         //show corresponding User Control into subPanel on type Clicked
         protected void typeLabelClicked(object sender, EventArgs e)
         {
             Label selectedType = sender as Label;
             string selectedName = selectedType.Text;
-            string id = "";
-            myCommand = new MySqlCommand("Select catID from CashPOSDB.prodCat where prodCat = '" + selectedName + "'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows)
-            {
-                while (rdr.Read())
-                {
-                    id = rdr["catID"].ToString();
-                    // To do: read all prodID and ProdName, get the ID and compare to the clicked ID || get the type name and get its' ID instead 
 
-                }
-            }
-            myConnection.Close();
-
-            myCommand = new MySqlCommand("Select ProdName from CashPOSDB.ProdData where Category = '" + id + "'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows)
-            {
-                subPanel.Controls.Clear();
-                while (rdr.Read())
-                {
-                    subItems = new SubItems(rdr["ProdName"].ToString(), this, id);
-                    subPanel.Controls.Add(subItems);
-
-                }
-            }
-            else
-            {
-                subPanel.Controls.Clear();
-            }
-            myConnection.Close();
-
-
-
+            string value = prodCatDic[selectedName];
+            subPanel.Controls.Clear();
+            subItems = new SubItems(this, value);
+            subPanel.Controls.Add(subItems);
 
             foreach (Label l in itemTypePanel.Controls)
             {
                 if (l.Text == selectedType.Text) { l.BackColor = Color.Pink; }
                 else { l.BackColor = Color.White; }
             }
-
         }
 
         //send confirmed item with details to the grid for final review

@@ -160,8 +160,9 @@ namespace CashPOS
                 {
                     catListBox.Items.Add(rdr["catID"].ToString() + " - " + rdr["prodCat"].ToString());
                 } rdr.Close();
-                myConnection.Close();
             }
+            myConnection.Close();
+
             isSearch = false;
         }
 
