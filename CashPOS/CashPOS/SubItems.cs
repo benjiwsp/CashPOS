@@ -63,16 +63,20 @@ namespace CashPOS
         }
 
         //create number of itemBtn based on the amount of item from the itemList
-        public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
+
+      public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
         {
             for (int i = 0; i < itemList.Count; i++)
             {
                 Button newButton = new Button();
-                newButton.Width = 203;
-                newButton.Height = 132;
+               // newButton.Width = 203;
+              //  newButton.Height = 132;
+                newButton.Width = 140;
+                newButton.Height = 100;
                 newButton.AutoSize = false;
                 newButton.Name = "newBtn" + i;
                 newButton.Text = itemList[i].ToString();
+                newButton.Font = new Font("Arial", 14, FontStyle.Bold);
                 btnList.Add(newButton);
                 panel.Controls.Add(newButton);
             }
@@ -82,7 +86,7 @@ namespace CashPOS
                 btn.Click += new EventHandler(handler);
             }
         }
-
+        
         
         protected void itemBtnClicked(object sender, EventArgs e)
         {

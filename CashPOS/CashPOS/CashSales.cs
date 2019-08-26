@@ -145,13 +145,14 @@ namespace CashPOS
                 {
                     prodCatDic.Add(rdr["prodCat"].ToString(), rdr["catID"].ToString());
                 } rdr.Close();
-            }
+             }
             myConnection.Close();
         }
 
         //show corresponding User Control into subPanel on type Clicked
         protected void typeLabelClicked(object sender, EventArgs e)
         {
+
             Label selectedType = sender as Label;
             string selectedName = selectedType.Text;
 
@@ -165,6 +166,7 @@ namespace CashPOS
                 if (l.Text == selectedType.Text) { l.BackColor = Color.Pink; }
                 else { l.BackColor = Color.White; }
             }
+            subPanel.PerformLayout();
         }
 
         //send confirmed item with details to the grid for final review

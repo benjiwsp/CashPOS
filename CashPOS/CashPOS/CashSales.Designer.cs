@@ -832,12 +832,12 @@
         private System.Windows.Forms.ComboBox itemUnit;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button sfOrdBtn;
-        private System.Windows.Forms.FlowLayoutPanel subPanel;
         private System.Windows.Forms.Button chiuOrdBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label destLabel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.FlowLayoutPanel subPanel;
     }
 }

@@ -46,7 +46,7 @@ namespace CashPOS
         {
             if (isSearch)
             {
-                updateProd("CashPOSDB.ProdData"); 
+                updateProd("CashPOSDB.prodData"); 
             }
             else
             {
@@ -114,7 +114,7 @@ namespace CashPOS
         {
             clearAllData();
 
-            myCommand = new MySqlCommand("Select * from CashPOSDB.ProdData", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -226,17 +226,18 @@ namespace CashPOS
                     if (row.Cells[0].Value != null)
                     {
 
-                        if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
-                        if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
-                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
-                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
-                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
-                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
+                       
                         if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[8].Value.ToString();
                         if (needEdit == "y")
                         {
+                            if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
+                            if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
+                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
+                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
+                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
                             myConnection.Open();
                             myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', Unit = '" + unit + "', UnitPrice = '" +
                                           uPrice + "', Package = '" + package + "', PackUnit = '" + packUnit + "', PackPrice = '" + packPrice + "', Category = '" + category + "' where ProdID = '" + prodID + "'", myConnection);
