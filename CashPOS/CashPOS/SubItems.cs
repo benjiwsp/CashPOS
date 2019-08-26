@@ -40,7 +40,7 @@ namespace CashPOS
 
         private void addSubItems(string category)
         {
-            myCommand = new MySqlCommand("Select * from ProdData where Category = '" + category + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData where Category = '" + category + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -90,6 +90,11 @@ namespace CashPOS
             string itemSelected = btn.Text;
             //TO-DO: read price from database and update it to the unitPriceBox
             myParent.selectLblValue = itemSelected;
+
+            string to = myParent.getToLabel();
+            string from = myParent.getFromLabel();
+            string destType = myParent.getDestLabel(); 
+
             myParent.unitPriceValue = "abc";
         //       unitPriceTxt.Text = unitPrice.ToString("#.##");
         }

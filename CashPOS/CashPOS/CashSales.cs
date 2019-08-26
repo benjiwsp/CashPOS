@@ -44,6 +44,7 @@ namespace CashPOS
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
+        string destType; // desntnation type
         public CashSales()
         {
             InitializeComponent();
@@ -225,6 +226,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+
             selectedItemList.Rows.Clear();
             addressTxt.Text = "";
             customerTxt.Text = "";
@@ -237,11 +239,24 @@ namespace CashPOS
             siteRadio.Checked = false;
             sandReceiptTxt.Text = "";
             invoiceNoteTxt.Text = "";
+            toLabel.Text = "";
+            fromLabel.Text = "";
+            destLabel.Text = "";
             clearItemPanel();
         }
 
-
-
+        public string getFromLabel()
+        {
+            return fromLabel.Text;
+        }
+        public string getToLabel()
+        {
+            return toLabel.Text;
+        }
+        public string getDestLabel()
+        {
+            return destLabel.Text;
+        }
         #endregion
 
         private void orderConfirmBtn_Click(object sender, EventArgs e)
@@ -252,20 +267,23 @@ namespace CashPOS
 
         private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComboBox combo = (ComboBox)sender;
 
+            toLabel.Text = combo.Text;
         }
 
         private void chiuOrdBtn_Click(object sender, EventArgs e)
         {
-            //To-do:    load chiu's customer to customerTxt(Combo Box)
-            getCustomerList("CashPOSDB.csCustData");
+            Button btn = (Button)sender;
+            getCustomerList("CashPOSDB.csCustData", btn.Text);
         }
 
         private void sfOrdBtn_Click(object sender, EventArgs e)
         {
-            getCustomerList("CashPOSDB.sfCustData");
+            Button btn = (Button)sender;
+            getCustomerList("CashPOSDB.sfCustData", btn.Text);
         }
-        private void getCustomerList(string cust)
+        private void getCustomerList(string cust, string from)
         {
             //cust = CashPOSDB.CustData;
             customerTxt.Items.Clear();
@@ -280,7 +298,31 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
+            fromLabel.Text = from;
         }
 
+        private void warehouseRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDestType(sender);
+        }
+
+        private void selfPickRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDestType(sender);
+        }
+
+        private void siteRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDestType(sender);
+        }
+        private void loadDestType(object sender)
+        {
+            RadioButton btn = (RadioButton)sender;
+            if (btn.Checked)
+            {
+                destType = btn.Text;
+                destLabel.Text = btn.Text;
+            }
+        }
     }
 }

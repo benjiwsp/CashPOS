@@ -57,6 +57,11 @@
             this.invoiceNoteTxt = new MetroFramework.Controls.MetroTextBox();
             this.chiuOrdBtn = new System.Windows.Forms.Button();
             this.sfOrdBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.destLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -75,6 +80,7 @@
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -139,6 +145,7 @@
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 0, 11);
             this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel2, 2, 10);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -417,6 +424,7 @@
             this.selfPickRadio.Text = "自提";
             this.selfPickRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.selfPickRadio.UseSelectable = true;
+            this.selfPickRadio.CheckedChanged += new System.EventHandler(this.selfPickRadio_CheckedChanged);
             // 
             // warehouseRadio
             // 
@@ -430,6 +438,7 @@
             this.warehouseRadio.Text = "倉";
             this.warehouseRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.warehouseRadio.UseSelectable = true;
+            this.warehouseRadio.CheckedChanged += new System.EventHandler(this.warehouseRadio_CheckedChanged);
             // 
             // siteRadio
             // 
@@ -443,6 +452,7 @@
             this.siteRadio.Text = "地盤";
             this.siteRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.siteRadio.UseSelectable = true;
+            this.siteRadio.CheckedChanged += new System.EventHandler(this.siteRadio_CheckedChanged);
             // 
             // selectedItemList
             // 
@@ -459,12 +469,12 @@
             // 
             // sandReceiptTxt
             // 
-            this.customerDetailPanel.SetColumnSpan(this.sandReceiptTxt, 6);
+            this.customerDetailPanel.SetColumnSpan(this.sandReceiptTxt, 2);
             // 
             // 
             // 
             this.sandReceiptTxt.CustomButton.Image = null;
-            this.sandReceiptTxt.CustomButton.Location = new System.Drawing.Point(508, 1);
+            this.sandReceiptTxt.CustomButton.Location = new System.Drawing.Point(122, 1);
             this.sandReceiptTxt.CustomButton.Name = "";
             this.sandReceiptTxt.CustomButton.Size = new System.Drawing.Size(63, 63);
             this.sandReceiptTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -483,7 +493,7 @@
             this.sandReceiptTxt.SelectionLength = 0;
             this.sandReceiptTxt.SelectionStart = 0;
             this.sandReceiptTxt.ShortcutsEnabled = true;
-            this.sandReceiptTxt.Size = new System.Drawing.Size(572, 65);
+            this.sandReceiptTxt.Size = new System.Drawing.Size(186, 65);
             this.sandReceiptTxt.TabIndex = 20;
             this.sandReceiptTxt.UseSelectable = true;
             this.sandReceiptTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -546,6 +556,64 @@
             this.sfOrdBtn.Text = "富資";
             this.sfOrdBtn.UseVisualStyleBackColor = true;
             this.sfOrdBtn.Click += new System.EventHandler(this.sfOrdBtn_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel2, 4);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.fromLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toLabel, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.destLabel, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(195, 713);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(380, 65);
+            this.tableLayoutPanel2.TabIndex = 25;
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fromLabel.Location = new System.Drawing.Point(3, 0);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(184, 32);
+            this.fromLabel.TabIndex = 0;
+            this.fromLabel.Text = "label1";
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toLabel.Location = new System.Drawing.Point(3, 32);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(184, 33);
+            this.toLabel.TabIndex = 1;
+            this.toLabel.Text = "label2";
+            // 
+            // destLabel
+            // 
+            this.destLabel.AutoSize = true;
+            this.destLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.destLabel.Location = new System.Drawing.Point(193, 0);
+            this.destLabel.Name = "destLabel";
+            this.destLabel.Size = new System.Drawing.Size(184, 32);
+            this.destLabel.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(193, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(184, 33);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "not in use";
             // 
             // panel2
             // 
@@ -687,7 +755,9 @@
             // 
             // subPanel
             // 
+            this.subPanel.AutoScroll = true;
             this.subPanel.BackColor = System.Drawing.Color.MistyRose;
+            this.subPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.subPanel.Location = new System.Drawing.Point(578, 129);
             this.subPanel.Name = "subPanel";
             this.subPanel.Size = new System.Drawing.Size(1076, 720);
@@ -709,6 +779,8 @@
             this.customerDetailPanel.ResumeLayout(false);
             this.customerDetailPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -762,5 +834,10 @@
         private System.Windows.Forms.Button sfOrdBtn;
         private System.Windows.Forms.FlowLayoutPanel subPanel;
         private System.Windows.Forms.Button chiuOrdBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label destLabel;
+        private System.Windows.Forms.Label label4;
     }
 }

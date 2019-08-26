@@ -71,7 +71,7 @@ namespace CashPOS
                             }
 
                             myConnection.Open();
-                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values('" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
+                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values(,'" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
                                           package + "','" + packUnit + "','" + packPrice + "','" + category + "')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
