@@ -20,11 +20,10 @@ namespace CashPOS
 
         string prodID;
         string prod;
-        string unit;
-        decimal uPrice;
-        int package;
-        string packUnit;
-        decimal packPrice;
+        decimal pickPrice;
+        decimal delPrice;
+        decimal sitePrice;
+        string desc;
         string category;
         Boolean isSearch = false;
         Boolean isUpdate = false;
@@ -46,7 +45,9 @@ namespace CashPOS
         {
             if (isSearch)
             {
-                updateProd("CashPOSDB.prodData"); 
+                updateProd("CashPOSDB.prodData");
+                insertIntoCombined();
+
             }
             else
             {
@@ -62,22 +63,25 @@ namespace CashPOS
                             {
                                 if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
                                 if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
-                                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
-                                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
-                                if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
-                                if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
+                                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
+                                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") category = row.Cells[5].Value.ToString();
+                                if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
                             }
 
                             myConnection.Open();
-                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.ProdData values(,'" + prodID + "','" + prod + "','" + unit + "','" + uPrice + "','" +
-                                          package + "','" + packUnit + "','" + packPrice + "','" + category + "')", myConnection);
+                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.prodData values(default,'" + prodID + "','" + prod + "','" + pickPrice + "','" +
+                                          delPrice + "','" + sitePrice + "','" + category + "','" + desc + "')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             //TO-DO  clear data
                         }
                     }
+                    //--------------------- insert into table 3 -------------------
+                    insertIntoCombined();
+                    //--------------------- insert into table 3 -------------------
+
                 }
                 else
                 {
@@ -109,7 +113,25 @@ namespace CashPOS
 
             clearAllData();
         }
+        private void insertIntoCombined()
+        {
 
+            myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
+            myConnection.Open();
+            myCommand.ExecuteNonQuery();
+            myCommand = new MySqlCommand(" ALTER TABLE CashPOSDB.custProdPrice  AUTO_INCREMENT =1", myConnection);
+            myCommand.ExecuteNonQuery();
+            myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice  (CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.csCustData.Code," +
+           " CashPOSDB.prodData.ProdID, CashPOSDB.csCustData.BelongTo from CashPOSDB.csCustData cross join CashPOSDB.prodData", myConnection);
+
+            myCommand.ExecuteNonQuery();
+
+            myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice  (CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.sfCustData.Code," +
+      " CashPOSDB.prodData.ProdID, CashPOSDB.sfCustData.BelongTo from CashPOSDB.sfCustData cross join CashPOSDB.prodData", myConnection);
+
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
+        }
         private void serachProd()
         {
             clearAllData();
@@ -122,8 +144,8 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
-                        rdr["unit"].ToString(), rdr["UnitPrice"].ToString(), rdr["Package"].ToString(),
-                        rdr["PackUnit"].ToString(), rdr["PackPrice"].ToString(), rdr["Category"].ToString());
+                         rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),
+                        rdr["SitePrice"].ToString(), rdr["Category"].ToString(), rdr["Desc"].ToString());
                 } rdr.Close();
             }
             myConnection.Close();
@@ -179,7 +201,7 @@ namespace CashPOS
                         if (dialogResult == DialogResult.Yes)
                         {
                             string prodID = newProdGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                            deleteProdRow("CashPOSDB.ProdData", prodID);
+                            deleteProdRow("CashPOSDB.prodData", prodID);
                             newProdGrid.Rows.RemoveAt(e.RowIndex);
                         }
                     }
@@ -226,21 +248,20 @@ namespace CashPOS
                     if (row.Cells[0].Value != null)
                     {
 
-                       
-                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[8].Value.ToString();
+
+                        if (row.Cells[9].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[9].Value.ToString();
                         if (needEdit == "y")
                         {
                             if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") uPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") package = Convert.ToInt16(row.Cells[4].Value.ToString());
-                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") packUnit = row.Cells[5].Value.ToString();
-                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") packPrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
-                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[7].Value.ToString();
+                            if (row.Cells[2].Value != null) if (row.Cells[3].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
+                            if (row.Cells[3].Value != null) if (row.Cells[4].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                            if (row.Cells[4].Value != null) if (row.Cells[5].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                            if (row.Cells[5].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[5].Value.ToString();
+                            if (row.Cells[6].Value != null) if (row.Cells[8].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
                             myConnection.Open();
-                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', Unit = '" + unit + "', UnitPrice = '" +
-                                          uPrice + "', Package = '" + package + "', PackUnit = '" + packUnit + "', PackPrice = '" + packPrice + "', Category = '" + category + "' where ProdID = '" + prodID + "'", myConnection);
+                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', PickPrice = '" +
+                                          pickPrice + "', DelPrice = '" + delPrice + "', SitePrice = '" + sitePrice + "', Category = '" + category + "', Desc = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                         }

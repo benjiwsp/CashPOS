@@ -33,7 +33,7 @@
             this.otherSettingBtn = new MetroFramework.Controls.MetroButton();
             this.priceSettingBtn = new MetroFramework.Controls.MetroButton();
             this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.custPriceBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,7 +61,7 @@
             this.tableLayoutPanel1.Controls.Add(this.otherSettingBtn, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.priceSettingBtn, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.prodMgmBtn, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.metroButton4, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.custPriceBtn, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroButton5, 3, 3);
             this.tableLayoutPanel1.Controls.Add(custMgmBtn, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,15 +111,16 @@
             this.prodMgmBtn.UseSelectable = true;
             this.prodMgmBtn.Click += new System.EventHandler(this.prodMgmBtn_Click);
             // 
-            // metroButton4
+            // custPriceBtn
             // 
-            this.metroButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton4.Location = new System.Drawing.Point(663, 501);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(324, 160);
-            this.metroButton4.TabIndex = 0;
-            this.metroButton4.Text = "metroButton1";
-            this.metroButton4.UseSelectable = true;
+            this.custPriceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custPriceBtn.Location = new System.Drawing.Point(663, 501);
+            this.custPriceBtn.Name = "custPriceBtn";
+            this.custPriceBtn.Size = new System.Drawing.Size(324, 160);
+            this.custPriceBtn.TabIndex = 0;
+            this.custPriceBtn.Text = "客戶價錢設定";
+            this.custPriceBtn.UseSelectable = true;
+            this.custPriceBtn.Click += new System.EventHandler(this.custPriceBtn_Click);
             // 
             // metroButton5
             // 
@@ -149,7 +150,7 @@
         private MetroFramework.Controls.MetroButton otherSettingBtn;
         private MetroFramework.Controls.MetroButton priceSettingBtn;
         private MetroFramework.Controls.MetroButton prodMgmBtn;
-        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton custPriceBtn;
         private MetroFramework.Controls.MetroButton metroButton5;
     }
 }

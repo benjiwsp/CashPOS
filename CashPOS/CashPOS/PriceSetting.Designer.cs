@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.showAllBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton6 = new MetroFramework.Controls.MetroButton();
@@ -38,10 +38,16 @@
             this.metroButton7 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.customerPriceGrid = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -49,7 +55,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.metroButton1);
+            this.flowLayoutPanel1.Controls.Add(this.showAllBtn);
             this.flowLayoutPanel1.Controls.Add(this.metroButton3);
             this.flowLayoutPanel1.Controls.Add(this.metroButton4);
             this.flowLayoutPanel1.Controls.Add(this.metroButton6);
@@ -63,14 +69,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1654, 100);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // metroButton1
+            // showAllBtn
             // 
-            this.metroButton1.Location = new System.Drawing.Point(3, 3);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(229, 94);
-            this.metroButton1.TabIndex = 0;
-            this.metroButton1.Text = "分類";
-            this.metroButton1.UseSelectable = true;
+            this.showAllBtn.Location = new System.Drawing.Point(3, 3);
+            this.showAllBtn.Name = "showAllBtn";
+            this.showAllBtn.Size = new System.Drawing.Size(229, 94);
+            this.showAllBtn.TabIndex = 0;
+            this.showAllBtn.Text = "顯示全部";
+            this.showAllBtn.UseSelectable = true;
+            this.showAllBtn.Click += new System.EventHandler(this.showAllBtn_Click);
             // 
             // metroButton3
             // 
@@ -78,7 +85,7 @@
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(229, 94);
             this.metroButton3.TabIndex = 0;
-            this.metroButton3.Text = "分類";
+            this.metroButton3.Text = "超誠客";
             this.metroButton3.UseSelectable = true;
             // 
             // metroButton4
@@ -87,7 +94,7 @@
             this.metroButton4.Name = "metroButton4";
             this.metroButton4.Size = new System.Drawing.Size(229, 94);
             this.metroButton4.TabIndex = 0;
-            this.metroButton4.Text = "分類";
+            this.metroButton4.Text = "富資客";
             this.metroButton4.UseSelectable = true;
             // 
             // metroButton6
@@ -138,6 +145,12 @@
             // customerPriceGrid
             // 
             this.customerPriceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customerPriceGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.tableLayoutPanel1.SetColumnSpan(this.customerPriceGrid, 3);
             this.customerPriceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerPriceGrid.Location = new System.Drawing.Point(3, 3);
@@ -145,6 +158,31 @@
             this.tableLayoutPanel1.SetRowSpan(this.customerPriceGrid, 4);
             this.customerPriceGrid.Size = new System.Drawing.Size(1383, 894);
             this.customerPriceGrid.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "客戶";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "類別";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "貨品";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "單價";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "包裝價錢";
+            this.Column5.Name = "Column5";
             // 
             // tableLayoutPanel1
             // 
@@ -158,6 +196,7 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.button3, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listView1, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -196,6 +235,14 @@
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(1392, 452);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 97);
+            this.listView1.TabIndex = 5;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // PriceSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,7 +262,7 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView customerPriceGrid;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton showAllBtn;
         private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton6;
@@ -227,5 +274,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
