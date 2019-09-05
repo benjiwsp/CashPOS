@@ -65,20 +65,12 @@ namespace CashPOS
         {
             if (getIsUpdate() == false)
             {
-                if (currCompLab.Text == "超誠")
-                    insertCust("CashPOSDB.csCustData");
-
-                else if (currCompLab.Text == "富資")
-                    insertCust("CashPOSDB.sfCustData");
+                insertCust("CashPOSDB.custData");
                 clearGrid();
             }
             else
             {
-                if (currCompLab.Text == "超誠")
-                    updateCust("CashPOSDB.csCustData");
-
-                else if (currCompLab.Text == "富資")
-                    updateCust("CashPOSDB.sfCustData");
+                updateCust("CashPOSDB.custData");
                 clearGrid();
 
             }
@@ -87,7 +79,7 @@ namespace CashPOS
         private void searchCSBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
-            searchCustData("CashPOSDB.csCustData");
+            searchCustData("CashPOSDB.custData", "超誠");
             currCompLab.Text = "超誠";
             custDataGrid.AllowUserToAddRows = false;
             setUpdate(true);
@@ -95,7 +87,7 @@ namespace CashPOS
         private void serachSFBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
-            searchCustData("CashPOSDB.sfCustData");
+            searchCustData("CashPOSDB.custData", "富資");
             currCompLab.Text = "富資";
             custDataGrid.AllowUserToAddRows = false;
             setUpdate(true);
@@ -104,8 +96,8 @@ namespace CashPOS
         private void serachAllBtn_Click(object sender, EventArgs e)
         {
             clearGrid();
-            searchCustData("CashPOSDB.sfCustData");
-            searchCustData("CashPOSDB.csCustData");
+            searchCustData("CashPOSDB.custData");
+            // searchCustData("CashPOSDB.csCustData");
             currCompLab.Text = "全部";
             custDataGrid.AllowUserToAddRows = false;
             setUpdate(true);
@@ -166,6 +158,25 @@ namespace CashPOS
         {
             return isUpdate;
         }
+        private void searchCustData(string table, string comp)
+        {
+
+            myCommand = new MySqlCommand("Select * from " + table + " where belongTo = '" + comp + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
+                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                        rdr["email"].ToString(), rdr["Address"].ToString(), rdr["payMethod"].ToString(),
+                        rdr["payDay"].ToString(), rdr["belongTo"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
         private void searchCustData(string table)
         {
 
@@ -181,7 +192,8 @@ namespace CashPOS
                         rdr["email"].ToString(), rdr["Address"].ToString(), rdr["payMethod"].ToString(),
                         rdr["payDay"].ToString(), rdr["belongTo"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -302,10 +314,10 @@ namespace CashPOS
                         {
                             string code = custDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
                             if (currCompLab.Text == "超誠")
-                                deleteCustRow("CashPOSDB.csCustData", code);
+                                deleteCustRow("CashPOSDB.custData", code);
 
                             else if (currCompLab.Text == "富資")
-                                deleteCustRow("CashPOSDB.sfCustData", code);
+                                deleteCustRow("CashPOSDB.custData", code);
                             custDataGrid.Rows.RemoveAt(e.RowIndex);
                         }
                     }
