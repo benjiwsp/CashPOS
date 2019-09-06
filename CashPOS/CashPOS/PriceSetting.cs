@@ -113,6 +113,7 @@ namespace CashPOS
         private void clearList()
         {
             customerPriceGrid.Rows.Clear();
+            itemGrid.Rows.Clear();
         }
 
         private void clearAllBtn_Click(object sender, EventArgs e)
@@ -138,11 +139,11 @@ namespace CashPOS
         private void sfSearchBtn_Click(object sender, EventArgs e)
         {
             clearCustCombo();
-     loadCustCombo("富資");
+            loadCustCombo("富資");
         }
 
         private void csSearchBtn_Click(object sender, EventArgs e)
-        { 
+        {
             clearCustCombo();
             loadCustCombo("超誠");
         }
@@ -152,10 +153,66 @@ namespace CashPOS
             custSelectBox.Items.Clear();
         }
 
-    private void custSelectBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void custSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-        ComboBox cb = (ComboBox)sender;
+            ComboBox cb = (ComboBox)sender;
             getSingleCompany(cb.Text);
-    }
+        }
+
+        private void serachItemBtn_Click(object sender, EventArgs e)
+        {
+            myCommand = new MySqlCommand("select ProdID, ProdName from CashPOSDB.prodData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    itemGrid.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString());
+                }
+
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
+
+        private void adjustAllCustBtn_Click(object sender, EventArgs e)
+        {
+            adjustPrice("");
+        }
+        private void adjustPrice(string extraCommand)
+        {
+            decimal adjustStoreAmount = 0.0m;
+            decimal adjustPickAmount = 0.0m;
+            decimal adjustSiteAmount = 0.0m;
+
+            string prodID = "";
+            foreach (DataGridViewRow row in itemGrid.Rows)
+            {
+                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") adjustStoreAmount = Convert.ToDecimal(row.Cells[2].Value.ToString());
+                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") adjustPickAmount = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") adjustSiteAmount = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                prodID = row.Cells[0].Value.ToString();
+                if (!(adjustStoreAmount == 0.0m && adjustPickAmount == 0.0m && adjustSiteAmount == 0.0m))
+                {
+                    myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice = DelPrice + " + adjustStoreAmount + ", PickPrice = PickPrice + " + adjustPickAmount +
+                        ", SitePrice = SitePrice + " + adjustSiteAmount + " where Prod = '" + prodID + "' " + extraCommand, myConnection);
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+            }
+            clearList();
+        }
+
+        private void adjustCSCustBtn_Click(object sender, EventArgs e)
+        {
+            adjustPrice("and BelongTo = '超誠'");
+        }
+
+        private void adjustSFCustBtn_Click(object sender, EventArgs e)
+        {
+            adjustPrice("and BelongTo = '富資'");
+        }
     }
 }
