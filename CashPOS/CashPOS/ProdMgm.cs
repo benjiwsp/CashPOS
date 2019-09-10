@@ -115,21 +115,102 @@ namespace CashPOS
         }
         private void insertIntoCombined()
         {
+            // to-do: update the function so that whenever there is a new product insert, check if the product is already registered for each customer
+            // whenever a new customer is added, they also need to add all the new products to this CustProdData table
 
-            myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
+
+      /*     myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
             myConnection.Open();
             myCommand.ExecuteNonQuery();
             myCommand = new MySqlCommand(" ALTER TABLE CashPOSDB.custProdPrice  AUTO_INCREMENT =1", myConnection);
             myCommand.ExecuteNonQuery();
-            myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice  (CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.csCustData.Code," +
-           " CashPOSDB.prodData.ProdID, CashPOSDB.csCustData.BelongTo from CashPOSDB.csCustData cross join CashPOSDB.prodData", myConnection);
 
+            */
+            //----------------------insert and update table -----------------------//
+
+
+            //     SELECT* FROM CashPOSDB.viewertable;
+
+            myCommand = new MySqlCommand("drop view if exists CashPOSDB.viewertable", myConnection);
+            myConnection.Open();
             myCommand.ExecuteNonQuery();
-
-            myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice  (CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.sfCustData.Code," +
-      " CashPOSDB.prodData.ProdID, CashPOSDB.sfCustData.BelongTo from CashPOSDB.sfCustData cross join CashPOSDB.prodData", myConnection);
-
+            myCommand = new MySqlCommand("create view  CashPOSDB.viewertable as " +
+            "select Code, ProdID as pid, BelongTo " +
+            "from CashPOSDB.custData cross join CashPOSDB.prodData", myConnection);
             myCommand.ExecuteNonQuery();
+            /*    myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
+                //alter table CashPOSDB.custProdPrice Auto_increment = 0;
+                myCommand = new MySqlCommand("insert ignore  into CashPOSDB.custProdPrice " +
+                "(CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo) " +
+                "select Code, ProdID as pid, BelongTo " +
+                "from CashPOSDB.sfCustData as t1 cross join CashPOSDB.prodData as t2", myConnection);
+                myCommand.ExecuteNonQuery();
+                */
+            myCommand = new MySqlCommand("insert into CashPOSDB.custProdPrice(Cust, Prod)(select Code, Pid from " +
+            "(select Code, pid from CashPOSDB.viewertable UNION ALL " +
+             "select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid); ", myConnection);
+            myCommand.ExecuteNonQuery();
+            //  select Code, Pid from(select Code, pid from CashPOSDB.viewertable UNION ALL select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid having count(*) = 1 order by Code;
+
+
+
+
+
+
+
+
+
+            //---------------------end of insert and update table---------------//
+
+            //get the list of the customer, get the list of the product. see which of them does not have a column and insert it 
+            /*       List<String> custList = new List<String>();
+                   List<String> prodList = new List<String>();
+                   myCommand = new MySqlCommand("Select * from CashPOSDB.csCustData", myConnection);
+                   myConnection.Open();
+                   rdr = myCommand.ExecuteReader();
+                   if (rdr.HasRows == true)
+                   {
+                       while (rdr.Read())
+                       {
+                           custList.Add(rdr["Code"].ToString());
+                       }
+                       rdr.Close();
+                   }
+
+
+                   myCommand = new MySqlCommand("Select * from CashPOSDB.sfCustData", myConnection);
+                //   myConnection.Open();
+                   rdr = myCommand.ExecuteReader();
+                   if (rdr.HasRows == true)
+                   {
+                       while (rdr.Read())
+                       {
+                           custList.Add(rdr["Code"].ToString());
+                       }
+                       rdr.Close();
+                   }
+
+                   myCommand = new MySqlCommand("Select * from CashPOSDB.prodData", myConnection);
+                   //   myConnection.Open();
+                   rdr = myCommand.ExecuteReader();
+                   if (rdr.HasRows == true)
+                   {
+                       while (rdr.Read())
+                       {
+                           prodList.Add(rdr["ProdID"].ToString());
+                       }
+                       rdr.Close();
+                   }
+                   */
+
+            //   prodList.ForEach(Console.WriteLine);
+
+
+       /*     myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice " +
+           "(CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.csCustData.Code," +
+           "CashPOSDB.prodData.ProdID, CashPOSDB.csCustData.BelongTo from CashPOSDB.csCustData cross join CashPOSDB.prodData", myConnection);
+            myCommand.ExecuteNonQuery();
+      */
             myConnection.Close();
         }
         private void serachProd()
@@ -145,8 +226,9 @@ namespace CashPOS
                 {
                     newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
                          rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),
-                        rdr["SitePrice"].ToString(), rdr["Category"].ToString(), rdr["Desc"].ToString());
-                } rdr.Close();
+                        rdr["SitePrice"].ToString(), rdr["Category"].ToString(), rdr["Info"].ToString());
+                }
+                rdr.Close();
             }
             myConnection.Close();
 
@@ -158,6 +240,7 @@ namespace CashPOS
             setUpdate(true);
 
             serachProd();
+            isSearch = false;
         }
         private void clearAllData()
         {
@@ -181,7 +264,8 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     catListBox.Items.Add(rdr["catID"].ToString() + " - " + rdr["prodCat"].ToString());
-                } rdr.Close();
+                }
+                rdr.Close();
             }
             myConnection.Close();
 
@@ -231,7 +315,7 @@ namespace CashPOS
         {
             if (getIsUpdate())
             {
-                newProdGrid.Rows[e.RowIndex].Cells[8].Value = "y";
+                newProdGrid.Rows[e.RowIndex].Cells[7].Value = "y";
             }
         }
 
@@ -249,24 +333,25 @@ namespace CashPOS
                     {
 
 
-                        if (row.Cells[9].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[9].Value.ToString();
+                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") needEdit = row.Cells[7].Value.ToString();
                         if (needEdit == "y")
                         {
                             if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                            if (row.Cells[2].Value != null) if (row.Cells[3].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
-                            if (row.Cells[3].Value != null) if (row.Cells[4].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                            if (row.Cells[4].Value != null) if (row.Cells[5].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                            if (row.Cells[5].Value != null) if (row.Cells[7].Value.ToString() != "") category = row.Cells[5].Value.ToString();
-                            if (row.Cells[6].Value != null) if (row.Cells[8].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
+                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") category = row.Cells[5].Value.ToString();
+                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
                             myConnection.Open();
                             myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', PickPrice = '" +
-                                          pickPrice + "', DelPrice = '" + delPrice + "', SitePrice = '" + sitePrice + "', Category = '" + category + "', Desc = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
+                                          pickPrice + "', DelPrice = '" + delPrice + "', SitePrice = '" + sitePrice + "', Category = '" + category + "', Info = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                         }
                     }
                 }
+                insertIntoCombined();
             }
             else
             {
