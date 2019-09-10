@@ -48,15 +48,15 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.custSelectBox = new System.Windows.Forms.ComboBox();
             this.sfSearchBtn = new System.Windows.Forms.Button();
             this.csSearchBtn = new System.Windows.Forms.Button();
+            this.custSelectBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.itemGrid = new System.Windows.Forms.DataGridView();
-            this.adjustSFCustBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.adjustCSCustBtn = new System.Windows.Forms.Button();
+            this.itemGrid = new System.Windows.Forms.DataGridView();
             this.adjustAllCustBtn = new System.Windows.Forms.Button();
+            this.adjustCSCustBtn = new System.Windows.Forms.Button();
+            this.adjustSFCustBtn = new System.Windows.Forms.Button();
             this.serachItemBtn = new System.Windows.Forms.Button();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,8 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -165,6 +165,7 @@
             // 
             // customerPriceGrid
             // 
+            this.customerPriceGrid.AllowUserToAddRows = false;
             this.customerPriceGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.customerPriceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerPriceGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -267,17 +268,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(499, 136);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
-            // custSelectBox
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.custSelectBox, 2);
-            this.custSelectBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custSelectBox.FormattingEnabled = true;
-            this.custSelectBox.Location = new System.Drawing.Point(3, 93);
-            this.custSelectBox.Name = "custSelectBox";
-            this.custSelectBox.Size = new System.Drawing.Size(493, 21);
-            this.custSelectBox.TabIndex = 5;
-            this.custSelectBox.SelectedIndexChanged += new System.EventHandler(this.custSelectBox_SelectedIndexChanged);
-            // 
             // sfSearchBtn
             // 
             this.sfSearchBtn.Location = new System.Drawing.Point(3, 48);
@@ -298,6 +288,17 @@
             this.csSearchBtn.UseVisualStyleBackColor = true;
             this.csSearchBtn.Click += new System.EventHandler(this.csSearchBtn_Click);
             // 
+            // custSelectBox
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.custSelectBox, 2);
+            this.custSelectBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custSelectBox.FormattingEnabled = true;
+            this.custSelectBox.Location = new System.Drawing.Point(3, 93);
+            this.custSelectBox.Name = "custSelectBox";
+            this.custSelectBox.Size = new System.Drawing.Size(493, 21);
+            this.custSelectBox.TabIndex = 5;
+            this.custSelectBox.SelectedIndexChanged += new System.EventHandler(this.custSelectBox_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -309,33 +310,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "以客戶搜尋";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemGrid
-            // 
-            this.itemGrid.AllowUserToAddRows = false;
-            this.itemGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column11,
-            this.Column9,
-            this.Column10,
-            this.Column12,
-            this.Column13});
-            this.tableLayoutPanel3.SetColumnSpan(this.itemGrid, 2);
-            this.itemGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemGrid.Location = new System.Drawing.Point(3, 3);
-            this.itemGrid.Name = "itemGrid";
-            this.itemGrid.Size = new System.Drawing.Size(493, 244);
-            this.itemGrid.TabIndex = 7;
-            // 
-            // adjustSFCustBtn
-            // 
-            this.adjustSFCustBtn.Location = new System.Drawing.Point(3, 503);
-            this.adjustSFCustBtn.Name = "adjustSFCustBtn";
-            this.adjustSFCustBtn.Size = new System.Drawing.Size(75, 23);
-            this.adjustSFCustBtn.TabIndex = 8;
-            this.adjustSFCustBtn.Text = "調整富資客";
-            this.adjustSFCustBtn.UseVisualStyleBackColor = true;
-            this.adjustSFCustBtn.Click += new System.EventHandler(this.adjustSFCustBtn_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -354,10 +328,37 @@
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel3, 2);
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.787234F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.96809F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(499, 752);
             this.tableLayoutPanel3.TabIndex = 9;
+            // 
+            // itemGrid
+            // 
+            this.itemGrid.AllowUserToAddRows = false;
+            this.itemGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column11,
+            this.Column9,
+            this.Column10,
+            this.Column12,
+            this.Column13});
+            this.tableLayoutPanel3.SetColumnSpan(this.itemGrid, 2);
+            this.itemGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemGrid.Location = new System.Drawing.Point(3, 3);
+            this.itemGrid.Name = "itemGrid";
+            this.itemGrid.Size = new System.Drawing.Size(493, 244);
+            this.itemGrid.TabIndex = 7;
+            // 
+            // adjustAllCustBtn
+            // 
+            this.adjustAllCustBtn.Location = new System.Drawing.Point(252, 288);
+            this.adjustAllCustBtn.Name = "adjustAllCustBtn";
+            this.adjustAllCustBtn.Size = new System.Drawing.Size(75, 23);
+            this.adjustAllCustBtn.TabIndex = 10;
+            this.adjustAllCustBtn.Text = "調整所有客";
+            this.adjustAllCustBtn.UseVisualStyleBackColor = true;
+            this.adjustAllCustBtn.Click += new System.EventHandler(this.adjustAllCustBtn_Click);
             // 
             // adjustCSCustBtn
             // 
@@ -369,15 +370,15 @@
             this.adjustCSCustBtn.UseVisualStyleBackColor = true;
             this.adjustCSCustBtn.Click += new System.EventHandler(this.adjustCSCustBtn_Click);
             // 
-            // adjustAllCustBtn
+            // adjustSFCustBtn
             // 
-            this.adjustAllCustBtn.Location = new System.Drawing.Point(252, 503);
-            this.adjustAllCustBtn.Name = "adjustAllCustBtn";
-            this.adjustAllCustBtn.Size = new System.Drawing.Size(75, 23);
-            this.adjustAllCustBtn.TabIndex = 10;
-            this.adjustAllCustBtn.Text = "調整所有客";
-            this.adjustAllCustBtn.UseVisualStyleBackColor = true;
-            this.adjustAllCustBtn.Click += new System.EventHandler(this.adjustAllCustBtn_Click);
+            this.adjustSFCustBtn.Location = new System.Drawing.Point(3, 288);
+            this.adjustSFCustBtn.Name = "adjustSFCustBtn";
+            this.adjustSFCustBtn.Size = new System.Drawing.Size(75, 23);
+            this.adjustSFCustBtn.TabIndex = 8;
+            this.adjustSFCustBtn.Text = "調整富資客";
+            this.adjustSFCustBtn.UseVisualStyleBackColor = true;
+            this.adjustSFCustBtn.Click += new System.EventHandler(this.adjustSFCustBtn_Click);
             // 
             // serachItemBtn
             // 
@@ -401,17 +402,17 @@
             // 
             // Column10
             // 
-            this.Column10.HeaderText = "調整金額-送倉";
+            this.Column10.HeaderText = "調整送倉價";
             this.Column10.Name = "Column10";
             // 
             // Column12
             // 
-            this.Column12.HeaderText = "調整金額-自提";
+            this.Column12.HeaderText = "調整自提價";
             this.Column12.Name = "Column12";
             // 
             // Column13
             // 
-            this.Column13.HeaderText = "調整金額-地盤";
+            this.Column13.HeaderText = "調整地盤價";
             this.Column13.Name = "Column13";
             // 
             // PriceSetting
@@ -427,8 +428,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

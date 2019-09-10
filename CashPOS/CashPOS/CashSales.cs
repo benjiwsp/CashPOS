@@ -39,6 +39,9 @@ namespace CashPOS
         List<Label> lblList = new List<Label>();
         SubItems subItems;
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
+        string selectedCust;
+        string selectedDest;
+        string selectedItem;
 
         private MySqlConnection myConnection;
         string value;
@@ -103,7 +106,8 @@ namespace CashPOS
                 {
                     typeList.Add(rdr["prodCat"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -144,8 +148,9 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     prodCatDic.Add(rdr["prodCat"].ToString(), rdr["catID"].ToString());
-                } rdr.Close();
-             }
+                }
+                rdr.Close();
+            }
             myConnection.Close();
         }
 
@@ -269,28 +274,41 @@ namespace CashPOS
 
         private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearSelection();
             ComboBox combo = (ComboBox)sender;
+            string comboT = combo.Text;
+            toLabel.Text = comboT;
+            String custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
+            //  MessageBox.Show(test);
+            selectedCust = custCode;
 
-            toLabel.Text = combo.Text;
         }
 
         private void chiuOrdBtn_Click(object sender, EventArgs e)
         {
+            clearSelection();
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.csCustData", btn.Text);
+            getCustomerList("超誠", btn.Text);
         }
 
         private void sfOrdBtn_Click(object sender, EventArgs e)
         {
+            clearSelection();
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.sfCustData", btn.Text);
+            getCustomerList("富資", btn.Text);
+        }
+        private void clearSelection()
+        {
+            selectedCust = "";
+            selectedDest = "";
+            selectedItem = "";
         }
         private void getCustomerList(string cust, string from)
         {
             //cust = CashPOSDB.CustData;
             customerTxt.Items.Clear();
             myConnection.Open();
-            myCommand = new MySqlCommand("Select Code, Name from " + cust, myConnection);
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "'", myConnection);
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
@@ -298,7 +316,8 @@ namespace CashPOS
                 {
                     customerTxt.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
             fromLabel.Text = from;
         }
@@ -322,8 +341,10 @@ namespace CashPOS
             RadioButton btn = (RadioButton)sender;
             if (btn.Checked)
             {
-                destType = btn.Text;
-                destLabel.Text = btn.Text;
+                string dest = btn.Text;
+                destType = dest;
+                destLabel.Text = dest;
+                selectedDest = dest;
             }
         }
     }

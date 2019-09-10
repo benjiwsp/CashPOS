@@ -87,7 +87,7 @@ namespace CashPOS
             }
         }
         
-        
+        //event handler for clicking products 
         protected void itemBtnClicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
