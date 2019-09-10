@@ -277,13 +277,13 @@ namespace CashPOS
         private void chiuOrdBtn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.csCustData", btn.Text);
+            getCustomerList("CashPOSDB.custData", btn.Text);
         }
 
         private void sfOrdBtn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.sfCustData", btn.Text);
+            getCustomerList("CashPOSDB.custData", btn.Text);
         }
         private void getCustomerList(string cust, string from)
         {
