@@ -33,12 +33,27 @@ namespace CashPOS
             {
                 if (row.Cells[0].Value != null)
                 {
-                    myCommand = new MySqlCommand("insert into CashPOSDB.prodCat values('', '" + row.Cells[0].Value.ToString() +"')", myConnection);
+                    myCommand = new MySqlCommand("insert into CashPOSDB.prodCat values('', '" + row.Cells[0].Value.ToString() + "')", myConnection);
                     myCommand.ExecuteNonQuery();
                 }
             }
             myConnection.Close();
             catGrid.Rows.Clear();
+        }
+
+        private void updatePickupLocBtn_Click(object sender, EventArgs e)
+        {
+            myConnection.Open();
+            foreach (DataGridViewRow row in pickupLocDataGrid.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    myCommand = new MySqlCommand("insert into CashPOSDB.pickupLoc values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() + "')", myConnection);
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            myConnection.Close();
+            pickupLocDataGrid.Rows.Clear();
         }
     }
 }
