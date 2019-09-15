@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.metroButton41 = new MetroFramework.Controls.MetroButton();
             this.metroButton40 = new MetroFramework.Controls.MetroButton();
-            this.newBtn = new MetroFramework.Controls.MetroButton();
+            this.searchBtn = new MetroFramework.Controls.MetroButton();
             this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
             this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.customerTxt = new MetroFramework.Controls.MetroComboBox();
-            this.addressTxt = new MetroFramework.Controls.MetroComboBox();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -57,11 +58,15 @@
             this.invoiceNoteTxt = new MetroFramework.Controls.MetroTextBox();
             this.chiuOrdBtn = new System.Windows.Forms.Button();
             this.sfOrdBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.custNameLbl = new System.Windows.Forms.TableLayoutPanel();
             this.fromLabel = new System.Windows.Forms.Label();
             this.toLabel = new System.Windows.Forms.Label();
             this.destLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.totalPriceTxt = new System.Windows.Forms.Label();
+            this.payTypeLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.addressTxt = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,7 +85,7 @@
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.custNameLbl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -120,13 +125,11 @@
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22491F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.99308F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.customerDetailPanel.Controls.Add(this.metroButton41, 4, 13);
             this.customerDetailPanel.Controls.Add(this.metroButton40, 2, 13);
-            this.customerDetailPanel.Controls.Add(this.newBtn, 0, 13);
+            this.customerDetailPanel.Controls.Add(this.searchBtn, 0, 13);
             this.customerDetailPanel.Controls.Add(this.orderConfirmBtn, 0, 12);
             this.customerDetailPanel.Controls.Add(this.cancelBtn, 3, 12);
             this.customerDetailPanel.Controls.Add(this.customerTxt, 0, 2);
-            this.customerDetailPanel.Controls.Add(this.addressTxt, 3, 2);
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
             this.customerDetailPanel.Controls.Add(this.metroLabel3, 3, 1);
@@ -145,7 +148,9 @@
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 0, 11);
             this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
-            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel2, 2, 10);
+            this.customerDetailPanel.Controls.Add(this.custNameLbl, 2, 10);
+            this.customerDetailPanel.Controls.Add(this.textBox1, 4, 13);
+            this.customerDetailPanel.Controls.Add(this.addressTxt, 3, 2);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -168,17 +173,6 @@
             this.customerDetailPanel.Size = new System.Drawing.Size(578, 1000);
             this.customerDetailPanel.TabIndex = 2;
             // 
-            // metroButton41
-            // 
-            this.customerDetailPanel.SetColumnSpan(this.metroButton41, 2);
-            this.metroButton41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton41.Location = new System.Drawing.Point(379, 926);
-            this.metroButton41.Name = "metroButton41";
-            this.metroButton41.Size = new System.Drawing.Size(196, 71);
-            this.metroButton41.TabIndex = 0;
-            this.metroButton41.Text = "1 ";
-            this.metroButton41.UseSelectable = true;
-            // 
             // metroButton40
             // 
             this.customerDetailPanel.SetColumnSpan(this.metroButton40, 2);
@@ -187,19 +181,20 @@
             this.metroButton40.Name = "metroButton40";
             this.metroButton40.Size = new System.Drawing.Size(178, 71);
             this.metroButton40.TabIndex = 0;
-            this.metroButton40.Text = "簽單";
+            this.metroButton40.Text = "unused";
             this.metroButton40.UseSelectable = true;
             // 
-            // newBtn
+            // searchBtn
             // 
-            this.customerDetailPanel.SetColumnSpan(this.newBtn, 2);
-            this.newBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newBtn.Location = new System.Drawing.Point(3, 926);
-            this.newBtn.Name = "newBtn";
-            this.newBtn.Size = new System.Drawing.Size(186, 71);
-            this.newBtn.TabIndex = 0;
-            this.newBtn.Text = "現沽";
-            this.newBtn.UseSelectable = true;
+            this.customerDetailPanel.SetColumnSpan(this.searchBtn, 2);
+            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBtn.Location = new System.Drawing.Point(3, 926);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(186, 71);
+            this.searchBtn.TabIndex = 0;
+            this.searchBtn.Text = "搜尋";
+            this.searchBtn.UseSelectable = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // orderConfirmBtn
             // 
@@ -239,18 +234,6 @@
             this.customerTxt.TabIndex = 4;
             this.customerTxt.UseSelectable = true;
             this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
-            // 
-            // addressTxt
-            // 
-            this.customerDetailPanel.SetColumnSpan(this.addressTxt, 3);
-            this.addressTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressTxt.FormattingEnabled = true;
-            this.addressTxt.ItemHeight = 23;
-            this.addressTxt.Location = new System.Drawing.Point(291, 98);
-            this.addressTxt.Name = "addressTxt";
-            this.addressTxt.Size = new System.Drawing.Size(284, 29);
-            this.addressTxt.TabIndex = 5;
-            this.addressTxt.UseSelectable = true;
             // 
             // invoiceLabel
             // 
@@ -383,6 +366,7 @@
             // dateSelected
             // 
             this.customerDetailPanel.SetColumnSpan(this.dateSelected, 3);
+            this.dateSelected.CustomFormat = "dd/MM/yyyy";
             this.dateSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateSelected.Location = new System.Drawing.Point(291, 162);
             this.dateSelected.MinimumSize = new System.Drawing.Size(0, 29);
@@ -458,11 +442,35 @@
             // 
             this.selectedItemList.AllowUserToAddRows = false;
             this.selectedItemList.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle5;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 4);
             this.selectedItemList.Size = new System.Drawing.Size(572, 467);
             this.selectedItemList.TabIndex = 19;
@@ -483,6 +491,7 @@
             this.sandReceiptTxt.CustomButton.UseSelectable = true;
             this.sandReceiptTxt.CustomButton.Visible = false;
             this.sandReceiptTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sandReceiptTxt.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.sandReceiptTxt.Lines = new string[0];
             this.sandReceiptTxt.Location = new System.Drawing.Point(3, 713);
             this.sandReceiptTxt.MaxLength = 32767;
@@ -515,6 +524,7 @@
             this.invoiceNoteTxt.CustomButton.UseSelectable = true;
             this.invoiceNoteTxt.CustomButton.Visible = false;
             this.invoiceNoteTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoiceNoteTxt.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.invoiceNoteTxt.Lines = new string[] {
         "metroTextBox7"};
             this.invoiceNoteTxt.Location = new System.Drawing.Point(3, 784);
@@ -541,7 +551,7 @@
             this.chiuOrdBtn.Name = "chiuOrdBtn";
             this.chiuOrdBtn.Size = new System.Drawing.Size(178, 65);
             this.chiuOrdBtn.TabIndex = 22;
-            this.chiuOrdBtn.Text = "超城";
+            this.chiuOrdBtn.Text = "超誠";
             this.chiuOrdBtn.UseVisualStyleBackColor = true;
             this.chiuOrdBtn.Click += new System.EventHandler(this.chiuOrdBtn_Click);
             // 
@@ -557,24 +567,27 @@
             this.sfOrdBtn.UseVisualStyleBackColor = true;
             this.sfOrdBtn.Click += new System.EventHandler(this.sfOrdBtn_Click);
             // 
-            // tableLayoutPanel2
+            // custNameLbl
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel2, 4);
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.fromLabel, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.toLabel, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.destLabel, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(195, 713);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(380, 65);
-            this.tableLayoutPanel2.TabIndex = 25;
+            this.custNameLbl.ColumnCount = 3;
+            this.customerDetailPanel.SetColumnSpan(this.custNameLbl, 4);
+            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.custNameLbl.Controls.Add(this.fromLabel, 0, 0);
+            this.custNameLbl.Controls.Add(this.toLabel, 0, 1);
+            this.custNameLbl.Controls.Add(this.destLabel, 1, 0);
+            this.custNameLbl.Controls.Add(this.totalPriceTxt, 1, 1);
+            this.custNameLbl.Controls.Add(this.payTypeLabel, 2, 0);
+            this.custNameLbl.Controls.Add(this.label1, 2, 1);
+            this.custNameLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custNameLbl.Location = new System.Drawing.Point(195, 713);
+            this.custNameLbl.Name = "custNameLbl";
+            this.custNameLbl.RowCount = 2;
+            this.custNameLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.custNameLbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.custNameLbl.Size = new System.Drawing.Size(380, 65);
+            this.custNameLbl.TabIndex = 25;
             // 
             // fromLabel
             // 
@@ -582,9 +595,8 @@
             this.fromLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fromLabel.Location = new System.Drawing.Point(3, 0);
             this.fromLabel.Name = "fromLabel";
-            this.fromLabel.Size = new System.Drawing.Size(184, 32);
+            this.fromLabel.Size = new System.Drawing.Size(120, 32);
             this.fromLabel.TabIndex = 0;
-            this.fromLabel.Text = "label1";
             // 
             // toLabel
             // 
@@ -592,28 +604,64 @@
             this.toLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toLabel.Location = new System.Drawing.Point(3, 32);
             this.toLabel.Name = "toLabel";
-            this.toLabel.Size = new System.Drawing.Size(184, 33);
+            this.toLabel.Size = new System.Drawing.Size(120, 33);
             this.toLabel.TabIndex = 1;
-            this.toLabel.Text = "label2";
             // 
             // destLabel
             // 
             this.destLabel.AutoSize = true;
             this.destLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.destLabel.Location = new System.Drawing.Point(193, 0);
+            this.destLabel.Location = new System.Drawing.Point(129, 0);
             this.destLabel.Name = "destLabel";
-            this.destLabel.Size = new System.Drawing.Size(184, 32);
+            this.destLabel.Size = new System.Drawing.Size(120, 32);
             this.destLabel.TabIndex = 2;
             // 
-            // label4
+            // totalPriceTxt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(193, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 33);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "not in use";
+            this.totalPriceTxt.AutoSize = true;
+            this.totalPriceTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalPriceTxt.Location = new System.Drawing.Point(129, 32);
+            this.totalPriceTxt.Name = "totalPriceTxt";
+            this.totalPriceTxt.Size = new System.Drawing.Size(120, 33);
+            this.totalPriceTxt.TabIndex = 3;
+            // 
+            // payTypeLabel
+            // 
+            this.payTypeLabel.AutoSize = true;
+            this.payTypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payTypeLabel.Location = new System.Drawing.Point(255, 0);
+            this.payTypeLabel.Name = "payTypeLabel";
+            this.payTypeLabel.Size = new System.Drawing.Size(122, 32);
+            this.payTypeLabel.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(255, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.textBox1, 2);
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(379, 926);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(196, 20);
+            this.textBox1.TabIndex = 26;
+            this.textBox1.Text = "比左幾多錢";
+            // 
+            // addressTxt
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.addressTxt, 3);
+            this.addressTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressTxt.Location = new System.Drawing.Point(291, 98);
+            this.addressTxt.Name = "addressTxt";
+            this.addressTxt.Size = new System.Drawing.Size(284, 29);
+            this.addressTxt.TabIndex = 27;
             // 
             // panel2
             // 
@@ -720,6 +768,7 @@
             this.amountTxt.Name = "amountTxt";
             this.amountTxt.Size = new System.Drawing.Size(209, 53);
             this.amountTxt.TabIndex = 10;
+            this.amountTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.amountTxt_KeyPress);
             // 
             // unitPriceTxt
             // 
@@ -729,6 +778,7 @@
             this.unitPriceTxt.Name = "unitPriceTxt";
             this.unitPriceTxt.Size = new System.Drawing.Size(209, 53);
             this.unitPriceTxt.TabIndex = 10;
+            this.unitPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unitPriceTxt_KeyPress);
             // 
             // itemNotesTxt
             // 
@@ -779,8 +829,8 @@
             this.customerDetailPanel.ResumeLayout(false);
             this.customerDetailPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.custNameLbl.ResumeLayout(false);
+            this.custNameLbl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -796,16 +846,17 @@
         private System.Windows.Forms.TableLayoutPanel customerDetailPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private MetroFramework.Controls.MetroButton newBtn;
+        private MetroFramework.Controls.MetroButton searchBtn;
         private MetroFramework.Controls.MetroButton metroButton40;
-        private MetroFramework.Controls.MetroButton metroButton41;
         private MetroFramework.Controls.MetroButton orderConfirmBtn;
         private MetroFramework.Controls.MetroButton cancelBtn;
         private MetroFramework.Controls.MetroComboBox customerTxt;
-        private MetroFramework.Controls.MetroComboBox addressTxt;
         private MetroFramework.Controls.MetroLabel invoiceLabel;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+
+
+
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTextBox telTxt;
@@ -814,7 +865,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroComboBox pickupAddText;
         private MetroFramework.Controls.MetroRadioButton selfPickRadio;
-        private MetroFramework.Controls.MetroRadioButton warehouseRadio;
         private MetroFramework.Controls.MetroRadioButton siteRadio;
         private System.Windows.Forms.DataGridView selectedItemList;
         private System.Windows.Forms.Panel panel1;
@@ -833,11 +883,16 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button sfOrdBtn;
         private System.Windows.Forms.Button chiuOrdBtn;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel custNameLbl;
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label destLabel;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label totalPriceTxt;
         private System.Windows.Forms.FlowLayoutPanel subPanel;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label payTypeLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox addressTxt;
+        private MetroFramework.Controls.MetroRadioButton warehouseRadio;
     }
 }

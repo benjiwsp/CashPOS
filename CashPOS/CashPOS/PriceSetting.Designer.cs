@@ -54,15 +54,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.itemGrid = new System.Windows.Forms.DataGridView();
-            this.adjustAllCustBtn = new System.Windows.Forms.Button();
-            this.adjustCSCustBtn = new System.Windows.Forms.Button();
-            this.adjustSFCustBtn = new System.Windows.Forms.Button();
-            this.serachItemBtn = new System.Windows.Forms.Button();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adjustAllCustBtn = new System.Windows.Forms.Button();
+            this.adjustCSCustBtn = new System.Windows.Forms.Button();
+            this.adjustSFCustBtn = new System.Windows.Forms.Button();
+            this.serachItemBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -350,6 +350,31 @@
             this.itemGrid.Size = new System.Drawing.Size(493, 244);
             this.itemGrid.TabIndex = 7;
             // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "貨品ID";
+            this.Column11.Name = "Column11";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "貨品";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "調整送倉價";
+            this.Column10.Name = "Column10";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "調整自提價";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "調整地盤價";
+            this.Column13.Name = "Column13";
+            // 
             // adjustAllCustBtn
             // 
             this.adjustAllCustBtn.Location = new System.Drawing.Point(252, 288);
@@ -389,31 +414,6 @@
             this.serachItemBtn.Text = "搜尋貨品";
             this.serachItemBtn.UseVisualStyleBackColor = true;
             this.serachItemBtn.Click += new System.EventHandler(this.serachItemBtn_Click);
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "貨品ID";
-            this.Column11.Name = "Column11";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "貨品";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "調整送倉價";
-            this.Column10.Name = "Column10";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "調整自提價";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "調整地盤價";
-            this.Column13.Name = "Column13";
             // 
             // PriceSetting
             // 

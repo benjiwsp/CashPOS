@@ -52,7 +52,7 @@ notes:
 另外  個SYSTEM 係處埋還款既時候 可以SET 埋入去 
 現時既簽單客分左幾類 我試總結一下:
 
-1. 門口散簽單    流水帳
+1. 門口散簽單    流水帳   //check 比左幾多錢, 搵返phone number 可以search返D 單出黎話比左錢
 2. 門口散簽單     以單計算清數
 3. 月結 / 半月結/ 10日結   有STATEMENT 的客戶 
 4. 放預付款倒扣客戶 
@@ -65,3 +65,6 @@ Confirm order -> print -> select paid or not
 
 
 all customers will have all products for easy managment 
+
+
+ALTER TABLE tbl_name CONVERT TO CHARACTER SET utf8;
