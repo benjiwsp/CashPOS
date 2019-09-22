@@ -22,7 +22,7 @@ namespace CashPOS
         MySqlCommand myCommand;
         MySqlDataReader rdr;
         string category;
-        public SubItems( CashSales myParent, string category)
+        public SubItems(CashSales myParent, string category)
         {
             InitializeComponent();
             this.myParent = myParent;
@@ -51,26 +51,26 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
-/*            itemList.Add("red1");
-            itemList.Add("磚red1");
-            itemList.Add("泥red1");
-            itemList.Add("膠red1水");
-            itemList.Add("其red1他");
-            itemList.Add("Emred1ix");
-            itemList.Add("Tyred1p7");
-            itemList.Add("Typred18");
- * */
+            /*            itemList.Add("red1");
+                        itemList.Add("磚red1");
+                        itemList.Add("泥red1");
+                        itemList.Add("膠red1水");
+                        itemList.Add("其red1他");
+                        itemList.Add("Emred1ix");
+                        itemList.Add("Tyred1p7");
+                        itemList.Add("Typred18");
+             * */
         }
 
         //create number of itemBtn based on the amount of item from the itemList
 
-      public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
+        public void createItemBtn(List<String> itemList, Control panel, EventHandler handler)
         {
             for (int i = 0; i < itemList.Count; i++)
             {
                 Button newButton = new Button();
-               // newButton.Width = 203;
-              //  newButton.Height = 132;
+                // newButton.Width = 203;
+                //  newButton.Height = 132;
                 newButton.Width = 140;
                 newButton.Height = 100;
                 newButton.AutoSize = false;
@@ -86,7 +86,7 @@ namespace CashPOS
                 btn.Click += new EventHandler(handler);
             }
         }
-        
+
         //event handler for clicking products 
         protected void itemBtnClicked(object sender, EventArgs e)
         {
@@ -97,10 +97,12 @@ namespace CashPOS
 
             string to = myParent.getToLabel();
             string from = myParent.getFromLabel();
-            string destType = myParent.getDestLabel(); 
+            string destType = myParent.getDestLabel();
 
+
+            //To-do: load the price from database 
             myParent.unitPriceValue = "abc";
-        //       unitPriceTxt.Text = unitPrice.ToString("#.##");
+            //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }
     }
 }

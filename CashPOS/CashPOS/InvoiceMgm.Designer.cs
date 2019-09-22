@@ -30,10 +30,10 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.orderListView = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.idToSearch = new System.Windows.Forms.TextBox();
+            this.serachByID = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -71,7 +71,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -102,7 +102,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.14268F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.8682F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.524789F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.orderListView, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 3, 1);
@@ -129,24 +129,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // dataGridView1
+            // orderListView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 3);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.tableLayoutPanel1.SetRowSpan(this.dataGridView1, 4);
-            this.dataGridView1.Size = new System.Drawing.Size(962, 748);
-            this.dataGridView1.TabIndex = 1;
+            this.orderListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
+            this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderListView.Location = new System.Drawing.Point(3, 79);
+            this.orderListView.Name = "orderListView";
+            this.tableLayoutPanel1.SetRowSpan(this.orderListView, 4);
+            this.orderListView.Size = new System.Drawing.Size(962, 748);
+            this.orderListView.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox2, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.idToSearch, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.serachByID, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(971, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -155,26 +155,26 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 70);
             this.tableLayoutPanel2.TabIndex = 11;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
-            // textBox2
+            // idToSearch
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 29);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "單號";
+            this.idToSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.idToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idToSearch.Location = new System.Drawing.Point(3, 3);
+            this.idToSearch.Name = "idToSearch";
+            this.idToSearch.Size = new System.Drawing.Size(254, 29);
+            this.idToSearch.TabIndex = 5;
+            this.idToSearch.Text = "單號";
             // 
-            // button2
+            // serachByID
             // 
-            this.button2.Location = new System.Drawing.Point(3, 38);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 29);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "以單號搜尋";
-            this.button2.UseVisualStyleBackColor = true;
+            this.serachByID.Location = new System.Drawing.Point(3, 38);
+            this.serachByID.Name = "serachByID";
+            this.serachByID.Size = new System.Drawing.Size(254, 29);
+            this.serachByID.TabIndex = 10;
+            this.serachByID.Text = "以單號搜尋";
+            this.serachByID.UseVisualStyleBackColor = true;
+            this.serachByID.Click += new System.EventHandler(this.serachByID_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -199,7 +199,6 @@
             this.textBox1.Size = new System.Drawing.Size(266, 29);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "電話";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button3
             // 
@@ -444,7 +443,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "電話:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -631,7 +629,7 @@
             this.Name = "InvoiceMgm";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -653,11 +651,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button serachByID;
+        private System.Windows.Forms.DataGridView orderListView;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox idToSearch;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox comboBox3;

@@ -190,9 +190,9 @@ namespace CashPOS
             decimal totalPrice;
             Boolean pass = true;
             //check if everything has a value
-            if (amountTxt.Text.Length > 0 && decimal.TryParse(amountTxt.Text, out amount) && pass) { MessageBox.Show(amount.ToString()); }
+            if (amountTxt.Text.Length > 0 && decimal.TryParse(amountTxt.Text, out amount) && pass) { }//MessageBox.Show(amount.ToString()); }
             else { MessageBox.Show("請輸入數量"); pass = false; return; }
-            if (unitPriceTxt.Text.Length > 0 && decimal.TryParse(unitPriceTxt.Text, out unitPrice)) { MessageBox.Show(unitPrice.ToString()); }
+            if (unitPriceTxt.Text.Length > 0 && decimal.TryParse(unitPriceTxt.Text, out unitPrice)) { }// MessageBox.Show(unitPrice.ToString()); }
             else { MessageBox.Show("請輸入單價"); pass = false; return; }
             if (itemUnit.Text.Length > 0 && pass) { unit = itemUnit.Text; }
             else { MessageBox.Show("請選擇單位"); pass = false; return; }
@@ -262,6 +262,7 @@ namespace CashPOS
             clearItemPanel();
             isSearching = false;
             selectedOrderID = "";
+            paidAmount.Text = "";
         }
 
         public string getFromLabel()
@@ -285,11 +286,11 @@ namespace CashPOS
         }
         private void sendOrder(bool isSearching, string id)
         {
-            string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo;
+            string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
             orderID = invoiceLabel.Text;// invoiceLabel.Text;
             sandID = sandReceiptTxt.Text;
             cust = customerTxt.Text.Substring(customerTxt.Text.IndexOf("- ") + 1, customerTxt.Text.Length - 1 - customerTxt.Text.IndexOf("- ")).Trim();
-            MessageBox.Show(cust);
+            //  MessageBox.Show(cust);
             phone = telTxt.Text;
             license = licenseTxt.Text;
             address = addressTxt.Text;
@@ -300,6 +301,7 @@ namespace CashPOS
             isPrinted = "";
             belongTo = fromLabel.Text;
             notes = invoiceNoteTxt.Text.Trim();
+            paid = paidAmount.Text;
             DateTime date = dateSelected.Value.Date;
             if (isSearching)
             {
@@ -318,7 +320,7 @@ namespace CashPOS
             }
             orderID = invoiceLabel.Text;
             myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
-                phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + notes + "','" + belongTo + "','" +
+                phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + notes + "','" + belongTo + "','" +
                 isPrinted + "','" + date + "')", myConnection);
             myConnection.Open();
             myCommand.ExecuteNonQuery();
@@ -413,12 +415,9 @@ namespace CashPOS
             clearAll();
             clearSelection();
             Button btn = (Button)sender;
-<<<<<<< HEAD
             getCustomerList("CashPOSDB.custData", btn.Text);
-=======
             getCustomerList("超誠", btn.Text);
             selectedCompany = "超誠";
->>>>>>> 0b812fd1444a1e687f09db0c30486b5c743463fb
         }
 
         private void sfOrdBtn_Click(object sender, EventArgs e)
@@ -426,9 +425,7 @@ namespace CashPOS
             clearAll();
             clearSelection();
             Button btn = (Button)sender;
-<<<<<<< HEAD
             getCustomerList("CashPOSDB.custData", btn.Text);
-=======
             getCustomerList("富資", btn.Text);
             selectedCompany = "富資";
         }
@@ -440,7 +437,6 @@ namespace CashPOS
             selectedCompany = "";
             pickupAddText.Items.Clear();
             itemTypePanel.Enabled = false;
->>>>>>> 0b812fd1444a1e687f09db0c30486b5c743463fb
         }
         private void getCustomerList(string cust, string from)
         {
@@ -568,7 +564,7 @@ namespace CashPOS
                         {
                             siteRadio.Checked = true;
                         }
-                        payTypeLabel.Text = rdr["payment"].ToString() ;
+                        payTypeLabel.Text = rdr["payment"].ToString();
                         totalPriceTxt.Text = rdr["totalPrice"].ToString();
                         sandReceiptTxt.Text = rdr["sandID"].ToString();
                         invoiceNoteTxt.Text = rdr["notes"].ToString();
@@ -601,7 +597,7 @@ namespace CashPOS
             string returnStr = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
                 "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
                 "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
-                "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
+                "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
                 "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
                 "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
