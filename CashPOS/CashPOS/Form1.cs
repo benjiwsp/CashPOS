@@ -23,6 +23,7 @@ namespace CashPOS
         InvoiceMgm invoiceMgm;
         OtherSetting otherSetting;
         CustPriceMgm custPriceMgm;
+        InvoiceOutput invoiceOutput;
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace CashPOS
             invoiceMgm = new InvoiceMgm();
             otherSetting = new OtherSetting();
             custPriceMgm = new CustPriceMgm();
+            invoiceOutput = new InvoiceOutput();
             mainPanel.Controls.Add(homeScreen);
 
         }
@@ -102,8 +104,10 @@ namespace CashPOS
                         otherSetting.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(custPriceMgm);
                         break;
-
-
+                    case "invoiceBtn":
+                        otherSetting.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(invoiceOutput);
+                        break;
                     //   case "printInvBtn":
                     //      invoiceMgm.Dock = DockStyle.Fill;
                     //      mainPanel.Controls.Add(invoiceMgm);

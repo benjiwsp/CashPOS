@@ -248,7 +248,7 @@ namespace CashPOS
                 {
                     while (rdr.Read())
                     {
-                        if (i > 0)
+                        if (i == 0)
                         {
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
                             dateLbl.Text = rdr["time"].ToString();

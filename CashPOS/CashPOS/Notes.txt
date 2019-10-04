@@ -68,3 +68,14 @@ all customers will have all products for easy managment
 
 
 ALTER TABLE tbl_name CONVERT TO CHARACTER SET utf8;
+
+
+DELETE duplicate values in the same table
+
+--
+DELETE t1 FROM CashPOSDB.prodData t1
+INNER JOIN CashPOSDB.prodData t2 
+WHERE 
+    t1.ID < t2.ID AND 
+    t1.ProdID = t2.ProdID and t1.ProdName = t2.ProdName;
+--

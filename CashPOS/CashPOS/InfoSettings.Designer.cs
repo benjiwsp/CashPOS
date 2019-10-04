@@ -34,7 +34,7 @@
             this.priceSettingBtn = new MetroFramework.Controls.MetroButton();
             this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
             this.custPriceBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
+            this.invoiceBtn = new MetroFramework.Controls.MetroButton();
             custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.Controls.Add(this.priceSettingBtn, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.prodMgmBtn, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.custPriceBtn, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.metroButton5, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.invoiceBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(custMgmBtn, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -122,15 +122,16 @@
             this.custPriceBtn.UseSelectable = true;
             this.custPriceBtn.Click += new System.EventHandler(this.custPriceBtn_Click);
             // 
-            // metroButton5
+            // invoiceBtn
             // 
-            this.metroButton5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton5.Location = new System.Drawing.Point(993, 501);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(324, 160);
-            this.metroButton5.TabIndex = 0;
-            this.metroButton5.Text = "metroButton1";
-            this.metroButton5.UseSelectable = true;
+            this.invoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoiceBtn.Location = new System.Drawing.Point(993, 501);
+            this.invoiceBtn.Name = "invoiceBtn";
+            this.invoiceBtn.Size = new System.Drawing.Size(324, 160);
+            this.invoiceBtn.TabIndex = 0;
+            this.invoiceBtn.Text = "發票";
+            this.invoiceBtn.UseSelectable = true;
+            this.invoiceBtn.Click += new System.EventHandler(this.invoiceBtn_Click);
             // 
             // InfoSettings
             // 
@@ -151,6 +152,6 @@
         private MetroFramework.Controls.MetroButton priceSettingBtn;
         private MetroFramework.Controls.MetroButton prodMgmBtn;
         private MetroFramework.Controls.MetroButton custPriceBtn;
-        private MetroFramework.Controls.MetroButton metroButton5;
+        private MetroFramework.Controls.MetroButton invoiceBtn;
     }
 }

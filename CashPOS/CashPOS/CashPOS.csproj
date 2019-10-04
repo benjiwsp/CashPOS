@@ -51,6 +51,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>bin\Release\iTextSharp\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
@@ -147,6 +150,12 @@
     <Compile Include="InvoiceMgm.Designer.cs">
       <DependentUpon>InvoiceMgm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvoiceOutput.Designer.cs">
+      <DependentUpon>InvoiceOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="OtherSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceMgm.resx">
       <DependentUpon>InvoiceMgm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceOutput.resx">
+      <DependentUpon>InvoiceOutput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OtherSetting.resx">
       <DependentUpon>OtherSetting.cs</DependentUpon>

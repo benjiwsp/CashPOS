@@ -146,9 +146,9 @@ namespace CashPOS
                 "from CashPOSDB.sfCustData as t1 cross join CashPOSDB.prodData as t2", myConnection);
                 myCommand.ExecuteNonQuery();
                 */
-            myCommand = new MySqlCommand("insert into CashPOSDB.custProdPrice(Cust, Prod)(select Code, Pid from " +
-            "(select Code, pid from CashPOSDB.viewertable UNION ALL " +
-             "select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid); ", myConnection);
+            myCommand = new MySqlCommand("insert into CashPOSDB.custProdPrice(Cust, Prod, BelongTo)(select Code, Pid, BelongTo from " +
+            "(select Code, pid, belongTo from CashPOSDB.viewertable UNION DISTINCT " +
+             "select Cust, Prod, BelongTo from CashPOSDB.custProdPrice) t group by Code, Pid); ", myConnection);
             myCommand.ExecuteNonQuery();
             //  select Code, Pid from(select Code, pid from CashPOSDB.viewertable UNION ALL select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid having count(*) = 1 order by Code;
 

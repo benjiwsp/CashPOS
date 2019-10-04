@@ -161,6 +161,7 @@ namespace CashPOS
 
         private void serachItemBtn_Click(object sender, EventArgs e)
         {
+            clearList();
             myCommand = new MySqlCommand("select ProdID, ProdName from CashPOSDB.prodData", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();

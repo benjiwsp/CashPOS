@@ -61,6 +61,11 @@
             this.searchByPayType = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.resultGrid = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,11 +85,6 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.compLbl = new System.Windows.Forms.ComboBox();
             this.clearBtn = new System.Windows.Forms.Button();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -491,6 +491,31 @@
             this.resultGrid.Size = new System.Drawing.Size(680, 605);
             this.resultGrid.TabIndex = 2;
             // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "貨品";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "數量";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "單位";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "單價";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "總數";
+            this.Column11.Name = "Column11";
+            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 4;
@@ -744,31 +769,6 @@
             this.clearBtn.Text = "清空";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "貨品";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "數量";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "單位";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "單價";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "總數";
-            this.Column11.Name = "Column11";
             // 
             // InvoiceMgm
             // 
