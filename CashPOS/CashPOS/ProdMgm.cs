@@ -72,7 +72,7 @@ namespace CashPOS
 
                             myConnection.Open();
                             myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.prodData values(default,'" + prodID + "','" + prod + "','" + pickPrice + "','" +
-                                          delPrice + "','" + sitePrice + "','" + category + "','" + desc + "')", myConnection);
+                                          delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             //TO-DO  clear data
@@ -119,13 +119,13 @@ namespace CashPOS
             // whenever a new customer is added, they also need to add all the new products to this CustProdData table
 
 
-      /*     myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
-            myConnection.Open();
-            myCommand.ExecuteNonQuery();
-            myCommand = new MySqlCommand(" ALTER TABLE CashPOSDB.custProdPrice  AUTO_INCREMENT =1", myConnection);
-            myCommand.ExecuteNonQuery();
+            /*     myCommand = new MySqlCommand("delete from CashPOSDB.custProdPrice", myConnection);
+                  myConnection.Open();
+                  myCommand.ExecuteNonQuery();
+                  myCommand = new MySqlCommand(" ALTER TABLE CashPOSDB.custProdPrice  AUTO_INCREMENT =1", myConnection);
+                  myCommand.ExecuteNonQuery();
 
-            */
+                  */
             //----------------------insert and update table -----------------------//
 
 
@@ -146,14 +146,28 @@ namespace CashPOS
                 "from CashPOSDB.sfCustData as t1 cross join CashPOSDB.prodData as t2", myConnection);
                 myCommand.ExecuteNonQuery();
                 */
-            myCommand = new MySqlCommand("insert into CashPOSDB.custProdPrice(Cust, Prod, BelongTo)(select Code, Pid, BelongTo from " +
-            "(select Code, pid, belongTo from CashPOSDB.viewertable UNION DISTINCT " +
-             "select Cust, Prod, BelongTo from CashPOSDB.custProdPrice) t group by Code, Pid); ", myConnection);
+            // myCommand = new MySqlCommand("insert into CashPOSDB.custProdPrice(Cust, Prod, BelongTo)(select Code, Pid, BelongTo from " +
+            ///    "(select Code, pid, belongTo from CashPOSDB.viewertable UNION DISTINCT " +
+            //    "select Cust, Prod, BelongTo from CashPOSDB.custProdPrice) t group by Code, Pid); ", myConnection);
+
+
+            myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice,SitePrice, BelongTo) " +
+            "(select Distinct CashPOSDB.custData.Code, CashPOSDB.prodData.ProdID, CashPOSDB.prodData.ProdName, CashPOSDB.prodData.DelPrice, CashPOSDB.prodData.PickPrice, " +
+            "CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData) " +
+            "on DUPLICATE KEY UPDATE DelPrice = values(DelPrice), PickPrice = values(PickPrice), SitePrice = values(SitePrice);", myConnection);
+
+
             myCommand.ExecuteNonQuery();
             //  select Code, Pid from(select Code, pid from CashPOSDB.viewertable UNION ALL select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid having count(*) = 1 order by Code;
 
 
-
+            /*
+             * 
+             * 
+             * insert into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice,SitePrice, BelongTo)
+select Distinct CashPOSDB.custData.Code, CashPOSDB.prodData.ProdID, CashPOSDB.prodData.ProdName, CashPOSDB.prodData.DelPrice, CashPOSDB.prodData.PickPrice,
+CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData;
+             * /
 
 
 
@@ -206,11 +220,11 @@ namespace CashPOS
             //   prodList.ForEach(Console.WriteLine);
 
 
-       /*     myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice " +
-           "(CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.csCustData.Code," +
-           "CashPOSDB.prodData.ProdID, CashPOSDB.csCustData.BelongTo from CashPOSDB.csCustData cross join CashPOSDB.prodData", myConnection);
-            myCommand.ExecuteNonQuery();
-      */
+            /*     myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice " +
+                "(CashPOSDB.custProdPrice.Cust, CashPOSDB.custProdPrice.Prod, CashPOSDB.custProdPrice.BelongTo)select CashPOSDB.csCustData.Code," +
+                "CashPOSDB.prodData.ProdID, CashPOSDB.csCustData.BelongTo from CashPOSDB.csCustData cross join CashPOSDB.prodData", myConnection);
+                 myCommand.ExecuteNonQuery();
+           */
             myConnection.Close();
         }
         private void serachProd()

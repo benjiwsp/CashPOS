@@ -42,6 +42,9 @@
             this.updateCustBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +86,9 @@
             this.custDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column13,
+            this.Column10,
+            this.Column12,
             this.Column3,
             this.Column4,
             this.Column5,
@@ -236,6 +242,21 @@
             this.Column2.HeaderText = "客戶名稱";
             this.Column2.Name = "Column2";
             // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "正/負金額";
+            this.Column13.Name = "Column13";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "第1聯絡人";
+            this.Column10.Name = "Column10";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "第2聯絡人";
+            this.Column12.Name = "Column12";
+            // 
             // Column3
             // 
             this.Column3.HeaderText = "電話#1";
@@ -269,7 +290,7 @@
             // 
             // Column9
             // 
-            this.Column9.HeaderText = "付款期限(日數)";
+            this.Column9.HeaderText = "付款期";
             this.Column9.Name = "Column9";
             // 
             // BelongCol
@@ -321,6 +342,9 @@
         private System.Windows.Forms.Label currCompLab;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;

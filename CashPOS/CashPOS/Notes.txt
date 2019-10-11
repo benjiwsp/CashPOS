@@ -79,3 +79,17 @@ WHERE
     t1.ID < t2.ID AND 
     t1.ProdID = t2.ProdID and t1.ProdName = t2.ProdName;
 --
+
+
+
+
+
+-----
+get all the combination from custData and prodData, insert into the table if not exist, and update it on duplicate key(Cust + Prod)
+
+
+insert ignore into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice,SitePrice, BelongTo)
+(select Distinct CashPOSDB.custData.Code, CashPOSDB.prodData.ProdID, CashPOSDB.prodData.ProdName, CashPOSDB.prodData.DelPrice, CashPOSDB.prodData.PickPrice,
+CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData)
+on DUPLICATE KEY UPDATE DelPrice = values(DelPrice), PickPrice = values(PickPrice), SitePrice = values(SitePrice);
+-----

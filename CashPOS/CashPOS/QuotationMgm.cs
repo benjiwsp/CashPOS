@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CashPOS
 {
-    public partial class CustPriceMgm : UserControl
+    public partial class QuotationMgm : UserControl
     {
-        public CustPriceMgm()
+        public QuotationMgm()
         {
             InitializeComponent();
         }

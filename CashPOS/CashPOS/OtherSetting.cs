@@ -55,5 +55,22 @@ namespace CashPOS
             myConnection.Close();
             pickupLocDataGrid.Rows.Clear();
         }
+
+        private void insertCompInfo_Click(object sender, EventArgs e)
+        {
+            myConnection.Open();
+            foreach (DataGridViewRow row in companyData.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    myCommand = new MySqlCommand("insert into CashPOSDB.companyInfo values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() + 
+                         "','" + row.Cells[2].Value.ToString() +  "','" + row.Cells[3].Value.ToString()   +  "','" + row.Cells[4].Value.ToString()
+                    + "','" + row.Cells[5].Value.ToString() + "','" + row.Cells[6].Value.ToString() + "')", myConnection);
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            myConnection.Close();
+            companyData.Rows.Clear();
+        }
     }
 }

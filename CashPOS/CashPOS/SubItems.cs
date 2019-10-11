@@ -95,7 +95,7 @@ namespace CashPOS
             //TO-DO: read price from database and update it to the unitPriceBox
             myParent.selectLblValue = itemSelected;
 
-            string cust = myParent.getToLabel();
+            string cust = myParent.getToLabel().Substring(0, myParent.getToLabel().IndexOf(" -"));
             string belongTo = myParent.getFromLabel();
             string destType = myParent.getDestLabel();
             string priceType = "";
@@ -112,18 +112,17 @@ namespace CashPOS
                 priceType = "PickPrice";
             }
             //To-do: load the price from database 
-            myCommand = new MySqlCommand("Select " + priceType + " from CashPOSDB.custProdPrice where belongTo = '" + belongTo + "' and Cust = '" + cust + "'", myConnection);
+            myCommand = new MySqlCommand("Select " + priceType + " from CashPOSDB.custProdPrice where belongTo = '" + belongTo + "' and Cust = '" + cust + "' and ProdName = '" + itemSelected + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
             {
                 while (rdr.Read())
                 {
-                    MessageBox.Show(rdr[priceType].ToString());
+                    myParent.unitPriceValue = rdr[priceType].ToString();
                 }
             } rdr.Close();
             myConnection.Close();
-            myParent.unitPriceValue = "abc";
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }
     }

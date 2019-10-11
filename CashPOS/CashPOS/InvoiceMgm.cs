@@ -22,6 +22,8 @@ namespace CashPOS
 
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
+            loadCust();
+            loadItem();
         }
 
         private void serachByID_Click(object sender, EventArgs e)

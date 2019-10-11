@@ -32,11 +32,21 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateCatBtn = new System.Windows.Forms.Button();
             this.pickupLocDataGrid = new System.Windows.Forms.DataGridView();
-            this.updatePickupLocBtn = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatePickupLocBtn = new System.Windows.Forms.Button();
+            this.companyData = new System.Windows.Forms.DataGridView();
+            this.insertCompInfo = new System.Windows.Forms.Button();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
             this.SuspendLayout();
             // 
             // catGrid
@@ -75,16 +85,6 @@
             this.pickupLocDataGrid.Size = new System.Drawing.Size(271, 150);
             this.pickupLocDataGrid.TabIndex = 0;
             // 
-            // updatePickupLocBtn
-            // 
-            this.updatePickupLocBtn.Location = new System.Drawing.Point(502, 298);
-            this.updatePickupLocBtn.Name = "updatePickupLocBtn";
-            this.updatePickupLocBtn.Size = new System.Drawing.Size(271, 54);
-            this.updatePickupLocBtn.TabIndex = 1;
-            this.updatePickupLocBtn.Text = "updatePickupLocBtn";
-            this.updatePickupLocBtn.UseVisualStyleBackColor = true;
-            this.updatePickupLocBtn.Click += new System.EventHandler(this.updatePickupLocBtn_Click);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "取貨地點";
@@ -95,10 +95,83 @@
             this.Column2.HeaderText = "公司";
             this.Column2.Name = "Column2";
             // 
+            // updatePickupLocBtn
+            // 
+            this.updatePickupLocBtn.Location = new System.Drawing.Point(502, 298);
+            this.updatePickupLocBtn.Name = "updatePickupLocBtn";
+            this.updatePickupLocBtn.Size = new System.Drawing.Size(271, 54);
+            this.updatePickupLocBtn.TabIndex = 1;
+            this.updatePickupLocBtn.Text = "updatePickupLocBtn";
+            this.updatePickupLocBtn.UseVisualStyleBackColor = true;
+            this.updatePickupLocBtn.Click += new System.EventHandler(this.updatePickupLocBtn_Click);
+            // 
+            // companyData
+            // 
+            this.companyData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.companyData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9});
+            this.companyData.Location = new System.Drawing.Point(161, 391);
+            this.companyData.Name = "companyData";
+            this.companyData.Size = new System.Drawing.Size(1326, 352);
+            this.companyData.TabIndex = 2;
+            // 
+            // insertCompInfo
+            // 
+            this.insertCompInfo.Location = new System.Drawing.Point(249, 767);
+            this.insertCompInfo.Name = "insertCompInfo";
+            this.insertCompInfo.Size = new System.Drawing.Size(75, 23);
+            this.insertCompInfo.TabIndex = 3;
+            this.insertCompInfo.Text = "button1";
+            this.insertCompInfo.UseVisualStyleBackColor = true;
+            this.insertCompInfo.Click += new System.EventHandler(this.insertCompInfo_Click);
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "公司中文名";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "公司英文名";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "中文地址";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "英文地址";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "電話";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "FAX";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Email";
+            this.Column9.Name = "Column9";
+            // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.insertCompInfo);
+            this.Controls.Add(this.companyData);
             this.Controls.Add(this.updatePickupLocBtn);
             this.Controls.Add(this.updateCatBtn);
             this.Controls.Add(this.pickupLocDataGrid);
@@ -107,6 +180,7 @@
             this.Size = new System.Drawing.Size(1654, 1000);
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +194,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button updatePickupLocBtn;
+        private System.Windows.Forms.DataGridView companyData;
+        private System.Windows.Forms.Button insertCompInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

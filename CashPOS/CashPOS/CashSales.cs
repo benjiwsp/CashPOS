@@ -263,6 +263,7 @@ namespace CashPOS
             isSearching = false;
             selectedOrderID = "";
             paidAmount.Text = "";
+
         }
 
         public string getFromLabel()
@@ -302,6 +303,7 @@ namespace CashPOS
             belongTo = fromLabel.Text;
             notes = invoiceNoteTxt.Text.Trim();
             paid = paidAmount.Text;
+            string invCol = "";
             DateTime date = dateSelected.Value.Date;
             if (isSearching)
             {
@@ -318,26 +320,66 @@ namespace CashPOS
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
             }
-            orderID = invoiceLabel.Text;
-            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
-                phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + notes + "','" + belongTo + "','" +
-                isPrinted + "','" + date + "')", myConnection);
-            myConnection.Open();
-            myCommand.ExecuteNonQuery();
-            myConnection.Close();
 
-            foreach (DataGridViewRow row in selectedItemList.Rows)
+            orderID = invoiceLabel.Text;
+            bool successed = false;
+            bool attempted = false;
+            myConnection.Open();
+            for (int attempts = 0; attempts < 10; attempts++)
             {
-                myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
-                  pickupLoc + "','" + DateTime.Now + "')", myConnection);
-                myConnection.Open();
-                myCommand.ExecuteNonQuery();
-                myConnection.Close();
+                try
+                {
+                    while (true)
+                    {
+                        myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
+                         phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + notes + "','" + belongTo + "','" +
+                         isPrinted + "','" + date + "')", myConnection);
+                        myCommand.ExecuteNonQuery();
+
+                        foreach (DataGridViewRow row in selectedItemList.Rows)
+                        {
+                            myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
+                              + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
+                              pickupLoc + "','" + DateTime.Now + "')", myConnection);
+                            myCommand.ExecuteNonQuery();
+
+                            if(pickupLoc == "柴灣"){
+                                invCol = "CwInv";
+                            }else if (pickupLoc == "油麻地"){
+                                invCol = "YmtInv";
+                            }else if(pickupLoc == "屯門"){
+                                invCol = "TmInv";
+                            }else if(pickupLoc =="觀塘"){
+                                invCol = "KtInv";
+                            }
+                            if(invCol != ""){
+                                myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                myCommand.ExecuteNonQuery();
+                                }
+                        }
+                        if (attempted)
+                        {
+                            MessageBox.Show("收據號碼已改為: " + orderID);
+                        }
+                        successed = true;
+                        myConnection.Close();
+                        break;
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 1062:
+                            orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
+                            attempted = true;
+                            break;
+                    }
+                }
+                if (successed)
+                    break;
             }
 
-            myConnection.Close();
-            //needa test (wont update the table)
             myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
                 orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
             Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
@@ -345,9 +387,6 @@ namespace CashPOS
             myConnection.Open();
             myCommand.ExecuteNonQuery();
             myConnection.Close();
-
-
-            //    myCommand = new MySqlCommand("insert into CashPOSDB.orderDetails values('", myConnection);
             clearAll();
             clearSelection();
         }
@@ -360,25 +399,35 @@ namespace CashPOS
             {
                 ComboBox combo = (ComboBox)sender;
                 string comboT = combo.Text;
+                string temp = "";
                 toLabel.Text = comboT;
                 String custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
                 //  MessageBox.Show(test);
                 selectedCustCode = custCode;
-                myCommand = new MySqlCommand("select payMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
+                myCommand = new MySqlCommand("select PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
                 myConnection.Open();
                 rdr = myCommand.ExecuteReader();
                 if (rdr.HasRows == true)
                 {
                     while (rdr.Read())
                     {
-                        payTypeLabel.Text = rdr["payMethod"].ToString();
+                        temp = rdr["PayMethod"].ToString();
+                        if (temp == "期結")
+                        {
+                            temp = "簽單";
+                        }
+                        else
+                        {
+                            temp = "現金";
+                        }
+                        payTypeLabel.Text = temp;
                     }
                 }
                 rdr.Close();
 
                 myConnection.Close();
                 myCommand = new MySqlCommand("select orderID from CashPOSDB.orderID where belongTo = '" +
-                    selectedCompany + "'and paymentType = '" + payTypeLabel.Text.Trim() + "'", myConnection);
+                    selectedCompany + "'and paymentType = '" + temp + "'", myConnection);
                 myConnection.Open();
                 rdr = myCommand.ExecuteReader();
                 if (rdr.HasRows == true)
@@ -405,9 +454,7 @@ namespace CashPOS
                 rdr.Close();
                 myConnection.Close();
                 checkStatus();
-
             }
-
         }
 
         private void chiuOrdBtn_Click(object sender, EventArgs e)
@@ -442,7 +489,7 @@ namespace CashPOS
         {
             customerTxt.Items.Clear();
             myConnection.Open();
-            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "'", myConnection);
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "' order by Code", myConnection);
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {

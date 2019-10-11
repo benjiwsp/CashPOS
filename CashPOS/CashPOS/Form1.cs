@@ -22,7 +22,7 @@ namespace CashPOS
         CustMgm custMgm;
         InvoiceMgm invoiceMgm;
         OtherSetting otherSetting;
-        CustPriceMgm custPriceMgm;
+        QuotationMgm custPriceMgm;
         InvoiceOutput invoiceOutput;
         public Form1()
         {
@@ -36,7 +36,7 @@ namespace CashPOS
             custMgm = new CustMgm();
             invoiceMgm = new InvoiceMgm();
             otherSetting = new OtherSetting();
-            custPriceMgm = new CustPriceMgm();
+            custPriceMgm = new QuotationMgm();
             invoiceOutput = new InvoiceOutput();
             mainPanel.Controls.Add(homeScreen);
 

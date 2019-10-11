@@ -50,7 +50,7 @@ namespace CashPOS
         private void getList(string belongTo)
         {
             clearList();
-            myCommand = new MySqlCommand("select Code, Name, payMethod, custData.belongTo, " +
+            myCommand = new MySqlCommand("select Code, Name, PayMethod, custData.BelongTo, " +
             "Prod, DelPrice, PickPrice, SitePrice " +
             "from CashPOSDB.custProdPrice join CashPOSDB.custData where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code and custData.BelongTo = '" + belongTo + "'", myConnection);
             myConnection.Open();
@@ -59,7 +59,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["payMethod"].ToString(),
+                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
                         rdr["Prod"].ToString(), rdr["DelPrice"].ToString(), rdr["PickPrice"].ToString(),
                         rdr["SitePrice"].ToString(), rdr["BelongTo"].ToString());
                 }
@@ -71,7 +71,7 @@ namespace CashPOS
         private void getList()
         {
             clearList();
-            myCommand = new MySqlCommand("select Code, Name, payMethod, custData.belongTo, " +
+            myCommand = new MySqlCommand("select Code, Name, PayMethod, custData.BelongTo, " +
             "Prod, DelPrice, PickPrice, SitePrice " +
             "from CashPOSDB.custProdPrice join CashPOSDB.custData where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code", myConnection);
             myConnection.Open();
@@ -80,7 +80,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["payMethod"].ToString(),
+                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
                         rdr["Prod"].ToString(), rdr["DelPrice"].ToString(), rdr["PickPrice"].ToString(),
                         rdr["SitePrice"].ToString(), rdr["BelongTo"].ToString());
                 }
@@ -92,7 +92,7 @@ namespace CashPOS
         private void getSingleCompany(string company)
         {
             clearList();
-            myCommand = new MySqlCommand("select Code, Name, payMethod, custData.belongTo, " +
+            myCommand = new MySqlCommand("select Code, Name, PayMethod, custData.BelongTo, " +
             "Prod, DelPrice, PickPrice, SitePrice " +
             "from CashPOSDB.custProdPrice join CashPOSDB.custData where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code and Name = '" + company + "'", myConnection);
             myConnection.Open();
@@ -101,7 +101,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["payMethod"].ToString(),
+                    customerPriceGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
                         rdr["Prod"].ToString(), rdr["DelPrice"].ToString(), rdr["PickPrice"].ToString(),
                         rdr["SitePrice"].ToString(), rdr["BelongTo"].ToString());
                 }
@@ -122,7 +122,7 @@ namespace CashPOS
         }
         private void loadCustCombo(string cust)
         {
-            myCommand = new MySqlCommand("Select Name from CashPOSDB.custData where belongTo = '" + cust + "'", myConnection);
+            myCommand = new MySqlCommand("Select Name from CashPOSDB.custData where BelongTo = '" + cust + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)

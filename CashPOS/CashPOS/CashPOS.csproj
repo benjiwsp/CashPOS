@@ -109,11 +109,11 @@
     <Compile Include="CustMgm.Designer.cs">
       <DependentUpon>CustMgm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustPriceMgm.cs">
+    <Compile Include="QuotationMgm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustPriceMgm.Designer.cs">
-      <DependentUpon>CustPriceMgm.cs</DependentUpon>
+    <Compile Include="QuotationMgm.Designer.cs">
+      <DependentUpon>QuotationMgm.cs</DependentUpon>
     </Compile>
     <Compile Include="dataDiagram.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -194,8 +194,8 @@
     <EmbeddedResource Include="CustMgm.resx">
       <DependentUpon>CustMgm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustPriceMgm.resx">
-      <DependentUpon>CustPriceMgm.cs</DependentUpon>
+    <EmbeddedResource Include="QuotationMgm.resx">
+      <DependentUpon>QuotationMgm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
