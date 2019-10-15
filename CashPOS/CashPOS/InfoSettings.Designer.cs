@@ -118,7 +118,7 @@
             this.custPriceBtn.Name = "custPriceBtn";
             this.custPriceBtn.Size = new System.Drawing.Size(324, 160);
             this.custPriceBtn.TabIndex = 0;
-            this.custPriceBtn.Text = "客戶價錢設定";
+            this.custPriceBtn.Text = "報價表";
             this.custPriceBtn.UseSelectable = true;
             this.custPriceBtn.Click += new System.EventHandler(this.custPriceBtn_Click);
             // 
