@@ -237,41 +237,60 @@ namespace CashPOS
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                quoteItemList.Rows.Clear();
-                string query = "SELECT * FROM CashPOSDB.quotationRecords a cross join CashPOSDB.quotationDetails b on a.QuoteID = b.QuoteID where a.QuoteID = '" +
-                    searchQuoteList.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
-                myCommand = new MySqlCommand(query, myConnection);
-                myConnection.Open();
-                rdr = myCommand.ExecuteReader();
-                int i = 0;
-                if (rdr.HasRows == true)
+                if (e.ColumnIndex == 0)
                 {
-                    while (rdr.Read())
+                    quoteItemList.Rows.Clear();
+                    string query = "SELECT * FROM CashPOSDB.quotationRecords a cross join CashPOSDB.quotationDetails b on a.QuoteID = b.QuoteID where a.QuoteID = '" +
+                        searchQuoteList.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+                    myCommand = new MySqlCommand(query, myConnection);
+                    myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+                    int i = 0;
+                    if (rdr.HasRows == true)
                     {
-                        if (i == 0)
+                        while (rdr.Read())
                         {
-                            searching = true;
-                            selectCust.Text = rdr["Cust"].ToString();
-                            telBox.Text = rdr["Tel"].ToString();
-                            faxBox.Text = rdr["Fax"].ToString();
-                            emailBox.Text = rdr["Email"].ToString();
-                            attnBox.Text = rdr["Attn"].ToString();
-                            refBox.Text = rdr["RefNo"].ToString();
-                            dateSelector.Value = Convert.ToDateTime(rdr["Date"].ToString());
-                            handlerBox.Text = rdr["HandleBy"].ToString();
-                            projectBox.Text = rdr["Project"].ToString();
-                            sumLbl.Text = rdr["Sum"].ToString();
-                            i++;
+                            if (i == 0)
+                            {
+                                searching = true;
+                                selectCust.Text = rdr["Cust"].ToString();
+                                telBox.Text = rdr["Tel"].ToString();
+                                faxBox.Text = rdr["Fax"].ToString();
+                                emailBox.Text = rdr["Email"].ToString();
+                                attnBox.Text = rdr["Attn"].ToString();
+                                refBox.Text = rdr["RefNo"].ToString();
+                                dateSelector.Value = Convert.ToDateTime(rdr["Date"].ToString());
+                                handlerBox.Text = rdr["HandleBy"].ToString();
+                                projectBox.Text = rdr["Project"].ToString();
+                                sumLbl.Text = rdr["Sum"].ToString();
+                                i++;
+                            }
+                            quoteItemList.Rows.Add(rdr["Item"].ToString(), rdr["Amount"].ToString(), rdr["Unit"].ToString(),
+       rdr["UnitPrice"].ToString(), rdr["TotalPrice"].ToString());
                         }
-                        quoteItemList.Rows.Add(rdr["Item"].ToString(), rdr["Amount"].ToString(), rdr["Unit"].ToString(),
-   rdr["UnitPrice"].ToString(), rdr["TotalPrice"].ToString());
+                        //resultGrid.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
                     }
-                    //resultGrid.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
+                    rdr.Close();
+                    myConnection.Close();
+                    searching = false;
+
                 }
-                rdr.Close();
-                myConnection.Close();
+                else if (e.ColumnIndex == 4)
+                {
+                    DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        myCommand = new MySqlCommand("Delete from CashPOSDB.quotationDetails where Quote = '" + searchQuoteList.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                        myConnection.Open();
+                        myCommand.ExecuteNonQuery();
+                        myCommand = new MySqlCommand("Delete from CashPOSDB.quotationRecords where Quote = '" + searchQuoteList.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+
+                        searchQuoteList.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
             }
-            searching = false;
         }
         private void clearAll()
         {
@@ -281,7 +300,6 @@ namespace CashPOS
             emailBox.Text = "";
             attnBox.Text = "";
             refBox.Text = "";
-            dateSelector.Value = Convert.ToDateTime(rdr["Date"].ToString());
             handlerBox.Text = "";
             projectBox.Text = "";
             sumLbl.Text = "";
