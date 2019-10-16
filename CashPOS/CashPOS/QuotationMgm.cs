@@ -242,14 +242,14 @@ namespace CashPOS
         private void getQuotation(string belongTo)
         {
             searchQuoteList.Rows.Clear();
-            myCommand = new MySqlCommand("Select QuoteID, Cust, Date, Project from CashPOSDB.quotationRecords where QuoteID like '" + belongTo + "%'", myConnection);
+            myCommand = new MySqlCommand("Select QuoteID, Cust, Date, Project, Notes from CashPOSDB.quotationRecords where QuoteID like '" + belongTo + "%'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
                 while (rdr.Read())
                 {
-                    searchQuoteList.Rows.Add(rdr["QuoteID"].ToString(), rdr["Cust"].ToString(), rdr["Project"].ToString(), rdr["Date"].ToString());
+                    searchQuoteList.Rows.Add(rdr["QuoteID"].ToString(), rdr["Cust"].ToString(), rdr["Project"].ToString(), rdr["Date"].ToString(),rdr["Notes"].ToString() );
                 }
             }
             rdr.Close();
@@ -303,7 +303,7 @@ namespace CashPOS
                     searching = false;
 
                 }
-                else if (e.ColumnIndex == 4)
+                else if (e.ColumnIndex == 5)
                 {
                     DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
