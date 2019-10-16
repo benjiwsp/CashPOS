@@ -93,3 +93,8 @@ insert ignore into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice
 CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData)
 on DUPLICATE KEY UPDATE DelPrice = values(DelPrice), PickPrice = values(PickPrice), SitePrice = values(SitePrice);
 -----
+
+QuotationMgm
+-fix destination path
+-item/description wont be saved, need to update everytime
+-need to double check if all info are provided
