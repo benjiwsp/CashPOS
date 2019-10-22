@@ -31,8 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.quoteItemList = new System.Windows.Forms.DataGridView();
-            this.sendQuotBtn = new System.Windows.Forms.Button();
-            this.sumLbl = new System.Windows.Forms.Label();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.selectCust = new System.Windows.Forms.ComboBox();
             this.telBox = new System.Windows.Forms.TextBox();
@@ -55,40 +59,36 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.searchQuoteList = new System.Windows.Forms.DataGridView();
-            this.sfQuoteBtn = new System.Windows.Forms.Button();
-            this.csQuoteBtn = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quoteNotesList = new System.Windows.Forms.DataGridView();
-            this.noteBox = new System.Windows.Forms.TextBox();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.sfQuoteBtn = new System.Windows.Forms.Button();
+            this.csQuoteBtn = new System.Windows.Forms.Button();
+            this.quoteNotesList = new System.Windows.Forms.DataGridView();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.sendQuotBtn = new System.Windows.Forms.Button();
+            this.sumLbl = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.noteBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quoteItemList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchQuoteList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quoteNotesList)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -141,27 +141,37 @@
             this.quoteItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.quoteItemList_CellContentClick);
             this.quoteItemList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.quoteItemList_CellValueChanged);
             // 
-            // sendQuotBtn
+            // Column2
             // 
-            this.tableLayoutPanel4.SetColumnSpan(this.sendQuotBtn, 2);
-            this.sendQuotBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendQuotBtn.Location = new System.Drawing.Point(3, 81);
-            this.sendQuotBtn.Name = "sendQuotBtn";
-            this.sendQuotBtn.Size = new System.Drawing.Size(317, 72);
-            this.sendQuotBtn.TabIndex = 2;
-            this.sendQuotBtn.Text = "Confirm";
-            this.sendQuotBtn.UseVisualStyleBackColor = true;
-            this.sendQuotBtn.Click += new System.EventHandler(this.sendQuotBtn_Click);
+            this.Column2.HeaderText = "貨品";
+            this.Column2.Name = "Column2";
             // 
-            // sumLbl
+            // Column3
             // 
-            this.sumLbl.AutoSize = true;
-            this.sumLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sumLbl.Location = new System.Drawing.Point(164, 0);
-            this.sumLbl.Name = "sumLbl";
-            this.sumLbl.Size = new System.Drawing.Size(156, 78);
-            this.sumLbl.TabIndex = 7;
-            this.sumLbl.Text = "0.0";
+            this.Column3.HeaderText = "數量";
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "單位";
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "單價";
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "總數";
+            this.Column6.Name = "Column6";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "刪除";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // tableLayoutPanel2
             // 
@@ -405,16 +415,6 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Project:";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 78);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Total:";
-            // 
             // searchQuoteList
             // 
             this.searchQuoteList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -435,6 +435,40 @@
             this.searchQuoteList.Size = new System.Drawing.Size(984, 940);
             this.searchQuoteList.TabIndex = 19;
             this.searchQuoteList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchQuoteList_CellContentClick);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Quotation";
+            this.Column7.Name = "Column7";
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Customer";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Project";
+            this.Column10.Name = "Column10";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Date";
+            this.Column8.Name = "Column8";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Notes";
+            this.Column14.Name = "Column14";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Delete";
+            this.Column11.Name = "Column11";
+            this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // sfQuoteBtn
             // 
@@ -458,38 +492,6 @@
             this.csQuoteBtn.UseVisualStyleBackColor = true;
             this.csQuoteBtn.Click += new System.EventHandler(this.csQuoteBtn_Click);
             // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "貨品";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "數量";
-            this.Column3.Name = "Column3";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "單位";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "單價";
-            this.Column4.Name = "Column4";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "總數";
-            this.Column6.Name = "Column6";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "刪除";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // quoteNotesList
             // 
             this.quoteNotesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -503,14 +505,6 @@
             this.quoteNotesList.Name = "quoteNotesList";
             this.quoteNotesList.Size = new System.Drawing.Size(658, 161);
             this.quoteNotesList.TabIndex = 21;
-            // 
-            // noteBox
-            // 
-            this.noteBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noteBox.Location = new System.Drawing.Point(80, 3);
-            this.noteBox.Name = "noteBox";
-            this.noteBox.Size = new System.Drawing.Size(240, 20);
-            this.noteBox.TabIndex = 22;
             // 
             // Column12
             // 
@@ -559,6 +553,38 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(323, 156);
             this.tableLayoutPanel4.TabIndex = 24;
             // 
+            // sendQuotBtn
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.sendQuotBtn, 2);
+            this.sendQuotBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendQuotBtn.Location = new System.Drawing.Point(3, 81);
+            this.sendQuotBtn.Name = "sendQuotBtn";
+            this.sendQuotBtn.Size = new System.Drawing.Size(317, 72);
+            this.sendQuotBtn.TabIndex = 2;
+            this.sendQuotBtn.Text = "Confirm";
+            this.sendQuotBtn.UseVisualStyleBackColor = true;
+            this.sendQuotBtn.Click += new System.EventHandler(this.sendQuotBtn_Click);
+            // 
+            // sumLbl
+            // 
+            this.sumLbl.AutoSize = true;
+            this.sumLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sumLbl.Location = new System.Drawing.Point(164, 0);
+            this.sumLbl.Name = "sumLbl";
+            this.sumLbl.Size = new System.Drawing.Size(156, 78);
+            this.sumLbl.TabIndex = 7;
+            this.sumLbl.Text = "0.0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(155, 78);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Total:";
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -575,6 +601,14 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(323, 156);
             this.tableLayoutPanel5.TabIndex = 25;
             // 
+            // noteBox
+            // 
+            this.noteBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noteBox.Location = new System.Drawing.Point(80, 3);
+            this.noteBox.Name = "noteBox";
+            this.noteBox.Size = new System.Drawing.Size(240, 20);
+            this.noteBox.TabIndex = 22;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -584,40 +618,6 @@
             this.label12.Size = new System.Drawing.Size(71, 156);
             this.label12.TabIndex = 23;
             this.label12.Text = "Quotation Note:";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Quotation";
-            this.Column7.Name = "Column7";
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Customer";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Project";
-            this.Column10.Name = "Column10";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Date";
-            this.Column8.Name = "Column8";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "Notes";
-            this.Column14.Name = "Column14";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Delete";
-            this.Column11.Name = "Column11";
-            this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // QuotationMgm
             // 
@@ -631,13 +631,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchQuoteList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quoteNotesList)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
