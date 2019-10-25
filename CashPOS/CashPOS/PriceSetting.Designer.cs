@@ -32,7 +32,7 @@
             this.showAllBtn = new MetroFramework.Controls.MetroButton();
             this.csCustBtn = new MetroFramework.Controls.MetroButton();
             this.sfCustBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton6 = new MetroFramework.Controls.MetroButton();
+            this.searchCatBtn = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton8 = new MetroFramework.Controls.MetroButton();
             this.clearAllBtn = new MetroFramework.Controls.MetroButton();
@@ -63,12 +63,16 @@
             this.adjustCSCustBtn = new System.Windows.Forms.Button();
             this.adjustSFCustBtn = new System.Windows.Forms.Button();
             this.serachItemBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.resultList = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerPriceGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultList)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -76,7 +80,7 @@
             this.flowLayoutPanel1.Controls.Add(this.showAllBtn);
             this.flowLayoutPanel1.Controls.Add(this.csCustBtn);
             this.flowLayoutPanel1.Controls.Add(this.sfCustBtn);
-            this.flowLayoutPanel1.Controls.Add(this.metroButton6);
+            this.flowLayoutPanel1.Controls.Add(this.searchCatBtn);
             this.flowLayoutPanel1.Controls.Add(this.metroButton5);
             this.flowLayoutPanel1.Controls.Add(this.metroButton8);
             this.flowLayoutPanel1.Controls.Add(this.clearAllBtn);
@@ -117,14 +121,15 @@
             this.sfCustBtn.UseSelectable = true;
             this.sfCustBtn.Click += new System.EventHandler(this.sfCustBtn_Click);
             // 
-            // metroButton6
+            // searchCatBtn
             // 
-            this.metroButton6.Location = new System.Drawing.Point(708, 3);
-            this.metroButton6.Name = "metroButton6";
-            this.metroButton6.Size = new System.Drawing.Size(229, 94);
-            this.metroButton6.TabIndex = 0;
-            this.metroButton6.Text = "分類";
-            this.metroButton6.UseSelectable = true;
+            this.searchCatBtn.Location = new System.Drawing.Point(708, 3);
+            this.searchCatBtn.Name = "searchCatBtn";
+            this.searchCatBtn.Size = new System.Drawing.Size(229, 94);
+            this.searchCatBtn.TabIndex = 0;
+            this.searchCatBtn.Text = "分類";
+            this.searchCatBtn.UseSelectable = true;
+            this.searchCatBtn.Click += new System.EventHandler(this.searchCatBtn_Click);
             // 
             // metroButton5
             // 
@@ -177,12 +182,10 @@
             this.Column7,
             this.Column6,
             this.Column8});
-            this.tableLayoutPanel1.SetColumnSpan(this.customerPriceGrid, 3);
             this.customerPriceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerPriceGrid.Location = new System.Drawing.Point(3, 3);
             this.customerPriceGrid.Name = "customerPriceGrid";
-            this.tableLayoutPanel1.SetRowSpan(this.customerPriceGrid, 4);
-            this.customerPriceGrid.Size = new System.Drawing.Size(1143, 894);
+            this.customerPriceGrid.Size = new System.Drawing.Size(456, 51);
             this.customerPriceGrid.TabIndex = 1;
             // 
             // Column5
@@ -236,6 +239,7 @@
             this.tableLayoutPanel1.Controls.Add(this.customerPriceGrid, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -415,6 +419,32 @@
             this.serachItemBtn.UseVisualStyleBackColor = true;
             this.serachItemBtn.Click += new System.EventHandler(this.serachItemBtn_Click);
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.resultList, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 145);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(456, 526);
+            this.tableLayoutPanel4.TabIndex = 10;
+            // 
+            // resultList
+            // 
+            this.resultList.AllowUserToAddRows = false;
+            this.resultList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel4.SetColumnSpan(this.resultList, 2);
+            this.resultList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.resultList.Location = new System.Drawing.Point(3, 3);
+            this.resultList.Name = "resultList";
+            this.resultList.Size = new System.Drawing.Size(450, 257);
+            this.resultList.TabIndex = 0;
+            this.resultList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.result_CellContentClick);
+            // 
             // PriceSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,6 +460,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,7 +473,7 @@
         private MetroFramework.Controls.MetroButton showAllBtn;
         private MetroFramework.Controls.MetroButton csCustBtn;
         private MetroFramework.Controls.MetroButton sfCustBtn;
-        private MetroFramework.Controls.MetroButton metroButton6;
+        private MetroFramework.Controls.MetroButton searchCatBtn;
         private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton metroButton8;
         private MetroFramework.Controls.MetroButton clearAllBtn;
@@ -471,5 +503,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.DataGridView resultList;
     }
 }

@@ -215,5 +215,77 @@ namespace CashPOS
         {
             adjustPrice("and BelongTo = '富資'");
         }
+
+        private void searchCatBtn_Click(object sender, EventArgs e)
+        {
+            resultList.Columns.Clear();
+            resultList.Rows.Clear();
+            addGridCol("CatID", "ID");
+            addGridCol("CatName", "分類");
+            DataGridViewButtonColumn bcol = new DataGridViewButtonColumn();
+            bcol.HeaderText = "搜尋";
+            bcol.Name = "searchCatBtn";
+            bcol.UseColumnTextForButtonValue = true;
+            resultList.Columns.Add(bcol);
+
+
+            myCommand = new MySqlCommand("select * from CashPOSDB.prodCat", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["catID"].ToString(), rdr["ProdCat"].ToString());
+                }
+
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
+
+       
+        
+        private void addGridCol(string colName, string header)
+        {
+            resultList.Columns.Add(colName, header);
+        }
+
+        private void result_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            // serach items from selected Category 
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].Name == "searchCatBtn") 
+            {
+                string cat = senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+           //     MessageBox.Show(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                resultList.Rows.Clear();
+                resultList.Columns.Clear();
+                addGridCol("CompName", "公司編號");
+
+                addGridCol("CompName", "公司");
+                addGridCol("ProdName", "貨品");
+                addGridCol("ProdName", "自提價");
+                addGridCol("ProdName", "返倉價");
+                addGridCol("ProdName", "地盤價");
+
+                myCommand = new MySqlCommand("select ProdName, PickPrice, DelPrice, SitePrice, Code, " + 
+                    "Name from CashPOSDB.prodData cross join CashPOSDB.custData where Category = '" +
+                    cat + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
+                    {
+                        resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString());
+                    }
+
+                }
+                rdr.Close();
+                myConnection.Close();
+            }
+        }
     }
 }
