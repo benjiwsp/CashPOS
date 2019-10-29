@@ -28,7 +28,7 @@ namespace CashPOS
             //  MessageBox.Show(value);
             myConnection = new MySqlConnection(value);
         }
-      
+
         private void showAllBtn_Click(object sender, EventArgs e)
         {
 
@@ -44,7 +44,7 @@ namespace CashPOS
         }
         private void getList(string belongTo)
         {
-            
+
             resultList.Columns.Clear();
             addGridCol("code", "編號");
             addGridCol("name", "客戶");
@@ -74,7 +74,7 @@ namespace CashPOS
 
         private void getList()
         {
-            
+
             resultList.Columns.Clear();
             addGridCol("code", "編號");
             addGridCol("name", "客戶");
@@ -104,7 +104,7 @@ namespace CashPOS
 
         private void getSingleCompany(string company)
         {
-            
+
             resultList.Columns.Clear();
             addGridCol("code", "編號");
             addGridCol("name", "客戶");
@@ -133,10 +133,10 @@ namespace CashPOS
             myConnection.Close();
         }
 
-      
+
         private void clearAllBtn_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void loadCustCombo(string cust)
         {
@@ -179,7 +179,7 @@ namespace CashPOS
 
         private void serachItemBtn_Click(object sender, EventArgs e)
         {
-            
+
             resultList.Columns.Clear();
             addGridCol("prodID", "ID");
             addGridCol("prodName", "貨品");
@@ -228,7 +228,7 @@ namespace CashPOS
                     myConnection.Close();
                 }
             }
-            
+
         }
 
         private void adjustCSCustBtn_Click(object sender, EventArgs e)
@@ -293,7 +293,6 @@ namespace CashPOS
                 addGridCol("ProdName", "自提價");
                 addGridCol("ProdName", "返倉價");
                 addGridCol("ProdName", "地盤價");
-
                 myCommand = new MySqlCommand("select ProdName, PickPrice, DelPrice, SitePrice, Code, " +
                     "Name from CashPOSDB.prodData cross join CashPOSDB.custData where Category = '" +
                     cat + "'", myConnection);
@@ -305,11 +304,53 @@ namespace CashPOS
                     {
                         resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString());
                     }
-
                 }
                 rdr.Close();
                 myConnection.Close();
             }
+        }
+
+        private void resetSFPriceBtn_Click(object sender, EventArgs e)
+        {
+            resetPrice("富資");
+        }
+        private void resetPrice(string Comp)
+        {
+            string prod = "";
+            string prodID = "";
+            decimal pickPrice;
+            decimal delPrice;
+            decimal sitePrice;
+
+            foreach (DataGridViewRow row in resultList.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    pickPrice = 0.0m;
+                    delPrice = 0.0m;
+                    sitePrice = 0.0m;
+                    if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
+                    if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
+                    if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
+                    if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                    if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                    //    MessageBox.Show(prodID + "," + prod + "," + pickPrice.ToString());
+
+                    if (!(pickPrice == 0.0m && delPrice == 0.0m && sitePrice == 0.0m))
+                    {
+                        myConnection.Open();
+                        myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
+                       ", SitePrice =  " + sitePrice + " where Prod = '" + prodID + "' where BelongTo = '" + Comp + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                    }
+                }
+            }
+        }
+
+        private void resetCSPriceBtn_Click(object sender, EventArgs e)
+        {
+            resetPrice("超誠");
         }
     }
 }

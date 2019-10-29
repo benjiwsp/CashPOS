@@ -33,20 +33,20 @@
             this.csCustBtn = new MetroFramework.Controls.MetroButton();
             this.sfCustBtn = new MetroFramework.Controls.MetroButton();
             this.searchCatBtn = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
-            this.metroButton8 = new MetroFramework.Controls.MetroButton();
+            this.resetSFPriceBtn = new MetroFramework.Controls.MetroButton();
+            this.resetCSPriceBtn = new MetroFramework.Controls.MetroButton();
             this.clearAllBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.sfSearchBtn = new System.Windows.Forms.Button();
-            this.csSearchBtn = new System.Windows.Forms.Button();
             this.custSelectBox = new System.Windows.Forms.ComboBox();
-            this.adjustAllCustBtn = new System.Windows.Forms.Button();
-            this.adjustCSCustBtn = new System.Windows.Forms.Button();
-            this.adjustSFCustBtn = new System.Windows.Forms.Button();
-            this.serachItemBtn = new System.Windows.Forms.Button();
             this.resultList = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.adjustSFCustBtn = new System.Windows.Forms.Button();
+            this.adjustAllCustBtn = new System.Windows.Forms.Button();
+            this.adjustCSCustBtn = new System.Windows.Forms.Button();
+            this.serachItemBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.csSearchBtn = new System.Windows.Forms.Button();
+            this.sfSearchBtn = new System.Windows.Forms.Button();
             this.guideList = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,8 +61,8 @@
             this.flowLayoutPanel1.Controls.Add(this.csCustBtn);
             this.flowLayoutPanel1.Controls.Add(this.sfCustBtn);
             this.flowLayoutPanel1.Controls.Add(this.searchCatBtn);
-            this.flowLayoutPanel1.Controls.Add(this.metroButton5);
-            this.flowLayoutPanel1.Controls.Add(this.metroButton8);
+            this.flowLayoutPanel1.Controls.Add(this.resetSFPriceBtn);
+            this.flowLayoutPanel1.Controls.Add(this.resetCSPriceBtn);
             this.flowLayoutPanel1.Controls.Add(this.clearAllBtn);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 900);
@@ -110,23 +110,25 @@
             this.searchCatBtn.UseSelectable = true;
             this.searchCatBtn.Click += new System.EventHandler(this.searchCatBtn_Click);
             // 
-            // metroButton5
+            // resetSFPriceBtn
             // 
-            this.metroButton5.Location = new System.Drawing.Point(943, 3);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(229, 94);
-            this.metroButton5.TabIndex = 0;
-            this.metroButton5.Text = "重設富資客價錢";
-            this.metroButton5.UseSelectable = true;
+            this.resetSFPriceBtn.Location = new System.Drawing.Point(943, 3);
+            this.resetSFPriceBtn.Name = "resetSFPriceBtn";
+            this.resetSFPriceBtn.Size = new System.Drawing.Size(229, 94);
+            this.resetSFPriceBtn.TabIndex = 0;
+            this.resetSFPriceBtn.Text = "重設富資客價錢";
+            this.resetSFPriceBtn.UseSelectable = true;
+            this.resetSFPriceBtn.Click += new System.EventHandler(this.resetSFPriceBtn_Click);
             // 
-            // metroButton8
+            // resetCSPriceBtn
             // 
-            this.metroButton8.Location = new System.Drawing.Point(1178, 3);
-            this.metroButton8.Name = "metroButton8";
-            this.metroButton8.Size = new System.Drawing.Size(229, 94);
-            this.metroButton8.TabIndex = 0;
-            this.metroButton8.Text = "重設超誠客價錢";
-            this.metroButton8.UseSelectable = true;
+            this.resetCSPriceBtn.Location = new System.Drawing.Point(1178, 3);
+            this.resetCSPriceBtn.Name = "resetCSPriceBtn";
+            this.resetCSPriceBtn.Size = new System.Drawing.Size(229, 94);
+            this.resetCSPriceBtn.TabIndex = 0;
+            this.resetCSPriceBtn.Text = "重設超誠客價錢";
+            this.resetCSPriceBtn.UseSelectable = true;
+            this.resetCSPriceBtn.Click += new System.EventHandler(this.resetCSPriceBtn_Click);
             // 
             // clearAllBtn
             // 
@@ -161,28 +163,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 900);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // sfSearchBtn
-            // 
-            this.sfSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sfSearchBtn.Location = new System.Drawing.Point(592, 3);
-            this.sfSearchBtn.Name = "sfSearchBtn";
-            this.sfSearchBtn.Size = new System.Drawing.Size(583, 45);
-            this.sfSearchBtn.TabIndex = 2;
-            this.sfSearchBtn.Text = "富資客";
-            this.sfSearchBtn.UseVisualStyleBackColor = true;
-            this.sfSearchBtn.Click += new System.EventHandler(this.sfSearchBtn_Click);
-            // 
-            // csSearchBtn
-            // 
-            this.csSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.csSearchBtn.Location = new System.Drawing.Point(3, 3);
-            this.csSearchBtn.Name = "csSearchBtn";
-            this.csSearchBtn.Size = new System.Drawing.Size(583, 45);
-            this.csSearchBtn.TabIndex = 3;
-            this.csSearchBtn.Text = "超誠客";
-            this.csSearchBtn.UseVisualStyleBackColor = true;
-            this.csSearchBtn.Click += new System.EventHandler(this.csSearchBtn_Click);
-            // 
             // custSelectBox
             // 
             this.custSelectBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -192,50 +172,6 @@
             this.custSelectBox.Size = new System.Drawing.Size(1178, 21);
             this.custSelectBox.TabIndex = 5;
             this.custSelectBox.SelectedIndexChanged += new System.EventHandler(this.custSelectBox_SelectedIndexChanged);
-            // 
-            // adjustAllCustBtn
-            // 
-            this.adjustAllCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adjustAllCustBtn.Location = new System.Drawing.Point(885, 3);
-            this.adjustAllCustBtn.Name = "adjustAllCustBtn";
-            this.adjustAllCustBtn.Size = new System.Drawing.Size(290, 87);
-            this.adjustAllCustBtn.TabIndex = 10;
-            this.adjustAllCustBtn.Text = "調整所有客";
-            this.adjustAllCustBtn.UseVisualStyleBackColor = true;
-            this.adjustAllCustBtn.Click += new System.EventHandler(this.adjustAllCustBtn_Click);
-            // 
-            // adjustCSCustBtn
-            // 
-            this.adjustCSCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adjustCSCustBtn.Location = new System.Drawing.Point(297, 3);
-            this.adjustCSCustBtn.Name = "adjustCSCustBtn";
-            this.adjustCSCustBtn.Size = new System.Drawing.Size(288, 87);
-            this.adjustCSCustBtn.TabIndex = 9;
-            this.adjustCSCustBtn.Text = "調整超誠客";
-            this.adjustCSCustBtn.UseVisualStyleBackColor = true;
-            this.adjustCSCustBtn.Click += new System.EventHandler(this.adjustCSCustBtn_Click);
-            // 
-            // adjustSFCustBtn
-            // 
-            this.adjustSFCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adjustSFCustBtn.Location = new System.Drawing.Point(591, 3);
-            this.adjustSFCustBtn.Name = "adjustSFCustBtn";
-            this.adjustSFCustBtn.Size = new System.Drawing.Size(288, 87);
-            this.adjustSFCustBtn.TabIndex = 8;
-            this.adjustSFCustBtn.Text = "調整富資客";
-            this.adjustSFCustBtn.UseVisualStyleBackColor = true;
-            this.adjustSFCustBtn.Click += new System.EventHandler(this.adjustSFCustBtn_Click);
-            // 
-            // serachItemBtn
-            // 
-            this.serachItemBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serachItemBtn.Location = new System.Drawing.Point(3, 3);
-            this.serachItemBtn.Name = "serachItemBtn";
-            this.serachItemBtn.Size = new System.Drawing.Size(288, 87);
-            this.serachItemBtn.TabIndex = 11;
-            this.serachItemBtn.Text = "搜尋貨品";
-            this.serachItemBtn.UseVisualStyleBackColor = true;
-            this.serachItemBtn.Click += new System.EventHandler(this.serachItemBtn_Click);
             // 
             // resultList
             // 
@@ -267,6 +203,50 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 93);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
+            // adjustSFCustBtn
+            // 
+            this.adjustSFCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adjustSFCustBtn.Location = new System.Drawing.Point(591, 3);
+            this.adjustSFCustBtn.Name = "adjustSFCustBtn";
+            this.adjustSFCustBtn.Size = new System.Drawing.Size(288, 87);
+            this.adjustSFCustBtn.TabIndex = 8;
+            this.adjustSFCustBtn.Text = "調整富資客";
+            this.adjustSFCustBtn.UseVisualStyleBackColor = true;
+            this.adjustSFCustBtn.Click += new System.EventHandler(this.adjustSFCustBtn_Click);
+            // 
+            // adjustAllCustBtn
+            // 
+            this.adjustAllCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adjustAllCustBtn.Location = new System.Drawing.Point(885, 3);
+            this.adjustAllCustBtn.Name = "adjustAllCustBtn";
+            this.adjustAllCustBtn.Size = new System.Drawing.Size(290, 87);
+            this.adjustAllCustBtn.TabIndex = 10;
+            this.adjustAllCustBtn.Text = "調整所有客";
+            this.adjustAllCustBtn.UseVisualStyleBackColor = true;
+            this.adjustAllCustBtn.Click += new System.EventHandler(this.adjustAllCustBtn_Click);
+            // 
+            // adjustCSCustBtn
+            // 
+            this.adjustCSCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adjustCSCustBtn.Location = new System.Drawing.Point(297, 3);
+            this.adjustCSCustBtn.Name = "adjustCSCustBtn";
+            this.adjustCSCustBtn.Size = new System.Drawing.Size(288, 87);
+            this.adjustCSCustBtn.TabIndex = 9;
+            this.adjustCSCustBtn.Text = "調整超誠客";
+            this.adjustCSCustBtn.UseVisualStyleBackColor = true;
+            this.adjustCSCustBtn.Click += new System.EventHandler(this.adjustCSCustBtn_Click);
+            // 
+            // serachItemBtn
+            // 
+            this.serachItemBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachItemBtn.Location = new System.Drawing.Point(3, 3);
+            this.serachItemBtn.Name = "serachItemBtn";
+            this.serachItemBtn.Size = new System.Drawing.Size(288, 87);
+            this.serachItemBtn.TabIndex = 11;
+            this.serachItemBtn.Text = "搜尋貨品";
+            this.serachItemBtn.UseVisualStyleBackColor = true;
+            this.serachItemBtn.Click += new System.EventHandler(this.serachItemBtn_Click);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
@@ -281,6 +261,28 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1178, 51);
             this.tableLayoutPanel3.TabIndex = 13;
+            // 
+            // csSearchBtn
+            // 
+            this.csSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.csSearchBtn.Location = new System.Drawing.Point(3, 3);
+            this.csSearchBtn.Name = "csSearchBtn";
+            this.csSearchBtn.Size = new System.Drawing.Size(583, 45);
+            this.csSearchBtn.TabIndex = 3;
+            this.csSearchBtn.Text = "超誠客";
+            this.csSearchBtn.UseVisualStyleBackColor = true;
+            this.csSearchBtn.Click += new System.EventHandler(this.csSearchBtn_Click);
+            // 
+            // sfSearchBtn
+            // 
+            this.sfSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfSearchBtn.Location = new System.Drawing.Point(592, 3);
+            this.sfSearchBtn.Name = "sfSearchBtn";
+            this.sfSearchBtn.Size = new System.Drawing.Size(583, 45);
+            this.sfSearchBtn.TabIndex = 2;
+            this.sfSearchBtn.Text = "富資客";
+            this.sfSearchBtn.UseVisualStyleBackColor = true;
+            this.sfSearchBtn.Click += new System.EventHandler(this.sfSearchBtn_Click);
             // 
             // guideList
             // 
@@ -346,8 +348,8 @@
         private MetroFramework.Controls.MetroButton csCustBtn;
         private MetroFramework.Controls.MetroButton sfCustBtn;
         private MetroFramework.Controls.MetroButton searchCatBtn;
-        private MetroFramework.Controls.MetroButton metroButton5;
-        private MetroFramework.Controls.MetroButton metroButton8;
+        private MetroFramework.Controls.MetroButton resetSFPriceBtn;
+        private MetroFramework.Controls.MetroButton resetCSPriceBtn;
         private MetroFramework.Controls.MetroButton clearAllBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button sfSearchBtn;

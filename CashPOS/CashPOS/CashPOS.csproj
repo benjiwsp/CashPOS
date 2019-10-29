@@ -109,6 +109,12 @@
     <Compile Include="CustMgm.Designer.cs">
       <DependentUpon>CustMgm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintPage.Designer.cs">
+      <DependentUpon>PrintPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationMgm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustMgm.resx">
       <DependentUpon>CustMgm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintPage.resx">
+      <DependentUpon>PrintPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationMgm.resx">
       <DependentUpon>QuotationMgm.cs</DependentUpon>

@@ -55,5 +55,7 @@ namespace CashPOS
             btnHander(sender);
 
         }
+
+ 
     }
 }

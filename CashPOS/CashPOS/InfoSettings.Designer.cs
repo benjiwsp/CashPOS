@@ -35,6 +35,7 @@
             this.prodMgmBtn = new MetroFramework.Controls.MetroButton();
             this.custPriceBtn = new MetroFramework.Controls.MetroButton();
             this.invoiceBtn = new MetroFramework.Controls.MetroButton();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             this.tableLayoutPanel1.Controls.Add(this.custPriceBtn, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.invoiceBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(custMgmBtn, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.listBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -133,6 +135,29 @@
             this.invoiceBtn.UseSelectable = true;
             this.invoiceBtn.Click += new System.EventHandler(this.invoiceBtn_Click);
             // 
+            // listBox1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.listBox1, 3);
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "[ 價錢 ] - 調整客戶價錢",
+            "",
+            "[ 貨品 ] - 增加, 更新, 刪去貨品",
+            "",
+            "[ 客戶 ] - 增加, 更新, 刪去客戶",
+            "",
+            "[ 其他設定 ] - 設定 貨品類別 / 公司資料 / 倉地等等",
+            "",
+            "[ 報價表 ] - 建立 / 檢查報價單",
+            "",
+            "[ 發票 ]  - 建立 / 檢查發票"});
+            this.listBox1.Location = new System.Drawing.Point(333, 3);
+            this.listBox1.Name = "listBox1";
+            this.tableLayoutPanel1.SetRowSpan(this.listBox1, 2);
+            this.listBox1.Size = new System.Drawing.Size(984, 326);
+            this.listBox1.TabIndex = 2;
+            // 
             // InfoSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,5 +178,6 @@
         private MetroFramework.Controls.MetroButton prodMgmBtn;
         private MetroFramework.Controls.MetroButton custPriceBtn;
         private MetroFramework.Controls.MetroButton invoiceBtn;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

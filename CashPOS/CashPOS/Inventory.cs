@@ -27,6 +27,7 @@ namespace CashPOS
 
         private void serachInvBtn_Click(object sender, EventArgs e)
         {
+            clearList();
             myCommand = new MySqlCommand("Select * from CashPOSDB.prodData order by ProdID", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -53,6 +54,13 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
+        }
+        private void clearList()
+        {
+            cwList.Rows.Clear();
+            tmList.Rows.Clear();
+            ktList.Rows.Clear();
+            ymtList.Rows.Clear();
         }
     }
 }

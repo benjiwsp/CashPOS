@@ -73,13 +73,17 @@
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.sendQuotBtn = new System.Windows.Forms.Button();
             this.sumLbl = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.sendQuotBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.noteBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quoteItemList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -89,6 +93,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -106,6 +111,7 @@
             this.tableLayoutPanel1.Controls.Add(this.csQuoteBtn, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.quoteNotesList, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -205,6 +211,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label8, 3, 3);
             this.tableLayoutPanel2.Controls.Add(this.label9, 3, 4);
             this.tableLayoutPanel2.Controls.Add(this.label10, 3, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label13, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(993, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -417,6 +424,8 @@
             // 
             // searchQuoteList
             // 
+            this.searchQuoteList.AllowUserToAddRows = false;
+            this.searchQuoteList.AllowUserToDeleteRows = false;
             this.searchQuoteList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.searchQuoteList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.searchQuoteList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -431,8 +440,8 @@
             this.searchQuoteList.Location = new System.Drawing.Point(3, 57);
             this.searchQuoteList.Name = "searchQuoteList";
             this.searchQuoteList.RowHeadersVisible = false;
-            this.tableLayoutPanel1.SetRowSpan(this.searchQuoteList, 5);
-            this.searchQuoteList.Size = new System.Drawing.Size(984, 940);
+            this.tableLayoutPanel1.SetRowSpan(this.searchQuoteList, 4);
+            this.searchQuoteList.Size = new System.Drawing.Size(984, 772);
             this.searchQuoteList.TabIndex = 19;
             this.searchQuoteList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.searchQuoteList_CellContentClick);
             // 
@@ -553,18 +562,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(323, 156);
             this.tableLayoutPanel4.TabIndex = 24;
             // 
-            // sendQuotBtn
-            // 
-            this.tableLayoutPanel4.SetColumnSpan(this.sendQuotBtn, 2);
-            this.sendQuotBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendQuotBtn.Location = new System.Drawing.Point(3, 81);
-            this.sendQuotBtn.Name = "sendQuotBtn";
-            this.sendQuotBtn.Size = new System.Drawing.Size(317, 72);
-            this.sendQuotBtn.TabIndex = 2;
-            this.sendQuotBtn.Text = "Confirm";
-            this.sendQuotBtn.UseVisualStyleBackColor = true;
-            this.sendQuotBtn.Click += new System.EventHandler(this.sendQuotBtn_Click);
-            // 
             // sumLbl
             // 
             this.sumLbl.AutoSize = true;
@@ -584,6 +581,18 @@
             this.label11.Size = new System.Drawing.Size(155, 78);
             this.label11.TabIndex = 16;
             this.label11.Text = "Total:";
+            // 
+            // sendQuotBtn
+            // 
+            this.tableLayoutPanel4.SetColumnSpan(this.sendQuotBtn, 2);
+            this.sendQuotBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendQuotBtn.Location = new System.Drawing.Point(3, 81);
+            this.sendQuotBtn.Name = "sendQuotBtn";
+            this.sendQuotBtn.Size = new System.Drawing.Size(317, 72);
+            this.sendQuotBtn.TabIndex = 2;
+            this.sendQuotBtn.Text = "Confirm";
+            this.sendQuotBtn.UseVisualStyleBackColor = true;
+            this.sendQuotBtn.Click += new System.EventHandler(this.sendQuotBtn_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -619,6 +628,72 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Quotation Note:";
             // 
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "檢查過往Quotation ",
+            "--------------------------------------",
+            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
+            "選擇要檢查的Quotation 按下 [ Quotation ID ]",
+            "",
+            "刪去過往的Quotation",
+            "--------------------------------------",
+            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
+            "選擇要刪除的Quotation 按下 [ Delete ]"});
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(236, 156);
+            this.listBox1.TabIndex = 24;
+            // 
+            // listBox2
+            // 
+            this.tableLayoutPanel6.SetColumnSpan(this.listBox2, 2);
+            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Items.AddRange(new object[] {
+            "建立新報價單",
+            "------------------------------------------------",
+            "1) 選取 Company",
+            "2) 選取 Customer",
+            "3) 輸入 電話, FAX, Email, Attn, Reference No, 日期, 負責人, Project 等資料",
+            "4) 輸入 貨品, 數量, 單位, 單價 資料 (總數會自動計算)",
+            "5) 其他資料會在下面列表輸入, 如需要增加/更改/刪去 可在這列表調整",
+            "6) 如有任何 備注 可在 Quotation Notes: 輸入 (Notes 不會在Quotation中顯示)",
+            "7) 完成後按 [ Confirm ]"});
+            this.listBox2.Location = new System.Drawing.Point(245, 3);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(736, 156);
+            this.listBox2.TabIndex = 24;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(137, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(122, 39);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Company:";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel6, 3);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.88406F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.11594F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
+            this.tableLayoutPanel6.Controls.Add(this.listBox2, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.listBox1, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 835);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(984, 162);
+            this.tableLayoutPanel6.TabIndex = 25;
+            // 
             // QuotationMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,6 +713,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -695,6 +771,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
 
     }
 }
