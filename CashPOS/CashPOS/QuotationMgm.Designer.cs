@@ -59,6 +59,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.searchQuoteList = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,11 +80,10 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.noteBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quoteItemList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,8 +92,8 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -422,6 +422,16 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Project:";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(137, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(122, 39);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Company:";
+            // 
             // searchQuoteList
             // 
             this.searchQuoteList.AllowUserToAddRows = false;
@@ -628,24 +638,22 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Quotation Note:";
             // 
-            // listBox1
+            // tableLayoutPanel6
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "檢查過往Quotation ",
-            "--------------------------------------",
-            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
-            "選擇要檢查的Quotation 按下 [ Quotation ID ]",
-            "",
-            "刪去過往的Quotation",
-            "--------------------------------------",
-            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
-            "選擇要刪除的Quotation 按下 [ Delete ]"});
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(236, 156);
-            this.listBox1.TabIndex = 24;
+            this.tableLayoutPanel6.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel6, 3);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.88406F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.11594F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
+            this.tableLayoutPanel6.Controls.Add(this.listBox2, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.listBox1, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 835);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(984, 162);
+            this.tableLayoutPanel6.TabIndex = 25;
             // 
             // listBox2
             // 
@@ -667,32 +675,24 @@
             this.listBox2.Size = new System.Drawing.Size(736, 156);
             this.listBox2.TabIndex = 24;
             // 
-            // label13
+            // listBox1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(137, 3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(122, 39);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Company:";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel6, 3);
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.88406F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.11594F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
-            this.tableLayoutPanel6.Controls.Add(this.listBox2, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.listBox1, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 835);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(984, 162);
-            this.tableLayoutPanel6.TabIndex = 25;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "檢查過往Quotation ",
+            "--------------------------------------",
+            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
+            "選擇要檢查的Quotation 按下 [ Quotation ID ]",
+            "",
+            "刪去過往的Quotation",
+            "--------------------------------------",
+            "按 [ 富資 Quotation ] / [ 超誠 Quotation ]",
+            "選擇要刪除的Quotation 按下 [ Delete ]"});
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(236, 156);
+            this.listBox1.TabIndex = 24;
             // 
             // QuotationMgm
             // 
@@ -712,8 +712,8 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -76,6 +76,8 @@ namespace CashPOS
                 newButton.AutoSize = false;
                 newButton.Name = "newBtn" + i;
                 newButton.Text = itemList[i].ToString();
+                newButton.BackColor = Color.FromArgb(194, 91, 86);
+                newButton.ForeColor = Color.FromArgb(254, 246, 235);
                 newButton.Font = new Font("Arial", 14, FontStyle.Bold);
                 btnList.Add(newButton);
                 panel.Controls.Add(newButton);

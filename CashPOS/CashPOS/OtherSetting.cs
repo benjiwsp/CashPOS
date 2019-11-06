@@ -44,6 +44,8 @@ namespace CashPOS
         private void updatePickupLocBtn_Click(object sender, EventArgs e)
         {
             myConnection.Open();
+            myCommand = new MySqlCommand("delete from CashPOSDB.pickupLoc", myConnection);
+            myCommand.ExecuteNonQuery();
             foreach (DataGridViewRow row in pickupLocDataGrid.Rows)
             {
                 if (row.Cells[0].Value != null)
@@ -71,6 +73,21 @@ namespace CashPOS
             }
             myConnection.Close();
             companyData.Rows.Clear();
+        }
+
+        private void serachPickBtn_Click(object sender, EventArgs e)
+        {
+            myCommand = new MySqlCommand("Select * from CashPOSDB.pickupLoc", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    pickupLocDataGrid.Rows.Add(rdr["location"].ToString(), rdr["belongTo"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
         }
     }
 }

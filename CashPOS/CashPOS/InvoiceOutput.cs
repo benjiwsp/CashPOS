@@ -21,21 +21,37 @@ namespace CashPOS
     public partial class InvoiceOutput : UserControl
     {
         private MySqlConnection myConnection;
+        private MySqlConnection tempConn;
+
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
+        MySqlCommand tempComm;
+        MySqlDataReader tempRdr;
         public InvoiceOutput()
         {
             InitializeComponent();
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
+            tempConn = new MySqlConnection(value);
         }
 
         private void csInvoice_Click(object sender, EventArgs e)
         {
             InputBox input = new InputBox();
             input.Text = "請輸入發票期數(單位數字)。";
-
+            string index = "";
+            if (input.ShowDialog() == DialogResult.OK)
+            {
+                index = input.OrderNumberInputTextbox.Text;
+                //create the invoice
+                createInvoicePDF(index, 1, "超誠建築材料倉有限公司");
+            }
+        }
+        private void sfInvoice_Click(object sender, EventArgs e)
+        {
+            InputBox input = new InputBox();
+            input.Text = "請輸入發票期數(單位數字)。";
             string index = "";
             if (input.ShowDialog() == DialogResult.OK)
             {
@@ -43,7 +59,6 @@ namespace CashPOS
                 //create the invoice
             }
         }
-
         private PdfPCell newCell(iTextSharp.text.Phrase phrase, int colSpan)
         {
             PdfPCell cell = new PdfPCell(phrase);
@@ -55,7 +70,7 @@ namespace CashPOS
         }
 
         //cross join orderdetails && orderRecords on orderID, if customer != next.customer -> create a new page
-        private void createKWPDF(string Index, int receiptIndexing, string BelongTo)
+        private void createInvoicePDF(string Index, int receiptIndexing, string BelongTo)
         {
             DateTime startPick = StartTimePicker.SelectionRange.Start;
             DateTime endPick = EndTimePicker.SelectionRange.Start;
@@ -65,719 +80,280 @@ namespace CashPOS
             string folderPath = "D:\\SaveFund\\發票\\" + beginning.ToString("yyyy") + "\\" + beginning.ToString("MM") + "\\";
             string ch_compName = "";
             string en_compName = "";
-            string fax = "";
-            string tel = "";
+            string compFax = "";
+            string compTel = "";
             string ch_add = "";
             string en_add = "";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
-            myCommand = new MySqlCommand("Select * from CashPOSDB.companyInfo where company = '" + BelongTo + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.companyInfo where NameCH = '" + BelongTo + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
-                ch_compName = rdr[""].ToString();
-                en_compName = rdr[""].ToString();
-                fax = rdr[""].ToString();
-                tel = rdr[""].ToString();
-                ch_add = rdr[""].ToString();
-                en_add = rdr[""].ToString();
+                if (rdr.Read())
+                {
+                    ch_compName = rdr["NameCH"].ToString();
+                    en_compName = rdr["NameEN"].ToString();
+                    compFax = rdr["Fax"].ToString();
+                    compTel = rdr["Phone"].ToString();
+                    ch_add = rdr["AddCH"].ToString();
+                    en_add = rdr["AddEN"].ToString();
+                }
             } rdr.Close();
             myConnection.Close();
             string filepath = folderPath + ending.ToString("yyyyMM") + Index + BelongTo + ".pdf";
-            int count = 0;
-            ArrayList pageSumList = new ArrayList();
 
-            string returnStr = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
-             "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
-             "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
-             "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
-             "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
-             "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
-             "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
-             "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID " + "";
-            myCommand = new MySqlCommand(returnStr, myConnection);
+            int count = 0;
+
+
+
+
+            string code = "";// selectedCust.Substring(0, selectedCust.IndexOf(" -"));
+            string cust = "";// selectedCust.Remove(0, selectedCust.IndexOf("- ") + 2);
+            string note = "";
+            decimal sum = 0.0m;
+            string handler = "";
+            string tel = "";
+            string fax = "";
+            string attn = "";
+            string email = "";
+            string project = "";
+            string refNo = "";
+            string quote = "";
+            bool finish = true; //check if the page is done
+            bool filled = true; // check if the page is filled
+            bool needFooter = false; // check if it should put footer
+            //missing the time frame
+            string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and a.time >=  '" + startPick.Date.ToString("yyyy-MM-dd") + "' and a.time <= '" + endPick.Date.ToString("yyyy-MM-dd") + "' order by a.custCode, a.orderID";
+            myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
             rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
+            if (rdr.HasRows)
             {
-                Document doc = new Document(iTextSharp.text.PageSize.LETTER);
+
+
+                Document doc = new Document(iTextSharp.text.PageSize.A4);
 
                 BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + "\\Fonts\\KAIU.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                iTextSharp.text.Font chfont = new iTextSharp.text.Font(bf, 14);
-                iTextSharp.text.Font chfontB = new iTextSharp.text.Font(bf, 15);
-                iTextSharp.text.Font chfontT = new iTextSharp.text.Font(bf, 13);
-
+                iTextSharp.text.Font chfont = new iTextSharp.text.Font(bf, 15);
+                iTextSharp.text.Font chfontB = new iTextSharp.text.Font(bf, 14);
+                iTextSharp.text.Font chfontT = new iTextSharp.text.Font(bf, 9);
+                iTextSharp.text.Font custInfo = new iTextSharp.text.Font(bf, 11);
+                iTextSharp.text.Font infoFont = new iTextSharp.text.Font(bf, 13);
                 PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                 doc.Open();
-                PdfPTable mytable = new PdfPTable(5);
-                PdfPCell cell;
-                PdfPTable mytable2 = new PdfPTable(3);
-                PdfPTable mytable3 = new PdfPTable(5);
 
-                string customerCode = "";
-                string CompanyName = "";
-                string address = "";
-                string lastItemName = "";
-                //int receiptIndexing = 1;
-                string invoiceID = "";
-                double totalAmount = 0.0;
-                decimal totalPrice = 0.0m;
-                MySqlConnection myConnection5 = new MySqlConnection("Server=mydbinstance.c7pvwaixaizr.ap-southeast-1.rds.amazonaws.com;Port=3306;Database=SaveFundDevelopmentDB;Uid=root;Pwd=SFAdmin123;charset=utf8; allow zero datetime=true;");
-                myConnection5.Open();
-                MySqlConnection myConnection2 = new MySqlConnection("Server=savefundserver.cskjfylmnet5.ap-northeast-1.rds.amazonaws.com;Port=3306;Database=SaveFundDevelopmentDB;Uid=benjiwong;Pwd=Eric2327;charset=utf8;");
-                myConnection2.Open();
+
+
+                int rowCount = 0;
+
+
+
                 while (rdr.Read())
                 {
-
-                    if (count == 20)
-                        count = 0;
-                    if (count == 0 || CompanyName != rdr["Company"].ToString() || lastItemName != rdr["ItemName"].ToString())
+                    PdfPTable titleTable = new PdfPTable(5);
+                    PdfPTable infoTable = new PdfPTable(7);
+                    float[] twdiths = new float[7];
+                    twdiths[0] = 80f;
+                    twdiths[1] = 10f;
+                    twdiths[2] = 80f;
+                    twdiths[3] = 80f;
+                    twdiths[4] = 80f;
+                    twdiths[5] = 10f;
+                    twdiths[6] = 80;
+                    infoTable.SetWidths(twdiths);
+                    PdfPTable detailTable = new PdfPTable(8);
+                    PdfPTable footerTable = new PdfPTable(5);
+                    string newCode = rdr["custCode"].ToString();
+                    if (code != newCode && code != "")
                     {
-                        if (mytable2.Rows.Count > 0)
+                        finish = true;
+                        needFooter = true;
+
+                        while (rowCount < 30)
                         {
-                            if (count > 0 && count < 20)
-                            {
-                                for (int i = count; i <= 20; i++)
-                                {
-                                    cell = new PdfPCell(new Phrase(" ", chfont));
-                                    cell.Colspan = 8;
-                                    cell.Padding = 0;
-                                    cell.Border = 0;
-                                    mytable2.AddCell(cell);
-                                }
-                            }
-
-                            //pageSumList for listing all the company total price on the last page as summary
-                            pageSumList.Add(invoiceID);
-                            pageSumList.Add(customerCode);
-                            pageSumList.Add(CompanyName);
-                            pageSumList.Add(totalPrice.ToString("n2"));
-                            count = 0;
-                            cell = new PdfPCell(new Phrase("-----------------------------------------------------------------------------", chfont));
-                            //sb.AppendLine("---------------------------------------------------------------------------------------------------------------");
-                            cell.HorizontalAlignment = 4;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 8;
-                            mytable2.AddCell(cell);
-                            if (totalAmount > 0 && !CompanyName.Contains("順利"))
-                            {
-
-                                mytable2.AddCell("");
-                                mytable2.AddCell("");
-                                mytable2.AddCell("");
-
-                                cell = new PdfPCell(new Phrase("總重", chfont));
-                                cell.HorizontalAlignment = 0;
-                                cell.Padding = 0;
-                                cell.Border = 0;
-                                mytable2.AddCell(cell);
-                                cell = new PdfPCell(new Phrase(totalAmount.ToString("n2"), chfont));
-                                cell.HorizontalAlignment = 2;
-                                cell.Padding = 0;
-                                cell.Border = 0;
-                                mytable2.AddCell(cell);
-                                cell = new PdfPCell(new Phrase(" 噸", chfont));
-                                cell.HorizontalAlignment = 0;
-                                cell.Padding = 0;
-                                cell.Border = 0;
-                                mytable2.AddCell(cell);
-                                mytable2.AddCell("");
-                                mytable2.AddCell("");
-                                cell = new PdfPCell(new Phrase("-----------------------------------------------------------------------------", chfont));
-                                cell.HorizontalAlignment = 4;
-                                cell.Padding = 0;
-                                cell.Border = 0;
-                                cell.Colspan = 8;
-                                mytable2.AddCell(cell);
-                                //sb.Append(",,,總重," + totalAmount.ToString("n2") + ", 噸,,");
-                                //sb.AppendLine("");
-
-                                //sb.AppendLine("---------------------------------------------------------------------------------------------------------------");
-                            }
-                            cell = new PdfPCell(new Phrase("請於收貨後30天內付清貨款。", chfont));
-                            cell.HorizontalAlignment = 4;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 4;
-                            mytable2.AddCell(cell);
-
-
-
-                            cell = new PdfPCell(new Phrase("總計:", chfont));
-                            cell.HorizontalAlignment = 2;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 2;
-                            mytable2.AddCell(cell);
-                            //sb.Append(",,,,,," + "總計:," + totalPrice.ToString("F2") + ",,,,,,");
-                            //sb.AppendLine("");
-                            //sb.AppendLine("");
-                            cell = new PdfPCell(new Phrase(totalPrice.ToString("n2"), chfont));
-                            cell.HorizontalAlignment = 2;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 2;
-                            mytable2.AddCell(cell);
-                            totalAmount = 0.0;
-                            totalPrice = 0;
-                            mytable2.AddCell("");
-                            mytable2.AddCell("");
-                            mytable2.AddCell("");
-                            mytable2.AddCell("");
-                            mytable2.AddCell("");
-                            mytable2.AddCell("");
-                            cell = new PdfPCell(new Phrase("==============", chfont));
-                            cell.HorizontalAlignment = 2;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 2;
-                            mytable2.AddCell(cell);
-
-
-                            cell = new PdfPCell(new Phrase("富資發展有限公司", chfontB));
-
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 8;
-                            mytable2.AddCell(cell);
-
-                            cell = new PdfPCell(new Phrase(" ", chfont));
-                            cell.Colspan = 8;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                            cell = new PdfPCell(new Phrase(" ", chfont));
-                            cell.Colspan = 8;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                            cell = new PdfPCell(new Phrase(" ", chfont));
-                            cell.Colspan = 8;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-
-                            cell = new PdfPCell(new Phrase("多謝惠顧，祝生意興隆。", chfont));
-                            cell.HorizontalAlignment = 1;
-                            cell.Colspan = 8;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                            doc.Add(mytable2);
+                            detailTable.AddCell(newCell(" ", 0, 8, 0, 0, infoFont));
+                            rowCount++;
                         }
-                        CompanyName = rdr["Company"].ToString();
-                        lastItemName = rdr["ItemName"].ToString();
+                        rowCount = 0;
+                        detailTable.AddCell(newCell(" ", 0, 8, 0, 2, infoFont));
+                        detailTable.AddCell(newCell(sum.ToString(" "), 0, 6, 0, 0, infoFont));
+                        detailTable.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
+                        detailTable.AddCell(newCell(sum.ToString("0.00"), 0, 8, 0, 0, infoFont));
+                        sum = 0.0m;
+
+                        doc.Add(detailTable);
+                    }
+
+
+
+                    detailTable = new PdfPTable(8);
+
+               
+                    if (rowCount == 30)
+                    {
+                        detailTable.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                        rowCount = 0;
+                        finish = true;
+                        needFooter = true;
+                    }
+             
+
+
+                    if (finish || filled)
+                    {
+                       
                         doc.NewPage();
-                        mytable = new PdfPTable(5);
-                        mytable.WidthPercentage = 100;
-                        mytable.HorizontalAlignment = 1;
-                        mytable.SpacingAfter = 20;
-                        mytable.DefaultCell.Border = 0;
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("富資發展有限公司", chfontB));
-                        cell.Colspan = 3;
-
-                        cell.Border = 0;
-                        cell.Padding = 0;
-                        cell.HorizontalAlignment = 1;
-                        mytable.AddCell(cell);
-                        mytable.AddCell("");
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("SAVE FUND DEVELOPMENT LIMITED", chfontT));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 3;
-                        mytable.AddCell(cell);
-                        mytable.AddCell("");
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("", chfontT));
-                        cell.HorizontalAlignment = 1;
-                        cell.Colspan = 3;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable.AddCell(cell);
-                        mytable.AddCell("");
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("House 5, Villa De Mer, 5 Lok Chui Street, Tai Lam Tuen Mun, NT", chfontT));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 3;
-                        mytable.AddCell(cell);
-                        mytable.AddCell("");
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("TEL: 2618 2239", chfontT));
-                        cell.HorizontalAlignment = 1;
-                        cell.Border = 0;
-                        cell.Padding = 0;
-                        mytable.AddCell(cell);
-
-                        mytable.AddCell("");
-                        cell = new PdfPCell(new Phrase("FAX: 2618 5591", chfontT));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable.AddCell(cell);
-
-                        mytable.AddCell("");
-                        doc.Add(mytable);
-
-                        MySqlCommand myCommand2 = new MySqlCommand("Select * From CustomerDetail_table where CustomerName='" + CompanyName + "' order by CustomerName", myConnection2);
-                        MySqlDataReader rdr2 = myCommand2.ExecuteReader();
-                        if (rdr2.HasRows == true)
+                        tempComm = new MySqlCommand("Select * from custData where Code = '" + rdr["custCode"].ToString() + "'", tempConn);
+                        tempConn.Open();
+                        tempRdr = tempComm.ExecuteReader();
+                        if (tempRdr.HasRows)
                         {
-                            if (rdr2.Read())
+                            if (tempRdr.Read())
                             {
-                                customerCode = rdr2["CustomerCode"].ToString();
-                                address = rdr2["Address"].ToString();
+                                code = tempRdr["Code"].ToString();// selectedCust.Substring(0, selectedCust.IndexOf(" -"));
+                                cust = tempRdr["Name"].ToString();// selectedCust.Remove(0, selectedCust.IndexOf("- ") + 2);
+                                tel = tempRdr["Phone1"].ToString();
+                                fax = tempRdr["Fax"].ToString();
+                                email = tempRdr["Email"].ToString();
+
                             }
-                        } rdr2.Close();
 
-                        mytable3 = new PdfPTable(6);
-                        mytable3.WidthPercentage = 100;
-                        float[] twdiths = new float[6];
-                        twdiths[0] = 35f;
-                        twdiths[1] = 80f;
-                        twdiths[2] = 90f;
-                        twdiths[3] = 50f;
-                        twdiths[4] = 60f;
-                        twdiths[5] = 110f;
-                        mytable3.SetWidths(twdiths);
-                        mytable3.SpacingAfter = 10;
-                        mytable3.DefaultCell.Border = 0;
-                        mytable3.AddCell("");
-                        cell = new PdfPCell(new Phrase(customerCode, chfont));
-                        //sb.AppendLine("");
-                        //sb.AppendLine(customerCode);
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable3.AddCell(cell);
-                        mytable3.AddCell("");
-                        mytable3.AddCell("");
-                        mytable3.AddCell("");
-                        mytable3.AddCell("");
-                        cell = new PdfPCell(new Phrase("致:", chfont));
-
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable3.AddCell(cell);
-                        cell = new PdfPCell(new Phrase(CompanyName, chfont));
-
-
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 2;
-                        mytable3.AddCell(cell);
-                        mytable3.AddCell("");
-                        cell = new PdfPCell(new Phrase("日期:", chfont));
-
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable3.AddCell(cell);
-                        cell = new PdfPCell(new Phrase(ending.ToString("dd/MM/yyyy"), chfont));
-
-                        cell.Padding = 0;
-                        cell.Border = 0;
-
-                        mytable3.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("地址:", chfont));
-                        //sb.AppendLine("致:," + CompanyName + ",,,,,日期:," + ending.ToString("dd/MM/yyyy"));
-
-                        //sb.Append("地址:,");
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        //  cell.Rowspan = 2;
-                        mytable3.AddCell(cell);
-
-                        string addPartA = "";
-                        string addPartB = "";
-                        if (address.Contains(" "))
-                        {
-                            addPartA = address.Substring(0, address.IndexOf(" "));
-                            addPartB = address.Substring(addPartA.Length + 1, (address.Length - addPartA.Length) - 1);
-                            cell = new PdfPCell(new Phrase(addPartA, chfont));
-                            //sb.Append(addPartA + addPartB);
-                        }
-                        else
-                        {
-                            cell = new PdfPCell(new Phrase(address, chfont));
-                            //sb.Append(address);
-                        }
-
-
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 2;
-                        mytable3.AddCell(cell);
-                        mytable3.AddCell("");
-                        cell = new PdfPCell(new Phrase("發票號碼:", chfont));
-                        //sb.Append(",,,,,發票號碼:," + ending.ToString("yyyyMM") + Index + receiptIndexing.ToString().PadLeft(3, '0') + ",");
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable3.AddCell(cell);
-                        cell = new PdfPCell(new Phrase(ending.ToString("yyyyMM") + Index + receiptIndexing.ToString().PadLeft(3, '0'), chfont));
-                        invoiceID = ending.ToString("yyyyMM") + Index + receiptIndexing.ToString().PadLeft(3, '0');
-
-                        receiptIndexing++;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable3.AddCell(cell);
-
-
-                        if (addPartB != "")
-                        {
-                            //cell.Padding = 0;
-                            //cell.Border = 0;
-                            //cell = new PdfPCell(new Phrase("", chfont));
-                            //mytable3.AddCell(cell);
-                            mytable3.AddCell("");
-
-                            cell = new PdfPCell(new Phrase(addPartB, chfont));
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            cell.Colspan = 2;
-                            //mytable3.AddCell(new Phrase(addPartB, chfont));
-                            mytable3.AddCell(cell);
-                            mytable3.AddCell("");
-                            //  mytable3.AddCell("");
-                            mytable3.AddCell("");
-                            mytable3.AddCell("");
-                            mytable3.AddCell("");
-
-                        }
-                        doc.Add(mytable3);
+                        } tempRdr.Close(); tempConn.Close();
 
 
 
+                        titleTable.AddCell(newCell(en_compName, 1, 5, 0, 0, chfontB));
+                        titleTable.AddCell(newCell(ch_compName, 3, 5, 0, 2, chfontB));
 
-                        mytable2 = new PdfPTable(8);
-                        mytable2.WidthPercentage = 100;
-                        mytable2.HorizontalAlignment = 1;
-                        mytable2.SpacingAfter = 0;
-                        mytable2.DefaultCell.Border = 0;
-                        float[] twdiths2 = new float[8];
-                        twdiths2[0] = 100f;
-                        twdiths2[1] = 100f;
-                        twdiths2[2] = 180f;
+                        titleTable.AddCell(newCell(en_add, 1, 5, 0, 0, chfontT));
+                        titleTable.AddCell(newCell(ch_add, 1, 5, 0, 0, chfontT));
+                        doc.Add(titleTable);
 
-                        twdiths2[3] = 50f;
-                        twdiths2[4] = 130f;
+                        infoTable.AddCell(newCell(" ", 0, 7, 0, 0, custInfo));
+                        // start of customer info
+                        infoTable.AddCell(newCell("TO", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(cust, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 4, 0, 0, custInfo));
 
-                        twdiths2[5] = 40f;
-                        twdiths2[6] = 150f;
-                        twdiths2[7] = 150f;
-                        mytable2.SetWidths(twdiths2);
-                        cell = new PdfPCell(new Phrase("INVOICE", chfont));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 8;
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("發票", chfont));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 8;
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("=============================================================================", chfont));
-                        cell.HorizontalAlignment = 0;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 8;
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("單號", chfont));
-                        cell.HorizontalAlignment = 0;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        infoTable.AddCell(newCell("Tel No", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(tel, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Quotation No", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(quote, 0, 1, 0, 0, custInfo));
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("日期", chfont));
-                        cell.HorizontalAlignment = 0;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        infoTable.AddCell(newCell("Fax No", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(fax, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Reference No", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(refNo, 0, 1, 0, 0, custInfo));
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("貨品", chfont));
-                        cell.HorizontalAlignment = 0;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        infoTable.AddCell(newCell("Email", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(email, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Date", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(beginning.ToString("yyyy-MM-dd"), 0, 1, 0, 0, custInfo));
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("類別", chfont));
-                        cell.HorizontalAlignment = 0;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        infoTable.AddCell(newCell("Attn", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(attn, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Customer", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(code, 0, 1, 0, 0, custInfo));
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("數量", chfont));
-                        cell.HorizontalAlignment = 1;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 2;
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("單價(HK$)", chfont));
-                        cell.HorizontalAlignment = 2;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        infoTable.AddCell(newCell("Project", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(project, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Handle By", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(handler, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(" ", 0, 7, 0, 0, custInfo));
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("金額(HK$)", chfont));
-                        cell.HorizontalAlignment = 2;
-                        cell.Padding = 0;
-                        cell.Border = 0;
+                        //  infoTable.AddCell(newCell("________________________________________________________________", 7, 0, 0, chfontB));
+                        doc.Add(infoTable);
 
-                        mytable2.AddCell(cell);
-                        cell = new PdfPCell(new Phrase("-----------------------------------------------------------------------------", chfont));
-                        cell.HorizontalAlignment = 4;
-                        //sb.AppendLine("");
-                        //sb.AppendLine("單號,日期,貨品,類別,數量,單位,單價(HK$),金額(HK$)");
-                        //sb.AppendLine("---------------------------------------------------------------------------------------------------------------");
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        cell.Colspan = 8;
-                        mytable2.AddCell(cell);
-
+                        detailTable.AddCell(newCell("ID", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("Item", 2, 3, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("Quanity", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("Unit", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("U/P(HKD)", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("Total(HKD)", 2, 1, 0, 2, chfontT));
+                       // doc.Add(detailTable);
+                        finish = false;
+                        filled = false;
                     }
 
 
-
-
-                    MySqlCommand getTypeCommand = new MySqlCommand("select SandReceiptNo, Type from OrderRecords_table where OrderID='" + rdr["OrderID"].ToString() + "'", myConnection5);
-                    MySqlDataReader readType = getTypeCommand.ExecuteReader();
-                    string thisType = "";
-                    if (readType.HasRows)
-                    {
-                        if (readType.Read())
-                        {
-                            string orderID = "";
-                            if (rdr["itemName"].ToString() == "河沙" && readType["SandReceiptNo"].ToString() != "")
-                            {
-                                orderID = readType["SandReceiptNo"].ToString();
-                            }
-                            else
-                            {
-                                orderID = rdr["OrderID"].ToString();
-                            }
+                    //start of quotation detail
 
 
 
-                            cell = new PdfPCell(new Phrase(orderID, chfont));
-                            cell.HorizontalAlignment = 0;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                            cell = new PdfPCell(new Phrase(Convert.ToDateTime(rdr["CreateTime"].ToString()).ToString("dd-MM-yy"), chfont));
-                            cell.HorizontalAlignment = 0;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
+                    detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["itemName"].ToString(), 1, 3, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["amount"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["unit"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["unitPrice"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["total"].ToString(), 1, 1, 0, 0, infoFont));
+                    sum += Convert.ToDecimal(rdr["total"].ToString());
+                    doc.Add(detailTable);
 
+                    rowCount++;
 
-                            cell = new PdfPCell(new Phrase(rdr["ItemName"].ToString(), chfont));
-                            cell.HorizontalAlignment = 0;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                            //SandCounter++;
-                            //   lastItemName = rdr["ItemName"].ToString();
-
-
-                            cell = new PdfPCell(new Phrase(readType["Type"].ToString(), chfont));
-                            thisType = readType["Type"].ToString();
-                            cell.HorizontalAlignment = 0;
-                            cell.Padding = 0;
-                            cell.Border = 0;
-                            mytable2.AddCell(cell);
-                        }
-                    } readType.Close();
-
-
-                    cell = new PdfPCell(new Phrase(rdr["Amount"].ToString(), chfont));
-                    cell.HorizontalAlignment = 2;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(" " + rdr["Unit"].ToString(), chfont));
-                    cell.HorizontalAlignment = 0;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(rdr["UnitPrice"].ToString(), chfont));
-                    cell.HorizontalAlignment = 2;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(rdr["TotalPrice"].ToString(), chfont));
-                    cell.HorizontalAlignment = 2;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    totalPrice += Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    //sb.AppendLine(rdr["OrderID"].ToString() + "," + (Convert.ToDateTime(rdr["CreateTime"].ToString()).ToString("dd-MM-yy")) + "," +
-                    //     rdr["ItemName"].ToString() + "," + thisType + ","
-                    //       + rdr["Amount"].ToString() + "," + rdr["Unit"].ToString() + ","
-                    //      + rdr["UnitPrice"].ToString() + "," + rdr["TotalPrice"].ToString());
-
-                    count++;
+              
                 }
+                PdfPTable footer = new PdfPTable(8);
 
-                myConnection2.Close();
-                if (count > 0 && count < 20)
+                while (rowCount < 30)
                 {
-                    for (int i = count; i <= 20; i++)
-                    {
-                        cell = new PdfPCell(new Phrase(" ", chfont));
-                        cell.Colspan = 8;
-                        cell.Padding = 0;
-                        cell.Border = 0;
-                        mytable2.AddCell(cell);
-                    }
+                    footer.AddCell(newCell(" ", 0, 8, 0, 0, infoFont));
+                    rowCount++;
                 }
-                pageSumList.Add(invoiceID);
-                pageSumList.Add(customerCode);
-                pageSumList.Add(CompanyName);
-                pageSumList.Add(totalPrice.ToString("n2"));
-                cell = new PdfPCell(new Phrase("-----------------------------------------------------------------------------", chfont));
-                //sb.AppendLine("---------------------------------------------------------------------------------------------------------------");
-                cell.HorizontalAlignment = 4;
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 8;
-                mytable2.AddCell(cell);
-                if (totalAmount > 0 && !CompanyName.Contains("順利"))
-                {
+                rowCount = 0;
+                footer.AddCell(newCell(" ", 0, 8, 0, 2, infoFont));
+                footer.AddCell(newCell(sum.ToString(" "), 0, 6, 0, 0, infoFont));
+                footer.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
+                footer.AddCell(newCell(sum.ToString("0.00"), 0, 8, 0, 0, infoFont)); sum = 0.0m;
+                doc.Add(footer);
 
-                    mytable2.AddCell("");
-                    mytable2.AddCell("");
-                    mytable2.AddCell("");
-
-                    cell = new PdfPCell(new Phrase("總重", chfont));
-                    cell.HorizontalAlignment = 0;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(totalAmount.ToString("n2"), chfont));
-                    cell.HorizontalAlignment = 2;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    cell = new PdfPCell(new Phrase(" 噸", chfont));
-                    cell.HorizontalAlignment = 0;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    mytable2.AddCell(cell);
-                    mytable2.AddCell("");
-                    mytable2.AddCell("");
-                    cell = new PdfPCell(new Phrase("-----------------------------------------------------------------------------", chfont));
-                    cell.HorizontalAlignment = 4;
-                    cell.Padding = 0;
-                    cell.Border = 0;
-                    cell.Colspan = 8;
-                    mytable2.AddCell(cell);
-                    //sb.AppendLine(",,,總重," + totalAmount.ToString("n2") + ",噸");
-                    //sb.AppendLine("---------------------------------------------------------------------------------------------------------------");
-                }
-                cell = new PdfPCell(new Phrase("請於收貨後30天內付清貨款。", chfont));
-                cell.HorizontalAlignment = 4;
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 4;
-                mytable2.AddCell(cell);
-
-
-
-                cell = new PdfPCell(new Phrase("總計:", chfont));
-                cell.HorizontalAlignment = 2;
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 2;
-                mytable2.AddCell(cell);
-                cell = new PdfPCell(new Phrase(totalPrice.ToString("n2"), chfont));
-                cell.HorizontalAlignment = 2;
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 2;
-                mytable2.AddCell(cell);
-                //sb.Append(",,,,,," + "總計:," + totalPrice.ToString("F2"));
-                //sb.AppendLine("");
-                //sb.AppendLine("");
-                //sb.AppendLine("");
-                totalPrice = 0;
-                totalAmount = 0.0;
-                mytable2.AddCell("");
-                mytable2.AddCell("");
-                mytable2.AddCell("");
-                mytable2.AddCell("");
-                mytable2.AddCell("");
-                mytable2.AddCell("");
-                cell = new PdfPCell(new Phrase("==============", chfont));
-                cell.HorizontalAlignment = 2;
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 2;
-                mytable2.AddCell(cell);
-
-
-                cell = new PdfPCell(new Phrase("富資發展有限公司", chfontB));
-
-                cell.Padding = 0;
-                cell.Border = 0;
-                cell.Colspan = 8;
-                mytable2.AddCell(cell);
-
-                cell = new PdfPCell(new Phrase(" ", chfont));
-                cell.Colspan = 8;
-                cell.Padding = 0;
-                cell.Border = 0;
-                mytable2.AddCell(cell);
-                cell = new PdfPCell(new Phrase(" ", chfont));
-                cell.Colspan = 8;
-                cell.Padding = 0;
-                cell.Border = 0;
-                mytable2.AddCell(cell);
-                cell = new PdfPCell(new Phrase(" ", chfont));
-                cell.Colspan = 8;
-                cell.Padding = 0;
-                cell.Border = 0;
-                mytable2.AddCell(cell);
-
-
-                cell = new PdfPCell(new Phrase("多謝惠顧，祝生意興隆。", chfont));
-                cell.HorizontalAlignment = 1;
-                cell.Colspan = 8;
-                cell.Padding = 0;
-                cell.Border = 0;
-                mytable2.AddCell(cell);
-                doc.Add(mytable2);
-
-
-                //       StreamWriter sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
-                //        sw_CSV.WriteLine(//sb.ToString());
-                //        sw_CSV.Close();
-
-                myConnection2.Close();
-
-
-                //end of garbage invoice
-                myConnection5.Close();
                 doc.Close();
+                myConnection.Close();
             }
-            rdr.Close();
-
-            pageSumList.Add(receiptIndexing);
-            //      return pageSumList;
         }
 
-        private void sfInvoice_Click(object sender, EventArgs e)
+
+        private PdfPCell newCell(string txt, int padding, int colSpan, int horAlig, int border, iTextSharp.text.Font font)
         {
-
+            PdfPCell cell = new PdfPCell(new Phrase(txt, font));
+            cell.Border = border;
+            cell.Colspan = colSpan;
+            cell.Padding = padding;
+            cell.HorizontalAlignment = horAlig; //0=Left, 1=Centre, 2=
+            return cell;
         }
 
 
-
+        private void createFooter(PdfPTable table, int rowCount, Document doc, iTextSharp.text.Font font)
+        {
+            while (rowCount < 30)
+            {
+                table.AddCell(newCell("a", 0, 8, 0, 0, font));
+                rowCount++;
+            }
+            rowCount = 0;
+            table.AddCell(newCell(" ", 0, 8, 0, 2, font));
+            doc.Add(table);
+        }
     }
 }

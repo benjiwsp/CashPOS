@@ -36,7 +36,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatePickupLocBtn = new System.Windows.Forms.Button();
             this.companyData = new System.Windows.Forms.DataGridView();
-            this.insertCompInfo = new System.Windows.Forms.Button();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +43,8 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insertCompInfo = new System.Windows.Forms.Button();
+            this.serachPickBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
@@ -66,7 +67,7 @@
             // 
             // updateCatBtn
             // 
-            this.updateCatBtn.Location = new System.Drawing.Point(161, 298);
+            this.updateCatBtn.Location = new System.Drawing.Point(161, 288);
             this.updateCatBtn.Name = "updateCatBtn";
             this.updateCatBtn.Size = new System.Drawing.Size(240, 54);
             this.updateCatBtn.TabIndex = 1;
@@ -97,7 +98,7 @@
             // 
             // updatePickupLocBtn
             // 
-            this.updatePickupLocBtn.Location = new System.Drawing.Point(502, 298);
+            this.updatePickupLocBtn.Location = new System.Drawing.Point(502, 288);
             this.updatePickupLocBtn.Name = "updatePickupLocBtn";
             this.updatePickupLocBtn.Size = new System.Drawing.Size(271, 54);
             this.updatePickupLocBtn.TabIndex = 1;
@@ -120,16 +121,6 @@
             this.companyData.Name = "companyData";
             this.companyData.Size = new System.Drawing.Size(1326, 352);
             this.companyData.TabIndex = 2;
-            // 
-            // insertCompInfo
-            // 
-            this.insertCompInfo.Location = new System.Drawing.Point(249, 767);
-            this.insertCompInfo.Name = "insertCompInfo";
-            this.insertCompInfo.Size = new System.Drawing.Size(75, 23);
-            this.insertCompInfo.TabIndex = 3;
-            this.insertCompInfo.Text = "button1";
-            this.insertCompInfo.UseVisualStyleBackColor = true;
-            this.insertCompInfo.Click += new System.EventHandler(this.insertCompInfo_Click);
             // 
             // Column3
             // 
@@ -166,10 +157,31 @@
             this.Column9.HeaderText = "Email";
             this.Column9.Name = "Column9";
             // 
+            // insertCompInfo
+            // 
+            this.insertCompInfo.Location = new System.Drawing.Point(161, 749);
+            this.insertCompInfo.Name = "insertCompInfo";
+            this.insertCompInfo.Size = new System.Drawing.Size(75, 23);
+            this.insertCompInfo.TabIndex = 3;
+            this.insertCompInfo.Text = "button1";
+            this.insertCompInfo.UseVisualStyleBackColor = true;
+            this.insertCompInfo.Click += new System.EventHandler(this.insertCompInfo_Click);
+            // 
+            // serachPickBtn
+            // 
+            this.serachPickBtn.Location = new System.Drawing.Point(502, 89);
+            this.serachPickBtn.Name = "serachPickBtn";
+            this.serachPickBtn.Size = new System.Drawing.Size(271, 37);
+            this.serachPickBtn.TabIndex = 4;
+            this.serachPickBtn.Text = "Search";
+            this.serachPickBtn.UseVisualStyleBackColor = true;
+            this.serachPickBtn.Click += new System.EventHandler(this.serachPickBtn_Click);
+            // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.serachPickBtn);
             this.Controls.Add(this.insertCompInfo);
             this.Controls.Add(this.companyData);
             this.Controls.Add(this.updatePickupLocBtn);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Button serachPickBtn;
     }
 }

@@ -34,7 +34,7 @@ namespace CashPOS
 
         private void updateUnprintedList()
         {
-            myCommand = new MySqlCommand("select * from orderRecords where isPrinted =  ''", myConnection);
+            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -114,11 +114,10 @@ namespace CashPOS
             //"Trusted_Connection=yes;" +
             //"database=SaveFund_OrderApp; " +
             ////"connection timeout=30");
-            //myconnection.open();
-     //       MySqlCommand myCommand = new MySqlCommand("Update OrderRecords_table Set Status='printed', EditTime='" + 
-       //         DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "' where OrderID='" + ReceiptOrderIDLabel.Text + "'", myConnection);
-      //      myCommand.ExecuteNonQuery();
-            //myconnection.close();
+            myConnection.Open();
+            MySqlCommand myCommand = new MySqlCommand("Update CashPOSDB.orderRecords Set isPrinted='Y' where orderID='" + invoiceLbl.Text + "'", myConnection);
+           myCommand.ExecuteNonQuery();
+           myConnection.Close();
        //     NewOrderDisplayRefreshBtn.PerformClick();
        //     BigTabCollections.SelectedIndex = 0;
             //              PrintTimeLabel.Text = "";

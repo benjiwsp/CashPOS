@@ -78,25 +78,11 @@ namespace CashPOS
 
             addTypeToList();
             createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
-            updateGridCol();
+          //  updateGridCol();
         }
 
 
         #region initialize related
-
-        //initialize main grid
-        private void updateGridCol()
-        {
-            addGridCol("itemSelectedCol", "貨品");
-            addGridCol("amountCol", "數量");
-            addGridCol("unitCol", "單位");
-            addGridCol("unitPriceCol", "單價");
-            addGridCol("totalPriceCol", "總額");
-        }
-        private void addGridCol(string colName, string header)
-        {
-            selectedItemList.Columns.Add(colName, header);
-        }
 
 
         //insert type into the list.
@@ -236,6 +222,7 @@ namespace CashPOS
         public void cancelBtn_Click(object sender, EventArgs e)
         {
             //ssageBox.Show(pickupAddText.Text);
+            isSearching = false;
             clearAll();
         }
         private void clearAll()
@@ -302,9 +289,18 @@ namespace CashPOS
             isPrinted = "";
             belongTo = fromLabel.Text;
             notes = invoiceNoteTxt.Text.Trim();
-            paid = paidAmount.Text;
+            if (paidAmount.Text == "")
+            {
+                paid = totalPrice;
+
+            }
+            else
+            {
+                paid = paidAmount.Text;
+            }
             string invCol = "";
-            DateTime date = dateSelected.Value.Date;
+            string date = dateSelected.Value.ToString("yyyy-MM-dd");
+
             if (isSearching)
             {
                 if (id != "")
@@ -316,7 +312,7 @@ namespace CashPOS
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
 
-                myCommand = new MySqlCommand("delete frokm CashPOSDB.orderDetails where orderID = '" + orderID + "'", myConnection);
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + orderID + "'", myConnection);
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
             }
@@ -340,7 +336,7 @@ namespace CashPOS
                         {
                             myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
                               + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
-                              pickupLoc + "','" + DateTime.Now + "')", myConnection);
+                              pickupLoc + "','" + date + "')", myConnection);
                             myCommand.ExecuteNonQuery();
 
                             if(pickupLoc == "柴灣"){
@@ -461,6 +457,7 @@ namespace CashPOS
         {
             clearAll();
             clearSelection();
+            isSearching = false;
             Button btn = (Button)sender;
             getCustomerList("CashPOSDB.custData", btn.Text);
             getCustomerList("超誠", btn.Text);
@@ -471,6 +468,7 @@ namespace CashPOS
         {
             clearAll();
             clearSelection();
+            isSearching = false;
             Button btn = (Button)sender;
             getCustomerList("CashPOSDB.custData", btn.Text);
             getCustomerList("富資", btn.Text);
@@ -586,7 +584,7 @@ namespace CashPOS
                     {
                         invoiceLabel.Text = rdr["orderID"].ToString();
                         //   MessageBox.Show(rdr["custCode"].ToString());
-                        string custField = rdr["custCode"].ToString() + " " + rdr["custName"].ToString();
+                        string custField = rdr["custCode"].ToString() + " - " + rdr["custName"].ToString();
                         customerTxt.Items.Add(custField);
                         customerTxt.Text = custField;
                         addressTxt.Text = rdr["address"].ToString();
@@ -651,6 +649,24 @@ namespace CashPOS
             "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID " + extraCond;
 
             return returnStr;
+        }
+
+        private void selectedItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (selectedItemList.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        decimal total = Convert.ToDecimal(selectedItemList.Rows[e.RowIndex].Cells[4].Value.ToString());
+                        totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) - total).ToString("0.00");
+                        selectedItemList.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
+            }
         }
     }
 }
