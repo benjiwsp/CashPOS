@@ -36,6 +36,9 @@
             this.custPriceBtn = new MetroFramework.Controls.MetroButton();
             this.invoiceBtn = new MetroFramework.Controls.MetroButton();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.supplierBtn = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
             custMgmBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +69,9 @@
             this.tableLayoutPanel1.Controls.Add(this.invoiceBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(custMgmBtn, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.listBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.supplierBtn, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.metroButton2, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.metroButton3, 3, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -139,7 +145,9 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.listBox1, 3);
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
             this.listBox1.Items.AddRange(new object[] {
             "[ 價錢 ] - 調整客戶價錢",
             "",
@@ -151,12 +159,43 @@
             "",
             "[ 報價表 ] - 建立 / 檢查報價單",
             "",
-            "[ 發票 ]  - 建立 / 檢查發票"});
+            "[ 發票 ]  - 建立 / 檢查發票",
+            "",
+            "[ 供應商 ] - 增加, 更新, 刪去供應商"});
             this.listBox1.Location = new System.Drawing.Point(333, 3);
             this.listBox1.Name = "listBox1";
             this.tableLayoutPanel1.SetRowSpan(this.listBox1, 2);
             this.listBox1.Size = new System.Drawing.Size(984, 326);
             this.listBox1.TabIndex = 2;
+            // 
+            // supplierBtn
+            // 
+            this.supplierBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.supplierBtn.Location = new System.Drawing.Point(333, 667);
+            this.supplierBtn.Name = "supplierBtn";
+            this.supplierBtn.Size = new System.Drawing.Size(324, 160);
+            this.supplierBtn.TabIndex = 3;
+            this.supplierBtn.Text = "供應商";
+            this.supplierBtn.UseSelectable = true;
+            this.supplierBtn.Click += new System.EventHandler(this.supplierBtn_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroButton2.Location = new System.Drawing.Point(663, 667);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(324, 160);
+            this.metroButton2.TabIndex = 3;
+            this.metroButton2.UseSelectable = true;
+            // 
+            // metroButton3
+            // 
+            this.metroButton3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroButton3.Location = new System.Drawing.Point(993, 667);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(324, 160);
+            this.metroButton3.TabIndex = 3;
+            this.metroButton3.UseSelectable = true;
             // 
             // InfoSettings
             // 
@@ -179,5 +218,8 @@
         private MetroFramework.Controls.MetroButton custPriceBtn;
         private MetroFramework.Controls.MetroButton invoiceBtn;
         private System.Windows.Forms.ListBox listBox1;
+        private MetroFramework.Controls.MetroButton supplierBtn;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton3;
     }
 }

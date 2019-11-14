@@ -1,6 +1,6 @@
 ﻿namespace CashPOS
 {
-    partial class CashSales
+    partial class ImportPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,22 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.metroButton40 = new MetroFramework.Controls.MetroButton();
             this.searchBtn = new MetroFramework.Controls.MetroButton();
             this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
             this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.selfPickRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.warehouseRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.siteRadio = new MetroFramework.Controls.MetroRadioButton();
             this.selectedItemList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,8 +48,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.chiuOrdBtn = new System.Windows.Forms.Button();
-            this.sfOrdBtn = new System.Windows.Forms.Button();
+            this.importCSBtn = new System.Windows.Forms.Button();
             this.custNameLbl = new System.Windows.Forms.TableLayoutPanel();
             this.fromLabel = new System.Windows.Forms.Label();
             this.toLabel = new System.Windows.Forms.Label();
@@ -70,17 +65,9 @@
             this.dateSelected = new System.Windows.Forms.DateTimePicker();
             this.pickupAddText = new System.Windows.Forms.ComboBox();
             this.customerTxt = new System.Windows.Forms.ComboBox();
-            this.paidAmount = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.invoiceNoteTxt = new System.Windows.Forms.TextBox();
-            this.sandReceiptTxt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.unpaidList = new System.Windows.Forms.DataGridView();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importSFBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -94,20 +81,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.subPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
             this.custNameLbl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // itemTypePanel
@@ -144,19 +130,14 @@
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22491F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.38062F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.74048F));
-            this.customerDetailPanel.Controls.Add(this.metroButton40, 2, 13);
             this.customerDetailPanel.Controls.Add(this.searchBtn, 0, 13);
             this.customerDetailPanel.Controls.Add(this.orderConfirmBtn, 0, 12);
             this.customerDetailPanel.Controls.Add(this.cancelBtn, 3, 12);
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
             this.customerDetailPanel.Controls.Add(this.metroLabel3, 3, 1);
-            this.customerDetailPanel.Controls.Add(this.selfPickRadio, 0, 5);
-            this.customerDetailPanel.Controls.Add(this.warehouseRadio, 2, 5);
-            this.customerDetailPanel.Controls.Add(this.siteRadio, 4, 5);
             this.customerDetailPanel.Controls.Add(this.selectedItemList, 0, 6);
-            this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
-            this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
+            this.customerDetailPanel.Controls.Add(this.importCSBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.custNameLbl, 2, 10);
             this.customerDetailPanel.Controls.Add(this.addressTxt, 3, 2);
             this.customerDetailPanel.Controls.Add(this.licenseTxt, 4, 3);
@@ -167,13 +148,9 @@
             this.customerDetailPanel.Controls.Add(this.dateSelected, 3, 4);
             this.customerDetailPanel.Controls.Add(this.pickupAddText, 1, 4);
             this.customerDetailPanel.Controls.Add(this.customerTxt, 0, 2);
-            this.customerDetailPanel.Controls.Add(this.paidAmount, 5, 13);
-            this.customerDetailPanel.Controls.Add(this.label7, 4, 13);
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 1, 11);
-            this.customerDetailPanel.Controls.Add(this.sandReceiptTxt, 1, 10);
-            this.customerDetailPanel.Controls.Add(this.label8, 0, 10);
             this.customerDetailPanel.Controls.Add(this.label9, 0, 11);
-            this.customerDetailPanel.Controls.Add(this.unpaidList, 0, 9);
+            this.customerDetailPanel.Controls.Add(this.importSFBtn, 4, 0);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -195,18 +172,6 @@
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.customerDetailPanel.Size = new System.Drawing.Size(578, 1000);
             this.customerDetailPanel.TabIndex = 2;
-            // 
-            // metroButton40
-            // 
-            this.metroButton40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.metroButton40, 2);
-            this.metroButton40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton40.Location = new System.Drawing.Point(193, 926);
-            this.metroButton40.Name = "metroButton40";
-            this.metroButton40.Size = new System.Drawing.Size(178, 71);
-            this.metroButton40.TabIndex = 0;
-            this.metroButton40.Text = "未付款發送";
-            this.metroButton40.UseSelectable = true;
             // 
             // searchBtn
             // 
@@ -288,48 +253,6 @@
             this.metroLabel3.Text = "地址";
             this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // selfPickRadio
-            // 
-            this.selfPickRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.selfPickRadio, 2);
-            this.selfPickRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selfPickRadio.Location = new System.Drawing.Point(3, 198);
-            this.selfPickRadio.Name = "selfPickRadio";
-            this.selfPickRadio.Size = new System.Drawing.Size(184, 36);
-            this.selfPickRadio.TabIndex = 16;
-            this.selfPickRadio.Text = "自提";
-            this.selfPickRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.selfPickRadio.UseSelectable = true;
-            this.selfPickRadio.CheckedChanged += new System.EventHandler(this.selfPickRadio_CheckedChanged);
-            // 
-            // warehouseRadio
-            // 
-            this.warehouseRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.warehouseRadio, 2);
-            this.warehouseRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouseRadio.Location = new System.Drawing.Point(193, 198);
-            this.warehouseRadio.Name = "warehouseRadio";
-            this.warehouseRadio.Size = new System.Drawing.Size(178, 36);
-            this.warehouseRadio.TabIndex = 17;
-            this.warehouseRadio.Text = "倉";
-            this.warehouseRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.warehouseRadio.UseSelectable = true;
-            this.warehouseRadio.CheckedChanged += new System.EventHandler(this.warehouseRadio_CheckedChanged);
-            // 
-            // siteRadio
-            // 
-            this.siteRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.siteRadio, 2);
-            this.siteRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siteRadio.Location = new System.Drawing.Point(377, 198);
-            this.siteRadio.Name = "siteRadio";
-            this.siteRadio.Size = new System.Drawing.Size(198, 36);
-            this.siteRadio.TabIndex = 18;
-            this.siteRadio.Text = "地盤";
-            this.siteRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.siteRadio.UseSelectable = true;
-            this.siteRadio.CheckedChanged += new System.EventHandler(this.siteRadio_CheckedChanged);
-            // 
             // selectedItemList
             // 
             this.selectedItemList.AllowUserToAddRows = false;
@@ -337,14 +260,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -354,27 +277,27 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle8;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
-            this.selectedItemList.Size = new System.Drawing.Size(572, 334);
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.customerDetailPanel.SetRowSpan(this.selectedItemList, 4);
+            this.selectedItemList.Size = new System.Drawing.Size(572, 467);
             this.selectedItemList.TabIndex = 19;
             this.selectedItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemList_CellContentClick);
             // 
@@ -408,29 +331,17 @@
             this.Column6.HeaderText = "刪除";
             this.Column6.Name = "Column6";
             // 
-            // chiuOrdBtn
+            // importCSBtn
             // 
-            this.customerDetailPanel.SetColumnSpan(this.chiuOrdBtn, 2);
-            this.chiuOrdBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chiuOrdBtn.Location = new System.Drawing.Point(193, 3);
-            this.chiuOrdBtn.Name = "chiuOrdBtn";
-            this.chiuOrdBtn.Size = new System.Drawing.Size(178, 65);
-            this.chiuOrdBtn.TabIndex = 22;
-            this.chiuOrdBtn.Text = "超誠";
-            this.chiuOrdBtn.UseVisualStyleBackColor = true;
-            this.chiuOrdBtn.Click += new System.EventHandler(this.chiuOrdBtn_Click);
-            // 
-            // sfOrdBtn
-            // 
-            this.customerDetailPanel.SetColumnSpan(this.sfOrdBtn, 2);
-            this.sfOrdBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sfOrdBtn.Location = new System.Drawing.Point(377, 3);
-            this.sfOrdBtn.Name = "sfOrdBtn";
-            this.sfOrdBtn.Size = new System.Drawing.Size(198, 65);
-            this.sfOrdBtn.TabIndex = 24;
-            this.sfOrdBtn.Text = "富資";
-            this.sfOrdBtn.UseVisualStyleBackColor = true;
-            this.sfOrdBtn.Click += new System.EventHandler(this.sfOrdBtn_Click);
+            this.customerDetailPanel.SetColumnSpan(this.importCSBtn, 2);
+            this.importCSBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importCSBtn.Location = new System.Drawing.Point(193, 3);
+            this.importCSBtn.Name = "importCSBtn";
+            this.importCSBtn.Size = new System.Drawing.Size(178, 65);
+            this.importCSBtn.TabIndex = 22;
+            this.importCSBtn.Text = "超誠";
+            this.importCSBtn.UseVisualStyleBackColor = true;
+            this.importCSBtn.Click += new System.EventHandler(this.importCSBtn_Click);
             // 
             // custNameLbl
             // 
@@ -609,30 +520,6 @@
             this.customerTxt.TabIndex = 38;
             this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
             // 
-            // paidAmount
-            // 
-            this.paidAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
-            this.paidAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paidAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paidAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
-            this.paidAmount.Location = new System.Drawing.Point(437, 926);
-            this.paidAmount.Multiline = true;
-            this.paidAmount.Name = "paidAmount";
-            this.paidAmount.Size = new System.Drawing.Size(138, 71);
-            this.paidAmount.TabIndex = 26;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(377, 923);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 77);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "已付:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // invoiceNoteTxt
             // 
             this.invoiceNoteTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
@@ -646,30 +533,6 @@
             this.invoiceNoteTxt.Size = new System.Drawing.Size(521, 65);
             this.invoiceNoteTxt.TabIndex = 28;
             // 
-            // sandReceiptTxt
-            // 
-            this.sandReceiptTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
-            this.sandReceiptTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sandReceiptTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sandReceiptTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
-            this.sandReceiptTxt.Location = new System.Drawing.Point(54, 713);
-            this.sandReceiptTxt.Multiline = true;
-            this.sandReceiptTxt.Name = "sandReceiptTxt";
-            this.sandReceiptTxt.Size = new System.Drawing.Size(133, 65);
-            this.sandReceiptTxt.TabIndex = 29;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 710);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 71);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "沙單:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -682,43 +545,17 @@
             this.label9.Text = "備註:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // unpaidList
+            // importSFBtn
             // 
-            this.unpaidList.AllowUserToAddRows = false;
-            this.unpaidList.AllowUserToDeleteRows = false;
-            this.unpaidList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.unpaidList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.unpaidList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10});
-            this.customerDetailPanel.SetColumnSpan(this.unpaidList, 6);
-            this.unpaidList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unpaidList.Location = new System.Drawing.Point(3, 580);
-            this.unpaidList.Name = "unpaidList";
-            this.unpaidList.Size = new System.Drawing.Size(572, 127);
-            this.unpaidList.TabIndex = 41;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "單號";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "總金額";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "欠款";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "日期";
-            this.Column10.Name = "Column10";
+            this.customerDetailPanel.SetColumnSpan(this.importSFBtn, 2);
+            this.importSFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.importSFBtn.Location = new System.Drawing.Point(377, 3);
+            this.importSFBtn.Name = "importSFBtn";
+            this.importSFBtn.Size = new System.Drawing.Size(198, 65);
+            this.importSFBtn.TabIndex = 22;
+            this.importSFBtn.Text = "富資進貨";
+            this.importSFBtn.UseVisualStyleBackColor = true;
+            this.importSFBtn.Click += new System.EventHandler(this.importSFBtn_Click);
             // 
             // panel2
             // 
@@ -889,7 +726,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1076, 153);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
@@ -934,7 +771,7 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
-            // CashSales
+            // ImportPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -945,7 +782,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.infoPanel);
             this.Controls.Add(this.itemTypePanel);
-            this.Name = "CashSales";
+            this.Name = "ImportPage";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.infoPanel.ResumeLayout(false);
             this.customerDetailPanel.ResumeLayout(false);
@@ -953,12 +790,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).EndInit();
             this.custNameLbl.ResumeLayout(false);
             this.custNameLbl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -971,14 +807,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroButton searchBtn;
-        private MetroFramework.Controls.MetroButton metroButton40;
         private MetroFramework.Controls.MetroButton orderConfirmBtn;
         private MetroFramework.Controls.MetroButton cancelBtn;
         private MetroFramework.Controls.MetroLabel invoiceLabel;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroRadioButton selfPickRadio;
-        private MetroFramework.Controls.MetroRadioButton siteRadio;
         private System.Windows.Forms.DataGridView selectedItemList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -989,21 +822,17 @@
         private System.Windows.Forms.TextBox itemNotesTxt;
         private System.Windows.Forms.ComboBox itemUnit;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button sfOrdBtn;
-        private System.Windows.Forms.Button chiuOrdBtn;
+        private System.Windows.Forms.Button importCSBtn;
         private System.Windows.Forms.TableLayoutPanel custNameLbl;
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label destLabel;
         private System.Windows.Forms.Label totalPriceTxt;
         private System.Windows.Forms.FlowLayoutPanel subPanel;
-        private System.Windows.Forms.TextBox paidAmount;
         private System.Windows.Forms.Label payTypeLabel;
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroRadioButton warehouseRadio;
         private System.Windows.Forms.Label selectedItemLabel;
         private System.Windows.Forms.TextBox invoiceNoteTxt;
-        private System.Windows.Forms.TextBox sandReceiptTxt;
         private System.Windows.Forms.TextBox addressTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1018,8 +847,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1027,10 +854,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
-        private System.Windows.Forms.DataGridView unpaidList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.Button importSFBtn;
     }
 }

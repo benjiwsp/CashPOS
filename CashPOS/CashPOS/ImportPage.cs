@@ -13,7 +13,7 @@ using System.Configuration;
 
 namespace CashPOS
 {
-    public partial class CashSales : UserControl
+    public partial class ImportPage : UserControl
     {
 
 
@@ -37,7 +37,7 @@ namespace CashPOS
          */
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
-        SubItems subItems;
+        ImportSubItems subItems;
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
         string selectedCustCode;
         //  string selectedCustName;
@@ -52,7 +52,7 @@ namespace CashPOS
         MySqlCommand myCommand;
         MySqlDataReader rdr;
         string destType; // desntnation type
-        public CashSales()
+        public ImportPage()
         {
             InitializeComponent();
 
@@ -154,7 +154,7 @@ namespace CashPOS
 
             string value = prodCatDic[selectedName];
             subPanel.Controls.Clear();
-            subItems = new SubItems(this, value);
+            subItems = new ImportSubItems(this, value);
             subPanel.Controls.Add(subItems);
 
             foreach (Label l in itemTypePanel.Controls)
@@ -235,10 +235,6 @@ namespace CashPOS
             licenseTxt.Text = "";
             pickupAddText.Text = "";
             invoiceLabel.Text = "";
-            selfPickRadio.Checked = false;
-            warehouseRadio.Checked = false;
-            siteRadio.Checked = false;
-            sandReceiptTxt.Text = "";
             invoiceNoteTxt.Text = "";
             toLabel.Text = "";
             fromLabel.Text = "";
@@ -249,7 +245,6 @@ namespace CashPOS
             clearItemPanel();
             isSearching = false;
             selectedOrderID = "";
-            paidAmount.Text = "";
 
         }
 
@@ -276,7 +271,6 @@ namespace CashPOS
         {
             string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
             orderID = invoiceLabel.Text;// invoiceLabel.Text;
-            sandID = sandReceiptTxt.Text;
             cust = customerTxt.Text.Substring(customerTxt.Text.IndexOf("- ") + 1, customerTxt.Text.Length - 1 - customerTxt.Text.IndexOf("- ")).Trim();
             //  MessageBox.Show(cust);
             phone = telTxt.Text;
@@ -289,15 +283,8 @@ namespace CashPOS
             isPrinted = "";
             belongTo = fromLabel.Text;
             notes = invoiceNoteTxt.Text.Trim();
-            if (paidAmount.Text == "")
-            {
-                paid = totalPrice;
-
-            }
-            else
-            {
-                paid = paidAmount.Text;
-            }
+     
+           
             string invCol = "";
             string date = dateSelected.Value.ToString("yyyy-MM-dd");
 
@@ -327,8 +314,8 @@ namespace CashPOS
                 {
                     while (true)
                     {
-                        myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
-                         phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + notes + "','" + belongTo + "','" +
+                        myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID +   "','" + selectedCustCode + "','" + cust + "','" +
+                         phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice  + "','" + notes + "','" + belongTo + "','" +
                          isPrinted + "','" + date + "')", myConnection);
                         myCommand.ExecuteNonQuery();
 
@@ -436,7 +423,15 @@ namespace CashPOS
                     }
                 }
                 myConnection.Close();
-                myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
+               
+
+
+                // TO-DO: check for any unpaid invoice
+                checkStatus();
+            }
+        }
+        private void getPickup(string comp){
+             myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + comp + "'", myConnection);
                 myConnection.Open();
                 rdr = myCommand.ExecuteReader();
 
@@ -444,42 +439,34 @@ namespace CashPOS
                 {
                     while (rdr.Read())
                     {
-                        pickupAddText.Items.Add(rdr["location"].ToString());
+                        customerTxt.Items.Add(rdr["location"].ToString());
                     }
                 }
                 rdr.Close();
                 myConnection.Close();
-
-
-                // TO-DO: check for any unpaid invoice
-                checkStatus();
-            }
         }
         private void checkUnpaidOrder(string Comp)
         {
 
         }
-        private void chiuOrdBtn_Click(object sender, EventArgs e)
+        private void importCSBtn_Click(object sender, EventArgs e)
         {
             clearAll();
             clearSelection();
             isSearching = false;
             Button btn = (Button)sender;
-            //getCustomerList("CashPOSDB.custData", btn.Text);
-//            getCustomerList("超誠", btn.Text);
-            selectedCompany = "超誠";
+            getCustomerList();
+            getPickup("超誠");
         }
-
-        private void sfOrdBtn_Click(object sender, EventArgs e)
+        private void importSFBtn_Click(object sender, EventArgs e)
         {
             clearAll();
             clearSelection();
             isSearching = false;
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("富資", btn.Text);
-            selectedCompany = "富資";
+            getPickup("富資");
         }
+ 
         private void clearSelection()
         {
             selectedCustCode = "";
@@ -489,11 +476,11 @@ namespace CashPOS
             pickupAddText.Items.Clear();
             itemTypePanel.Enabled = false;
         }
-        private void getCustomerList(string cust, string from)
+        private void getCustomerList()
         {
             customerTxt.Items.Clear();
             myConnection.Open();
-            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "' order by Code", myConnection);
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.supplierData order by Code", myConnection);
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
@@ -504,7 +491,7 @@ namespace CashPOS
             }
             rdr.Close();
             myConnection.Close();
-            fromLabel.Text = from;
+            fromLabel.Text = "";
         }
 
         private void warehouseRadio_CheckedChanged(object sender, EventArgs e)
@@ -603,21 +590,9 @@ namespace CashPOS
                         toLabel.Text = custField;
                         string deliverLoc = rdr["priceType"].ToString();
                         destLabel.Text = deliverLoc;
-                        if (deliverLoc == "倉")
-                        {
-                            warehouseRadio.Checked = true;
-                        }
-                        else if (deliverLoc == "自提")
-                        {
-                            selfPickRadio.Checked = true;
-                        }
-                        else
-                        {
-                            siteRadio.Checked = true;
-                        }
+                       
                         payTypeLabel.Text = rdr["payment"].ToString();
                         totalPriceTxt.Text = rdr["totalPrice"].ToString();
-                        sandReceiptTxt.Text = rdr["sandID"].ToString();
                         invoiceNoteTxt.Text = rdr["notes"].ToString();
                         i++;
                     }

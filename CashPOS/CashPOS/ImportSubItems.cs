@@ -12,17 +12,17 @@ using System.Configuration;
 
 namespace CashPOS
 {
-    public partial class SubItems : UserControl
+    public partial class ImportSubItems : UserControl
     {
         List<Button> btnList = new List<Button>();
         List<String> itemList = new List<String>();
-        CashSales myParent = null;
+        ImportPage myParent = null;
         private MySqlConnection myConnection;
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
         string category;
-        public SubItems(CashSales myParent, string category)
+        public ImportSubItems(ImportPage myParent, string category)
         {
             InitializeComponent();
             this.myParent = myParent;
@@ -33,12 +33,12 @@ namespace CashPOS
             //  MessageBox.Show(value);
             myConnection = new MySqlConnection(value);
 
-            addSubItems(category);
+            addImportSubItems(category);
             createItemBtn(itemList, subItemPanel, itemBtnClicked);
 
         }
         
-        private void addSubItems(string category)
+        private void addImportSubItems(string category)
         {
             myCommand = new MySqlCommand("Select * from CashPOSDB.prodData where Category = '" + category + "'", myConnection);
             myConnection.Open();

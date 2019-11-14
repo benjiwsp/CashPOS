@@ -259,7 +259,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
         private void clearAllData()
         {
             newProdGrid.Rows.Clear();
-            allProdGrid.Rows.Clear();
+           // allProdGrid.Rows.Clear();
         }
 
         private void clearAllDataBtn_Click(object sender, EventArgs e)

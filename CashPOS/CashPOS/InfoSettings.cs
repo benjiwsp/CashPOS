@@ -56,6 +56,11 @@ namespace CashPOS
 
         }
 
+        private void supplierBtn_Click(object sender, EventArgs e)
+        {
+            btnHander(sender);
+        }
+
  
     }
 }

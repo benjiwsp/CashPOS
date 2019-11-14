@@ -25,6 +25,8 @@ namespace CashPOS
         QuotationMgm custPriceMgm;
         InvoiceOutput invoiceOutput;
         PrintPage printPage;
+        ImportPage importPage;
+        SupplierMgm supplierMgm;
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +42,8 @@ namespace CashPOS
             custPriceMgm = new QuotationMgm();
             invoiceOutput = new InvoiceOutput();
             printPage = new PrintPage();
+            importPage = new ImportPage();
+            supplierMgm = new SupplierMgm();
             mainPanel.Controls.Add(homeScreen);
 
         }
@@ -113,6 +117,15 @@ namespace CashPOS
                     case "printInvBtn":
                         printPage.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(printPage);
+                        break;
+                    case "importBtn":
+                        importPage.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(importPage);
+                        break;
+
+                    case "supplierBtn":
+                        supplierMgm.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(supplierMgm);
                         break;
 
                     //   case "printInvBtn":

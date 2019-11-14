@@ -35,6 +35,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.printInvBtn = new System.Windows.Forms.Button();
             this.InvoiceCheckBtn = new System.Windows.Forms.Button();
             this.invBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
@@ -45,7 +46,7 @@
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
-            this.printInvBtn = new System.Windows.Forms.Button();
+            this.importBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -81,6 +82,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.importBtn);
             this.panel1.Controls.Add(this.printInvBtn);
             this.panel1.Controls.Add(this.InvoiceCheckBtn);
             this.panel1.Controls.Add(this.invBtn);
@@ -93,6 +95,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 1000);
             this.panel1.TabIndex = 1;
+            // 
+            // printInvBtn
+            // 
+            this.printInvBtn.BackColor = System.Drawing.Color.White;
+            this.printInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printInvBtn.Image = ((System.Drawing.Image)(resources.GetObject("printInvBtn.Image")));
+            this.printInvBtn.Location = new System.Drawing.Point(0, 652);
+            this.printInvBtn.Name = "printInvBtn";
+            this.printInvBtn.Size = new System.Drawing.Size(200, 103);
+            this.printInvBtn.TabIndex = 1;
+            this.printInvBtn.Text = "印單";
+            this.printInvBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.printInvBtn.UseVisualStyleBackColor = false;
+            this.printInvBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // InvoiceCheckBtn
             // 
@@ -208,19 +224,19 @@
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
             // 
-            // printInvBtn
+            // importBtn
             // 
-            this.printInvBtn.BackColor = System.Drawing.Color.White;
-            this.printInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.printInvBtn.Image = ((System.Drawing.Image)(resources.GetObject("printInvBtn.Image")));
-            this.printInvBtn.Location = new System.Drawing.Point(0, 652);
-            this.printInvBtn.Name = "printInvBtn";
-            this.printInvBtn.Size = new System.Drawing.Size(200, 103);
-            this.printInvBtn.TabIndex = 1;
-            this.printInvBtn.Text = "印單";
-            this.printInvBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.printInvBtn.UseVisualStyleBackColor = false;
-            this.printInvBtn.Click += new System.EventHandler(this.ButtonClicked);
+            this.importBtn.BackColor = System.Drawing.Color.White;
+            this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
+            this.importBtn.Location = new System.Drawing.Point(0, 761);
+            this.importBtn.Name = "importBtn";
+            this.importBtn.Size = new System.Drawing.Size(200, 103);
+            this.importBtn.TabIndex = 1;
+            this.importBtn.Text = "進貨";
+            this.importBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.importBtn.UseVisualStyleBackColor = false;
+            this.importBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // Form1
             // 
@@ -261,6 +277,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel sideBarSelectionPanel;
         private System.Windows.Forms.Button printInvBtn;
+        private System.Windows.Forms.Button importBtn;
     }
 }
 
