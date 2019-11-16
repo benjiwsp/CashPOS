@@ -466,7 +466,7 @@ namespace CashPOS
             isSearching = false;
             Button btn = (Button)sender;
             //getCustomerList("CashPOSDB.custData", btn.Text);
-//            getCustomerList("超誠", btn.Text);
+           getCustomerList("超誠", btn.Text);
             selectedCompany = "超誠";
         }
 
