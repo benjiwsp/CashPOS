@@ -66,6 +66,9 @@
             this.invoiceNoteTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.importSFBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.refBox = new System.Windows.Forms.TextBox();
+            this.transferBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,8 +87,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.refBox = new System.Windows.Forms.TextBox();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -151,6 +152,7 @@
             this.customerDetailPanel.Controls.Add(this.importSFBtn, 4, 0);
             this.customerDetailPanel.Controls.Add(this.label7, 0, 10);
             this.customerDetailPanel.Controls.Add(this.refBox, 1, 10);
+            this.customerDetailPanel.Controls.Add(this.transferBtn, 4, 1);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -232,11 +234,11 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.metroLabel2, 6);
+            this.customerDetailPanel.SetColumnSpan(this.metroLabel2, 4);
             this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroLabel2.Location = new System.Drawing.Point(3, 71);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(572, 24);
+            this.metroLabel2.Size = new System.Drawing.Size(368, 24);
             this.metroLabel2.TabIndex = 7;
             this.metroLabel2.Text = "供應商";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -489,13 +491,13 @@
             // 
             // customerTxt
             // 
-            this.customerDetailPanel.SetColumnSpan(this.customerTxt, 6);
+            this.customerDetailPanel.SetColumnSpan(this.customerTxt, 4);
             this.customerTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customerTxt.FormattingEnabled = true;
             this.customerTxt.Location = new System.Drawing.Point(3, 98);
             this.customerTxt.Name = "customerTxt";
-            this.customerTxt.Size = new System.Drawing.Size(572, 28);
+            this.customerTxt.Size = new System.Drawing.Size(368, 28);
             this.customerTxt.TabIndex = 38;
             this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
             // 
@@ -532,9 +534,40 @@
             this.importSFBtn.Name = "importSFBtn";
             this.importSFBtn.Size = new System.Drawing.Size(198, 65);
             this.importSFBtn.TabIndex = 22;
-            this.importSFBtn.Text = "富資進貨";
+            this.importSFBtn.Text = "富資";
             this.importSFBtn.UseVisualStyleBackColor = true;
             this.importSFBtn.Click += new System.EventHandler(this.importSFBtn_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 710);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 71);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "Ref:";
+            // 
+            // refBox
+            // 
+            this.refBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.refBox.Location = new System.Drawing.Point(54, 713);
+            this.refBox.Name = "refBox";
+            this.refBox.Size = new System.Drawing.Size(133, 20);
+            this.refBox.TabIndex = 42;
+            // 
+            // transferBtn
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.transferBtn, 2);
+            this.transferBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transferBtn.Location = new System.Drawing.Point(377, 74);
+            this.transferBtn.Name = "transferBtn";
+            this.customerDetailPanel.SetRowSpan(this.transferBtn, 2);
+            this.transferBtn.Size = new System.Drawing.Size(198, 52);
+            this.transferBtn.TabIndex = 43;
+            this.transferBtn.Text = "調倉";
+            this.transferBtn.UseVisualStyleBackColor = true;
+            this.transferBtn.Click += new System.EventHandler(this.TransferBtn_Click);
             // 
             // panel2
             // 
@@ -750,22 +783,6 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 710);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "label7";
-            // 
-            // refBox
-            // 
-            this.refBox.Location = new System.Drawing.Point(54, 713);
-            this.refBox.Name = "refBox";
-            this.refBox.Size = new System.Drawing.Size(100, 20);
-            this.refBox.TabIndex = 42;
-            // 
             // ImportPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -850,5 +867,6 @@
         private System.Windows.Forms.Button importSFBtn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox refBox;
+        private System.Windows.Forms.Button transferBtn;
     }
 }
