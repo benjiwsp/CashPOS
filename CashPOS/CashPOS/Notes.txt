@@ -100,9 +100,14 @@ QuotationMgm
 -need to double check if all info are provided
 
 
+todo:
 
 cash - payment method, show how mcuh moeny is missing or too mcuh, and the receive number for not fully paid
-another tab - import
+
 invoice - start with customer code, tick, previous start - end time (invoice number need to wait for reply)
-price setting - select item / select cat
 level - login: few names 
+
+
+done:
+another tab - import
+price setting - select item / select cat

@@ -27,8 +27,22 @@ namespace CashPOS
             value = ConfigurationManager.AppSettings["my_conn"];
             //  MessageBox.Show(value);
             myConnection = new MySqlConnection(value);
+            getItemList();
         }
-
+        private void getItemList()
+        {
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while(rdr.Read())
+                {
+                    itemList.Items.Add(rdr["ProdID"].ToString() + " - " + rdr["ProdName"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+        }
         private void showAllBtn_Click(object sender, EventArgs e)
         {
 
@@ -351,6 +365,32 @@ namespace CashPOS
         private void resetCSPriceBtn_Click(object sender, EventArgs e)
         {
             resetPrice("超誠");
+        }
+
+        private void searchByItemBtn_Click(object sender, EventArgs e)
+        {
+            resultList.Rows.Clear();
+            resultList.Columns.Clear();
+            addGridCol("CompName", "公司編號");
+            addGridCol("CompName", "公司");
+            addGridCol("ProdName", "貨品");
+            addGridCol("ProdName", "自提價");
+            addGridCol("ProdName", "返倉價");
+            addGridCol("ProdName", "地盤價");
+            string item = itemList.Text.Substring(0, itemList.Text.IndexOf(" -")).Trim();
+            myCommand = new MySqlCommand("SELECT a.Cust, a.Prod, a. ProdName, a.DelPrice, a.PickPrice, a.SitePrice, b.Name " +
+                "FROM CashPOSDB.custProdPrice a join CashPOSDB.custData b on a.cust	= b.Code where Prod = '" + item+"'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["Cust"].ToString(), rdr["Name"].ToString(), rdr["ProdName"].ToString(), rdr["DelPrice"].ToString(),
+                      rdr["PickPrice"].ToString(), rdr["SitePrice"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
         }
     }
 }

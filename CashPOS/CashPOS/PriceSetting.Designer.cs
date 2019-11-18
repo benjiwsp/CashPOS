@@ -48,11 +48,15 @@
             this.csSearchBtn = new System.Windows.Forms.Button();
             this.sfSearchBtn = new System.Windows.Forms.Button();
             this.guideList = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.itemList = new System.Windows.Forms.ComboBox();
+            this.serachByItemBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -152,6 +156,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.guideList, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -324,6 +329,42 @@
             this.guideList.Size = new System.Drawing.Size(464, 707);
             this.guideList.TabIndex = 14;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.itemList, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.serachByItemBtn, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1187, 804);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(464, 93);
+            this.tableLayoutPanel4.TabIndex = 15;
+            // 
+            // itemList
+            // 
+            this.itemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemList.FormattingEnabled = true;
+            this.itemList.Location = new System.Drawing.Point(3, 3);
+            this.itemList.Name = "itemList";
+            this.itemList.Size = new System.Drawing.Size(226, 21);
+            this.itemList.TabIndex = 0;
+            // 
+            // serachByItemBtn
+            // 
+            this.serachByItemBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachByItemBtn.Location = new System.Drawing.Point(235, 3);
+            this.serachByItemBtn.Name = "serachByItemBtn";
+            this.serachByItemBtn.Size = new System.Drawing.Size(226, 87);
+            this.serachByItemBtn.TabIndex = 1;
+            this.serachByItemBtn.Text = "serachByItemBtn";
+            this.serachByItemBtn.UseVisualStyleBackColor = true;
+            this.serachByItemBtn.Click += new System.EventHandler(this.searchByItemBtn_Click);
+            // 
             // PriceSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +378,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -363,5 +405,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ListBox guideList;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.ComboBox itemList;
+        private System.Windows.Forms.Button serachByItemBtn;
     }
 }
