@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.metroButton40 = new MetroFramework.Controls.MetroButton();
             this.searchBtn = new MetroFramework.Controls.MetroButton();
-            this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
-            this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -58,9 +55,9 @@
             this.fromLabel = new System.Windows.Forms.Label();
             this.toLabel = new System.Windows.Forms.Label();
             this.destLabel = new System.Windows.Forms.Label();
-            this.totalPriceTxt = new System.Windows.Forms.Label();
+            this.payMethodLbl = new System.Windows.Forms.Label();
             this.payTypeLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.totalPriceTxt = new System.Windows.Forms.Label();
             this.addressTxt = new System.Windows.Forms.TextBox();
             this.licenseTxt = new System.Windows.Forms.TextBox();
             this.telTxt = new System.Windows.Forms.TextBox();
@@ -70,8 +67,6 @@
             this.dateSelected = new System.Windows.Forms.DateTimePicker();
             this.pickupAddText = new System.Windows.Forms.ComboBox();
             this.customerTxt = new System.Windows.Forms.ComboBox();
-            this.paidAmount = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.invoiceNoteTxt = new System.Windows.Forms.TextBox();
             this.sandReceiptTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,6 +76,15 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.paidAmount = new System.Windows.Forms.TextBox();
+            this.fullPayBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
+            this.payByTransferBtn = new MetroFramework.Controls.MetroButton();
+            this.payByChequeBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -99,11 +103,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.NotPaidBtn = new System.Windows.Forms.Button();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
             this.custNameLbl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -144,10 +151,7 @@
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22491F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.38062F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.74048F));
-            this.customerDetailPanel.Controls.Add(this.metroButton40, 2, 13);
             this.customerDetailPanel.Controls.Add(this.searchBtn, 0, 13);
-            this.customerDetailPanel.Controls.Add(this.orderConfirmBtn, 0, 12);
-            this.customerDetailPanel.Controls.Add(this.cancelBtn, 3, 12);
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
             this.customerDetailPanel.Controls.Add(this.metroLabel3, 3, 1);
@@ -167,13 +171,16 @@
             this.customerDetailPanel.Controls.Add(this.dateSelected, 3, 4);
             this.customerDetailPanel.Controls.Add(this.pickupAddText, 1, 4);
             this.customerDetailPanel.Controls.Add(this.customerTxt, 0, 2);
-            this.customerDetailPanel.Controls.Add(this.paidAmount, 5, 13);
-            this.customerDetailPanel.Controls.Add(this.label7, 4, 13);
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 1, 11);
             this.customerDetailPanel.Controls.Add(this.sandReceiptTxt, 1, 10);
             this.customerDetailPanel.Controls.Add(this.label8, 0, 10);
             this.customerDetailPanel.Controls.Add(this.label9, 0, 11);
             this.customerDetailPanel.Controls.Add(this.unpaidList, 0, 9);
+            this.customerDetailPanel.Controls.Add(this.label7, 4, 11);
+            this.customerDetailPanel.Controls.Add(this.paidAmount, 5, 11);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel3, 0, 12);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel4, 4, 12);
+            this.customerDetailPanel.Controls.Add(this.cancelBtn, 4, 13);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -196,18 +203,6 @@
             this.customerDetailPanel.Size = new System.Drawing.Size(578, 1000);
             this.customerDetailPanel.TabIndex = 2;
             // 
-            // metroButton40
-            // 
-            this.metroButton40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.metroButton40, 2);
-            this.metroButton40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroButton40.Location = new System.Drawing.Point(193, 926);
-            this.metroButton40.Name = "metroButton40";
-            this.metroButton40.Size = new System.Drawing.Size(178, 71);
-            this.metroButton40.TabIndex = 0;
-            this.metroButton40.Text = "未付款發送";
-            this.metroButton40.UseSelectable = true;
-            // 
             // searchBtn
             // 
             this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
@@ -220,33 +215,6 @@
             this.searchBtn.Text = "搜尋";
             this.searchBtn.UseSelectable = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
-            // 
-            // orderConfirmBtn
-            // 
-            this.orderConfirmBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
-            this.customerDetailPanel.SetColumnSpan(this.orderConfirmBtn, 3);
-            this.orderConfirmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderConfirmBtn.Location = new System.Drawing.Point(3, 855);
-            this.orderConfirmBtn.Name = "orderConfirmBtn";
-            this.orderConfirmBtn.Size = new System.Drawing.Size(280, 65);
-            this.orderConfirmBtn.TabIndex = 0;
-            this.orderConfirmBtn.Text = "發送";
-            this.orderConfirmBtn.UseCustomBackColor = true;
-            this.orderConfirmBtn.UseSelectable = true;
-            this.orderConfirmBtn.Click += new System.EventHandler(this.orderConfirmBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.cancelBtn, 3);
-            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelBtn.Location = new System.Drawing.Point(289, 855);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(286, 65);
-            this.cancelBtn.TabIndex = 1;
-            this.cancelBtn.Text = "取消";
-            this.cancelBtn.UseSelectable = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // invoiceLabel
             // 
@@ -337,14 +305,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -354,25 +322,25 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle11;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
             this.selectedItemList.TabIndex = 19;
@@ -443,9 +411,9 @@
             this.custNameLbl.Controls.Add(this.fromLabel, 0, 0);
             this.custNameLbl.Controls.Add(this.toLabel, 0, 1);
             this.custNameLbl.Controls.Add(this.destLabel, 1, 0);
-            this.custNameLbl.Controls.Add(this.totalPriceTxt, 1, 1);
-            this.custNameLbl.Controls.Add(this.payTypeLabel, 2, 0);
-            this.custNameLbl.Controls.Add(this.label1, 2, 1);
+            this.custNameLbl.Controls.Add(this.payMethodLbl, 2, 1);
+            this.custNameLbl.Controls.Add(this.payTypeLabel, 1, 1);
+            this.custNameLbl.Controls.Add(this.totalPriceTxt, 2, 0);
             this.custNameLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custNameLbl.Location = new System.Drawing.Point(193, 713);
             this.custNameLbl.Name = "custNameLbl";
@@ -485,34 +453,35 @@
             this.destLabel.Size = new System.Drawing.Size(121, 32);
             this.destLabel.TabIndex = 2;
             // 
-            // totalPriceTxt
+            // payMethodLbl
             // 
-            this.totalPriceTxt.AutoSize = true;
-            this.totalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
-            this.totalPriceTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.totalPriceTxt.Location = new System.Drawing.Point(130, 32);
-            this.totalPriceTxt.Name = "totalPriceTxt";
-            this.totalPriceTxt.Size = new System.Drawing.Size(121, 33);
-            this.totalPriceTxt.TabIndex = 3;
+            this.payMethodLbl.AutoSize = true;
+            this.payMethodLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payMethodLbl.Location = new System.Drawing.Point(257, 32);
+            this.payMethodLbl.Name = "payMethodLbl";
+            this.payMethodLbl.Size = new System.Drawing.Size(122, 33);
+            this.payMethodLbl.TabIndex = 5;
             // 
             // payTypeLabel
             // 
             this.payTypeLabel.AutoSize = true;
             this.payTypeLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
             this.payTypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.payTypeLabel.Location = new System.Drawing.Point(257, 0);
+            this.payTypeLabel.Location = new System.Drawing.Point(130, 32);
             this.payTypeLabel.Name = "payTypeLabel";
-            this.payTypeLabel.Size = new System.Drawing.Size(122, 32);
+            this.payTypeLabel.Size = new System.Drawing.Size(121, 33);
             this.payTypeLabel.TabIndex = 4;
             // 
-            // label1
+            // totalPriceTxt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(257, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.totalPriceTxt.AutoSize = true;
+            this.totalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
+            this.totalPriceTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalPriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPriceTxt.Location = new System.Drawing.Point(257, 0);
+            this.totalPriceTxt.Name = "totalPriceTxt";
+            this.totalPriceTxt.Size = new System.Drawing.Size(122, 32);
+            this.totalPriceTxt.TabIndex = 3;
             // 
             // addressTxt
             // 
@@ -609,41 +578,17 @@
             this.customerTxt.TabIndex = 38;
             this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
             // 
-            // paidAmount
-            // 
-            this.paidAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
-            this.paidAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paidAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paidAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
-            this.paidAmount.Location = new System.Drawing.Point(437, 926);
-            this.paidAmount.Multiline = true;
-            this.paidAmount.Name = "paidAmount";
-            this.paidAmount.Size = new System.Drawing.Size(138, 71);
-            this.paidAmount.TabIndex = 26;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(377, 923);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 77);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "已付:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // invoiceNoteTxt
             // 
             this.invoiceNoteTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
-            this.customerDetailPanel.SetColumnSpan(this.invoiceNoteTxt, 5);
+            this.customerDetailPanel.SetColumnSpan(this.invoiceNoteTxt, 3);
             this.invoiceNoteTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.invoiceNoteTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invoiceNoteTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
             this.invoiceNoteTxt.Location = new System.Drawing.Point(54, 784);
             this.invoiceNoteTxt.Multiline = true;
             this.invoiceNoteTxt.Name = "invoiceNoteTxt";
-            this.invoiceNoteTxt.Size = new System.Drawing.Size(521, 65);
+            this.invoiceNoteTxt.Size = new System.Drawing.Size(317, 65);
             this.invoiceNoteTxt.TabIndex = 28;
             // 
             // sandReceiptTxt
@@ -719,6 +664,126 @@
             // 
             this.Column10.HeaderText = "日期";
             this.Column10.Name = "Column10";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(377, 781);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "已付:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // paidAmount
+            // 
+            this.paidAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
+            this.paidAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paidAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
+            this.paidAmount.Location = new System.Drawing.Point(437, 784);
+            this.paidAmount.Multiline = true;
+            this.paidAmount.Name = "paidAmount";
+            this.paidAmount.Size = new System.Drawing.Size(138, 65);
+            this.paidAmount.TabIndex = 26;
+            // 
+            // fullPayBtn
+            // 
+            this.fullPayBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
+            this.fullPayBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fullPayBtn.Location = new System.Drawing.Point(3, 3);
+            this.fullPayBtn.Name = "fullPayBtn";
+            this.fullPayBtn.Size = new System.Drawing.Size(93, 59);
+            this.fullPayBtn.TabIndex = 44;
+            this.fullPayBtn.Text = "全數";
+            this.fullPayBtn.UseVisualStyleBackColor = false;
+            this.fullPayBtn.Click += new System.EventHandler(this.fullPayBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
+            this.customerDetailPanel.SetColumnSpan(this.cancelBtn, 2);
+            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelBtn.Location = new System.Drawing.Point(377, 926);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(198, 71);
+            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.Text = "取消";
+            this.cancelBtn.UseSelectable = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(130)))), ((int)(((byte)(143)))));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.OutsetPartial;
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel3, 3);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Controls.Add(this.orderConfirmBtn, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.payByTransferBtn, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.payByChequeBtn, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 855);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(280, 65);
+            this.tableLayoutPanel3.TabIndex = 45;
+            // 
+            // orderConfirmBtn
+            // 
+            this.orderConfirmBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.orderConfirmBtn.Location = new System.Drawing.Point(6, 6);
+            this.orderConfirmBtn.Name = "orderConfirmBtn";
+            this.orderConfirmBtn.Size = new System.Drawing.Size(83, 53);
+            this.orderConfirmBtn.TabIndex = 0;
+            this.orderConfirmBtn.Text = "現金";
+            this.orderConfirmBtn.UseCustomBackColor = true;
+            this.orderConfirmBtn.UseSelectable = true;
+            this.orderConfirmBtn.Click += new System.EventHandler(this.orderConfirmBtn_Click);
+            // 
+            // payByTransferBtn
+            // 
+            this.payByTransferBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.payByTransferBtn.Location = new System.Drawing.Point(98, 6);
+            this.payByTransferBtn.Name = "payByTransferBtn";
+            this.payByTransferBtn.Size = new System.Drawing.Size(83, 53);
+            this.payByTransferBtn.TabIndex = 0;
+            this.payByTransferBtn.Text = "過戶";
+            this.payByTransferBtn.UseCustomBackColor = true;
+            this.payByTransferBtn.UseSelectable = true;
+            this.payByTransferBtn.Click += new System.EventHandler(this.payByTransfer_Click);
+            // 
+            // payByChequeBtn
+            // 
+            this.payByChequeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.payByChequeBtn.Location = new System.Drawing.Point(190, 6);
+            this.payByChequeBtn.Name = "payByChequeBtn";
+            this.payByChequeBtn.Size = new System.Drawing.Size(83, 53);
+            this.payByChequeBtn.TabIndex = 0;
+            this.payByChequeBtn.Text = "支票";
+            this.payByChequeBtn.UseCustomBackColor = true;
+            this.payByChequeBtn.UseSelectable = true;
+            this.payByChequeBtn.Click += new System.EventHandler(this.payByCheque_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(85)))), ((int)(((byte)(100)))));
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel4, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.fullPayBtn, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.NotPaidBtn, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(377, 855);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(198, 65);
+            this.tableLayoutPanel4.TabIndex = 46;
             // 
             // panel2
             // 
@@ -934,6 +999,18 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
+            // NotPaidBtn
+            // 
+            this.NotPaidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
+            this.NotPaidBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NotPaidBtn.Location = new System.Drawing.Point(102, 3);
+            this.NotPaidBtn.Name = "NotPaidBtn";
+            this.NotPaidBtn.Size = new System.Drawing.Size(93, 59);
+            this.NotPaidBtn.TabIndex = 44;
+            this.NotPaidBtn.Text = "未付";
+            this.NotPaidBtn.UseVisualStyleBackColor = false;
+            this.NotPaidBtn.Click += new System.EventHandler(this.NotPaidBtn_Click);
+            // 
             // CashSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -954,6 +1031,8 @@
             this.custNameLbl.ResumeLayout(false);
             this.custNameLbl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -971,7 +1050,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroButton searchBtn;
-        private MetroFramework.Controls.MetroButton metroButton40;
         private MetroFramework.Controls.MetroButton orderConfirmBtn;
         private MetroFramework.Controls.MetroButton cancelBtn;
         private MetroFramework.Controls.MetroLabel invoiceLabel;
@@ -999,7 +1077,7 @@
         private System.Windows.Forms.FlowLayoutPanel subPanel;
         private System.Windows.Forms.TextBox paidAmount;
         private System.Windows.Forms.Label payTypeLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label payMethodLbl;
         private MetroFramework.Controls.MetroRadioButton warehouseRadio;
         private System.Windows.Forms.Label selectedItemLabel;
         private System.Windows.Forms.TextBox invoiceNoteTxt;
@@ -1032,5 +1110,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.Button fullPayBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private MetroFramework.Controls.MetroButton payByTransferBtn;
+        private MetroFramework.Controls.MetroButton payByChequeBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button NotPaidBtn;
     }
 }

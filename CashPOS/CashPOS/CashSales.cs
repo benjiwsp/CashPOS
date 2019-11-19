@@ -78,7 +78,7 @@ namespace CashPOS
 
             addTypeToList();
             createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
-          //  updateGridCol();
+            //  updateGridCol();
         }
 
 
@@ -227,6 +227,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            payMethodLbl.Text = "";
             subPanel.Controls.Clear();
             selectedItemList.Rows.Clear();
             addressTxt.Text = "";
@@ -270,9 +271,9 @@ namespace CashPOS
         private void orderConfirmBtn_Click(object sender, EventArgs e)
         {
             //TO-DO: check if orderID already exist, get all grid info and insert them into database
-            sendOrder(isSearching, selectedOrderID);
+            sendOrder(isSearching, selectedOrderID, "現金");
         }
-        private void sendOrder(bool isSearching, string id)
+        private void sendOrder(bool isSearching, string id, string payMethod)
         {
             string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
             orderID = invoiceLabel.Text;// invoiceLabel.Text;
@@ -328,7 +329,7 @@ namespace CashPOS
                     while (true)
                     {
                         myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
-                         phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + notes + "','" + belongTo + "','" +
+                         phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + notes + "','" + belongTo + "','" +
                          isPrinted + "','" + date + "')", myConnection);
                         myCommand.ExecuteNonQuery();
 
@@ -339,19 +340,27 @@ namespace CashPOS
                               pickupLoc + "','" + date + "')", myConnection);
                             myCommand.ExecuteNonQuery();
 
-                            if(pickupLoc == "柴灣"){
+                            if (pickupLoc == "柴灣")
+                            {
                                 invCol = "CwInv";
-                            }else if (pickupLoc == "油麻地"){
+                            }
+                            else if (pickupLoc == "油麻地")
+                            {
                                 invCol = "YmtInv";
-                            }else if(pickupLoc == "屯門"){
+                            }
+                            else if (pickupLoc == "屯門")
+                            {
                                 invCol = "TmInv";
-                            }else if(pickupLoc =="觀塘"){
+                            }
+                            else if (pickupLoc == "觀塘")
+                            {
                                 invCol = "KtInv";
                             }
-                            if(invCol != ""){
+                            if (invCol != "")
+                            {
                                 myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                                 myCommand.ExecuteNonQuery();
-                                }
+                            }
                         }
                         if (attempted)
                         {
@@ -449,7 +458,10 @@ namespace CashPOS
                 }
                 rdr.Close();
                 myConnection.Close();
-
+              //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
+            //    {
+                    checkNoneFullPaid(custCode, selectedCompany);
+             //   }
 
                 // TO-DO: check for any unpaid invoice
                 checkStatus();
@@ -466,7 +478,7 @@ namespace CashPOS
             isSearching = false;
             Button btn = (Button)sender;
             //getCustomerList("CashPOSDB.custData", btn.Text);
-           getCustomerList("超誠", btn.Text);
+            getCustomerList("超誠", btn.Text);
             selectedCompany = "超誠";
         }
 
@@ -597,6 +609,7 @@ namespace CashPOS
                         telTxt.Text = rdr["phone"].ToString();
                         licenseTxt.Text = rdr["license"].ToString();
                         pickupAddText.Text = rdr["pickupLoc"].ToString();
+                        payMethodLbl.Text = rdr["payMethod"].ToString();
                         //select the radio button
                         //update the date
                         fromLabel.Text = rdr["belongTo"].ToString();
@@ -673,6 +686,65 @@ namespace CashPOS
                     }
                 }
             }
+        }
+
+        private void payByTransfer_Click(object sender, EventArgs e)
+        {
+            sendOrder(isSearching, selectedOrderID, "過戶");
+
+        }
+
+        private void payByCheque_Click(object sender, EventArgs e)
+        {
+            sendOrder(isSearching, selectedOrderID, "支票");
+
+        }
+        private decimal getCashFlow(string comp, string belongTo)
+        {
+            decimal cf = 0.00m;
+            myCommand = new MySqlCommand("Select * from CashPOSDB.custData where Code = '" + comp + "' and BelongTo = '" + belongTo + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                if (rdr.Read())
+                {
+                    cf = Convert.ToDecimal(rdr["Money"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+            return cf;
+
+        }
+
+        private void fullPayBtn_Click(object sender, EventArgs e)
+        {
+            paidAmount.Text = totalPriceTxt.Text;
+        }
+
+        private void NotPaidBtn_Click(object sender, EventArgs e)
+        {
+            paidAmount.Text = "0.00";
+        }
+
+        private void checkNoneFullPaid(string company, string belongTo)
+        {
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords a where custCode = '" + company + "' and BelongTo = '" +
+                belongTo + "' and a.totalPrice != a.paid", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
+                    decimal reminder = totalPrice - Convert.ToDecimal(rdr["paid"].ToString());
+                    unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, reminder, DateTime.Parse(rdr["time"].ToString()).ToString("yyyy-MM-dd"));
+                }
+            } rdr.Close();
+            myConnection.Close();
+
+
         }
     }
 }
