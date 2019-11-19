@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Globalization;
 
 namespace CashPOS
 {
@@ -739,12 +740,13 @@ namespace CashPOS
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal reminder = totalPrice - Convert.ToDecimal(rdr["paid"].ToString());
-                    unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, reminder, DateTime.Parse(rdr["time"].ToString()).ToString("yyyy-MM-dd"));
+                    DateTime date = DateTime.ParseExact(rdr["time"].ToString(), "MM-dd-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                    unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, reminder, date);
                 }
             } rdr.Close();
             myConnection.Close();
 
 
-        }
+         }
     }
 }
