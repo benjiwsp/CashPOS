@@ -76,7 +76,6 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
             this.paidAmount = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.orderConfirmBtn = new MetroFramework.Controls.MetroButton();
@@ -86,6 +85,10 @@
             this.fullPayBtn = new System.Windows.Forms.Button();
             this.NotPaidBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.payMethLbl = new System.Windows.Forms.Label();
+            this.sendOrderBtn = new MetroFramework.Controls.MetroButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -111,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -176,11 +180,12 @@
             this.customerDetailPanel.Controls.Add(this.label8, 0, 10);
             this.customerDetailPanel.Controls.Add(this.label9, 0, 11);
             this.customerDetailPanel.Controls.Add(this.unpaidList, 0, 9);
-            this.customerDetailPanel.Controls.Add(this.label7, 4, 11);
             this.customerDetailPanel.Controls.Add(this.paidAmount, 5, 11);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel3, 0, 12);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel4, 4, 12);
             this.customerDetailPanel.Controls.Add(this.cancelBtn, 4, 13);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel5, 4, 11);
+            this.customerDetailPanel.Controls.Add(this.sendOrderBtn, 2, 13);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -548,8 +553,10 @@
             // dateSelected
             // 
             this.customerDetailPanel.SetColumnSpan(this.dateSelected, 3);
+            this.dateSelected.CustomFormat = "yyyy - MM - dd";
             this.dateSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateSelected.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateSelected.Location = new System.Drawing.Point(289, 162);
             this.dateSelected.Name = "dateSelected";
             this.dateSelected.Size = new System.Drawing.Size(286, 26);
@@ -664,17 +671,6 @@
             // 
             this.Column10.HeaderText = "日期";
             this.Column10.Name = "Column10";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(377, 781);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 18);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "已付:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // paidAmount
             // 
@@ -796,6 +792,57 @@
             this.cancelBtn.Text = "取消";
             this.cancelBtn.UseSelectable = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.payMethLbl, 0, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(377, 784);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(54, 65);
+            this.tableLayoutPanel5.TabIndex = 47;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 32);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "已付:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // payMethLbl
+            // 
+            this.payMethLbl.AutoSize = true;
+            this.payMethLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payMethLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.payMethLbl.Location = new System.Drawing.Point(3, 32);
+            this.payMethLbl.Name = "payMethLbl";
+            this.payMethLbl.Size = new System.Drawing.Size(48, 33);
+            this.payMethLbl.TabIndex = 40;
+            this.payMethLbl.Text = "label1";
+            this.payMethLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sendOrderBtn
+            // 
+            this.sendOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
+            this.customerDetailPanel.SetColumnSpan(this.sendOrderBtn, 2);
+            this.sendOrderBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendOrderBtn.Location = new System.Drawing.Point(193, 926);
+            this.sendOrderBtn.Name = "sendOrderBtn";
+            this.sendOrderBtn.Size = new System.Drawing.Size(178, 71);
+            this.sendOrderBtn.TabIndex = 0;
+            this.sendOrderBtn.Text = "搜尋";
+            this.sendOrderBtn.UseSelectable = true;
+            this.sendOrderBtn.Click += new System.EventHandler(this.sendOrderBtn_Click);
             // 
             // panel2
             // 
@@ -1033,6 +1080,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.unpaidList)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -1116,5 +1165,8 @@
         private MetroFramework.Controls.MetroButton payByChequeBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button NotPaidBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label payMethLbl;
+        private MetroFramework.Controls.MetroButton sendOrderBtn;
     }
 }

@@ -102,12 +102,14 @@ QuotationMgm
 
 todo:
 
-cash - payment method, show how mcuh moeny is missing or too mcuh, and the receive number for not fully paid
 
-invoice - start with customer code, tick, previous start - end time (invoice number need to wait for reply)
 level - login: few names 
-
+fix - custMgm (insert col not correct)
 
 done:
 another tab - import
 price setting - select item / select cat
+cash - payment method, show how mcuh moeny is missing or too mcuh, and the receive number for not fully paid
+invoice - start with customer code, tick, previous start - end time (invoice number need to wait for reply)
+
+error, update invoice would change invoice number ****

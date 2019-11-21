@@ -279,7 +279,7 @@ namespace CashPOS
             notes = invoiceNoteTxt.Text.Trim();
             refNo = refBox.Text;
             string invCol = "";
-            string date = dateSelected.Value.ToString("yyyy-MM-dd");
+            string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
             if (isSearching)
             {
                 if (orderID.StartsWith("I"))

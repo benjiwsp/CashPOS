@@ -190,7 +190,7 @@ namespace CashPOS
             {
                 totalPrice = amount * unitPrice;
                 selectedItemList.Rows.Add(item, amount, unit, unitPrice, totalPrice);
-                totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString();
+                totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString("0.00");
                 clearItemPanel();
             }
         }
@@ -228,6 +228,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            payMethLbl.Text = "";
             payMethodLbl.Text = "";
             subPanel.Controls.Clear();
             selectedItemList.Rows.Clear();
@@ -245,7 +246,7 @@ namespace CashPOS
             toLabel.Text = "";
             fromLabel.Text = "";
             destLabel.Text = "";
-            totalPriceTxt.Text = "0.0";
+            totalPriceTxt.Text = "0.00";
             itemTypePanel.Enabled = false;
             payTypeLabel.Text = "";
             clearItemPanel();
@@ -271,8 +272,8 @@ namespace CashPOS
 
         private void orderConfirmBtn_Click(object sender, EventArgs e)
         {
+            payMethLbl.Text = "現金";
             //TO-DO: check if orderID already exist, get all grid info and insert them into database
-            sendOrder(isSearching, selectedOrderID, "現金");
         }
         private void sendOrder(bool isSearching, string id, string payMethod)
         {
@@ -301,7 +302,7 @@ namespace CashPOS
                 paid = paidAmount.Text;
             }
             string invCol = "";
-            string date = dateSelected.Value.ToString("yyyy-MM-dd");
+            string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
             if (isSearching)
             {
@@ -459,10 +460,10 @@ namespace CashPOS
                 }
                 rdr.Close();
                 myConnection.Close();
-              //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
-            //    {
-                    checkNoneFullPaid(custCode, selectedCompany);
-             //   }
+                //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
+                //    {
+                checkNoneFullPaid(custCode, selectedCompany);
+                //   }
 
                 // TO-DO: check for any unpaid invoice
                 checkStatus();
@@ -660,7 +661,7 @@ namespace CashPOS
         private string getRecord(string extraCond)
         {
             string returnStr = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
-                "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
+                "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone,  CashPOSDB.orderRecords.payMethod, CashPOSDB.orderRecords.license, " +
                 "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
@@ -691,13 +692,15 @@ namespace CashPOS
 
         private void payByTransfer_Click(object sender, EventArgs e)
         {
-            sendOrder(isSearching, selectedOrderID, "過戶");
-
+           // sendOrder(isSearching, selectedOrderID, "過戶");
+            payMethLbl.Text = "過戶";
         }
 
         private void payByCheque_Click(object sender, EventArgs e)
         {
-            sendOrder(isSearching, selectedOrderID, "支票");
+           // sendOrder(isSearching, selectedOrderID, "支票");
+            payMethLbl.Text = "支票";
+
 
         }
         private decimal getCashFlow(string comp, string belongTo)
@@ -721,6 +724,7 @@ namespace CashPOS
         private void fullPayBtn_Click(object sender, EventArgs e)
         {
             paidAmount.Text = totalPriceTxt.Text;
+
         }
 
         private void NotPaidBtn_Click(object sender, EventArgs e)
@@ -740,13 +744,18 @@ namespace CashPOS
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal reminder = totalPrice - Convert.ToDecimal(rdr["paid"].ToString());
-                    DateTime date = DateTime.ParseExact(rdr["time"].ToString(), "MM-dd-yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                    DateTime date = Convert.ToDateTime(rdr["time"].ToString());
                     unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, reminder, date);
                 }
             } rdr.Close();
             myConnection.Close();
 
 
-         }
+        }
+
+        private void sendOrderBtn_Click(object sender, EventArgs e)
+        {
+            sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
+        }
     }
 }
