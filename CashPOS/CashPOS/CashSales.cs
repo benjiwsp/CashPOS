@@ -734,6 +734,7 @@ namespace CashPOS
 
         private void checkNoneFullPaid(string company, string belongTo)
         {
+            unpaidList.Rows.Clear();
             myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords a where custCode = '" + company + "' and BelongTo = '" +
                 belongTo + "' and a.totalPrice != a.paid", myConnection);
             myConnection.Open();

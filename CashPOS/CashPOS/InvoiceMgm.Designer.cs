@@ -30,15 +30,6 @@
         {
             this.serachByComp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.orderListView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.idToSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +50,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.payType = new System.Windows.Forms.ComboBox();
             this.searchByPayType = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.deleteOrderBrn = new System.Windows.Forms.Button();
             this.resultGrid = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,12 +74,24 @@
             this.licenseLbl = new System.Windows.Forms.Label();
             this.pickupLbl = new System.Windows.Forms.Label();
             this.priceTypeLbl = new System.Windows.Forms.Label();
-            this.compLbl = new System.Windows.Forms.ComboBox();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.orderListView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.compLbl = new System.Windows.Forms.ComboBox();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.sfNotFullPaid = new System.Windows.Forms.Button();
+            this.csNotFullPaid = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -98,6 +101,8 @@
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
+            this.tableLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // serachByComp
@@ -127,7 +132,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button8, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.deleteOrderBrn, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.resultGrid, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.serachByComp, 2, 2);
@@ -136,6 +141,7 @@
             this.tableLayoutPanel1.Controls.Add(this.compLbl, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.StartTimePicker, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.EndTimePicker, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -149,75 +155,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // orderListView
-            // 
-            this.orderListView.AllowUserToAddRows = false;
-            this.orderListView.AllowUserToDeleteRows = false;
-            this.orderListView.AllowUserToResizeColumns = false;
-            this.orderListView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.orderListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.orderListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.客戶,
-            this.Column4,
-            this.Column2,
-            this.Column3,
-            this.總金額,
-            this.Column5,
-            this.Column6});
-            this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
-            this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderListView.Location = new System.Drawing.Point(3, 243);
-            this.orderListView.Name = "orderListView";
-            this.orderListView.RowHeadersVisible = false;
-            this.orderListView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel1.SetRowSpan(this.orderListView, 3);
-            this.orderListView.Size = new System.Drawing.Size(962, 754);
-            this.orderListView.TabIndex = 1;
-            this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單號";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // 客戶
-            // 
-            this.客戶.HeaderText = "客戶";
-            this.客戶.Name = "客戶";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取貨地";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "目的地";
-            this.Column3.Name = "Column3";
-            // 
-            // 總金額
-            // 
-            this.總金額.HeaderText = "總金額";
-            this.總金額.Name = "總金額";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "欠款";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "公司";
-            this.Column6.Name = "Column6";
             // 
             // tableLayoutPanel2
             // 
@@ -465,15 +402,16 @@
             this.searchByPayType.UseVisualStyleBackColor = true;
             this.searchByPayType.Click += new System.EventHandler(this.searchByPayType_Click);
             // 
-            // button8
+            // deleteOrderBrn
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button8.Location = new System.Drawing.Point(1515, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(136, 70);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "刪除";
-            this.button8.UseVisualStyleBackColor = true;
+            this.deleteOrderBrn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteOrderBrn.Location = new System.Drawing.Point(1515, 3);
+            this.deleteOrderBrn.Name = "deleteOrderBrn";
+            this.deleteOrderBrn.Size = new System.Drawing.Size(136, 70);
+            this.deleteOrderBrn.TabIndex = 17;
+            this.deleteOrderBrn.Text = "刪除";
+            this.deleteOrderBrn.UseVisualStyleBackColor = true;
+            this.deleteOrderBrn.Click += new System.EventHandler(this.deleteOrderBrn_Click);
             // 
             // resultGrid
             // 
@@ -662,7 +600,6 @@
             this.custLbl.Name = "custLbl";
             this.custLbl.Size = new System.Drawing.Size(164, 28);
             this.custLbl.TabIndex = 8;
-            this.custLbl.Text = "label9";
             this.custLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addLbl
@@ -674,7 +611,6 @@
             this.addLbl.Name = "addLbl";
             this.addLbl.Size = new System.Drawing.Size(164, 28);
             this.addLbl.TabIndex = 9;
-            this.addLbl.Text = "label10";
             this.addLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // telLbl
@@ -686,7 +622,6 @@
             this.telLbl.Name = "telLbl";
             this.telLbl.Size = new System.Drawing.Size(164, 28);
             this.telLbl.TabIndex = 10;
-            this.telLbl.Text = "label11";
             this.telLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dateLbl
@@ -698,7 +633,6 @@
             this.dateLbl.Name = "dateLbl";
             this.dateLbl.Size = new System.Drawing.Size(164, 28);
             this.dateLbl.TabIndex = 10;
-            this.dateLbl.Text = "label11";
             this.dateLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // noteLbl
@@ -710,7 +644,6 @@
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(164, 31);
             this.noteLbl.TabIndex = 10;
-            this.noteLbl.Text = "label11";
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // licenseLbl
@@ -722,7 +655,6 @@
             this.licenseLbl.Name = "licenseLbl";
             this.licenseLbl.Size = new System.Drawing.Size(164, 28);
             this.licenseLbl.TabIndex = 10;
-            this.licenseLbl.Text = "label11";
             this.licenseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pickupLbl
@@ -734,7 +666,6 @@
             this.pickupLbl.Name = "pickupLbl";
             this.pickupLbl.Size = new System.Drawing.Size(164, 28);
             this.pickupLbl.TabIndex = 10;
-            this.pickupLbl.Text = "label11";
             this.pickupLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // priceTypeLbl
@@ -746,8 +677,95 @@
             this.priceTypeLbl.Name = "priceTypeLbl";
             this.priceTypeLbl.Size = new System.Drawing.Size(164, 28);
             this.priceTypeLbl.TabIndex = 10;
-            this.priceTypeLbl.Text = "label11";
             this.priceTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearBtn.Location = new System.Drawing.Point(1515, 79);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(136, 76);
+            this.clearBtn.TabIndex = 18;
+            this.clearBtn.Text = "清空";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // orderListView
+            // 
+            this.orderListView.AllowUserToAddRows = false;
+            this.orderListView.AllowUserToDeleteRows = false;
+            this.orderListView.AllowUserToResizeColumns = false;
+            this.orderListView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.orderListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.客戶,
+            this.Column4,
+            this.Column2,
+            this.Column3,
+            this.總金額,
+            this.Column5,
+            this.Column6,
+            this.Column12});
+            this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
+            this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderListView.Location = new System.Drawing.Point(3, 243);
+            this.orderListView.Name = "orderListView";
+            this.orderListView.RowHeadersVisible = false;
+            this.orderListView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.tableLayoutPanel1.SetRowSpan(this.orderListView, 3);
+            this.orderListView.Size = new System.Drawing.Size(962, 754);
+            this.orderListView.TabIndex = 1;
+            this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "單號";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // 客戶
+            // 
+            this.客戶.HeaderText = "客戶";
+            this.客戶.Name = "客戶";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "取貨地";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "目的地";
+            this.Column3.Name = "Column3";
+            // 
+            // 總金額
+            // 
+            this.總金額.HeaderText = "總金額";
+            this.總金額.Name = "總金額";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "欠款";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "公司";
+            this.Column6.Name = "Column6";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "已付款";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // compLbl
             // 
@@ -763,17 +781,6 @@
             this.compLbl.Size = new System.Drawing.Size(412, 32);
             this.compLbl.TabIndex = 3;
             // 
-            // clearBtn
-            // 
-            this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearBtn.Location = new System.Drawing.Point(1515, 79);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(136, 76);
-            this.clearBtn.TabIndex = 18;
-            this.clearBtn.Text = "清空";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
-            // 
             // StartTimePicker
             // 
             this.StartTimePicker.Location = new System.Drawing.Point(9, 9);
@@ -786,6 +793,43 @@
             this.EndTimePicker.Name = "EndTimePicker";
             this.EndTimePicker.TabIndex = 22;
             // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.sfNotFullPaid, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.csNotFullPaid, 1, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(553, 3);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(412, 70);
+            this.tableLayoutPanel10.TabIndex = 24;
+            // 
+            // sfNotFullPaid
+            // 
+            this.sfNotFullPaid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfNotFullPaid.Location = new System.Drawing.Point(3, 3);
+            this.sfNotFullPaid.Name = "sfNotFullPaid";
+            this.sfNotFullPaid.Size = new System.Drawing.Size(200, 64);
+            this.sfNotFullPaid.TabIndex = 23;
+            this.sfNotFullPaid.Text = "富資未付款單";
+            this.sfNotFullPaid.UseVisualStyleBackColor = true;
+            this.sfNotFullPaid.Click += new System.EventHandler(this.sfNotFullPaid_Click);
+            // 
+            // csNotFullPaid
+            // 
+            this.csNotFullPaid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.csNotFullPaid.Location = new System.Drawing.Point(209, 3);
+            this.csNotFullPaid.Name = "csNotFullPaid";
+            this.csNotFullPaid.Size = new System.Drawing.Size(200, 64);
+            this.csNotFullPaid.TabIndex = 23;
+            this.csNotFullPaid.Text = "超誠未付款單";
+            this.csNotFullPaid.UseVisualStyleBackColor = true;
+            this.csNotFullPaid.Click += new System.EventHandler(this.csNotFullPaid_Click);
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -794,7 +838,6 @@
             this.Name = "InvoiceMgm";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -808,6 +851,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderListView)).EndInit();
+            this.tableLayoutPanel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -837,7 +882,7 @@
         private System.Windows.Forms.Button searchByItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button searchByPayType;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button deleteOrderBrn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label1;
@@ -858,6 +903,16 @@
         private System.Windows.Forms.Label priceTypeLbl;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.MonthCalendar StartTimePicker;
+        private System.Windows.Forms.MonthCalendar EndTimePicker;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Button sfNotFullPaid;
+        private System.Windows.Forms.Button csNotFullPaid;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客戶;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -866,12 +921,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 總金額;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.MonthCalendar StartTimePicker;
-        private System.Windows.Forms.MonthCalendar EndTimePicker;
+        private System.Windows.Forms.DataGridViewButtonColumn Column12;
     }
 }

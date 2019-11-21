@@ -183,7 +183,7 @@ namespace CashPOS
             orderListView.Rows.Clear();
             decimal tp;
             Decimal.TryParse(totalPrice.Text, out tp);
-    
+
             myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice = '" + tp.ToString("0.00") + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -264,7 +264,7 @@ namespace CashPOS
             dateLbl.Text = "";
             noteLbl.Text = "";
             var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (senderGrid.Columns[0] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 resultGrid.Rows.Clear();
                 string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
@@ -307,9 +307,64 @@ namespace CashPOS
                 rdr.Close();
                 myConnection.Close();
             }
+            else if (senderGrid.Columns[8] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = totalPrice where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+
+            }
+        }
+
+        private void sfNotFullPaid_Click(object sender, EventArgs e)
+        {
+            searchNonPaid("富資");
+        }
+
+        private void csNotFullPaid_Click(object sender, EventArgs e)
+        {
+            searchNonPaid("超誠");
+
+        }
+
+        private void searchNonPaid(string comp)
+        {
+            orderListView.Rows.Clear();
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice != paid and belongTo = '" + comp + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                              rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["belongTo"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+        }
+
+        private void deleteOrderBrn_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("確定要刪除嗎?", "警告", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string orderID = idToSearch.Text;
+                  myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + orderID + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myConnection.Close();
+                clearAll();
+            }
         }
     }
-
-
 
 }
