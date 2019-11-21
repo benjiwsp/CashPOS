@@ -11,6 +11,7 @@ namespace CashPOS
 {
     public partial class HomeScreen : UserControl
     {
+        Form1 main = new Form1();
         public HomeScreen()
         {
             InitializeComponent();
@@ -19,6 +20,11 @@ namespace CashPOS
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void unlockBtn_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

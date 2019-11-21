@@ -35,6 +35,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.importBtn = new System.Windows.Forms.Button();
             this.printInvBtn = new System.Windows.Forms.Button();
             this.InvoiceCheckBtn = new System.Windows.Forms.Button();
             this.invBtn = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
-            this.importBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -95,6 +95,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 1000);
             this.panel1.TabIndex = 1;
+            // 
+            // importBtn
+            // 
+            this.importBtn.BackColor = System.Drawing.Color.White;
+            this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
+            this.importBtn.Location = new System.Drawing.Point(0, 761);
+            this.importBtn.Name = "importBtn";
+            this.importBtn.Size = new System.Drawing.Size(200, 103);
+            this.importBtn.TabIndex = 1;
+            this.importBtn.Text = "進貨";
+            this.importBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.importBtn.UseVisualStyleBackColor = false;
+            this.importBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // printInvBtn
             // 
@@ -223,20 +237,6 @@
             this.sideBarSelectionPanel.Name = "sideBarSelectionPanel";
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
-            // 
-            // importBtn
-            // 
-            this.importBtn.BackColor = System.Drawing.Color.White;
-            this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
-            this.importBtn.Location = new System.Drawing.Point(0, 761);
-            this.importBtn.Name = "importBtn";
-            this.importBtn.Size = new System.Drawing.Size(200, 103);
-            this.importBtn.TabIndex = 1;
-            this.importBtn.Text = "進貨";
-            this.importBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.importBtn.UseVisualStyleBackColor = false;
-            this.importBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // Form1
             // 

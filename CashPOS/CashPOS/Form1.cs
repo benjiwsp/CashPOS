@@ -138,13 +138,93 @@ namespace CashPOS
                         break;
                 }
             }
+
+        }
+        public void enableBtn(string group)
+        {
+
+            switch (group)
+            {
+                case "1":
+                    group1();
+                    break;
+                case "2":
+                    group2();
+                    break;
+                case "3":
+                    group3();
+                    break;
+                default:
+                    groupDef();
+                    break;
+            }
+        }
+        private void cashSaleEnable(bool isEnable)
+        {
+            cashSalesBtn.Enabled = isEnable;
+        }
+        private void invEnable(bool isEnable)
+        {
+            invBtn.Enabled = isEnable;
+        }
+        private void settingEnable(bool isEnable)
+        {
+            settingBtn.Enabled = isEnable;
+        }
+        private void InvoiceEnable(bool isEnable)
+        {
+            InvoiceCheckBtn.Enabled = isEnable;
+        }
+        private void printEnable(bool isEnable)
+        {
+            printInvBtn.Enabled = isEnable;
+        }
+        private void importEnable(bool isEnable)
+        {
+            importBtn.Enabled = isEnable;
+        }
+
+        private void group1()
+        {
+            cashSaleEnable(true);
+            invEnable(true);
+            settingEnable(true);
+            InvoiceEnable(true);
+            printEnable(true);
+            importEnable(true);
+        }
+        private void group2()
+        {
+            cashSaleEnable(true);
+            invEnable(true);
+            settingEnable(true);
+            InvoiceEnable(true);
+            printEnable(true);
+            importEnable(true);
+        }
+        private void group3()
+        {
+            cashSaleEnable(true);
+            invEnable(true);
+            settingEnable(true);
+            InvoiceEnable(true);
+            printEnable(true);
+            importEnable(true);
+        }
+        private void groupDef()
+        {
+            cashSaleEnable(false);
+            invEnable(false);
+            settingEnable(false);
+            InvoiceEnable(false);
+            printEnable(false);
+            importEnable(false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
 
 
         /*
@@ -192,4 +272,5 @@ namespace CashPOS
 
                 */
     }
+
 }
