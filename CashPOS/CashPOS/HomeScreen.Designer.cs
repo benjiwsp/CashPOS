@@ -31,7 +31,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userTxt = new System.Windows.Forms.TextBox();
+            this.unlockBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -45,7 +49,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "超誠建築材料倉有限公司";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -69,6 +72,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.26214F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.46845F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.14806F));
+            this.tableLayoutPanel2.Controls.Add(this.label1, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.userTxt, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.unlockBtn, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 503);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -80,6 +86,36 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1648, 494);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(415, 217);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(262, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "User:";
+            // 
+            // userTxt
+            // 
+            this.userTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userTxt.Location = new System.Drawing.Point(683, 220);
+            this.userTxt.Name = "userTxt";
+            this.userTxt.Size = new System.Drawing.Size(183, 20);
+            this.userTxt.TabIndex = 1;
+            // 
+            // unlockBtn
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.unlockBtn, 2);
+            this.unlockBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unlockBtn.Location = new System.Drawing.Point(415, 249);
+            this.unlockBtn.Name = "unlockBtn";
+            this.unlockBtn.Size = new System.Drawing.Size(451, 117);
+            this.unlockBtn.TabIndex = 2;
+            this.unlockBtn.Text = "unlock";
+            this.unlockBtn.UseVisualStyleBackColor = true;
+            this.unlockBtn.Click += new System.EventHandler(this.unlockBtn_Click_1);
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,6 +124,8 @@
             this.Name = "HomeScreen";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -97,5 +135,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox userTxt;
+        private System.Windows.Forms.Button unlockBtn;
     }
 }

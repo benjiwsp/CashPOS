@@ -27,9 +27,11 @@ namespace CashPOS
         PrintPage printPage;
         ImportPage importPage;
         SupplierMgm supplierMgm;
+
         public Form1()
         {
             InitializeComponent();
+            // groupDef();
             infoSetting = new InfoSettings();
             cashSales = new CashSales();
             priceSetting = new PriceSetting();
@@ -45,10 +47,35 @@ namespace CashPOS
             importPage = new ImportPage();
             supplierMgm = new SupplierMgm();
             mainPanel.Controls.Add(homeScreen);
+            
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            homeScreen.unlocker += new HomeScreen.customHandler(enableBtn);
 
+        }
+       
+        private void enableBtn(object sender)
+        {
+            string group = (string)sender;
+            switch (group)
+            {
+                case "1":
+                    group1();
+                    break;
+                case "2":
+                    group2();
+                    break;
+                case "3":
+                    group3();
+                    break;
+                default:
+                    groupDef();
+                    break;
+            }
+        }
         protected void ButtonClicked(object sender, EventArgs e)
         {
             buttonHandler(sender);
@@ -140,25 +167,8 @@ namespace CashPOS
             }
 
         }
-        public void enableBtn(string group)
-        {
 
-            switch (group)
-            {
-                case "1":
-                    group1();
-                    break;
-                case "2":
-                    group2();
-                    break;
-                case "3":
-                    group3();
-                    break;
-                default:
-                    groupDef();
-                    break;
-            }
-        }
+
         private void cashSaleEnable(bool isEnable)
         {
             cashSalesBtn.Enabled = isEnable;
@@ -221,10 +231,7 @@ namespace CashPOS
             importEnable(false);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+  
 
 
         /*

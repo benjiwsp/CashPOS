@@ -54,7 +54,7 @@
             this.totalPrice = new System.Windows.Forms.TextBox();
             this.searchByPrice = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.itemList = new System.Windows.Forms.ComboBox();
             this.searchByItem = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.payType = new System.Windows.Forms.ComboBox();
@@ -85,6 +85,8 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.compLbl = new System.Windows.Forms.ComboBox();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
+            this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -102,9 +104,9 @@
             // 
             this.serachByComp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serachByComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serachByComp.Location = new System.Drawing.Point(553, 3);
+            this.serachByComp.Location = new System.Drawing.Point(553, 161);
             this.serachByComp.Name = "serachByComp";
-            this.serachByComp.Size = new System.Drawing.Size(412, 70);
+            this.serachByComp.Size = new System.Drawing.Size(412, 76);
             this.serachByComp.TabIndex = 0;
             this.serachByComp.Text = "以公司搜尋";
             this.serachByComp.UseVisualStyleBackColor = true;
@@ -119,7 +121,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.14268F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.8682F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.524789F));
-            this.tableLayoutPanel1.Controls.Add(this.orderListView, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 3, 1);
@@ -129,9 +130,12 @@
             this.tableLayoutPanel1.Controls.Add(this.button8, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.resultGrid, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.serachByComp, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.compLbl, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.serachByComp, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.clearBtn, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.orderListView, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.compLbl, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.StartTimePicker, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.EndTimePicker, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -164,12 +168,12 @@
             this.Column6});
             this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
             this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderListView.Location = new System.Drawing.Point(3, 79);
+            this.orderListView.Location = new System.Drawing.Point(3, 243);
             this.orderListView.Name = "orderListView";
             this.orderListView.RowHeadersVisible = false;
             this.orderListView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel1.SetRowSpan(this.orderListView, 4);
-            this.orderListView.Size = new System.Drawing.Size(962, 748);
+            this.tableLayoutPanel1.SetRowSpan(this.orderListView, 3);
+            this.orderListView.Size = new System.Drawing.Size(962, 754);
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
             // 
@@ -388,7 +392,7 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.comboBox3, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.itemList, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.searchByItem, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(971, 161);
@@ -399,16 +403,16 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(260, 76);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
-            // comboBox3
+            // itemList
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(3, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(254, 32);
-            this.comboBox3.TabIndex = 8;
-            this.comboBox3.Text = "貨品";
+            this.itemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemList.FormattingEnabled = true;
+            this.itemList.Location = new System.Drawing.Point(3, 3);
+            this.itemList.Name = "itemList";
+            this.itemList.Size = new System.Drawing.Size(254, 32);
+            this.itemList.TabIndex = 8;
+            this.itemList.Text = "貨品";
             // 
             // searchByItem
             // 
@@ -747,16 +751,16 @@
             // 
             // compLbl
             // 
-            this.compLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.compLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compLbl.FormattingEnabled = true;
             this.compLbl.Items.AddRange(new object[] {
             "",
             "富資",
             "超誠"});
-            this.compLbl.Location = new System.Drawing.Point(278, 3);
+            this.compLbl.Location = new System.Drawing.Point(553, 123);
             this.compLbl.Name = "compLbl";
-            this.compLbl.Size = new System.Drawing.Size(269, 32);
+            this.compLbl.Size = new System.Drawing.Size(412, 32);
             this.compLbl.TabIndex = 3;
             // 
             // clearBtn
@@ -769,6 +773,18 @@
             this.clearBtn.Text = "清空";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // StartTimePicker
+            // 
+            this.StartTimePicker.Location = new System.Drawing.Point(9, 9);
+            this.StartTimePicker.Name = "StartTimePicker";
+            this.StartTimePicker.TabIndex = 21;
+            // 
+            // EndTimePicker
+            // 
+            this.EndTimePicker.Location = new System.Drawing.Point(284, 9);
+            this.EndTimePicker.Name = "EndTimePicker";
+            this.EndTimePicker.TabIndex = 22;
             // 
             // InvoiceMgm
             // 
@@ -808,7 +824,7 @@
         private System.Windows.Forms.TextBox idToSearch;
         private System.Windows.Forms.ComboBox custList;
         private System.Windows.Forms.TextBox totalPrice;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox itemList;
         private System.Windows.Forms.ComboBox payType;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -855,5 +871,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.MonthCalendar StartTimePicker;
+        private System.Windows.Forms.MonthCalendar EndTimePicker;
     }
 }

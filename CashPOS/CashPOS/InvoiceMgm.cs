@@ -107,11 +107,10 @@ namespace CashPOS
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
             {
+                itemList.Items.Add(" ");
                 while (rdr.Read())
                 {
-                    //   itemList.Add
-                    custList.Items.Add(" ");
-                    custList.Items.Add(rdr["ProdName"].ToString());
+                    itemList.Items.Add(rdr["ProdName"].ToString());
                 }
             }
             rdr.Close();
@@ -121,7 +120,8 @@ namespace CashPOS
         private void serachByCust_Click(object sender, EventArgs e)
         {
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where custCode = '" + custList.Text + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where custCode = '" + custList.Text + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -139,14 +139,30 @@ namespace CashPOS
 
         private void searchByItem_Click(object sender, EventArgs e)
         {
-
+            orderListView.Rows.Clear();
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords a  join CashPOSDB.orderDetails b  where b.itemName = '" + itemList.Text + "' and a.time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and a.time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    //   itemList.Add
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["belongTo"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
         }
 
         private void searchByPayType_Click(object sender, EventArgs e)
         {
             orderListView.Rows.Clear();
 
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where payment = '" + payType.Text + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where payment = '" + payType.Text + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "' ", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -165,7 +181,10 @@ namespace CashPOS
         private void searchByPrice_Click(object sender, EventArgs e)
         {
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice = '" + totalPrice.Text + "'", myConnection);
+            decimal tp;
+            Decimal.TryParse(totalPrice.Text, out tp);
+    
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice = '" + tp.ToString("0.00") + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -186,6 +205,18 @@ namespace CashPOS
             clearAll();
         }
 
+        private DateTime getStartDate()
+        {
+            DateTime startPick = StartTimePicker.SelectionRange.Start;
+            DateTime beginning = new DateTime(startPick.Year, startPick.Month, startPick.Day, 00, 00, 01);
+            return beginning;
+        }
+        private DateTime getEndDate()
+        {
+            DateTime endPick = EndTimePicker.SelectionRange.Start;
+            DateTime ending = new DateTime(endPick.Year, endPick.Month, endPick.Day, 23, 59, 59);
+            return ending;
+        }
         private void serachByComp_Click(object sender, EventArgs e)
         {
             orderListView.Rows.Clear();
@@ -193,15 +224,18 @@ namespace CashPOS
             string query;
             if (selectedComp == "富資")
             {
-                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "'";
+                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
             else if (selectedComp == "超誠")
             {
-                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "'";
+                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
             else
             {
-                query = "Select * from CashPOSDB.orderRecords";
+                query = "Select * from CashPOSDB.orderRecords where time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
             myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
@@ -252,6 +286,7 @@ namespace CashPOS
                     {
                         if (i == 0)
                         {
+                            idToSearch.Text = rdr["orderID"].ToString();
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
                             dateLbl.Text = rdr["time"].ToString();
                             custLbl.Text = rdr["custName"].ToString();

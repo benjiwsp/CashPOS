@@ -99,6 +99,7 @@
             // importBtn
             // 
             this.importBtn.BackColor = System.Drawing.Color.White;
+            this.importBtn.Enabled = false;
             this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
             this.importBtn.Location = new System.Drawing.Point(0, 761);
@@ -113,6 +114,7 @@
             // printInvBtn
             // 
             this.printInvBtn.BackColor = System.Drawing.Color.White;
+            this.printInvBtn.Enabled = false;
             this.printInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printInvBtn.Image = ((System.Drawing.Image)(resources.GetObject("printInvBtn.Image")));
             this.printInvBtn.Location = new System.Drawing.Point(0, 652);
@@ -127,6 +129,7 @@
             // InvoiceCheckBtn
             // 
             this.InvoiceCheckBtn.BackColor = System.Drawing.Color.White;
+            this.InvoiceCheckBtn.Enabled = false;
             this.InvoiceCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InvoiceCheckBtn.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceCheckBtn.Image")));
             this.InvoiceCheckBtn.Location = new System.Drawing.Point(0, 543);
@@ -141,6 +144,7 @@
             // invBtn
             // 
             this.invBtn.BackColor = System.Drawing.Color.White;
+            this.invBtn.Enabled = false;
             this.invBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.invBtn.Image = ((System.Drawing.Image)(resources.GetObject("invBtn.Image")));
             this.invBtn.Location = new System.Drawing.Point(3, 325);
@@ -155,6 +159,7 @@
             // settingBtn
             // 
             this.settingBtn.BackColor = System.Drawing.Color.White;
+            this.settingBtn.Enabled = false;
             this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingBtn.Image")));
             this.settingBtn.Location = new System.Drawing.Point(3, 434);
@@ -169,6 +174,7 @@
             // cashSalesBtn
             // 
             this.cashSalesBtn.BackColor = System.Drawing.Color.White;
+            this.cashSalesBtn.Enabled = false;
             this.cashSalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cashSalesBtn.Image = ((System.Drawing.Image)(resources.GetObject("cashSalesBtn.Image")));
             this.cashSalesBtn.Location = new System.Drawing.Point(3, 216);
