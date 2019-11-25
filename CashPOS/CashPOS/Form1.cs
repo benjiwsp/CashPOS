@@ -27,7 +27,7 @@ namespace CashPOS
         PrintPage printPage;
         ImportPage importPage;
         SupplierMgm supplierMgm;
-
+        SalesInfo salesInfo;
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace CashPOS
             importPage = new ImportPage();
             supplierMgm = new SupplierMgm();
             mainPanel.Controls.Add(homeScreen);
-            
+            salesInfo = new SalesInfo();
 
         }
 
@@ -154,7 +154,10 @@ namespace CashPOS
                         supplierMgm.Dock = DockStyle.Fill;
                         mainPanel.Controls.Add(supplierMgm);
                         break;
-
+                    case "salesInfoBtn":
+                        salesInfo.Dock = DockStyle.Fill;
+                        mainPanel.Controls.Add(salesInfo);
+                        break;
                     //   case "printInvBtn":
                     //      invoiceMgm.Dock = DockStyle.Fill;
                     //      mainPanel.Controls.Add(invoiceMgm);
@@ -193,6 +196,10 @@ namespace CashPOS
         {
             importBtn.Enabled = isEnable;
         }
+        private void salesInfoEnable(bool isEnable)
+        {
+            salesInfoBtn.Enabled = isEnable;
+        }
 
         private void group1()
         {
@@ -202,6 +209,7 @@ namespace CashPOS
             InvoiceEnable(true);
             printEnable(true);
             importEnable(true);
+            salesInfoEnable(true);
         }
         private void group2()
         {
@@ -211,6 +219,7 @@ namespace CashPOS
             InvoiceEnable(true);
             printEnable(true);
             importEnable(true);
+            salesInfoEnable(true);
         }
         private void group3()
         {
@@ -220,6 +229,7 @@ namespace CashPOS
             InvoiceEnable(true);
             printEnable(true);
             importEnable(true);
+            salesInfoEnable(true);
         }
         private void groupDef()
         {
@@ -229,6 +239,7 @@ namespace CashPOS
             InvoiceEnable(false);
             printEnable(false);
             importEnable(false);
+            salesInfoEnable(false);
         }
 
   

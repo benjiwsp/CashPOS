@@ -47,6 +47,7 @@
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
+            this.salesInfoBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.salesInfoBtn);
             this.panel1.Controls.Add(this.importBtn);
             this.panel1.Controls.Add(this.printInvBtn);
             this.panel1.Controls.Add(this.InvoiceCheckBtn);
@@ -244,6 +246,21 @@
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
             // 
+            // salesInfoBtn
+            // 
+            this.salesInfoBtn.BackColor = System.Drawing.Color.White;
+            this.salesInfoBtn.Enabled = false;
+            this.salesInfoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salesInfoBtn.Image = ((System.Drawing.Image)(resources.GetObject("salesInfoBtn.Image")));
+            this.salesInfoBtn.Location = new System.Drawing.Point(0, 870);
+            this.salesInfoBtn.Name = "salesInfoBtn";
+            this.salesInfoBtn.Size = new System.Drawing.Size(200, 103);
+            this.salesInfoBtn.TabIndex = 1;
+            this.salesInfoBtn.Text = "交易資料";
+            this.salesInfoBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.salesInfoBtn.UseVisualStyleBackColor = false;
+            this.salesInfoBtn.Click += new System.EventHandler(this.ButtonClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +301,7 @@
         private System.Windows.Forms.Panel sideBarSelectionPanel;
         private System.Windows.Forms.Button printInvBtn;
         private System.Windows.Forms.Button importBtn;
+        private System.Windows.Forms.Button salesInfoBtn;
     }
 }
 

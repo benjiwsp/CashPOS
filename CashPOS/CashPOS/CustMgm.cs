@@ -18,6 +18,9 @@ namespace CashPOS
         string name;
         string phone1;
         string phone2;
+        string contact1;
+        string contact2;
+        string money;
         string fax;
         string email;
         string address;
@@ -212,37 +215,24 @@ namespace CashPOS
                         {
                             if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
-                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") 
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") 
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") 
-                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
-                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[3].Value.ToString();
-                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[4].Value.ToString();
-                            if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") email = row.Cells[5].Value.ToString();
-                            if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") address = row.Cells[6].Value.ToString();
-                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
-                            if (row.Cells[11].Value != null) if (row.Cells[11].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
-
-
-//////fix this!!!!!!
-                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") phone2 = row.Cells[3].Value.ToString();
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") 
-                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") 
-                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") 
-                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") 
-                            if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") 
-                            if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[9].Value.ToString());
-                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[10].Value.ToString());
+                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact1 = row.Cells[3].Value.ToString();
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "")  contact2 = row.Cells[4].Value.ToString();
+                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
+                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
+                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
+                            if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") email = row.Cells[8].Value.ToString();
+                            if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") address = row.Cells[9].Value.ToString();
+                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") payMethod = row.Cells[10].Value.ToString();
                             if (row.Cells[11].Value != null) if (row.Cells[11].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[11].Value.ToString());
-                          //insert first and second contact to the table
+                            //if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") belongTo = row.Cells[12].Value.ToString();
                             belongTo = currCompLab.Text;
-                            //    MessageBox.Show(belongTo);
 
                         }
                         myConnection.Open();
                         myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
-                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "')", myConnection);
+                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" +  contact1
+                                      + "','" + contact2 + "','" + money + "','" + "" + "','" +  "" +"')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                         clearData();

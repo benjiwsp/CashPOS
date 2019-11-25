@@ -339,7 +339,7 @@ namespace CashPOS
                         {
                             myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
                               + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
-                              pickupLoc + "','" + date + "')", myConnection);
+                              pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                             myCommand.ExecuteNonQuery();
 
                             if (pickupLoc == "柴灣")
@@ -480,7 +480,7 @@ namespace CashPOS
             isSearching = false;
             Button btn = (Button)sender;
             //getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("超誠", btn.Text);
+            getCustomerList("超誠", btn.Text,customerTxt);
             selectedCompany = "超誠";
         }
 
@@ -490,8 +490,8 @@ namespace CashPOS
             clearSelection();
             isSearching = false;
             Button btn = (Button)sender;
-            getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("富資", btn.Text);
+        //    getCustomerList("CashPOSDB.custData", btn.Text);
+            getCustomerList("富資", btn.Text, customerTxt);
             selectedCompany = "富資";
         }
         private void clearSelection()
@@ -503,7 +503,7 @@ namespace CashPOS
             pickupAddText.Items.Clear();
             itemTypePanel.Enabled = false;
         }
-        private void getCustomerList(string cust, string from)
+        public void getCustomerList(string cust, string from,ComboBox cb)
         {
             customerTxt.Items.Clear();
             myConnection.Open();
@@ -513,7 +513,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    customerTxt.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
+                    cb.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
                 }
             }
             rdr.Close();
