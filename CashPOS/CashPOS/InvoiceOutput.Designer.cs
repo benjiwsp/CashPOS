@@ -41,10 +41,10 @@
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.csInvoice = new System.Windows.Forms.Button();
             this.sfInvoice = new System.Windows.Forms.Button();
+            this.selectedCompTxt = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.selectedCompTxt = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -175,6 +175,15 @@
             this.sfInvoice.UseVisualStyleBackColor = true;
             this.sfInvoice.Click += new System.EventHandler(this.sfInvoice_Click);
             // 
+            // selectedCompTxt
+            // 
+            this.selectedCompTxt.AutoSize = true;
+            this.selectedCompTxt.Location = new System.Drawing.Point(458, 346);
+            this.selectedCompTxt.Name = "selectedCompTxt";
+            this.selectedCompTxt.Size = new System.Drawing.Size(89, 13);
+            this.selectedCompTxt.TabIndex = 3;
+            this.selectedCompTxt.Text = "selectedCompTxt";
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
@@ -210,15 +219,6 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "button1";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // selectedCompTxt
-            // 
-            this.selectedCompTxt.AutoSize = true;
-            this.selectedCompTxt.Location = new System.Drawing.Point(458, 346);
-            this.selectedCompTxt.Name = "selectedCompTxt";
-            this.selectedCompTxt.Size = new System.Drawing.Size(89, 13);
-            this.selectedCompTxt.TabIndex = 3;
-            this.selectedCompTxt.Text = "selectedCompTxt";
             // 
             // InvoiceOutput
             // 

@@ -208,6 +208,11 @@ namespace CashPOS
             set { unitPriceTxt.Text = value; }
         }
 
+        public string unit
+        {
+            get { return itemUnit.Text; }
+            set { itemUnit.Text = value; }
+        }
 
         private void clearItemPanel()
         {

@@ -45,18 +45,26 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insertCompInfo = new System.Windows.Forms.Button();
             this.serachPickBtn = new System.Windows.Forms.Button();
+            this.itemGrid = new System.Windows.Forms.DataGridView();
+            this.updateUnitBtn = new System.Windows.Forms.Button();
+            this.serachItem = new System.Windows.Forms.Button();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // catGrid
             // 
+            this.catGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.catGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.catGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            this.catGrid.Location = new System.Drawing.Point(161, 132);
+            this.catGrid.Location = new System.Drawing.Point(23, 14);
             this.catGrid.Name = "catGrid";
+            this.catGrid.RowHeadersVisible = false;
             this.catGrid.Size = new System.Drawing.Size(240, 150);
             this.catGrid.TabIndex = 0;
             // 
@@ -67,23 +75,25 @@
             // 
             // updateCatBtn
             // 
-            this.updateCatBtn.Location = new System.Drawing.Point(161, 288);
+            this.updateCatBtn.Location = new System.Drawing.Point(23, 170);
             this.updateCatBtn.Name = "updateCatBtn";
             this.updateCatBtn.Size = new System.Drawing.Size(240, 54);
             this.updateCatBtn.TabIndex = 1;
-            this.updateCatBtn.Text = "updateCatBtn";
+            this.updateCatBtn.Text = "更新";
             this.updateCatBtn.UseVisualStyleBackColor = true;
             this.updateCatBtn.Click += new System.EventHandler(this.updateCatBtn_Click);
             // 
             // pickupLocDataGrid
             // 
+            this.pickupLocDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.pickupLocDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pickupLocDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column2});
-            this.pickupLocDataGrid.Location = new System.Drawing.Point(502, 132);
+            this.pickupLocDataGrid.Location = new System.Drawing.Point(23, 310);
             this.pickupLocDataGrid.Name = "pickupLocDataGrid";
-            this.pickupLocDataGrid.Size = new System.Drawing.Size(271, 150);
+            this.pickupLocDataGrid.RowHeadersVisible = false;
+            this.pickupLocDataGrid.Size = new System.Drawing.Size(240, 150);
             this.pickupLocDataGrid.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -98,16 +108,17 @@
             // 
             // updatePickupLocBtn
             // 
-            this.updatePickupLocBtn.Location = new System.Drawing.Point(502, 288);
+            this.updatePickupLocBtn.Location = new System.Drawing.Point(23, 466);
             this.updatePickupLocBtn.Name = "updatePickupLocBtn";
-            this.updatePickupLocBtn.Size = new System.Drawing.Size(271, 54);
+            this.updatePickupLocBtn.Size = new System.Drawing.Size(240, 54);
             this.updatePickupLocBtn.TabIndex = 1;
-            this.updatePickupLocBtn.Text = "updatePickupLocBtn";
+            this.updatePickupLocBtn.Text = "更新";
             this.updatePickupLocBtn.UseVisualStyleBackColor = true;
             this.updatePickupLocBtn.Click += new System.EventHandler(this.updatePickupLocBtn_Click);
             // 
             // companyData
             // 
+            this.companyData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.companyData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.companyData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3,
@@ -117,9 +128,10 @@
             this.Column7,
             this.Column8,
             this.Column9});
-            this.companyData.Location = new System.Drawing.Point(161, 391);
+            this.companyData.Location = new System.Drawing.Point(23, 537);
             this.companyData.Name = "companyData";
-            this.companyData.Size = new System.Drawing.Size(1326, 352);
+            this.companyData.RowHeadersVisible = false;
+            this.companyData.Size = new System.Drawing.Size(716, 408);
             this.companyData.TabIndex = 2;
             // 
             // Column3
@@ -159,28 +171,75 @@
             // 
             // insertCompInfo
             // 
-            this.insertCompInfo.Location = new System.Drawing.Point(161, 749);
+            this.insertCompInfo.Location = new System.Drawing.Point(23, 951);
             this.insertCompInfo.Name = "insertCompInfo";
-            this.insertCompInfo.Size = new System.Drawing.Size(75, 23);
+            this.insertCompInfo.Size = new System.Drawing.Size(716, 23);
             this.insertCompInfo.TabIndex = 3;
-            this.insertCompInfo.Text = "button1";
+            this.insertCompInfo.Text = "更新";
             this.insertCompInfo.UseVisualStyleBackColor = true;
             this.insertCompInfo.Click += new System.EventHandler(this.insertCompInfo_Click);
             // 
             // serachPickBtn
             // 
-            this.serachPickBtn.Location = new System.Drawing.Point(502, 89);
+            this.serachPickBtn.Location = new System.Drawing.Point(23, 253);
             this.serachPickBtn.Name = "serachPickBtn";
-            this.serachPickBtn.Size = new System.Drawing.Size(271, 37);
+            this.serachPickBtn.Size = new System.Drawing.Size(240, 37);
             this.serachPickBtn.TabIndex = 4;
             this.serachPickBtn.Text = "Search";
             this.serachPickBtn.UseVisualStyleBackColor = true;
             this.serachPickBtn.Click += new System.EventHandler(this.serachPickBtn_Click);
             // 
+            // itemGrid
+            // 
+            this.itemGrid.AllowUserToAddRows = false;
+            this.itemGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.itemGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column10,
+            this.Column11});
+            this.itemGrid.Location = new System.Drawing.Point(823, 74);
+            this.itemGrid.Name = "itemGrid";
+            this.itemGrid.RowHeadersVisible = false;
+            this.itemGrid.Size = new System.Drawing.Size(546, 871);
+            this.itemGrid.TabIndex = 5;
+            // 
+            // updateUnitBtn
+            // 
+            this.updateUnitBtn.Location = new System.Drawing.Point(823, 951);
+            this.updateUnitBtn.Name = "updateUnitBtn";
+            this.updateUnitBtn.Size = new System.Drawing.Size(546, 23);
+            this.updateUnitBtn.TabIndex = 6;
+            this.updateUnitBtn.Text = "更新";
+            this.updateUnitBtn.UseVisualStyleBackColor = true;
+            this.updateUnitBtn.Click += new System.EventHandler(this.updateUnitBtn_Click);
+            // 
+            // serachItem
+            // 
+            this.serachItem.Location = new System.Drawing.Point(823, 45);
+            this.serachItem.Name = "serachItem";
+            this.serachItem.Size = new System.Drawing.Size(546, 23);
+            this.serachItem.TabIndex = 7;
+            this.serachItem.Text = "搜尋貨品, 更改單位";
+            this.serachItem.UseVisualStyleBackColor = true;
+            this.serachItem.Click += new System.EventHandler(this.serachItem_Click);
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "貨品";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "單位";
+            this.Column11.Name = "Column11";
+            // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.serachItem);
+            this.Controls.Add(this.updateUnitBtn);
+            this.Controls.Add(this.itemGrid);
             this.Controls.Add(this.serachPickBtn);
             this.Controls.Add(this.insertCompInfo);
             this.Controls.Add(this.companyData);
@@ -193,6 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +276,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.Button serachPickBtn;
+        private System.Windows.Forms.DataGridView itemGrid;
+        private System.Windows.Forms.Button updateUnitBtn;
+        private System.Windows.Forms.Button serachItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }

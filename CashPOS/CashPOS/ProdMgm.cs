@@ -25,6 +25,7 @@ namespace CashPOS
         decimal sitePrice;
         string desc;
         string category;
+        string unit;
         Boolean isSearch = false;
         Boolean isUpdate = false;
         public ProdMgm()
@@ -63,16 +64,17 @@ namespace CashPOS
                             {
                                 if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
                                 if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
-                                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") category = row.Cells[5].Value.ToString();
-                                if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
+                                if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
+                                if (row.Cells[3].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                                if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") category = row.Cells[6].Value.ToString();
+                                if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") desc = row.Cells[7].Value.ToString();
                             }
 
                             myConnection.Open();
-                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.prodData values(default,'" + prodID + "','" + prod + "','" + pickPrice + "','" +
-                                          delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0')", myConnection);
+                            myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.prodData values(default,'" + prodID + "','" + prod + "','" + unit + "','" +
+                                pickPrice + "','" + delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             //TO-DO  clear data
@@ -259,7 +261,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
         private void clearAllData()
         {
             newProdGrid.Rows.Clear();
-           // allProdGrid.Rows.Clear();
+            // allProdGrid.Rows.Clear();
         }
 
         private void clearAllDataBtn_Click(object sender, EventArgs e)

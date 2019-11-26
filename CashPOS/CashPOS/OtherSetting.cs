@@ -65,8 +65,8 @@ namespace CashPOS
             {
                 if (row.Cells[0].Value != null)
                 {
-                    myCommand = new MySqlCommand("insert into CashPOSDB.companyInfo values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() + 
-                         "','" + row.Cells[2].Value.ToString() +  "','" + row.Cells[3].Value.ToString()   +  "','" + row.Cells[4].Value.ToString()
+                    myCommand = new MySqlCommand("insert into CashPOSDB.companyInfo values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() +
+                         "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString()
                     + "','" + row.Cells[5].Value.ToString() + "','" + row.Cells[6].Value.ToString() + "')", myConnection);
                     myCommand.ExecuteNonQuery();
                 }
@@ -77,6 +77,7 @@ namespace CashPOS
 
         private void serachPickBtn_Click(object sender, EventArgs e)
         {
+            pickupLocDataGrid.Rows.Clear();
             myCommand = new MySqlCommand("Select * from CashPOSDB.pickupLoc", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -88,6 +89,40 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
+        }
+
+        private void serachItem_Click(object sender, EventArgs e)
+        {
+            itemGrid.Rows.Clear();
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    itemGrid.Rows.Add(rdr["ProdName"].ToString(), rdr["Unit"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+        }
+
+        private void updateUnitBtn_Click(object sender, EventArgs e)
+        {
+            myConnection.Open();
+            foreach (DataGridViewRow row in itemGrid.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    myCommand = new MySqlCommand("update CashPOSDB.prodData set Unit = '" + row.Cells[1].Value.ToString() + "' where ProdName = '" +
+                    row.Cells[0].Value.ToString() + "'", myConnection);
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            myConnection.Close();
+            companyData.Rows.Clear();
+            itemGrid.Rows.Clear();
+
         }
     }
 }
