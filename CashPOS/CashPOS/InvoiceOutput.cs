@@ -145,7 +145,7 @@ namespace CashPOS
                         {
                             Directory.CreateDirectory(folderPath);
                         }
-                        filepath = folderPath + ending.ToString("yyyyMM") + Index + BelongTo + ".pdf";
+                        filepath = folderPath + beginning.ToString("yyyyMM") + Index + BelongTo + ".pdf";
                         writer = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                         doc.Open();
                         firstPage = false;
@@ -194,7 +194,7 @@ namespace CashPOS
 
                     if (finish || filled)
                     {
-                        quote = rdr["custCode"].ToString() + index.ToString("D3");
+                        quote = rdr["custCode"].ToString() + beginning.ToString("yyyyMM") + Index;
                         index++;
                         doc.NewPage();
                         tempComm = new MySqlCommand("Select * from custData where Code = '" + rdr["custCode"].ToString() + "'", tempConn);
@@ -230,7 +230,7 @@ namespace CashPOS
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(tel, 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("Quotation No", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("Invoice No", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(quote, 0, 1, 0, 0, custInfo));
 

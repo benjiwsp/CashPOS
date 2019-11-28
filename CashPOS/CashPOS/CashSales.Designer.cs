@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.searchBtn = new MetroFramework.Controls.MetroButton();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -74,6 +73,7 @@
             this.unpaidList = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidAmount = new System.Windows.Forms.TextBox();
@@ -84,11 +84,15 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.fullPayBtn = new System.Windows.Forms.Button();
             this.NotPaidBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.payMethLbl = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchBtn = new MetroFramework.Controls.MetroButton();
+            this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.sendOrderBtn = new MetroFramework.Controls.MetroButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -115,6 +119,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -155,7 +160,6 @@
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22491F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.38062F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.74048F));
-            this.customerDetailPanel.Controls.Add(this.searchBtn, 0, 13);
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
             this.customerDetailPanel.Controls.Add(this.metroLabel3, 3, 1);
@@ -183,9 +187,8 @@
             this.customerDetailPanel.Controls.Add(this.paidAmount, 5, 11);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel3, 0, 12);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel4, 4, 12);
-            this.customerDetailPanel.Controls.Add(this.cancelBtn, 4, 13);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel5, 4, 11);
-            this.customerDetailPanel.Controls.Add(this.sendOrderBtn, 2, 13);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel6, 0, 13);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -207,19 +210,6 @@
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.customerDetailPanel.Size = new System.Drawing.Size(578, 1000);
             this.customerDetailPanel.TabIndex = 2;
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.searchBtn, 2);
-            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchBtn.Location = new System.Drawing.Point(3, 926);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(184, 71);
-            this.searchBtn.TabIndex = 0;
-            this.searchBtn.Text = "搜尋";
-            this.searchBtn.UseSelectable = true;
-            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // invoiceLabel
             // 
@@ -310,14 +300,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -327,25 +317,26 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle2;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.selectedItemList.RowHeadersVisible = false;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
             this.selectedItemList.TabIndex = 19;
@@ -411,8 +402,8 @@
             this.custNameLbl.ColumnCount = 3;
             this.customerDetailPanel.SetColumnSpan(this.custNameLbl, 4);
             this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.49215F));
+            this.custNameLbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.26178F));
             this.custNameLbl.Controls.Add(this.fromLabel, 0, 0);
             this.custNameLbl.Controls.Add(this.toLabel, 0, 1);
             this.custNameLbl.Controls.Add(this.destLabel, 1, 0);
@@ -455,16 +446,16 @@
             this.destLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.destLabel.Location = new System.Drawing.Point(130, 0);
             this.destLabel.Name = "destLabel";
-            this.destLabel.Size = new System.Drawing.Size(121, 32);
+            this.destLabel.Size = new System.Drawing.Size(56, 32);
             this.destLabel.TabIndex = 2;
             // 
             // payMethodLbl
             // 
             this.payMethodLbl.AutoSize = true;
             this.payMethodLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.payMethodLbl.Location = new System.Drawing.Point(257, 32);
+            this.payMethodLbl.Location = new System.Drawing.Point(192, 32);
             this.payMethodLbl.Name = "payMethodLbl";
-            this.payMethodLbl.Size = new System.Drawing.Size(122, 33);
+            this.payMethodLbl.Size = new System.Drawing.Size(187, 33);
             this.payMethodLbl.TabIndex = 5;
             // 
             // payTypeLabel
@@ -474,19 +465,20 @@
             this.payTypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.payTypeLabel.Location = new System.Drawing.Point(130, 32);
             this.payTypeLabel.Name = "payTypeLabel";
-            this.payTypeLabel.Size = new System.Drawing.Size(121, 33);
+            this.payTypeLabel.Size = new System.Drawing.Size(56, 33);
             this.payTypeLabel.TabIndex = 4;
             // 
             // totalPriceTxt
             // 
             this.totalPriceTxt.AutoSize = true;
-            this.totalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
+            this.totalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.totalPriceTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.totalPriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPriceTxt.Location = new System.Drawing.Point(257, 0);
+            this.totalPriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPriceTxt.Location = new System.Drawing.Point(192, 0);
             this.totalPriceTxt.Name = "totalPriceTxt";
-            this.totalPriceTxt.Size = new System.Drawing.Size(122, 32);
+            this.totalPriceTxt.Size = new System.Drawing.Size(187, 32);
             this.totalPriceTxt.TabIndex = 3;
+            this.totalPriceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addressTxt
             // 
@@ -575,6 +567,8 @@
             // 
             // customerTxt
             // 
+            this.customerTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.customerTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.customerDetailPanel.SetColumnSpan(this.customerTxt, 3);
             this.customerTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -583,7 +577,8 @@
             this.customerTxt.Name = "customerTxt";
             this.customerTxt.Size = new System.Drawing.Size(280, 28);
             this.customerTxt.TabIndex = 38;
-            this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
+            this.customerTxt.TextUpdate += new System.EventHandler(this.customerTxt_TextUpdate);
+            this.customerTxt.Leave += new System.EventHandler(this.customerTxt_Leave);
             // 
             // invoiceNoteTxt
             // 
@@ -643,12 +638,14 @@
             this.unpaidList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
             this.Column8,
+            this.Column11,
             this.Column9,
             this.Column10});
             this.customerDetailPanel.SetColumnSpan(this.unpaidList, 6);
             this.unpaidList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.unpaidList.Location = new System.Drawing.Point(3, 580);
             this.unpaidList.Name = "unpaidList";
+            this.unpaidList.RowHeadersVisible = false;
             this.unpaidList.Size = new System.Drawing.Size(572, 127);
             this.unpaidList.TabIndex = 41;
             // 
@@ -661,6 +658,11 @@
             // 
             this.Column8.HeaderText = "總金額";
             this.Column8.Name = "Column8";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "已付";
+            this.Column11.Name = "Column11";
             // 
             // Column9
             // 
@@ -682,6 +684,7 @@
             this.paidAmount.Name = "paidAmount";
             this.paidAmount.Size = new System.Drawing.Size(138, 65);
             this.paidAmount.TabIndex = 26;
+            this.paidAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.paidAmount_KeyPress);
             // 
             // tableLayoutPanel3
             // 
@@ -780,19 +783,6 @@
             this.NotPaidBtn.UseVisualStyleBackColor = false;
             this.NotPaidBtn.Click += new System.EventHandler(this.NotPaidBtn_Click);
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.cancelBtn, 2);
-            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelBtn.Location = new System.Drawing.Point(377, 926);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(198, 71);
-            this.cancelBtn.TabIndex = 1;
-            this.cancelBtn.Text = "取消";
-            this.cancelBtn.UseSelectable = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
@@ -830,18 +820,92 @@
             this.payMethLbl.TabIndex = 40;
             this.payMethLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 5;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel6, 6);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.searchBtn, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cancelBtn, 4, 0);
+            this.tableLayoutPanel6.Controls.Add(this.sendOrderBtn, 3, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 926);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(572, 71);
+            this.tableLayoutPanel6.TabIndex = 48;
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
+            this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBtn.Location = new System.Drawing.Point(3, 3);
+            this.searchBtn.Name = "searchBtn";
+            this.tableLayoutPanel6.SetRowSpan(this.searchBtn, 2);
+            this.searchBtn.Size = new System.Drawing.Size(108, 65);
+            this.searchBtn.TabIndex = 0;
+            this.searchBtn.Text = "搜尋";
+            this.searchBtn.UseSelectable = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
+            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelBtn.Location = new System.Drawing.Point(459, 3);
+            this.cancelBtn.Name = "cancelBtn";
+            this.tableLayoutPanel6.SetRowSpan(this.cancelBtn, 2);
+            this.cancelBtn.Size = new System.Drawing.Size(110, 65);
+            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.Text = "取消";
+            this.cancelBtn.UseSelectable = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // sendOrderBtn
             // 
             this.sendOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            this.customerDetailPanel.SetColumnSpan(this.sendOrderBtn, 2);
             this.sendOrderBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendOrderBtn.Location = new System.Drawing.Point(193, 926);
+            this.sendOrderBtn.Location = new System.Drawing.Point(345, 3);
             this.sendOrderBtn.Name = "sendOrderBtn";
-            this.sendOrderBtn.Size = new System.Drawing.Size(178, 71);
+            this.tableLayoutPanel6.SetRowSpan(this.sendOrderBtn, 2);
+            this.sendOrderBtn.Size = new System.Drawing.Size(108, 65);
             this.sendOrderBtn.TabIndex = 0;
-            this.sendOrderBtn.Text = "搜尋";
+            this.sendOrderBtn.Text = "發送";
             this.sendOrderBtn.UseSelectable = true;
             this.sendOrderBtn.Click += new System.EventHandler(this.sendOrderBtn_Click);
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(117, 3);
+            this.button1.Name = "button1";
+            this.tableLayoutPanel6.SetRowSpan(this.button1, 2);
+            this.button1.Size = new System.Drawing.Size(108, 65);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "發送 印價錢";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(231, 3);
+            this.button2.Name = "button2";
+            this.tableLayoutPanel6.SetRowSpan(this.button2, 2);
+            this.button2.Size = new System.Drawing.Size(108, 65);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "發送 不印價";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -1080,6 +1144,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -1153,10 +1218,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridView unpaidList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Button fullPayBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private MetroFramework.Controls.MetroButton payByTransferBtn;
@@ -1166,5 +1227,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label payMethLbl;
         private MetroFramework.Controls.MetroButton sendOrderBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

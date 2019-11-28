@@ -11,6 +11,8 @@ using MetroFramework;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Collections.Specialized;
 
 namespace CashPOS
 {
@@ -39,6 +41,8 @@ namespace CashPOS
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
+        List<String> custCol = new List<String>();
+
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
         string selectedCustCode;
         //  string selectedCustName;
@@ -233,6 +237,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            unpaidList.Rows.Clear();
             payMethLbl.Text = "";
             payMethodLbl.Text = "";
             subPanel.Controls.Clear();
@@ -280,7 +285,7 @@ namespace CashPOS
             payMethLbl.Text = "現金";
             //TO-DO: check if orderID already exist, get all grid info and insert them into database
         }
-        private void sendOrder(bool isSearching, string id, string payMethod)
+        private void sendOrder(bool isSearch, string id, string payMethod)
         {
             string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
             orderID = invoiceLabel.Text;// invoiceLabel.Text;
@@ -309,7 +314,7 @@ namespace CashPOS
             string invCol = "";
             string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
-            if (isSearching)
+            if (isSearch)
             {
                 if (id != "")
                 {
@@ -337,7 +342,7 @@ namespace CashPOS
                     {
                         myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
                          phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + notes + "','" + belongTo + "','" +
-                         isPrinted + "','" + date + "')", myConnection);
+                         isPrinted + "','" + date + "','')", myConnection);
                         myCommand.ExecuteNonQuery();
 
                         foreach (DataGridViewRow row in selectedItemList.Rows)
@@ -383,7 +388,9 @@ namespace CashPOS
                     switch (ex.Number)
                     {
                         case 1062:
-                            orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
+                              var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
+                            orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
+                         //   orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
                             attempted = true;
                             break;
                     }
@@ -407,72 +414,7 @@ namespace CashPOS
         {
             // clearSelection();
             //  clearAll();
-            if (isSearching == false)
-            {
-                ComboBox combo = (ComboBox)sender;
-                string comboT = combo.Text;
-                string temp = "";
-                toLabel.Text = comboT;
-                String custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
-                //  MessageBox.Show(test);
-                selectedCustCode = custCode;
-                myCommand = new MySqlCommand("select PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
-                myConnection.Open();
-                rdr = myCommand.ExecuteReader();
-                if (rdr.HasRows == true)
-                {
-                    while (rdr.Read())
-                    {
-                        temp = rdr["PayMethod"].ToString();
-                        if (temp == "期結")
-                        {
-                            temp = "簽單";
-                        }
-                        else
-                        {
-                            temp = "現金";
-                        }
-                        payTypeLabel.Text = temp;
-                    }
-                }
-                rdr.Close();
 
-                myConnection.Close();
-                myCommand = new MySqlCommand("select orderID from CashPOSDB.orderID where belongTo = '" +
-                    selectedCompany + "'and paymentType = '" + temp + "'", myConnection);
-                myConnection.Open();
-                rdr = myCommand.ExecuteReader();
-                if (rdr.HasRows == true)
-                {
-                    while (rdr.Read())
-                    {
-                        string orderID = rdr["orderID"].ToString();
-                        string newNum = (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
-                        invoiceLabel.Text = orderID.Substring(0, 1) + newNum;
-                    }
-                }
-                myConnection.Close();
-                myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
-                myConnection.Open();
-                rdr = myCommand.ExecuteReader();
-
-                if (rdr.HasRows == true)
-                {
-                    while (rdr.Read())
-                    {
-                        pickupAddText.Items.Add(rdr["location"].ToString());
-                    }
-                }
-                rdr.Close();
-                myConnection.Close();
-                //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
-                //    {
-                checkNoneFullPaid(custCode, selectedCompany);
-                //   }
-
-                // TO-DO: check for any unpaid invoice
-                checkStatus();
-            }
         }
         private void checkUnpaidOrder(string Comp)
         {
@@ -485,7 +427,7 @@ namespace CashPOS
             isSearching = false;
             Button btn = (Button)sender;
             //getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("超誠", btn.Text,customerTxt);
+            getCustomerList("超誠", btn.Text, customerTxt);
             selectedCompany = "超誠";
         }
 
@@ -495,7 +437,7 @@ namespace CashPOS
             clearSelection();
             isSearching = false;
             Button btn = (Button)sender;
-        //    getCustomerList("CashPOSDB.custData", btn.Text);
+            //    getCustomerList("CashPOSDB.custData", btn.Text);
             getCustomerList("富資", btn.Text, customerTxt);
             selectedCompany = "富資";
         }
@@ -508,8 +450,10 @@ namespace CashPOS
             pickupAddText.Items.Clear();
             itemTypePanel.Enabled = false;
         }
-        public void getCustomerList(string cust, string from,ComboBox cb)
+        public void getCustomerList(string cust, string from, ComboBox cb)
         {
+            custCol.Clear();
+            cb.Items.Clear();
             customerTxt.Items.Clear();
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "' order by Code", myConnection);
@@ -517,8 +461,9 @@ namespace CashPOS
             if (rdr.HasRows)
             {
                 while (rdr.Read())
-                {
-                    cb.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
+                {string custa = rdr["Code"].ToString() + " - " + rdr["Name"].ToString();
+                    cb.Items.Add(custa);
+                    custCol.Add(custa);
                 }
             }
             rdr.Close();
@@ -597,6 +542,7 @@ namespace CashPOS
         }
         private void searchToEdit(string orderID)
         {
+         
             myCommand = new MySqlCommand(getRecord("where CashPOSDB.orderRecords.orderID = '" + orderID + "'"), myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -617,6 +563,7 @@ namespace CashPOS
                         licenseTxt.Text = rdr["license"].ToString();
                         pickupAddText.Text = rdr["pickupLoc"].ToString();
                         payMethodLbl.Text = rdr["payMethod"].ToString();
+                        payMethLbl.Text = rdr["payMethod"].ToString();
                         //select the radio button
                         //update the date
                         fromLabel.Text = rdr["belongTo"].ToString();
@@ -697,13 +644,13 @@ namespace CashPOS
 
         private void payByTransfer_Click(object sender, EventArgs e)
         {
-           // sendOrder(isSearching, selectedOrderID, "過戶");
+            // sendOrder(isSearching, selectedOrderID, "過戶");
             payMethLbl.Text = "過戶";
         }
 
         private void payByCheque_Click(object sender, EventArgs e)
         {
-           // sendOrder(isSearching, selectedOrderID, "支票");
+            // sendOrder(isSearching, selectedOrderID, "支票");
             payMethLbl.Text = "支票";
 
 
@@ -743,17 +690,31 @@ namespace CashPOS
             myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords a where custCode = '" + company + "' and BelongTo = '" +
                 belongTo + "' and a.totalPrice != a.paid", myConnection);
             myConnection.Open();
+            int i = 0;
+            decimal final = 0.0m;
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
                 while (rdr.Read())
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal reminder = totalPrice - Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal reminder = totalPrice - paid;
                     DateTime date = Convert.ToDateTime(rdr["time"].ToString());
-                    unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, reminder, date);
+                    unpaidList.Rows.Add(rdr["orderID"].ToString(), totalPrice, paid, reminder, date);
+                    final += reminder;
+                    if (reminder < 0)
+                    {
+                        unpaidList.Rows[i].Cells[3].Style.BackColor = Color.Red;
+                    }
+                    i++;
                 }
             } rdr.Close();
+            unpaidList.Rows.Add("", "", "餘額", final.ToString("0.00"), "");
+            if (final < 0)
+            {
+                unpaidList.Rows[i].Cells[3].Style.BackColor = Color.Red;
+            }
             myConnection.Close();
 
 
@@ -762,6 +723,112 @@ namespace CashPOS
         private void sendOrderBtn_Click(object sender, EventArgs e)
         {
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
+        }
+
+        private void customerTxt_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //   getInvoiceID(sender);
+        }
+
+        private void getInvoiceID(object sender)
+        {
+            pickupAddText.Items.Clear();
+            if (isSearching == false)
+            {
+                ComboBox combo = (ComboBox)sender;
+                string comboT = combo.Text;
+                if (comboT != "")
+                {
+                    string temp = "";
+                    toLabel.Text = comboT;
+                    string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
+                    //  MessageBox.Show(test);
+                    selectedCustCode = custCode;
+                    myCommand = new MySqlCommand("select PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
+                    myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+                    if (rdr.HasRows == true)
+                    {
+                        while (rdr.Read())
+                        {
+                            temp = rdr["PayMethod"].ToString();
+                            if (temp == "期結")
+                            {
+                                temp = "簽單";
+                            }
+                            else
+                            {
+                                temp = "現金";
+                            }
+                            payTypeLabel.Text = temp;
+                        }
+                    }
+                    rdr.Close();
+
+                    myConnection.Close();
+                    myCommand = new MySqlCommand("select orderID from CashPOSDB.orderID where belongTo = '" +
+                        selectedCompany + "'and paymentType = '" + temp + "'", myConnection);
+                    myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+                    if (rdr.HasRows == true)
+                    {
+                        while (rdr.Read())
+                        {
+                            string orderID = rdr["orderID"].ToString();
+                            var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
+                            string newNum = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
+                            invoiceLabel.Text = onlyLetters + newNum;
+                        }
+                    }
+                    myConnection.Close();
+                    myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
+                    myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+
+                    if (rdr.HasRows == true)
+                    {
+                        while (rdr.Read())
+                        {
+                            pickupAddText.Items.Add(rdr["location"].ToString());
+                        }
+                    }
+                    rdr.Close();
+                    myConnection.Close();
+                    //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
+                    //    {
+                    checkNoneFullPaid(custCode, selectedCompany);
+                    //   }
+
+                    // TO-DO: check for any unpaid invoice
+                    checkStatus();
+                }
+            }
+        }
+
+        private void customerTxt_Leave(object sender, EventArgs e)
+        {
+            getInvoiceID(sender);
+
+        }
+
+        private void customerTxt_TextUpdate(object sender, EventArgs e)
+        {
+            Console.WriteLine("test");
+            var match = custCol.Where(stringToCheck => stringToCheck.Contains(customerTxt.Text));
+            foreach (string item in match)
+            {
+                Console.WriteLine(item);
+            }
+           // int index = customerTxt.FindString(customerTxt.Text);
+          // customerTxt.Text = match;
+        }
+
+        private void paidAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -76,21 +76,45 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
             this.orderListView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.compLbl = new System.Windows.Forms.ComboBox();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.sfNotFullPaid = new System.Windows.Forms.Button();
             this.csNotFullPaid = new System.Windows.Forms.Button();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.locationBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.totalLbl = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.transferLbl = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chequeLbl = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.unpaidLbl = new System.Windows.Forms.Label();
+            this.cashLbl = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.locationForTransBox = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.locSerachImpBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -103,15 +127,18 @@
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // serachByComp
             // 
-            this.serachByComp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serachByComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serachByComp.Location = new System.Drawing.Point(553, 161);
+            this.serachByComp.Location = new System.Drawing.Point(3, 41);
             this.serachByComp.Name = "serachByComp";
-            this.serachByComp.Size = new System.Drawing.Size(412, 76);
+            this.serachByComp.Size = new System.Drawing.Size(406, 32);
             this.serachByComp.TabIndex = 0;
             this.serachByComp.Text = "以公司搜尋";
             this.serachByComp.UseVisualStyleBackColor = true;
@@ -120,12 +147,12 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.33253F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.14268F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.8682F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.524789F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.63315F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.63315F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.28158F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.11021F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.83427F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.507643F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 3, 1);
@@ -135,24 +162,26 @@
             this.tableLayoutPanel1.Controls.Add(this.deleteOrderBrn, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.resultGrid, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.serachByComp, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.clearBtn, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.orderListView, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.compLbl, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.StartTimePicker, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.EndTimePicker, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel11, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel12, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel13, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel14, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.668712F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.282208F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.282208F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.9F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.1F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.676148F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.29024F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.29024F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.91445F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.14276F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.9F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -180,7 +209,6 @@
             this.idToSearch.Name = "idToSearch";
             this.idToSearch.Size = new System.Drawing.Size(254, 29);
             this.idToSearch.TabIndex = 5;
-            this.idToSearch.Text = "單號";
             // 
             // tableLayoutPanel9
             // 
@@ -242,7 +270,6 @@
             this.telBox.Name = "telBox";
             this.telBox.Size = new System.Drawing.Size(266, 29);
             this.telBox.TabIndex = 4;
-            this.telBox.Text = "電話";
             // 
             // serachByTel
             // 
@@ -278,7 +305,6 @@
             this.custList.Name = "custList";
             this.custList.Size = new System.Drawing.Size(254, 32);
             this.custList.TabIndex = 6;
-            this.custList.Text = "客戶";
             // 
             // serachByCust
             // 
@@ -313,7 +339,6 @@
             this.totalPrice.Name = "totalPrice";
             this.totalPrice.Size = new System.Drawing.Size(266, 29);
             this.totalPrice.TabIndex = 7;
-            this.totalPrice.Text = "銀碼";
             // 
             // searchByPrice
             // 
@@ -349,7 +374,6 @@
             this.itemList.Name = "itemList";
             this.itemList.Size = new System.Drawing.Size(254, 32);
             this.itemList.TabIndex = 8;
-            this.itemList.Text = "貨品";
             // 
             // searchByItem
             // 
@@ -389,7 +413,6 @@
             this.payType.Name = "payType";
             this.payType.Size = new System.Drawing.Size(266, 32);
             this.payType.TabIndex = 9;
-            this.payType.Text = "現金/簽單";
             // 
             // searchByPayType
             // 
@@ -426,11 +449,11 @@
             this.Column11});
             this.tableLayoutPanel1.SetColumnSpan(this.resultGrid, 3);
             this.resultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultGrid.Location = new System.Drawing.Point(971, 392);
+            this.resultGrid.Location = new System.Drawing.Point(971, 391);
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.resultGrid, 2);
-            this.resultGrid.Size = new System.Drawing.Size(680, 605);
+            this.resultGrid.Size = new System.Drawing.Size(680, 556);
             this.resultGrid.TabIndex = 2;
             // 
             // Column7
@@ -492,7 +515,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(680, 143);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(680, 142);
             this.tableLayoutPanel8.TabIndex = 19;
             // 
             // label1
@@ -574,7 +597,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 112);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 31);
+            this.label7.Size = new System.Drawing.Size(164, 30);
             this.label7.TabIndex = 6;
             this.label7.Text = "備注:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -642,7 +665,7 @@
             this.noteLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteLbl.Location = new System.Drawing.Point(173, 112);
             this.noteLbl.Name = "noteLbl";
-            this.noteLbl.Size = new System.Drawing.Size(164, 31);
+            this.noteLbl.Size = new System.Drawing.Size(164, 30);
             this.noteLbl.TabIndex = 10;
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -703,10 +726,14 @@
             this.Column4,
             this.Column2,
             this.Column3,
+            this.Column16,
             this.總金額,
+            this.Column13,
             this.Column5,
             this.Column6,
-            this.Column12});
+            this.Column12,
+            this.Column15,
+            this.Column14});
             this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
             this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderListView.Location = new System.Drawing.Point(3, 243);
@@ -714,71 +741,21 @@
             this.orderListView.RowHeadersVisible = false;
             this.orderListView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tableLayoutPanel1.SetRowSpan(this.orderListView, 3);
-            this.orderListView.Size = new System.Drawing.Size(962, 754);
+            this.orderListView.Size = new System.Drawing.Size(962, 704);
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單號";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // 客戶
-            // 
-            this.客戶.HeaderText = "客戶";
-            this.客戶.Name = "客戶";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取貨地";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "目的地";
-            this.Column3.Name = "Column3";
-            // 
-            // 總金額
-            // 
-            this.總金額.HeaderText = "總金額";
-            this.總金額.Name = "總金額";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "欠款";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "公司";
-            this.Column6.Name = "Column6";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "已付款";
-            this.Column12.Name = "Column12";
-            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // compLbl
             // 
-            this.compLbl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compLbl.FormattingEnabled = true;
             this.compLbl.Items.AddRange(new object[] {
             "",
             "富資",
             "超誠"});
-            this.compLbl.Location = new System.Drawing.Point(553, 123);
+            this.compLbl.Location = new System.Drawing.Point(3, 3);
             this.compLbl.Name = "compLbl";
-            this.compLbl.Size = new System.Drawing.Size(412, 32);
+            this.compLbl.Size = new System.Drawing.Size(406, 32);
             this.compLbl.TabIndex = 3;
             // 
             // StartTimePicker
@@ -830,6 +807,347 @@
             this.csNotFullPaid.UseVisualStyleBackColor = true;
             this.csNotFullPaid.Click += new System.EventHandler(this.csNotFullPaid_Click);
             // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 4;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel11, 2);
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.Controls.Add(this.locationBox, 2, 1);
+            this.tableLayoutPanel11.Controls.Add(this.label9, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.locationForTransBox, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 161);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(544, 76);
+            this.tableLayoutPanel11.TabIndex = 25;
+            // 
+            // locationBox
+            // 
+            this.tableLayoutPanel11.SetColumnSpan(this.locationBox, 2);
+            this.locationBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.locationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.locationBox.FormattingEnabled = true;
+            this.locationBox.Location = new System.Drawing.Point(275, 41);
+            this.locationBox.Name = "locationBox";
+            this.locationBox.Size = new System.Drawing.Size(266, 32);
+            this.locationBox.TabIndex = 0;
+            this.locationBox.SelectedIndexChanged += new System.EventHandler(this.locationBox_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.tableLayoutPanel11.SetColumnSpan(this.label9, 2);
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(275, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(266, 38);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "以倉地搜尋收據:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 8;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel12, 3);
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel12.Controls.Add(this.label12, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.transferLbl, 3, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label14, 4, 0);
+            this.tableLayoutPanel12.Controls.Add(this.chequeLbl, 5, 0);
+            this.tableLayoutPanel12.Controls.Add(this.totalLbl, 7, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label10, 6, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label16, 6, 1);
+            this.tableLayoutPanel12.Controls.Add(this.unpaidLbl, 7, 1);
+            this.tableLayoutPanel12.Controls.Add(this.cashLbl, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 953);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(962, 44);
+            this.tableLayoutPanel12.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(723, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(114, 22);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "總數:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalLbl
+            // 
+            this.totalLbl.AutoSize = true;
+            this.totalLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLbl.Location = new System.Drawing.Point(843, 0);
+            this.totalLbl.Name = "totalLbl";
+            this.totalLbl.Size = new System.Drawing.Size(116, 22);
+            this.totalLbl.TabIndex = 0;
+            this.totalLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(243, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(114, 22);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "過戶:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // transferLbl
+            // 
+            this.transferLbl.AutoSize = true;
+            this.transferLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transferLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transferLbl.Location = new System.Drawing.Point(363, 0);
+            this.transferLbl.Name = "transferLbl";
+            this.transferLbl.Size = new System.Drawing.Size(114, 22);
+            this.transferLbl.TabIndex = 1;
+            this.transferLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(483, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 22);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "支票:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chequeLbl
+            // 
+            this.chequeLbl.AutoSize = true;
+            this.chequeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chequeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chequeLbl.Location = new System.Drawing.Point(603, 0);
+            this.chequeLbl.Name = "chequeLbl";
+            this.chequeLbl.Size = new System.Drawing.Size(114, 22);
+            this.chequeLbl.TabIndex = 2;
+            this.chequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(723, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(114, 22);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "欠款:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // unpaidLbl
+            // 
+            this.unpaidLbl.AutoSize = true;
+            this.unpaidLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unpaidLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unpaidLbl.Location = new System.Drawing.Point(843, 22);
+            this.unpaidLbl.Name = "unpaidLbl";
+            this.unpaidLbl.Size = new System.Drawing.Size(116, 22);
+            this.unpaidLbl.TabIndex = 0;
+            this.unpaidLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cashLbl
+            // 
+            this.cashLbl.AutoSize = true;
+            this.cashLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cashLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashLbl.Location = new System.Drawing.Point(123, 0);
+            this.cashLbl.Name = "cashLbl";
+            this.cashLbl.Size = new System.Drawing.Size(114, 22);
+            this.cashLbl.TabIndex = 1;
+            this.cashLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(114, 22);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "現金:";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "單號";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // 客戶
+            // 
+            this.客戶.HeaderText = "客戶";
+            this.客戶.Name = "客戶";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "取貨地";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "目的地";
+            this.Column3.Name = "Column3";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "方式";
+            this.Column16.Name = "Column16";
+            // 
+            // 總金額
+            // 
+            this.總金額.HeaderText = "總金額";
+            this.總金額.Name = "總金額";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "已付";
+            this.Column13.Name = "Column13";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "欠款";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "公司";
+            this.Column6.Name = "Column6";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "已付款";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "已回單";
+            this.Column15.Name = "Column15";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "回單";
+            this.Column14.Name = "Column14";
+            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // locationForTransBox
+            // 
+            this.tableLayoutPanel11.SetColumnSpan(this.locationForTransBox, 2);
+            this.locationForTransBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.locationForTransBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.locationForTransBox.FormattingEnabled = true;
+            this.locationForTransBox.Location = new System.Drawing.Point(3, 41);
+            this.locationForTransBox.Name = "locationForTransBox";
+            this.locationForTransBox.Size = new System.Drawing.Size(266, 32);
+            this.locationForTransBox.TabIndex = 2;
+            this.locationForTransBox.SelectedIndexChanged += new System.EventHandler(this.locationForTransBox_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.tableLayoutPanel11.SetColumnSpan(this.label11, 2);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(266, 38);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "以倉地搜尋調倉單:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.serachByComp, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.compLbl, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(553, 79);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(412, 76);
+            this.tableLayoutPanel13.TabIndex = 27;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.locSerachImpBox, 0, 1);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(553, 161);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(412, 76);
+            this.tableLayoutPanel14.TabIndex = 28;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(406, 38);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "以倉地搜尋進貨:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // locSerachImpBox
+            // 
+            this.locSerachImpBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.locSerachImpBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.locSerachImpBox.FormattingEnabled = true;
+            this.locSerachImpBox.Location = new System.Drawing.Point(3, 41);
+            this.locSerachImpBox.Name = "locSerachImpBox";
+            this.locSerachImpBox.Size = new System.Drawing.Size(406, 32);
+            this.locSerachImpBox.TabIndex = 1;
+            this.locSerachImpBox.SelectedIndexChanged += new System.EventHandler(this.locSerachImpBox_SelectedIndexChanged);
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -853,6 +1171,13 @@
             this.tableLayoutPanel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderListView)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -867,7 +1192,6 @@
         private System.Windows.Forms.ComboBox compLbl;
         private System.Windows.Forms.DataGridView resultGrid;
         private System.Windows.Forms.TextBox idToSearch;
-        private System.Windows.Forms.ComboBox custList;
         private System.Windows.Forms.TextBox totalPrice;
         private System.Windows.Forms.ComboBox itemList;
         private System.Windows.Forms.ComboBox payType;
@@ -913,14 +1237,39 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Button sfNotFullPaid;
         private System.Windows.Forms.Button csNotFullPaid;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.ComboBox locationBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox custList;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label transferLbl;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label chequeLbl;
+        private System.Windows.Forms.Label totalLbl;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label unpaidLbl;
+        private System.Windows.Forms.Label cashLbl;
+        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客戶;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn 總金額;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewButtonColumn Column14;
+        private System.Windows.Forms.ComboBox locationForTransBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox locSerachImpBox;
     }
 }
