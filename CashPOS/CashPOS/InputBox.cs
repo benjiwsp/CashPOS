@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CashPOS
 {
     public partial class InputBox : Form
     {
+      
         public InputBox()
         {
             InitializeComponent();
+      
         }
 
         public string GetSetControlValue

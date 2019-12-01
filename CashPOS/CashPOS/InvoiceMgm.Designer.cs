@@ -76,26 +76,6 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
             this.orderListView = new System.Windows.Forms.DataGridView();
-            this.compLbl = new System.Windows.Forms.ComboBox();
-            this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
-            this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.sfNotFullPaid = new System.Windows.Forms.Button();
-            this.csNotFullPaid = new System.Windows.Forms.Button();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.locationBox = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.totalLbl = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.transferLbl = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.chequeLbl = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.unpaidLbl = new System.Windows.Forms.Label();
-            this.cashLbl = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,9 +89,29 @@
             this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
+            this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.sfNotFullPaid = new System.Windows.Forms.Button();
+            this.csNotFullPaid = new System.Windows.Forms.Button();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.locationBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.locationForTransBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.transferLbl = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chequeLbl = new System.Windows.Forms.Label();
+            this.totalLbl = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.unpaidLbl = new System.Windows.Forms.Label();
+            this.cashLbl = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.compLbl = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
@@ -434,7 +434,7 @@
             this.deleteOrderBrn.TabIndex = 17;
             this.deleteOrderBrn.Text = "刪除";
             this.deleteOrderBrn.UseVisualStyleBackColor = true;
-            this.deleteOrderBrn.Click += new System.EventHandler(this.deleteOrderBrn_Click);
+            this.deleteOrderBrn.Click += new System.EventHandler(this.DeleteOrderBrn_Click);
             // 
             // resultGrid
             // 
@@ -745,18 +745,76 @@
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
             // 
-            // compLbl
+            // Column1
             // 
-            this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compLbl.FormattingEnabled = true;
-            this.compLbl.Items.AddRange(new object[] {
-            "",
-            "富資",
-            "超誠"});
-            this.compLbl.Location = new System.Drawing.Point(3, 3);
-            this.compLbl.Name = "compLbl";
-            this.compLbl.Size = new System.Drawing.Size(406, 32);
-            this.compLbl.TabIndex = 3;
+            this.Column1.HeaderText = "單號";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // 客戶
+            // 
+            this.客戶.HeaderText = "客戶";
+            this.客戶.Name = "客戶";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "取貨地";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "目的地";
+            this.Column3.Name = "Column3";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "方式";
+            this.Column16.Name = "Column16";
+            // 
+            // 總金額
+            // 
+            this.總金額.HeaderText = "總金額";
+            this.總金額.Name = "總金額";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "已付";
+            this.Column13.Name = "Column13";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "欠款";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "公司";
+            this.Column6.Name = "Column6";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "已付款";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "已回單";
+            this.Column15.Name = "Column15";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "回單";
+            this.Column14.Name = "Column14";
+            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StartTimePicker
             // 
@@ -853,6 +911,31 @@
             this.label9.Text = "以倉地搜尋收據:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // locationForTransBox
+            // 
+            this.tableLayoutPanel11.SetColumnSpan(this.locationForTransBox, 2);
+            this.locationForTransBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.locationForTransBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.locationForTransBox.FormattingEnabled = true;
+            this.locationForTransBox.Location = new System.Drawing.Point(3, 41);
+            this.locationForTransBox.Name = "locationForTransBox";
+            this.locationForTransBox.Size = new System.Drawing.Size(266, 32);
+            this.locationForTransBox.TabIndex = 2;
+            this.locationForTransBox.SelectedIndexChanged += new System.EventHandler(this.locationForTransBox_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.tableLayoutPanel11.SetColumnSpan(this.label11, 2);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(266, 38);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "以倉地搜尋調倉單:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // tableLayoutPanel12
             // 
             this.tableLayoutPanel12.ColumnCount = 8;
@@ -883,29 +966,6 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(962, 44);
             this.tableLayoutPanel12.TabIndex = 26;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(723, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(114, 22);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "總數:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // totalLbl
-            // 
-            this.totalLbl.AutoSize = true;
-            this.totalLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.totalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLbl.Location = new System.Drawing.Point(843, 0);
-            this.totalLbl.Name = "totalLbl";
-            this.totalLbl.Size = new System.Drawing.Size(116, 22);
-            this.totalLbl.TabIndex = 0;
-            this.totalLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
@@ -953,6 +1013,29 @@
             this.chequeLbl.TabIndex = 2;
             this.chequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // totalLbl
+            // 
+            this.totalLbl.AutoSize = true;
+            this.totalLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLbl.Location = new System.Drawing.Point(843, 0);
+            this.totalLbl.Name = "totalLbl";
+            this.totalLbl.Size = new System.Drawing.Size(116, 22);
+            this.totalLbl.TabIndex = 0;
+            this.totalLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(723, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(114, 22);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "總數:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -999,102 +1082,6 @@
             this.label19.Text = "現金:";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單號";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // 客戶
-            // 
-            this.客戶.HeaderText = "客戶";
-            this.客戶.Name = "客戶";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取貨地";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "目的地";
-            this.Column3.Name = "Column3";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "方式";
-            this.Column16.Name = "Column16";
-            // 
-            // 總金額
-            // 
-            this.總金額.HeaderText = "總金額";
-            this.總金額.Name = "總金額";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "已付";
-            this.Column13.Name = "Column13";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "欠款";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "公司";
-            this.Column6.Name = "Column6";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "已付款";
-            this.Column12.Name = "Column12";
-            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "已回單";
-            this.Column15.Name = "Column15";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "回單";
-            this.Column14.Name = "Column14";
-            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // locationForTransBox
-            // 
-            this.tableLayoutPanel11.SetColumnSpan(this.locationForTransBox, 2);
-            this.locationForTransBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.locationForTransBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.locationForTransBox.FormattingEnabled = true;
-            this.locationForTransBox.Location = new System.Drawing.Point(3, 41);
-            this.locationForTransBox.Name = "locationForTransBox";
-            this.locationForTransBox.Size = new System.Drawing.Size(266, 32);
-            this.locationForTransBox.TabIndex = 2;
-            this.locationForTransBox.SelectedIndexChanged += new System.EventHandler(this.locationForTransBox_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.tableLayoutPanel11.SetColumnSpan(this.label11, 2);
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(266, 38);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "以倉地搜尋調倉單:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
@@ -1109,6 +1096,19 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(412, 76);
             this.tableLayoutPanel13.TabIndex = 27;
+            // 
+            // compLbl
+            // 
+            this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compLbl.FormattingEnabled = true;
+            this.compLbl.Items.AddRange(new object[] {
+            "",
+            "富資",
+            "超誠"});
+            this.compLbl.Location = new System.Drawing.Point(3, 3);
+            this.compLbl.Name = "compLbl";
+            this.compLbl.Size = new System.Drawing.Size(406, 32);
+            this.compLbl.TabIndex = 3;
             // 
             // tableLayoutPanel14
             // 

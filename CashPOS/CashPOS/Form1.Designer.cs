@@ -34,7 +34,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.salesInfoBtn = new System.Windows.Forms.Button();
             this.importBtn = new System.Windows.Forms.Button();
             this.printInvBtn = new System.Windows.Forms.Button();
             this.InvoiceCheckBtn = new System.Windows.Forms.Button();
@@ -47,9 +48,8 @@
             this.selectedPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sideBarSelectionPanel = new System.Windows.Forms.Panel();
-            this.salesInfoBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.menuPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.sideBarSelectionPanel.SuspendLayout();
             this.SuspendLayout();
@@ -81,22 +81,37 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.saveToolStripMenuItem.Text = "save";
             // 
-            // panel1
+            // menuPanel
             // 
-            this.panel1.Controls.Add(this.salesInfoBtn);
-            this.panel1.Controls.Add(this.importBtn);
-            this.panel1.Controls.Add(this.printInvBtn);
-            this.panel1.Controls.Add(this.InvoiceCheckBtn);
-            this.panel1.Controls.Add(this.invBtn);
-            this.panel1.Controls.Add(this.settingBtn);
-            this.panel1.Controls.Add(this.cashSalesBtn);
-            this.panel1.Controls.Add(this.HomeBtn);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(20, 60);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 1000);
-            this.panel1.TabIndex = 1;
+            this.menuPanel.Controls.Add(this.salesInfoBtn);
+            this.menuPanel.Controls.Add(this.importBtn);
+            this.menuPanel.Controls.Add(this.printInvBtn);
+            this.menuPanel.Controls.Add(this.InvoiceCheckBtn);
+            this.menuPanel.Controls.Add(this.invBtn);
+            this.menuPanel.Controls.Add(this.settingBtn);
+            this.menuPanel.Controls.Add(this.cashSalesBtn);
+            this.menuPanel.Controls.Add(this.HomeBtn);
+            this.menuPanel.Controls.Add(this.panel3);
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuPanel.Location = new System.Drawing.Point(20, 60);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Size = new System.Drawing.Size(200, 1000);
+            this.menuPanel.TabIndex = 1;
+            // 
+            // salesInfoBtn
+            // 
+            this.salesInfoBtn.BackColor = System.Drawing.Color.White;
+            this.salesInfoBtn.Enabled = false;
+            this.salesInfoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salesInfoBtn.Image = ((System.Drawing.Image)(resources.GetObject("salesInfoBtn.Image")));
+            this.salesInfoBtn.Location = new System.Drawing.Point(0, 870);
+            this.salesInfoBtn.Name = "salesInfoBtn";
+            this.salesInfoBtn.Size = new System.Drawing.Size(200, 103);
+            this.salesInfoBtn.TabIndex = 1;
+            this.salesInfoBtn.Text = "交易資料";
+            this.salesInfoBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.salesInfoBtn.UseVisualStyleBackColor = false;
+            this.salesInfoBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // importBtn
             // 
@@ -246,21 +261,6 @@
             this.sideBarSelectionPanel.Size = new System.Drawing.Size(27, 1000);
             this.sideBarSelectionPanel.TabIndex = 5;
             // 
-            // salesInfoBtn
-            // 
-            this.salesInfoBtn.BackColor = System.Drawing.Color.White;
-            this.salesInfoBtn.Enabled = false;
-            this.salesInfoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.salesInfoBtn.Image = ((System.Drawing.Image)(resources.GetObject("salesInfoBtn.Image")));
-            this.salesInfoBtn.Location = new System.Drawing.Point(0, 870);
-            this.salesInfoBtn.Name = "salesInfoBtn";
-            this.salesInfoBtn.Size = new System.Drawing.Size(200, 103);
-            this.salesInfoBtn.TabIndex = 1;
-            this.salesInfoBtn.Text = "交易資料";
-            this.salesInfoBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.salesInfoBtn.UseVisualStyleBackColor = false;
-            this.salesInfoBtn.Click += new System.EventHandler(this.ButtonClicked);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,13 +268,13 @@
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.sideBarSelectionPanel);
             this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuPanel);
             this.Name = "Form1";
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "富資建業有限公司";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.menuPanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.sideBarSelectionPanel.ResumeLayout(false);
@@ -288,7 +288,7 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Button InvoiceCheckBtn;
         private System.Windows.Forms.Button invBtn;
         private System.Windows.Forms.Button settingBtn;

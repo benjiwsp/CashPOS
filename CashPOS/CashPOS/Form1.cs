@@ -28,6 +28,7 @@ namespace CashPOS
         ImportPage importPage;
         SupplierMgm supplierMgm;
         SalesInfo salesInfo;
+        PopList popup;
         public Form1()
         {
             InitializeComponent();
@@ -48,15 +49,20 @@ namespace CashPOS
             supplierMgm = new SupplierMgm();
             mainPanel.Controls.Add(homeScreen);
             salesInfo = new SalesInfo();
-
+            popup = new PopList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             homeScreen.unlocker += new HomeScreen.customHandler(enableBtn);
-
+           // popup.popuphandler += new PopList.customHandler(popUp);
         }
-       
+        private string popUp(object sender)
+        {
+            string reStr;
+            reStr = "a";
+            return reStr;
+        }
         private void enableBtn(object sender)
         {
             string group = (string)sender;

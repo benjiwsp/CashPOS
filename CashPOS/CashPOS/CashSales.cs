@@ -321,7 +321,7 @@ namespace CashPOS
                     orderID = id;
                 }
                 //need to make sure the order number has not changed, if it changed then need to delete the old records
-                myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
+                myCommand = new MySqlCommand(" te from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
 
@@ -388,9 +388,9 @@ namespace CashPOS
                     switch (ex.Number)
                     {
                         case 1062:
-                              var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
+                            var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
                             orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
-                         //   orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
+                            //   orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
                             attempted = true;
                             break;
                     }
@@ -461,7 +461,8 @@ namespace CashPOS
             if (rdr.HasRows)
             {
                 while (rdr.Read())
-                {string custa = rdr["Code"].ToString() + " - " + rdr["Name"].ToString();
+                {
+                    string custa = rdr["Code"].ToString() + " - " + rdr["Name"].ToString();
                     cb.Items.Add(custa);
                     custCol.Add(custa);
                 }
@@ -542,7 +543,7 @@ namespace CashPOS
         }
         private void searchToEdit(string orderID)
         {
-         
+
             myCommand = new MySqlCommand(getRecord("where CashPOSDB.orderRecords.orderID = '" + orderID + "'"), myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -667,7 +668,8 @@ namespace CashPOS
                 {
                     cf = Convert.ToDecimal(rdr["Money"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
             return cf;
 
@@ -709,7 +711,8 @@ namespace CashPOS
                     }
                     i++;
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             unpaidList.Rows.Add("", "", "餘額", final.ToString("0.00"), "");
             if (final < 0)
             {
@@ -813,14 +816,24 @@ namespace CashPOS
 
         private void customerTxt_TextUpdate(object sender, EventArgs e)
         {
-            Console.WriteLine("test");
-            var match = custCol.Where(stringToCheck => stringToCheck.Contains(customerTxt.Text));
-            foreach (string item in match)
+      /*      Form1 f1 = (this.Parent as Form1);
+            
+   //         PopupList popup = new PopupList();
+            myCommand = new MySqlCommand("select * from custData where name like '%" + customerTxt.Text + "%'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
             {
-                Console.WriteLine(item);
+                while (rdr.Read())
+                {
+                    popup.ShowDialog();
+                    popup.custListView.Items.Add(rdr["Name"].ToString());
+                    Form1 form1 = new Form1();
+                    
+                }
             }
-           // int index = customerTxt.FindString(customerTxt.Text);
-          // customerTxt.Text = match;
+            rdr.Close();
+            myConnection.Close();*/
         }
 
         private void paidAmount_KeyPress(object sender, KeyPressEventArgs e)

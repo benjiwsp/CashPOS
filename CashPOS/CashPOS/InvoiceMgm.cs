@@ -648,10 +648,22 @@ namespace CashPOS
                     DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = totalPrice where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
-                        myConnection.Open();
-                        myCommand.ExecuteNonQuery();
-                        myConnection.Close();
+                        decimal paid = 0.00m;
+                        InputBox form = new InputBox();
+                        form.Okbtn.Text = "付款";
+                        form.ShowDialog();
+                        if (form.DialogResult == DialogResult.OK)
+                        {
+                            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") +"' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+
+                            
+                            myConnection.Open();
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                        }
+                      
+                  
                     }
 
                 }
@@ -857,7 +869,8 @@ namespace CashPOS
             myConnection.Close();
         }
 
-        private void deleteOrderBrn_Click(object sender, EventArgs e)
+        private void 
+            teOrderBrn_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("確定要刪除嗎?", "警告", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -1008,6 +1021,11 @@ namespace CashPOS
             }
             rdr.Close();
             myConnection.Close();
+        }
+
+        private void DeleteOrderBrn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

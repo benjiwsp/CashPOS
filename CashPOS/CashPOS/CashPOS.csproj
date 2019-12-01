@@ -98,6 +98,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PopList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PopList.Designer.cs">
+      <DependentUpon>PopList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     <Compile Include="SubItems.Designer.cs">
       <DependentUpon>SubItems.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PopList.resx">
+      <DependentUpon>PopList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesInfo.resx">
       <DependentUpon>SalesInfo.cs</DependentUpon>
     </EmbeddedResource>
