@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -111,6 +111,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.custListView = new System.Windows.Forms.ListView();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -124,6 +126,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // itemTypePanel
@@ -156,13 +159,12 @@
             this.customerDetailPanel.ColumnCount = 6;
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.823529F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.04844F));
-            this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.22491F));
+            this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.131488F));
+            this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.70242F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.38062F));
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.74048F));
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
-            this.customerDetailPanel.Controls.Add(this.metroLabel3, 3, 1);
             this.customerDetailPanel.Controls.Add(this.selfPickRadio, 0, 5);
             this.customerDetailPanel.Controls.Add(this.warehouseRadio, 2, 5);
             this.customerDetailPanel.Controls.Add(this.siteRadio, 4, 5);
@@ -170,13 +172,9 @@
             this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
             this.customerDetailPanel.Controls.Add(this.custNameLbl, 2, 10);
-            this.customerDetailPanel.Controls.Add(this.addressTxt, 3, 2);
-            this.customerDetailPanel.Controls.Add(this.licenseTxt, 4, 3);
             this.customerDetailPanel.Controls.Add(this.telTxt, 1, 3);
             this.customerDetailPanel.Controls.Add(this.label4, 0, 3);
             this.customerDetailPanel.Controls.Add(this.label5, 0, 4);
-            this.customerDetailPanel.Controls.Add(this.label6, 3, 3);
-            this.customerDetailPanel.Controls.Add(this.dateSelected, 3, 4);
             this.customerDetailPanel.Controls.Add(this.pickupAddText, 1, 4);
             this.customerDetailPanel.Controls.Add(this.customerTxt, 0, 2);
             this.customerDetailPanel.Controls.Add(this.invoiceNoteTxt, 1, 11);
@@ -189,6 +187,7 @@
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel4, 4, 12);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel5, 4, 11);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel6, 0, 13);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel7, 3, 1);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -234,7 +233,7 @@
             this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroLabel2.Location = new System.Drawing.Point(3, 71);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(280, 24);
+            this.metroLabel2.Size = new System.Drawing.Size(231, 24);
             this.metroLabel2.TabIndex = 7;
             this.metroLabel2.Text = "客戶";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -242,14 +241,13 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.metroLabel3, 3);
             this.metroLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroLabel3.Location = new System.Drawing.Point(289, 71);
+            this.metroLabel3.Location = new System.Drawing.Point(169, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(286, 24);
+            this.metroLabel3.Size = new System.Drawing.Size(50, 39);
             this.metroLabel3.TabIndex = 8;
             this.metroLabel3.Text = "地址";
-            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // selfPickRadio
             // 
@@ -300,14 +298,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -317,25 +315,25 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle8;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.selectedItemList.RowHeadersVisible = false;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
@@ -482,22 +480,21 @@
             // 
             // addressTxt
             // 
-            this.customerDetailPanel.SetColumnSpan(this.addressTxt, 3);
             this.addressTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressTxt.Location = new System.Drawing.Point(289, 98);
+            this.addressTxt.Location = new System.Drawing.Point(225, 3);
             this.addressTxt.Name = "addressTxt";
-            this.addressTxt.Size = new System.Drawing.Size(286, 26);
+            this.addressTxt.Size = new System.Drawing.Size(107, 26);
             this.addressTxt.TabIndex = 30;
+            this.addressTxt.TextChanged += new System.EventHandler(this.AddressTxt_TextChanged);
             // 
             // licenseTxt
             // 
-            this.customerDetailPanel.SetColumnSpan(this.licenseTxt, 2);
             this.licenseTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.licenseTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.licenseTxt.Location = new System.Drawing.Point(377, 132);
+            this.licenseTxt.Location = new System.Drawing.Point(225, 42);
             this.licenseTxt.Name = "licenseTxt";
-            this.licenseTxt.Size = new System.Drawing.Size(198, 26);
+            this.licenseTxt.Size = new System.Drawing.Size(107, 26);
             this.licenseTxt.TabIndex = 31;
             // 
             // telTxt
@@ -507,7 +504,7 @@
             this.telTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telTxt.Location = new System.Drawing.Point(54, 132);
             this.telTxt.Name = "telTxt";
-            this.telTxt.Size = new System.Drawing.Size(229, 26);
+            this.telTxt.Size = new System.Drawing.Size(180, 26);
             this.telTxt.TabIndex = 32;
             // 
             // label4
@@ -536,22 +533,23 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(289, 129);
+            this.label6.Location = new System.Drawing.Point(169, 39);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 30);
+            this.label6.Size = new System.Drawing.Size(50, 39);
             this.label6.TabIndex = 35;
             this.label6.Text = "車牌";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dateSelected
             // 
-            this.customerDetailPanel.SetColumnSpan(this.dateSelected, 3);
+            this.tableLayoutPanel7.SetColumnSpan(this.dateSelected, 2);
             this.dateSelected.CustomFormat = "yyyy - MM - dd";
             this.dateSelected.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateSelected.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateSelected.Location = new System.Drawing.Point(289, 162);
+            this.dateSelected.Location = new System.Drawing.Point(169, 81);
             this.dateSelected.Name = "dateSelected";
-            this.dateSelected.Size = new System.Drawing.Size(286, 26);
+            this.dateSelected.Size = new System.Drawing.Size(163, 26);
             this.dateSelected.TabIndex = 36;
             // 
             // pickupAddText
@@ -562,7 +560,7 @@
             this.pickupAddText.FormattingEnabled = true;
             this.pickupAddText.Location = new System.Drawing.Point(54, 162);
             this.pickupAddText.Name = "pickupAddText";
-            this.pickupAddText.Size = new System.Drawing.Size(229, 28);
+            this.pickupAddText.Size = new System.Drawing.Size(180, 28);
             this.pickupAddText.TabIndex = 37;
             // 
             // customerTxt
@@ -575,7 +573,7 @@
             this.customerTxt.FormattingEnabled = true;
             this.customerTxt.Location = new System.Drawing.Point(3, 98);
             this.customerTxt.Name = "customerTxt";
-            this.customerTxt.Size = new System.Drawing.Size(280, 28);
+            this.customerTxt.Size = new System.Drawing.Size(231, 28);
             this.customerTxt.TabIndex = 38;
             this.customerTxt.TextUpdate += new System.EventHandler(this.customerTxt_TextUpdate);
             this.customerTxt.Leave += new System.EventHandler(this.customerTxt_Leave);
@@ -703,7 +701,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(280, 65);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(231, 65);
             this.tableLayoutPanel3.TabIndex = 45;
             // 
             // orderConfirmBtn
@@ -711,7 +709,7 @@
             this.orderConfirmBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
             this.orderConfirmBtn.Location = new System.Drawing.Point(6, 6);
             this.orderConfirmBtn.Name = "orderConfirmBtn";
-            this.orderConfirmBtn.Size = new System.Drawing.Size(83, 53);
+            this.orderConfirmBtn.Size = new System.Drawing.Size(67, 53);
             this.orderConfirmBtn.TabIndex = 0;
             this.orderConfirmBtn.Text = "現金";
             this.orderConfirmBtn.UseCustomBackColor = true;
@@ -721,9 +719,9 @@
             // payByTransferBtn
             // 
             this.payByTransferBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
-            this.payByTransferBtn.Location = new System.Drawing.Point(98, 6);
+            this.payByTransferBtn.Location = new System.Drawing.Point(82, 6);
             this.payByTransferBtn.Name = "payByTransferBtn";
-            this.payByTransferBtn.Size = new System.Drawing.Size(83, 53);
+            this.payByTransferBtn.Size = new System.Drawing.Size(67, 53);
             this.payByTransferBtn.TabIndex = 0;
             this.payByTransferBtn.Text = "過戶";
             this.payByTransferBtn.UseCustomBackColor = true;
@@ -733,9 +731,9 @@
             // payByChequeBtn
             // 
             this.payByChequeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
-            this.payByChequeBtn.Location = new System.Drawing.Point(190, 6);
+            this.payByChequeBtn.Location = new System.Drawing.Point(158, 6);
             this.payByChequeBtn.Name = "payByChequeBtn";
-            this.payByChequeBtn.Size = new System.Drawing.Size(83, 53);
+            this.payByChequeBtn.Size = new System.Drawing.Size(67, 53);
             this.payByChequeBtn.TabIndex = 0;
             this.payByChequeBtn.Text = "支票";
             this.payByChequeBtn.UseCustomBackColor = true;
@@ -1120,6 +1118,44 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel7, 3);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.78322F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.56643F));
+            this.tableLayoutPanel7.Controls.Add(this.licenseTxt, 3, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label6, 2, 1);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel3, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.addressTxt, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.dateSelected, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.custListView, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(240, 74);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 3;
+            this.customerDetailPanel.SetRowSpan(this.tableLayoutPanel7, 4);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(335, 118);
+            this.tableLayoutPanel7.TabIndex = 49;
+            // 
+            // custListView
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.custListView, 2);
+            this.custListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custListView.HideSelection = false;
+            this.custListView.Location = new System.Drawing.Point(3, 3);
+            this.custListView.Name = "custListView";
+            this.tableLayoutPanel7.SetRowSpan(this.custListView, 3);
+            this.custListView.Size = new System.Drawing.Size(160, 112);
+            this.custListView.TabIndex = 37;
+            this.custListView.UseCompatibleStateImageBehavior = false;
+            // 
             // CashSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1150,6 +1186,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1235,5 +1273,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.ListView custListView;
     }
 }

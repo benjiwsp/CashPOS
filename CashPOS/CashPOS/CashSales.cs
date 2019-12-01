@@ -816,24 +816,19 @@ namespace CashPOS
 
         private void customerTxt_TextUpdate(object sender, EventArgs e)
         {
-      /*      Form1 f1 = (this.Parent as Form1);
-            
-   //         PopupList popup = new PopupList();
-            myCommand = new MySqlCommand("select * from custData where name like '%" + customerTxt.Text + "%'", myConnection);
+            custListView.Items.Clear();
+            myCommand = new MySqlCommand("select * from custData where name like '%" + customerTxt.Text + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
             {
                 while (rdr.Read())
                 {
-                    popup.ShowDialog();
-                    popup.custListView.Items.Add(rdr["Name"].ToString());
-                    Form1 form1 = new Form1();
-                    
+                    custListView.Items.Add(rdr["Name"].ToString());
                 }
             }
             rdr.Close();
-            myConnection.Close();*/
+            myConnection.Close();
         }
 
         private void paidAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -842,6 +837,11 @@ namespace CashPOS
             {
                 e.Handled = true;
             }
+        }
+
+        private void AddressTxt_TextChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }
