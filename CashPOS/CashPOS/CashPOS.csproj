@@ -104,6 +104,12 @@
     <Compile Include="PopList.Designer.cs">
       <DependentUpon>PopList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintDialog.Designer.cs">
+      <DependentUpon>PrintDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </Compile>
     <EmbeddedResource Include="PopList.resx">
       <DependentUpon>PopList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintDialog.resx">
+      <DependentUpon>PrintDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesInfo.resx">
       <DependentUpon>SalesInfo.cs</DependentUpon>

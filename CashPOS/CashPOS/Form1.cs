@@ -176,8 +176,7 @@ namespace CashPOS
             }
 
         }
-
-
+   
         private void cashSaleEnable(bool isEnable)
         {
             cashSalesBtn.Enabled = isEnable;

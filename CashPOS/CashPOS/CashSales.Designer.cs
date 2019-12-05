@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.selfPickRadio = new MetroFramework.Controls.MetroRadioButton();
             this.warehouseRadio = new MetroFramework.Controls.MetroRadioButton();
             this.siteRadio = new MetroFramework.Controls.MetroRadioButton();
@@ -57,13 +56,9 @@
             this.payMethodLbl = new System.Windows.Forms.Label();
             this.payTypeLabel = new System.Windows.Forms.Label();
             this.totalPriceTxt = new System.Windows.Forms.Label();
-            this.addressTxt = new System.Windows.Forms.TextBox();
-            this.licenseTxt = new System.Windows.Forms.TextBox();
             this.telTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateSelected = new System.Windows.Forms.DateTimePicker();
             this.pickupAddText = new System.Windows.Forms.ComboBox();
             this.customerTxt = new System.Windows.Forms.ComboBox();
             this.invoiceNoteTxt = new System.Windows.Forms.TextBox();
@@ -89,10 +84,17 @@
             this.payMethLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.searchBtn = new MetroFramework.Controls.MetroButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.sendAndPP = new System.Windows.Forms.Button();
+            this.sendAndPWP = new System.Windows.Forms.Button();
             this.cancelBtn = new MetroFramework.Controls.MetroButton();
             this.sendOrderBtn = new MetroFramework.Controls.MetroButton();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.licenseTxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.addressTxt = new System.Windows.Forms.TextBox();
+            this.dateSelected = new System.Windows.Forms.DateTimePicker();
+            this.custListView = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -111,8 +113,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.custListView = new System.Windows.Forms.ListView();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -122,11 +122,11 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // itemTypePanel
@@ -238,17 +238,6 @@
             this.metroLabel2.Text = "客戶";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroLabel3.Location = new System.Drawing.Point(169, 0);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(50, 39);
-            this.metroLabel3.TabIndex = 8;
-            this.metroLabel3.Text = "地址";
-            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // selfPickRadio
             // 
             this.selfPickRadio.AutoSize = true;
@@ -298,14 +287,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -315,25 +304,25 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle2;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 240);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.selectedItemList.RowHeadersVisible = false;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
@@ -478,25 +467,6 @@
             this.totalPriceTxt.TabIndex = 3;
             this.totalPriceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // addressTxt
-            // 
-            this.addressTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressTxt.Location = new System.Drawing.Point(225, 3);
-            this.addressTxt.Name = "addressTxt";
-            this.addressTxt.Size = new System.Drawing.Size(107, 26);
-            this.addressTxt.TabIndex = 30;
-            this.addressTxt.TextChanged += new System.EventHandler(this.AddressTxt_TextChanged);
-            // 
-            // licenseTxt
-            // 
-            this.licenseTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.licenseTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.licenseTxt.Location = new System.Drawing.Point(225, 42);
-            this.licenseTxt.Name = "licenseTxt";
-            this.licenseTxt.Size = new System.Drawing.Size(107, 26);
-            this.licenseTxt.TabIndex = 31;
-            // 
             // telTxt
             // 
             this.customerDetailPanel.SetColumnSpan(this.telTxt, 2);
@@ -527,30 +497,6 @@
             this.label5.Size = new System.Drawing.Size(41, 36);
             this.label5.TabIndex = 34;
             this.label5.Text = "取貨地點";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(169, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 39);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "車牌";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dateSelected
-            // 
-            this.tableLayoutPanel7.SetColumnSpan(this.dateSelected, 2);
-            this.dateSelected.CustomFormat = "yyyy - MM - dd";
-            this.dateSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateSelected.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateSelected.Location = new System.Drawing.Point(169, 81);
-            this.dateSelected.Name = "dateSelected";
-            this.dateSelected.Size = new System.Drawing.Size(163, 26);
-            this.dateSelected.TabIndex = 36;
             // 
             // pickupAddText
             // 
@@ -829,8 +775,8 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.searchBtn, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.sendAndPP, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.sendAndPWP, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.cancelBtn, 4, 0);
             this.tableLayoutPanel6.Controls.Add(this.sendOrderBtn, 3, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -855,29 +801,31 @@
             this.searchBtn.UseSelectable = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
-            // button1
+            // sendAndPP
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(117, 3);
-            this.button1.Name = "button1";
-            this.tableLayoutPanel6.SetRowSpan(this.button1, 2);
-            this.button1.Size = new System.Drawing.Size(108, 65);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "發送 印價錢";
-            this.button1.UseVisualStyleBackColor = true;
+            this.sendAndPP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendAndPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAndPP.Location = new System.Drawing.Point(117, 3);
+            this.sendAndPP.Name = "sendAndPP";
+            this.tableLayoutPanel6.SetRowSpan(this.sendAndPP, 2);
+            this.sendAndPP.Size = new System.Drawing.Size(108, 65);
+            this.sendAndPP.TabIndex = 2;
+            this.sendAndPP.Text = "發送 印價錢";
+            this.sendAndPP.UseVisualStyleBackColor = true;
+            this.sendAndPP.Click += new System.EventHandler(this.sendAndPP_Click);
             // 
-            // button2
+            // sendAndPWP
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(231, 3);
-            this.button2.Name = "button2";
-            this.tableLayoutPanel6.SetRowSpan(this.button2, 2);
-            this.button2.Size = new System.Drawing.Size(108, 65);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "發送 不印價";
-            this.button2.UseVisualStyleBackColor = true;
+            this.sendAndPWP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendAndPWP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAndPWP.Location = new System.Drawing.Point(231, 3);
+            this.sendAndPWP.Name = "sendAndPWP";
+            this.tableLayoutPanel6.SetRowSpan(this.sendAndPWP, 2);
+            this.sendAndPWP.Size = new System.Drawing.Size(108, 65);
+            this.sendAndPWP.TabIndex = 3;
+            this.sendAndPWP.Text = "發送 不印價";
+            this.sendAndPWP.UseVisualStyleBackColor = true;
+            this.sendAndPWP.Click += new System.EventHandler(this.sendAndPWP_Click);
             // 
             // cancelBtn
             // 
@@ -904,6 +852,100 @@
             this.sendOrderBtn.Text = "發送";
             this.sendOrderBtn.UseSelectable = true;
             this.sendOrderBtn.Click += new System.EventHandler(this.sendOrderBtn_Click);
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel7, 3);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.78322F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.56643F));
+            this.tableLayoutPanel7.Controls.Add(this.licenseTxt, 3, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label6, 2, 1);
+            this.tableLayoutPanel7.Controls.Add(this.metroLabel3, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.addressTxt, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.dateSelected, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.custListView, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(240, 74);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 3;
+            this.customerDetailPanel.SetRowSpan(this.tableLayoutPanel7, 4);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(335, 118);
+            this.tableLayoutPanel7.TabIndex = 49;
+            // 
+            // licenseTxt
+            // 
+            this.licenseTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.licenseTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.licenseTxt.Location = new System.Drawing.Point(225, 42);
+            this.licenseTxt.Name = "licenseTxt";
+            this.licenseTxt.Size = new System.Drawing.Size(107, 26);
+            this.licenseTxt.TabIndex = 31;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(169, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 39);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "車牌";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroLabel3.Location = new System.Drawing.Point(169, 0);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(50, 39);
+            this.metroLabel3.TabIndex = 8;
+            this.metroLabel3.Text = "地址";
+            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // addressTxt
+            // 
+            this.addressTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressTxt.Location = new System.Drawing.Point(225, 3);
+            this.addressTxt.Name = "addressTxt";
+            this.addressTxt.Size = new System.Drawing.Size(107, 26);
+            this.addressTxt.TabIndex = 30;
+            this.addressTxt.TextChanged += new System.EventHandler(this.AddressTxt_TextChanged);
+            // 
+            // dateSelected
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.dateSelected, 2);
+            this.dateSelected.CustomFormat = "yyyy - MM - dd";
+            this.dateSelected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateSelected.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateSelected.Location = new System.Drawing.Point(169, 81);
+            this.dateSelected.Name = "dateSelected";
+            this.dateSelected.Size = new System.Drawing.Size(163, 26);
+            this.dateSelected.TabIndex = 36;
+            // 
+            // custListView
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.custListView, 2);
+            this.custListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custListView.HideSelection = false;
+            this.custListView.Location = new System.Drawing.Point(3, 3);
+            this.custListView.MultiSelect = false;
+            this.custListView.Name = "custListView";
+            this.tableLayoutPanel7.SetRowSpan(this.custListView, 3);
+            this.custListView.Size = new System.Drawing.Size(160, 112);
+            this.custListView.TabIndex = 37;
+            this.custListView.UseCompatibleStateImageBehavior = false;
+            this.custListView.Click += new System.EventHandler(this.custListView_Click);
             // 
             // panel2
             // 
@@ -1118,44 +1160,6 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 4;
-            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel7, 3);
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.78322F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.56643F));
-            this.tableLayoutPanel7.Controls.Add(this.licenseTxt, 3, 1);
-            this.tableLayoutPanel7.Controls.Add(this.label6, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.metroLabel3, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.addressTxt, 3, 0);
-            this.tableLayoutPanel7.Controls.Add(this.dateSelected, 2, 2);
-            this.tableLayoutPanel7.Controls.Add(this.custListView, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(240, 74);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 3;
-            this.customerDetailPanel.SetRowSpan(this.tableLayoutPanel7, 4);
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(335, 118);
-            this.tableLayoutPanel7.TabIndex = 49;
-            // 
-            // custListView
-            // 
-            this.tableLayoutPanel7.SetColumnSpan(this.custListView, 2);
-            this.custListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custListView.HideSelection = false;
-            this.custListView.Location = new System.Drawing.Point(3, 3);
-            this.custListView.Name = "custListView";
-            this.tableLayoutPanel7.SetRowSpan(this.custListView, 3);
-            this.custListView.Size = new System.Drawing.Size(160, 112);
-            this.custListView.TabIndex = 37;
-            this.custListView.UseCompatibleStateImageBehavior = false;
-            // 
             // CashSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1181,13 +1185,13 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1271,8 +1275,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button sendAndPP;
+        private System.Windows.Forms.Button sendAndPWP;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ListView custListView;
     }

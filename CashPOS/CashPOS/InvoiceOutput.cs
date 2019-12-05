@@ -145,7 +145,7 @@ namespace CashPOS
                         {
                             Directory.CreateDirectory(folderPath);
                         }
-                        filepath = folderPath + beginning.ToString("yyyyMM") + Index + BelongTo + ".pdf";
+                        filepath = folderPath + beginning.ToString("yyyyMM") + Index + rdr["custName"].ToString() + ".pdf";
                         writer = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                         doc.Open();
                         firstPage = false;

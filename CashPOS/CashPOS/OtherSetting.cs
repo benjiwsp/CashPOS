@@ -124,5 +124,52 @@ namespace CashPOS
             itemGrid.Rows.Clear();
 
         }
+
+        private void clearAll_Click(object sender, EventArgs e)
+        {
+            catGrid.Rows.Clear();
+            pickupLocDataGrid.Rows.Clear();
+            companyData.Rows.Clear();
+            itemGrid.Rows.Clear();
+        }
+
+        private void searchCat_Click(object sender, EventArgs e)
+        {
+            catGrid.Rows.Clear();
+
+            myCommand = new MySqlCommand("select * from CashPOSDB.prodCat", myConnection);
+            myConnection.Open();
+
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    catGrid.Rows.Add(rdr["prodCat"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
+
+        private void searchInfo_Click(object sender, EventArgs e)
+        {
+            companyData.Rows.Clear();
+
+            myCommand = new MySqlCommand("select * from CashPOSDB.companyInfo", myConnection);
+            myConnection.Open();
+
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    companyData.Rows.Add(rdr["NameCH"].ToString(), rdr["NameEN"].ToString(), rdr["AddCH"].ToString(),
+                        rdr["AddEN"].ToString(), rdr["Phone"].ToString(), rdr["Fax"].ToString(), rdr["Email"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
     }
 }

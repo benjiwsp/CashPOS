@@ -46,10 +46,13 @@
             this.insertCompInfo = new System.Windows.Forms.Button();
             this.serachPickBtn = new System.Windows.Forms.Button();
             this.itemGrid = new System.Windows.Forms.DataGridView();
-            this.updateUnitBtn = new System.Windows.Forms.Button();
-            this.serachItem = new System.Windows.Forms.Button();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateUnitBtn = new System.Windows.Forms.Button();
+            this.serachItem = new System.Windows.Forms.Button();
+            this.clearAll = new System.Windows.Forms.Button();
+            this.searchCat = new System.Windows.Forms.Button();
+            this.searchInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
@@ -62,10 +65,10 @@
             this.catGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.catGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            this.catGrid.Location = new System.Drawing.Point(23, 14);
+            this.catGrid.Location = new System.Drawing.Point(23, 45);
             this.catGrid.Name = "catGrid";
             this.catGrid.RowHeadersVisible = false;
-            this.catGrid.Size = new System.Drawing.Size(240, 150);
+            this.catGrid.Size = new System.Drawing.Size(240, 119);
             this.catGrid.TabIndex = 0;
             // 
             // Column1
@@ -90,7 +93,7 @@
             this.pickupLocDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column2});
-            this.pickupLocDataGrid.Location = new System.Drawing.Point(23, 310);
+            this.pickupLocDataGrid.Location = new System.Drawing.Point(23, 273);
             this.pickupLocDataGrid.Name = "pickupLocDataGrid";
             this.pickupLocDataGrid.RowHeadersVisible = false;
             this.pickupLocDataGrid.Size = new System.Drawing.Size(240, 150);
@@ -108,7 +111,7 @@
             // 
             // updatePickupLocBtn
             // 
-            this.updatePickupLocBtn.Location = new System.Drawing.Point(23, 466);
+            this.updatePickupLocBtn.Location = new System.Drawing.Point(23, 429);
             this.updatePickupLocBtn.Name = "updatePickupLocBtn";
             this.updatePickupLocBtn.Size = new System.Drawing.Size(240, 54);
             this.updatePickupLocBtn.TabIndex = 1;
@@ -181,7 +184,7 @@
             // 
             // serachPickBtn
             // 
-            this.serachPickBtn.Location = new System.Drawing.Point(23, 253);
+            this.serachPickBtn.Location = new System.Drawing.Point(23, 230);
             this.serachPickBtn.Name = "serachPickBtn";
             this.serachPickBtn.Size = new System.Drawing.Size(240, 37);
             this.serachPickBtn.TabIndex = 4;
@@ -203,6 +206,16 @@
             this.itemGrid.Size = new System.Drawing.Size(546, 871);
             this.itemGrid.TabIndex = 5;
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "貨品";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "單位";
+            this.Column11.Name = "Column11";
+            // 
             // updateUnitBtn
             // 
             this.updateUnitBtn.Location = new System.Drawing.Point(823, 951);
@@ -223,20 +236,43 @@
             this.serachItem.UseVisualStyleBackColor = true;
             this.serachItem.Click += new System.EventHandler(this.serachItem_Click);
             // 
-            // Column10
+            // clearAll
             // 
-            this.Column10.HeaderText = "貨品";
-            this.Column10.Name = "Column10";
+            this.clearAll.Location = new System.Drawing.Point(376, 429);
+            this.clearAll.Name = "clearAll";
+            this.clearAll.Size = new System.Drawing.Size(363, 54);
+            this.clearAll.TabIndex = 8;
+            this.clearAll.Text = "清空";
+            this.clearAll.UseVisualStyleBackColor = true;
+            this.clearAll.Click += new System.EventHandler(this.clearAll_Click);
             // 
-            // Column11
+            // searchCat
             // 
-            this.Column11.HeaderText = "單位";
-            this.Column11.Name = "Column11";
+            this.searchCat.Location = new System.Drawing.Point(23, 3);
+            this.searchCat.Name = "searchCat";
+            this.searchCat.Size = new System.Drawing.Size(240, 36);
+            this.searchCat.TabIndex = 9;
+            this.searchCat.Text = "button1";
+            this.searchCat.UseVisualStyleBackColor = true;
+            this.searchCat.Click += new System.EventHandler(this.searchCat_Click);
+            // 
+            // searchInfo
+            // 
+            this.searchInfo.Location = new System.Drawing.Point(23, 490);
+            this.searchInfo.Name = "searchInfo";
+            this.searchInfo.Size = new System.Drawing.Size(716, 41);
+            this.searchInfo.TabIndex = 10;
+            this.searchInfo.Text = "Search";
+            this.searchInfo.UseVisualStyleBackColor = true;
+            this.searchInfo.Click += new System.EventHandler(this.searchInfo_Click);
             // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.searchInfo);
+            this.Controls.Add(this.searchCat);
+            this.Controls.Add(this.clearAll);
             this.Controls.Add(this.serachItem);
             this.Controls.Add(this.updateUnitBtn);
             this.Controls.Add(this.itemGrid);
@@ -281,5 +317,8 @@
         private System.Windows.Forms.Button serachItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button clearAll;
+        private System.Windows.Forms.Button searchCat;
+        private System.Windows.Forms.Button searchInfo;
     }
 }

@@ -43,12 +43,9 @@
             this.sfInvoice = new System.Windows.Forms.Button();
             this.selectedCompTxt = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -130,9 +127,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.EndTimePicker, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.StartTimePicker, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.csInvoice, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.sfInvoice, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.selectedCompTxt, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.csInvoice, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.selectedCompTxt, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.sfInvoice, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -157,9 +154,10 @@
             // 
             // csInvoice
             // 
-            this.csInvoice.Location = new System.Drawing.Point(3, 176);
+            this.csInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.csInvoice.Location = new System.Drawing.Point(3, 349);
             this.csInvoice.Name = "csInvoice";
-            this.csInvoice.Size = new System.Drawing.Size(75, 23);
+            this.csInvoice.Size = new System.Drawing.Size(449, 142);
             this.csInvoice.TabIndex = 2;
             this.csInvoice.Text = "搜尋超誠客戶";
             this.csInvoice.UseVisualStyleBackColor = true;
@@ -167,9 +165,10 @@
             // 
             // sfInvoice
             // 
-            this.sfInvoice.Location = new System.Drawing.Point(458, 176);
+            this.sfInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfInvoice.Location = new System.Drawing.Point(458, 349);
             this.sfInvoice.Name = "sfInvoice";
-            this.sfInvoice.Size = new System.Drawing.Size(75, 23);
+            this.sfInvoice.Size = new System.Drawing.Size(449, 142);
             this.sfInvoice.TabIndex = 2;
             this.sfInvoice.Text = "搜尋富資客戶";
             this.sfInvoice.UseVisualStyleBackColor = true;
@@ -178,7 +177,7 @@
             // selectedCompTxt
             // 
             this.selectedCompTxt.AutoSize = true;
-            this.selectedCompTxt.Location = new System.Drawing.Point(458, 346);
+            this.selectedCompTxt.Location = new System.Drawing.Point(3, 173);
             this.selectedCompTxt.Name = "selectedCompTxt";
             this.selectedCompTxt.Size = new System.Drawing.Size(89, 13);
             this.selectedCompTxt.TabIndex = 3;
@@ -189,8 +188,6 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 503);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -199,26 +196,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.75304F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(910, 494);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 433);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(449, 58);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(458, 433);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(449, 58);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // InvoiceOutput
             // 
@@ -231,7 +208,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,8 +222,6 @@
         private System.Windows.Forms.Button sfInvoice;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.DataGridView searchGrid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

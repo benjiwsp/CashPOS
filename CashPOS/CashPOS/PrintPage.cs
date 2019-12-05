@@ -34,6 +34,7 @@ namespace CashPOS
 
         private void updateUnprintedList()
         {
+            resultList.Rows.Clear();
             myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -41,7 +42,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    resultList.Rows.Add(rdr["orderID"].ToString(),rdr["custName"].ToString(), rdr["phone"].ToString(),rdr["license"].ToString(),
+                    resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
                         rdr["address"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
                 }
             }
@@ -49,14 +50,14 @@ namespace CashPOS
             myConnection.Close();
         }
 
-        private void resultList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void resultList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-         
+
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-               printList.Rows.Clear();
+                printList.Rows.Clear();
                 string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
                              "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
                              "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
@@ -96,13 +97,16 @@ namespace CashPOS
                 rdr.Close();
                 myConnection.Close();
             }
+            printList.ClearSelection();
         }
 
         private void printBtn_Click(object sender, EventArgs e)
         {
-            // string oriText = PrintTimeLabel.Text;
-       ////     ReceiptTimeLabel.Text = DateTime.Now.ToString("HH:mm");
-         //   ReceiptItemsGridView.ClearSelection();
+            print();
+        }
+
+        public void print()
+        {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             PaperSize papersize = new PaperSize("Custom", 850, 550);
@@ -116,12 +120,8 @@ namespace CashPOS
             ////"connection timeout=30");
             myConnection.Open();
             MySqlCommand myCommand = new MySqlCommand("Update CashPOSDB.orderRecords Set isPrinted='Y' where orderID='" + invoiceLbl.Text + "'", myConnection);
-           myCommand.ExecuteNonQuery();
-           myConnection.Close();
-       //     NewOrderDisplayRefreshBtn.PerformClick();
-       //     BigTabCollections.SelectedIndex = 0;
-            //              PrintTimeLabel.Text = "";
-       ///     ReceiptTimeLabel.Text = "";
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
         }
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -134,6 +134,31 @@ namespace CashPOS
             Point p = new Point(0, 0);
             e.Graphics.DrawImage(bitmap, p);
 
+        }
+        
+        public void searchCWPrint_Click(object sender, EventArgs e)
+        {
+           /// MessageBox.Show(invoiceNo.Text);
+            searchToPrint(invoiceNo.Text);
+        }
+
+     
+        private void searchToPrint(string orderID)
+        {
+            resultList.Rows.Clear();
+            myCommand = new MySqlCommand("select * from orderRecords where orderID = '" + orderID + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
+                        rdr["address"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
         }
     }
 }

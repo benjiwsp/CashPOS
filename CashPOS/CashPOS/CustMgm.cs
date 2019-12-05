@@ -172,7 +172,8 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
-                       rdr["Money"].ToString(), rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                       rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
+                       rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
                         rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["PayMethod"].ToString(),
                         rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
                 }
@@ -191,9 +192,10 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
-                        rdr["Money"].ToString(), rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
-                        rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["PayMethod"].ToString(),
-                        rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
+                        rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
+                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                         rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["PayMethod"].ToString(),
+                         rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
                 }
             }
             rdr.Close();
