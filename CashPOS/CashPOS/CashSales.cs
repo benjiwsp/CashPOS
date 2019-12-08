@@ -469,8 +469,10 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     string custa = rdr["Code"].ToString() + " - " + rdr["Name"].ToString();
+                    string re = rdr["Name"].ToString() + " - " + rdr["Code"].ToString();
+
                     cb.Items.Add(custa);
-                    custCol.Add(custa);
+                    custCol.Add(re);
                 }
             }
             rdr.Close();
@@ -822,7 +824,7 @@ namespace CashPOS
 
         private void customerTxt_TextUpdate(object sender, EventArgs e)
         {
-            custListView.Items.Clear();
+            /*custListView.Items.Clear();
             myCommand = new MySqlCommand("select * from custData where name like '%" + customerTxt.Text + "%'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -834,7 +836,13 @@ namespace CashPOS
                 }
             }
             rdr.Close();
-            myConnection.Close();
+            myConnection.Close();*/
+            custListView.Items.Clear();
+            foreach (var result in custCol.Where(s => s.IndexOf(customerTxt.Text, StringComparison.InvariantCultureIgnoreCase) != -1))
+            {
+                // Do whatever
+                custListView.Items.Add(result);
+            }
         }
 
         private void paidAmount_KeyPress(object sender, KeyPressEventArgs e)
