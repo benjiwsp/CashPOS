@@ -24,8 +24,8 @@ namespace CashPOS
             cashSales = new CashSales();
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
-            cashSales.getCustomerList("超誠", "", sfCustList);
-            cashSales.getCustomerList("富資", "", csCustList);
+            cashSales.getCustomerList("超誠", "", csCustList);
+            cashSales.getCustomerList("富資", "", sfCustList);
             getItem();
         }
         private void getItem()
@@ -185,7 +185,7 @@ namespace CashPOS
 
         private void searchbyItemBtn_Click(object sender, EventArgs e)
         {
-            getIByTel(itemList.Text, getStartDate(), getEndDate());
+            serachByItem(itemList.Text, getStartDate(), getEndDate());
         }
 
         private void serachByItem(string item, string startDate, string endDate)
@@ -199,7 +199,7 @@ namespace CashPOS
             addGridCol("ProdName", "公司");
             myCommand = new MySqlCommand("Select itemName, unit, sum(amount) as Amount, sum(total) as Total, belongTo from CashPOSDB.orderDetails " +
                 "where time >='" + startDate + "' and  time <= '" +
-       endDate + " and orderID in (Select orderID From CashPOSDB.orderRecords where itemName='" + item + "') group by ItemName, unit, belongTo order by itemName", myConnection);
+       endDate + "' and orderID in (Select orderID From CashPOSDB.orderRecords where itemName='" + item + "') group by ItemName, unit, belongTo order by itemName", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)

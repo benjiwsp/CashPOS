@@ -352,8 +352,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Controls.Add(this.EndTimePicker, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.StartTimePicker, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.csCustList, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.sfCustList, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.phoneBox, 3, 4);
             this.tableLayoutPanel2.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 3, 0);
@@ -364,6 +362,8 @@
             this.tableLayoutPanel2.Controls.Add(this.label8, 3, 3);
             this.tableLayoutPanel2.Controls.Add(this.searchbyItemBtn, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.searchbyTelBtn, 3, 5);
+            this.tableLayoutPanel2.Controls.Add(this.sfCustList, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.csCustList, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 709);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";

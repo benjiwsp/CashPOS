@@ -64,14 +64,13 @@ namespace CashPOS
             addGridCol("name", "客戶");
             addGridCol("payMeth", "付款類別");
             addGridCol("prod", "貨品");
-
             addGridCol("pickPrice", "自提價");
             addGridCol("delPrice", "送倉價");
             addGridCol("sitePrice", "地盤價");
             addGridCol("comp", "隸屬公司");
-            myCommand = new MySqlCommand("select Code, Name, PayMethod, BelongTo, " +
+            myCommand = new MySqlCommand("select Code, Name, PayMethod, b.BelongTo, " +
             "ProdName, DelPrice, PickPrice, SitePrice " +
-            "from CashPOSDB.custProdPrice join CashPOSDB.custData where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code and custData.BelongTo = '" + belongTo + "'", myConnection);
+            "from CashPOSDB.custProdPrice join CashPOSDB.custData b where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code and custData.BelongTo = '" + belongTo + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -100,9 +99,9 @@ namespace CashPOS
             addGridCol("delPrice", "送倉價");
             addGridCol("sitePrice", "地盤價");
             addGridCol("comp", "隸屬公司");
-            myCommand = new MySqlCommand("select Code, Name, PayMethod, BelongTo, " +
+            myCommand = new MySqlCommand("select Code, Name, PayMethod, b.BelongTo, " +
             "ProdName, DelPrice, PickPrice, SitePrice " +
-            "from CashPOSDB.custProdPrice join CashPOSDB.custData where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code", myConnection);
+            "from CashPOSDB.custProdPrice join CashPOSDB.custData b where CashPOSDB.custProdPrice.Cust = CashPOSDB.custData.Code", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -134,7 +133,7 @@ namespace CashPOS
 
             myCommand = new MySqlCommand("select Code, Name, PayMethod, a.BelongTo, " +
             "ProdName, DelPrice, PickPrice, SitePrice " +
-            "from CashPOSDB.custProdPrice a join CashPOSDB.custData b where a.Cust = b.Code and Name = '" + company + "'", myConnection);
+            "from CashPOSDB.custProdPrice a join CashPOSDB.custData b where a.Cust = b.Code and Code = '" + company + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -153,18 +152,21 @@ namespace CashPOS
 
         private void clearAllBtn_Click(object sender, EventArgs e)
         {
-
+            resultList.Rows.Clear();
+            itemList.Text = "";
+            custSelectBox.Text = "";
+            custCodeTxt.Text = "";
         }
         private void loadCustCombo(string cust)
         {
-            myCommand = new MySqlCommand("Select Name from CashPOSDB.custData where BelongTo = '" + cust + "'", myConnection);
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where BelongTo = '" + cust + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
             {
                 while (rdr.Read())
                 {
-                    custSelectBox.Items.Add(rdr["Name"].ToString());
+                    custSelectBox.Items.Add(rdr["Code"].ToString() + " - " + rdr["Name"].ToString());
                 }
                 rdr.Close();
             }
@@ -173,12 +175,16 @@ namespace CashPOS
 
         private void sfSearchBtn_Click(object sender, EventArgs e)
         {
+            clearSelect();
+
             clearCustCombo();
             loadCustCombo("富資");
         }
 
         private void csSearchBtn_Click(object sender, EventArgs e)
         {
+            clearSelect();
+
             clearCustCombo();
             loadCustCombo("超誠");
         }
@@ -191,12 +197,15 @@ namespace CashPOS
         private void custSelectBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
-            getSingleCompany(cb.Text);
+            string custCode = cb.Text.Substring(0, cb.Text.IndexOf(" ")).Trim();
+            custCodeTxt.Text = custCode;
+
+            getSingleCompany(custCode);
         }
 
         private void serachItemBtn_Click(object sender, EventArgs e)
         {
-
+            clearSelect();
             resultList.Columns.Clear();
             addGridCol("prodID", "ID");
             addGridCol("prodName", "貨品");
@@ -204,6 +213,9 @@ namespace CashPOS
             addGridCol("adjustPickPrice", "調整自提價");
             addGridCol("adjustDelPrice", "調整送倉價");
             addGridCol("adjustSitePrice", "調整地盤價");
+            addGridCol("temp", "");
+            resultList.Columns[6].ReadOnly = true;
+            addGridCol("updated", "已更新");
 
             myCommand = new MySqlCommand("select ProdID, ProdName , Unit from CashPOSDB.prodData", myConnection);
             myConnection.Open();
@@ -223,44 +235,92 @@ namespace CashPOS
         private void adjustAllCustBtn_Click(object sender, EventArgs e)
         {
             adjustPrice("");
+            clearSelect();
         }
         private void adjustPrice(string extraCommand)
         {
+          
+
             decimal adjustStoreAmount = 0.0m;
             decimal adjustPickAmount = 0.0m;
             decimal adjustSiteAmount = 0.0m;
-
+            string needEdit = "";
             string prodID = "";
+            string unit = "";
+            double total = 0.0;
             foreach (DataGridViewRow row in resultList.Rows)
             {
-                if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") adjustStoreAmount = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") adjustPickAmount = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") adjustSiteAmount = Convert.ToDecimal(row.Cells[5].Value.ToString());
-                prodID = row.Cells[0].Value.ToString();
-                if (!(adjustStoreAmount == 0.0m && adjustPickAmount == 0.0m && adjustSiteAmount == 0.0m))
+                /*    var watch = System.Diagnostics.Stopwatch.StartNew();
+                    var elapsedMs = watch.ElapsedMilliseconds;
+                    var sec = TimeSpan.FromMilliseconds(elapsedMs).TotalSeconds;
+                    total += sec;
+                                  watch.Stop();
+
+                    */
+                if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") needEdit = row.Cells[7].Value.ToString();
+                if (needEdit == "y")
                 {
+                    needEdit = "";
+                    if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") adjustPickAmount = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                    if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") adjustStoreAmount = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                    if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") adjustSiteAmount = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                    prodID = row.Cells[0].Value.ToString();
+                  
                     myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice = DelPrice + " + adjustStoreAmount + ", PickPrice = PickPrice + " + adjustPickAmount +
                         ", SitePrice = SitePrice + " + adjustSiteAmount + " where Prod = '" + prodID + "' " + extraCommand, myConnection);
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
+                  
+                    Console.WriteLine("test"); 
                 }
             }
-
+            Console.WriteLine(total + "total");
         }
 
         private void adjustCSCustBtn_Click(object sender, EventArgs e)
         {
-            adjustPrice("and BelongTo = '超誠'");
+            string belongTo = "and BelongTo = '超誠'";
+            string cust = "and cust = '" + custCodeTxt.Text + "' ";
+            if (custSelectBox.Text.Length > 0)
+            {
+                adjustPrice(belongTo + cust);
+            }
+            else
+            {
+                adjustPrice(belongTo);
+
+            }
+            clearSelect();
         }
 
         private void adjustSFCustBtn_Click(object sender, EventArgs e)
         {
-            adjustPrice("and BelongTo = '富資'");
-        }
+            string belongTo = "and BelongTo = '富資'";
+            string cust = "and cust = '" + custCodeTxt.Text + "' ";
+            if (custSelectBox.Text.Length > 0)
+            {
+                adjustPrice(belongTo + cust);
+            }
+            else
+            {
+                adjustPrice(belongTo);
 
+            }
+            clearSelect();
+        }
+        private void clearSelect()
+        {
+            custCodeTxt.Text = "";
+            custNameTxt.Text = "";
+            custSelectBox.Text = "";
+            itemList.Text = "";
+
+        }
         private void searchCatBtn_Click(object sender, EventArgs e)
         {
+            clearSelect();
+
             resultList.Columns.Clear();
             resultList.Rows.Clear();
             addGridCol("CatID", "ID");
@@ -307,11 +367,14 @@ namespace CashPOS
                 resultList.Columns.Clear();
                 addGridCol("CompName", "公司編號");
                 addGridCol("CompName", "公司");
+                addGridCol("payMeth", "付款類別");
                 addGridCol("ProdName", "貨品");
                 addGridCol("ProdName", "自提價");
                 addGridCol("ProdName", "返倉價");
                 addGridCol("ProdName", "地盤價");
-                myCommand = new MySqlCommand("select ProdName, PickPrice, DelPrice, SitePrice, Code, " +
+                addGridCol("updated", "已更新");
+
+                myCommand = new MySqlCommand("select ProdName, PayMethod, PickPrice, DelPrice, SitePrice, Code, " +
                     "Name from CashPOSDB.prodData cross join CashPOSDB.custData where Category = '" +
                     cat + "'", myConnection);
                 myConnection.Open();
@@ -320,7 +383,7 @@ namespace CashPOS
                 {
                     while (rdr.Read())
                     {
-                        resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString());
+                        resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString());
                     }
                 }
                 rdr.Close();
@@ -330,16 +393,17 @@ namespace CashPOS
 
         private void resetSFPriceBtn_Click(object sender, EventArgs e)
         {
-            resetPrice("富資");
+            resetPrice();
+            clearSelect();
         }
-        private void resetPrice(string Comp)
+        private void resetPrice()
         {
             string prod = "";
-            string prodID = "";
+            string prodName = "";
             decimal pickPrice;
             decimal delPrice;
             decimal sitePrice;
-
+            string comp = "";
             foreach (DataGridViewRow row in resultList.Rows)
             {
                 if (row.Cells[0].Value != null)
@@ -347,55 +411,86 @@ namespace CashPOS
                     pickPrice = 0.0m;
                     delPrice = 0.0m;
                     sitePrice = 0.0m;
-                    if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
-                    if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                    if (row.Cells[2].Value != null) if (row.Cells[3].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                    if (row.Cells[3].Value != null) if (row.Cells[4].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                    if (row.Cells[4].Value != null) if (row.Cells[5].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[5].Value.ToString());
-                    //    MessageBox.Show(prodID + "," + prod + "," + pickPrice.ToString());
-
-                    if (!(pickPrice == 0.0m && delPrice == 0.0m && sitePrice == 0.0m))
+                    string needEdit = "";
+                    if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") needEdit = row.Cells[7].Value.ToString();
+                    if (needEdit == "y")
                     {
-                        myConnection.Open();
-                        myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
-                       ", SitePrice =  " + sitePrice + " where Prod = '" + prodID + "' where BelongTo = '" + Comp + "'", myConnection);
-                        myCommand.ExecuteNonQuery();
-                        myConnection.Close();
+                        needEdit = "";
+                        if (row.Cells[0].Value.ToString() != "") prodName = row.Cells[3].Value.ToString();
+                        if (row.Cells[0].Value != null) if (row.Cells[0].Value.ToString() != "") comp = row.Cells[0].Value.ToString();
+                        if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
+                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                        //    MessageBox.Show(prodID + "," + prod + "," + pickPrice.ToString());
+
+                        if (!(pickPrice == 0.0m && delPrice == 0.0m && sitePrice == 0.0m))
+                        {
+                            myConnection.Open();
+                            if (custCodeTxt.Text.Length > 0)
+                            {
+                                myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
+                     ", SitePrice =  " + sitePrice + " where ProdName = '" + prodName + "' and Cust = '" + comp + "' and Cust = '" + custCodeTxt.Text + "'", myConnection);
+                            }
+                            else
+                            {
+                                myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
+                     ", SitePrice =  " + sitePrice + " where ProdName = '" + prodName + "' and Cust = '" + comp + "'", myConnection);
+                            }
+
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                        }
                     }
                 }
             }
+            clearSelect();
+
         }
 
         private void resetCSPriceBtn_Click(object sender, EventArgs e)
         {
-            resetPrice("超誠");
+            resetPrice();
+            clearSelect();
         }
 
         private void searchByItemBtn_Click(object sender, EventArgs e)
         {
-            resultList.Rows.Clear();
-            resultList.Columns.Clear();
-            addGridCol("CompName", "公司編號");
-            addGridCol("CompName", "公司");
-            addGridCol("ProdName", "貨品");
-
-            addGridCol("ProdName", "自提價");
-            addGridCol("ProdName", "返倉價");
-            addGridCol("ProdName", "地盤價");
-            string item = itemList.Text.Substring(0, itemList.Text.IndexOf(" -")).Trim();
-            myCommand = new MySqlCommand("SELECT a.Cust, a.Prod, a. ProdName, a.DelPrice, a.PickPrice, a.SitePrice, b.Name " +
-                "FROM CashPOSDB.custProdPrice a join CashPOSDB.custData b on a.cust	= b.Code where Prod = '" + item + "'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows)
+            if (itemList.Text.Length > 0)
             {
-                while (rdr.Read())
+                custSelectBox.Text = "";
+                custCodeTxt.Text = "";
+                resultList.Rows.Clear();
+                resultList.Columns.Clear();
+                addGridCol("CompName", "公司編號");
+                addGridCol("CompName", "公司");
+                addGridCol("payMeth", "付款類別");
+                addGridCol("ProdName", "貨品");
+                addGridCol("ProdName", "自提價");
+                addGridCol("ProdName", "返倉價");
+                addGridCol("ProdName", "地盤價");
+                addGridCol("updated", "已更新");
+
+                string item = itemList.Text.Substring(0, itemList.Text.IndexOf(" -")).Trim();
+                myCommand = new MySqlCommand("SELECT a.Cust, a.Prod, a. ProdName, a.DelPrice, a.PickPrice, a.SitePrice, b.Name, b.PayMethod" +
+                    " FROM CashPOSDB.custProdPrice a join CashPOSDB.custData b on a.cust	= b.Code and Prod = '" + item + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows)
                 {
-                    resultList.Rows.Add(rdr["Cust"].ToString(), rdr["Name"].ToString(), rdr["ProdName"].ToString(), 
-                        rdr["DelPrice"].ToString(), rdr["PickPrice"].ToString(), rdr["SitePrice"].ToString());
-                }
-            } rdr.Close();
-            myConnection.Close();
+                    while (rdr.Read())
+                    {
+                        resultList.Rows.Add(rdr["Cust"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(),
+                            rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(), rdr["SitePrice"].ToString());
+                    }
+                } rdr.Close();
+                myConnection.Close();
+            }
+        }
+
+        private void resultList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            resultList.Rows[e.RowIndex].Cells[7].Value = "y";
         }
     }
 }

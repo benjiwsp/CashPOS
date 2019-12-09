@@ -301,7 +301,9 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                         if (dialogResult == DialogResult.Yes)
                         {
                             string prodID = newProdGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                            deleteProdRow("CashPOSDB.prodData", prodID);
+                            deleteProdRow("CashPOSDB.prodData", prodID, "ProdID");
+                            deleteProdRow("CashPOSDB.custProdPrice", prodID,"Prod");
+
                             newProdGrid.Rows.RemoveAt(e.RowIndex);
                         }
                     }
@@ -309,14 +311,15 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
             }
         }
 
-        private void deleteProdRow(string table, string prodID)
+        private void deleteProdRow(string table, string prodID,string col)
         {
             myConnection.Open();
-            myCommand = new MySqlCommand("Delete from " + table + " where ProdID = '" + prodID + "'", myConnection);
+            myCommand = new MySqlCommand("Delete from " + table + " where "+col+" = '" + prodID + "'", myConnection);
             myCommand.ExecuteNonQuery();
             myConnection.Close();
 
         }
+      
         private void setUpdate(Boolean b)
         {
             isUpdate = b;

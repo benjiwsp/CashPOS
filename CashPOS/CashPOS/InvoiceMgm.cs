@@ -35,11 +35,10 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-            string comp = (sender as Button).Text;
-            comp = comp.Substring(comp.IndexOf("(") + 1, 2);
+           
             int i = 0;
             //          MessageBox.Show(comp);
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "' and belongTo = '" + comp + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -111,6 +110,9 @@ namespace CashPOS
             itemList.Text = "";
             custList.Text = "";
             payType.Text = "";
+            locationForTransBox.Text = "";
+            locationBox.Text = "";
+            locSerachImpBox.Text = "";
         }
 
         private void serachByTel_Click(object sender, EventArgs e)
@@ -1030,6 +1032,11 @@ namespace CashPOS
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

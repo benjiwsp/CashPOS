@@ -34,7 +34,6 @@
             this.idToSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.serachByID = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.telBox = new System.Windows.Forms.TextBox();
             this.serachByTel = new System.Windows.Forms.Button();
@@ -188,6 +187,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.9F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -220,7 +220,6 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Controls.Add(this.serachByID, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -232,25 +231,15 @@
             // 
             // serachByID
             // 
+            this.tableLayoutPanel9.SetColumnSpan(this.serachByID, 2);
             this.serachByID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serachByID.Location = new System.Drawing.Point(3, 3);
             this.serachByID.Name = "serachByID";
-            this.serachByID.Size = new System.Drawing.Size(121, 23);
+            this.serachByID.Size = new System.Drawing.Size(248, 23);
             this.serachByID.TabIndex = 10;
-            this.serachByID.Text = "以單號搜尋(富資)";
+            this.serachByID.Text = "以單號搜尋";
             this.serachByID.UseVisualStyleBackColor = true;
             this.serachByID.Click += new System.EventHandler(this.serachByID_Click);
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(130, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "以單號搜尋(超誠)";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.serachByID_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -1245,7 +1234,6 @@
         private System.Windows.Forms.Label pickupLbl;
         private System.Windows.Forms.Label priceTypeLbl;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
