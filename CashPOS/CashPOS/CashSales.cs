@@ -51,6 +51,7 @@ namespace CashPOS
         string selectedItem;
         string selectedCompany;
         //  String selected
+
         Boolean isSearching = false;
         private MySqlConnection myConnection;
         string value;
@@ -65,6 +66,7 @@ namespace CashPOS
             myConnection = new MySqlConnection(value);
             itemTypePanel.Enabled = false;
             updateCatList();
+
             /*
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.CustData", myConnection);
@@ -85,7 +87,6 @@ namespace CashPOS
             createTypeLbl(typeList, itemTypePanel, typeLabelClicked);
             //  updateGridCol();
         }
-
 
         #region initialize related
 
@@ -133,7 +134,26 @@ namespace CashPOS
             }
         }
         #endregion
+        public void setLevel()
+        {
+            if (group == "1")
+            {
+                loadCSCust();
+                sfOrdBtn.Enabled = false;
+                chiuOrdBtn.Enabled = false;
 
+                fromLabel.Text = "超誠";
+            }
+            else if (group == "2")
+            {
+                loadSFCust();
+                chiuOrdBtn.Enabled = false;
+                sfOrdBtn.Enabled = false;
+
+                fromLabel.Text = "富資";
+
+            }
+        }
         private void updateCatList()
         {
             myCommand = new MySqlCommand("Select * from CashPOSDB.prodCat", myConnection);
@@ -216,6 +236,11 @@ namespace CashPOS
         {
             get { return itemUnit.Text; }
             set { itemUnit.Text = value; }
+        }
+        public string group
+        {
+            get;
+            set;
         }
 
         private void clearItemPanel()
@@ -428,23 +453,27 @@ namespace CashPOS
         }
         private void chiuOrdBtn_Click(object sender, EventArgs e)
         {
-            clearAll();
-            clearSelection();
-            isSearching = false;
-            Button btn = (Button)sender;
-            //getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("超誠", btn.Text, customerTxt);
-            selectedCompany = "超誠";
+            loadCSCust();
         }
-
-        private void sfOrdBtn_Click(object sender, EventArgs e)
+        private void loadCSCust()
         {
             clearAll();
             clearSelection();
             isSearching = false;
-            Button btn = (Button)sender;
-            //    getCustomerList("CashPOSDB.custData", btn.Text);
-            getCustomerList("富資", btn.Text, customerTxt);
+            getCustomerList("超誠", "超誠", customerTxt);
+            selectedCompany = "超誠";
+        }
+        private void sfOrdBtn_Click(object sender, EventArgs e)
+        {
+            loadSFCust();
+        }
+        private void loadSFCust()
+        {
+
+            clearAll();
+            clearSelection();
+            isSearching = false;
+            getCustomerList("富資", "富資", customerTxt);
             selectedCompany = "富資";
         }
         private void clearSelection()
@@ -452,15 +481,20 @@ namespace CashPOS
             selectedCustCode = "";
             selectedDest = "";
             selectedItem = "";
-            selectedCompany = "";
-            pickupAddText.Items.Clear();
+
+            if (!(group == "1" || group == "2"))
+            {
+                pickupAddText.Items.Clear();
+                selectedCompany = "";
+            }
             itemTypePanel.Enabled = false;
         }
         public void getCustomerList(string cust, string from, ComboBox cb)
         {
             custCol.Clear();
             cb.Items.Clear();
-            customerTxt.Items.Clear();
+            if (group != "1" && group != "2")
+                customerTxt.Items.Clear();
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData where belongTo = '" + cust + "' order by Code", myConnection);
             rdr = myCommand.ExecuteReader();
@@ -743,7 +777,8 @@ namespace CashPOS
 
         private void getInvoiceID(object sender)
         {
-            pickupAddText.Items.Clear();
+            if (!(group == "1" || group == "2"))
+                pickupAddText.Items.Clear();
             if (isSearching == false)
             {
                 ComboBox combo = (ComboBox)sender;
@@ -873,6 +908,17 @@ namespace CashPOS
         {
             if (customerTxt.Text.Length > 4)
             {
+                if (group == "1")
+                {
+
+                    fromLabel.Text = "超誠";
+                }
+                else if (group == "2")
+                {
+
+                    fromLabel.Text = "富資";
+
+                }
                 getInvoiceID(sender);
             }
         }

@@ -240,8 +240,9 @@ namespace CashPOS
             decimal transfer = 0.0m;
             decimal total = 0.0m;
             decimal remind = 0.0m;
+            string custCode = custList.Text.Substring(0, custList.Text.IndexOf(" -")).Trim();
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where custCode = '" + custList.Text + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where custCode = '" + custCode + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
             "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
             myConnection.Open();
             int i = 0;
@@ -1024,6 +1025,11 @@ namespace CashPOS
         }
 
         private void DeleteOrderBrn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

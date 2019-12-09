@@ -361,7 +361,7 @@
             this.serachByItemBtn.Name = "serachByItemBtn";
             this.serachByItemBtn.Size = new System.Drawing.Size(226, 87);
             this.serachByItemBtn.TabIndex = 1;
-            this.serachByItemBtn.Text = "serachByItemBtn";
+            this.serachByItemBtn.Text = "以貨品搜尋";
             this.serachByItemBtn.UseVisualStyleBackColor = true;
             this.serachByItemBtn.Click += new System.EventHandler(this.searchByItemBtn_Click);
             // 

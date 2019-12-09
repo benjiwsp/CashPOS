@@ -112,6 +112,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.compLbl = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
@@ -130,15 +131,18 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // serachByComp
             // 
-            this.serachByComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serachByComp.Location = new System.Drawing.Point(3, 41);
+            this.tableLayoutPanel15.SetColumnSpan(this.serachByComp, 2);
+            this.serachByComp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachByComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serachByComp.Location = new System.Drawing.Point(3, 3);
             this.serachByComp.Name = "serachByComp";
-            this.serachByComp.Size = new System.Drawing.Size(406, 32);
+            this.serachByComp.Size = new System.Drawing.Size(400, 26);
             this.serachByComp.TabIndex = 0;
             this.serachByComp.Text = "以公司搜尋";
             this.serachByComp.UseVisualStyleBackColor = true;
@@ -1086,8 +1090,8 @@
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Controls.Add(this.serachByComp, 0, 1);
             this.tableLayoutPanel13.Controls.Add(this.compLbl, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel15, 0, 1);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(553, 79);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
@@ -1109,6 +1113,20 @@
             this.compLbl.Name = "compLbl";
             this.compLbl.Size = new System.Drawing.Size(406, 32);
             this.compLbl.TabIndex = 3;
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Controls.Add(this.serachByComp, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 41);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(406, 32);
+            this.tableLayoutPanel15.TabIndex = 4;
             // 
             // tableLayoutPanel14
             // 
@@ -1176,6 +1194,7 @@
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
             this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
@@ -1271,5 +1290,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox locSerachImpBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
     }
 }

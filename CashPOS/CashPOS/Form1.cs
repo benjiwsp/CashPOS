@@ -68,7 +68,7 @@ namespace CashPOS
             string group = (string)sender;
             switch (group)
             {
-                case "1":
+                case "":
                     group1();
                     break;
                 case "2":
@@ -215,6 +215,9 @@ namespace CashPOS
             printEnable(true);
             importEnable(true);
             salesInfoEnable(true);
+            cashSales.group = "1";
+            cashSales.setLevel();
+
         }
         private void group2()
         {
@@ -225,6 +228,8 @@ namespace CashPOS
             printEnable(true);
             importEnable(true);
             salesInfoEnable(true);
+            cashSales.group = "2";
+            cashSales.setLevel();
         }
         private void group3()
         {
@@ -235,6 +240,8 @@ namespace CashPOS
             printEnable(true);
             importEnable(true);
             salesInfoEnable(true);
+            cashSales.group = "3";
+            cashSales.setLevel();
         }
         private void groupDef()
         {
@@ -245,6 +252,8 @@ namespace CashPOS
             printEnable(false);
             importEnable(false);
             salesInfoEnable(false);
+            cashSales.group = "4";
+            cashSales.setLevel();
         }
 
   
