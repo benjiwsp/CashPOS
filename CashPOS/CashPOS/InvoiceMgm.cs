@@ -53,7 +53,7 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(),rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
@@ -70,7 +70,7 @@ namespace CashPOS
 
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -79,6 +79,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -140,23 +141,23 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -165,6 +166,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -262,24 +264,24 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
 
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -288,6 +290,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -326,22 +329,22 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -350,6 +353,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -390,23 +394,23 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -415,6 +419,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -456,22 +461,22 @@ namespace CashPOS
                     decimal reminder = totalP - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalP, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalP;
@@ -480,6 +485,7 @@ namespace CashPOS
                             transfer += totalP;
                             break;
                         case "支票":
+                            cheque += totalP;
                             break;
                     }
                     total += totalP;
@@ -552,22 +558,22 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -576,6 +582,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -652,7 +659,7 @@ namespace CashPOS
                     myConnection.Close();
                 }
 
-                else if (senderGrid.Columns[10] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 10)
+                else if (senderGrid.Columns[11] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 11)
                 {
                     DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
@@ -676,19 +683,19 @@ namespace CashPOS
                     }
 
                 }
-                else if (senderGrid.Columns[12] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 12)
+                else if (senderGrid.Columns[13] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 13)
                 {
                     myCommand = new MySqlCommand("update CashPOSDB.orderRecords set isReturn = if(isReturn = 'y','','y') where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
-                    if (orderListView.Rows[e.RowIndex].Cells[11].Style.BackColor == Color.Green)
+                    if (orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor == Color.Green)
                     {
-                        orderListView.Rows[e.RowIndex].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     else
                     {
-                        orderListView.Rows[e.RowIndex].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Green;
 
                     }
                 }
@@ -835,23 +842,23 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -860,6 +867,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -922,23 +930,23 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
-                    switch (rdr["payment"].ToString())
+                    switch (rdr["payMethod"].ToString())
                     {
                         case "現金":
                             cash += totalPrice;
@@ -947,6 +955,7 @@ namespace CashPOS
                             transfer += totalPrice;
                             break;
                         case "支票":
+                            cheque += totalPrice;
                             break;
                     }
                     total += totalPrice;
@@ -1023,7 +1032,7 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
                         rdr["supplierName"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["belongTo"].ToString());
 
                 }

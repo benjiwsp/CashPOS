@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,13 +102,12 @@
             this.salesInfoBtn.BackColor = System.Drawing.Color.White;
             this.salesInfoBtn.Enabled = false;
             this.salesInfoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.salesInfoBtn.Image = ((System.Drawing.Image)(resources.GetObject("salesInfoBtn.Image")));
+            this.salesInfoBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salesInfoBtn.Location = new System.Drawing.Point(0, 870);
             this.salesInfoBtn.Name = "salesInfoBtn";
             this.salesInfoBtn.Size = new System.Drawing.Size(200, 103);
             this.salesInfoBtn.TabIndex = 1;
             this.salesInfoBtn.Text = "交易資料";
-            this.salesInfoBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.salesInfoBtn.UseVisualStyleBackColor = false;
             this.salesInfoBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -118,13 +116,12 @@
             this.importBtn.BackColor = System.Drawing.Color.White;
             this.importBtn.Enabled = false;
             this.importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.importBtn.Image = ((System.Drawing.Image)(resources.GetObject("importBtn.Image")));
+            this.importBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importBtn.Location = new System.Drawing.Point(0, 761);
             this.importBtn.Name = "importBtn";
             this.importBtn.Size = new System.Drawing.Size(200, 103);
             this.importBtn.TabIndex = 1;
             this.importBtn.Text = "進貨";
-            this.importBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.importBtn.UseVisualStyleBackColor = false;
             this.importBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -133,13 +130,12 @@
             this.printInvBtn.BackColor = System.Drawing.Color.White;
             this.printInvBtn.Enabled = false;
             this.printInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.printInvBtn.Image = ((System.Drawing.Image)(resources.GetObject("printInvBtn.Image")));
+            this.printInvBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printInvBtn.Location = new System.Drawing.Point(0, 652);
             this.printInvBtn.Name = "printInvBtn";
             this.printInvBtn.Size = new System.Drawing.Size(200, 103);
             this.printInvBtn.TabIndex = 1;
             this.printInvBtn.Text = "印單";
-            this.printInvBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.printInvBtn.UseVisualStyleBackColor = false;
             this.printInvBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -148,13 +144,12 @@
             this.InvoiceCheckBtn.BackColor = System.Drawing.Color.White;
             this.InvoiceCheckBtn.Enabled = false;
             this.InvoiceCheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InvoiceCheckBtn.Image = ((System.Drawing.Image)(resources.GetObject("InvoiceCheckBtn.Image")));
+            this.InvoiceCheckBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InvoiceCheckBtn.Location = new System.Drawing.Point(0, 543);
             this.InvoiceCheckBtn.Name = "InvoiceCheckBtn";
             this.InvoiceCheckBtn.Size = new System.Drawing.Size(200, 103);
             this.InvoiceCheckBtn.TabIndex = 1;
             this.InvoiceCheckBtn.Text = "查單";
-            this.InvoiceCheckBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.InvoiceCheckBtn.UseVisualStyleBackColor = false;
             this.InvoiceCheckBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -163,13 +158,12 @@
             this.invBtn.BackColor = System.Drawing.Color.White;
             this.invBtn.Enabled = false;
             this.invBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.invBtn.Image = ((System.Drawing.Image)(resources.GetObject("invBtn.Image")));
+            this.invBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invBtn.Location = new System.Drawing.Point(3, 325);
             this.invBtn.Name = "invBtn";
             this.invBtn.Size = new System.Drawing.Size(197, 103);
             this.invBtn.TabIndex = 1;
             this.invBtn.Text = "倉儲";
-            this.invBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.invBtn.UseVisualStyleBackColor = false;
             this.invBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -178,13 +172,12 @@
             this.settingBtn.BackColor = System.Drawing.Color.White;
             this.settingBtn.Enabled = false;
             this.settingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingBtn.Image = ((System.Drawing.Image)(resources.GetObject("settingBtn.Image")));
+            this.settingBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingBtn.Location = new System.Drawing.Point(3, 434);
             this.settingBtn.Name = "settingBtn";
             this.settingBtn.Size = new System.Drawing.Size(197, 103);
             this.settingBtn.TabIndex = 1;
             this.settingBtn.Text = "設定";
-            this.settingBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.settingBtn.UseVisualStyleBackColor = false;
             this.settingBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
@@ -193,27 +186,26 @@
             this.cashSalesBtn.BackColor = System.Drawing.Color.White;
             this.cashSalesBtn.Enabled = false;
             this.cashSalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cashSalesBtn.Image = ((System.Drawing.Image)(resources.GetObject("cashSalesBtn.Image")));
+            this.cashSalesBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashSalesBtn.Location = new System.Drawing.Point(3, 216);
             this.cashSalesBtn.Name = "cashSalesBtn";
             this.cashSalesBtn.Size = new System.Drawing.Size(197, 103);
             this.cashSalesBtn.TabIndex = 1;
             this.cashSalesBtn.Text = "開單";
-            this.cashSalesBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cashSalesBtn.UseVisualStyleBackColor = false;
             this.cashSalesBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 
             // HomeBtn
             // 
             this.HomeBtn.BackColor = System.Drawing.Color.White;
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HomeBtn.Image = ((System.Drawing.Image)(resources.GetObject("HomeBtn.Image")));
+            this.HomeBtn.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeBtn.Location = new System.Drawing.Point(0, 107);
             this.HomeBtn.Name = "HomeBtn";
             this.HomeBtn.Size = new System.Drawing.Size(197, 103);
             this.HomeBtn.TabIndex = 1;
             this.HomeBtn.Text = "Home";
-            this.HomeBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.HomeBtn.UseVisualStyleBackColor = false;
             this.HomeBtn.Click += new System.EventHandler(this.ButtonClicked);
             // 

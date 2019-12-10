@@ -950,7 +950,6 @@ namespace CashPOS
             string id = invoiceLabel.Text;
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
             PrintDialog print = new PrintDialog();
-
             print.displayInvoiceBtn.PerformClick();
             print.invoiceNo.Text = id;
             print.search();

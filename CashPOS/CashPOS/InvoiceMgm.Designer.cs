@@ -73,21 +73,10 @@
             this.licenseLbl = new System.Windows.Forms.Label();
             this.pickupLbl = new System.Windows.Forms.Label();
             this.priceTypeLbl = new System.Windows.Forms.Label();
+            this.belongToTxt = new System.Windows.Forms.Label();
+            this.custTypeTxt = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
             this.orderListView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
@@ -115,8 +104,20 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
-            this.belongToTxt = new System.Windows.Forms.Label();
-            this.custTypeTxt = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -700,6 +701,24 @@
             this.priceTypeLbl.TabIndex = 10;
             this.priceTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // belongToTxt
+            // 
+            this.belongToTxt.AutoSize = true;
+            this.belongToTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.belongToTxt.Location = new System.Drawing.Point(343, 84);
+            this.belongToTxt.Name = "belongToTxt";
+            this.belongToTxt.Size = new System.Drawing.Size(164, 28);
+            this.belongToTxt.TabIndex = 11;
+            // 
+            // custTypeTxt
+            // 
+            this.custTypeTxt.AutoSize = true;
+            this.custTypeTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custTypeTxt.Location = new System.Drawing.Point(513, 84);
+            this.custTypeTxt.Name = "custTypeTxt";
+            this.custTypeTxt.Size = new System.Drawing.Size(164, 28);
+            this.custTypeTxt.TabIndex = 12;
+            // 
             // clearBtn
             // 
             this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -720,6 +739,7 @@
             this.orderListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column17,
             this.客戶,
             this.Column4,
             this.Column2,
@@ -742,77 +762,6 @@
             this.orderListView.Size = new System.Drawing.Size(962, 704);
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單號";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // 客戶
-            // 
-            this.客戶.HeaderText = "客戶";
-            this.客戶.Name = "客戶";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取貨地";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "目的地";
-            this.Column3.Name = "Column3";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "方式";
-            this.Column16.Name = "Column16";
-            // 
-            // 總金額
-            // 
-            this.總金額.HeaderText = "總金額";
-            this.總金額.Name = "總金額";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "已付";
-            this.Column13.Name = "Column13";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "欠款";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "公司";
-            this.Column6.Name = "Column6";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "已付款";
-            this.Column12.Name = "Column12";
-            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "已回單";
-            this.Column15.Name = "Column15";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "回單";
-            this.Column14.Name = "Column14";
-            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StartTimePicker
             // 
@@ -1009,6 +958,7 @@
             this.chequeLbl.Name = "chequeLbl";
             this.chequeLbl.Size = new System.Drawing.Size(114, 22);
             this.chequeLbl.TabIndex = 2;
+            this.chequeLbl.Text = "z";
             this.chequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // totalLbl
@@ -1160,23 +1110,81 @@
             this.locSerachImpBox.TabIndex = 1;
             this.locSerachImpBox.SelectedIndexChanged += new System.EventHandler(this.locSerachImpBox_SelectedIndexChanged);
             // 
-            // belongToTxt
+            // Column1
             // 
-            this.belongToTxt.AutoSize = true;
-            this.belongToTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.belongToTxt.Location = new System.Drawing.Point(343, 84);
-            this.belongToTxt.Name = "belongToTxt";
-            this.belongToTxt.Size = new System.Drawing.Size(164, 28);
-            this.belongToTxt.TabIndex = 11;
+            this.Column1.HeaderText = "單號";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // custTypeTxt
+            // Column17
             // 
-            this.custTypeTxt.AutoSize = true;
-            this.custTypeTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custTypeTxt.Location = new System.Drawing.Point(513, 84);
-            this.custTypeTxt.Name = "custTypeTxt";
-            this.custTypeTxt.Size = new System.Drawing.Size(164, 28);
-            this.custTypeTxt.TabIndex = 12;
+            this.Column17.HeaderText = "沙單";
+            this.Column17.Name = "Column17";
+            // 
+            // 客戶
+            // 
+            this.客戶.HeaderText = "客戶";
+            this.客戶.Name = "客戶";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "取貨地";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "目的地";
+            this.Column3.Name = "Column3";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "方式";
+            this.Column16.Name = "Column16";
+            // 
+            // 總金額
+            // 
+            this.總金額.HeaderText = "總金額";
+            this.總金額.Name = "總金額";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "已付";
+            this.Column13.Name = "Column13";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "欠款";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "公司";
+            this.Column6.Name = "Column6";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "已付款";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "已回單";
+            this.Column15.Name = "Column15";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "回單";
+            this.Column14.Name = "Column14";
+            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // InvoiceMgm
             // 
@@ -1282,7 +1290,17 @@
         private System.Windows.Forms.Label unpaidLbl;
         private System.Windows.Forms.Label cashLbl;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox locationForTransBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox locSerachImpBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label belongToTxt;
+        private System.Windows.Forms.Label custTypeTxt;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客戶;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1295,14 +1313,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewButtonColumn Column14;
-        private System.Windows.Forms.ComboBox locationForTransBox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox locSerachImpBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.Label belongToTxt;
-        private System.Windows.Forms.Label custTypeTxt;
     }
 }

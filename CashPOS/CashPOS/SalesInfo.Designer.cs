@@ -57,8 +57,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
-            this.csCustList = new System.Windows.Forms.ComboBox();
-            this.sfCustList = new System.Windows.Forms.ComboBox();
             this.phoneBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,6 +67,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.searchbyItemBtn = new System.Windows.Forms.Button();
             this.searchbyTelBtn = new System.Windows.Forms.Button();
+            this.sfCustList = new System.Windows.Forms.ComboBox();
+            this.csCustList = new System.Windows.Forms.ComboBox();
             this.searchSFBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -391,26 +391,6 @@
             this.StartTimePicker.Name = "StartTimePicker";
             this.StartTimePicker.TabIndex = 11;
             // 
-            // csCustList
-            // 
-            this.csCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.csCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.csCustList.FormattingEnabled = true;
-            this.csCustList.Location = new System.Drawing.Point(495, 24);
-            this.csCustList.Name = "csCustList";
-            this.csCustList.Size = new System.Drawing.Size(240, 28);
-            this.csCustList.TabIndex = 6;
-            // 
-            // sfCustList
-            // 
-            this.sfCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sfCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sfCustList.FormattingEnabled = true;
-            this.sfCustList.Location = new System.Drawing.Point(741, 24);
-            this.sfCustList.Name = "sfCustList";
-            this.sfCustList.Size = new System.Drawing.Size(240, 28);
-            this.sfCustList.TabIndex = 13;
-            // 
             // phoneBox
             // 
             this.phoneBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -521,6 +501,26 @@
             this.searchbyTelBtn.Text = "搜尋";
             this.searchbyTelBtn.UseVisualStyleBackColor = true;
             this.searchbyTelBtn.Click += new System.EventHandler(this.searchbyTelBtn_Click);
+            // 
+            // sfCustList
+            // 
+            this.sfCustList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sfCustList.FormattingEnabled = true;
+            this.sfCustList.Location = new System.Drawing.Point(741, 24);
+            this.sfCustList.Name = "sfCustList";
+            this.sfCustList.Size = new System.Drawing.Size(240, 28);
+            this.sfCustList.TabIndex = 13;
+            // 
+            // csCustList
+            // 
+            this.csCustList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.csCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.csCustList.FormattingEnabled = true;
+            this.csCustList.Location = new System.Drawing.Point(495, 24);
+            this.csCustList.Name = "csCustList";
+            this.csCustList.Size = new System.Drawing.Size(240, 28);
+            this.csCustList.TabIndex = 6;
             // 
             // searchSFBtn
             // 

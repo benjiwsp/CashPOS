@@ -240,7 +240,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
             {
                 while (rdr.Read())
                 {
-                    newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(),
+                    newProdGrid.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["unit"].ToString(),
                          rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),
                         rdr["SitePrice"].ToString(), rdr["Category"].ToString(), rdr["Info"].ToString());
                 }
