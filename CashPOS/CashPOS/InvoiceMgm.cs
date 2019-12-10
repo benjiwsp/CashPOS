@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions;
+
 namespace CashPOS
 {
     public partial class InvoiceMgm : UserControl
@@ -95,6 +97,8 @@ namespace CashPOS
 
         private void clearAll()
         {
+            belongToTxt.Text = "";
+            custTypeTxt.Text = "";
             orderListView.Rows.Clear();
             idToSearch.Text = "";
             totalPrice.Text = "";
@@ -633,6 +637,8 @@ namespace CashPOS
                                 licenseLbl.Text = rdr["license"].ToString();
                                 noteLbl.Text = rdr["notes"].ToString();
                                 priceTypeLbl.Text = rdr["priceType"].ToString();
+                                belongToTxt.Text = rdr["belongTo"].ToString();
+                                custTypeTxt.Text = rdr["payment"].ToString();
                                 i++;
                             }
                             resultGrid.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
@@ -1028,7 +1034,24 @@ namespace CashPOS
 
         private void DeleteOrderBrn_Click(object sender, EventArgs e)
         {
-
+            string orderID = "";
+            string onlyLetters = new String(idToSearch.Text.Where(Char.IsLetter).ToArray());
+            orderID = (Convert.ToInt32(Regex.Match(idToSearch.Text, @"\d+").Value) - 1).ToString("000000");
+            orderID = onlyLetters + orderID;
+            myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" + orderID +
+                "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'",myConnection);
+            myConnection.Open();
+            myCommand.ExecuteNonQuery();
+            if(orderID.StartsWith("M") || orderID.StartsWith("C"))
+            {
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            myConnection.Close();
+            belongToTxt.Text = "";
+            custTypeTxt.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -348,7 +348,7 @@ namespace CashPOS
                         orderID = id;
                     }
                     //need to make sure the order number has not changed, if it changed then need to delete the old records
-                    myCommand = new MySqlCommand(" te from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
+                    myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
 
@@ -645,8 +645,12 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
+
                     string add = rdr["location"].ToString();
-                    pickupAddText.Items.Add(add);
+                    if (!(group == "1" || group == "2"))
+                    {
+                        pickupAddText.Items.Add(add);
+                    }
                     pickupAddText.Text = add;
                 }
             }

@@ -115,6 +115,8 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
+            this.belongToTxt = new System.Windows.Forms.Label();
+            this.custTypeTxt = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -499,6 +501,8 @@
             this.tableLayoutPanel8.Controls.Add(this.licenseLbl, 3, 0);
             this.tableLayoutPanel8.Controls.Add(this.pickupLbl, 3, 1);
             this.tableLayoutPanel8.Controls.Add(this.priceTypeLbl, 3, 2);
+            this.tableLayoutPanel8.Controls.Add(this.belongToTxt, 2, 3);
+            this.tableLayoutPanel8.Controls.Add(this.custTypeTxt, 3, 3);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(971, 243);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -654,11 +658,12 @@
             // noteLbl
             // 
             this.noteLbl.AutoSize = true;
+            this.tableLayoutPanel8.SetColumnSpan(this.noteLbl, 3);
             this.noteLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.noteLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteLbl.Location = new System.Drawing.Point(173, 112);
             this.noteLbl.Name = "noteLbl";
-            this.noteLbl.Size = new System.Drawing.Size(164, 30);
+            this.noteLbl.Size = new System.Drawing.Size(504, 30);
             this.noteLbl.TabIndex = 10;
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1155,6 +1160,24 @@
             this.locSerachImpBox.TabIndex = 1;
             this.locSerachImpBox.SelectedIndexChanged += new System.EventHandler(this.locSerachImpBox_SelectedIndexChanged);
             // 
+            // belongToTxt
+            // 
+            this.belongToTxt.AutoSize = true;
+            this.belongToTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.belongToTxt.Location = new System.Drawing.Point(343, 84);
+            this.belongToTxt.Name = "belongToTxt";
+            this.belongToTxt.Size = new System.Drawing.Size(164, 28);
+            this.belongToTxt.TabIndex = 11;
+            // 
+            // custTypeTxt
+            // 
+            this.custTypeTxt.AutoSize = true;
+            this.custTypeTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custTypeTxt.Location = new System.Drawing.Point(513, 84);
+            this.custTypeTxt.Name = "custTypeTxt";
+            this.custTypeTxt.Size = new System.Drawing.Size(164, 28);
+            this.custTypeTxt.TabIndex = 12;
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1279,5 +1302,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox locSerachImpBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label belongToTxt;
+        private System.Windows.Forms.Label custTypeTxt;
     }
 }
