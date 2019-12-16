@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace CashPOS
 {
@@ -239,7 +240,7 @@ namespace CashPOS
         }
         private void adjustPrice(string extraCommand)
         {
-          
+
 
             decimal adjustStoreAmount = 0.0m;
             decimal adjustPickAmount = 0.0m;
@@ -265,14 +266,14 @@ namespace CashPOS
                     if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") adjustStoreAmount = Convert.ToDecimal(row.Cells[4].Value.ToString());
                     if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") adjustSiteAmount = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     prodID = row.Cells[0].Value.ToString();
-                  
+
                     myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice = DelPrice + " + adjustStoreAmount + ", PickPrice = PickPrice + " + adjustPickAmount +
                         ", SitePrice = SitePrice + " + adjustSiteAmount + " where Prod = '" + prodID + "' " + extraCommand, myConnection);
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
-                  
-                    Console.WriteLine("test"); 
+
+                    Console.WriteLine("test");
                 }
             }
             Console.WriteLine(total + "total");
@@ -491,6 +492,131 @@ namespace CashPOS
         private void resultList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             resultList.Rows[e.RowIndex].Cells[7].Value = "y";
+        }
+
+        private void exportCSVBtn_Click(object sender, EventArgs e)
+        {
+            string comp = "";
+
+            List<string> delList = new List<string>();
+            List<string> pickList = new List<string>();
+            List<string> siteList = new List<string>();
+            List<string> custList = new List<string>();
+            List<string> ListProd = new List<string>();
+            myCommand = new MySqlCommand("select * from CashPOSDB.custProdPrice order by Cust, prod", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            int i = 0;
+            if (rdr.HasRows)
+            {
+
+                while (rdr.Read())
+                {
+
+                    // build the Lists
+                    if (rdr["Cust"].ToString() != comp)
+                    {
+                        if (!custList.Contains((rdr["Cust"].ToString())))
+                            custList.Add(rdr["Cust"].ToString());
+                    }
+                    if (!ListProd.Contains(rdr["ProdName"].ToString()))
+                    {
+                        ListProd.Add(rdr["ProdName"].ToString());
+                    }
+                    string del = rdr["DelPrice"].ToString();
+                    string pick = rdr["PickPrice"].ToString();
+                    string site = rdr["SitePrice"].ToString();
+                    //      MessageBox.Show(del + " " + pick + " " + site);
+                    delList.Add(del);
+                    pickList.Add(pick);
+                    siteList.Add(site);
+                    // store a value in one of the Lists
+
+                    // access a value in one of the Lists
+                    // int aValue = ListDict["List1"][0];
+
+                }
+
+            } rdr.Close();
+            myConnection.Close();
+            int length = 0;
+            //         length = delDict.Count;
+            string csvFilePath = "D:\\test.csv";
+            StringBuilder sb = new StringBuilder();
+            StreamWriter sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
+
+            /*      Console.WriteLine(ListProd.Count + " tis is prod length");
+                  for (int x = 1; x < length; x++)
+                  {
+                      for (int a = 0; a < delDict["List" + x].Count(); a++)
+                      {
+
+                          //      Console.WriteLine(" Del " + x + " and " + a + "  " + delDict["List" + x][a].ToString());
+
+                          //      Console.WriteLine(" Pick " + x + " and " + a + "  " + pickDict["List" + x][a].ToString());
+
+                          //      Console.WriteLine(" site " + x + " and " + a + "  " + siteDict["List" + x][a].ToString());
+
+                      }
+                  }*/
+
+            sb.Append(",");
+            int tempx = 0;
+            int custInd = 1;
+            for (int index = 0; index < ListProd.Count; index++)
+            {
+                Console.WriteLine(ListProd[index].ToString());
+                sb.Append(ListProd[index].ToString() + ",");
+            }
+            sb.AppendLine();
+            sb.Append(custList[0].ToString() + ",");
+
+            for (int temp = 0; temp < custList.Count; temp++)
+            {
+                sb.Append(custList[temp].ToString() + ",");
+
+                for (int count = 0; count < ListProd.Count(); count++)
+                {
+                    if (tempx < ListProd.Count)
+                    {
+                        sb.Append(delList[count].ToString() + ",");
+                        delList.RemoveAt(0);
+                        tempx++;
+
+                    }
+                    else
+                    {
+                        sb.AppendLine();
+                        sb.Append(custList[temp].ToString() + ",");
+
+                        sb.Append(delList[count].ToString() + ",");
+                        delList.RemoveAt(0);
+
+                        tempx = 0;
+                        custInd++;
+                    }
+                }
+                /*   Console.WriteLine(custList[temp].ToString());
+                   int prodLength = ListProd.Count;
+                   int tempx = 1;
+               
+                    
+                           if(tempx < prodLength){
+                               Console.Write(delDict["List"+count][tempx].ToString()+ ",");
+                               tempx++;
+
+                           }
+                           else
+                           {
+                               Console.WriteLine(delDict["List1"+count][tempx].ToString() + ",");
+                               tempx = 0;
+                           }
+                   }*/
+            }
+            sw_CSV.WriteLine(sb.ToString());
+            sw_CSV.Close();
+            sb.Clear();
+
         }
     }
 }

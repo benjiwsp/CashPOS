@@ -47,7 +47,7 @@ namespace CashPOS
             if (isSearch)
             {
                 updateProd("CashPOSDB.prodData");
-                insertIntoCombined();
+                //insertIntoCombined();
 
             }
             else
@@ -155,9 +155,16 @@ namespace CashPOS
 
             myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice,SitePrice, BelongTo) " +
             "(select Distinct CashPOSDB.custData.Code, CashPOSDB.prodData.ProdID, CashPOSDB.prodData.ProdName, CashPOSDB.prodData.DelPrice, CashPOSDB.prodData.PickPrice, " +
+            "CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData) ", myConnection);
+
+
+            //query that search and update pricec
+            /*
+             *       myCommand = new MySqlCommand("insert ignore into CashPOSDB.custProdPrice(Cust,Prod,ProdName,DelPrice,PickPrice,SitePrice, BelongTo) " +
+            "(select Distinct CashPOSDB.custData.Code, CashPOSDB.prodData.ProdID, CashPOSDB.prodData.ProdName, CashPOSDB.prodData.DelPrice, CashPOSDB.prodData.PickPrice, " +
             "CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custData cross join CashPOSDB.prodData) " +
             "on DUPLICATE KEY UPDATE DelPrice = values(DelPrice), PickPrice = values(PickPrice), SitePrice = values(SitePrice);", myConnection);
-
+             */
 
             myCommand.ExecuteNonQuery();
             //  select Code, Pid from(select Code, pid from CashPOSDB.viewertable UNION ALL select Cust, Prod from CashPOSDB.custProdPrice) t group by Code, Pid having count(*) = 1 order by Code;
@@ -257,6 +264,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
 
             serachProd();
             isSearch = false;
+            insertBtn.Enabled = false;
         }
         private void clearAllData()
         {
@@ -268,6 +276,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
         {
             clearAllData();
             isSearch = false;
+            insertBtn.Enabled = true;
         }
 
         private void loadCatList()
@@ -357,13 +366,14 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                         {
                             if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") prod = row.Cells[1].Value.ToString();
-                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[2].Value.ToString());
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") category = row.Cells[5].Value.ToString();
-                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") desc = row.Cells[6].Value.ToString();
+                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") unit = row.Cells[2].Value.ToString();
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") pickPrice = Convert.ToDecimal(row.Cells[3].Value.ToString());
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") delPrice = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") sitePrice = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") category = row.Cells[6].Value.ToString();
+                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") desc = row.Cells[7].Value.ToString();
                             myConnection.Open();
-                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', PickPrice = '" +
+                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', Unit = '" + unit + "', PickPrice = '" +
                                           pickPrice + "', DelPrice = '" + delPrice + "', SitePrice = '" + sitePrice + "', Category = '" + category + "', Info = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();

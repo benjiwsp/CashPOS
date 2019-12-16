@@ -46,11 +46,12 @@
             // custMgmBtn
             // 
             custMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            custMgmBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             custMgmBtn.Location = new System.Drawing.Point(993, 335);
             custMgmBtn.Name = "custMgmBtn";
             custMgmBtn.Size = new System.Drawing.Size(324, 160);
             custMgmBtn.TabIndex = 0;
-            custMgmBtn.Text = "客戶";
+            custMgmBtn.Text = "增加/更改 客戶";
             custMgmBtn.UseSelectable = true;
             custMgmBtn.Click += new System.EventHandler(this.CustMgmBtn_Click);
             // 
@@ -88,40 +89,44 @@
             // otherSettingBtn
             // 
             this.otherSettingBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.otherSettingBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.otherSettingBtn.Location = new System.Drawing.Point(333, 501);
             this.otherSettingBtn.Name = "otherSettingBtn";
             this.otherSettingBtn.Size = new System.Drawing.Size(324, 160);
             this.otherSettingBtn.TabIndex = 0;
-            this.otherSettingBtn.Text = "其他設定";
+            this.otherSettingBtn.Text = "改單位 / 加貨品類別 / 改公司資料";
             this.otherSettingBtn.UseSelectable = true;
             this.otherSettingBtn.Click += new System.EventHandler(this.otherSettingBtn_Click);
             // 
             // priceSettingBtn
             // 
             this.priceSettingBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.priceSettingBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.priceSettingBtn.ForeColor = System.Drawing.Color.SteelBlue;
             this.priceSettingBtn.Location = new System.Drawing.Point(333, 335);
             this.priceSettingBtn.Name = "priceSettingBtn";
             this.priceSettingBtn.Size = new System.Drawing.Size(324, 160);
             this.priceSettingBtn.TabIndex = 0;
-            this.priceSettingBtn.Text = "價錢";
+            this.priceSettingBtn.Text = "更改價錢";
             this.priceSettingBtn.UseSelectable = true;
             this.priceSettingBtn.Click += new System.EventHandler(this.priceSettingBtn_Click);
             // 
             // prodMgmBtn
             // 
             this.prodMgmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prodMgmBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.prodMgmBtn.Location = new System.Drawing.Point(663, 335);
             this.prodMgmBtn.Name = "prodMgmBtn";
             this.prodMgmBtn.Size = new System.Drawing.Size(324, 160);
             this.prodMgmBtn.TabIndex = 0;
-            this.prodMgmBtn.Text = "貨品";
+            this.prodMgmBtn.Text = "增加貨品";
             this.prodMgmBtn.UseSelectable = true;
             this.prodMgmBtn.Click += new System.EventHandler(this.prodMgmBtn_Click);
             // 
             // custPriceBtn
             // 
             this.custPriceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custPriceBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.custPriceBtn.Location = new System.Drawing.Point(663, 501);
             this.custPriceBtn.Name = "custPriceBtn";
             this.custPriceBtn.Size = new System.Drawing.Size(324, 160);
@@ -133,6 +138,7 @@
             // invoiceBtn
             // 
             this.invoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoiceBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.invoiceBtn.Location = new System.Drawing.Point(993, 501);
             this.invoiceBtn.Name = "invoiceBtn";
             this.invoiceBtn.Size = new System.Drawing.Size(324, 160);
@@ -171,6 +177,7 @@
             // supplierBtn
             // 
             this.supplierBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.supplierBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.supplierBtn.Location = new System.Drawing.Point(333, 667);
             this.supplierBtn.Name = "supplierBtn";
             this.supplierBtn.Size = new System.Drawing.Size(324, 160);

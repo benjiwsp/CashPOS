@@ -30,13 +30,6 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.custDataGrid = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.serachAllBtn = new System.Windows.Forms.Button();
-            this.currCompLab = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.clearCustList = new System.Windows.Forms.Button();
-            this.updateCustBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +42,13 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.currCompLab = new System.Windows.Forms.Label();
+            this.serachAllBtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.clearCustList = new System.Windows.Forms.Button();
+            this.updateCustBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -97,97 +97,6 @@
             this.custDataGrid.TabIndex = 0;
             this.custDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellContentClick);
             this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.currCompLab, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.serachAllBtn, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.addBtn, 3, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1648, 94);
-            this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // addBtn
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.addBtn, 2);
-            this.addBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addBtn.Location = new System.Drawing.Point(990, 3);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(655, 68);
-            this.addBtn.TabIndex = 3;
-            this.addBtn.Text = "增加到超誠";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addCSBtn_Click);
-            // 
-            // serachAllBtn
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.serachAllBtn, 2);
-            this.serachAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serachAllBtn.Location = new System.Drawing.Point(3, 3);
-            this.serachAllBtn.Name = "serachAllBtn";
-            this.serachAllBtn.Size = new System.Drawing.Size(652, 68);
-            this.serachAllBtn.TabIndex = 3;
-            this.serachAllBtn.Text = "搜尋全部";
-            this.serachAllBtn.UseVisualStyleBackColor = true;
-            this.serachAllBtn.Click += new System.EventHandler(this.serachAllBtn_Click);
-            // 
-            // currCompLab
-            // 
-            this.currCompLab.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.currCompLab, 5);
-            this.currCompLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currCompLab.Location = new System.Drawing.Point(3, 74);
-            this.currCompLab.Name = "currCompLab";
-            this.currCompLab.Size = new System.Drawing.Size(1642, 20);
-            this.currCompLab.TabIndex = 4;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.clearCustList, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.updateCustBtn, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 903);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1648, 94);
-            this.tableLayoutPanel3.TabIndex = 5;
-            // 
-            // clearCustList
-            // 
-            this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearCustList.Location = new System.Drawing.Point(827, 3);
-            this.clearCustList.Name = "clearCustList";
-            this.clearCustList.Size = new System.Drawing.Size(818, 88);
-            this.clearCustList.TabIndex = 2;
-            this.clearCustList.Text = "清除";
-            this.clearCustList.UseVisualStyleBackColor = true;
-            this.clearCustList.Click += new System.EventHandler(this.clearCustList_Click);
-            // 
-            // updateCustBtn
-            // 
-            this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateCustBtn.Location = new System.Drawing.Point(3, 3);
-            this.updateCustBtn.Name = "updateCustBtn";
-            this.updateCustBtn.Size = new System.Drawing.Size(818, 88);
-            this.updateCustBtn.TabIndex = 1;
-            this.updateCustBtn.Text = "確定";
-            this.updateCustBtn.UseVisualStyleBackColor = true;
-            this.updateCustBtn.Click += new System.EventHandler(this.updateCustBtn_Click);
             // 
             // Column1
             // 
@@ -248,6 +157,98 @@
             // 
             this.Column11.HeaderText = "取消";
             this.Column11.Name = "Column11";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.currCompLab, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.serachAllBtn, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.addBtn, 3, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1648, 94);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // currCompLab
+            // 
+            this.currCompLab.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.currCompLab, 5);
+            this.currCompLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currCompLab.Location = new System.Drawing.Point(3, 74);
+            this.currCompLab.Name = "currCompLab";
+            this.currCompLab.Size = new System.Drawing.Size(1642, 20);
+            this.currCompLab.TabIndex = 4;
+            // 
+            // serachAllBtn
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.serachAllBtn, 2);
+            this.serachAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachAllBtn.Location = new System.Drawing.Point(3, 3);
+            this.serachAllBtn.Name = "serachAllBtn";
+            this.serachAllBtn.Size = new System.Drawing.Size(652, 68);
+            this.serachAllBtn.TabIndex = 3;
+            this.serachAllBtn.Text = "搜尋全部";
+            this.serachAllBtn.UseVisualStyleBackColor = true;
+            this.serachAllBtn.Click += new System.EventHandler(this.serachAllBtn_Click);
+            // 
+            // addBtn
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.addBtn, 2);
+            this.addBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addBtn.Enabled = false;
+            this.addBtn.Location = new System.Drawing.Point(990, 3);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(655, 68);
+            this.addBtn.TabIndex = 3;
+            this.addBtn.Text = "增加到超誠";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addCSBtn_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.clearCustList, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.updateCustBtn, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 903);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1648, 94);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // clearCustList
+            // 
+            this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearCustList.Location = new System.Drawing.Point(827, 3);
+            this.clearCustList.Name = "clearCustList";
+            this.clearCustList.Size = new System.Drawing.Size(818, 88);
+            this.clearCustList.TabIndex = 2;
+            this.clearCustList.Text = "清除";
+            this.clearCustList.UseVisualStyleBackColor = true;
+            this.clearCustList.Click += new System.EventHandler(this.clearCustList_Click);
+            // 
+            // updateCustBtn
+            // 
+            this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateCustBtn.Location = new System.Drawing.Point(3, 3);
+            this.updateCustBtn.Name = "updateCustBtn";
+            this.updateCustBtn.Size = new System.Drawing.Size(818, 88);
+            this.updateCustBtn.TabIndex = 1;
+            this.updateCustBtn.Text = "確定";
+            this.updateCustBtn.UseVisualStyleBackColor = true;
+            this.updateCustBtn.Click += new System.EventHandler(this.updateCustBtn_Click);
             // 
             // SupplierMgm
             // 

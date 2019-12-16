@@ -284,5 +284,7 @@ namespace CashPOS
             string code = sfCustList.Text.Substring(0, sfCustList.Text.IndexOf(" ")).Trim();
             getSelectedItemSold(code, getStartDate(), getEndDate());
         }
+
+     
     }
 }
