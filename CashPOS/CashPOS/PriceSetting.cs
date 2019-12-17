@@ -505,34 +505,43 @@ namespace CashPOS
             List<string> siteList = new List<string>();
             List<string> custList = new List<string>();
             List<string> ListProd = new List<string>();
-            myCommand = new MySqlCommand("select * from CashPOSDB.custProdPrice order by Cust, prod", myConnection);
+            myCommand = new MySqlCommand("select * from CashPOSDB.custProdPrice a join CashPOSDB.custData b where a.Cust = b.Code order by a.Cust, a.prod", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             int i = 0;
             if (rdr.HasRows)
             {
-                string csvFilePath = "D:\\tes1.csv";
+                string csvFilePath = "D:價錢表\\tes2.csv";
+
+                int index = 0;
                 StringBuilder sb = new StringBuilder();
+
+
                 StreamWriter sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
 
+                int ia = 0;
                 while (rdr.Read())
                 {
-
+                    string name = rdr["Name"].ToString();
                     string cust = rdr["Cust"].ToString();
+                    if (index != 0)
+                    {
+                    }
                     // build the Lists
                     if (cust != comp)
                     {
                         //create new file here 
-                        if (comp != "")
+                        if (ia != 0)
                         {
                             sw_CSV.WriteLine(sb.ToString());
                             sw_CSV.Close();
                             sb.Clear();
                             comp = cust;
 
-                            csvFilePath = "D:\\test.csv";
+                            csvFilePath = "D:\\" + cust + name + ".csv";
                             sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
                         }
+                        ia = 1;
                         sb.AppendLine(rdr["Cust"].ToString());
                         //new customer 
                         if (!custList.Contains((rdr["Cust"].ToString())))
@@ -540,24 +549,25 @@ namespace CashPOS
 
                     }
                     // new item
-                    if (!ListProd.Contains(rdr["ProdName"].ToString()))
-                    {
-                        ListProd.Add(rdr["ProdName"].ToString());
-                        string del = rdr["DelPrice"].ToString();
-                        string pick = rdr["PickPrice"].ToString();
-                        string site = rdr["SitePrice"].ToString();
 
-                        delList.Add(del);
-                        pickList.Add(pick);
-                        siteList.Add(site);
-                        sb.AppendLine(rdr["ProdName"].ToString() + "," + del + "," + pick + "," + site + ",");
-                    }
+                    ListProd.Add(rdr["ProdName"].ToString());
+                    string del = rdr["DelPrice"].ToString();
+                    string pick = rdr["PickPrice"].ToString();
+                    string site = rdr["SitePrice"].ToString();
+
+                    delList.Add(del);
+                    pickList.Add(pick);
+                    siteList.Add(site);
+                    sb.AppendLine(rdr["ProdName"].ToString() + "," + del + "," + pick + "," + site + ",");
+
 
                     //for each row add the price 
 
 
                 }
-
+                sw_CSV.WriteLine(sb.ToString());
+                sw_CSV.Close();
+                sb.Clear();
             }
             rdr.Close();
             myConnection.Close();

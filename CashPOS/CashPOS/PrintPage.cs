@@ -77,6 +77,7 @@ namespace CashPOS
                     {
                         if (i == 0)
                         {
+                            invoiceLbl.Text = rdr["orderID"].ToString();
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
                             dateLbl.Text = rdr["time"].ToString();
                             custLbl.Text = rdr["custName"].ToString();

@@ -37,7 +37,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-           
+
             int i = 0;
             //          MessageBox.Show(comp);
             myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
@@ -53,7 +53,7 @@ namespace CashPOS
                     decimal reminder = totalPrice - paid;
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(),rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["belongTo"].ToString());
                     if (reminder < 0)
                     {
@@ -666,20 +666,21 @@ namespace CashPOS
                     {
                         decimal paid = 0.00m;
                         InputBox form = new InputBox();
+                        form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
                         form.Okbtn.Text = "付款";
                         form.ShowDialog();
                         if (form.DialogResult == DialogResult.OK)
                         {
                             paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") +"' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
 
-                            
+
                             myConnection.Open();
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                         }
-                      
-                  
+
+
                     }
 
                 }
@@ -809,7 +810,20 @@ namespace CashPOS
                 }
             }
         }
+        private void amount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
         private void sfNotFullPaid_Click(object sender, EventArgs e)
         {
             searchNonPaid("富資");
@@ -886,7 +900,7 @@ namespace CashPOS
             myConnection.Close();
         }
 
-        private void 
+        private void
             teOrderBrn_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("確定要刪除嗎?", "警告", MessageBoxButtons.YesNo);
@@ -1048,10 +1062,10 @@ namespace CashPOS
             orderID = (Convert.ToInt32(Regex.Match(idToSearch.Text, @"\d+").Value) - 1).ToString("000000");
             orderID = onlyLetters + orderID;
             myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" + orderID +
-                "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'",myConnection);
+                "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'", myConnection);
             myConnection.Open();
             myCommand.ExecuteNonQuery();
-            if(orderID.StartsWith("M") || orderID.StartsWith("C"))
+            if (orderID.StartsWith("M") || orderID.StartsWith("C"))
             {
                 myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();
