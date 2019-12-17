@@ -41,7 +41,8 @@ namespace CashPOS
                 {
                     itemList.Items.Add(rdr["ProdID"].ToString() + " - " + rdr["ProdName"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
         private void showAllBtn_Click(object sender, EventArgs e)
@@ -484,7 +485,8 @@ namespace CashPOS
                         resultList.Rows.Add(rdr["Cust"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(),
                             rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(), rdr["SitePrice"].ToString());
                     }
-                } rdr.Close();
+                }
+                rdr.Close();
                 myConnection.Close();
             }
         }
@@ -509,41 +511,59 @@ namespace CashPOS
             int i = 0;
             if (rdr.HasRows)
             {
+                string csvFilePath = "D:\\tes1.csv";
+                StringBuilder sb = new StringBuilder();
+                StreamWriter sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
 
                 while (rdr.Read())
                 {
 
+                    string cust = rdr["Cust"].ToString();
                     // build the Lists
-                    if (rdr["Cust"].ToString() != comp)
+                    if (cust != comp)
                     {
+                        //create new file here 
+                        if (comp != "")
+                        {
+                            sw_CSV.WriteLine(sb.ToString());
+                            sw_CSV.Close();
+                            sb.Clear();
+                            comp = cust;
+
+                            csvFilePath = "D:\\test.csv";
+                            sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
+                        }
+                        sb.AppendLine(rdr["Cust"].ToString());
+                        //new customer 
                         if (!custList.Contains((rdr["Cust"].ToString())))
                             custList.Add(rdr["Cust"].ToString());
+
                     }
+                    // new item
                     if (!ListProd.Contains(rdr["ProdName"].ToString()))
                     {
                         ListProd.Add(rdr["ProdName"].ToString());
-                    }
-                    string del = rdr["DelPrice"].ToString();
-                    string pick = rdr["PickPrice"].ToString();
-                    string site = rdr["SitePrice"].ToString();
-                    //      MessageBox.Show(del + " " + pick + " " + site);
-                    delList.Add(del);
-                    pickList.Add(pick);
-                    siteList.Add(site);
-                    // store a value in one of the Lists
+                        string del = rdr["DelPrice"].ToString();
+                        string pick = rdr["PickPrice"].ToString();
+                        string site = rdr["SitePrice"].ToString();
 
-                    // access a value in one of the Lists
-                    // int aValue = ListDict["List1"][0];
+                        delList.Add(del);
+                        pickList.Add(pick);
+                        siteList.Add(site);
+                        sb.AppendLine(rdr["ProdName"].ToString() + "," + del + "," + pick + "," + site + ",");
+                    }
+
+                    //for each row add the price 
+
 
                 }
 
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
             int length = 0;
             //         length = delDict.Count;
-            string csvFilePath = "D:\\test.csv";
-            StringBuilder sb = new StringBuilder();
-            StreamWriter sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
+
 
             /*      Console.WriteLine(ListProd.Count + " tis is prod length");
                   for (int x = 1; x < length; x++)
@@ -559,64 +579,64 @@ namespace CashPOS
 
                       }
                   }*/
-
-            sb.Append(",");
-            int tempx = 0;
-            int custInd = 1;
-            for (int index = 0; index < ListProd.Count; index++)
-            {
-                Console.WriteLine(ListProd[index].ToString());
-                sb.Append(ListProd[index].ToString() + ",");
-            }
-            sb.AppendLine();
-            sb.Append(custList[0].ToString() + ",");
-
-            for (int temp = 0; temp < custList.Count; temp++)
-            {
-                sb.Append(custList[temp].ToString() + ",");
-
-                for (int count = 0; count < ListProd.Count(); count++)
-                {
-                    if (tempx < ListProd.Count)
-                    {
-                        sb.Append(delList[count].ToString() + ",");
-                        delList.RemoveAt(0);
-                        tempx++;
-
-                    }
-                    else
-                    {
+            /*
+                        sb.Append(",");
+                        int tempx = 0;
+                        int custInd = 1;
+                        for (int index = 0; index < ListProd.Count; index++)
+                        {
+                            Console.WriteLine(ListProd[index].ToString());
+                            sb.Append(ListProd[index].ToString() + ",");
+                        }
                         sb.AppendLine();
-                        sb.Append(custList[temp].ToString() + ",");
+                        sb.Append(custList[0].ToString() + ",");
 
-                        sb.Append(delList[count].ToString() + ",");
-                        delList.RemoveAt(0);
+                        for (int temp = 0; temp < custList.Count; temp++)
+                        {
+                            sb.Append(custList[temp].ToString() + ",");
 
-                        tempx = 0;
-                        custInd++;
-                    }
-                }
-                /*   Console.WriteLine(custList[temp].ToString());
-                   int prodLength = ListProd.Count;
-                   int tempx = 1;
-               
-                    
-                           if(tempx < prodLength){
-                               Console.Write(delDict["List"+count][tempx].ToString()+ ",");
-                               tempx++;
+                            for (int count = 0; count < ListProd.Count(); count++)
+                            {
+                                if (tempx < ListProd.Count)
+                                {
+                                    sb.Append(delList[count].ToString() + ",");
+                                    delList.RemoveAt(0);
+                                    tempx++;
 
-                           }
-                           else
-                           {
-                               Console.WriteLine(delDict["List1"+count][tempx].ToString() + ",");
-                               tempx = 0;
-                           }
-                   }*/
-            }
-            sw_CSV.WriteLine(sb.ToString());
-            sw_CSV.Close();
-            sb.Clear();
+                                }
+                                else
+                                {
+                                    sb.AppendLine();
+                                    sb.Append(custList[temp].ToString() + ",");
 
+                                    sb.Append(delList[count].ToString() + ",");
+                                    delList.RemoveAt(0);
+
+                                    tempx = 0;
+                                    custInd++;
+                                }
+                            }
+                            /*   Console.WriteLine(custList[temp].ToString());
+                               int prodLength = ListProd.Count;
+                               int tempx = 1;
+
+
+                                       if(tempx < prodLength){
+                                           Console.Write(delDict["List"+count][tempx].ToString()+ ",");
+                                           tempx++;
+
+                                       }
+                                       else
+                                       {
+                                           Console.WriteLine(delDict["List1"+count][tempx].ToString() + ",");
+                                           tempx = 0;
+                                       }
+                               }
+                        }
+                        sw_CSV.WriteLine(sb.ToString());
+                        sw_CSV.Close();
+                        sb.Clear();
+                        */
         }
     }
 }

@@ -263,7 +263,7 @@
             this.Controls.Add(this.menuPanel);
             this.Name = "Form1";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "富資建業有限公司";
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuPanel.ResumeLayout(false);

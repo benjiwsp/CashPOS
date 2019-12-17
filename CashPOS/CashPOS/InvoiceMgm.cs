@@ -1061,6 +1061,8 @@ namespace CashPOS
             myConnection.Close();
             belongToTxt.Text = "";
             custTypeTxt.Text = "";
+
+            //reduce the amount here
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -40,8 +40,8 @@
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.csInvoice = new System.Windows.Forms.Button();
-            this.sfInvoice = new System.Windows.Forms.Button();
             this.selectedCompTxt = new System.Windows.Forms.Label();
+            this.sfInvoice = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).BeginInit();
@@ -163,6 +163,15 @@
             this.csInvoice.UseVisualStyleBackColor = true;
             this.csInvoice.Click += new System.EventHandler(this.csInvoice_Click);
             // 
+            // selectedCompTxt
+            // 
+            this.selectedCompTxt.AutoSize = true;
+            this.selectedCompTxt.Location = new System.Drawing.Point(3, 173);
+            this.selectedCompTxt.Name = "selectedCompTxt";
+            this.selectedCompTxt.Size = new System.Drawing.Size(89, 13);
+            this.selectedCompTxt.TabIndex = 3;
+            this.selectedCompTxt.Text = "selectedCompTxt";
+            // 
             // sfInvoice
             // 
             this.sfInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -173,15 +182,6 @@
             this.sfInvoice.Text = "搜尋富資客戶";
             this.sfInvoice.UseVisualStyleBackColor = true;
             this.sfInvoice.Click += new System.EventHandler(this.sfInvoice_Click);
-            // 
-            // selectedCompTxt
-            // 
-            this.selectedCompTxt.AutoSize = true;
-            this.selectedCompTxt.Location = new System.Drawing.Point(3, 173);
-            this.selectedCompTxt.Name = "selectedCompTxt";
-            this.selectedCompTxt.Size = new System.Drawing.Size(89, 13);
-            this.selectedCompTxt.TabIndex = 3;
-            this.selectedCompTxt.Text = "selectedCompTxt";
             // 
             // tableLayoutPanel3
             // 
