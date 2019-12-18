@@ -511,7 +511,10 @@ namespace CashPOS
             int i = 0;
             if (rdr.HasRows)
             {
-                string csvFilePath = "D:價錢表\\tes2.csv";
+                string folder = "D:\\價錢\\";
+                if (!Directory.Exists(folder))
+                    Directory.CreateDirectory(folder);
+                string csvFilePath = folder + "tes2.csv";
 
                 int index = 0;
                 StringBuilder sb = new StringBuilder();
@@ -538,7 +541,7 @@ namespace CashPOS
                             sb.Clear();
                             comp = cust;
 
-                            csvFilePath = "D:\\" + cust + name + ".csv";
+                            csvFilePath = folder + cust + name + ".csv";
                             sw_CSV = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8);
                         }
                         ia = 1;
