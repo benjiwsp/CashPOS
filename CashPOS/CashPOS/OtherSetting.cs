@@ -33,7 +33,7 @@ namespace CashPOS
             {
                 if (row.Cells[0].Value != null)
                 {
-                    myCommand = new MySqlCommand("insert into CashPOSDB.prodCat values('', '" + row.Cells[0].Value.ToString() + "')", myConnection);
+                    myCommand = new MySqlCommand("insert ignore into CashPOSDB.prodCat values('', '" + row.Cells[0].Value.ToString() + "')", myConnection);
                     myCommand.ExecuteNonQuery();
                 }
             }
