@@ -41,7 +41,7 @@ namespace CashPOS
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
-        List<String> custCol = new List<String>();
+         List<String> custCol = new List<String>();
 
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
         string selectedCustCode;

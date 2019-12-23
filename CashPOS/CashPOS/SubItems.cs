@@ -47,7 +47,8 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    itemList.Add(rdr["ProdName"].ToString());
+                    string temp = rdr["ProdName"].ToString();
+                        itemList.Add(rdr["ProdName"].ToString());
                 }
             } rdr.Close();
             myConnection.Close();

@@ -114,3 +114,6 @@ level - login: few names
 fix - custMgm (insert col not correct)
 
 error, update invoice would change invoice number ****
+
+the subitems structure is corect, need to double check the prodData cat vs the catData
+the cat number is not matching right now therefore, they wont show any items

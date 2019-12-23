@@ -148,7 +148,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
-                     rdr["Money"].ToString(),  rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
+                     rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
                       rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
                       rdr["Email"].ToString(), rdr["Address"].ToString());
                 }
@@ -215,15 +215,20 @@ namespace CashPOS
                 {
                     if (row.Cells[0].Value != null)
                     {
+
+
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                         if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
-                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
-                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") phone2 = row.Cells[3].Value.ToString();
-                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") fax = row.Cells[4].Value.ToString();
-                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") email = row.Cells[5].Value.ToString();
-                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") address = row.Cells[6].Value.ToString();
-                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
-                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
+                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
+                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact2 = row.Cells[3].Value.ToString();
+                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact1 = row.Cells[4].Value.ToString();
+                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
+                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
+                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
+                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") email = row.Cells[8].Value.ToString();
+                        if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") address = row.Cells[9].Value.ToString();
+
+
                         belongTo = currCompLab.Text;
                         if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
                         if (needEdit == "y")
@@ -231,11 +236,20 @@ namespace CashPOS
                             myConnection.Open();
                             myCommand = new MySqlCommand("update  " + table + " set Code ='" + code + "', Name = '" + name + "', Phone1 = '" + phone1 + "', Phone2 = '" +
                                           phone2 + "', Fax = '" + fax + "', Email = '" + email + "', Address = '" + address + "', FirstContact = '" + contact1 +
-                                          "', SecondContact = '" + contact2 +  "' where Code = '" + code + "'", myConnection);
+                                          "', SecondContact = '" + contact2 + "' where Code = '" + code + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             clearData();
                         }
+                        code = "";
+                        name = "";
+                        contact2 = "";
+                        contact1 = "";
+                        phone1 = "";
+                        phone2 = "";
+                        fax = "";
+                        email = "";
+                        address = "";   
                     }
                 }
             }
@@ -260,7 +274,7 @@ namespace CashPOS
         {
             if (getIsUpdate())
             {
-                custDataGrid.Rows[e.RowIndex].Cells[13].Value = "y";
+                custDataGrid.Rows[e.RowIndex].Cells[10].Value = "y";
             }
         }
 

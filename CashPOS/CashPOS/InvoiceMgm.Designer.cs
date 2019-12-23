@@ -118,6 +118,7 @@
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
+            this.custListView = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -144,7 +145,7 @@
             this.serachByComp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serachByComp.Location = new System.Drawing.Point(3, 3);
             this.serachByComp.Name = "serachByComp";
-            this.serachByComp.Size = new System.Drawing.Size(400, 33);
+            this.serachByComp.Size = new System.Drawing.Size(447, 33);
             this.serachByComp.TabIndex = 0;
             this.serachByComp.Text = "以公司搜尋";
             this.serachByComp.UseVisualStyleBackColor = true;
@@ -155,8 +156,8 @@
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.63315F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.63315F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.28158F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.11021F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.11366F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.24063F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.83427F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.507643F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 0);
@@ -177,6 +178,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel12, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel13, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel14, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.custListView, 5, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -200,12 +202,12 @@
             this.tableLayoutPanel2.Controls.Add(this.idToSearch, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(971, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1018, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 70);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(213, 70);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // idToSearch
@@ -214,7 +216,7 @@
             this.idToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idToSearch.Location = new System.Drawing.Point(3, 3);
             this.idToSearch.Name = "idToSearch";
-            this.idToSearch.Size = new System.Drawing.Size(254, 29);
+            this.idToSearch.Size = new System.Drawing.Size(207, 29);
             this.idToSearch.TabIndex = 5;
             // 
             // tableLayoutPanel9
@@ -229,7 +231,7 @@
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(254, 29);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(207, 29);
             this.tableLayoutPanel9.TabIndex = 20;
             // 
             // serachByID
@@ -238,7 +240,7 @@
             this.serachByID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serachByID.Location = new System.Drawing.Point(3, 3);
             this.serachByID.Name = "serachByID";
-            this.serachByID.Size = new System.Drawing.Size(248, 23);
+            this.serachByID.Size = new System.Drawing.Size(201, 23);
             this.serachByID.TabIndex = 10;
             this.serachByID.Text = "以單號搜尋";
             this.serachByID.UseVisualStyleBackColor = true;
@@ -284,12 +286,12 @@
             this.tableLayoutPanel4.Controls.Add(this.custList, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.serachByCust, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(971, 79);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1018, 79);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(260, 89);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(213, 89);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
             // custList
@@ -299,14 +301,15 @@
             this.custList.FormattingEnabled = true;
             this.custList.Location = new System.Drawing.Point(3, 3);
             this.custList.Name = "custList";
-            this.custList.Size = new System.Drawing.Size(254, 32);
+            this.custList.Size = new System.Drawing.Size(207, 32);
             this.custList.TabIndex = 6;
+            this.custList.TextUpdate += new System.EventHandler(this.CustList_TextUpdate);
             // 
             // serachByCust
             // 
             this.serachByCust.Location = new System.Drawing.Point(3, 47);
             this.serachByCust.Name = "serachByCust";
-            this.serachByCust.Size = new System.Drawing.Size(254, 32);
+            this.serachByCust.Size = new System.Drawing.Size(207, 32);
             this.serachByCust.TabIndex = 10;
             this.serachByCust.Text = "以客戶搜尋";
             this.serachByCust.UseVisualStyleBackColor = true;
@@ -353,12 +356,12 @@
             this.tableLayoutPanel6.Controls.Add(this.itemList, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.searchByItem, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(971, 174);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(1018, 174);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(260, 64);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(213, 64);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
             // itemList
@@ -368,7 +371,7 @@
             this.itemList.FormattingEnabled = true;
             this.itemList.Location = new System.Drawing.Point(3, 3);
             this.itemList.Name = "itemList";
-            this.itemList.Size = new System.Drawing.Size(254, 32);
+            this.itemList.Size = new System.Drawing.Size(207, 32);
             this.itemList.TabIndex = 8;
             // 
             // searchByItem
@@ -376,7 +379,7 @@
             this.searchByItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchByItem.Location = new System.Drawing.Point(3, 35);
             this.searchByItem.Name = "searchByItem";
-            this.searchByItem.Size = new System.Drawing.Size(254, 26);
+            this.searchByItem.Size = new System.Drawing.Size(207, 26);
             this.searchByItem.TabIndex = 9;
             this.searchByItem.Text = "以貨品搜尋";
             this.searchByItem.UseVisualStyleBackColor = true;
@@ -445,11 +448,11 @@
             this.Column11});
             this.tableLayoutPanel1.SetColumnSpan(this.resultGrid, 3);
             this.resultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultGrid.Location = new System.Drawing.Point(971, 386);
+            this.resultGrid.Location = new System.Drawing.Point(1018, 386);
             this.resultGrid.Name = "resultGrid";
             this.resultGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.resultGrid, 2);
-            this.resultGrid.Size = new System.Drawing.Size(680, 560);
+            this.resultGrid.Size = new System.Drawing.Size(633, 560);
             this.resultGrid.TabIndex = 2;
             // 
             // Column7
@@ -505,7 +508,7 @@
             this.tableLayoutPanel8.Controls.Add(this.belongToTxt, 2, 3);
             this.tableLayoutPanel8.Controls.Add(this.custTypeTxt, 3, 3);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(971, 244);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(1018, 244);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 5;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -513,7 +516,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(680, 136);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(633, 136);
             this.tableLayoutPanel8.TabIndex = 19;
             // 
             // label1
@@ -523,7 +526,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 27);
+            this.label1.Size = new System.Drawing.Size(152, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "客戶:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -535,7 +538,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 27);
+            this.label2.Size = new System.Drawing.Size(152, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "地址:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -547,7 +550,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 27);
+            this.label3.Size = new System.Drawing.Size(152, 27);
             this.label3.TabIndex = 2;
             this.label3.Text = "電話:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -557,9 +560,9 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(343, 0);
+            this.label4.Location = new System.Drawing.Point(319, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 27);
+            this.label4.Size = new System.Drawing.Size(152, 27);
             this.label4.TabIndex = 3;
             this.label4.Text = "車牌:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -569,9 +572,9 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(343, 27);
+            this.label5.Location = new System.Drawing.Point(319, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 27);
+            this.label5.Size = new System.Drawing.Size(152, 27);
             this.label5.TabIndex = 4;
             this.label5.Text = "取貨:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -581,9 +584,9 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(343, 54);
+            this.label6.Location = new System.Drawing.Point(319, 54);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 27);
+            this.label6.Size = new System.Drawing.Size(152, 27);
             this.label6.TabIndex = 5;
             this.label6.Text = "類別:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -595,7 +598,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 108);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 28);
+            this.label7.Size = new System.Drawing.Size(152, 28);
             this.label7.TabIndex = 6;
             this.label7.Text = "備注:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -607,7 +610,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 81);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(164, 27);
+            this.label8.Size = new System.Drawing.Size(152, 27);
             this.label8.TabIndex = 7;
             this.label8.Text = "日期:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -617,9 +620,9 @@
             this.custLbl.AutoSize = true;
             this.custLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custLbl.Location = new System.Drawing.Point(173, 0);
+            this.custLbl.Location = new System.Drawing.Point(161, 0);
             this.custLbl.Name = "custLbl";
-            this.custLbl.Size = new System.Drawing.Size(164, 27);
+            this.custLbl.Size = new System.Drawing.Size(152, 27);
             this.custLbl.TabIndex = 8;
             this.custLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -628,9 +631,9 @@
             this.addLbl.AutoSize = true;
             this.addLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addLbl.Location = new System.Drawing.Point(173, 27);
+            this.addLbl.Location = new System.Drawing.Point(161, 27);
             this.addLbl.Name = "addLbl";
-            this.addLbl.Size = new System.Drawing.Size(164, 27);
+            this.addLbl.Size = new System.Drawing.Size(152, 27);
             this.addLbl.TabIndex = 9;
             this.addLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -639,9 +642,9 @@
             this.telLbl.AutoSize = true;
             this.telLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.telLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telLbl.Location = new System.Drawing.Point(173, 54);
+            this.telLbl.Location = new System.Drawing.Point(161, 54);
             this.telLbl.Name = "telLbl";
-            this.telLbl.Size = new System.Drawing.Size(164, 27);
+            this.telLbl.Size = new System.Drawing.Size(152, 27);
             this.telLbl.TabIndex = 10;
             this.telLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -650,9 +653,9 @@
             this.dateLbl.AutoSize = true;
             this.dateLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLbl.Location = new System.Drawing.Point(173, 81);
+            this.dateLbl.Location = new System.Drawing.Point(161, 81);
             this.dateLbl.Name = "dateLbl";
-            this.dateLbl.Size = new System.Drawing.Size(164, 27);
+            this.dateLbl.Size = new System.Drawing.Size(152, 27);
             this.dateLbl.TabIndex = 10;
             this.dateLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -662,9 +665,9 @@
             this.tableLayoutPanel8.SetColumnSpan(this.noteLbl, 3);
             this.noteLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.noteLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteLbl.Location = new System.Drawing.Point(173, 108);
+            this.noteLbl.Location = new System.Drawing.Point(161, 108);
             this.noteLbl.Name = "noteLbl";
-            this.noteLbl.Size = new System.Drawing.Size(504, 28);
+            this.noteLbl.Size = new System.Drawing.Size(469, 28);
             this.noteLbl.TabIndex = 10;
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -673,9 +676,9 @@
             this.licenseLbl.AutoSize = true;
             this.licenseLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.licenseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.licenseLbl.Location = new System.Drawing.Point(513, 0);
+            this.licenseLbl.Location = new System.Drawing.Point(477, 0);
             this.licenseLbl.Name = "licenseLbl";
-            this.licenseLbl.Size = new System.Drawing.Size(164, 27);
+            this.licenseLbl.Size = new System.Drawing.Size(153, 27);
             this.licenseLbl.TabIndex = 10;
             this.licenseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -684,9 +687,9 @@
             this.pickupLbl.AutoSize = true;
             this.pickupLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pickupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickupLbl.Location = new System.Drawing.Point(513, 27);
+            this.pickupLbl.Location = new System.Drawing.Point(477, 27);
             this.pickupLbl.Name = "pickupLbl";
-            this.pickupLbl.Size = new System.Drawing.Size(164, 27);
+            this.pickupLbl.Size = new System.Drawing.Size(153, 27);
             this.pickupLbl.TabIndex = 10;
             this.pickupLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -695,9 +698,9 @@
             this.priceTypeLbl.AutoSize = true;
             this.priceTypeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTypeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTypeLbl.Location = new System.Drawing.Point(513, 54);
+            this.priceTypeLbl.Location = new System.Drawing.Point(477, 54);
             this.priceTypeLbl.Name = "priceTypeLbl";
-            this.priceTypeLbl.Size = new System.Drawing.Size(164, 27);
+            this.priceTypeLbl.Size = new System.Drawing.Size(153, 27);
             this.priceTypeLbl.TabIndex = 10;
             this.priceTypeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -705,18 +708,18 @@
             // 
             this.belongToTxt.AutoSize = true;
             this.belongToTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.belongToTxt.Location = new System.Drawing.Point(343, 81);
+            this.belongToTxt.Location = new System.Drawing.Point(319, 81);
             this.belongToTxt.Name = "belongToTxt";
-            this.belongToTxt.Size = new System.Drawing.Size(164, 27);
+            this.belongToTxt.Size = new System.Drawing.Size(152, 27);
             this.belongToTxt.TabIndex = 11;
             // 
             // custTypeTxt
             // 
             this.custTypeTxt.AutoSize = true;
             this.custTypeTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custTypeTxt.Location = new System.Drawing.Point(513, 81);
+            this.custTypeTxt.Location = new System.Drawing.Point(477, 81);
             this.custTypeTxt.Name = "custTypeTxt";
-            this.custTypeTxt.Size = new System.Drawing.Size(164, 27);
+            this.custTypeTxt.Size = new System.Drawing.Size(153, 27);
             this.custTypeTxt.TabIndex = 12;
             // 
             // clearBtn
@@ -759,7 +762,7 @@
             this.orderListView.RowHeadersVisible = false;
             this.orderListView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tableLayoutPanel1.SetRowSpan(this.orderListView, 3);
-            this.orderListView.Size = new System.Drawing.Size(962, 702);
+            this.orderListView.Size = new System.Drawing.Size(1009, 702);
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
             // 
@@ -817,7 +820,7 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "公司";
+            this.Column6.HeaderText = "日期";
             this.Column6.Name = "Column6";
             // 
             // Column12
@@ -863,7 +866,7 @@
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(412, 70);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(459, 70);
             this.tableLayoutPanel10.TabIndex = 24;
             // 
             // sfNotFullPaid
@@ -871,7 +874,7 @@
             this.sfNotFullPaid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sfNotFullPaid.Location = new System.Drawing.Point(3, 3);
             this.sfNotFullPaid.Name = "sfNotFullPaid";
-            this.sfNotFullPaid.Size = new System.Drawing.Size(200, 64);
+            this.sfNotFullPaid.Size = new System.Drawing.Size(223, 64);
             this.sfNotFullPaid.TabIndex = 23;
             this.sfNotFullPaid.Text = "富資未付款單";
             this.sfNotFullPaid.UseVisualStyleBackColor = true;
@@ -880,9 +883,9 @@
             // csNotFullPaid
             // 
             this.csNotFullPaid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.csNotFullPaid.Location = new System.Drawing.Point(209, 3);
+            this.csNotFullPaid.Location = new System.Drawing.Point(232, 3);
             this.csNotFullPaid.Name = "csNotFullPaid";
-            this.csNotFullPaid.Size = new System.Drawing.Size(200, 64);
+            this.csNotFullPaid.Size = new System.Drawing.Size(224, 64);
             this.csNotFullPaid.TabIndex = 23;
             this.csNotFullPaid.Text = "超誠未付款單";
             this.csNotFullPaid.UseVisualStyleBackColor = true;
@@ -987,7 +990,7 @@
             this.tableLayoutPanel12.RowCount = 2;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(962, 45);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(1009, 45);
             this.tableLayoutPanel12.TabIndex = 26;
             // 
             // label12
@@ -995,9 +998,9 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(243, 0);
+            this.label12.Location = new System.Drawing.Point(255, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 22);
+            this.label12.Size = new System.Drawing.Size(120, 22);
             this.label12.TabIndex = 0;
             this.label12.Text = "過戶:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1007,9 +1010,9 @@
             this.transferLbl.AutoSize = true;
             this.transferLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transferLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferLbl.Location = new System.Drawing.Point(363, 0);
+            this.transferLbl.Location = new System.Drawing.Point(381, 0);
             this.transferLbl.Name = "transferLbl";
-            this.transferLbl.Size = new System.Drawing.Size(114, 22);
+            this.transferLbl.Size = new System.Drawing.Size(120, 22);
             this.transferLbl.TabIndex = 1;
             this.transferLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1018,9 +1021,9 @@
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(483, 0);
+            this.label14.Location = new System.Drawing.Point(507, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(114, 22);
+            this.label14.Size = new System.Drawing.Size(120, 22);
             this.label14.TabIndex = 2;
             this.label14.Text = "支票:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1030,9 +1033,9 @@
             this.chequeLbl.AutoSize = true;
             this.chequeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chequeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chequeLbl.Location = new System.Drawing.Point(603, 0);
+            this.chequeLbl.Location = new System.Drawing.Point(633, 0);
             this.chequeLbl.Name = "chequeLbl";
-            this.chequeLbl.Size = new System.Drawing.Size(114, 22);
+            this.chequeLbl.Size = new System.Drawing.Size(120, 22);
             this.chequeLbl.TabIndex = 2;
             this.chequeLbl.Text = "z";
             this.chequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1042,9 +1045,9 @@
             this.totalLbl.AutoSize = true;
             this.totalLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.totalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLbl.Location = new System.Drawing.Point(843, 0);
+            this.totalLbl.Location = new System.Drawing.Point(885, 0);
             this.totalLbl.Name = "totalLbl";
-            this.totalLbl.Size = new System.Drawing.Size(116, 22);
+            this.totalLbl.Size = new System.Drawing.Size(121, 22);
             this.totalLbl.TabIndex = 0;
             this.totalLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1053,9 +1056,9 @@
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(723, 0);
+            this.label10.Location = new System.Drawing.Point(759, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(114, 22);
+            this.label10.Size = new System.Drawing.Size(120, 22);
             this.label10.TabIndex = 0;
             this.label10.Text = "總數:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1065,9 +1068,9 @@
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(723, 22);
+            this.label16.Location = new System.Drawing.Point(759, 22);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(114, 23);
+            this.label16.Size = new System.Drawing.Size(120, 23);
             this.label16.TabIndex = 0;
             this.label16.Text = "欠款:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1077,9 +1080,9 @@
             this.unpaidLbl.AutoSize = true;
             this.unpaidLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.unpaidLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unpaidLbl.Location = new System.Drawing.Point(843, 22);
+            this.unpaidLbl.Location = new System.Drawing.Point(885, 22);
             this.unpaidLbl.Name = "unpaidLbl";
-            this.unpaidLbl.Size = new System.Drawing.Size(116, 23);
+            this.unpaidLbl.Size = new System.Drawing.Size(121, 23);
             this.unpaidLbl.TabIndex = 0;
             this.unpaidLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1088,9 +1091,9 @@
             this.cashLbl.AutoSize = true;
             this.cashLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cashLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cashLbl.Location = new System.Drawing.Point(123, 0);
+            this.cashLbl.Location = new System.Drawing.Point(129, 0);
             this.cashLbl.Name = "cashLbl";
-            this.cashLbl.Size = new System.Drawing.Size(114, 22);
+            this.cashLbl.Size = new System.Drawing.Size(120, 22);
             this.cashLbl.TabIndex = 1;
             this.cashLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1101,7 +1104,7 @@
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(3, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(114, 22);
+            this.label19.Size = new System.Drawing.Size(120, 22);
             this.label19.TabIndex = 0;
             this.label19.Text = "現金:";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1118,11 +1121,12 @@
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(412, 89);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(459, 89);
             this.tableLayoutPanel13.TabIndex = 27;
             // 
             // compLbl
             // 
+            this.compLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compLbl.FormattingEnabled = true;
             this.compLbl.Items.AddRange(new object[] {
@@ -1131,7 +1135,7 @@
             "超誠"});
             this.compLbl.Location = new System.Drawing.Point(3, 3);
             this.compLbl.Name = "compLbl";
-            this.compLbl.Size = new System.Drawing.Size(406, 32);
+            this.compLbl.Size = new System.Drawing.Size(453, 32);
             this.compLbl.TabIndex = 3;
             // 
             // tableLayoutPanel15
@@ -1145,7 +1149,7 @@
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(406, 39);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(453, 39);
             this.tableLayoutPanel15.TabIndex = 4;
             // 
             // tableLayoutPanel14
@@ -1160,7 +1164,7 @@
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(412, 64);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(459, 64);
             this.tableLayoutPanel14.TabIndex = 28;
             // 
             // label13
@@ -1170,7 +1174,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label13.Location = new System.Drawing.Point(3, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(406, 32);
+            this.label13.Size = new System.Drawing.Size(453, 32);
             this.label13.TabIndex = 0;
             this.label13.Text = "以倉地搜尋進貨:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1182,9 +1186,20 @@
             this.locSerachImpBox.FormattingEnabled = true;
             this.locSerachImpBox.Location = new System.Drawing.Point(3, 35);
             this.locSerachImpBox.Name = "locSerachImpBox";
-            this.locSerachImpBox.Size = new System.Drawing.Size(406, 32);
+            this.locSerachImpBox.Size = new System.Drawing.Size(453, 32);
             this.locSerachImpBox.TabIndex = 1;
             this.locSerachImpBox.SelectedIndexChanged += new System.EventHandler(this.locSerachImpBox_SelectedIndexChanged);
+            // 
+            // custListView
+            // 
+            this.custListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custListView.HideSelection = false;
+            this.custListView.Location = new System.Drawing.Point(1515, 174);
+            this.custListView.Name = "custListView";
+            this.custListView.Size = new System.Drawing.Size(136, 64);
+            this.custListView.TabIndex = 29;
+            this.custListView.UseCompatibleStateImageBehavior = false;
+            this.custListView.Click += new System.EventHandler(this.CustListView_Click);
             // 
             // InvoiceMgm
             // 
@@ -1313,5 +1328,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewButtonColumn Column14;
+        private System.Windows.Forms.ListView custListView;
     }
 }
