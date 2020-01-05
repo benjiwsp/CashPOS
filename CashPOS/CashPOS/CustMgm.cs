@@ -24,6 +24,7 @@ namespace CashPOS
         string fax;
         string email;
         string address;
+        string siteAddress;
         string payMethod;
         int payDay;
         string belongTo;
@@ -139,6 +140,8 @@ namespace CashPOS
         }
         private void clearData()
         {
+
+            siteAddress = "";
             code = "";
             name = "";
             phone1 = "";
@@ -174,7 +177,7 @@ namespace CashPOS
                     custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
                        rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
-                        rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["PayMethod"].ToString(),
+                        rdr["Email"].ToString(), rdr["Address"].ToString(),rdr["SiteAddress"].ToString(), rdr["PayMethod"].ToString(),
                         rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
                 }
             }
@@ -192,10 +195,10 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     custDataGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(),
-                        rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
-                        rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
-                         rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["PayMethod"].ToString(),
-                         rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
+                      rdr["Money"].ToString(), rdr["FirstContact"].ToString(), rdr["SecondContact"].ToString(),
+                      rdr["Phone1"].ToString(), rdr["Phone2"].ToString(), rdr["Fax"].ToString(),
+                       rdr["Email"].ToString(), rdr["Address"].ToString(), rdr["SiteAddress"].ToString(), rdr["PayMethod"].ToString(),
+                       rdr["PayDay"].ToString(), rdr["BelongTo"].ToString());
                 }
             }
             rdr.Close();
@@ -219,22 +222,23 @@ namespace CashPOS
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                             if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
                             if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact1 = row.Cells[3].Value.ToString();
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "")  contact2 = row.Cells[4].Value.ToString();
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact2 = row.Cells[4].Value.ToString();
                             if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
                             if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
                             if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
                             if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") email = row.Cells[8].Value.ToString();
                             if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") address = row.Cells[9].Value.ToString();
-                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") payMethod = row.Cells[10].Value.ToString();
-                            if (row.Cells[11].Value != null) if (row.Cells[11].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[11].Value.ToString());
+                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") siteAddress = row.Cells[10].Value.ToString();
+                            if (row.Cells[11].Value != null) if (row.Cells[11].Value.ToString() != "") payMethod = row.Cells[11].Value.ToString();
+                            if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[12].Value.ToString());
                             //if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") belongTo = row.Cells[12].Value.ToString();
                             belongTo = currCompLab.Text;
 
                         }
                         myConnection.Open();
                         myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
-                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" +  contact1
-                                      + "','" + contact2 + "','" + money + "','" + "" + "','" +  "" +"')", myConnection);
+                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + siteAddress + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" + contact1
+                                      + "','" + contact2 + "','" + money + "','" + "" + "','" + "" + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                         clearData();
@@ -262,21 +266,27 @@ namespace CashPOS
                     if (row.Cells[0].Value != null)
                     {
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
-                        if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
-                        if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") phone1 = row.Cells[2].Value.ToString();
-                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") phone2 = row.Cells[3].Value.ToString();
-                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") fax = row.Cells[4].Value.ToString();
-                        if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") email = row.Cells[5].Value.ToString();
-                        if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") address = row.Cells[6].Value.ToString();
-                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") payMethod = row.Cells[7].Value.ToString();
-                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[8].Value.ToString());
+                            if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
+                            if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact1 = row.Cells[3].Value.ToString();
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact2 = row.Cells[4].Value.ToString();
+                            if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
+                            if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
+                            if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
+                            if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") email = row.Cells[8].Value.ToString();
+                            if (row.Cells[9].Value != null) if (row.Cells[9].Value.ToString() != "") address = row.Cells[9].Value.ToString();
+                            if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") siteAddress = row.Cells[10].Value.ToString();
+                            if (row.Cells[11].Value != null) if (row.Cells[11].Value.ToString() != "") payMethod = row.Cells[11].Value.ToString();
+                            if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") payDay = Convert.ToInt16(row.Cells[12].Value.ToString());
+                        
                         belongTo = currCompLab.Text;
-                        if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
+                        if (row.Cells[14].Value != null) if (row.Cells[14].Value.ToString() != "") needEdit = row.Cells[14].Value.ToString();
                         if (needEdit == "y")
                         {
                             myConnection.Open();
-                            myCommand = new MySqlCommand("update  " + table + " set Code ='" + code + "', Name = '" + name + "', Phone1 = '" + phone1 + "', Phone2 = '" +
-                                          phone2 + "', Fax = '" + fax + "', Email = '" + email + "', Address = '" + address + "', PayMethod = '" + payMethod + "', PayDay = '" + payDay + "', BelongTo = '" + belongTo + "' where Code = '" + code + "'", myConnection);
+                            myCommand = new MySqlCommand("update  " + table + " set Code ='" + code + "', Name = '" + name + "', FirstContact = '" + contact1 + "', SecondContact = '" +
+                                contact2 + "', Phone1 = '" + phone1 + "', Phone2 = '" + phone2 + "', SiteAddress = '" + siteAddress +
+                                "', Fax = '" + fax + "', Email = '" + email + "', Address = '" + address + "', PayMethod = '" + payMethod + "', PayDay = '" + payDay + "', BelongTo = '" + belongTo + "' where Code = '" + code + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             clearData();
@@ -305,7 +315,7 @@ namespace CashPOS
         {
             if (getIsUpdate())
             {
-                custDataGrid.Rows[e.RowIndex].Cells[13].Value = "y";
+                custDataGrid.Rows[e.RowIndex].Cells[14].Value = "y";
             }
         }
 

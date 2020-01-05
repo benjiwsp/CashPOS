@@ -46,7 +46,6 @@ namespace CashPOS
         {
             if (isSearch)
             {
-                updateProd("CashPOSDB.prodData");
                 //insertIntoCombined();
 
             }
@@ -343,7 +342,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
         {
             if (getIsUpdate())
             {
-                newProdGrid.Rows[e.RowIndex].Cells[7].Value = "y";
+                newProdGrid.Rows[e.RowIndex].Cells[8].Value = "y";
             }
         }
 
@@ -361,7 +360,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                     {
 
 
-                        if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") needEdit = row.Cells[7].Value.ToString();
+                        if (row.Cells[8].Value != null) if (row.Cells[8].Value.ToString() != "") needEdit = row.Cells[8].Value.ToString();
                         if (needEdit == "y")
                         {
                             if (row.Cells[0].Value.ToString() != "") prodID = row.Cells[0].Value.ToString();
@@ -373,8 +372,11 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                             if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") category = row.Cells[6].Value.ToString();
                             if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") desc = row.Cells[7].Value.ToString();
                             myConnection.Open();
-                            myCommand = new MySqlCommand("update  " + table + " set ProdID ='" + prodID + "', ProdName = '" + prod + "', Unit = '" + unit + "', PickPrice = '" +
-                                          pickPrice + "', DelPrice = '" + delPrice + "', SitePrice = '" + sitePrice + "', Category = '" + category + "', Info = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
+                            myCommand = new MySqlCommand("update  " + table + " set ProdName = '" + prod + "', Unit = '" + unit + "', Category = '" + category + "', Info = '" + desc + "' where ProdID = '" + prodID + "'", myConnection);
+                            myCommand.ExecuteNonQuery();
+
+
+                            myCommand = new MySqlCommand("update  CashPOSDB.custProdPrice set ProdName = '" + prod + "'  where Prod = '" + prodID + "'", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                         }
@@ -386,6 +388,13 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
             {
                 MessageBox.Show("沒有可更新的資料");
             }
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            updateProd("CashPOSDB.prodData");
+
+            newProdGrid.Rows.Clear();
         }
         /*     private void addCatToCombo(DataGridViewRowsAddedEventArgs e)
              {

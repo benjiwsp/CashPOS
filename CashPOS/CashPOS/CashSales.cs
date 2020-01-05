@@ -262,6 +262,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            addressTxt.Items.Clear();
             unpaidList.Rows.Clear();
             payMethLbl.Text = "";
             payMethodLbl.Text = "";
@@ -794,7 +795,7 @@ namespace CashPOS
                     string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
                     //  MessageBox.Show(test);
                     selectedCustCode = custCode;
-                    myCommand = new MySqlCommand("select PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
+                    myCommand = new MySqlCommand("select siteAddress, PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
                     if (rdr.HasRows == true)
@@ -811,6 +812,7 @@ namespace CashPOS
                                 temp = "現金";
                             }
                             payTypeLabel.Text = temp;
+                            addressTxt.Items.Add(rdr["SiteAddress"].ToString());
                         }
                     }
                     rdr.Close();
@@ -851,6 +853,7 @@ namespace CashPOS
 
                     // TO-DO: check for any unpaid invoice
                     checkStatus();
+
                 }
             }
         }

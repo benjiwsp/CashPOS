@@ -28,7 +28,7 @@ namespace CashPOS
         private void serachInvBtn_Click(object sender, EventArgs e)
         {
             clearList();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData order by ProdID", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.oldInv order by ProdID where time = '" + timePIck.Text + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -39,17 +39,21 @@ namespace CashPOS
                     decimal tminv = Convert.ToDecimal(rdr["tmInv"].ToString());
                     decimal ktinv = Convert.ToDecimal(rdr["KtInv"].ToString());
                     decimal ymtinv = Convert.ToDecimal(rdr["YmtInv"].ToString());
-                    if(cwinv != 0){
-                    cwList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), cwinv.ToString());
-                        }
-                    if(tminv != 0){
-                    tmList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), tminv.ToString());
+                    if (cwinv != 0)
+                    {
+                        cwList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), cwinv.ToString());
                     }
-                    if(ktinv != 0){
+                    if (tminv != 0)
+                    {
+                        tmList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), tminv.ToString());
+                    }
+                    if (ktinv != 0)
+                    {
                         ktList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ktinv.ToString());
                     }
-                    if(ymtinv != 0){
-                    ymtList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ymtinv.ToString());
+                    if (ymtinv != 0)
+                    {
+                        ymtList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ymtinv.ToString());
                     }
                 }
             } rdr.Close();
@@ -61,6 +65,48 @@ namespace CashPOS
             tmList.Rows.Clear();
             ktList.Rows.Clear();
             ymtList.Rows.Clear();
+        }
+
+        private void endOfDayInvBtn_Click(object sender, EventArgs e)
+        {
+            DataGridView grid = null;
+            string site = siteLoc.Text;
+            switch (site)
+            {
+                case "屯門":
+                    grid = tmList;
+                    break;
+                case "柴灣":
+                    grid = cwList;
+                    break;
+                case "油麻地":
+                    grid = ymtList;
+                    break;
+                case "觀塘":
+                    grid = ktList;
+                    break;
+            }
+            string time = DateTime.Today.ToString("yyyy-MM-dd");
+
+
+            myConnection.Open();
+            myCommand = new MySqlCommand("delete from CashPOSDB.oldInv where time = '" + time + "' and site ='" + site + "'", myConnection);
+            myCommand.ExecuteNonQuery();
+
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+
+                myCommand = new MySqlCommand("insert into CashPOSDB.oldInv values('" + row.Cells[0].Value.ToString() + "','" +
+    row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + time + "','" + site + "')", myConnection);
+                myCommand.ExecuteNonQuery();
+
+            }
+            myConnection.Close();
+        }
+
+        private void oldInvBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

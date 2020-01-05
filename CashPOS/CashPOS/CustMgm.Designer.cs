@@ -50,6 +50,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BelongCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +95,7 @@
             this.Column5,
             this.Column6,
             this.Column7,
+            this.Column14,
             this.Column8,
             this.Column9,
             this.BelongCol,
@@ -282,6 +284,11 @@
             this.Column7.HeaderText = "地址";
             this.Column7.Name = "Column7";
             // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "倉地址";
+            this.Column14.Name = "Column14";
+            // 
             // Column8
             // 
             this.Column8.HeaderText = "付款方式";
@@ -350,6 +357,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn BelongCol;

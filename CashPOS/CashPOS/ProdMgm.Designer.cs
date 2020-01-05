@@ -45,6 +45,7 @@
             this.insertBtn = new System.Windows.Forms.Button();
             this.catListBox = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.updateBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +66,7 @@
             this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.catListBox, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.listBox1, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.updateBtn, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -215,6 +217,17 @@
             this.listBox1.Size = new System.Drawing.Size(230, 334);
             this.listBox1.TabIndex = 6;
             // 
+            // updateBtn
+            // 
+            this.updateBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateBtn.Location = new System.Drawing.Point(1183, 343);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(230, 214);
+            this.updateBtn.TabIndex = 7;
+            this.updateBtn.Text = "更新";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
             // ProdMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,5 +260,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
+        private System.Windows.Forms.Button updateBtn;
     }
 }

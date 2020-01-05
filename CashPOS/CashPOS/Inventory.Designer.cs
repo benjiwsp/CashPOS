@@ -30,31 +30,37 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cwList = new System.Windows.Forms.DataGridView();
-            this.tmList = new System.Windows.Forms.DataGridView();
-            this.ktList = new System.Windows.Forms.DataGridView();
-            this.ymtList = new System.Windows.Forms.DataGridView();
-            this.serachInvBtn = new System.Windows.Forms.Button();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tmList = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ktList = new System.Windows.Forms.DataGridView();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ymtList = new System.Windows.Forms.DataGridView();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serachInvBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.endOfDayInvBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.siteLoc = new System.Windows.Forms.ComboBox();
+            this.timePIck = new System.Windows.Forms.DateTimePicker();
+            this.oldInvBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cwList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tmList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ktList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ymtList)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -74,6 +80,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 4, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -103,71 +110,6 @@
             this.cwList.Size = new System.Drawing.Size(324, 932);
             this.cwList.TabIndex = 0;
             // 
-            // tmList
-            // 
-            this.tmList.AllowUserToAddRows = false;
-            this.tmList.AllowUserToDeleteRows = false;
-            this.tmList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tmList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tmList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column10,
-            this.Column3,
-            this.Column4});
-            this.tmList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tmList.Location = new System.Drawing.Point(333, 65);
-            this.tmList.Name = "tmList";
-            this.tmList.ReadOnly = true;
-            this.tableLayoutPanel1.SetRowSpan(this.tmList, 3);
-            this.tmList.Size = new System.Drawing.Size(324, 932);
-            this.tmList.TabIndex = 0;
-            // 
-            // ktList
-            // 
-            this.ktList.AllowUserToAddRows = false;
-            this.ktList.AllowUserToDeleteRows = false;
-            this.ktList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ktList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ktList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column11,
-            this.Column5,
-            this.Column6});
-            this.ktList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ktList.Location = new System.Drawing.Point(663, 65);
-            this.ktList.Name = "ktList";
-            this.ktList.ReadOnly = true;
-            this.tableLayoutPanel1.SetRowSpan(this.ktList, 3);
-            this.ktList.Size = new System.Drawing.Size(324, 932);
-            this.ktList.TabIndex = 0;
-            // 
-            // ymtList
-            // 
-            this.ymtList.AllowUserToAddRows = false;
-            this.ymtList.AllowUserToDeleteRows = false;
-            this.ymtList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ymtList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ymtList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column12,
-            this.Column7,
-            this.Column8});
-            this.ymtList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ymtList.Location = new System.Drawing.Point(993, 65);
-            this.ymtList.Name = "ymtList";
-            this.ymtList.ReadOnly = true;
-            this.tableLayoutPanel1.SetRowSpan(this.ymtList, 3);
-            this.ymtList.Size = new System.Drawing.Size(324, 932);
-            this.ymtList.TabIndex = 0;
-            // 
-            // serachInvBtn
-            // 
-            this.serachInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serachInvBtn.Location = new System.Drawing.Point(1323, 65);
-            this.serachInvBtn.Name = "serachInvBtn";
-            this.serachInvBtn.Size = new System.Drawing.Size(328, 306);
-            this.serachInvBtn.TabIndex = 1;
-            this.serachInvBtn.Text = "Search";
-            this.serachInvBtn.UseVisualStyleBackColor = true;
-            this.serachInvBtn.Click += new System.EventHandler(this.serachInvBtn_Click);
-            // 
             // Column9
             // 
             this.Column9.HeaderText = "ID";
@@ -185,6 +127,24 @@
             this.Column2.HeaderText = "Stock";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // tmList
+            // 
+            this.tmList.AllowUserToAddRows = false;
+            this.tmList.AllowUserToDeleteRows = false;
+            this.tmList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tmList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tmList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column10,
+            this.Column3,
+            this.Column4});
+            this.tmList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tmList.Location = new System.Drawing.Point(333, 65);
+            this.tmList.Name = "tmList";
+            this.tmList.ReadOnly = true;
+            this.tableLayoutPanel1.SetRowSpan(this.tmList, 3);
+            this.tmList.Size = new System.Drawing.Size(324, 932);
+            this.tmList.TabIndex = 0;
             // 
             // Column10
             // 
@@ -204,6 +164,24 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // ktList
+            // 
+            this.ktList.AllowUserToAddRows = false;
+            this.ktList.AllowUserToDeleteRows = false;
+            this.ktList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ktList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ktList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column11,
+            this.Column5,
+            this.Column6});
+            this.ktList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktList.Location = new System.Drawing.Point(663, 65);
+            this.ktList.Name = "ktList";
+            this.ktList.ReadOnly = true;
+            this.tableLayoutPanel1.SetRowSpan(this.ktList, 3);
+            this.ktList.Size = new System.Drawing.Size(324, 932);
+            this.ktList.TabIndex = 0;
+            // 
             // Column11
             // 
             this.Column11.HeaderText = "ID";
@@ -222,6 +200,24 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
+            // ymtList
+            // 
+            this.ymtList.AllowUserToAddRows = false;
+            this.ymtList.AllowUserToDeleteRows = false;
+            this.ymtList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ymtList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ymtList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column12,
+            this.Column7,
+            this.Column8});
+            this.ymtList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ymtList.Location = new System.Drawing.Point(993, 65);
+            this.ymtList.Name = "ymtList";
+            this.ymtList.ReadOnly = true;
+            this.tableLayoutPanel1.SetRowSpan(this.ymtList, 3);
+            this.ymtList.Size = new System.Drawing.Size(324, 932);
+            this.ymtList.TabIndex = 0;
+            // 
             // Column12
             // 
             this.Column12.HeaderText = "ID";
@@ -239,6 +235,17 @@
             this.Column8.HeaderText = "Stock";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            // 
+            // serachInvBtn
+            // 
+            this.serachInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachInvBtn.Location = new System.Drawing.Point(1323, 65);
+            this.serachInvBtn.Name = "serachInvBtn";
+            this.serachInvBtn.Size = new System.Drawing.Size(328, 306);
+            this.serachInvBtn.TabIndex = 1;
+            this.serachInvBtn.Text = "Search";
+            this.serachInvBtn.UseVisualStyleBackColor = true;
+            this.serachInvBtn.Click += new System.EventHandler(this.serachInvBtn_Click);
             // 
             // label1
             // 
@@ -288,6 +295,67 @@
             this.label4.Text = "油麻地";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // endOfDayInvBtn
+            // 
+            this.endOfDayInvBtn.Location = new System.Drawing.Point(3, 157);
+            this.endOfDayInvBtn.Name = "endOfDayInvBtn";
+            this.endOfDayInvBtn.Size = new System.Drawing.Size(75, 23);
+            this.endOfDayInvBtn.TabIndex = 3;
+            this.endOfDayInvBtn.Text = "結數";
+            this.endOfDayInvBtn.UseVisualStyleBackColor = true;
+            this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.endOfDayInvBtn, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.siteLoc, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.timePIck, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.oldInvBtn, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1323, 689);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(328, 308);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // siteLoc
+            // 
+            this.siteLoc.FormattingEnabled = true;
+            this.siteLoc.Items.AddRange(new object[] {
+            "",
+            "屯門",
+            "柴灣",
+            "油麻地",
+            "觀塘"});
+            this.siteLoc.Location = new System.Drawing.Point(3, 3);
+            this.siteLoc.Name = "siteLoc";
+            this.siteLoc.Size = new System.Drawing.Size(121, 21);
+            this.siteLoc.TabIndex = 4;
+            // 
+            // timePIck
+            // 
+            this.timePIck.CustomFormat = "yyyy-MM-dd";
+            this.timePIck.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timePIck.Location = new System.Drawing.Point(167, 3);
+            this.timePIck.Name = "timePIck";
+            this.timePIck.Size = new System.Drawing.Size(158, 20);
+            this.timePIck.TabIndex = 5;
+            // 
+            // oldInvBtn
+            // 
+            this.oldInvBtn.Location = new System.Drawing.Point(167, 157);
+            this.oldInvBtn.Name = "oldInvBtn";
+            this.oldInvBtn.Size = new System.Drawing.Size(75, 23);
+            this.oldInvBtn.TabIndex = 6;
+            this.oldInvBtn.Text = "button1";
+            this.oldInvBtn.UseVisualStyleBackColor = true;
+            this.oldInvBtn.Click += new System.EventHandler(this.oldInvBtn_Click);
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tmList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ktList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ymtList)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -329,5 +398,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button endOfDayInvBtn;
+        private System.Windows.Forms.ComboBox siteLoc;
+        private System.Windows.Forms.DateTimePicker timePIck;
+        private System.Windows.Forms.Button oldInvBtn;
     }
 }
