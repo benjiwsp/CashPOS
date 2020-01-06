@@ -46,8 +46,17 @@
             this.catListBox = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.updateBtn = new System.Windows.Forms.Button();
+            this.currentProdList = new System.Windows.Forms.DataGridView();
+            this.searchCurrentBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdList)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,8 +74,9 @@
             this.tableLayoutPanel1.Controls.Add(this.clearAllDataBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.insertBtn, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.catListBox, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.updateBtn, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listBox1, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.updateBtn, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -212,21 +222,95 @@
             "4) 完成後按 [ 新增 ]",
             "",
             "-------------------------------------"});
-            this.listBox1.Location = new System.Drawing.Point(1183, 3);
+            this.listBox1.Location = new System.Drawing.Point(1419, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(230, 334);
+            this.listBox1.Size = new System.Drawing.Size(232, 334);
             this.listBox1.TabIndex = 6;
             // 
             // updateBtn
             // 
             this.updateBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateBtn.Location = new System.Drawing.Point(1183, 343);
+            this.updateBtn.Location = new System.Drawing.Point(1183, 3);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(230, 214);
+            this.updateBtn.Size = new System.Drawing.Size(230, 334);
             this.updateBtn.TabIndex = 7;
             this.updateBtn.Text = "更新";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // currentProdList
+            // 
+            this.currentProdList.AllowUserToAddRows = false;
+            this.currentProdList.AllowUserToDeleteRows = false;
+            this.currentProdList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.currentProdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currentProdList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            this.tableLayoutPanel2.SetColumnSpan(this.currentProdList, 2);
+            this.currentProdList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentProdList.Location = new System.Drawing.Point(3, 54);
+            this.currentProdList.Name = "currentProdList";
+            this.currentProdList.ReadOnly = true;
+            this.currentProdList.RowHeadersVisible = false;
+            this.currentProdList.Size = new System.Drawing.Size(462, 597);
+            this.currentProdList.TabIndex = 8;
+            // 
+            // searchCurrentBtn
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.searchCurrentBtn, 2);
+            this.searchCurrentBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchCurrentBtn.Location = new System.Drawing.Point(3, 3);
+            this.searchCurrentBtn.Name = "searchCurrentBtn";
+            this.searchCurrentBtn.Size = new System.Drawing.Size(462, 45);
+            this.searchCurrentBtn.TabIndex = 9;
+            this.searchCurrentBtn.Text = "搜尋現有貨品";
+            this.searchCurrentBtn.UseVisualStyleBackColor = true;
+            this.searchCurrentBtn.Click += new System.EventHandler(this.searchCurrentBtn_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.currentProdList, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.searchCurrentBtn, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1183, 343);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 3);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.798165F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.20184F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(468, 654);
+            this.tableLayoutPanel2.TabIndex = 10;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "現有貨品編號";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "現有貨品";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "單位";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "類品";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // ProdMgm
             // 
@@ -237,6 +321,8 @@
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.newProdGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdList)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -261,5 +347,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
         private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.DataGridView currentProdList;
+        private System.Windows.Forms.Button searchCurrentBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

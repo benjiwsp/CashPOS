@@ -268,6 +268,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
         private void clearAllData()
         {
             newProdGrid.Rows.Clear();
+            currentProdList.Rows.Clear();
             // allProdGrid.Rows.Clear();
         }
 
@@ -310,7 +311,7 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                         {
                             string prodID = newProdGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
                             deleteProdRow("CashPOSDB.prodData", prodID, "ProdID");
-                            deleteProdRow("CashPOSDB.custProdPrice", prodID,"Prod");
+                            deleteProdRow("CashPOSDB.custProdPrice", prodID, "Prod");
 
                             newProdGrid.Rows.RemoveAt(e.RowIndex);
                         }
@@ -319,15 +320,15 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
             }
         }
 
-        private void deleteProdRow(string table, string prodID,string col)
+        private void deleteProdRow(string table, string prodID, string col)
         {
             myConnection.Open();
-            myCommand = new MySqlCommand("Delete from " + table + " where "+col+" = '" + prodID + "'", myConnection);
+            myCommand = new MySqlCommand("Delete from " + table + " where " + col + " = '" + prodID + "'", myConnection);
             myCommand.ExecuteNonQuery();
             myConnection.Close();
 
         }
-      
+
         private void setUpdate(Boolean b)
         {
             isUpdate = b;
@@ -395,6 +396,30 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
             updateProd("CashPOSDB.prodData");
 
             newProdGrid.Rows.Clear();
+        }
+
+        private void searchCurrentBtn_Click(object sender, EventArgs e)
+        {
+
+
+            getCurrentProdList();
+
+        }
+        private void getCurrentProdList()
+        {
+            currentProdList.Rows.Clear();
+            myCommand = new MySqlCommand("select ProdID, ProdName, Unit, Category from CashPOSDB.prodData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    currentProdList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), rdr["Unit"].ToString(), rdr["Category"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
+
         }
         /*     private void addCatToCombo(DataGridViewRowsAddedEventArgs e)
              {
