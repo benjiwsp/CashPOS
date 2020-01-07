@@ -263,15 +263,23 @@ namespace CashPOS
                             belongTo = currCompLab.Text;
 
                         }
-                        myConnection.Open();
-                        myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
-                                      phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" + contact1
-                                      + "','" + contact2 + "','" + money + "','" + "" + "','" + "" + "','" + siteAddress + "')", myConnection);
-                        myCommand.ExecuteNonQuery();
-                        myConnection.Close();
-                        createPriceRecord(code, belongTo);
-                        clearData();
+                        try
+                        {
+                            myConnection.Open();
 
+                            myCommand = new MySqlCommand("insert ignore into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
+                                          phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" + contact1
+                                          + "','" + contact2 + "','" + money + "','" + "" + "','" + "" + "','" + siteAddress + "')", myConnection);
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                            createPriceRecord(code, belongTo);
+                            clearData();
+                        }
+                        catch (MySqlException e)
+                        {
+                            myConnection.Close();
+                            MessageBox.Show(code + "已存在, 請用其他編號");
+                        }
 
                     }
                 }
