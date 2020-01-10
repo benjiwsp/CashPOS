@@ -123,7 +123,6 @@ namespace CashPOS
         {
 
             resultList.Columns.Clear();
-            addGridCol("code", "編號");
             addGridCol("name", "客戶");
             addGridCol("payMeth", "付款類別");
             addGridCol("prod", "貨品");
@@ -132,6 +131,7 @@ namespace CashPOS
             addGridCol("delPrice", "送倉價");
             addGridCol("sitePrice", "地盤價");
             addGridCol("comp", "隸屬公司");
+            addGridCol("update", "更新");
 
             myCommand = new MySqlCommand("select Code, Name, PayMethod, a.BelongTo, " +
             "ProdName, DelPrice, PickPrice, SitePrice " +
@@ -142,7 +142,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
+                    resultList.Rows.Add( rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
                             rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),
                             rdr["SitePrice"].ToString(), rdr["BelongTo"].ToString());
                 }

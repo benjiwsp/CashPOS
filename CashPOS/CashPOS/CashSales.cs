@@ -41,7 +41,7 @@ namespace CashPOS
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
-         List<String> custCol = new List<String>();
+        List<String> custCol = new List<String>();
 
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
         string selectedCustCode;
@@ -361,8 +361,9 @@ namespace CashPOS
                 orderID = invoiceLabel.Text;
                 bool successed = false;
                 bool attempted = false;
+                bool tryAgain = true;
                 myConnection.Open();
-                for (int attempts = 0; attempts < 10; attempts++)
+                while (tryAgain)
                 {
                     try
                     {
@@ -407,6 +408,7 @@ namespace CashPOS
                                 MessageBox.Show("收據號碼已改為: " + orderID);
                             }
                             successed = true;
+                            tryAgain = false;
                             myConnection.Close();
                             break;
                         }
@@ -420,11 +422,15 @@ namespace CashPOS
                                 orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
                                 orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
                                 attempted = true;
+
                                 break;
                         }
                     }
                     if (successed)
+                    {
+                        myConnection.Close();
                         break;
+                    }
                 }
 
                 myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
