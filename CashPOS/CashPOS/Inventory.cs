@@ -28,7 +28,7 @@ namespace CashPOS
         private void serachInvBtn_Click(object sender, EventArgs e)
         {
             clearList();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.oldInv order by ProdID where time = '" + timePIck.Text + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.prodData order by ProdID", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -56,7 +56,8 @@ namespace CashPOS
                         ymtList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ymtinv.ToString());
                     }
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
         private void clearList()
@@ -69,44 +70,73 @@ namespace CashPOS
 
         private void endOfDayInvBtn_Click(object sender, EventArgs e)
         {
-            DataGridView grid = null;
-            string site = siteLoc.Text;
-            switch (site)
+            if (siteLoc.Text != "")
             {
-                case "屯門":
-                    grid = tmList;
-                    break;
-                case "柴灣":
-                    grid = cwList;
-                    break;
-                case "油麻地":
-                    grid = ymtList;
-                    break;
-                case "觀塘":
-                    grid = ktList;
-                    break;
-            }
-            string time = DateTime.Today.ToString("yyyy-MM-dd");
+                DataGridView grid = null;
+                string site = siteLoc.Text;
+                switch (site)
+                {
+                    case "屯門":
+                        grid = tmList;
+                        break;
+                    case "柴灣":
+                        grid = cwList;
+                        break;
+                    case "油麻地":
+                        grid = ymtList;
+                        break;
+                    case "觀塘":
+                        grid = ktList;
+                        break;
+                }
+                string time = DateTime.Today.ToString("yyyy-MM-dd");
 
 
-            myConnection.Open();
-            myCommand = new MySqlCommand("delete from CashPOSDB.oldInv where time = '" + time + "' and site ='" + site + "'", myConnection);
-            myCommand.ExecuteNonQuery();
-
-            foreach (DataGridViewRow row in grid.Rows)
-            {
-
-                myCommand = new MySqlCommand("insert into CashPOSDB.oldInv values('" + row.Cells[0].Value.ToString() + "','" +
-    row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + time + "','" + site + "')", myConnection);
+                myConnection.Open();
+                myCommand = new MySqlCommand("delete from CashPOSDB.oldInv where time = '" + time + "' and site ='" + site + "'", myConnection);
                 myCommand.ExecuteNonQuery();
 
-            }
-            myConnection.Close();
-        }
+                foreach (DataGridViewRow row in grid.Rows)
+                {
 
+                    myCommand = new MySqlCommand("insert into CashPOSDB.oldInv values('" + row.Cells[0].Value.ToString() + "','" +
+        row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + time + "','" + site + "')", myConnection);
+                    myCommand.ExecuteNonQuery();
+
+                }
+                myConnection.Close();
+            }
+        }
         private void oldInvBtn_Click(object sender, EventArgs e)
         {
-
+            clearList();
+            myCommand = new MySqlCommand("Select * from CashPOSDB.oldInv  where time = '" + timePIck.Text + "' order by site, prodID", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    switch (rdr["site"].ToString())
+                    {
+                        case "屯門":
+                            tmList.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["amount"].ToString());
+                            break;
+                        case "油麻地":
+                            ymtList.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["amount"].ToString());
+                            break;
+                        case "觀塘":
+                            ktList.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["amount"].ToString());
+                            break;
+                        case "柴灣":
+                            cwList.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["amount"].ToString());
+                            break;
+                    }
+         
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
         }
     }
 }

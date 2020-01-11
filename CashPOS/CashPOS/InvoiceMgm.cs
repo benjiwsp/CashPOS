@@ -694,6 +694,7 @@ namespace CashPOS
                         InputBox form = new InputBox();
                         form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
                         form.Okbtn.Text = "付款";
+                        form.Text = "請輸入金額";
                         form.ShowDialog();
                         if (form.DialogResult == DialogResult.OK)
                         {

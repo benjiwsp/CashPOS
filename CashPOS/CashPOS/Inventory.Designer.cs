@@ -50,8 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.endOfDayInvBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.endOfDayInvBtn = new System.Windows.Forms.Button();
             this.siteLoc = new System.Windows.Forms.ComboBox();
             this.timePIck = new System.Windows.Forms.DateTimePicker();
             this.oldInvBtn = new System.Windows.Forms.Button();
@@ -239,6 +239,7 @@
             // serachInvBtn
             // 
             this.serachInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serachInvBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serachInvBtn.Location = new System.Drawing.Point(1323, 65);
             this.serachInvBtn.Name = "serachInvBtn";
             this.serachInvBtn.Size = new System.Drawing.Size(328, 306);
@@ -295,25 +296,15 @@
             this.label4.Text = "油麻地";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // endOfDayInvBtn
-            // 
-            this.endOfDayInvBtn.Location = new System.Drawing.Point(3, 157);
-            this.endOfDayInvBtn.Name = "endOfDayInvBtn";
-            this.endOfDayInvBtn.Size = new System.Drawing.Size(75, 23);
-            this.endOfDayInvBtn.TabIndex = 3;
-            this.endOfDayInvBtn.Text = "結數";
-            this.endOfDayInvBtn.UseVisualStyleBackColor = true;
-            this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.endOfDayInvBtn, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.siteLoc, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.timePIck, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.oldInvBtn, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.endOfDayInvBtn, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(1323, 689);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -323,8 +314,22 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(328, 308);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
+            // endOfDayInvBtn
+            // 
+            this.endOfDayInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endOfDayInvBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endOfDayInvBtn.Location = new System.Drawing.Point(3, 157);
+            this.endOfDayInvBtn.Name = "endOfDayInvBtn";
+            this.endOfDayInvBtn.Size = new System.Drawing.Size(158, 148);
+            this.endOfDayInvBtn.TabIndex = 3;
+            this.endOfDayInvBtn.Text = "結數";
+            this.endOfDayInvBtn.UseVisualStyleBackColor = true;
+            this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
+            // 
             // siteLoc
             // 
+            this.siteLoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siteLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.siteLoc.FormattingEnabled = true;
             this.siteLoc.Items.AddRange(new object[] {
             "",
@@ -334,25 +339,29 @@
             "觀塘"});
             this.siteLoc.Location = new System.Drawing.Point(3, 3);
             this.siteLoc.Name = "siteLoc";
-            this.siteLoc.Size = new System.Drawing.Size(121, 21);
+            this.siteLoc.Size = new System.Drawing.Size(158, 33);
             this.siteLoc.TabIndex = 4;
             // 
             // timePIck
             // 
             this.timePIck.CustomFormat = "yyyy-MM-dd";
+            this.timePIck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timePIck.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timePIck.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePIck.Location = new System.Drawing.Point(167, 3);
             this.timePIck.Name = "timePIck";
-            this.timePIck.Size = new System.Drawing.Size(158, 20);
+            this.timePIck.Size = new System.Drawing.Size(158, 31);
             this.timePIck.TabIndex = 5;
             // 
             // oldInvBtn
             // 
+            this.oldInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.oldInvBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldInvBtn.Location = new System.Drawing.Point(167, 157);
             this.oldInvBtn.Name = "oldInvBtn";
-            this.oldInvBtn.Size = new System.Drawing.Size(75, 23);
+            this.oldInvBtn.Size = new System.Drawing.Size(158, 148);
             this.oldInvBtn.TabIndex = 6;
-            this.oldInvBtn.Text = "button1";
+            this.oldInvBtn.Text = "查舊倉存";
             this.oldInvBtn.UseVisualStyleBackColor = true;
             this.oldInvBtn.Click += new System.EventHandler(this.oldInvBtn_Click);
             // 

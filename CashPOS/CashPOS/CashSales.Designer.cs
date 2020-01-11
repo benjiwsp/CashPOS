@@ -521,6 +521,7 @@
             this.customerTxt.Name = "customerTxt";
             this.customerTxt.Size = new System.Drawing.Size(231, 28);
             this.customerTxt.TabIndex = 38;
+            this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged_1);
             this.customerTxt.TextUpdate += new System.EventHandler(this.customerTxt_TextUpdate);
             this.customerTxt.Leave += new System.EventHandler(this.customerTxt_Leave);
             // 
@@ -653,6 +654,7 @@
             // orderConfirmBtn
             // 
             this.orderConfirmBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.orderConfirmBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.orderConfirmBtn.Location = new System.Drawing.Point(6, 6);
             this.orderConfirmBtn.Name = "orderConfirmBtn";
             this.orderConfirmBtn.Size = new System.Drawing.Size(67, 53);
@@ -665,6 +667,7 @@
             // payByTransferBtn
             // 
             this.payByTransferBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.payByTransferBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.payByTransferBtn.Location = new System.Drawing.Point(82, 6);
             this.payByTransferBtn.Name = "payByTransferBtn";
             this.payByTransferBtn.Size = new System.Drawing.Size(67, 53);
@@ -677,6 +680,7 @@
             // payByChequeBtn
             // 
             this.payByChequeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(91)))), ((int)(((byte)(86)))));
+            this.payByChequeBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.payByChequeBtn.Location = new System.Drawing.Point(158, 6);
             this.payByChequeBtn.Name = "payByChequeBtn";
             this.payByChequeBtn.Size = new System.Drawing.Size(67, 53);
@@ -707,6 +711,7 @@
             // 
             this.fullPayBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
             this.fullPayBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fullPayBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullPayBtn.Location = new System.Drawing.Point(3, 3);
             this.fullPayBtn.Name = "fullPayBtn";
             this.fullPayBtn.Size = new System.Drawing.Size(93, 59);
@@ -719,6 +724,7 @@
             // 
             this.NotPaidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(192)))), ((int)(((byte)(206)))));
             this.NotPaidBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NotPaidBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NotPaidBtn.Location = new System.Drawing.Point(102, 3);
             this.NotPaidBtn.Name = "NotPaidBtn";
             this.NotPaidBtn.Size = new System.Drawing.Size(93, 59);
@@ -792,6 +798,7 @@
             // 
             this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
             this.searchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.searchBtn.Location = new System.Drawing.Point(3, 3);
             this.searchBtn.Name = "searchBtn";
             this.tableLayoutPanel6.SetRowSpan(this.searchBtn, 2);
@@ -804,7 +811,7 @@
             // sendAndPP
             // 
             this.sendAndPP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendAndPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAndPP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendAndPP.Location = new System.Drawing.Point(117, 3);
             this.sendAndPP.Name = "sendAndPP";
             this.tableLayoutPanel6.SetRowSpan(this.sendAndPP, 2);
@@ -817,7 +824,7 @@
             // sendAndPWP
             // 
             this.sendAndPWP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendAndPWP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAndPWP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendAndPWP.Location = new System.Drawing.Point(231, 3);
             this.sendAndPWP.Name = "sendAndPWP";
             this.tableLayoutPanel6.SetRowSpan(this.sendAndPWP, 2);
@@ -831,6 +838,7 @@
             // 
             this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
             this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.cancelBtn.Location = new System.Drawing.Point(459, 3);
             this.cancelBtn.Name = "cancelBtn";
             this.tableLayoutPanel6.SetRowSpan(this.cancelBtn, 2);
@@ -844,6 +852,7 @@
             // 
             this.sendOrderBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
             this.sendOrderBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendOrderBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.sendOrderBtn.Location = new System.Drawing.Point(345, 3);
             this.sendOrderBtn.Name = "sendOrderBtn";
             this.tableLayoutPanel6.SetRowSpan(this.sendOrderBtn, 2);
@@ -994,12 +1003,13 @@
             // itemConfirmBtn
             // 
             this.itemConfirmBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itemConfirmBtn.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.itemConfirmBtn.Location = new System.Drawing.Point(863, 3);
             this.itemConfirmBtn.Name = "itemConfirmBtn";
             this.tableLayoutPanel1.SetRowSpan(this.itemConfirmBtn, 2);
             this.itemConfirmBtn.Size = new System.Drawing.Size(210, 111);
             this.itemConfirmBtn.TabIndex = 6;
-            this.itemConfirmBtn.Text = "Confirm";
+            this.itemConfirmBtn.Text = "確定";
             this.itemConfirmBtn.UseSelectable = true;
             this.itemConfirmBtn.Click += new System.EventHandler(this.itemConfirmBtn_Click);
             // 

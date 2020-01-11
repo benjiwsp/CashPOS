@@ -273,6 +273,7 @@ namespace CashPOS
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
+                salesGrid.Rows.Add("總數:","","",totalDisplayPrice);
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
                 totalDisplayPrice = 0.00;
             } rdr.Close();

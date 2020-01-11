@@ -799,6 +799,10 @@ namespace CashPOS
                     string temp = "";
                     toLabel.Text = comboT;
                     string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
+                    if (custCode.StartsWith("SF"))
+                    {
+                        pickupAddText.Text = "屯門";
+                    }
                     //  MessageBox.Show(test);
                     selectedCustCode = custCode;
                     myCommand = new MySqlCommand("select siteAddress, PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
@@ -968,6 +972,9 @@ namespace CashPOS
             print.Close();
         }
 
+        private void customerTxt_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }
