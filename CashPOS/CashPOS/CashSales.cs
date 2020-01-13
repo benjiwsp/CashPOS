@@ -357,8 +357,12 @@ namespace CashPOS
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
                 }
-
+                
                 orderID = invoiceLabel.Text;
+                if (sandID != "")
+                {
+                    orderID = sandID;
+                }
                 bool successed = false;
                 bool attempted = false;
                 bool tryAgain = true;

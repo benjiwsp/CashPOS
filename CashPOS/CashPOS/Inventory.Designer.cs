@@ -51,10 +51,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.endOfDayInvBtn = new System.Windows.Forms.Button();
             this.siteLoc = new System.Windows.Forms.ComboBox();
             this.timePIck = new System.Windows.Forms.DateTimePicker();
             this.oldInvBtn = new System.Windows.Forms.Button();
+            this.endOfDayInvBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cwList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tmList)).BeginInit();
@@ -314,18 +314,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(328, 308);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
-            // endOfDayInvBtn
-            // 
-            this.endOfDayInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endOfDayInvBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endOfDayInvBtn.Location = new System.Drawing.Point(3, 157);
-            this.endOfDayInvBtn.Name = "endOfDayInvBtn";
-            this.endOfDayInvBtn.Size = new System.Drawing.Size(158, 148);
-            this.endOfDayInvBtn.TabIndex = 3;
-            this.endOfDayInvBtn.Text = "結數";
-            this.endOfDayInvBtn.UseVisualStyleBackColor = true;
-            this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
-            // 
             // siteLoc
             // 
             this.siteLoc.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -364,6 +352,18 @@
             this.oldInvBtn.Text = "查舊倉存";
             this.oldInvBtn.UseVisualStyleBackColor = true;
             this.oldInvBtn.Click += new System.EventHandler(this.oldInvBtn_Click);
+            // 
+            // endOfDayInvBtn
+            // 
+            this.endOfDayInvBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endOfDayInvBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endOfDayInvBtn.Location = new System.Drawing.Point(3, 157);
+            this.endOfDayInvBtn.Name = "endOfDayInvBtn";
+            this.endOfDayInvBtn.Size = new System.Drawing.Size(158, 148);
+            this.endOfDayInvBtn.TabIndex = 3;
+            this.endOfDayInvBtn.Text = "結數";
+            this.endOfDayInvBtn.UseVisualStyleBackColor = true;
+            this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
             // 
             // Inventory
             // 

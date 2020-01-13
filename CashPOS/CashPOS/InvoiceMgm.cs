@@ -34,7 +34,7 @@ namespace CashPOS
         public void getCustomerList()
         {
             custCol.Clear();
-            
+
             myConnection.Open();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.custData order by Code", myConnection);
             rdr = myCommand.ExecuteReader();
@@ -628,107 +628,8 @@ namespace CashPOS
         private void orderListView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string orderID = orderListView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if (orderID.StartsWith("C") || orderID.StartsWith("M"))
-            {
-                priceTypeLbl.Text = "";
-                pickupLbl.Text = "";
-                licenseLbl.Text = "";
-                custLbl.Text = "";
-                addLbl.Text = "";
-                telLbl.Text = "";
-                dateLbl.Text = "";
-                noteLbl.Text = "";
-                var senderGrid = (DataGridView)sender;
-                if (senderGrid.Columns[0] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 0)
-                {
-                    resultGrid.Rows.Clear();
-                    string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
-                                 "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
-                                 "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
-                                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
-                                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
-                                 "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
-                                 "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
-                             "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID  where CashPOSDB.orderRecords.orderID = '" +
-                             orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
-                    myCommand = new MySqlCommand(query, myConnection);
-                    myConnection.Open();
-                    rdr = myCommand.ExecuteReader();
-                    int i = 0;
-                    if (rdr.HasRows == true)
-                    {
-                        while (rdr.Read())
-                        {
-                            if (i == 0)
-                            {
-                                idToSearch.Text = rdr["orderID"].ToString();
-                                pickupLbl.Text = rdr["pickupLoc"].ToString();
-                                dateLbl.Text = rdr["time"].ToString();
-                                custLbl.Text = rdr["custName"].ToString();
-                                addLbl.Text = rdr["address"].ToString();
-                                telLbl.Text = rdr["phone"].ToString();
-                                licenseLbl.Text = rdr["license"].ToString();
-                                noteLbl.Text = rdr["notes"].ToString();
-                                priceTypeLbl.Text = rdr["priceType"].ToString();
-                                belongToTxt.Text = rdr["belongTo"].ToString();
-                                custTypeTxt.Text = rdr["payment"].ToString();
-                                i++;
-                            }
-                            resultGrid.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-       rdr["unitPrice"].ToString(), rdr["total"].ToString());
 
-
-                        }
-                        resultGrid.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
-                    }
-                    rdr.Close();
-                    myConnection.Close();
-                }
-
-                else if (senderGrid.Columns[11] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 11)
-                {
-                    DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        decimal paid = 0.00m;
-                        InputBox form = new InputBox();
-                        form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
-                        form.Okbtn.Text = "付款";
-                        form.Text = "請輸入金額";
-                        form.ShowDialog();
-                        if (form.DialogResult == DialogResult.OK)
-                        {
-                            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
-
-
-                            myConnection.Open();
-                            myCommand.ExecuteNonQuery();
-                            myConnection.Close();
-                        }
-
-
-                    }
-
-                }
-                else if (senderGrid.Columns[13] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 13)
-                {
-                    myCommand = new MySqlCommand("update CashPOSDB.orderRecords set isReturn = if(isReturn = 'y','','y') where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
-                    myConnection.Open();
-                    myCommand.ExecuteNonQuery();
-                    myConnection.Close();
-                    if (orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor == Color.Green)
-                    {
-                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Yellow;
-                    }
-                    else
-                    {
-                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Green;
-
-                    }
-                }
-            }
-            else if (orderID.StartsWith("T") || orderID.StartsWith("A"))
+            if (orderID.StartsWith("T") || orderID.StartsWith("A"))
             {
                 priceTypeLbl.Text = "";
                 pickupLbl.Text = "";
@@ -834,6 +735,106 @@ namespace CashPOS
                     }
                     rdr.Close();
                     myConnection.Close();
+                }
+            }
+            else
+            {
+                priceTypeLbl.Text = "";
+                pickupLbl.Text = "";
+                licenseLbl.Text = "";
+                custLbl.Text = "";
+                addLbl.Text = "";
+                telLbl.Text = "";
+                dateLbl.Text = "";
+                noteLbl.Text = "";
+                var senderGrid = (DataGridView)sender;
+                if (senderGrid.Columns[0] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 0)
+                {
+                    resultGrid.Rows.Clear();
+                    string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
+                                 "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
+                                 "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
+                                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
+                                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
+                                 "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
+                                 "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
+                             "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID  where CashPOSDB.orderRecords.orderID = '" +
+                             orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+                    myCommand = new MySqlCommand(query, myConnection);
+                    myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+                    int i = 0;
+                    if (rdr.HasRows == true)
+                    {
+                        while (rdr.Read())
+                        {
+                            if (i == 0)
+                            {
+                                idToSearch.Text = rdr["orderID"].ToString();
+                                pickupLbl.Text = rdr["pickupLoc"].ToString();
+                                dateLbl.Text = rdr["time"].ToString();
+                                custLbl.Text = rdr["custName"].ToString();
+                                addLbl.Text = rdr["address"].ToString();
+                                telLbl.Text = rdr["phone"].ToString();
+                                licenseLbl.Text = rdr["license"].ToString();
+                                noteLbl.Text = rdr["notes"].ToString();
+                                priceTypeLbl.Text = rdr["priceType"].ToString();
+                                belongToTxt.Text = rdr["belongTo"].ToString();
+                                custTypeTxt.Text = rdr["payment"].ToString();
+                                i++;
+                            }
+                            resultGrid.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
+       rdr["unitPrice"].ToString(), rdr["total"].ToString());
+
+
+                        }
+                        resultGrid.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
+                    }
+                    rdr.Close();
+                    myConnection.Close();
+                }
+
+                else if (senderGrid.Columns[11] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 11)
+                {
+                    DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        decimal paid = 0.00m;
+                        InputBox form = new InputBox();
+                        form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
+                        form.Okbtn.Text = "付款";
+                        form.Text = "請輸入金額";
+                        form.ShowDialog();
+                        if (form.DialogResult == DialogResult.OK)
+                        {
+                            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+
+
+                            myConnection.Open();
+                            myCommand.ExecuteNonQuery();
+                            myConnection.Close();
+                        }
+
+
+                    }
+
+                }
+                else if (senderGrid.Columns[13] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 13)
+                {
+                    myCommand = new MySqlCommand("update CashPOSDB.orderRecords set isReturn = if(isReturn = 'y','','y') where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+                    myConnection.Close();
+                    if (orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor == Color.Green)
+                    {
+                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Green;
+
+                    }
                 }
             }
         }
@@ -1089,22 +1090,25 @@ namespace CashPOS
             string orderID = "";
             string onlyLetters = new String(idToSearch.Text.Where(Char.IsLetter).ToArray());
             orderID = (Convert.ToInt32(Regex.Match(idToSearch.Text, @"\d+").Value) - 1).ToString("000000");
+
             orderID = onlyLetters + orderID;
-            myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" + orderID +
-                "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'", myConnection);
             myConnection.Open();
-            myCommand.ExecuteNonQuery();
             if (orderID.StartsWith("M") || orderID.StartsWith("C"))
             {
-                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
-                myCommand.ExecuteNonQuery();
-                myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" + orderID +
+                    "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
+
+            myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+            myCommand.ExecuteNonQuery();
+            myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+            myCommand.ExecuteNonQuery();
+
             myConnection.Close();
             belongToTxt.Text = "";
             custTypeTxt.Text = "";
-
+            clearAll();
             //reduce the amount here
         }
 
