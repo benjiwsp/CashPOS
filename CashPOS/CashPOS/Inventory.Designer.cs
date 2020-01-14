@@ -244,7 +244,7 @@
             this.serachInvBtn.Name = "serachInvBtn";
             this.serachInvBtn.Size = new System.Drawing.Size(328, 306);
             this.serachInvBtn.TabIndex = 1;
-            this.serachInvBtn.Text = "Search";
+            this.serachInvBtn.Text = "搜尋";
             this.serachInvBtn.UseVisualStyleBackColor = true;
             this.serachInvBtn.Click += new System.EventHandler(this.serachInvBtn_Click);
             // 
