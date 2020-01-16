@@ -246,6 +246,8 @@ namespace CashPOS
                     {
                         for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
                         {
+                            contact1 = "";
+                            contact2 = "";
                             if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                             if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
@@ -314,6 +316,8 @@ namespace CashPOS
                 {
                     if (row.Cells[0].Value != null)
                     {
+                        contact1 = "";
+                        contact2 = "";
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                         if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                         if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
@@ -391,6 +395,11 @@ namespace CashPOS
                     }
                 }
             }
+        }
+
+        private void currentCustList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -29,6 +29,17 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchCSBtn = new System.Windows.Forms.Button();
+            this.addCSBtn = new System.Windows.Forms.Button();
+            this.serachAllBtn = new System.Windows.Forms.Button();
+            this.serachSFBtn = new System.Windows.Forms.Button();
+            this.addSFBtn = new System.Windows.Forms.Button();
+            this.currCompLab = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.clearCustList = new System.Windows.Forms.Button();
+            this.updateCustBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.custDataGrid = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,25 +57,14 @@
             this.BelongCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchCSBtn = new System.Windows.Forms.Button();
-            this.addCSBtn = new System.Windows.Forms.Button();
-            this.serachAllBtn = new System.Windows.Forms.Button();
-            this.serachSFBtn = new System.Windows.Forms.Button();
-            this.addSFBtn = new System.Windows.Forms.Button();
-            this.currCompLab = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.clearCustList = new System.Windows.Forms.Button();
-            this.updateCustBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.currentCustList = new System.Windows.Forms.DataGridView();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentCustList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,118 +85,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // custDataGrid
-            // 
-            this.custDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.custDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.custDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column13,
-            this.Column10,
-            this.Column12,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column14,
-            this.Column8,
-            this.Column9,
-            this.BelongCol,
-            this.updated,
-            this.Column11});
-            this.custDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custDataGrid.Location = new System.Drawing.Point(3, 3);
-            this.custDataGrid.Name = "custDataGrid";
-            this.custDataGrid.Size = new System.Drawing.Size(1239, 788);
-            this.custDataGrid.TabIndex = 0;
-            this.custDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellContentClick);
-            this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "客戶編號";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "客戶名稱";
-            this.Column2.Name = "Column2";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "正/負金額";
-            this.Column13.Name = "Column13";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "第1聯絡人";
-            this.Column10.Name = "Column10";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "第2聯絡人";
-            this.Column12.Name = "Column12";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "電話#1";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "電話#2";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Fax";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Email";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "地址";
-            this.Column7.Name = "Column7";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "倉地址";
-            this.Column14.Name = "Column14";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "付款方式";
-            this.Column8.Name = "Column8";
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "付款期";
-            this.Column9.Name = "Column9";
-            // 
-            // BelongCol
-            // 
-            this.BelongCol.HeaderText = "隸屬公司";
-            this.BelongCol.Name = "BelongCol";
-            this.BelongCol.ReadOnly = true;
-            this.BelongCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // updated
-            // 
-            this.updated.HeaderText = "已更新";
-            this.updated.Name = "updated";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "取消";
-            this.Column11.Name = "Column11";
             // 
             // tableLayoutPanel2
             // 
@@ -339,6 +227,118 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1648, 794);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
+            // custDataGrid
+            // 
+            this.custDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.custDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.custDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column13,
+            this.Column10,
+            this.Column12,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column14,
+            this.Column8,
+            this.Column9,
+            this.BelongCol,
+            this.updated,
+            this.Column11});
+            this.custDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.custDataGrid.Name = "custDataGrid";
+            this.custDataGrid.Size = new System.Drawing.Size(1239, 788);
+            this.custDataGrid.TabIndex = 0;
+            this.custDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellContentClick);
+            this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "客戶編號";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "客戶名稱";
+            this.Column2.Name = "Column2";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "正/負金額";
+            this.Column13.Name = "Column13";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "第1聯絡人";
+            this.Column10.Name = "Column10";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "第2聯絡人";
+            this.Column12.Name = "Column12";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "電話#1";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "電話#2";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Fax";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Email";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "地址";
+            this.Column7.Name = "Column7";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "倉地址";
+            this.Column14.Name = "Column14";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "付款方式";
+            this.Column8.Name = "Column8";
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "付款期";
+            this.Column9.Name = "Column9";
+            // 
+            // BelongCol
+            // 
+            this.BelongCol.HeaderText = "隸屬公司";
+            this.BelongCol.Name = "BelongCol";
+            this.BelongCol.ReadOnly = true;
+            this.BelongCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // updated
+            // 
+            this.updated.HeaderText = "已更新";
+            this.updated.Name = "updated";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "取消";
+            this.Column11.Name = "Column11";
+            // 
             // currentCustList
             // 
             this.currentCustList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -353,6 +353,7 @@
             this.currentCustList.RowHeadersVisible = false;
             this.currentCustList.Size = new System.Drawing.Size(397, 788);
             this.currentCustList.TabIndex = 1;
+            this.currentCustList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.currentCustList_CellContentClick);
             // 
             // Column15
             // 
@@ -374,11 +375,11 @@
             this.Name = "CustMgm";
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentCustList)).EndInit();
             this.ResumeLayout(false);
 

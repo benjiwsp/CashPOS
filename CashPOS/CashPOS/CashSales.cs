@@ -357,7 +357,7 @@ namespace CashPOS
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
                 }
-                
+
                 orderID = invoiceLabel.Text;
                 if (sandID != "")
                 {
@@ -436,14 +436,16 @@ namespace CashPOS
                         break;
                     }
                 }
-
-                myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
-                    orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
-                Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
-                    orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
-                myConnection.Open();
-                myCommand.ExecuteNonQuery();
-                myConnection.Close();
+                if (!(orderID.StartsWith("M") || orderID.StartsWith("C")))
+                {
+                    myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
+                        orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
+                    Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
+                        orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+                    myConnection.Close();
+                }
                 clearAll();
                 clearSelection();
             }
