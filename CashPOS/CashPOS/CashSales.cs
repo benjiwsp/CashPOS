@@ -565,7 +565,7 @@ namespace CashPOS
 
         private void amountTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
@@ -573,7 +573,7 @@ namespace CashPOS
 
         private void unitPriceTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
@@ -977,6 +977,11 @@ namespace CashPOS
         }
 
         private void customerTxt_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void unitPriceTxt_Validating(object sender, CancelEventArgs e)
         {
 
         }
