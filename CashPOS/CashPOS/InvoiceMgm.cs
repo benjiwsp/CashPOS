@@ -1076,7 +1076,7 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
                         rdr["supplierName"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
 
                 }

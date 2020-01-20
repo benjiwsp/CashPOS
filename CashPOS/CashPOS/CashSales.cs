@@ -436,7 +436,7 @@ namespace CashPOS
                         break;
                     }
                 }
-                if (!(orderID.StartsWith("M") || orderID.StartsWith("C")))
+                if (orderID.StartsWith("M") || orderID.StartsWith("C"))
                 {
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
                         orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);

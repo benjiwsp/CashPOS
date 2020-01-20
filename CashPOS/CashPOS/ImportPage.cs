@@ -54,6 +54,11 @@ namespace CashPOS
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
+        public string unit
+        {
+            get { return itemUnit.Text; }
+            set { itemUnit.Text = value; }
+        }
         string destType; // desntnation type
         public ImportPage()
         {

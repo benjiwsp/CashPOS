@@ -96,7 +96,7 @@ namespace CashPOS
             string compTel = "";
             string ch_add = "";
             string en_add = "";
-
+            decimal custTotal = 0.0m;
             myCommand = new MySqlCommand("Select * from CashPOSDB.companyInfo where NameCH = '" + BelongTo + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -111,10 +111,11 @@ namespace CashPOS
                     ch_add = rdr["AddCH"].ToString();
                     en_add = rdr["AddEN"].ToString();
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
 
-            string code = "", cust = "", handler = "", tel = "", fax = "", attn = "", email = "", refNo = "", quote = "", filepath = "", folderPath = "";
+            string code = "", cust = "", handler = "", tel = "", fax = "", attn = "", email = "", refNo = "", quote = "", filepath = "", folderPath = "", address = "";
             decimal sum = 0.0m;
             int index = 1;
             bool finish = true, filled = false, firstPage = true;
@@ -188,6 +189,8 @@ namespace CashPOS
                         fillFooter.AddCell(newCell(sum.ToString(" "), 0, 6, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));
+                        custTotal += sum;
+                        //      MessageBox.Show(sum.ToString());
                         doc.Add(fillFooter);
                         sum = 0.0m;
                     }
@@ -209,8 +212,10 @@ namespace CashPOS
                                 tel = tempRdr["Phone1"].ToString();
                                 fax = tempRdr["Fax"].ToString();
                                 email = tempRdr["Email"].ToString();
+                                address = tempRdr["Address"].ToString();
                             }
-                        } tempRdr.Close(); tempConn.Close();
+                        }
+                        tempRdr.Close(); tempConn.Close();
 
                         titleTable.AddCell(newCell(en_compName, 1, 5, 0, 0, chfontB));
                         titleTable.AddCell(newCell(ch_compName, 3, 5, 0, 2, chfontB));
@@ -258,14 +263,10 @@ namespace CashPOS
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(code, 0, 1, 0, 0, custInfo));
 
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("Handle By", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("地址", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(handler, 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(" ", 0, 7, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(address, 0, 6, 0, 0, custInfo));
+
                         doc.Add(infoTable);
 
                         detailTable.AddCell(newCell("ID", 2, 1, 0, 2, chfontT));
@@ -299,7 +300,13 @@ namespace CashPOS
                 footer.AddCell(newCell(" ", 0, 8, 0, 2, infoFont));
                 footer.AddCell(newCell(sum.ToString(" "), 0, 5, 0, 0, infoFont));
                 footer.AddCell(newCell("總數:", 0, 1, 0, 0, infoFont));
-                footer.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont)); sum = 0.0m;
+                footer.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont));
+                custTotal += sum;
+                //   MessageBox.Show(sum.ToString());
+                // MessageBox.Show("this is total " + custTotal);
+                sum = 0.0m;
+                footer.AddCell(newCell(custTotal.ToString("0.00"), 0, 8, 0, 2, infoFont));
+                custTotal = 0;
                 doc.Add(footer);
                 doc.Close();
                 myConnection.Close();
@@ -333,7 +340,8 @@ namespace CashPOS
                 {
                     searchGrid.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayDay"].ToString(), Regex.Match(rdr["LastInvGenS"].ToString(), "^[^ ]+").Value, Regex.Match(rdr["LastInvGenE"].ToString(), "^[^ ]+").Value);
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 

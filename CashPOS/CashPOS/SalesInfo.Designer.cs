@@ -131,7 +131,6 @@
             this.salesGrid.Name = "salesGrid";
             this.salesGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.salesGrid, 4);
-            this.salesGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.salesGrid.Size = new System.Drawing.Size(407, 682);
             this.salesGrid.TabIndex = 0;
             // 
@@ -219,7 +218,6 @@
             this.importGrid.Name = "importGrid";
             this.importGrid.RowHeadersVisible = false;
             this.tableLayoutPanel1.SetRowSpan(this.importGrid, 4);
-            this.importGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.importGrid.Size = new System.Drawing.Size(407, 682);
             this.importGrid.TabIndex = 1;
             // 

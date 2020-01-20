@@ -58,10 +58,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>78078E305752BFA21E50531B3785727B3E101DB8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>C88D98ADA0A8742697017BD3FE1E4964BA3887A1</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>CashPOS_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>CashPOS_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -329,6 +329,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="CashPOS_1_TemporaryKey.pfx" />
     <None Include="CashPOS_TemporaryKey.pfx" />
     <None Include="dataDiagram.xsc">
       <DependentUpon>dataDiagram.xsd</DependentUpon>

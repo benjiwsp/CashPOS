@@ -125,6 +125,19 @@ namespace CashPOS
                 }
             } rdr.Close();
             myConnection.Close();
+
+            myCommand = new MySqlCommand("Select Unit from CashPOSDB.prodData where ProdName = '" + itemSelected + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    myParent.unit = rdr["Unit"].ToString();
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }
     }
