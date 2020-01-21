@@ -270,6 +270,7 @@ namespace CashPOS
             selectedItemList.Rows.Clear();
             addressTxt.Text = "";
             customerTxt.Text = "";
+            telTxt.Items.Clear();
             telTxt.Text = "";
             licenseTxt.Text = "";
             pickupAddText.Text = "";
@@ -367,12 +368,14 @@ namespace CashPOS
                 bool attempted = false;
                 bool tryAgain = true;
                 myConnection.Open();
+
                 while (tryAgain)
                 {
                     try
                     {
                         while (true)
                         {
+                            // MessageBox.Show(selectedCustCode);
                             myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
                              phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + notes + "','" + belongTo + "','" +
                              isPrinted + "','" + date + "','')", myConnection);
@@ -448,6 +451,7 @@ namespace CashPOS
                 }
                 clearAll();
                 clearSelection();
+                pickupAddText.Items.Clear();
             }
             else
             {
@@ -614,6 +618,7 @@ namespace CashPOS
                         string custField = rdr["custCode"].ToString() + " - " + rdr["custName"].ToString();
                         customerTxt.Items.Add(custField);
                         customerTxt.Text = custField;
+                        selectedCustCode = rdr["custCode"].ToString();
                         addressTxt.Text = rdr["address"].ToString();
                         telTxt.Text = rdr["phone"].ToString();
                         licenseTxt.Text = rdr["license"].ToString();
@@ -658,7 +663,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-
+                    List<String> locList = new List<String>();
                     string add = rdr["location"].ToString();
                     if (!(group == "1" || group == "2"))
                     {
@@ -810,8 +815,9 @@ namespace CashPOS
                         pickupAddText.Text = "屯門";
                     }
                     //  MessageBox.Show(test);
+
                     selectedCustCode = custCode;
-                    myCommand = new MySqlCommand("select siteAddress, PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
+                    myCommand = new MySqlCommand("select Phone1, Phone2, siteAddress, PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
                     if (rdr.HasRows == true)
@@ -829,6 +835,16 @@ namespace CashPOS
                             }
                             payTypeLabel.Text = temp;
                             addressTxt.Items.Add(rdr["SiteAddress"].ToString());
+                            string phone1 = rdr["Phone1"].ToString();
+                            string phone2 = rdr["Phone2"].ToString();
+                            if (phone1 != "")
+                            {
+                                telTxt.Items.Add(phone1);
+                            }
+                            if (phone2 != "")
+                            {
+                                telTxt.Items.Add(phone2);
+                            }
                         }
                     }
                     rdr.Close();
@@ -852,7 +868,6 @@ namespace CashPOS
                     myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
-
                     if (rdr.HasRows == true)
                     {
                         while (rdr.Read())
@@ -862,11 +877,7 @@ namespace CashPOS
                     }
                     rdr.Close();
                     myConnection.Close();
-                    //  if (getCashFlow(custCode, selectedCompany) != 0.00m)
-                    //    {
                     checkNoneFullPaid(custCode, selectedCompany);
-                    //   }
-
                     // TO-DO: check for any unpaid invoice
                     checkStatus();
 

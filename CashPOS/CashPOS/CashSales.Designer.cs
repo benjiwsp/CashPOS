@@ -56,7 +56,6 @@
             this.payMethodLbl = new System.Windows.Forms.Label();
             this.payTypeLabel = new System.Windows.Forms.Label();
             this.totalPriceTxt = new System.Windows.Forms.Label();
-            this.telTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pickupAddText = new System.Windows.Forms.ComboBox();
@@ -95,6 +94,7 @@
             this.dateSelected = new System.Windows.Forms.DateTimePicker();
             this.custListView = new System.Windows.Forms.ListView();
             this.addressTxt = new System.Windows.Forms.ComboBox();
+            this.telTxt = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -172,7 +172,6 @@
             this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
             this.customerDetailPanel.Controls.Add(this.custNameLbl, 2, 10);
-            this.customerDetailPanel.Controls.Add(this.telTxt, 1, 3);
             this.customerDetailPanel.Controls.Add(this.label4, 0, 3);
             this.customerDetailPanel.Controls.Add(this.label5, 0, 4);
             this.customerDetailPanel.Controls.Add(this.pickupAddText, 1, 4);
@@ -188,6 +187,7 @@
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel5, 4, 11);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel6, 0, 13);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel7, 3, 1);
+            this.customerDetailPanel.Controls.Add(this.telTxt, 1, 3);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -466,16 +466,6 @@
             this.totalPriceTxt.Size = new System.Drawing.Size(187, 32);
             this.totalPriceTxt.TabIndex = 3;
             this.totalPriceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // telTxt
-            // 
-            this.customerDetailPanel.SetColumnSpan(this.telTxt, 2);
-            this.telTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.telTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telTxt.Location = new System.Drawing.Point(54, 132);
-            this.telTxt.Name = "telTxt";
-            this.telTxt.Size = new System.Drawing.Size(180, 26);
-            this.telTxt.TabIndex = 32;
             // 
             // label4
             // 
@@ -956,6 +946,17 @@
             this.addressTxt.Size = new System.Drawing.Size(107, 28);
             this.addressTxt.TabIndex = 38;
             // 
+            // telTxt
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.telTxt, 2);
+            this.telTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.telTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.telTxt.FormattingEnabled = true;
+            this.telTxt.Location = new System.Drawing.Point(54, 132);
+            this.telTxt.Name = "telTxt";
+            this.telTxt.Size = new System.Drawing.Size(180, 28);
+            this.telTxt.TabIndex = 50;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(235)))));
@@ -1250,7 +1251,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox licenseTxt;
-        private System.Windows.Forms.TextBox telTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1290,5 +1290,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ListView custListView;
         private System.Windows.Forms.ComboBox addressTxt;
+        private System.Windows.Forms.ComboBox telTxt;
     }
 }

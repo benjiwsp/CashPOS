@@ -58,10 +58,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C88D98ADA0A8742697017BD3FE1E4964BA3887A1</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3EB40DB6D04E8FCB03C4483DC24DC63C4547EF15</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>CashPOS_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>CashPOS_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -330,6 +330,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="CashPOS_1_TemporaryKey.pfx" />
+    <None Include="CashPOS_2_TemporaryKey.pfx" />
     <None Include="CashPOS_TemporaryKey.pfx" />
     <None Include="dataDiagram.xsc">
       <DependentUpon>dataDiagram.xsd</DependentUpon>
