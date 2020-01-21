@@ -248,6 +248,18 @@ namespace CashPOS
                         {
                             contact1 = "";
                             contact2 = "";
+                            siteAddress = "";
+                            code = "";
+                            name = "";
+                            money = "";
+                            phone1 = "";
+                            phone2 = "";
+                            fax = "";
+                            email = "";
+                            address = "";
+                            payMethod = "";
+                            payDay = "";
+
                             if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                             if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
@@ -318,6 +330,18 @@ namespace CashPOS
                     {
                         contact1 = "";
                         contact2 = "";
+                        siteAddress = "";
+                        code = "";
+                        name = "";
+                        money = "";
+                        phone1 = "";
+                        phone2 = "";
+                        fax = "";
+                        email = "";
+                        address = "";
+                        payMethod = "";
+                        payDay = "";
+                     
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                         if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                         if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
