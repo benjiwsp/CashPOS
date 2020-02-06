@@ -123,6 +123,8 @@ namespace CashPOS
         {
 
             resultList.Columns.Clear();
+            addGridCol("CompName", "公司編號");
+
             addGridCol("name", "客戶");
             addGridCol("payMeth", "付款類別");
             addGridCol("prod", "貨品");
@@ -142,7 +144,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    resultList.Rows.Add( rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
+                    resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(),
                             rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),
                             rdr["SitePrice"].ToString(), rdr["BelongTo"].ToString());
                 }
@@ -367,7 +369,7 @@ namespace CashPOS
                 //     MessageBox.Show(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
                 resultList.Rows.Clear();
                 resultList.Columns.Clear();
-                addGridCol("CompName", "公司編號");
+                addGridCol("CompName", "公司編號"); 
                 addGridCol("CompName", "公司");
                 addGridCol("payMeth", "付款類別");
                 addGridCol("ProdName", "貨品");
@@ -385,7 +387,7 @@ namespace CashPOS
                 {
                     while (rdr.Read())
                     {
-                        resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString());
+                        resultList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(), rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(),rdr["SitePrice"].ToString());
                     }
                 }
                 rdr.Close();

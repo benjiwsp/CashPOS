@@ -55,7 +55,7 @@ namespace CashPOS
         private void Form1_Load(object sender, EventArgs e)
         {
             homeScreen.unlocker += new HomeScreen.customHandler(enableBtn);
-           // popup.popuphandler += new PopList.customHandler(popUp);
+            // popup.popuphandler += new PopList.customHandler(popUp);
         }
         private string popUp(object sender)
         {
@@ -68,8 +68,25 @@ namespace CashPOS
             string group = (string)sender;
             switch (group)
             {
-                case "":
+                case "1":
+                    cashSales.group = "1";
                     group1();
+
+                    break;
+                case "1.1":
+                    cashSales.group = "1.1";
+                    group1();
+
+                    break;
+                case "1.2":
+                    cashSales.group = "1.2";
+                    group1();
+
+                    break;
+                case "1.3":
+                    cashSales.group = "1.3";
+                    group1();
+
                     break;
                 case "2":
                     group2();
@@ -176,7 +193,7 @@ namespace CashPOS
             }
 
         }
-   
+
         private void cashSaleEnable(bool isEnable)
         {
             cashSalesBtn.Enabled = isEnable;
@@ -215,7 +232,6 @@ namespace CashPOS
             printEnable(true);
             importEnable(true);
             salesInfoEnable(true);
-            cashSales.group = "1";
             cashSales.setLevel();
 
         }
@@ -256,7 +272,7 @@ namespace CashPOS
             cashSales.setLevel();
         }
 
-  
+
 
 
         /*

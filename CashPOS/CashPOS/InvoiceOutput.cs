@@ -70,7 +70,16 @@ namespace CashPOS
             return cell;
         }
 
-
+        private PdfPCell newCellRowSpan(string txt, int padding, int colSpan, int horAlig, int border, iTextSharp.text.Font font)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(txt, font));
+            cell.Border = border;
+            cell.Colspan = colSpan;
+            cell.Padding = padding;
+            cell.Rowspan = 2;
+            cell.HorizontalAlignment = horAlig; //0=Left, 1=Centre, 2=right
+            return cell;
+        }
         private void createFooter(PdfPTable table, int rowCount, Document doc, iTextSharp.text.Font font)
         {
             while (rowCount < 30)
@@ -97,6 +106,7 @@ namespace CashPOS
             string ch_add = "";
             string en_add = "";
             decimal custTotal = 0.0m;
+            decimal sandTotalWeight = 0.0m;
             myCommand = new MySqlCommand("Select * from CashPOSDB.companyInfo where NameCH = '" + BelongTo + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -162,20 +172,28 @@ namespace CashPOS
                     twdiths[5] = 10f;
                     twdiths[6] = 80f;
                     infoTable.SetWidths(twdiths);
-                    PdfPTable detailTable = new PdfPTable(8);
-                    float[] detailWdiths = new float[8];
+                    PdfPTable detailTable = new PdfPTable(10);
+                    float[] detailWdiths = new float[10];
                     detailWdiths[0] = 50f;
-                    detailWdiths[1] = 54f;
+                    detailWdiths[1] = 52f;
                     detailWdiths[2] = 54f;
                     detailWdiths[3] = 20f;
-                    detailWdiths[4] = 50f;
-                    detailWdiths[5] = 15f;
+                    detailWdiths[4] = 54f;
+                    detailWdiths[5] = 20f;
                     detailWdiths[6] = 50f;
-                    detailWdiths[7] = 50f;
+                    detailWdiths[7] = 15f;
+                    detailWdiths[8] = 50f;
+                    detailWdiths[9] = 50f;
 
                     detailTable.SetWidths(detailWdiths);
+
+                    PdfPTable addressTable = new PdfPTable(2);
+
+
+
+                    //detailTable.SetWidths(detailWdiths);
                     PdfPTable footerTable = new PdfPTable(5);
-                    PdfPTable fillFooter = new PdfPTable(8);
+                    PdfPTable fillFooter = new PdfPTable(10);
                     fillFooter.SetWidths(detailWdiths);
                     string newCode = rdr["custCode"].ToString();
 
@@ -185,8 +203,8 @@ namespace CashPOS
                         rowCount = 0;
                         filled = true;
                         rowCount = 0;
-                        fillFooter.AddCell(newCell(" ", 0, 8, 0, 2, infoFont));
-                        fillFooter.AddCell(newCell(sum.ToString(" "), 0, 6, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                        fillFooter.AddCell(newCell(sum.ToString(" "), 0, 8, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));
                         custTotal += sum;
@@ -216,12 +234,21 @@ namespace CashPOS
                             }
                         }
                         tempRdr.Close(); tempConn.Close();
+                        sandTotalWeight = 0.0m;
+                        titleTable.AddCell(newCell(ch_compName, 1, 5, 1, 0, chfontB));
 
-                        titleTable.AddCell(newCell(en_compName, 1, 5, 0, 0, chfontB));
-                        titleTable.AddCell(newCell(ch_compName, 3, 5, 0, 2, chfontB));
+                        titleTable.AddCell(newCell(en_compName, 3, 5, 1, 2, chfontB));
 
-                        titleTable.AddCell(newCell(en_add, 1, 5, 0, 0, chfontT));
-                        titleTable.AddCell(newCell(ch_add, 1, 5, 0, 0, chfontT));
+                        titleTable.AddCell(newCell(en_add, 1, 5, 1, 0, chfontT));
+                        titleTable.AddCell(newCell(ch_add, 1, 5, 1, 0, chfontT));
+                        titleTable.AddCell(newCell("", 1, 1, 0, 0, chfontT));
+
+                        titleTable.AddCell(newCell("Tel:" + compTel, 1, 1, 1, 0, chfontT));
+                        titleTable.AddCell(newCell("", 1, 1, 0, 0, chfontT));
+
+                        titleTable.AddCell(newCell("Fax:" + compFax, 1, 1, 1, 0, chfontT));
+                        titleTable.AddCell(newCell("", 1, 1, 0, 0, chfontT));
+
                         doc.Add(titleTable);
 
                         infoTable.AddCell(newCell(" ", 0, 7, 0, 0, custInfo));
@@ -231,21 +258,25 @@ namespace CashPOS
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(cust, 0, 5, 0, 0, custInfo));
 
-                        infoTable.AddCell(newCell("Tel No", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(tel, 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        //    infoTable.AddCell(newCell("Tel No", 0, 1, 0, 0, custInfo));
+                        //   infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        //    infoTable.AddCell(newCell(tel, 0, 1, 0, 0, custInfo));
+                        //   infoTable.AddCell(newCell("", 0, 4, 0, 0, custInfo));
+                        //     infoTable.AddCell(newCell("Invoice No", 0, 1, 0, 0, custInfo));
+                        //      infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        //      infoTable.AddCell(newCell(quote, 0, 1, 0, 0, custInfo));
+
+                        //  infoTable.AddCell(newCell("Fax No", 0, 1, 0, 0, custInfo));
+                        //   infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        //  infoTable.AddCell(newCell(fax, 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell("Invoice No", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(quote, 0, 1, 0, 0, custInfo));
-
-                        infoTable.AddCell(newCell("Fax No", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(fax, 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(quote, 0, 2, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 3, 0, 0, custInfo));
                         infoTable.AddCell(newCell("Reference No", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(refNo, 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(refNo, 0, 2, 0, 0, custInfo));
+                        infoTable.AddCell(newCell("", 0, 3, 0, 0, custInfo));
 
                         infoTable.AddCell(newCell("Email", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
@@ -253,7 +284,7 @@ namespace CashPOS
                         infoTable.AddCell(newCell("", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell("Date", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(beginning.ToString("yyyy-MM-dd"), 0, 1, 0, 0, custInfo));
+                        infoTable.AddCell(newCell(ending.ToString("yyyy-MM-dd"), 0, 1, 0, 0, custInfo));
 
                         infoTable.AddCell(newCell("Attn", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
@@ -263,24 +294,39 @@ namespace CashPOS
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
                         infoTable.AddCell(newCell(code, 0, 1, 0, 0, custInfo));
 
-                        infoTable.AddCell(newCell("地址", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        infoTable.AddCell(newCell(address, 0, 6, 0, 0, custInfo));
+                        //         infoTable.AddCell(newCell("地址", 0, 1, 0, 0, custInfo));
+                        //        infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
+                        //         infoTable.AddCell(newCell(address, 0, 6, 0, 0, custInfo));
 
                         doc.Add(infoTable);
+                        PdfPCell addressCell = newCellRowSpan(address, 0, 1, 0, 0, custInfo);
+
+                        addressTable.AddCell(addressCell);
+                        addressTable.AddCell(newCell(" ", 0, 2, 0, 0, infoFont));
+                        addressTable.AddCell(newCell(" ", 0, 2, 0, 0, infoFont));
+                        addressTable.AddCell(newCell(" ", 0, 2, 0, 0, infoFont));
+
+                        doc.Add(addressTable);
+
+                        detailTable.AddCell(newCell("日期", 2, 1, 0, 2, chfontT));
 
                         detailTable.AddCell(newCell("ID", 2, 1, 0, 2, chfontT));
-                        detailTable.AddCell(newCell("Item", 2, 3, 0, 2, chfontT));
-                        detailTable.AddCell(newCell("Quanity", 2, 1, 0, 2, chfontT));
-                        detailTable.AddCell(newCell("U", 2, 1, 0, 2, chfontT));
-                        detailTable.AddCell(newCell("U/P(HKD)", 2, 1, 0, 2, chfontT));
-                        detailTable.AddCell(newCell("Total(HKD)", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("貨品", 2, 3, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("類", 2, 1, 0, 2, chfontT));
+
+                        detailTable.AddCell(newCell("數量", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("單位", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("單價", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("總數(港幣)", 2, 1, 0, 2, chfontT));
                         finish = false;
                         filled = false;
                     }
+                    detailTable.AddCell(newCell( Convert.ToDateTime(rdr["time"]).ToString("dd-MM-yy"), 1, 1, 0, 0, infoFont));
 
                     detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["itemName"].ToString(), 1, 3, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["priceType"].ToString(), 1, 1, 0, 0, infoFont));
+
                     detailTable.AddCell(newCell(rdr["amount"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["unit"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["unitPrice"].ToString(), 1, 1, 0, 0, infoFont));
@@ -288,24 +334,56 @@ namespace CashPOS
                     sum += Convert.ToDecimal(rdr["total"].ToString());
                     doc.Add(detailTable);
                     rowCount++;
+                    if (rdr["itemName"].ToString() == "洗水沙" || rdr["itemName"].ToString() == "天然沙")
+                    {
+                        sandTotalWeight += Convert.ToDecimal(rdr["amount"].ToString());
+                    }
+
                 }
 
                 PdfPTable footer = new PdfPTable(8);
                 while (rowCount < 30)
                 {
-                    footer.AddCell(newCell(" ", 0, 8, 0, 0, infoFont));
+                    footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                     rowCount++;
                 }
                 rowCount = 0;
-                footer.AddCell(newCell(" ", 0, 8, 0, 2, infoFont));
-                footer.AddCell(newCell(sum.ToString(" "), 0, 5, 0, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                footer.AddCell(newCell(" ", 0, 4, 0, 0, infoFont));
+                footer.AddCell(newCell("總噸數:", 0,1, 0, 0, infoFont));
+                footer.AddCell(newCell(sandTotalWeight.ToString("0.00"), 0, 1, 0, 0, infoFont));
+
                 footer.AddCell(newCell("總數:", 0, 1, 0, 0, infoFont));
                 footer.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont));
+
+                footer.AddCell(newCell(" ", 0,10, 0, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                footer.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                if (ch_compName.StartsWith("富"))
+                {
+                    footer.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
+
+                }
+                else
+                {
+                    footer.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
+
+                }
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                footer.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
+
+
                 custTotal += sum;
                 //   MessageBox.Show(sum.ToString());
                 // MessageBox.Show("this is total " + custTotal);
                 sum = 0.0m;
-                footer.AddCell(newCell(custTotal.ToString("0.00"), 0, 8, 0, 2, infoFont));
+              //  footer.AddCell(newCell("客戶總數:", 0, 7, 0, 2, infoFont));
+                //footer.AddCell(newCell(custTotal.ToString("0.00"), 0, 2, 2, 2, infoFont));
                 custTotal = 0;
                 doc.Add(footer);
                 doc.Close();

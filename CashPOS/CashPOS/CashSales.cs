@@ -88,6 +88,24 @@ namespace CashPOS
             //  updateGridCol();
         }
 
+        private void typeLabelClicked(object sender, EventArgs e)
+        {
+            Label selectedType = sender as Label;
+            string selectedName = selectedType.Text;
+
+            string value = prodCatDic[selectedName];
+            subPanel.Controls.Clear();
+            subItems = new SubItems(this, value);
+            subPanel.Controls.Add(subItems);
+
+            foreach (Label l in itemTypePanel.Controls)
+            {
+                if (l.Text == selectedType.Text) { l.BackColor = Color.Pink; }
+                else { l.BackColor = Color.White; }
+            }
+            subPanel.PerformLayout();
+        }
+
         #region initialize related
 
 
@@ -136,7 +154,7 @@ namespace CashPOS
         #endregion
         public void setLevel()
         {
-            if (group == "1")
+            if (group.StartsWith("1"))
             {
                 loadCSCust();
                 sfOrdBtn.Enabled = false;
@@ -171,24 +189,6 @@ namespace CashPOS
         }
 
         //show corresponding User Control into subPanel on type Clicked
-        protected void typeLabelClicked(object sender, EventArgs e)
-        {
-
-            Label selectedType = sender as Label;
-            string selectedName = selectedType.Text;
-
-            string value = prodCatDic[selectedName];
-            subPanel.Controls.Clear();
-            subItems = new SubItems(this, value);
-            subPanel.Controls.Add(subItems);
-
-            foreach (Label l in itemTypePanel.Controls)
-            {
-                if (l.Text == selectedType.Text) { l.BackColor = Color.Pink; }
-                else { l.BackColor = Color.White; }
-            }
-            subPanel.PerformLayout();
-        }
 
         //send confirmed item with details to the grid for final review
         private void itemConfirmBtn_Click(object sender, EventArgs e)
@@ -499,7 +499,7 @@ namespace CashPOS
             selectedDest = "";
             selectedItem = "";
 
-            if (!(group == "1" || group == "2"))
+            if (!(group.StartsWith("1") || group == "2"))
             {
                 pickupAddText.Items.Clear();
                 selectedCompany = "";
@@ -665,7 +665,7 @@ namespace CashPOS
                 {
                     List<String> locList = new List<String>();
                     string add = rdr["location"].ToString();
-                    if (!(group == "1" || group == "2"))
+                    if (!(group.StartsWith("1") || group == "2"))
                     {
                         pickupAddText.Items.Add(add);
                     }
@@ -799,7 +799,7 @@ namespace CashPOS
 
         private void getInvoiceID(object sender)
         {
-            if (!(group == "1" || group == "2"))
+            if (!(group.StartsWith("1") || group == "2"))
                 pickupAddText.Items.Clear();
             if (isSearching == false)
             {
@@ -810,7 +810,23 @@ namespace CashPOS
                     string temp = "";
                     toLabel.Text = comboT;
                     string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
-                    if (custCode.StartsWith("SF"))
+
+                    if (group == "1.1")
+                    {
+                        pickupAddText.Text = "觀塘";
+
+                    }
+                    else if (group == "1.2")
+                    {
+                        pickupAddText.Text = "油麻地";
+
+                    }
+                    else if (group == "1.3")
+                    {
+                        pickupAddText.Text = "柴灣";
+
+                    }
+                    else if (custCode.StartsWith("SF"))
                     {
                         pickupAddText.Text = "屯門";
                     }
@@ -834,7 +850,9 @@ namespace CashPOS
                                 temp = "現金";
                             }
                             payTypeLabel.Text = temp;
-                            addressTxt.Items.Add(rdr["SiteAddress"].ToString());
+                            if (!(group.StartsWith("1") || group == "2"))
+
+                                addressTxt.Items.Add(rdr["SiteAddress"].ToString());
                             string phone1 = rdr["Phone1"].ToString();
                             string phone2 = rdr["Phone2"].ToString();
                             if (phone1 != "")
@@ -942,7 +960,7 @@ namespace CashPOS
         {
             if (customerTxt.Text.Length > 4)
             {
-                if (group == "1")
+                if (group.StartsWith("1"))
                 {
 
                     fromLabel.Text = "超誠";
@@ -987,11 +1005,6 @@ namespace CashPOS
             print.Show();
             print.print();
             print.Close();
-        }
-
-        private void customerTxt_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         private void unitPriceTxt_Validating(object sender, CancelEventArgs e)

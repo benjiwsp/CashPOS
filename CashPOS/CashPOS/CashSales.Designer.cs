@@ -511,7 +511,7 @@
             this.customerTxt.Name = "customerTxt";
             this.customerTxt.Size = new System.Drawing.Size(231, 28);
             this.customerTxt.TabIndex = 38;
-            this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged_1);
+            this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
             this.customerTxt.TextUpdate += new System.EventHandler(this.customerTxt_TextUpdate);
             this.customerTxt.Leave += new System.EventHandler(this.customerTxt_Leave);
             // 
