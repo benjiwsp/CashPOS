@@ -87,8 +87,11 @@ namespace CashPOS
 
                 }
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
+                salesGrid.Rows.Add("總數:", "", "", totalDisplayPrice);
+
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -108,8 +111,10 @@ namespace CashPOS
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
                 }
                 //       totalIncomeLbl.Text = "總數(港幣):" + totalDisplayPrice.ToString("n2");
+                incomeGrid.Rows.Add("總數:", "", "", totalDisplayPrice);
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -126,7 +131,8 @@ namespace CashPOS
                 {
                     overViewGrid.Rows.Add(rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), rdr["total"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -145,7 +151,8 @@ namespace CashPOS
                     importGrid.Rows.Add(rdr["orderID"].ToString(), rdr["itemName"].ToString(), rdr["unit"].ToString(), rdr["amount"].ToString());
                 }
 
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
         private void searchbyTelBtn_Click(object sender, EventArgs e)
@@ -156,6 +163,7 @@ namespace CashPOS
         private void getIByTel(string phone, string startDate, string endDate)
         {
             salesGrid.Rows.Clear();
+            double total = 0.00;
             salesGrid.Columns.Clear();
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
@@ -172,9 +180,13 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["Total"].ToString(), rdr["belongTo"].ToString());
+                    total += Convert.ToDouble(rdr["total"].ToString());
                 }
+                salesGrid.Rows.Add("總數:", "", "", "", total);
 
-            } rdr.Close();
+
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -197,6 +209,7 @@ namespace CashPOS
             addGridCol("ProdName", "單位");
             addGridCol("ProdName", "總數");
             addGridCol("ProdName", "公司");
+            double total = 0.00;
             myCommand = new MySqlCommand("Select itemName, unit, sum(amount) as Amount, sum(total) as Total, belongTo from CashPOSDB.orderDetails " +
                 "where time >='" + startDate + "' and  time <= '" +
        endDate + "' and orderID in (Select orderID From CashPOSDB.orderRecords where itemName='" + item + "') group by ItemName, unit, belongTo order by itemName", myConnection);
@@ -207,9 +220,14 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["Total"].ToString(), rdr["belongTo"].ToString());
-                }
+                    total += Convert.ToDouble(rdr["total"].ToString());
 
-            } rdr.Close();
+                }
+                salesGrid.Rows.Add("總數:", "", "","", total);
+
+            }
+
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -273,10 +291,11 @@ namespace CashPOS
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
-                salesGrid.Rows.Add("總數:","","",totalDisplayPrice);
+                salesGrid.Rows.Add("總數:", "", "", totalDisplayPrice);
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -286,6 +305,6 @@ namespace CashPOS
             getSelectedItemSold(code, getStartDate(), getEndDate());
         }
 
-     
+
     }
 }
