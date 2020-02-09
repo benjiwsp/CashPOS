@@ -101,7 +101,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    itemGrid.Rows.Add(rdr["ProdName"].ToString(), rdr["Unit"].ToString());
+                    itemGrid.Rows.Add(rdr["ProdName"].ToString(), rdr["Unit"].ToString(), rdr["SecUnit"].ToString(), rdr["Converter"].ToString());
                 }
             } rdr.Close();
             myConnection.Close();
@@ -114,7 +114,8 @@ namespace CashPOS
             {
                 if (row.Cells[0].Value != null)
                 {
-                    myCommand = new MySqlCommand("update CashPOSDB.prodData set Unit = '" + row.Cells[1].Value.ToString() + "' where ProdName = '" +
+                    myCommand = new MySqlCommand("update CashPOSDB.prodData set Unit = '" + row.Cells[1].Value.ToString() + "', SecUnit ='" + 
+                        row.Cells[2].Value.ToString() + "', Converter = '" + row.Cells[3].Value.ToString() + "' where ProdName = '" +
                     row.Cells[0].Value.ToString() + "'", myConnection);
                     myCommand.ExecuteNonQuery();
                 }

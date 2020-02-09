@@ -428,7 +428,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PrintDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PrintDialog";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.printLayer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.printList)).EndInit();
