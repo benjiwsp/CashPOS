@@ -39,21 +39,41 @@ namespace CashPOS
                     decimal tminv = Convert.ToDecimal(rdr["tmInv"].ToString());
                     decimal ktinv = Convert.ToDecimal(rdr["KtInv"].ToString());
                     decimal ymtinv = Convert.ToDecimal(rdr["YmtInv"].ToString());
+                    decimal pack = 0.0m;
                     if (cwinv != 0)
                     {
-                        cwList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), cwinv.ToString());
+                        if (rdr["SecUnit"].ToString() != "")
+                        {
+                            pack = cwinv / Convert.ToDecimal(rdr["Converter"].ToString());
+                        }
+                        cwList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), cwinv.ToString(), pack.ToString("0.00"));
                     }
                     if (tminv != 0)
                     {
-                        tmList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), tminv.ToString());
+                        if (rdr["SecUnit"].ToString() != "")
+                        {
+                            pack = tminv / Convert.ToDecimal(rdr["Converter"].ToString());
+                        }
+
+                        tmList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), tminv.ToString(), pack.ToString("0.00"));
                     }
                     if (ktinv != 0)
                     {
-                        ktList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ktinv.ToString());
+                        if (rdr["SecUnit"].ToString() != "")
+                        {
+                            pack = ktinv / Convert.ToDecimal(rdr["Converter"].ToString());
+                        }
+
+                        ktList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ktinv.ToString(), pack.ToString("0.00"));
                     }
                     if (ymtinv != 0)
                     {
-                        ymtList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ymtinv.ToString());
+                        if (rdr["SecUnit"].ToString() != "")
+                        {
+                            pack = ymtinv / Convert.ToDecimal(rdr["Converter"].ToString());
+                        }
+
+                        ymtList.Rows.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString(), ymtinv.ToString(), pack.ToString("0.00") );
                     }
                 }
             }
@@ -132,7 +152,7 @@ namespace CashPOS
                             cwList.Rows.Add(rdr["prodID"].ToString(), rdr["prodName"].ToString(), rdr["amount"].ToString());
                             break;
                     }
-         
+
                 }
             }
             rdr.Close();
