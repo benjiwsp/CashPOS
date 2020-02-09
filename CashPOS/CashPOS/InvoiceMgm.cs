@@ -1099,7 +1099,37 @@ namespace CashPOS
                     "' where belongTo = '" + belongToTxt.Text + "' and paymentType ='" + custTypeTxt.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
+            string pickupLoc = pickupLbl.Text;
+            string invCol = "";
+            foreach (DataGridViewRow row in resultGrid.Rows)
+            {
+                if (row.Cells[0].Value.ToString() != "")
+                {
 
+
+                    if (pickupLoc == "柴灣")
+                    {
+                        invCol = "CwInv";
+                    }
+                    else if (pickupLoc == "油麻地")
+                    {
+                        invCol = "YmtInv";
+                    }
+                    else if (pickupLoc == "屯門")
+                    {
+                        invCol = "TmInv";
+                    }
+                    else if (pickupLoc == "觀塘")
+                    {
+                        invCol = "KtInv";
+                    }
+                    if (invCol != "")
+                    {
+                        myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+            }
             myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
             myCommand.ExecuteNonQuery();
             myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);

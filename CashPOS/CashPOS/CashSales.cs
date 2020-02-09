@@ -413,7 +413,7 @@ namespace CashPOS
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
                                 myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[5     ].Value.ToString() + "','" +
+                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[5].Value.ToString() + "','" +
                                   pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                                 myCommand.ExecuteNonQuery();
 
