@@ -755,7 +755,7 @@ namespace CashPOS
                                  "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
                                  "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
                                  "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
-                                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
+                                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
                                  "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
                                  "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
                              "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID  where CashPOSDB.orderRecords.orderID = '" +
@@ -784,11 +784,11 @@ namespace CashPOS
                                 i++;
                             }
                             resultGrid.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-       rdr["unitPrice"].ToString(), rdr["total"].ToString());
+       rdr["unitPrice"].ToString(),rdr["package"].ToString(), rdr["total"].ToString());
 
 
                         }
-                        resultGrid.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
+                        resultGrid.Rows.Add("", "", "", "","總數:", rdr["totalPrice"]);
                     }
                     rdr.Close();
                     myConnection.Close();
@@ -1125,7 +1125,7 @@ namespace CashPOS
                     }
                     if (invCol != "")
                     {
-                        myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                        myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                         myCommand.ExecuteNonQuery();
                     }
                 }
