@@ -125,6 +125,7 @@
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.searchCatBtn, 2);
             this.searchCatBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchCatBtn.Enabled = false;
             this.searchCatBtn.Location = new System.Drawing.Point(3, 255);
             this.searchCatBtn.Name = "searchCatBtn";
             this.searchCatBtn.Size = new System.Drawing.Size(452, 36);

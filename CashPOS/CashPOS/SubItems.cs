@@ -102,6 +102,7 @@ namespace CashPOS
             string belongTo = myParent.getFromLabel();
             string destType = myParent.getDestLabel();
             string priceType = "";
+
             if (destType == "倉")
             {
                 priceType = "DelPrice";
@@ -137,6 +138,8 @@ namespace CashPOS
                    myParent.unit = rdr["Unit"].ToString();
                 }
             } rdr.Close();
+         //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
+         //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
             myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }

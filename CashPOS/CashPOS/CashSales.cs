@@ -1011,5 +1011,10 @@ namespace CashPOS
         {
 
         }
+
+        private void itemUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(itemUnit.Items[0].ToString() + " " + itemUnit.Items[1].ToString());
+        }
     }
 }
