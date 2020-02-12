@@ -124,7 +124,9 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    myParent.unitPriceValue = rdr[priceType].ToString();
+                    string uPrice = rdr[priceType].ToString();
+                    myParent.unitPriceValue = uPrice;
+                    myParent.unitPrice = uPrice;
                 }
             }
             rdr.Close();
@@ -154,20 +156,16 @@ namespace CashPOS
                     {
                         myParent.secUnit = "";
                         myParent.converter = 0.00m;
-                        myParent.unit =unit;
+                        myParent.unit = unit;
                         myParent.insertUnit(unit, true);
 
                     }
 
                 }
-<<<<<<< HEAD
             } rdr.Close();
-         //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
-         //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
-=======
-            }
-            rdr.Close();
->>>>>>> origin/master
+            //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
+            //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
+
             myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }

@@ -198,7 +198,7 @@ namespace CashPOS
             string note;
             string selectedUnit;
             string item;
-            decimal totalPrice;
+            decimal totalPrice = 0.0m;
             Boolean pass = true;
             //check if everything has a value
             if (amountTxt.Text.Length > 0 && decimal.TryParse(amountTxt.Text, out amount) && pass) { }//MessageBox.Show(amount.ToString()); }
@@ -213,15 +213,24 @@ namespace CashPOS
             if (pass)
             {
                 decimal package = 0.0m;
-             //   MessageBox.Show(secUnit + "    " + unit + "      " + selectedUnit);
-                if(converter != 0 && secUnit == selectedUnit)
+                //   MessageBox.Show(secUnit + "    " + unit + "      " + selectedUnit);
+                if (converter != 0 && secUnit == selectedUnit)
                 {
-                    package = amount;
-                    amount *= converter;
-                    unit = itemUnit.Items[0 ].ToString();
+                    package = Math.Round(amount * converter);
+
+                    unit = itemUnit.Items[0].ToString();
+                    totalPrice = amount * unitPrice;
+                    selectedItemList.Rows.Add(item, package, unit, unitPrice + "(" + unit+ ")", amount, totalPrice.ToString("0.00"));
                 }
-                totalPrice = amount * unitPrice;
-                selectedItemList.Rows.Add(item, amount, unit, unitPrice, package, totalPrice.ToString("0.00"));
+                else
+                {
+                    //  package = amount;
+                    //  amount *= converter;
+                    unit = itemUnit.Text.ToString();
+                    totalPrice = amount * unitPrice;
+                    selectedItemList.Rows.Add(item, amount, unit, unitPrice + "(" + unit + ")", package, totalPrice.ToString("0.00"));
+                }
+
                 totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString("0.00");
                 clearItemPanel();
             }
@@ -239,7 +248,7 @@ namespace CashPOS
             get { return unitPriceTxt.Text; }
             set { unitPriceTxt.Text = value; }
         }
-
+        public string unitPrice { get; set; }
         public string unit
         {
             get;
@@ -262,9 +271,9 @@ namespace CashPOS
         }
         public void clearUnit()
         {
-            itemUnit.Items.Clear(); 
+            itemUnit.Items.Clear();
         }
-        public void insertUnit(string value ,bool display)
+        public void insertUnit(string value, bool display)
         {
             itemUnit.Items.Add(value);
             if (display)
@@ -413,7 +422,7 @@ namespace CashPOS
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
                                 myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" + 
+                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
                                   row.Cells[5].Value.ToString() + "','" + pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                                 myCommand.ExecuteNonQuery();
 
@@ -1043,7 +1052,39 @@ namespace CashPOS
 
         private void itemUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(itemUnit.Items[0].ToString() + " " + itemUnit.Items[1].ToString());
+            if (itemUnit.Text != itemUnit.Items[0].ToString())
+            {
+                string item = selectedItemLabel.Text.ToString();
+                string cust = toLabel.Text.Substring(0, toLabel.Text.IndexOf(" -"));
+
+                string col = "";
+                switch (destLabel.Text)
+                {
+                    case "倉":
+                        col = "DelPackP";
+                        break;
+                    case "自提":
+                        col = "PickPackP";
+                        break;
+                    case "地盤":
+                        col = "SitePackP";
+                        break;
+                }
+                myCommand = new MySqlCommand("select " + col + " from CashPOSDB.custProdPrice where ProdName= '" + item + "' and Cust ='" + cust + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    if (rdr.Read())
+                    {
+                        unitPriceTxt.Text = rdr[col].ToString();
+                    }
+                } rdr.Close(); myConnection.Close();
+            }
+            else
+            {
+                unitPriceTxt.Text = unitPrice;
+            }
         }
     }
 }

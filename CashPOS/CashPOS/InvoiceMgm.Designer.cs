@@ -51,6 +51,12 @@
             this.searchByPayType = new System.Windows.Forms.Button();
             this.deleteOrderBrn = new System.Windows.Forms.Button();
             this.resultGrid = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -114,12 +120,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
             this.custListView = new System.Windows.Forms.ListView();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -456,6 +456,36 @@
             this.tableLayoutPanel1.SetRowSpan(this.resultGrid, 2);
             this.resultGrid.Size = new System.Drawing.Size(633, 560);
             this.resultGrid.TabIndex = 2;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "貨品";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "數量";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "單位";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "單價";
+            this.Column10.Name = "Column10";
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "包裝";
+            this.Column18.Name = "Column18";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "總數";
+            this.Column11.Name = "Column11";
             // 
             // tableLayoutPanel8
             // 
@@ -1177,36 +1207,6 @@
             this.custListView.TabIndex = 29;
             this.custListView.UseCompatibleStateImageBehavior = false;
             this.custListView.Click += new System.EventHandler(this.CustListView_Click);
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "貨品";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "數量";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "單位";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "單價";
-            this.Column10.Name = "Column10";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "包裝";
-            this.Column18.Name = "Column18";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "總數";
-            this.Column11.Name = "Column11";
             // 
             // InvoiceMgm
             // 

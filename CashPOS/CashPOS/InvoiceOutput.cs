@@ -318,7 +318,7 @@ namespace CashPOS
                     detailTable.AddCell(newCell(rdr["priceType"].ToString(), 1, 1, 0, 0, infoFont));
 
                     detailTable.AddCell(newCell(rdr["amount"].ToString(), 1, 1, 2, 0, infoFont));
-                    detailTable.AddCell(newCell(rdr["unit"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["unit"].ToString().Substring(0,1), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["unitPrice"].ToString(), 1, 1, 2, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["total"].ToString(), 1, 1, 2, 0, infoFont));
                     sum += Convert.ToDecimal(rdr["total"].ToString());

@@ -110,6 +110,8 @@ namespace CashPOS
         private void clearGrid()
         {
             custDataGrid.Rows.Clear();
+            custDataGrid.Rows.Add();
+            currentSupList.Rows.Clear();
             currCompLab.Text = "";
             setUpdate(false);
         }
@@ -297,6 +299,21 @@ namespace CashPOS
                     }
                 }
             }
+        }
+
+        private void currentSupplierBtn_Click(object sender, EventArgs e)
+        {
+            myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.supplierData", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    currentSupList.Rows.Add(rdr["Code"].ToString(), rdr["Name"].ToString());
+                }
+            } rdr.Close();
+            myConnection.Close();
         }
     }
 }

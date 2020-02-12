@@ -49,19 +49,27 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.clearCustList = new System.Windows.Forms.Button();
             this.updateCustBtn = new System.Windows.Forms.Button();
+            this.currentSupList = new System.Windows.Forms.DataGridView();
+            this.currentSupplierBtn = new System.Windows.Forms.Button();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.custDataGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentSupList)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 430F));
             this.tableLayoutPanel1.Controls.Add(this.custDataGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.currentSupList, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.currentSupplierBtn, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -93,7 +101,8 @@
             this.custDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custDataGrid.Location = new System.Drawing.Point(3, 103);
             this.custDataGrid.Name = "custDataGrid";
-            this.custDataGrid.Size = new System.Drawing.Size(1648, 794);
+            this.custDataGrid.RowHeadersVisible = false;
+            this.custDataGrid.Size = new System.Drawing.Size(1218, 794);
             this.custDataGrid.TabIndex = 0;
             this.custDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellContentClick);
             this.custDataGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.custDataGrid_CellEndEdit);
@@ -175,7 +184,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1648, 94);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1218, 94);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // currCompLab
@@ -185,7 +194,7 @@
             this.currCompLab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currCompLab.Location = new System.Drawing.Point(3, 74);
             this.currCompLab.Name = "currCompLab";
-            this.currCompLab.Size = new System.Drawing.Size(1642, 20);
+            this.currCompLab.Size = new System.Drawing.Size(1212, 20);
             this.currCompLab.TabIndex = 4;
             // 
             // serachAllBtn
@@ -194,7 +203,7 @@
             this.serachAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serachAllBtn.Location = new System.Drawing.Point(3, 3);
             this.serachAllBtn.Name = "serachAllBtn";
-            this.serachAllBtn.Size = new System.Drawing.Size(652, 68);
+            this.serachAllBtn.Size = new System.Drawing.Size(480, 68);
             this.serachAllBtn.TabIndex = 3;
             this.serachAllBtn.Text = "搜尋全部";
             this.serachAllBtn.UseVisualStyleBackColor = true;
@@ -205,9 +214,9 @@
             this.tableLayoutPanel2.SetColumnSpan(this.addBtn, 2);
             this.addBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addBtn.Enabled = false;
-            this.addBtn.Location = new System.Drawing.Point(990, 3);
+            this.addBtn.Location = new System.Drawing.Point(732, 3);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(655, 68);
+            this.addBtn.Size = new System.Drawing.Size(483, 68);
             this.addBtn.TabIndex = 3;
             this.addBtn.Text = "增加到超誠";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -225,15 +234,15 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1648, 94);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1218, 94);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // clearCustList
             // 
             this.clearCustList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearCustList.Location = new System.Drawing.Point(827, 3);
+            this.clearCustList.Location = new System.Drawing.Point(612, 3);
             this.clearCustList.Name = "clearCustList";
-            this.clearCustList.Size = new System.Drawing.Size(818, 88);
+            this.clearCustList.Size = new System.Drawing.Size(603, 88);
             this.clearCustList.TabIndex = 2;
             this.clearCustList.Text = "清除";
             this.clearCustList.UseVisualStyleBackColor = true;
@@ -244,11 +253,47 @@
             this.updateCustBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateCustBtn.Location = new System.Drawing.Point(3, 3);
             this.updateCustBtn.Name = "updateCustBtn";
-            this.updateCustBtn.Size = new System.Drawing.Size(818, 88);
+            this.updateCustBtn.Size = new System.Drawing.Size(603, 88);
             this.updateCustBtn.TabIndex = 1;
             this.updateCustBtn.Text = "確定";
             this.updateCustBtn.UseVisualStyleBackColor = true;
             this.updateCustBtn.Click += new System.EventHandler(this.updateCustBtn_Click);
+            // 
+            // currentSupList
+            // 
+            this.currentSupList.AllowUserToAddRows = false;
+            this.currentSupList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.currentSupList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currentSupList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column8,
+            this.Column9});
+            this.currentSupList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentSupList.Location = new System.Drawing.Point(1227, 103);
+            this.currentSupList.Name = "currentSupList";
+            this.currentSupList.RowHeadersVisible = false;
+            this.currentSupList.Size = new System.Drawing.Size(424, 794);
+            this.currentSupList.TabIndex = 6;
+            // 
+            // currentSupplierBtn
+            // 
+            this.currentSupplierBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentSupplierBtn.Location = new System.Drawing.Point(1227, 3);
+            this.currentSupplierBtn.Name = "currentSupplierBtn";
+            this.currentSupplierBtn.Size = new System.Drawing.Size(424, 94);
+            this.currentSupplierBtn.TabIndex = 7;
+            this.currentSupplierBtn.Text = "現有供應商";
+            this.currentSupplierBtn.UseVisualStyleBackColor = true;
+            this.currentSupplierBtn.Click += new System.EventHandler(this.currentSupplierBtn_Click);
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "供應商編號";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "供應商";
+            this.Column9.Name = "Column9";
             // 
             // SupplierMgm
             // 
@@ -262,6 +307,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.currentSupList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,6 +335,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn updated;
         private System.Windows.Forms.DataGridViewButtonColumn Column11;
+        private System.Windows.Forms.DataGridView currentSupList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.Button currentSupplierBtn;
 
 
     }

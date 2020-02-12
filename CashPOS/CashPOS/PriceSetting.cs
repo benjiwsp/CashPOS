@@ -272,11 +272,8 @@ namespace CashPOS
                                   watch.Stop();
 
                     */
-<<<<<<< HEAD
                 if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
-=======
                 if (row.Cells[(resultList.ColumnCount - 1)].Value != null) if (row.Cells[(resultList.ColumnCount - 1)].Value.ToString() != "") needEdit = row.Cells[(resultList.ColumnCount - 1)].Value.ToString();
->>>>>>> origin/master
                 if (needEdit == "y")
                 {
                     needEdit = "";
@@ -432,7 +429,7 @@ namespace CashPOS
             decimal sitePrice;
             decimal pickPackP = 0.0m;
             decimal delPackP = 0.0m;
-            decimal sitePackP= 0.0m;
+            decimal sitePackP = 0.0m;
             string comp = "";
             foreach (DataGridViewRow row in resultList.Rows)
             {
@@ -442,11 +439,8 @@ namespace CashPOS
                     delPrice = 0.0m;
                     sitePrice = 0.0m;
                     string needEdit = "";
-<<<<<<< HEAD
                     if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
-=======
                     if (row.Cells[(resultList.ColumnCount - 1)].Value != null) if (row.Cells[(resultList.ColumnCount - 1)].Value.ToString() != "") needEdit = row.Cells[(resultList.ColumnCount - 1)].Value.ToString();
->>>>>>> origin/master
                     if (needEdit == "y")
                     {
                         needEdit = "";
@@ -466,13 +460,13 @@ namespace CashPOS
                         if (custCodeTxt.Text.Length > 0)
                         {
                             myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
-                 ", SitePrice =  " + sitePrice + ", DelPackP = " + delPackP + ", PickPackP = " + pickPackP + ", SitePackP = " + sitePackP + 
+                 ", SitePrice =  " + sitePrice + ", DelPackP = " + delPackP + ", PickPackP = " + pickPackP + ", SitePackP = " + sitePackP +
                  "where ProdName = '" + prodName + "' and Cust = '" + comp + "' and Cust = '" + custCodeTxt.Text + "'", myConnection);
                         }
                         else
                         {
                             myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
-                 ", SitePrice =  " + sitePrice + ", DelPackP = " + delPackP + ", PickPackP = " + pickPackP + ", SitePackP = " + sitePackP + 
+                 ", SitePrice =  " + sitePrice + ", DelPackP = " + delPackP + ", PickPackP = " + pickPackP + ", SitePackP = " + sitePackP +
                  " where ProdName = '" + prodName + "' and Cust = '" + comp + "'", myConnection);
                         }
 
@@ -533,11 +527,8 @@ namespace CashPOS
 
         private void resultList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-<<<<<<< HEAD
             resultList.Rows[e.RowIndex].Cells[10].Value = "y";
-=======
             resultList.Rows[e.RowIndex].Cells[(resultList.ColumnCount - 1)].Value = "y";
->>>>>>> origin/master
         }
 
         private void exportCSVBtn_Click(object sender, EventArgs e)
