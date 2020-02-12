@@ -272,7 +272,11 @@ namespace CashPOS
                                   watch.Stop();
 
                     */
+<<<<<<< HEAD
                 if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
+=======
+                if (row.Cells[(resultList.ColumnCount - 1)].Value != null) if (row.Cells[(resultList.ColumnCount - 1)].Value.ToString() != "") needEdit = row.Cells[(resultList.ColumnCount - 1)].Value.ToString();
+>>>>>>> origin/master
                 if (needEdit == "y")
                 {
                     needEdit = "";
@@ -438,7 +442,11 @@ namespace CashPOS
                     delPrice = 0.0m;
                     sitePrice = 0.0m;
                     string needEdit = "";
+<<<<<<< HEAD
                     if (row.Cells[10].Value != null) if (row.Cells[10].Value.ToString() != "") needEdit = row.Cells[10].Value.ToString();
+=======
+                    if (row.Cells[(resultList.ColumnCount - 1)].Value != null) if (row.Cells[(resultList.ColumnCount - 1)].Value.ToString() != "") needEdit = row.Cells[(resultList.ColumnCount - 1)].Value.ToString();
+>>>>>>> origin/master
                     if (needEdit == "y")
                     {
                         needEdit = "";
@@ -525,7 +533,11 @@ namespace CashPOS
 
         private void resultList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+<<<<<<< HEAD
             resultList.Rows[e.RowIndex].Cells[10].Value = "y";
+=======
+            resultList.Rows[e.RowIndex].Cells[(resultList.ColumnCount - 1)].Value = "y";
+>>>>>>> origin/master
         }
 
         private void exportCSVBtn_Click(object sender, EventArgs e)

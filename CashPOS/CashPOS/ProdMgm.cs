@@ -73,7 +73,7 @@ namespace CashPOS
 
                             myConnection.Open();
                             myCommand = new MySqlCommand("insert IGNORE into CashPOSDB.prodData values(default,'" + prodID + "','" + prod + "','" + unit + "','" +
-                                pickPrice + "','" + delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0')", myConnection);
+                                pickPrice + "','" + delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0','','0')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                             //TO-DO  clear data

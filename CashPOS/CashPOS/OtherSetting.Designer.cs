@@ -46,13 +46,15 @@
             this.insertCompInfo = new System.Windows.Forms.Button();
             this.serachPickBtn = new System.Windows.Forms.Button();
             this.itemGrid = new System.Windows.Forms.DataGridView();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateUnitBtn = new System.Windows.Forms.Button();
             this.serachItem = new System.Windows.Forms.Button();
             this.clearAll = new System.Windows.Forms.Button();
             this.searchCat = new System.Windows.Forms.Button();
             this.searchInfo = new System.Windows.Forms.Button();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
@@ -199,22 +201,14 @@
             this.itemGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
-            this.Column11});
+            this.Column11,
+            this.Column12,
+            this.Column13});
             this.itemGrid.Location = new System.Drawing.Point(823, 74);
             this.itemGrid.Name = "itemGrid";
             this.itemGrid.RowHeadersVisible = false;
             this.itemGrid.Size = new System.Drawing.Size(546, 871);
             this.itemGrid.TabIndex = 5;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "貨品";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "單位";
-            this.Column11.Name = "Column11";
             // 
             // updateUnitBtn
             // 
@@ -266,6 +260,26 @@
             this.searchInfo.UseVisualStyleBackColor = true;
             this.searchInfo.Click += new System.EventHandler(this.searchInfo_Click);
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "貨品";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "單位";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "第2單位";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "轉換數值";
+            this.Column13.Name = "Column13";
+            // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,10 +329,12 @@
         private System.Windows.Forms.DataGridView itemGrid;
         private System.Windows.Forms.Button updateUnitBtn;
         private System.Windows.Forms.Button serachItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Button clearAll;
         private System.Windows.Forms.Button searchCat;
         private System.Windows.Forms.Button searchInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }

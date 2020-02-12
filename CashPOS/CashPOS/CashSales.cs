@@ -196,7 +196,7 @@ namespace CashPOS
             decimal amount;// = float.Parse(amountText.Text);
             decimal unitPrice;//= float.Parse(unitPriceText.Text);
             string note;
-            string unit;
+            string selectedUnit;
             string item;
             decimal totalPrice;
             Boolean pass = true;
@@ -205,15 +205,23 @@ namespace CashPOS
             else { MessageBox.Show("請輸入數量"); pass = false; return; }
             if (unitPriceTxt.Text.Length > 0 && decimal.TryParse(unitPriceTxt.Text, out unitPrice)) { }// MessageBox.Show(unitPrice.ToString()); }
             else { MessageBox.Show("請輸入單價"); pass = false; return; }
-            if (itemUnit.Text.Length > 0 && pass) { unit = itemUnit.Text; }
+            if (itemUnit.Text.Length > 0 && pass) { selectedUnit = itemUnit.Text; }
             else { MessageBox.Show("請選擇單位"); pass = false; return; }
             if (selectedItemLabel.Text.Length > 0 && pass) { item = selectedItemLabel.Text; } else { MessageBox.Show("請選擇貨品"); pass = false; return; }
             //only check if the item is 'Other'
             if (itemNotesTxt.Text.Length > 0) { note = itemNotesTxt.Text; }
             if (pass)
             {
+                decimal package = 0.0m;
+             //   MessageBox.Show(secUnit + "    " + unit + "      " + selectedUnit);
+                if(converter != 0 && secUnit == selectedUnit)
+                {
+                    package = amount;
+                    amount *= converter;
+                    unit = itemUnit.Items[0 ].ToString();
+                }
                 totalPrice = amount * unitPrice;
-                selectedItemList.Rows.Add(item, amount, unit, unitPrice, totalPrice);
+                selectedItemList.Rows.Add(item, amount, unit, unitPrice, package, totalPrice.ToString("0.00"));
                 totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString("0.00");
                 clearItemPanel();
             }
@@ -234,15 +242,36 @@ namespace CashPOS
 
         public string unit
         {
-            get { return itemUnit.Text; }
-            set { itemUnit.Text = value; }
+            get;
+            set;
+        }
+        public string secUnit
+        {
+            get;
+            set;
         }
         public string group
         {
             get;
             set;
         }
-
+        public decimal converter
+        {
+            get;
+            set;
+        }
+        public void clearUnit()
+        {
+            itemUnit.Items.Clear(); 
+        }
+        public void insertUnit(string value ,bool display)
+        {
+            itemUnit.Items.Add(value);
+            if (display)
+            {
+                itemUnit.Text = itemUnit.Items[0].ToString();
+            }
+        }
         private void clearItemPanel()
         {
             amountTxt.Text = "";
@@ -384,8 +413,8 @@ namespace CashPOS
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
                                 myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
-                                  pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
+                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" + 
+                                  row.Cells[5].Value.ToString() + "','" + pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                                 myCommand.ExecuteNonQuery();
 
                                 if (pickupLoc == "柴灣")

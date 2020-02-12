@@ -48,6 +48,10 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.resultList = new System.Windows.Forms.DataGridView();
+            this.displayInvoiceBtn = new System.Windows.Forms.Button();
+            this.invoiceNo = new System.Windows.Forms.TextBox();
+            this.searchCWPrint = new System.Windows.Forms.Button();
+            this.printBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,11 +60,8 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.displayInvoiceBtn = new System.Windows.Forms.Button();
-            this.invoiceNo = new System.Windows.Forms.TextBox();
-            this.searchCWPrint = new System.Windows.Forms.Button();
-            this.printBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printList)).BeginInit();
@@ -319,14 +320,53 @@
             this.Column6,
             this.z,
             this.Column7,
+            this.Column14,
             this.Column8});
             this.tableLayoutPanel2.SetColumnSpan(this.resultList, 2);
             this.resultList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultList.Location = new System.Drawing.Point(3, 112);
             this.resultList.Name = "resultList";
+            this.resultList.RowHeadersVisible = false;
             this.resultList.Size = new System.Drawing.Size(867, 608);
             this.resultList.TabIndex = 0;
             this.resultList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultList_CellContentClick);
+            // 
+            // displayInvoiceBtn
+            // 
+            this.displayInvoiceBtn.Location = new System.Drawing.Point(3, 3);
+            this.displayInvoiceBtn.Name = "displayInvoiceBtn";
+            this.displayInvoiceBtn.Size = new System.Drawing.Size(75, 23);
+            this.displayInvoiceBtn.TabIndex = 1;
+            this.displayInvoiceBtn.Text = "更新";
+            this.displayInvoiceBtn.UseVisualStyleBackColor = true;
+            this.displayInvoiceBtn.Click += new System.EventHandler(this.displayInvoiceBtn_Click);
+            // 
+            // invoiceNo
+            // 
+            this.invoiceNo.Location = new System.Drawing.Point(3, 726);
+            this.invoiceNo.Name = "invoiceNo";
+            this.invoiceNo.Size = new System.Drawing.Size(100, 20);
+            this.invoiceNo.TabIndex = 2;
+            // 
+            // searchCWPrint
+            // 
+            this.searchCWPrint.Location = new System.Drawing.Point(439, 726);
+            this.searchCWPrint.Name = "searchCWPrint";
+            this.searchCWPrint.Size = new System.Drawing.Size(75, 23);
+            this.searchCWPrint.TabIndex = 3;
+            this.searchCWPrint.Text = "Search";
+            this.searchCWPrint.UseVisualStyleBackColor = true;
+            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
+            // 
+            // printBtn
+            // 
+            this.printBtn.Location = new System.Drawing.Point(882, 969);
+            this.printBtn.Name = "printBtn";
+            this.printBtn.Size = new System.Drawing.Size(75, 23);
+            this.printBtn.TabIndex = 3;
+            this.printBtn.Text = "PRINT";
+            this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // Column1
             // 
@@ -368,49 +408,17 @@
             this.Column7.HeaderText = "已付款";
             this.Column7.Name = "Column7";
             // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "備註";
+            this.Column14.Name = "Column14";
+            // 
             // Column8
             // 
             this.Column8.HeaderText = "顯示";
             this.Column8.Name = "Column8";
             this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // displayInvoiceBtn
-            // 
-            this.displayInvoiceBtn.Location = new System.Drawing.Point(3, 3);
-            this.displayInvoiceBtn.Name = "displayInvoiceBtn";
-            this.displayInvoiceBtn.Size = new System.Drawing.Size(75, 23);
-            this.displayInvoiceBtn.TabIndex = 1;
-            this.displayInvoiceBtn.Text = "更新";
-            this.displayInvoiceBtn.UseVisualStyleBackColor = true;
-            this.displayInvoiceBtn.Click += new System.EventHandler(this.displayInvoiceBtn_Click);
-            // 
-            // invoiceNo
-            // 
-            this.invoiceNo.Location = new System.Drawing.Point(3, 726);
-            this.invoiceNo.Name = "invoiceNo";
-            this.invoiceNo.Size = new System.Drawing.Size(100, 20);
-            this.invoiceNo.TabIndex = 2;
-            // 
-            // searchCWPrint
-            // 
-            this.searchCWPrint.Location = new System.Drawing.Point(439, 726);
-            this.searchCWPrint.Name = "searchCWPrint";
-            this.searchCWPrint.Size = new System.Drawing.Size(75, 23);
-            this.searchCWPrint.TabIndex = 3;
-            this.searchCWPrint.Text = "Search";
-            this.searchCWPrint.UseVisualStyleBackColor = true;
-            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
-            // 
-            // printBtn
-            // 
-            this.printBtn.Location = new System.Drawing.Point(882, 969);
-            this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(75, 23);
-            this.printBtn.TabIndex = 3;
-            this.printBtn.Text = "PRINT";
-            this.printBtn.UseVisualStyleBackColor = true;
-            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // PrintPage
             // 
@@ -436,15 +444,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel printLayer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewButtonColumn Column8;
         private System.Windows.Forms.DataGridView printList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label addLbl;
@@ -466,6 +465,15 @@
         public System.Windows.Forms.DataGridView resultList;
         public System.Windows.Forms.TextBox invoiceNo;
         public System.Windows.Forms.Button searchCWPrint;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn z;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewButtonColumn Column8;
     }
 }

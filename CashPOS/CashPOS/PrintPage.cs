@@ -43,7 +43,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
-                        rdr["address"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                        rdr["address"].ToString(), rdr["pickupLoc"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
                 }
             }
             rdr.Close();
@@ -155,7 +155,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
-                        rdr["address"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                        rdr["address"].ToString(), rdr["pickupLoc"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString()) ;
                 }
             }
             rdr.Close();

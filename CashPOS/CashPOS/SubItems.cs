@@ -37,7 +37,7 @@ namespace CashPOS
             createItemBtn(itemList, subItemPanel, itemBtnClicked);
 
         }
-        
+
         private void addSubItems(string category)
         {
             myCommand = new MySqlCommand("Select * from CashPOSDB.prodData where Category = '" + category + "'", myConnection);
@@ -48,9 +48,10 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     string temp = rdr["ProdName"].ToString();
-                        itemList.Add(rdr["ProdName"].ToString());
+                    itemList.Add(rdr["ProdName"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
             /*            itemList.Add("red1");
                         itemList.Add("磚red1");
@@ -125,21 +126,48 @@ namespace CashPOS
                 {
                     myParent.unitPriceValue = rdr[priceType].ToString();
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
-
-                     myCommand = new MySqlCommand("Select Unit from CashPOSDB.prodData where ProdName = '" + itemSelected + "'", myConnection);
+            myParent.converter = 0;
+            myCommand = new MySqlCommand("Select Unit,SecUnit, Converter from CashPOSDB.prodData where ProdName = '" + itemSelected + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
             {
+
                 while (rdr.Read())
                 {
-                   myParent.unit = rdr["Unit"].ToString();
+                    string secUnit = rdr["SecUnit"].ToString();
+                    string unit = rdr["Unit"].ToString();
+                    if (secUnit != "")
+                    {
+                        myParent.clearUnit();
+                        myParent.secUnit = secUnit;
+                        myParent.unit = unit;
+                        myParent.insertUnit(unit, true);
+                        myParent.insertUnit(secUnit, false);
+
+                        myParent.converter = Convert.ToDecimal(rdr["Converter"].ToString());
+                    }
+                    else
+                    {
+                        myParent.secUnit = "";
+                        myParent.converter = 0.00m;
+                        myParent.unit =unit;
+                        myParent.insertUnit(unit, true);
+
+                    }
+
                 }
+<<<<<<< HEAD
             } rdr.Close();
          //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
          //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
+=======
+            }
+            rdr.Close();
+>>>>>>> origin/master
             myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
         }

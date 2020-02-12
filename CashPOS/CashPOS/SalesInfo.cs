@@ -15,15 +15,20 @@ namespace CashPOS
     {
         CashSales cashSales;
         private MySqlConnection myConnection;
+
+        private MySqlConnection tempConn;
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
+        MySqlDataReader rdr2;
+
         public SalesInfo()
         {
             InitializeComponent();
             cashSales = new CashSales();
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
+            tempConn = new MySqlConnection(value);
             cashSales.getCustomerList("超誠", "", csCustList);
             cashSales.getCustomerList("富資", "", sfCustList);
             getItem();
@@ -72,6 +77,7 @@ namespace CashPOS
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
             addGridCol("ProdName", "單位");
+            addGridCol("CalcName", "包裝"); 
             addGridCol("ProdName", "總數");
             double totalDisplayPrice = 0.00;
             MySqlCommand myCommand = new MySqlCommand("Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >='" +
@@ -82,13 +88,18 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["TotalPrice"].ToString());
+                    decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                    string item = rdr["itemName"].ToString();
+                    salesGrid.Rows.Add(item,amount, rdr["unit"].ToString(), calcPack(item,amount), rdr["TotalPrice"].ToString());
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
+                salesGrid.Rows.Add("總數:", "", "","", totalDisplayPrice);
+
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -108,8 +119,10 @@ namespace CashPOS
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
                 }
                 //       totalIncomeLbl.Text = "總數(港幣):" + totalDisplayPrice.ToString("n2");
+                incomeGrid.Rows.Add("總數:", "", "", totalDisplayPrice);
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -126,7 +139,8 @@ namespace CashPOS
                 {
                     overViewGrid.Rows.Add(rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), rdr["total"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -141,11 +155,13 @@ namespace CashPOS
             if (rdr.HasRows == true)
             {
                 while (rdr.Read())
-                {
-                    importGrid.Rows.Add(rdr["orderID"].ToString(), rdr["itemName"].ToString(), rdr["unit"].ToString(), rdr["amount"].ToString());
+                { decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                    string item = rdr["itemName"].ToString();
+                    importGrid.Rows.Add(rdr["orderID"].ToString(), item, rdr["unit"].ToString(), amount, calcPack(item, amount));
                 }
 
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
         private void searchbyTelBtn_Click(object sender, EventArgs e)
@@ -156,10 +172,13 @@ namespace CashPOS
         private void getIByTel(string phone, string startDate, string endDate)
         {
             salesGrid.Rows.Clear();
+            double total = 0.00;
             salesGrid.Columns.Clear();
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
             addGridCol("ProdName", "單位");
+            addGridCol("PackName", "包裝");
+
             addGridCol("ProdName", "總數");
             addGridCol("ProdName", "公司");
             myCommand = new MySqlCommand("Select itemName, unit, sum(amount) as Amount, sum(total) as Total, belongTo from CashPOSDB.orderDetails " +
@@ -171,10 +190,17 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["Total"].ToString(), rdr["belongTo"].ToString());
-                }
+                    decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                    string item = rdr["itemName"].ToString();
 
-            } rdr.Close();
+                    salesGrid.Rows.Add(item,amount, rdr["unit"].ToString(), calcPack(item, amount), rdr["Total"].ToString(), rdr["belongTo"].ToString());
+                    total += Convert.ToDouble(rdr["total"].ToString());
+                }
+                salesGrid.Rows.Add("總數:", "", "", "","", total);
+
+
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -195,21 +221,29 @@ namespace CashPOS
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
             addGridCol("ProdName", "單位");
+            addGridCol("PackName", "包裝");
             addGridCol("ProdName", "總數");
             addGridCol("ProdName", "公司");
+            double total = 0.00;
             myCommand = new MySqlCommand("Select itemName, unit, sum(amount) as Amount, sum(total) as Total, belongTo from CashPOSDB.orderDetails " +
                 "where time >='" + startDate + "' and  time <= '" +
        endDate + "' and orderID in (Select orderID From CashPOSDB.orderRecords where itemName='" + item + "') group by ItemName, unit, belongTo order by itemName", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
+            if (rdr.HasRows)
             {
                 while (rdr.Read())
                 {
-                    salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["Total"].ToString(), rdr["belongTo"].ToString());
-                }
+                    decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                    salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), calcPack(item, amount), rdr["Total"].ToString(), rdr["belongTo"].ToString());
+                    total += Convert.ToDouble(rdr["total"].ToString());
 
-            } rdr.Close();
+                }
+                salesGrid.Rows.Add("總數:", "", "","", total,"");
+
+            }
+
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -258,6 +292,7 @@ namespace CashPOS
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
             addGridCol("ProdName", "單位");
+            addGridCol("PackName", "包裝");
             addGridCol("ProdName", "總數");
 
             double totalDisplayPrice = 0.00;
@@ -269,14 +304,17 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    salesGrid.Rows.Add(rdr["itemName"].ToString(), rdr["Amount"].ToString(), rdr["unit"].ToString(), rdr["TotalPrice"].ToString());
+                    decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                    string item = rdr["itemName"].ToString();
+                    salesGrid.Rows.Add(item, rdr["Amount"].ToString(), rdr["unit"].ToString(),calcPack(item,amount), rdr["TotalPrice"].ToString());
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
-                salesGrid.Rows.Add("總數:","","",totalDisplayPrice);
+                salesGrid.Rows.Add("總數:", "","", "", totalDisplayPrice);
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
                 totalDisplayPrice = 0.00;
-            } rdr.Close();
+            }
+            rdr.Close();
             myConnection.Close();
         }
 
@@ -286,6 +324,25 @@ namespace CashPOS
             getSelectedItemSold(code, getStartDate(), getEndDate());
         }
 
-     
+       private string calcPack(string item, decimal value)
+        {
+            decimal pack = 0.0m;
+            MySqlCommand myCommand = new MySqlCommand("Select SecUnit, Converter from CashPOSDB.prodData where ProdName = '"+ item + "'", tempConn);
+            tempConn.Open();
+            rdr2 = myCommand.ExecuteReader();
+            if (rdr2.HasRows)
+            {
+                if (rdr2.Read())
+                {
+                    if(rdr2["SecUnit"].ToString()!= "")
+                    {
+                        pack = value / Convert.ToDecimal(rdr2["Converter"].ToString());
+                    }
+                }
+            }
+            rdr2.Close();
+            tempConn.Close();
+            return pack.ToString("0.00");
+        }
     }
 }
