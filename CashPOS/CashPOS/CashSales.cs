@@ -54,9 +54,15 @@ namespace CashPOS
 
         Boolean isSearching = false;
         private MySqlConnection myConnection;
+
+        private MySqlConnection myConnection2;
+
         string value;
         MySqlCommand myCommand;
-        MySqlDataReader rdr;
+        MySqlCommand myCommand2;
+
+        MySqlDataReader rdr; MySqlDataReader rdr2;
+
         string destType; // desntnation type
         public CashSales()
         {
@@ -64,6 +70,7 @@ namespace CashPOS
 
             value = ConfigurationManager.AppSettings["my_conn"];
             myConnection = new MySqlConnection(value);
+            myConnection2 = new MySqlConnection(value);
             itemTypePanel.Enabled = false;
             updateCatList();
 
@@ -216,19 +223,19 @@ namespace CashPOS
                 //   MessageBox.Show(secUnit + "    " + unit + "      " + selectedUnit);
                 if (converter != 0 && secUnit == selectedUnit)
                 {
-                    package = Math.Round(amount * converter);
+                    // package = Math.Round(amount * converter);
 
-                    unit = itemUnit.Items[0].ToString();
+                    unit = itemUnit.Items[1].ToString();
                     totalPrice = amount * unitPrice;
-                    selectedItemList.Rows.Add(item, package, unit, unitPrice + "(" + unit+ ")", amount, totalPrice.ToString("0.00"));
+                    selectedItemList.Rows.Add(item, amount, unit, unitPrice, "", totalPrice.ToString("0.00"));
                 }
                 else
                 {
                     //  package = amount;
                     //  amount *= converter;
-                    unit = itemUnit.Text.ToString();
+                    //    unit = itemUnit.Text.ToString();
                     totalPrice = amount * unitPrice;
-                    selectedItemList.Rows.Add(item, amount, unit, unitPrice + "(" + unit + ")", package, totalPrice.ToString("0.00"));
+                    selectedItemList.Rows.Add(item, amount, unit, unitPrice, "", totalPrice.ToString("0.00"));
                 }
 
                 totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString("0.00");
@@ -421,8 +428,11 @@ namespace CashPOS
 
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
-                                myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                                  + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
+                                string itemName = row.Cells[0].Value.ToString();
+                                string unit = row.Cells[2].Value.ToString();
+                                string inputAmount = row.Cells[1].Value.ToString();
+                                myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + itemName + "','"
+                                  + inputAmount + "','" + unit + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
                                   row.Cells[5].Value.ToString() + "','" + pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                                 myCommand.ExecuteNonQuery();
 
@@ -444,7 +454,8 @@ namespace CashPOS
                                 }
                                 if (invCol != "")
                                 {
-                                    myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                    string amount = getAmountConverter(itemName, unit, inputAmount);
+                                    myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                                     myCommand.ExecuteNonQuery();
                                 }
                             }
@@ -495,6 +506,27 @@ namespace CashPOS
             {
                 MessageBox.Show("請選擇付款資料");
             }
+        }
+        private string getAmountConverter(string item, string unit, string inputAmount)
+        {
+            string amount = "" ;
+            myCommand2 = new MySqlCommand("Select Unit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'",myConnection2);
+            myConnection2.Open();
+            rdr2 = myCommand2.ExecuteReader();
+            if(rdr2.HasRows){
+                if(rdr2.Read()){
+                    if (unit != rdr2["Unit"].ToString())
+                    {
+                        amount = (Math.Round(Convert.ToDecimal(inputAmount) * Convert.ToDecimal(rdr2["Converter"].ToString())).ToString("0.00"));
+                    }
+                    else
+                    {
+                        amount = inputAmount;
+                    }
+                }
+            }rdr2.Close();
+            myConnection2.Close();
+            return amount;
         }
         private void customerTxt_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1077,7 +1109,8 @@ namespace CashPOS
                 {
                     if (rdr.Read())
                     {
-                        unitPriceTxt.Text = rdr[col].ToString();
+                        string secPrice = rdr[col].ToString();
+                        unitPriceTxt.Text = secPrice;
                     }
                 } rdr.Close(); myConnection.Close();
             }

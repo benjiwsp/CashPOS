@@ -461,7 +461,7 @@ namespace CashPOS
                         {
                             myCommand = new MySqlCommand("update CashPOSDB.custProdPrice set  DelPrice =  " + delPrice + ", PickPrice = " + pickPrice +
                  ", SitePrice =  " + sitePrice + ", DelPackP = " + delPackP + ", PickPackP = " + pickPackP + ", SitePackP = " + sitePackP +
-                 "where ProdName = '" + prodName + "' and Cust = '" + comp + "' and Cust = '" + custCodeTxt.Text + "'", myConnection);
+                 " where ProdName = '" + prodName + "' and Cust = '" + comp + "'", myConnection);
                         }
                         else
                         {

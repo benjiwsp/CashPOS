@@ -189,7 +189,7 @@ namespace CashPOS
 
                         }
                         myConnection.Open();
-                        myCommand = new MySqlCommand("insert into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
+                        myCommand = new MySqlCommand("insert ignore into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
                                       phone2 + "','" + fax + "','" + address + "','" + email + "','" + contact1 + "','" + contact2 + "','" + money + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
@@ -303,6 +303,7 @@ namespace CashPOS
 
         private void currentSupplierBtn_Click(object sender, EventArgs e)
         {
+            clearGrid();
             myCommand = new MySqlCommand("Select Code, Name from CashPOSDB.supplierData", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
