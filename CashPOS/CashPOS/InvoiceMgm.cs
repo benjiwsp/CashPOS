@@ -1092,6 +1092,7 @@ namespace CashPOS
             orderID = (Convert.ToInt32(Regex.Match(idToSearch.Text, @"\d+").Value) - 1).ToString("000000");
 
             orderID = onlyLetters + orderID;
+           MessageBox.Show(orderID);
             myConnection.Open();
             if (orderID.StartsWith("M") || orderID.StartsWith("C"))
             {

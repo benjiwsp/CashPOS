@@ -492,8 +492,19 @@ namespace CashPOS
                 {
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
                         orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
-                    Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
-                        orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
+                    //   Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
+                    //        orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+                else if (!(orderID.StartsWith("M") || orderID.StartsWith("C")) && (invoiceLabel.Text.StartsWith("M") || invoiceLabel.Text.StartsWith("C")))
+                {
+
+                    myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
+                        invoiceLabel.Text + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
+                    // Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
+                    //     invoiceLabel.Text + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
@@ -509,12 +520,14 @@ namespace CashPOS
         }
         private string getAmountConverter(string item, string unit, string inputAmount)
         {
-            string amount = "" ;
-            myCommand2 = new MySqlCommand("Select Unit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'",myConnection2);
+            string amount = "";
+            myCommand2 = new MySqlCommand("Select Unit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'", myConnection2);
             myConnection2.Open();
             rdr2 = myCommand2.ExecuteReader();
-            if(rdr2.HasRows){
-                if(rdr2.Read()){
+            if (rdr2.HasRows)
+            {
+                if (rdr2.Read())
+                {
                     if (unit != rdr2["Unit"].ToString())
                     {
                         amount = (Math.Round(Convert.ToDecimal(inputAmount) * Convert.ToDecimal(rdr2["Converter"].ToString())).ToString("0.00"));
@@ -524,7 +537,8 @@ namespace CashPOS
                         amount = inputAmount;
                     }
                 }
-            }rdr2.Close();
+            }
+            rdr2.Close();
             myConnection2.Close();
             return amount;
         }
@@ -719,7 +733,7 @@ namespace CashPOS
                         invoiceNoteTxt.Text = rdr["notes"].ToString();
                         i++;
                     }
-                    selectedItemList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(), rdr["unitPrice"].ToString(),
+                    selectedItemList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(), rdr["unitPrice"].ToString(), "",
                         rdr["total"].ToString());
                 }
             }
@@ -1112,7 +1126,8 @@ namespace CashPOS
                         string secPrice = rdr[col].ToString();
                         unitPriceTxt.Text = secPrice;
                     }
-                } rdr.Close(); myConnection.Close();
+                }
+                rdr.Close(); myConnection.Close();
             }
             else
             {
