@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.catGrid = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateCatBtn = new System.Windows.Forms.Button();
@@ -46,15 +47,19 @@
             this.insertCompInfo = new System.Windows.Forms.Button();
             this.serachPickBtn = new System.Windows.Forms.Button();
             this.itemGrid = new System.Windows.Forms.DataGridView();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateUnitBtn = new System.Windows.Forms.Button();
             this.serachItem = new System.Windows.Forms.Button();
             this.clearAll = new System.Windows.Forms.Button();
             this.searchCat = new System.Windows.Forms.Button();
             this.searchInfo = new System.Windows.Forms.Button();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.reuseTxt = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.reuseIDBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
@@ -204,15 +209,35 @@
             this.Column11,
             this.Column12,
             this.Column13});
-            this.itemGrid.Location = new System.Drawing.Point(823, 74);
+            this.itemGrid.Location = new System.Drawing.Point(1095, 74);
             this.itemGrid.Name = "itemGrid";
             this.itemGrid.RowHeadersVisible = false;
             this.itemGrid.Size = new System.Drawing.Size(546, 871);
             this.itemGrid.TabIndex = 5;
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "貨品";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "單位";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "第2單位";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "轉換數值";
+            this.Column13.Name = "Column13";
+            // 
             // updateUnitBtn
             // 
-            this.updateUnitBtn.Location = new System.Drawing.Point(823, 951);
+            this.updateUnitBtn.Location = new System.Drawing.Point(1095, 951);
             this.updateUnitBtn.Name = "updateUnitBtn";
             this.updateUnitBtn.Size = new System.Drawing.Size(546, 23);
             this.updateUnitBtn.TabIndex = 6;
@@ -222,7 +247,7 @@
             // 
             // serachItem
             // 
-            this.serachItem.Location = new System.Drawing.Point(823, 45);
+            this.serachItem.Location = new System.Drawing.Point(1095, 45);
             this.serachItem.Name = "serachItem";
             this.serachItem.Size = new System.Drawing.Size(546, 23);
             this.serachItem.TabIndex = 7;
@@ -260,30 +285,46 @@
             this.searchInfo.UseVisualStyleBackColor = true;
             this.searchInfo.Click += new System.EventHandler(this.searchInfo_Click);
             // 
-            // Column10
+            // label1
             // 
-            this.Column10.HeaderText = "貨品";
-            this.Column10.Name = "Column10";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label1.Location = new System.Drawing.Point(428, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "重用單號:";
             // 
-            // Column11
+            // reuseTxt
             // 
-            this.Column11.HeaderText = "單位";
-            this.Column11.Name = "Column11";
+            this.reuseTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.reuseTxt.Location = new System.Drawing.Point(516, 55);
+            this.reuseTxt.Name = "reuseTxt";
+            this.reuseTxt.Size = new System.Drawing.Size(181, 26);
+            this.reuseTxt.TabIndex = 12;
             // 
-            // Column12
+            // contextMenuStrip1
             // 
-            this.Column12.HeaderText = "第2單位";
-            this.Column12.Name = "Column12";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Column13
+            // reuseIDBtn
             // 
-            this.Column13.HeaderText = "轉換數值";
-            this.Column13.Name = "Column13";
+            this.reuseIDBtn.Location = new System.Drawing.Point(432, 87);
+            this.reuseIDBtn.Name = "reuseIDBtn";
+            this.reuseIDBtn.Size = new System.Drawing.Size(265, 34);
+            this.reuseIDBtn.TabIndex = 14;
+            this.reuseIDBtn.Text = "重用";
+            this.reuseIDBtn.UseVisualStyleBackColor = true;
+            this.reuseIDBtn.Click += new System.EventHandler(this.reuseIDBtn_Click);
             // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.reuseIDBtn);
+            this.Controls.Add(this.reuseTxt);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchInfo);
             this.Controls.Add(this.searchCat);
             this.Controls.Add(this.clearAll);
@@ -304,6 +345,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -336,5 +378,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox reuseTxt;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button reuseIDBtn;
     }
 }

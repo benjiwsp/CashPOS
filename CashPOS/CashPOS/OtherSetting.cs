@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace CashPOS
 {
@@ -132,6 +133,7 @@ namespace CashPOS
             pickupLocDataGrid.Rows.Clear();
             companyData.Rows.Clear();
             itemGrid.Rows.Clear();
+            reuseTxt.Text = "";
         }
 
         private void searchCat_Click(object sender, EventArgs e)
@@ -171,6 +173,57 @@ namespace CashPOS
             }
             rdr.Close();
             myConnection.Close();
+        }
+
+        private void reuseIDBtn_Click(object sender, EventArgs e)
+        {
+            string reuseID =   reuseTxt.Text;
+            var onlyLetters = new String(reuseID.Where(Char.IsLetter).ToArray());
+            reuseID = (Convert.ToInt32(Regex.Match(reuseID, @"\d+").Value)).ToString("000000");
+            reuseID = onlyLetters + (Convert.ToInt32(reuseID.Substring(1, reuseID.Length - 1)) - 1).ToString("000000");
+            string belongTo = "";
+            string paymentType = "";
+            switch (reuseID.Substring(0,3))
+            {
+                case "CSF":
+                    belongTo = "富資";
+                    paymentType = "現金";
+                    break;  
+                case "MSF":
+                    belongTo = "富資";
+                    paymentType = "簽單";
+                    break;
+                case "CSB":
+                    belongTo = "超誠";
+                    paymentType = "現金";
+                    break;
+                case "MSB":
+                    belongTo = "超誠";
+                    paymentType = "簽單";
+                    break;
+                case "ISF":
+                    belongTo = "富資";
+                    paymentType = "進貨";
+                    break;
+                case "ISB":
+                    belongTo = "超誠";
+                    paymentType = "進貨";
+                    break;
+                case "TRA":
+                    belongTo = "調倉";
+                    paymentType = "";
+                    break;
+                case "ADJ":
+                    belongTo = "執倉";
+                    paymentType = "";
+                    break;
+            }
+
+            myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" + reuseID + "' where belongTo ='" + belongTo + "' and paymentType = '" + paymentType + "'", myConnection);
+            myConnection.Open();
+            myCommand.ExecuteNonQuery();
+            myConnection.Close();
+            reuseTxt.Text = "";
         }
     }
 }
