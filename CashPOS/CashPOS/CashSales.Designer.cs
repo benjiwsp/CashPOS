@@ -222,7 +222,7 @@
             this.invoiceLabel.Name = "invoiceLabel";
             this.invoiceLabel.Size = new System.Drawing.Size(184, 71);
             this.invoiceLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.invoiceLabel.TabIndex = 6;
+            this.invoiceLabel.TabIndex = 10;
             this.invoiceLabel.Text = "單號";
             this.invoiceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.invoiceLabel.UseCustomBackColor = true;
@@ -247,7 +247,7 @@
             this.selfPickRadio.Location = new System.Drawing.Point(3, 198);
             this.selfPickRadio.Name = "selfPickRadio";
             this.selfPickRadio.Size = new System.Drawing.Size(184, 36);
-            this.selfPickRadio.TabIndex = 16;
+            this.selfPickRadio.TabIndex = 3;
             this.selfPickRadio.Text = "自提";
             this.selfPickRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.selfPickRadio.UseSelectable = true;
@@ -261,7 +261,7 @@
             this.warehouseRadio.Location = new System.Drawing.Point(193, 198);
             this.warehouseRadio.Name = "warehouseRadio";
             this.warehouseRadio.Size = new System.Drawing.Size(178, 36);
-            this.warehouseRadio.TabIndex = 17;
+            this.warehouseRadio.TabIndex = 4;
             this.warehouseRadio.Text = "倉";
             this.warehouseRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.warehouseRadio.UseSelectable = true;
@@ -275,7 +275,7 @@
             this.siteRadio.Location = new System.Drawing.Point(377, 198);
             this.siteRadio.Name = "siteRadio";
             this.siteRadio.Size = new System.Drawing.Size(198, 36);
-            this.siteRadio.TabIndex = 18;
+            this.siteRadio.TabIndex = 5;
             this.siteRadio.Text = "地盤";
             this.siteRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.siteRadio.UseSelectable = true;
@@ -328,7 +328,7 @@
             this.selectedItemList.RowHeadersVisible = false;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
-            this.selectedItemList.TabIndex = 19;
+            this.selectedItemList.TabIndex = 9;
             this.selectedItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemList_CellContentClick);
             // 
             // Column1
@@ -373,7 +373,7 @@
             this.chiuOrdBtn.Location = new System.Drawing.Point(193, 3);
             this.chiuOrdBtn.Name = "chiuOrdBtn";
             this.chiuOrdBtn.Size = new System.Drawing.Size(178, 65);
-            this.chiuOrdBtn.TabIndex = 22;
+            this.chiuOrdBtn.TabIndex = 11;
             this.chiuOrdBtn.Text = "超誠";
             this.chiuOrdBtn.UseVisualStyleBackColor = true;
             this.chiuOrdBtn.Click += new System.EventHandler(this.chiuOrdBtn_Click);
@@ -385,7 +385,7 @@
             this.sfOrdBtn.Location = new System.Drawing.Point(377, 3);
             this.sfOrdBtn.Name = "sfOrdBtn";
             this.sfOrdBtn.Size = new System.Drawing.Size(198, 65);
-            this.sfOrdBtn.TabIndex = 24;
+            this.sfOrdBtn.TabIndex = 16;
             this.sfOrdBtn.Text = "富資";
             this.sfOrdBtn.UseVisualStyleBackColor = true;
             this.sfOrdBtn.Click += new System.EventHandler(this.sfOrdBtn_Click);
@@ -504,7 +504,7 @@
             this.pickupAddText.Location = new System.Drawing.Point(54, 162);
             this.pickupAddText.Name = "pickupAddText";
             this.pickupAddText.Size = new System.Drawing.Size(180, 28);
-            this.pickupAddText.TabIndex = 37;
+            this.pickupAddText.TabIndex = 2;
             // 
             // customerTxt
             // 
@@ -517,7 +517,7 @@
             this.customerTxt.Location = new System.Drawing.Point(3, 98);
             this.customerTxt.Name = "customerTxt";
             this.customerTxt.Size = new System.Drawing.Size(231, 28);
-            this.customerTxt.TabIndex = 38;
+            this.customerTxt.TabIndex = 0;
             this.customerTxt.SelectedIndexChanged += new System.EventHandler(this.customerTxt_SelectedIndexChanged);
             this.customerTxt.TextUpdate += new System.EventHandler(this.customerTxt_TextUpdate);
             this.customerTxt.Leave += new System.EventHandler(this.customerTxt_Leave);
@@ -533,7 +533,7 @@
             this.invoiceNoteTxt.Multiline = true;
             this.invoiceNoteTxt.Name = "invoiceNoteTxt";
             this.invoiceNoteTxt.Size = new System.Drawing.Size(317, 65);
-            this.invoiceNoteTxt.TabIndex = 28;
+            this.invoiceNoteTxt.TabIndex = 7;
             // 
             // sandReceiptTxt
             // 
@@ -545,7 +545,7 @@
             this.sandReceiptTxt.Multiline = true;
             this.sandReceiptTxt.Name = "sandReceiptTxt";
             this.sandReceiptTxt.Size = new System.Drawing.Size(133, 65);
-            this.sandReceiptTxt.TabIndex = 29;
+            this.sandReceiptTxt.TabIndex = 6;
             // 
             // label8
             // 
@@ -625,7 +625,7 @@
             this.paidAmount.Multiline = true;
             this.paidAmount.Name = "paidAmount";
             this.paidAmount.Size = new System.Drawing.Size(138, 65);
-            this.paidAmount.TabIndex = 26;
+            this.paidAmount.TabIndex = 8;
             this.paidAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.paidAmount_KeyPress);
             // 
             // tableLayoutPanel3
@@ -668,7 +668,7 @@
             this.payByTransferBtn.Location = new System.Drawing.Point(82, 6);
             this.payByTransferBtn.Name = "payByTransferBtn";
             this.payByTransferBtn.Size = new System.Drawing.Size(67, 53);
-            this.payByTransferBtn.TabIndex = 0;
+            this.payByTransferBtn.TabIndex = 1;
             this.payByTransferBtn.Text = "過戶";
             this.payByTransferBtn.UseCustomBackColor = true;
             this.payByTransferBtn.UseSelectable = true;
@@ -681,7 +681,7 @@
             this.payByChequeBtn.Location = new System.Drawing.Point(158, 6);
             this.payByChequeBtn.Name = "payByChequeBtn";
             this.payByChequeBtn.Size = new System.Drawing.Size(67, 53);
-            this.payByChequeBtn.TabIndex = 0;
+            this.payByChequeBtn.TabIndex = 2;
             this.payByChequeBtn.Text = "支票";
             this.payByChequeBtn.UseCustomBackColor = true;
             this.payByChequeBtn.UseSelectable = true;
@@ -712,7 +712,7 @@
             this.fullPayBtn.Location = new System.Drawing.Point(3, 3);
             this.fullPayBtn.Name = "fullPayBtn";
             this.fullPayBtn.Size = new System.Drawing.Size(93, 59);
-            this.fullPayBtn.TabIndex = 44;
+            this.fullPayBtn.TabIndex = 0;
             this.fullPayBtn.Text = "全數";
             this.fullPayBtn.UseVisualStyleBackColor = false;
             this.fullPayBtn.Click += new System.EventHandler(this.fullPayBtn_Click);
@@ -725,7 +725,7 @@
             this.NotPaidBtn.Location = new System.Drawing.Point(102, 3);
             this.NotPaidBtn.Name = "NotPaidBtn";
             this.NotPaidBtn.Size = new System.Drawing.Size(93, 59);
-            this.NotPaidBtn.TabIndex = 44;
+            this.NotPaidBtn.TabIndex = 1;
             this.NotPaidBtn.Text = "未付";
             this.NotPaidBtn.UseVisualStyleBackColor = false;
             this.NotPaidBtn.Click += new System.EventHandler(this.NotPaidBtn_Click);
@@ -789,7 +789,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(572, 71);
-            this.tableLayoutPanel6.TabIndex = 48;
+            this.tableLayoutPanel6.TabIndex = 9;
             // 
             // searchBtn
             // 
@@ -813,7 +813,7 @@
             this.sendAndPP.Name = "sendAndPP";
             this.tableLayoutPanel6.SetRowSpan(this.sendAndPP, 2);
             this.sendAndPP.Size = new System.Drawing.Size(108, 65);
-            this.sendAndPP.TabIndex = 2;
+            this.sendAndPP.TabIndex = 1;
             this.sendAndPP.Text = "發送 印價錢";
             this.sendAndPP.UseVisualStyleBackColor = true;
             this.sendAndPP.Click += new System.EventHandler(this.sendAndPP_Click);
@@ -826,7 +826,7 @@
             this.sendAndPWP.Name = "sendAndPWP";
             this.tableLayoutPanel6.SetRowSpan(this.sendAndPWP, 2);
             this.sendAndPWP.Size = new System.Drawing.Size(108, 65);
-            this.sendAndPWP.TabIndex = 3;
+            this.sendAndPWP.TabIndex = 2;
             this.sendAndPWP.Text = "發送 不印價";
             this.sendAndPWP.UseVisualStyleBackColor = true;
             this.sendAndPWP.Click += new System.EventHandler(this.sendAndPWP_Click);
@@ -840,7 +840,7 @@
             this.cancelBtn.Name = "cancelBtn";
             this.tableLayoutPanel6.SetRowSpan(this.cancelBtn, 2);
             this.cancelBtn.Size = new System.Drawing.Size(110, 65);
-            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.TabIndex = 4;
             this.cancelBtn.Text = "取消";
             this.cancelBtn.UseSelectable = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -854,7 +854,7 @@
             this.sendOrderBtn.Name = "sendOrderBtn";
             this.tableLayoutPanel6.SetRowSpan(this.sendOrderBtn, 2);
             this.sendOrderBtn.Size = new System.Drawing.Size(108, 65);
-            this.sendOrderBtn.TabIndex = 0;
+            this.sendOrderBtn.TabIndex = 3;
             this.sendOrderBtn.Text = "發送";
             this.sendOrderBtn.UseSelectable = true;
             this.sendOrderBtn.Click += new System.EventHandler(this.sendOrderBtn_Click);
@@ -892,7 +892,7 @@
             this.licenseTxt.Location = new System.Drawing.Point(225, 42);
             this.licenseTxt.Name = "licenseTxt";
             this.licenseTxt.Size = new System.Drawing.Size(107, 26);
-            this.licenseTxt.TabIndex = 31;
+            this.licenseTxt.TabIndex = 1;
             // 
             // label6
             // 
@@ -927,7 +927,7 @@
             this.dateSelected.Location = new System.Drawing.Point(169, 81);
             this.dateSelected.Name = "dateSelected";
             this.dateSelected.Size = new System.Drawing.Size(163, 26);
-            this.dateSelected.TabIndex = 36;
+            this.dateSelected.TabIndex = 2;
             // 
             // custListView
             // 
@@ -951,7 +951,7 @@
             this.addressTxt.Location = new System.Drawing.Point(225, 3);
             this.addressTxt.Name = "addressTxt";
             this.addressTxt.Size = new System.Drawing.Size(107, 28);
-            this.addressTxt.TabIndex = 38;
+            this.addressTxt.TabIndex = 0;
             // 
             // telTxt
             // 
@@ -962,7 +962,7 @@
             this.telTxt.Location = new System.Drawing.Point(54, 132);
             this.telTxt.Name = "telTxt";
             this.telTxt.Size = new System.Drawing.Size(180, 28);
-            this.telTxt.TabIndex = 50;
+            this.telTxt.TabIndex = 1;
             // 
             // panel2
             // 
@@ -1016,7 +1016,7 @@
             this.itemConfirmBtn.Name = "itemConfirmBtn";
             this.tableLayoutPanel1.SetRowSpan(this.itemConfirmBtn, 2);
             this.itemConfirmBtn.Size = new System.Drawing.Size(210, 111);
-            this.itemConfirmBtn.TabIndex = 6;
+            this.itemConfirmBtn.TabIndex = 4;
             this.itemConfirmBtn.Text = "確定";
             this.itemConfirmBtn.UseSelectable = true;
             this.itemConfirmBtn.Click += new System.EventHandler(this.itemConfirmBtn_Click);
@@ -1030,7 +1030,7 @@
             this.amountTxt.Location = new System.Drawing.Point(433, 3);
             this.amountTxt.Name = "amountTxt";
             this.amountTxt.Size = new System.Drawing.Size(209, 53);
-            this.amountTxt.TabIndex = 10;
+            this.amountTxt.TabIndex = 0;
             this.amountTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.amountTxt_KeyPress);
             // 
             // unitPriceTxt
@@ -1042,7 +1042,7 @@
             this.unitPriceTxt.Location = new System.Drawing.Point(433, 61);
             this.unitPriceTxt.Name = "unitPriceTxt";
             this.unitPriceTxt.Size = new System.Drawing.Size(209, 53);
-            this.unitPriceTxt.TabIndex = 10;
+            this.unitPriceTxt.TabIndex = 1;
             this.unitPriceTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unitPriceTxt_KeyPress);
             this.unitPriceTxt.Validating += new System.ComponentModel.CancelEventHandler(this.unitPriceTxt_Validating);
             // 
@@ -1055,7 +1055,7 @@
             this.itemNotesTxt.Location = new System.Drawing.Point(648, 61);
             this.itemNotesTxt.Name = "itemNotesTxt";
             this.itemNotesTxt.Size = new System.Drawing.Size(209, 53);
-            this.itemNotesTxt.TabIndex = 10;
+            this.itemNotesTxt.TabIndex = 3;
             // 
             // itemUnit
             // 
@@ -1067,7 +1067,7 @@
             this.itemUnit.Location = new System.Drawing.Point(648, 3);
             this.itemUnit.Name = "itemUnit";
             this.itemUnit.Size = new System.Drawing.Size(209, 54);
-            this.itemUnit.TabIndex = 11;
+            this.itemUnit.TabIndex = 2;
             this.itemUnit.SelectedIndexChanged += new System.EventHandler(this.itemUnit_SelectedIndexChanged);
             // 
             // selectedItemLabel
@@ -1121,7 +1121,8 @@
             this.subPanel.Location = new System.Drawing.Point(578, 129);
             this.subPanel.Name = "subPanel";
             this.subPanel.Size = new System.Drawing.Size(1073, 586);
-            this.subPanel.TabIndex = 7;
+            this.subPanel.TabIndex = 1;
+            this.subPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subPanel_Paint);
             // 
             // tableLayoutPanel2
             // 

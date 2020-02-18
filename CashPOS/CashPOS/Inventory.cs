@@ -50,6 +50,7 @@ namespace CashPOS
                     }
                     if (tminv != 0)
                     {
+
                         if (rdr["SecUnit"].ToString() != "")
                         {
                             pack = tminv / Convert.ToDecimal(rdr["Converter"].ToString());

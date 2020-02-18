@@ -520,6 +520,7 @@ namespace CashPOS
         }
         private string getAmountConverter(string item, string unit, string inputAmount)
         {
+            telTxt.Items.Clear();
             string amount = "";
             myCommand2 = new MySqlCommand("Select Unit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'", myConnection2);
             myConnection2.Open();
@@ -783,7 +784,7 @@ namespace CashPOS
                     DialogResult dialogResult = MessageBox.Show("確定要刪除此資料?", "警告", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        decimal total = Convert.ToDecimal(selectedItemList.Rows[e.RowIndex].Cells[4].Value.ToString());
+                        decimal total = Convert.ToDecimal(selectedItemList.Rows[e.RowIndex].Cells[5].Value.ToString());
                         totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) - total).ToString("0.00");
                         selectedItemList.Rows.RemoveAt(e.RowIndex);
                     }
@@ -883,6 +884,7 @@ namespace CashPOS
 
         private void getInvoiceID(object sender)
         {
+            //  MessageBox.Show(group);
             if (!(group.StartsWith("1") || group == "2"))
                 pickupAddText.Items.Clear();
             if (isSearching == false)
@@ -894,8 +896,15 @@ namespace CashPOS
                     string temp = "";
                     toLabel.Text = comboT;
                     string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
+                    if (group == "1")
+                    {
+                        pickupAddText.Items.Add("觀塘");
+                        pickupAddText.Items.Add("油麻地");
+                        pickupAddText.Items.Add("柴灣");
+                        pickupAddText.Items.Add("屯門");
 
-                    if (group == "1.1")
+                    }
+                    else if (group == "1.1")
                     {
                         pickupAddText.Text = "觀塘";
 
@@ -934,9 +943,9 @@ namespace CashPOS
                                 temp = "現金";
                             }
                             payTypeLabel.Text = temp;
-                            if (!(group.StartsWith("1") || group == "2"))
-
-                                addressTxt.Items.Add(rdr["SiteAddress"].ToString());
+                            if ((group.StartsWith("1") || group == "2"))
+                                addressTxt.Items.Clear();
+                            addressTxt.Items.Add(rdr["SiteAddress"].ToString());
                             string phone1 = rdr["Phone1"].ToString();
                             string phone2 = rdr["Phone2"].ToString();
                             if (phone1 != "")
@@ -1133,6 +1142,11 @@ namespace CashPOS
             {
                 unitPriceTxt.Text = unitPrice;
             }
+        }
+
+        private void subPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

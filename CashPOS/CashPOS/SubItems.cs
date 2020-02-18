@@ -94,6 +94,8 @@ namespace CashPOS
         //event handler for clicking products 
         protected void itemBtnClicked(object sender, EventArgs e)
         {
+            myParent.clearUnit();   
+
             Button btn = sender as Button;
             string itemSelected = btn.Text;
             //TO-DO: read price from database and update it to the unitPriceBox
