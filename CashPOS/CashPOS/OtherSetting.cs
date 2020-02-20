@@ -30,6 +30,8 @@ namespace CashPOS
         private void updateCatBtn_Click(object sender, EventArgs e)
         {
             myConnection.Open();
+
+            if (catGrid.Rows[0].Cells[0].Value != null) { 
             foreach (DataGridViewRow row in catGrid.Rows)
             {
                 if (row.Cells[0].Value != null)
@@ -40,10 +42,13 @@ namespace CashPOS
             }
             myConnection.Close();
             catGrid.Rows.Clear();
+            }
         }
 
         private void updatePickupLocBtn_Click(object sender, EventArgs e)
         {
+            if (pickupLocDataGrid.Rows[0].Cells[0].Value != null)
+            { 
             myConnection.Open();
             myCommand = new MySqlCommand("delete from CashPOSDB.pickupLoc", myConnection);
             myCommand.ExecuteNonQuery();
@@ -58,22 +63,26 @@ namespace CashPOS
             myConnection.Close();
             pickupLocDataGrid.Rows.Clear();
         }
+        }
 
         private void insertCompInfo_Click(object sender, EventArgs e)
         {
-            myConnection.Open();
-            foreach (DataGridViewRow row in companyData.Rows)
+            if (companyData.Rows[0].Cells[0].Value != null)
             {
-                if (row.Cells[0].Value != null)
+                myConnection.Open();
+                foreach (DataGridViewRow row in companyData.Rows)
                 {
-                    myCommand = new MySqlCommand("insert into CashPOSDB.companyInfo values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() +
-                         "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString()
-                    + "','" + row.Cells[5].Value.ToString() + "','" + row.Cells[6].Value.ToString() + "')", myConnection);
-                    myCommand.ExecuteNonQuery();
+                    if (row.Cells[0].Value != null)
+                    {
+                        myCommand = new MySqlCommand("insert into CashPOSDB.companyInfo values('" + row.Cells[0].Value.ToString() + "','" + row.Cells[1].Value.ToString() +
+                             "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString()
+                        + "','" + row.Cells[5].Value.ToString() + "','" + row.Cells[6].Value.ToString() + "')", myConnection);
+                        myCommand.ExecuteNonQuery();
+                    }
                 }
+                myConnection.Close();
+                companyData.Rows.Clear();
             }
-            myConnection.Close();
-            companyData.Rows.Clear();
         }
 
         private void serachPickBtn_Click(object sender, EventArgs e)
@@ -110,21 +119,23 @@ namespace CashPOS
 
         private void updateUnitBtn_Click(object sender, EventArgs e)
         {
-            myConnection.Open();
-            foreach (DataGridViewRow row in itemGrid.Rows)
+            if (itemGrid.Rows[0].Cells[0].Value != null)
             {
-                if (row.Cells[0].Value != null)
+                myConnection.Open();
+                foreach (DataGridViewRow row in itemGrid.Rows)
                 {
-                    myCommand = new MySqlCommand("update CashPOSDB.prodData set Unit = '" + row.Cells[1].Value.ToString() + "', SecUnit ='" + 
-                        row.Cells[2].Value.ToString() + "', Converter = '" + row.Cells[3].Value.ToString() + "' where ProdName = '" +
-                    row.Cells[0].Value.ToString() + "'", myConnection);
-                    myCommand.ExecuteNonQuery();
+                    if (row.Cells[0].Value != null)
+                    {
+                        myCommand = new MySqlCommand("update CashPOSDB.prodData set Unit = '" + row.Cells[1].Value.ToString() + "', SecUnit ='" +
+                            row.Cells[2].Value.ToString() + "', Converter = '" + row.Cells[3].Value.ToString() + "' where ProdName = '" +
+                        row.Cells[0].Value.ToString() + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                    }
                 }
+                myConnection.Close();
+                companyData.Rows.Clear();
+                itemGrid.Rows.Clear();
             }
-            myConnection.Close();
-            companyData.Rows.Clear();
-            itemGrid.Rows.Clear();
-
         }
 
         private void clearAll_Click(object sender, EventArgs e)

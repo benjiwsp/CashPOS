@@ -170,6 +170,7 @@ namespace CashPOS
 
             myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
+            myParent.amountTxt.Select();
         }
     }
 }

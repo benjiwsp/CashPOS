@@ -359,7 +359,7 @@ namespace CashPOS
         }
         private void sendOrder(bool isSearch, string id, string payMethod)
         {
-            if (paidAmount.Text.Length > 0 && payMethLbl.Text.Length > 0)
+            if (paidAmount.Text.Length > 0 && payMethLbl.Text.Length > 0 && selectedItemList.Rows.Count >0)
             {
                 string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
                 orderID = invoiceLabel.Text;// invoiceLabel.Text;
@@ -476,7 +476,7 @@ namespace CashPOS
                             case 1062:
                                 var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
                                 orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
-                                orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
+                                orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) ).ToString("000000");
                                 attempted = true;
 
                                 break;

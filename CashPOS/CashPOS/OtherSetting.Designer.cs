@@ -289,7 +289,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label1.Location = new System.Drawing.Point(428, 58);
+            this.label1.Location = new System.Drawing.Point(470, 334);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 11;
@@ -298,7 +298,7 @@
             // reuseTxt
             // 
             this.reuseTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.reuseTxt.Location = new System.Drawing.Point(516, 55);
+            this.reuseTxt.Location = new System.Drawing.Point(558, 331);
             this.reuseTxt.Name = "reuseTxt";
             this.reuseTxt.Size = new System.Drawing.Size(181, 26);
             this.reuseTxt.TabIndex = 12;
@@ -310,7 +310,7 @@
             // 
             // reuseIDBtn
             // 
-            this.reuseIDBtn.Location = new System.Drawing.Point(432, 87);
+            this.reuseIDBtn.Location = new System.Drawing.Point(474, 363);
             this.reuseIDBtn.Name = "reuseIDBtn";
             this.reuseIDBtn.Size = new System.Drawing.Size(265, 34);
             this.reuseIDBtn.TabIndex = 14;
