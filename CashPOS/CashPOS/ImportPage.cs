@@ -285,6 +285,7 @@ namespace CashPOS
             refNo = refBox.Text;
             string invCol = "";
             string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            if(pickupAddText.Text != "") { 
             if (isSearching)
             {
                 if (orderID.StartsWith("I"))
@@ -420,6 +421,7 @@ namespace CashPOS
                     myConnection.Close();
                 }
             }
+
             orderID = invoiceLabel.Text;
             bool successed = false;
             bool attempted = false;
@@ -547,6 +549,11 @@ namespace CashPOS
             myConnection.Close();
             clearAll();
             clearSelection();
+            }
+            else
+            {
+                MessageBox.Show("請輸入入倉地方..");
+            }
         }
 
 

@@ -53,6 +53,7 @@ namespace CashPOS
         }
         private void serachByID_Click(object sender, EventArgs e)
         {
+            addStdCol();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
             decimal transfer = 0.0m;
@@ -145,6 +146,7 @@ namespace CashPOS
 
         private void serachByTel_Click(object sender, EventArgs e)
         {
+            addStdCol();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
             decimal transfer = 0.0m;
@@ -266,6 +268,7 @@ namespace CashPOS
 
         private void serachByCust_Click(object sender, EventArgs e)
         {
+            addStdCol();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
             decimal transfer = 0.0m;
@@ -333,6 +336,7 @@ namespace CashPOS
 
         private void searchByItem_Click(object sender, EventArgs e)
         {
+            addStdCol();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
             decimal transfer = 0.0m;
@@ -398,6 +402,7 @@ namespace CashPOS
 
         private void searchByPayType_Click(object sender, EventArgs e)
         {
+            addStdCol();
             orderListView.Rows.Clear();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
@@ -465,6 +470,7 @@ namespace CashPOS
 
         private void searchByPrice_Click(object sender, EventArgs e)
         {
+            addStdCol();
             orderListView.Rows.Clear();
             decimal tp;
             Decimal.TryParse(totalPrice.Text, out tp);
@@ -531,6 +537,7 @@ namespace CashPOS
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
+            addStdCol();
             clearAll();
         }
 
@@ -549,6 +556,8 @@ namespace CashPOS
         private void serachByComp_Click(object sender, EventArgs e)
         {
             orderListView.Rows.Clear();
+            addStdCol();
+
             string selectedComp = compLbl.Text;
             string query;
             decimal cash = 0.0m;
@@ -784,11 +793,11 @@ namespace CashPOS
                                 i++;
                             }
                             resultGrid.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-       rdr["unitPrice"].ToString(),rdr["package"].ToString(), rdr["total"].ToString());
+       rdr["unitPrice"].ToString(), rdr["package"].ToString(), rdr["total"].ToString());
 
 
                         }
-                        resultGrid.Rows.Add("", "", "", "","總數:", rdr["totalPrice"]);
+                        resultGrid.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
                     }
                     rdr.Close();
                     myConnection.Close();
@@ -838,6 +847,59 @@ namespace CashPOS
                 }
             }
         }
+        private void changeColTxt(int col, string header)
+        {
+            orderListView.Columns[col].HeaderText = header;
+        }
+        private void addTextCol(string colName, string header)
+        {
+            orderListView.Columns.Add(colName, header);
+        }
+        private void addBtnCol(string colName, string header)
+        {
+            DataGridViewButtonColumn bcol = new DataGridViewButtonColumn();
+            bcol.HeaderText = header;
+
+            bcol.Name = colName;
+            bcol.UseColumnTextForButtonValue = true;
+            orderListView.Columns.Add(bcol);
+        }
+        private void addStdCol()
+        {
+           // orderListView.Columns.Clear();
+            changeColTxt(0, "單號");
+            changeColTxt(1, "沙單");
+            changeColTxt(2, "客戶");
+            changeColTxt(3, "車牌");
+            changeColTxt(4, "取貨地");
+            changeColTxt(5, "目的地");
+            changeColTxt(6, "方式");
+            changeColTxt(7, "總金額");
+            changeColTxt(8, "已付");
+            changeColTxt(9, "欠款");
+            changeColTxt(10, "日期");
+            changeColTxt(11, "已付款");
+            changeColTxt(12, "回單?");
+            changeColTxt(13, "回單");
+        }
+
+        private void addImpCol()
+        {
+            changeColTxt(0, "單號");
+            changeColTxt(1, "Ref");
+            changeColTxt(2, "供應商");
+            changeColTxt(3, "車/船");
+            changeColTxt(4, "目的地");
+            changeColTxt(5, "");
+            changeColTxt(6, "總金額");
+            changeColTxt(7, "已付");
+            changeColTxt(8, "欠款");
+            changeColTxt(9, "日期");
+            changeColTxt(10, "");
+            changeColTxt(11, "已付款");
+            changeColTxt(12, "回單?");
+            changeColTxt(13, "回單");
+        }
         private void amount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -865,6 +927,7 @@ namespace CashPOS
 
         private void searchNonPaid(string comp)
         {
+            addStdCol();
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
             decimal transfer = 0.0m;
@@ -949,6 +1012,7 @@ namespace CashPOS
 
         private void locationBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            addStdCol();
             orderListView.Rows.Clear();
             string selectedComp = compLbl.Text;
             string query;
@@ -1052,6 +1116,7 @@ namespace CashPOS
 
         private void locSerachImpBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            addImpCol();
             orderListView.Rows.Clear();
             string selectedComp = compLbl.Text;
             string query;
@@ -1076,8 +1141,9 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
-                        rdr["supplierName"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
+                        rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
 
                 }
             }
@@ -1092,7 +1158,7 @@ namespace CashPOS
             orderID = (Convert.ToInt32(Regex.Match(idToSearch.Text, @"\d+").Value) - 1).ToString("000000");
 
             orderID = onlyLetters + orderID;
-          // MessageBox.Show(orderID);
+            // MessageBox.Show(orderID);
             myConnection.Open();
             if (orderID.StartsWith("M") || orderID.StartsWith("C"))
             {

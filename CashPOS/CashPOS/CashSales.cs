@@ -843,7 +843,7 @@ namespace CashPOS
             myConnection.Open();
             int i = 0;
             decimal final = 0.0m;
-            rdr = myCommand.ExecuteReader();
+            rdr = myCommand.ExecuteReader();        
             if (rdr.HasRows)
             {
                 while (rdr.Read())
