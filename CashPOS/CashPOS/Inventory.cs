@@ -110,7 +110,7 @@ namespace CashPOS
                         grid = ktList;
                         break;
                 }
-                string time = DateTime.Today.ToString("yyyy-MM-dd");
+                    string time = DateTime.Today.ToString("yyyy-MM-dd");
 
 
                 myConnection.Open();

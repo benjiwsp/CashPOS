@@ -42,7 +42,7 @@ namespace CashPOS
         List<Label> lblList = new List<Label>();
         SubItems subItems;
         List<String> custCol = new List<String>();
-
+        InventoryHandler invHdr = new InventoryHandler();
         Dictionary<string, string> prodCatDic = new Dictionary<string, string>();
         string selectedCustCode;
         //  string selectedCustName;
@@ -455,6 +455,7 @@ namespace CashPOS
                                 if (invCol != "")
                                 {
                                     string amount = getAmountConverter(itemName, unit, inputAmount);
+                                    invHdr.reduce(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(amount), dateSelected.Value);
                                     myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                                     myCommand.ExecuteNonQuery();
                                 }

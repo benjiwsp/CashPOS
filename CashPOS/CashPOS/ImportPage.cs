@@ -50,7 +50,7 @@ namespace CashPOS
         Boolean isSearching = false;
         private MySqlConnection myConnection;
         private MySqlConnection secConn;
-
+        InventoryHandler invHandler = new InventoryHandler();
         string value;
         MySqlCommand myCommand;
         MySqlDataReader rdr;
@@ -285,270 +285,279 @@ namespace CashPOS
             refNo = refBox.Text;
             string invCol = "";
             string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            if(pickupAddText.Text != "") { 
-            if (isSearching)
+            if (pickupAddText.Text != "")
             {
-                if (orderID.StartsWith("I"))
+                if (isSearching)
                 {
-                    if (id != "")
+                    if (orderID.StartsWith("I"))
                     {
-                        orderID = id;
-                    }
-                    //need to make sure the order number has not changed, if it changed then need to delete the old records
-                    myCommand = new MySqlCommand("delete from CashPOSDB.importRecords where orderID = '" + orderID + "'", myConnection);
-                    myConnection.Open();
-                    myCommand.ExecuteNonQuery();
-                    myCommand = new MySqlCommand("select * from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
-                    rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows)
-                    {
-                        while (rdr.Read())
+                        if (id != "")
                         {
-                            string inv = "";
-                            switch (rdr["dropOffLoc"].ToString())
-                            {
-                                case "柴灣":
-                                    inv = "CwInv";
-                                    break;
-                                case "油麻地":
-                                    inv = "YmtInv";
-                                    break;
-                                case "屯門":
-                                    inv = "TmInv";
-                                    break;
-                                case "觀塘":
-                                    inv = "KtInv";
-                                    break;
-                            }
-                            reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
+                            orderID = id;
                         }
-                    }
-                    rdr.Close();
-                    myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
-                    myCommand.ExecuteNonQuery();
-                    myConnection.Close();
-                }
-                else if (orderID.StartsWith("T") || orderID.StartsWith("I"))
-                {
-                    if (id != "")
-                    {
-                        orderID = id;
-                    }
-                    //need to make sure the order number has not changed, if it changed then need to delete the old records
-                    myCommand = new MySqlCommand("delete from CashPOSDB.importRecords where orderID = '" + orderID + "'", myConnection);
-                    myConnection.Open();
-                    myCommand.ExecuteNonQuery();
-                    myCommand = new MySqlCommand("select * from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
-                    rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows)
-                    {
-                        while (rdr.Read())
-                        {
-                            string inv = "";
-                            switch (rdr["dropOffLoc"].ToString())
-                            {
-                                case "柴灣":
-                                    inv = "CwInv";
-                                    break;
-                                case "油麻地":
-                                    inv = "YmtInv";
-                                    break;
-                                case "屯門":
-                                    inv = "TmInv";
-                                    break;
-                                case "觀塘":
-                                    inv = "KtInv";
-                                    break;
-                            }
-                            reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
-                        }
-                    }
-                    rdr.Close();
-                    myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
-                    myCommand.ExecuteNonQuery();
-                    myConnection.Close();
-                }
-                else
-                {
-                    myCommand = new MySqlCommand("delete from CashPOSDB.transRecords where orderID = '" + orderID + "'", myConnection);
-                    myConnection.Open();
-                    myCommand.ExecuteNonQuery();
-                    myCommand = new MySqlCommand("select * from CashPOSDB.transDetails where orderID = '" + orderID + "'", myConnection);
-                    rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows)
-                    {
-                        while (rdr.Read())
-                        {
-                            string inv = "";
-                            switch (rdr["dropOffLoc"].ToString())
-                            {
-                                case "柴灣":
-                                    inv = "CwInv";
-                                    break;
-                                case "油麻地":
-                                    inv = "YmtInv";
-                                    break;
-                                case "屯門":
-                                    inv = "TmInv";
-                                    break;
-                                case "觀塘":
-                                    inv = "KtInv";
-                                    break;
-                            }
-                            string inc = "";
-                            switch (rdr["transFrom"].ToString())
-                            {
-                                case "柴灣":
-                                    inc = "CwInv";
-                                    break;
-                                case "油麻地":
-                                    inc = "YmtInv";
-                                    break;
-                                case "屯門":
-                                    inc = "TmInv";
-                                    break;
-                                case "觀塘":
-                                    inc = "KtInv";
-                                    break;
-                            }
-                            reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
-                            increaseChangedAmount(inc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
-                        }
-                    }
-                    rdr.Close();
-                    myCommand = new MySqlCommand("delete from CashPOSDB.transDetails where orderID = '" + orderID + "'", myConnection);
-                    myCommand.ExecuteNonQuery();
-                    myConnection.Close();
-                }
-            }
-
-            orderID = invoiceLabel.Text;
-            bool successed = false;
-            bool attempted = false;
-            myConnection.Open();
-            string recordQuery = "";
-            string detailQuery = "";
-            for (int attempts = 0; attempts < 10; attempts++)
-            {
-                try
-                {
-                    while (true)
-                    {
-
-                        if (fromLabel.Text == "調倉" || fromLabel.Text == "執倉")
-                        {
-                            recordQuery = "insert into CashPOSDB.transRecords values('" + orderID + "','" + refNo + "','" +
-                              cust + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
-                            date + "')";  
-                        }
-                        else 
-                        {
-                            recordQuery = "insert into CashPOSDB.importRecords values('" + orderID + "','" + refNo + "','" +
-                            selectedCustCode + "','" + cust + "','" +
-                         phone + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
-                          date + "')";
-                        }
-                        myCommand = new MySqlCommand(recordQuery, myConnection);
+                        //need to make sure the order number has not changed, if it changed then need to delete the old records
+                        myCommand = new MySqlCommand("delete from CashPOSDB.importRecords where orderID = '" + orderID + "'", myConnection);
+                        myConnection.Open();
                         myCommand.ExecuteNonQuery();
-                        foreach (DataGridViewRow row in selectedItemList.Rows)
+                        myCommand = new MySqlCommand("select * from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
+                        rdr = myCommand.ExecuteReader();
+                        if (rdr.HasRows)
                         {
+                            while (rdr.Read())
+                            {
+                                string inv = "";
+                                string table = "";
+                                string dropOffLoc = rdr["dropOffLoc"].ToString();
+                                invHandler.reduce(dropOffLoc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()), dateSelected.Value);
+                                //reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
+                            }
+                        }
+                        rdr.Close();
+                        myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                    }
+                    else if (orderID.StartsWith("T") || orderID.StartsWith("I"))
+                    {
+                        if (id != "")
+                        {
+                            orderID = id;
+                        }
+                        //need to make sure the order number has not changed, if it changed then need to delete the old records
+                        myCommand = new MySqlCommand("delete from CashPOSDB.importRecords where orderID = '" + orderID + "'", myConnection);
+                        myConnection.Open();
+                        myCommand.ExecuteNonQuery();
+                        myCommand = new MySqlCommand("select * from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
+                        rdr = myCommand.ExecuteReader();
+                        if (rdr.HasRows)
+                        {
+                            while (rdr.Read())
+                            {
+                                string inv = "";
+                                switch (rdr["dropOffLoc"].ToString())
+                                {
+                                    case "柴灣":
+                                        inv = "CwInv";
+                                        break;
+                                    case "油麻地":
+                                        inv = "YmtInv";
+                                        break;
+                                    case "屯門":
+                                        inv = "TmInv";
+                                        break;
+                                    case "觀塘":
+                                        inv = "KtInv";
+                                        break;
+                                }
+                                string dropOffLoc = rdr["dropOffLoc"].ToString();
+
+                                invHandler.reduce(dropOffLoc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()), dateSelected.Value);
+                                
+                                //reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
+                            }
+                        }
+                        rdr.Close();
+                        myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                    }
+                    else
+                    {
+                        myCommand = new MySqlCommand("delete from CashPOSDB.transRecords where orderID = '" + orderID + "'", myConnection);
+                        myConnection.Open();
+                        myCommand.ExecuteNonQuery();
+                        myCommand = new MySqlCommand("select * from CashPOSDB.transDetails where orderID = '" + orderID + "'", myConnection);
+                        rdr = myCommand.ExecuteReader();
+                        if (rdr.HasRows)
+                        {
+                            while (rdr.Read())
+                            {
+                                string inv = "";
+                                switch (rdr["dropOffLoc"].ToString())
+                                {
+                                    case "柴灣":
+                                        inv = "CwInv";
+                                        break;
+                                    case "油麻地":
+                                        inv = "YmtInv";
+                                        break;
+                                    case "屯門":
+                                        inv = "TmInv";
+                                        break;
+                                    case "觀塘":
+                                        inv = "KtInv";
+                                        break;
+                                }
+                                string inc = "";
+                                switch (rdr["transFrom"].ToString())
+                                {
+                                    case "柴灣":
+                                        inc = "CwInv";
+                                        break;
+                                    case "油麻地":
+                                        inc = "YmtInv";
+                                        break;
+                                    case "屯門":
+                                        inc = "TmInv";
+                                        break;
+                                    case "觀塘":
+                                        inc = "KtInv";
+                                        break;
+                                }
+                                reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
+                                increaseChangedAmount(inc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
+                            }
+                        }
+                        rdr.Close();
+                        myCommand = new MySqlCommand("delete from CashPOSDB.transDetails where orderID = '" + orderID + "'", myConnection);
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                    }
+                }
+
+                //new import order
+                orderID = invoiceLabel.Text;
+                bool successed = false;
+                bool attempted = false;
+                myConnection.Open();
+                string recordQuery = "";
+                string detailQuery = "";
+                for (int attempts = 0; attempts < 100; attempts++)
+                {
+                    try
+                    {
+                        while (true)
+                        {
+
                             if (fromLabel.Text == "調倉" || fromLabel.Text == "執倉")
                             {
-                                detailQuery = "Insert into CashPOSDB.transDetails values('" + orderID + "','" + cust + "','" + row.Cells[0].Value.ToString() + "','"
+                                recordQuery = "insert into CashPOSDB.transRecords values('" + orderID + "','" + refNo + "','" +
+                                  cust + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
+                                date + "')";
+                            }
+                            else
+                            {
+                                recordQuery = "insert into CashPOSDB.importRecords values('" + orderID + "','" + refNo + "','" +
+                                selectedCustCode + "','" + cust + "','" +
+                             phone + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
+                              date + "')";
+                            }
+                            myCommand = new MySqlCommand(recordQuery, myConnection);
+                            myCommand.ExecuteNonQuery();
+                            foreach (DataGridViewRow row in selectedItemList.Rows)
+                            {
+                                if (fromLabel.Text == "調倉" || fromLabel.Text == "執倉")
+                                {
+                                    detailQuery = "Insert into CashPOSDB.transDetails values('" + orderID + "','" + cust + "','" + row.Cells[0].Value.ToString() + "','"
+                                        + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
+                                        pickupLoc + "','" + date + "')";
+
+                                }
+                                else
+                                {
+                                    detailQuery = "Insert into CashPOSDB.importDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
                                     + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
                                     pickupLoc + "','" + date + "')";
-
-                            }
-                            else 
-                            {
-                                detailQuery = "Insert into CashPOSDB.importDetails values('" + orderID + "','" + selectedCustCode + "','" + row.Cells[0].Value.ToString() + "','"
-                                + row.Cells[1].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
-                                pickupLoc + "','" + date + "')";
-                            }
-                            myCommand = new MySqlCommand(detailQuery, myConnection);
-                            myCommand.ExecuteNonQuery();
-                            if (pickupLoc == "柴灣")
-                            {
-                                invCol = "CwInv";
-                            }
-                            else if (pickupLoc == "油麻地")
-                            {
-                                invCol = "YmtInv";
-                            }
-                            else if (pickupLoc == "屯門")
-                            {
-                                invCol = "TmInv";
-                            }
-                            else if (pickupLoc == "觀塘")
-                            {
-                                invCol = "KtInv";
-                            }
-                            if (invCol != "")
-                            {
-                                myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                }
+                                myCommand = new MySqlCommand(detailQuery, myConnection);
                                 myCommand.ExecuteNonQuery();
-                                invCol = "";
-                            }
-                            if (fromLabel.Text == "調倉")
-                            {
-                                if (cust == "柴灣")
+                                //import into inventory table  
+                                if (pickupLoc == "柴灣")
                                 {
-                                    invCol = "CwInv";
+                                    invCol = "cwInv";
                                 }
-                                else if (cust == "油麻地")
+                                else if (pickupLoc == "油麻地")
                                 {
-                                    invCol = "YmtInv";
+                                    invCol = "ymtInv";
                                 }
-                                else if (cust == "屯門")
+                                else if (pickupLoc == "屯門")
                                 {
-                                    invCol = "TmInv";
+                                    invCol = "tmInv";
                                 }
-                                else if (cust == "觀塘")
+                                else if (pickupLoc == "觀塘")
                                 {
-                                    invCol = "KtInv";
+                                    invCol = "ktInv";
                                 }
                                 if (invCol != "")
                                 {
-                                    myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                                    myCommand.ExecuteNonQuery();
+                                    try {
+
+                                        invHandler.add(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(row.Cells[1].Value.ToString()), dateSelected.Value);
+                                    } catch (Exception ex){
+                                        MessageBox.Show(ex.Message.ToString());
+                                    }
+                                //       myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                //      myCommand.ExecuteNonQuery();
+                                    invCol = "";
+                                }
+                                if (fromLabel.Text == "調倉")
+                                {
+                                    if (cust == "柴灣")
+                                    {
+                                        invCol = "cwInv";
+                                    }
+                                    else if (cust == "油麻地")
+                                    {
+                                        invCol = "ymtInv";
+                                    }
+                                    else if (cust == "屯門")
+                                    {
+                                        invCol = "tmInv";
+                                    }
+                                    else if (cust == "觀塘")
+                                    {
+                                        invCol = "ktInv";
+                                    }
+                                    if (invCol != "")
+                                    {
+                                      //  MessageBox.Show(cust + " reduce ");
+                                        invHandler.reduce(cust, row.Cells[0].Value.ToString(), Convert.ToDecimal(row.Cells[1].Value.ToString()), dateSelected.Value);
+
+                                     ////   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                     //   myCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
-                        }
-                        if (attempted)
-                        {
-                            MessageBox.Show("收據號碼已改為: " + orderID);
-                        }
-                        successed = true;
-                        myConnection.Close();
-                        break;
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    switch (ex.Number)
-                    {
-                        case 1062:
-                            // string orderID = rdr["orderID"].ToString();
-                            var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
-                            string newNum = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
-                            orderID = onlyLetters + newNum;
-                            // orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
-                            attempted = true;
+                            if (attempted)
+                            {
+                                MessageBox.Show("收據號碼已改為: " + orderID);
+                            }
+                            successed = true;
+                            myConnection.Close();
                             break;
+                        }
                     }
+                    catch (MySqlException ex)
+                    {
+                        switch (ex.Number)
+                        {
+                            case 1062:
+                                // string orderID = rdr["orderID"].ToString();
+                                var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
+                              //  MessageBox.Show("only Letter:   " + onlyLetters);
+                                string newNum = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
+                            //    MessageBox.Show("newNum:   " + newNum);
+
+                                orderID = onlyLetters + newNum;
+                            //    MessageBox.Show("orderID:   " + orderID);
+
+                                // orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
+                                attempted = true;
+                                break;
+                        }
+                    }
+                    if (successed)
+                        break;
                 }
-                if (successed)
-                    break;
-            }
-            myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
-                orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
-            Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
-                orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
-            myConnection.Open();
-            myCommand.ExecuteNonQuery();
-            myConnection.Close();
-            clearAll();
-            clearSelection();
+                myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
+                    orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
+                Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
+                    orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+                myConnection.Close();
+                clearAll();
+                clearSelection();
             }
             else
             {
@@ -597,7 +606,7 @@ namespace CashPOS
                         var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
                         string newNum = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
                         invoiceLabel.Text = onlyLetters + newNum;
-                        pickupAddText.Text = customerTxt.Text.Substring(customerTxt.Text.IndexOf("- ") +2, customerTxt.Text.Length - customerTxt.Text.IndexOf("- ") -2);
+                        pickupAddText.Text = customerTxt.Text.Substring(customerTxt.Text.IndexOf("- ") + 2, customerTxt.Text.Length - customerTxt.Text.IndexOf("- ") - 2);
                     }
                 }
                 myConnection.Close();
@@ -739,7 +748,7 @@ namespace CashPOS
 
         private void amountTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
@@ -945,5 +954,8 @@ namespace CashPOS
             myConnection.Close();
             fromLabel.Text = "執倉";
         }
+
+
+
     }
 }

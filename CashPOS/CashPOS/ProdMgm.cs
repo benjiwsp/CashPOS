@@ -26,6 +26,8 @@ namespace CashPOS
         string desc;
         string category;
         string unit;
+        InventoryHandler invHdlr = new InventoryHandler();
+
         Boolean isSearch = false;
         Boolean isUpdate = false;
         public ProdMgm()
@@ -76,11 +78,13 @@ namespace CashPOS
                                 pickPrice + "','" + delPrice + "','" + sitePrice + "','" + category + "','" + desc + "','0','0','0','0','','0')", myConnection);
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
+                            insertIntoInvTable(prodID);
                             //TO-DO  clear data
                         }
                     }
                     //--------------------- insert into table 3 -------------------
                     insertIntoCombined();
+                    
                     //--------------------- insert into table 3 -------------------
 
                 }
@@ -113,6 +117,14 @@ namespace CashPOS
              */
 
             clearAllData();
+        }
+        private void insertIntoInvTable(string prodID)
+        {
+            invHdlr.newProdintoTable("屯門", prodID );
+            invHdlr.newProdintoTable("柴灣", prodID);
+            invHdlr.newProdintoTable("油麻地", prodID);
+            invHdlr.newProdintoTable("觀塘", prodID);
+          
         }
         private void insertIntoCombined()
         {
@@ -312,7 +324,10 @@ CashPOSDB.prodData.SitePrice, CashPOSDB.custData.BelongTo from CashPOSDB.custDat
                             string prodID = newProdGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
                             deleteProdRow("CashPOSDB.prodData", prodID, "ProdID");
                             deleteProdRow("CashPOSDB.custProdPrice", prodID, "Prod");
-
+                            invHdlr.deleteProdFromTable("屯門", prodID);
+                            invHdlr.deleteProdFromTable("柴灣", prodID);
+                            invHdlr.deleteProdFromTable("油麻地", prodID);
+                            invHdlr.deleteProdFromTable("觀塘", prodID);
                             newProdGrid.Rows.RemoveAt(e.RowIndex);
                         }
                     }
