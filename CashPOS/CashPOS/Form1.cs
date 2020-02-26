@@ -29,6 +29,7 @@ namespace CashPOS
         SupplierMgm supplierMgm;
         SalesInfo salesInfo;
         PopList popup;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace CashPOS
             mainPanel.Controls.Add(homeScreen);
             salesInfo = new SalesInfo();
             popup = new PopList();
+      
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -271,9 +273,7 @@ namespace CashPOS
             cashSales.group = "4";
             cashSales.setLevel();
         }
-
-
-
+      
 
         /*
                 // the biggest font that will fit.

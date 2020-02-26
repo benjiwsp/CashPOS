@@ -132,7 +132,7 @@ namespace CashPOS
             PdfWriter writer;
 
             string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where payment = '簽單' and a.orderID = b.orderID and b.time >=  '" +
-                beginning.ToString("yyyy-MM-dd HH:mm:ss") + "' and b.time <= '" + ending.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.custCode = '" + comp + "' order by a.custCode, a.orderID";
+                beginning.ToString("yyyy-MM-dd HH:mm:ss") + "' and b.time <= '" + ending.ToString("yyyy-MM-dd HH:mm:ss") + "' and a.custCode = '" + comp + "' order by a.custCode, a.time,a.orderID";
             myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -162,17 +162,24 @@ namespace CashPOS
                         firstPage = false;
                     }
                     PdfPTable titleTable = new PdfPTable(5);
+                    titleTable.WidthPercentage = 100f;
+
                     PdfPTable infoTable = new PdfPTable(7);
+
+                    infoTable.WidthPercentage = 100f;
+
                     float[] twdiths = new float[7];
-                    twdiths[0] = 80f;
+                    twdiths[0] = 40f;
                     twdiths[1] = 10f;
-                    twdiths[2] = 80f;
+                    twdiths[2] = 85f;
                     twdiths[3] = 80f;
                     twdiths[4] = 80f;
                     twdiths[5] = 10f;
                     twdiths[6] = 80f;
                     infoTable.SetWidths(twdiths);
                     PdfPTable detailTable = new PdfPTable(10);
+                    detailTable.WidthPercentage = 100f;
+
                     float[] detailWdiths = new float[10];
                     detailWdiths[0] = 50f;
                     detailWdiths[1] = 52f;
@@ -188,13 +195,18 @@ namespace CashPOS
                     detailTable.SetWidths(detailWdiths);
 
                     PdfPTable addressTable = new PdfPTable(7);
+                    addressTable.WidthPercentage = 100f;
 
 
 
                     //detailTable.SetWidths(detailWdiths);
                     PdfPTable footerTable = new PdfPTable(5);
-                    PdfPTable fillFooter = new PdfPTable(10);
-                    fillFooter.SetWidths(detailWdiths);
+                    footerTable.WidthPercentage = 100f;
+
+                    PdfPTable fillFooter = new PdfPTable(8);
+                    fillFooter.WidthPercentage = 100f;
+
+                   // fillFooter.SetWidths(detailWdiths);
                     string newCode = rdr["custCode"].ToString();
 
                     //if the page is filled 
@@ -203,10 +215,38 @@ namespace CashPOS
                         rowCount = 0;
                         filled = true;
                         rowCount = 0;
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                    /*    fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString(" "), 0, 8, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));*/
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 4, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell("總噸數:", 0, 1, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(sandTotalWeight.ToString("0.00"), 0, 1, 0, 0, infoFont));
+
+                        fillFooter.AddCell(newCell("總數:", 0, 1, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont));
+
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                        fillFooter.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                        if (ch_compName.StartsWith("富"))
+                        {
+                            fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
+
+                        }
+                        else
+                        {
+                            fillFooter.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
+
+                        }
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+
+                        fillFooter.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
                         custTotal += sum;
                         //      MessageBox.Show(sum.ToString());
                         doc.Add(fillFooter);
@@ -289,7 +329,7 @@ namespace CashPOS
 
                         infoTable.AddCell(newCell("Address", 0, 1, 0, 0, infoFont));
                         infoTable.AddCell(newCell(":", 0, 1, 0, 0, custInfo));
-                        PdfPCell addressCell = newCell(address, 0, 2, 0, 0, custInfo);
+                        PdfPCell addressCell = newCell(address, 0, 1, 0, 0, custInfo);
                         infoTable.AddCell(addressCell);
                         infoTable.AddCell(newCell(" ", 0, 3, 0, 0, infoFont));
                         infoTable.AddCell(newCell(" ", 0, 7, 0, 0, infoFont));
@@ -315,7 +355,7 @@ namespace CashPOS
 
                     detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["itemName"].ToString(), 1, 3, 0, 0, infoFont));
-                    detailTable.AddCell(newCell(rdr["priceType"].ToString(), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["priceType"].ToString().Substring(0,1), 1, 1, 0, 0, infoFont));
 
                     detailTable.AddCell(newCell(rdr["amount"].ToString(), 1, 1, 2, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["unit"].ToString().Substring(0,1), 1, 1, 0, 0, infoFont));
@@ -332,6 +372,7 @@ namespace CashPOS
                 }
 
                 PdfPTable footer = new PdfPTable(8);
+                footer.WidthPercentage = 100f;
                 while (rowCount < 30)
                 {
                     footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));

@@ -6,14 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Collections;
 
 namespace CashPOS
 {
     class InventoryHandler
     {
         static string value = ConfigurationManager.AppSettings["my_conn"];
+        public Hashtable prodSet = new Hashtable();
 
-
+        public InventoryHandler()
+        {
+            setProdSet();    
+        }
         public string getProdID(String prodName)
         {
             MySqlConnection conn = new MySqlConnection(value);
@@ -33,7 +38,6 @@ namespace CashPOS
             return prodID;
         }
         public void add(string site, string col, decimal amount, DateTime date)
-
         {
             MySqlConnection conn = new MySqlConnection(value);
 
@@ -70,10 +74,11 @@ namespace CashPOS
         public void getInvByDate(string site, DateTime date, DataGridView list)
         {
             MySqlConnection conn = new MySqlConnection(value);
+            MySqlConnection conn2 = new MySqlConnection(value);
 
             string countQuery = "SELECT count(*) as Count FROM information_schema.columns " +
             " WHERE table_schema = 'CashPOSDB' " +
-            " and table_name = 'oldInv'";
+            " and table_name = '" + getTable(site) + "'";
             int colCount = 0;
             MySqlCommand cmd = new MySqlCommand(countQuery, conn);
             conn.Open();
@@ -84,21 +89,83 @@ namespace CashPOS
             }
             rdr.Close();
 
-            cmd = new MySqlCommand("select * from CashPOSDB.inventory where date = " + date, conn);
+            cmd = new MySqlCommand("select * from CashPOSDB." + getTable(site) + " where date = '" + date.ToString("yyyy-MM-dd") + "'", conn);
             rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
             {
                 while (rdr.Read())
                 {
-                    for (int i = 1; i < colCount; i++)
+                    for (int i = 2; i < colCount; i++)
                     {
-                        list.Rows.Add(rdr.GetString(i));
+                        decimal amount = Convert.ToDecimal(rdr.GetString(i));
+                        if (amount != 0)
+                        {
+                            string prodID = rdr.GetName(i);
+                            list.Rows.Add(prodID, prodSet[prodID].ToString(), amount);
+                        }
                     }
                 }
             }
             rdr.Close();
             conn.Close();
         }
+        private void getCurrentInv(string site)
+        {
+            MySqlConnection conn = new MySqlConnection(value);
+
+            string query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),' FROM CashPOSDB." + getTable(site) + "') as Query" +
+                "FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tmInv' AND c.COLUMN_NAME<>'date' and c.COLUMN_NAME<> 'id';";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            conn.Open();
+            string getInfoQuery = "";
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        getInfoQuery = rdr["Query"].ToString();
+                    }
+                } rdr.Close();
+
+                getInfoQuery.Replace(", FROM", " FROM");
+                cmd = new MySqlCommand(getInfoQuery, conn);
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+
+                    }
+                }
+          /*      for (int i = 2; i < colCount; i++)
+                {
+                    decimal amount = Convert.ToDecimal(rdr.GetString(i));
+                    if (amount != 0)
+                    {
+                        string prodID = rdr.GetName(i);
+                        list.Rows.Add(prodID, prodSet[prodID].ToString(), amount);
+                    }
+                }*/
+
+                conn.Close();
+        }
+        private void setProdSet()
+        {
+            MySqlConnection conn = new MySqlConnection(value);
+            MySqlCommand cmd = new MySqlCommand("Select ProdID, ProdName from CashPOSDB.prodData", conn);
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    prodSet.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString());
+                }
+            } rdr.Close();
+            conn.Close();
+        }
+
+
         public string getTable(string site)
         {
             string table = "";
