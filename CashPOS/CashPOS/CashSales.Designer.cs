@@ -325,11 +325,11 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.selectedItemList.RowHeadersVisible = false;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
             this.selectedItemList.Size = new System.Drawing.Size(572, 334);
             this.selectedItemList.TabIndex = 9;
             this.selectedItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemList_CellContentClick);
+            this.selectedItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.selectedItemList_KeyDown);
             // 
             // Column1
             // 

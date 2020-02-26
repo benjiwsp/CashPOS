@@ -1149,5 +1149,43 @@ namespace CashPOS
         {
 
         }
+
+        private void selectedItemList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Up))
+            {
+                moveUp();
+            }
+            //if (e.KeyCode.Equals(Keys.Down))
+            //{
+            //    moveDown();
+            //}
+            e.Handled = true;
+        }
+        private void moveUp()
+        {
+            if (selectedItemList.RowCount > 0)
+            {
+                if (selectedItemList.SelectedRows.Count > 0)
+                {
+                    int rowCount = selectedItemList.Rows.Count;
+                    int index = selectedItemList.SelectedCells[0].OwningRow.Index;
+
+                    if (index == 0)
+                    {
+                        return;
+                    }
+                    DataGridViewRowCollection rows = selectedItemList.Rows;
+
+                    // remove the previous row and add it behind the selected row.
+                    DataGridViewRow prevRow = rows[index - 1];
+                    rows.Remove(prevRow);
+                    prevRow.Frozen = false;
+                    rows.Insert(index, prevRow);
+                    selectedItemList.ClearSelection();
+                    selectedItemList.Rows[index - 1].Selected = true;
+                }
+            }
+        }
     }
 }
