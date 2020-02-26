@@ -107,6 +107,7 @@ namespace CashPOS
             string en_add = "";
             decimal custTotal = 0.0m;
             decimal sandTotalWeight = 0.0m;
+            int pageNum = 1;
             myCommand = new MySqlCommand("Select * from CashPOSDB.companyInfo where NameCH = '" + BelongTo + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -212,6 +213,7 @@ namespace CashPOS
                     //if the page is filled 
                     if (rowCount == 30)
                     {
+                        pageNum++;
                         rowCount = 0;
                         filled = true;
                         rowCount = 0;
@@ -255,7 +257,7 @@ namespace CashPOS
 
                     if (finish || filled)
                     {
-                        quote = rdr["custCode"].ToString() + beginning.ToString("yyMM") + Index;
+                        quote = rdr["custCode"].ToString() + beginning.ToString("yyMM") + Index + pageNum;
                         index++;
                         doc.NewPage();
                         tempComm = new MySqlCommand("Select * from custData where Code = '" + rdr["custCode"].ToString() + "'", tempConn);
