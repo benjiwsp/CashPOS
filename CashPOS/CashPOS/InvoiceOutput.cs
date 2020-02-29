@@ -141,7 +141,7 @@ namespace CashPOS
             {
                 BaseFont bf = BaseFont.CreateFont(Environment.GetEnvironmentVariable("windir") + "\\Fonts\\KAIU.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 iTextSharp.text.Font chfont = new iTextSharp.text.Font(bf, 15);
-                iTextSharp.text.Font chfontB = new iTextSharp.text.Font(bf, 14);
+                iTextSharp.text.Font chfontB = new iTextSharp.text.Font(bf, 17);
                 iTextSharp.text.Font chfontT = new iTextSharp.text.Font(bf, 9);
                 iTextSharp.text.Font custInfo = new iTextSharp.text.Font(bf, 11);
                 iTextSharp.text.Font infoFont = new iTextSharp.text.Font(bf, 11);
@@ -277,8 +277,12 @@ namespace CashPOS
                         }
                         tempRdr.Close(); tempConn.Close();
                         sandTotalWeight = 0.0m;
-                        titleTable.AddCell(newCell(ch_compName, 1, 5, 1, 0, chfontB));
+                        titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
+                        titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
+                        titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
+                      
 
+                        titleTable.AddCell(newCell(ch_compName, 1, 5, 1, 0, chfontB));
                         titleTable.AddCell(newCell(en_compName, 3, 5, 1, 2, chfontB));
 
                         titleTable.AddCell(newCell(en_add, 1, 5, 1, 0, chfontT));
@@ -290,6 +294,9 @@ namespace CashPOS
 
                         titleTable.AddCell(newCell("Fax:" + compFax, 1, 1, 1, 0, chfontT));
                         titleTable.AddCell(newCell("", 1, 1, 0, 0, chfontT));
+
+
+                      
 
                         doc.Add(titleTable);
 
@@ -336,6 +343,9 @@ namespace CashPOS
                         infoTable.AddCell(newCell(" ", 0, 3, 0, 0, infoFont));
                         infoTable.AddCell(newCell(" ", 0, 7, 0, 0, infoFont));
                         infoTable.AddCell(newCell(" ", 3, 7, 0, 0, infoFont));
+
+                        infoTable.AddCell(newCell("發票", 1, 7, 1, 0, infoFont));
+                        infoTable.AddCell(newCell("Invoice", 1, 7, 1, 0, infoFont));
                         doc.Add(infoTable);
 
                         doc.Add(addressTable);

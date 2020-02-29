@@ -899,6 +899,7 @@ namespace CashPOS
                     string custCode = comboT.Substring(0, comboT.IndexOf(" ")).Trim();
                     if (group == "1")
                     {
+                        pickupAddText.Items.Clear();
                         pickupAddText.Items.Add("觀塘");
                         pickupAddText.Items.Add("油麻地");
                         pickupAddText.Items.Add("柴灣");
@@ -977,7 +978,7 @@ namespace CashPOS
                         }
                     }
                     myConnection.Close();
-                    myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
+        /*            myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
                     if (rdr.HasRows == true)
@@ -989,6 +990,7 @@ namespace CashPOS
                     }
                     rdr.Close();
                     myConnection.Close();
+         */
                     checkNoneFullPaid(custCode, selectedCompany);
                     // TO-DO: check for any unpaid invoice
                     checkStatus();

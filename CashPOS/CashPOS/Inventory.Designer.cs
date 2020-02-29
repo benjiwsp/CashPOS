@@ -59,6 +59,7 @@
             this.timePIck = new System.Windows.Forms.DateTimePicker();
             this.oldInvBtn = new System.Windows.Forms.Button();
             this.endOfDayInvBtn = new System.Windows.Forms.Button();
+            this.result = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cwList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tmList)).BeginInit();
@@ -85,6 +86,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.result, 4, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -401,6 +403,13 @@
             this.endOfDayInvBtn.UseVisualStyleBackColor = true;
             this.endOfDayInvBtn.Click += new System.EventHandler(this.endOfDayInvBtn_Click);
             // 
+            // result
+            // 
+            this.result.Location = new System.Drawing.Point(1323, 377);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(325, 20);
+            this.result.TabIndex = 5;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,5 +461,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.TextBox result;
     }
 }

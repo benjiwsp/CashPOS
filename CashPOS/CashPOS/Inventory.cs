@@ -87,8 +87,33 @@ namespace CashPOS
             invHdr.getInvByDate("柴灣", timePIck.Value, cwList);
             invHdr.getInvByDate("油麻地", timePIck.Value, ymtList);
             invHdr.getInvByDate("觀塘", timePIck.Value, ktList);
-
+            getAllProdDetail();
             //serachInvByProdTable();
+        }
+        private void getAllProdDetail()
+        {
+            myCommand = new MySqlCommand("select ProdID, ProdName from CashPOSDB.prodData order by ProdID", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            StringBuilder sb = new StringBuilder();
+            while (rdr.Read())
+            {
+                sb.Append(rdr["ProdName"].ToString() + ",");
+            }
+            result.Text = sb.ToString();
+            rdr.Close();
+            myConnection.Close();
+
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                sb.Append(rdr["ProdID"].ToString() + ",");
+            }
+            result.Text = sb.ToString();
+            rdr.Close();
+            myConnection.Close();
         }
         private void clearList()
         {

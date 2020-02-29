@@ -63,7 +63,7 @@ namespace CashPOS
 
             int i = 0;
             //          MessageBox.Show(comp);
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID like  '%" + idToSearch.Text + "%'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -153,7 +153,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where phone = '" + telBox.Text + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where phone like '%" + telBox.Text + "%'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             int i = 0;
