@@ -343,7 +343,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderDetails a  join CashPOSDB.orderRecords b  where a.itemName = '" + itemList.Text + "' and a.time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            myCommand = new MySqlCommand("Select b.orderID, b.sandID, b.custName,b.isReturn,  b.phone,b.license, b.address, b.priceType, b.payment,b.pickupLoc, b.totalPrice, b.paid, b.payMethod, b.time from CashPOSDB.orderDetails a  join CashPOSDB.orderRecords b  on a.orderID = b.orderID where a.itemName = '" + itemList.Text + "' and a.time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
             "' and a.time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "' group by a.orderID", myConnection);
             myConnection.Open();
             int i = 0;
@@ -359,6 +359,8 @@ namespace CashPOS
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
                         rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                 //   MessageBox.Show(rdr["orderID"].ToString()+","+ rdr["sandID"].ToString()+","+ rdr["custName"].ToString()+","+ rdr["license"].ToString()+","+
+                  ////      rdr["pickupLoc"].ToString()+","+ rdr["priceType"].ToString()+","+ rdr["payMethod"].ToString()+","+ totalPrice+","+ paid+","+ reminder+","+ rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;

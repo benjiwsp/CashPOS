@@ -207,7 +207,7 @@ namespace CashPOS
                     PdfPTable fillFooter = new PdfPTable(8);
                     fillFooter.WidthPercentage = 100f;
 
-                   // fillFooter.SetWidths(detailWdiths);
+                    // fillFooter.SetWidths(detailWdiths);
                     string newCode = rdr["custCode"].ToString();
 
                     //if the page is filled 
@@ -217,10 +217,10 @@ namespace CashPOS
                         rowCount = 0;
                         filled = true;
                         rowCount = 0;
-                    /*    fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
-                        fillFooter.AddCell(newCell(sum.ToString(" "), 0, 8, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));*/
+                        /*    fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
+                            fillFooter.AddCell(newCell(sum.ToString(" "), 0, 8, 0, 0, infoFont));
+                            fillFooter.AddCell(newCell(sum.ToString("總數:"), 0, 1, 0, 0, infoFont));
+                            fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 1, 0, 0, infoFont));*/
                         fillFooter.AddCell(newCell(" ", 0, 10, 0, 2, infoFont));
                         fillFooter.AddCell(newCell(" ", 0, 4, 0, 0, infoFont));
                         fillFooter.AddCell(newCell("總噸數:", 0, 1, 0, 0, infoFont));
@@ -230,11 +230,14 @@ namespace CashPOS
                         fillFooter.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont));
 
                         fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
                         fillFooter.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
+
+                        fillFooter.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                         if (ch_compName.StartsWith("富"))
                         {
                             fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
@@ -245,10 +248,7 @@ namespace CashPOS
                             fillFooter.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
 
                         }
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
-                        fillFooter.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
                         custTotal += sum;
                         //      MessageBox.Show(sum.ToString());
                         doc.Add(fillFooter);
@@ -280,7 +280,7 @@ namespace CashPOS
                         titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
                         titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
                         titleTable.AddCell(newCell(" ", 1, 5, 1, 0, chfontT));
-                      
+
 
                         titleTable.AddCell(newCell(ch_compName, 1, 5, 1, 0, chfontB));
                         titleTable.AddCell(newCell(en_compName, 3, 5, 1, 2, chfontB));
@@ -296,7 +296,7 @@ namespace CashPOS
                         titleTable.AddCell(newCell("", 1, 1, 0, 0, chfontT));
 
 
-                      
+
 
                         doc.Add(titleTable);
 
@@ -352,12 +352,12 @@ namespace CashPOS
 
                         detailTable.AddCell(newCell("日期", 2, 1, 0, 2, chfontT));
 
-                        detailTable.AddCell(newCell("ID", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell("單號", 2, 1, 0, 2, chfontT));
                         detailTable.AddCell(newCell("貨品", 2, 3, 0, 2, chfontT));
                         detailTable.AddCell(newCell("類", 2, 1, 0, 2, chfontT));
 
                         detailTable.AddCell(newCell("數量", 2, 1, 2, 2, chfontT));
-                        detailTable.AddCell(newCell("單", 2, 1, 0, 2, chfontT));
+                        detailTable.AddCell(newCell(" ", 2, 1, 0, 2, chfontT));
                         detailTable.AddCell(newCell("單價", 2, 1, 2, 2, chfontT));
                         detailTable.AddCell(newCell("總數(港幣)", 2, 1, 2, 2, chfontT));
                         finish = false;
@@ -367,10 +367,10 @@ namespace CashPOS
 
                     detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["itemName"].ToString(), 1, 3, 0, 0, infoFont));
-                    detailTable.AddCell(newCell(rdr["priceType"].ToString().Substring(0,1), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["priceType"].ToString().Substring(0, 1), 1, 1, 0, 0, infoFont));
 
                     detailTable.AddCell(newCell(rdr["amount"].ToString(), 1, 1, 2, 0, infoFont));
-                    detailTable.AddCell(newCell(rdr["unit"].ToString().Substring(0,1), 1, 1, 0, 0, infoFont));
+                    detailTable.AddCell(newCell(rdr["unit"].ToString().Substring(0, 1), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["unitPrice"].ToString(), 1, 1, 2, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["total"].ToString(), 1, 1, 2, 0, infoFont));
                     sum += Convert.ToDecimal(rdr["total"].ToString());
@@ -400,11 +400,15 @@ namespace CashPOS
                 footer.AddCell(newCell(sum.ToString("0.00"), 0, 2, 2, 0, infoFont));
 
                 footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
                 footer.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
                 footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
+
+
+                footer.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                 if (ch_compName.StartsWith("富"))
                 {
                     footer.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
@@ -415,10 +419,7 @@ namespace CashPOS
                     footer.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
 
                 }
-                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
-                footer.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
 
 
                 custTotal += sum;
