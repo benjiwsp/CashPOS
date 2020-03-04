@@ -978,19 +978,19 @@ namespace CashPOS
                         }
                     }
                     myConnection.Close();
-        /*            myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
-                    myConnection.Open();
-                    rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows == true)
-                    {
-                        while (rdr.Read())
-                        {
-                            pickupAddText.Items.Add(rdr["location"].ToString());
-                        }
-                    }
-                    rdr.Close();
-                    myConnection.Close();
-         */
+                    /*            myCommand = new MySqlCommand("select location from CashPOSDB.pickupLoc where belongTo = '" + selectedCompany + "'", myConnection);
+                                myConnection.Open();
+                                rdr = myCommand.ExecuteReader();
+                                if (rdr.HasRows == true)
+                                {
+                                    while (rdr.Read())
+                                    {
+                                        pickupAddText.Items.Add(rdr["location"].ToString());
+                                    }
+                                }
+                                rdr.Close();
+                                myConnection.Close();
+                     */
                     checkNoneFullPaid(custCode, selectedCompany);
                     // TO-DO: check for any unpaid invoice
                     checkStatus();
@@ -1187,6 +1187,41 @@ namespace CashPOS
                     selectedItemList.ClearSelection();
                     selectedItemList.Rows[index - 1].Selected = true;
                 }
+            }
+        }
+
+        private void selectedItemList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void selectedItemList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(selectedItemList_KeyPress);
+            if (selectedItemList.CurrentCell.ColumnIndex == 1 || selectedItemList.CurrentCell.ColumnIndex == 3) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(selectedItemList_KeyPress);
+                }
+            }
+        }
+
+        private void selectedItemList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (selectedItemList.CurrentCell.ColumnIndex == 1 || selectedItemList.CurrentCell.ColumnIndex == 3) //Desired Column
+            {
+                decimal totalPrice = 0.00m;
+                string final = (Convert.ToDecimal(selectedItemList.CurrentRow.Cells[1].Value) * Convert.ToDecimal(selectedItemList.CurrentRow.Cells[3].Value)).ToString("0.00");
+                selectedItemList.CurrentRow.Cells[5].Value = final;
+
+                foreach (DataGridViewRow row in selectedItemList.Rows)
+                    totalPrice += Convert.ToDecimal(row.Cells[5].Value);
+                totalPriceTxt.Text = totalPrice.ToString("0.00");
             }
         }
     }

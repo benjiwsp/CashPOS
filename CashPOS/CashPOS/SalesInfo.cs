@@ -352,12 +352,15 @@ namespace CashPOS
         {
             //   totalIncomeLbl.Text = "";
             //   totalSalesLbl.Text = "";
-            outputSaleCSV(csCustList, "超誠");
+            if (csCustList.Text != "")
+                outputSaleCSV(csCustList, "超誠");
         }
 
         private void outputSFCSVBtn_Click(object sender, EventArgs e)
         {
-            outputSaleCSV(sfCustList, "富資");
+            if (sfCustList.Text != "")
+
+                outputSaleCSV(sfCustList, "富資");
 
         }
         private void outputSaleCSV(ComboBox cust, string comp)
@@ -384,7 +387,7 @@ namespace CashPOS
 
             string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
                 getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.custCode = '" + custCode + "' order by a.time,a.orderID";
-          //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+            //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
             MySqlCommand myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
             MySqlDataReader rdr = myCommand.ExecuteReader();
@@ -404,17 +407,17 @@ namespace CashPOS
 
         private void sfProdCsv_Click(object sender, EventArgs e)
         {
-            outputProdCSV(sfCustList, itemList, "富資");
+            if (itemList.Text != "")
+                outputProdCSV(itemList, "富資");
         }
 
-        private void outputProdCSV(ComboBox cust, ComboBox item, string comp)
+        private void outputProdCSV(ComboBox item, string comp)
         {
-            string text = cust.Text;
             string prod = item.Text;
-          //  string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
+            //  string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
             DateTime start = StartTimePicker.SelectionRange.Start;
             DateTime end = EndTimePicker.SelectionRange.Start;
-  //          string custCode = text.Substring(0, text.IndexOf(" -")).Trim();
+            //          string custCode = text.Substring(0, text.IndexOf(" -")).Trim();
 
             string folderPath = "D:\\POS\\交易資料\\" + comp + "\\" + prod + "\\" + start.Year + "\\" + start.Month + "\\";
             if (!Directory.Exists(folderPath))
@@ -432,7 +435,7 @@ namespace CashPOS
 
             string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
                 getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.itemName = '" + prod + "' and a.belongTo = '" + comp + "' order by a.time,a.orderID";
-          //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+            //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
             MySqlCommand myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
             MySqlDataReader rdr = myCommand.ExecuteReader();
@@ -452,7 +455,8 @@ namespace CashPOS
 
         private void chiuProdCsv_Click(object sender, EventArgs e)
         {
-            outputProdCSV(sfCustList, itemList, "超誠");
+            if (itemList.Text != "")
+                outputProdCSV(itemList, "超誠");
 
         }
     }

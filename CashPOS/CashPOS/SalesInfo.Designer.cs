@@ -58,24 +58,24 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
-            this.phoneBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.searchbyCSBtn = new System.Windows.Forms.Button();
             this.searchbySFBtn = new System.Windows.Forms.Button();
-            this.itemList = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.searchbyItemBtn = new System.Windows.Forms.Button();
-            this.searchbyTelBtn = new System.Windows.Forms.Button();
             this.sfCustList = new System.Windows.Forms.ComboBox();
             this.csCustList = new System.Windows.Forms.ComboBox();
-            this.searchSFBtn = new System.Windows.Forms.Button();
-            this.clearBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.itemList = new System.Windows.Forms.ComboBox();
+            this.searchbyItemBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.phoneBox = new System.Windows.Forms.TextBox();
+            this.searchbyTelBtn = new System.Windows.Forms.Button();
             this.outputChiuCSVBtn = new System.Windows.Forms.Button();
             this.outputSFCSVBtn = new System.Windows.Forms.Button();
             this.chiuProdCsv = new System.Windows.Forms.Button();
             this.sfProdCsv = new System.Windows.Forms.Button();
+            this.searchSFBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bagsGrid)).BeginInit();
@@ -404,14 +404,6 @@
             this.StartTimePicker.Name = "StartTimePicker";
             this.StartTimePicker.TabIndex = 11;
             // 
-            // phoneBox
-            // 
-            this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneBox.Location = new System.Drawing.Point(987, 113);
-            this.phoneBox.Name = "phoneBox";
-            this.phoneBox.Size = new System.Drawing.Size(240, 26);
-            this.phoneBox.TabIndex = 14;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -458,57 +450,6 @@
             this.searchbySFBtn.UseVisualStyleBackColor = true;
             this.searchbySFBtn.Click += new System.EventHandler(this.searchbySFBtn_Click);
             // 
-            // itemList
-            // 
-            this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemList.FormattingEnabled = true;
-            this.itemList.Location = new System.Drawing.Point(987, 24);
-            this.itemList.Name = "itemList";
-            this.itemList.Size = new System.Drawing.Size(240, 28);
-            this.itemList.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(987, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 20);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "以貨品搜尋";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(987, 91);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 19);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "以電話搜尋";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // searchbyItemBtn
-            // 
-            this.searchbyItemBtn.Location = new System.Drawing.Point(987, 59);
-            this.searchbyItemBtn.Name = "searchbyItemBtn";
-            this.searchbyItemBtn.Size = new System.Drawing.Size(240, 27);
-            this.searchbyItemBtn.TabIndex = 18;
-            this.searchbyItemBtn.Text = "搜尋";
-            this.searchbyItemBtn.UseVisualStyleBackColor = true;
-            this.searchbyItemBtn.Click += new System.EventHandler(this.searchbyItemBtn_Click);
-            // 
-            // searchbyTelBtn
-            // 
-            this.searchbyTelBtn.Location = new System.Drawing.Point(987, 145);
-            this.searchbyTelBtn.Name = "searchbyTelBtn";
-            this.searchbyTelBtn.Size = new System.Drawing.Size(240, 27);
-            this.searchbyTelBtn.TabIndex = 19;
-            this.searchbyTelBtn.Text = "搜尋";
-            this.searchbyTelBtn.UseVisualStyleBackColor = true;
-            this.searchbyTelBtn.Click += new System.EventHandler(this.searchbyTelBtn_Click);
-            // 
             // sfCustList
             // 
             this.sfCustList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -529,27 +470,64 @@
             this.csCustList.Size = new System.Drawing.Size(240, 28);
             this.csCustList.TabIndex = 6;
             // 
-            // searchSFBtn
+            // label7
             // 
-            this.searchSFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchSFBtn.Location = new System.Drawing.Point(416, 890);
-            this.searchSFBtn.Name = "searchSFBtn";
-            this.searchSFBtn.Size = new System.Drawing.Size(407, 107);
-            this.searchSFBtn.TabIndex = 8;
-            this.searchSFBtn.Text = "搜尋富資";
-            this.searchSFBtn.UseVisualStyleBackColor = true;
-            this.searchSFBtn.Click += new System.EventHandler(this.searchSFBtn_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(987, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "以貨品搜尋";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // clearBtn
+            // itemList
             // 
-            this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearBtn.Location = new System.Drawing.Point(829, 890);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(407, 107);
-            this.clearBtn.TabIndex = 14;
-            this.clearBtn.Text = "清空";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemList.FormattingEnabled = true;
+            this.itemList.Location = new System.Drawing.Point(987, 24);
+            this.itemList.Name = "itemList";
+            this.itemList.Size = new System.Drawing.Size(240, 28);
+            this.itemList.TabIndex = 12;
+            // 
+            // searchbyItemBtn
+            // 
+            this.searchbyItemBtn.Location = new System.Drawing.Point(987, 59);
+            this.searchbyItemBtn.Name = "searchbyItemBtn";
+            this.searchbyItemBtn.Size = new System.Drawing.Size(240, 27);
+            this.searchbyItemBtn.TabIndex = 18;
+            this.searchbyItemBtn.Text = "搜尋";
+            this.searchbyItemBtn.UseVisualStyleBackColor = true;
+            this.searchbyItemBtn.Click += new System.EventHandler(this.searchbyItemBtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(987, 91);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 19);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "以電話搜尋";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // phoneBox
+            // 
+            this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneBox.Location = new System.Drawing.Point(987, 113);
+            this.phoneBox.Name = "phoneBox";
+            this.phoneBox.Size = new System.Drawing.Size(240, 26);
+            this.phoneBox.TabIndex = 14;
+            // 
+            // searchbyTelBtn
+            // 
+            this.searchbyTelBtn.Location = new System.Drawing.Point(987, 145);
+            this.searchbyTelBtn.Name = "searchbyTelBtn";
+            this.searchbyTelBtn.Size = new System.Drawing.Size(240, 27);
+            this.searchbyTelBtn.TabIndex = 19;
+            this.searchbyTelBtn.Text = "搜尋";
+            this.searchbyTelBtn.UseVisualStyleBackColor = true;
+            this.searchbyTelBtn.Click += new System.EventHandler(this.searchbyTelBtn_Click);
             // 
             // outputChiuCSVBtn
             // 
@@ -594,6 +572,28 @@
             this.sfProdCsv.Text = "匯出富資貨品資料";
             this.sfProdCsv.UseVisualStyleBackColor = true;
             this.sfProdCsv.Click += new System.EventHandler(this.sfProdCsv_Click);
+            // 
+            // searchSFBtn
+            // 
+            this.searchSFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchSFBtn.Location = new System.Drawing.Point(416, 890);
+            this.searchSFBtn.Name = "searchSFBtn";
+            this.searchSFBtn.Size = new System.Drawing.Size(407, 107);
+            this.searchSFBtn.TabIndex = 8;
+            this.searchSFBtn.Text = "搜尋富資";
+            this.searchSFBtn.UseVisualStyleBackColor = true;
+            this.searchSFBtn.Click += new System.EventHandler(this.searchSFBtn_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearBtn.Location = new System.Drawing.Point(829, 890);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(407, 107);
+            this.clearBtn.TabIndex = 14;
+            this.clearBtn.Text = "清空";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // SalesInfo
             // 
