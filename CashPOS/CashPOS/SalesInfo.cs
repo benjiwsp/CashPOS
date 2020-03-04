@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.IO;
+
 namespace CashPOS
 {
     public partial class SalesInfo : UserControl
@@ -77,7 +79,7 @@ namespace CashPOS
             addGridCol("CompName", "貨品");
             addGridCol("CompName", "數量");
             addGridCol("ProdName", "單位");
-            addGridCol("CalcName", "包裝"); 
+            addGridCol("CalcName", "包裝");
             addGridCol("ProdName", "總數");
             double totalDisplayPrice = 0.00;
             MySqlCommand myCommand = new MySqlCommand("Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >='" +
@@ -90,12 +92,12 @@ namespace CashPOS
                 {
                     decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
                     string item = rdr["itemName"].ToString();
-                    salesGrid.Rows.Add(item,amount, rdr["unit"].ToString(), calcPack(item,amount), rdr["TotalPrice"].ToString());
+                    salesGrid.Rows.Add(item, amount, rdr["unit"].ToString(), calcPack(item, amount), rdr["TotalPrice"].ToString());
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
-                salesGrid.Rows.Add("總數:", "", "","", totalDisplayPrice);
+                salesGrid.Rows.Add("總數:", "", "", "", totalDisplayPrice);
 
                 totalDisplayPrice = 0.00;
             }
@@ -155,7 +157,8 @@ namespace CashPOS
             if (rdr.HasRows == true)
             {
                 while (rdr.Read())
-                { decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
+                {
+                    decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
                     string item = rdr["itemName"].ToString();
                     importGrid.Rows.Add(rdr["orderID"].ToString(), item, rdr["unit"].ToString(), amount, calcPack(item, amount));
                 }
@@ -193,10 +196,10 @@ namespace CashPOS
                     decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
                     string item = rdr["itemName"].ToString();
 
-                    salesGrid.Rows.Add(item,amount, rdr["unit"].ToString(), calcPack(item, amount), rdr["Total"].ToString(), rdr["belongTo"].ToString());
+                    salesGrid.Rows.Add(item, amount, rdr["unit"].ToString(), calcPack(item, amount), rdr["Total"].ToString(), rdr["belongTo"].ToString());
                     total += Convert.ToDouble(rdr["total"].ToString());
                 }
-                salesGrid.Rows.Add("總數:", "", "", "","", total);
+                salesGrid.Rows.Add("總數:", "", "", "", "", total);
 
 
             }
@@ -239,7 +242,7 @@ namespace CashPOS
                     total += Convert.ToDouble(rdr["total"].ToString());
 
                 }
-                salesGrid.Rows.Add("總數:", "", "","", total,"");
+                salesGrid.Rows.Add("總數:", "", "", "", total, "");
 
             }
 
@@ -306,11 +309,11 @@ namespace CashPOS
                 {
                     decimal amount = Convert.ToDecimal(rdr["Amount"].ToString());
                     string item = rdr["itemName"].ToString();
-                    salesGrid.Rows.Add(item, rdr["Amount"].ToString(), rdr["unit"].ToString(),calcPack(item,amount), rdr["TotalPrice"].ToString());
+                    salesGrid.Rows.Add(item, rdr["Amount"].ToString(), rdr["unit"].ToString(), calcPack(item, amount), rdr["TotalPrice"].ToString());
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
 
                 }
-                salesGrid.Rows.Add("總數:", "","", "", totalDisplayPrice);
+                salesGrid.Rows.Add("總數:", "", "", "", totalDisplayPrice);
                 // totalSalesLbl.Text = "總數(港幣): " + totalDisplayPrice.ToString("n2");
                 totalDisplayPrice = 0.00;
             }
@@ -324,17 +327,17 @@ namespace CashPOS
             getSelectedItemSold(code, getStartDate(), getEndDate());
         }
 
-       private string calcPack(string item, decimal value)
+        private string calcPack(string item, decimal value)
         {
             decimal pack = 0.0m;
-            MySqlCommand myCommand = new MySqlCommand("Select SecUnit, Converter from CashPOSDB.prodData where ProdName = '"+ item + "'", tempConn);
+            MySqlCommand myCommand = new MySqlCommand("Select SecUnit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'", tempConn);
             tempConn.Open();
             rdr2 = myCommand.ExecuteReader();
             if (rdr2.HasRows)
             {
                 if (rdr2.Read())
                 {
-                    if(rdr2["SecUnit"].ToString()!= "")
+                    if (rdr2["SecUnit"].ToString() != "")
                     {
                         pack = value / Convert.ToDecimal(rdr2["Converter"].ToString());
                     }
@@ -343,6 +346,114 @@ namespace CashPOS
             rdr2.Close();
             tempConn.Close();
             return pack.ToString("0.00");
+        }
+
+        private void outputChiuCSVBtn_Click(object sender, EventArgs e)
+        {
+            //   totalIncomeLbl.Text = "";
+            //   totalSalesLbl.Text = "";
+            outputSaleCSV(csCustList, "超誠");
+        }
+
+        private void outputSFCSVBtn_Click(object sender, EventArgs e)
+        {
+            outputSaleCSV(sfCustList, "富資");
+
+        }
+        private void outputSaleCSV(ComboBox cust, string comp)
+        {
+            string text = cust.Text;
+            string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
+            DateTime start = StartTimePicker.SelectionRange.Start;
+            DateTime end = EndTimePicker.SelectionRange.Start;
+            string custCode = text.Substring(0, text.IndexOf(" -")).Trim();
+
+            string folderPath = "D:\\POS\\交易資料\\" + comp + "\\" + name + "\\" + start.Year + "\\" + start.Month + "\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            salesGrid.Rows.Clear();
+            salesGrid.Columns.Clear();
+            StringBuilder sb = new StringBuilder();
+            StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + name + ".csv", false, System.Text.Encoding.UTF8);
+            sb.AppendLine("產品," + name + ",公司," + comp);
+            sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",至," + end.ToString("dd/MM/yyyy"));
+            sb.AppendLine("日期,地址,產品,單價,數量,總額");
+            double totalDisplayPrice = 0.00;
+
+            string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
+                getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.custCode = '" + custCode + "' order by a.time,a.orderID";
+          //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
+            MySqlDataReader rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["address"].ToString() + "," + rdr["itemName"].ToString() + "," + rdr["unitPrice"].ToString() + "," + rdr["amount"].ToString() + "," + rdr["total"].ToString());
+                }
+
+            }
+            sw.WriteLine(sb);
+            sw.Close();
+            rdr.Close();
+            myConnection.Close();
+        }
+
+        private void sfProdCsv_Click(object sender, EventArgs e)
+        {
+            outputProdCSV(sfCustList, itemList, "富資");
+        }
+
+        private void outputProdCSV(ComboBox cust, ComboBox item, string comp)
+        {
+            string text = cust.Text;
+            string prod = item.Text;
+          //  string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
+            DateTime start = StartTimePicker.SelectionRange.Start;
+            DateTime end = EndTimePicker.SelectionRange.Start;
+  //          string custCode = text.Substring(0, text.IndexOf(" -")).Trim();
+
+            string folderPath = "D:\\POS\\交易資料\\" + comp + "\\" + prod + "\\" + start.Year + "\\" + start.Month + "\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            salesGrid.Rows.Clear();
+            salesGrid.Columns.Clear();
+            StringBuilder sb = new StringBuilder();
+            StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + prod + ".csv", false, System.Text.Encoding.UTF8);
+            sb.AppendLine("產品," + prod + ",公司," + comp);
+            sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",至," + end.ToString("dd/MM/yyyy"));
+            sb.AppendLine("日期,客戶,地址,單價,數量,總額");
+            double totalDisplayPrice = 0.00;
+
+            string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
+                getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.itemName = '" + prod + "' and a.belongTo = '" + comp + "' order by a.time,a.orderID";
+          //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
+            MySqlDataReader rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["custName"].ToString() + "," + rdr["address"].ToString() + "," + rdr["unitPrice"].ToString() + "," + rdr["amount"].ToString() + "," + rdr["total"].ToString());
+                }
+
+            }
+            sw.WriteLine(sb);
+            sw.Close();
+            rdr.Close();
+            myConnection.Close();
+        }
+
+        private void chiuProdCsv_Click(object sender, EventArgs e)
+        {
+            outputProdCSV(sfCustList, itemList, "超誠");
+
         }
     }
 }

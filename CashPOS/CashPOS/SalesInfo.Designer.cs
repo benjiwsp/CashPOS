@@ -30,12 +30,21 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.salesGrid = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bagsGrid = new System.Windows.Forms.DataGridView();
             this.incomeGrid = new System.Windows.Forms.DataGridView();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importGrid = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,15 +72,10 @@
             this.csCustList = new System.Windows.Forms.ComboBox();
             this.searchSFBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputChiuCSVBtn = new System.Windows.Forms.Button();
+            this.outputSFCSVBtn = new System.Windows.Forms.Button();
+            this.chiuProdCsv = new System.Windows.Forms.Button();
+            this.sfProdCsv = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bagsGrid)).BeginInit();
@@ -134,6 +138,26 @@
             this.tableLayoutPanel1.SetRowSpan(this.salesGrid, 4);
             this.salesGrid.Size = new System.Drawing.Size(407, 682);
             this.salesGrid.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "貨品";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "單位";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "數量";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "總數";
+            this.Column4.Name = "Column4";
             // 
             // bagsGrid
             // 
@@ -202,6 +226,31 @@
             this.tableLayoutPanel1.SetRowSpan(this.importGrid, 4);
             this.importGrid.Size = new System.Drawing.Size(407, 682);
             this.importGrid.TabIndex = 1;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "單號";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "貨品";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "單位";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "數量";
+            this.Column8.Name = "Column8";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "包裝";
+            this.Column16.Name = "Column16";
             // 
             // label1
             // 
@@ -312,18 +361,22 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.Controls.Add(this.EndTimePicker, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.StartTimePicker, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.phoneBox, 3, 4);
             this.tableLayoutPanel2.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.searchbyCSBtn, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.searchbySFBtn, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.itemList, 2, 4);
-            this.tableLayoutPanel2.Controls.Add(this.label7, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label8, 3, 3);
-            this.tableLayoutPanel2.Controls.Add(this.searchbyItemBtn, 2, 5);
-            this.tableLayoutPanel2.Controls.Add(this.searchbyTelBtn, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.sfCustList, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.csCustList, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label7, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.itemList, 4, 1);
+            this.tableLayoutPanel2.Controls.Add(this.searchbyItemBtn, 4, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label8, 4, 3);
+            this.tableLayoutPanel2.Controls.Add(this.phoneBox, 4, 4);
+            this.tableLayoutPanel2.Controls.Add(this.searchbyTelBtn, 4, 5);
+            this.tableLayoutPanel2.Controls.Add(this.outputChiuCSVBtn, 2, 4);
+            this.tableLayoutPanel2.Controls.Add(this.outputSFCSVBtn, 3, 4);
+            this.tableLayoutPanel2.Controls.Add(this.chiuProdCsv, 2, 5);
+            this.tableLayoutPanel2.Controls.Add(this.sfProdCsv, 3, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 709);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -353,9 +406,8 @@
             // 
             // phoneBox
             // 
-            this.phoneBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneBox.Location = new System.Drawing.Point(741, 113);
+            this.phoneBox.Location = new System.Drawing.Point(987, 113);
             this.phoneBox.Name = "phoneBox";
             this.phoneBox.Size = new System.Drawing.Size(240, 26);
             this.phoneBox.TabIndex = 14;
@@ -408,10 +460,9 @@
             // 
             // itemList
             // 
-            this.itemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemList.FormattingEnabled = true;
-            this.itemList.Location = new System.Drawing.Point(495, 113);
+            this.itemList.Location = new System.Drawing.Point(987, 24);
             this.itemList.Name = "itemList";
             this.itemList.Size = new System.Drawing.Size(240, 28);
             this.itemList.TabIndex = 12;
@@ -419,11 +470,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(495, 91);
+            this.label7.Location = new System.Drawing.Point(987, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(240, 19);
+            this.label7.Size = new System.Drawing.Size(89, 20);
             this.label7.TabIndex = 17;
             this.label7.Text = "以貨品搜尋";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -431,19 +481,17 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(741, 91);
+            this.label8.Location = new System.Drawing.Point(987, 91);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(240, 19);
+            this.label8.Size = new System.Drawing.Size(89, 19);
             this.label8.TabIndex = 17;
             this.label8.Text = "以電話搜尋";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // searchbyItemBtn
             // 
-            this.searchbyItemBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchbyItemBtn.Location = new System.Drawing.Point(495, 145);
+            this.searchbyItemBtn.Location = new System.Drawing.Point(987, 59);
             this.searchbyItemBtn.Name = "searchbyItemBtn";
             this.searchbyItemBtn.Size = new System.Drawing.Size(240, 27);
             this.searchbyItemBtn.TabIndex = 18;
@@ -453,8 +501,7 @@
             // 
             // searchbyTelBtn
             // 
-            this.searchbyTelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchbyTelBtn.Location = new System.Drawing.Point(741, 145);
+            this.searchbyTelBtn.Location = new System.Drawing.Point(987, 145);
             this.searchbyTelBtn.Name = "searchbyTelBtn";
             this.searchbyTelBtn.Size = new System.Drawing.Size(240, 27);
             this.searchbyTelBtn.TabIndex = 19;
@@ -504,50 +551,49 @@
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
-            // Column1
+            // outputChiuCSVBtn
             // 
-            this.Column1.HeaderText = "貨品";
-            this.Column1.Name = "Column1";
+            this.outputChiuCSVBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.outputChiuCSVBtn.Location = new System.Drawing.Point(495, 113);
+            this.outputChiuCSVBtn.Name = "outputChiuCSVBtn";
+            this.outputChiuCSVBtn.Size = new System.Drawing.Size(240, 26);
+            this.outputChiuCSVBtn.TabIndex = 20;
+            this.outputChiuCSVBtn.Text = "匯出超誠交易資料";
+            this.outputChiuCSVBtn.UseVisualStyleBackColor = true;
+            this.outputChiuCSVBtn.Click += new System.EventHandler(this.outputChiuCSVBtn_Click);
             // 
-            // Column2
+            // outputSFCSVBtn
             // 
-            this.Column2.HeaderText = "單位";
-            this.Column2.Name = "Column2";
+            this.outputSFCSVBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.outputSFCSVBtn.Location = new System.Drawing.Point(741, 113);
+            this.outputSFCSVBtn.Name = "outputSFCSVBtn";
+            this.outputSFCSVBtn.Size = new System.Drawing.Size(240, 26);
+            this.outputSFCSVBtn.TabIndex = 20;
+            this.outputSFCSVBtn.Text = "匯出富資交易資料";
+            this.outputSFCSVBtn.UseVisualStyleBackColor = true;
+            this.outputSFCSVBtn.Click += new System.EventHandler(this.outputSFCSVBtn_Click);
             // 
-            // Column3
+            // chiuProdCsv
             // 
-            this.Column3.HeaderText = "數量";
-            this.Column3.Name = "Column3";
+            this.chiuProdCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chiuProdCsv.Location = new System.Drawing.Point(495, 145);
+            this.chiuProdCsv.Name = "chiuProdCsv";
+            this.chiuProdCsv.Size = new System.Drawing.Size(240, 27);
+            this.chiuProdCsv.TabIndex = 21;
+            this.chiuProdCsv.Text = "匯出超誠貨品資料";
+            this.chiuProdCsv.UseVisualStyleBackColor = true;
+            this.chiuProdCsv.Click += new System.EventHandler(this.chiuProdCsv_Click);
             // 
-            // Column4
+            // sfProdCsv
             // 
-            this.Column4.HeaderText = "總數";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "單號";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "貨品";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "單位";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "數量";
-            this.Column8.Name = "Column8";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "包裝";
-            this.Column16.Name = "Column16";
+            this.sfProdCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfProdCsv.Location = new System.Drawing.Point(741, 145);
+            this.sfProdCsv.Name = "sfProdCsv";
+            this.sfProdCsv.Size = new System.Drawing.Size(240, 27);
+            this.sfProdCsv.TabIndex = 21;
+            this.sfProdCsv.Text = "匯出富資貨品資料";
+            this.sfProdCsv.UseVisualStyleBackColor = true;
+            this.sfProdCsv.Click += new System.EventHandler(this.sfProdCsv_Click);
             // 
             // SalesInfo
             // 
@@ -615,5 +661,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.Button outputChiuCSVBtn;
+        private System.Windows.Forms.Button outputSFCSVBtn;
+        private System.Windows.Forms.Button chiuProdCsv;
+        private System.Windows.Forms.Button sfProdCsv;
     }
 }
