@@ -88,6 +88,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.totalLabel = new System.Windows.Forms.Label();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -155,6 +156,7 @@
             this.customerDetailPanel.Controls.Add(this.refBox, 1, 10);
             this.customerDetailPanel.Controls.Add(this.transferBtn, 4, 1);
             this.customerDetailPanel.Controls.Add(this.adjustBtn, 5, 1);
+            this.customerDetailPanel.Controls.Add(this.totalLabel, 4, 13);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -799,6 +801,18 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.customerDetailPanel.SetColumnSpan(this.totalLabel, 2);
+            this.totalLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLabel.Location = new System.Drawing.Point(372, 923);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(203, 77);
+            this.totalLabel.TabIndex = 45;
+            this.totalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ImportPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -885,5 +899,6 @@
         private System.Windows.Forms.TextBox refBox;
         private System.Windows.Forms.Button transferBtn;
         private System.Windows.Forms.Button adjustBtn;
+        private System.Windows.Forms.Label totalLabel;
     }
 }

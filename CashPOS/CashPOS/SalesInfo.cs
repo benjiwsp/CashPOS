@@ -299,8 +299,18 @@ namespace CashPOS
             addGridCol("ProdName", "總數");
 
             double totalDisplayPrice = 0.00;
-            MySqlCommand myCommand = new MySqlCommand("Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >='" +
-         start + "' and  time <= '" + end + "' and custCode = '" + cust + "' group by ItemName, Unit, pickupLoc order by ItemName", myConnection);
+            string query = "";
+            if (cust == "")
+            {
+                query = "Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >= '" +
+         start + "' and  time <= '" + end + "'  group by ItemName, Unit, pickupLoc order by ItemName";
+            }
+            else
+            {
+                query = "Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >= '" +
+          start + "' and  time <= '" + end + "' and custCode = '" + cust + "' group by ItemName, Unit, pickupLoc order by ItemName";
+            }
+            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
             MySqlDataReader rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -380,8 +390,8 @@ namespace CashPOS
             salesGrid.Columns.Clear();
             StringBuilder sb = new StringBuilder();
             StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + name + ".csv", false, System.Text.Encoding.UTF8);
-            sb.AppendLine("產品," + name + ",公司," + comp);
-            sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",至," + end.ToString("dd/MM/yyyy"));
+            sb.AppendLine("客戶," + name + ",公司," + comp);
+            sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",,至,," + end.ToString("dd/MM/yyyy"));
             sb.AppendLine("日期,地址,產品,單價,數量,總額");
             double totalDisplayPrice = 0.00;
 
@@ -458,6 +468,53 @@ namespace CashPOS
             if (itemList.Text != "")
                 outputProdCSV(itemList, "超誠");
 
+        }
+
+        private void opDailyCsv_Click(object sender, EventArgs e)
+        {
+            string site = sitePicker.Text;
+            if (site != "")
+            {
+
+            }
+        }
+        private void outputDailyCSV(string site)
+        {
+            /*  DateTime start = StartTimePicker.SelectionRange.Start;
+              DateTime end = EndTimePicker.SelectionRange.Start;
+
+              string folderPath = "D:\\POS\\交易資料\\每日報表\\" + site + "\\" + start.Year + "\\" + start.Month + "\\";
+              if (!Directory.Exists(folderPath))
+              {
+                  Directory.CreateDirectory(folderPath);
+              }
+              salesGrid.Rows.Clear();
+              salesGrid.Columns.Clear();
+              StringBuilder sb = new StringBuilder();
+              StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + site + ".csv", false, System.Text.Encoding.UTF8);
+              sb.AppendLine("產品," + name + ",公司," + comp);
+              sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",至," + end.ToString("dd/MM/yyyy"));
+              sb.AppendLine("日期,地址,產品,單價,數量,總額");
+              double totalDisplayPrice = 0.00;
+
+              string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
+                  getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.custCode = '" + custCode + "' order by a.time,a.orderID";
+              //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+              MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+              myConnection.Open();
+              MySqlDataReader rdr = myCommand.ExecuteReader();
+              if (rdr.HasRows == true)
+              {
+                  while (rdr.Read())
+                  {
+                      sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["address"].ToString() + "," + rdr["itemName"].ToString() + "," + rdr["unitPrice"].ToString() + "," + rdr["amount"].ToString() + "," + rdr["total"].ToString());
+                  }
+
+              }
+              sw.WriteLine(sb);
+              sw.Close();
+              rdr.Close();
+              myConnection.Close();*/
         }
     }
 }

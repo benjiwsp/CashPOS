@@ -164,7 +164,7 @@ namespace CashPOS
         private void insertSupplier(string table)
         {
             //check if there is anything in the grid to update
-            if ((custDataGrid.Rows.Count - 1) > 0)
+            if ((custDataGrid.Rows.Count ) >= 1)
             {
                 // each row to insert into db
                 foreach (DataGridViewRow row in custDataGrid.Rows)

@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
             this.invoiceLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.selfPickRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.warehouseRadio = new MetroFramework.Controls.MetroRadioButton();
-            this.siteRadio = new MetroFramework.Controls.MetroRadioButton();
             this.selectedItemList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +93,13 @@
             this.custListView = new System.Windows.Forms.ListView();
             this.addressTxt = new System.Windows.Forms.ComboBox();
             this.telTxt = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.selfPickRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.warehouseRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.siteRadio = new MetroFramework.Controls.MetroRadioButton();
+            this.deliveryRadio = new System.Windows.Forms.CheckBox();
+            this.VanRadio = new System.Windows.Forms.CheckBox();
+            this.storeRadio = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -124,6 +128,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -166,9 +171,6 @@
             this.customerDetailPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.74048F));
             this.customerDetailPanel.Controls.Add(this.invoiceLabel, 0, 0);
             this.customerDetailPanel.Controls.Add(this.metroLabel2, 0, 1);
-            this.customerDetailPanel.Controls.Add(this.selfPickRadio, 0, 5);
-            this.customerDetailPanel.Controls.Add(this.warehouseRadio, 2, 5);
-            this.customerDetailPanel.Controls.Add(this.siteRadio, 4, 5);
             this.customerDetailPanel.Controls.Add(this.selectedItemList, 0, 6);
             this.customerDetailPanel.Controls.Add(this.chiuOrdBtn, 2, 0);
             this.customerDetailPanel.Controls.Add(this.sfOrdBtn, 4, 0);
@@ -189,6 +191,7 @@
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel6, 0, 13);
             this.customerDetailPanel.Controls.Add(this.tableLayoutPanel7, 3, 1);
             this.customerDetailPanel.Controls.Add(this.telTxt, 1, 3);
+            this.customerDetailPanel.Controls.Add(this.tableLayoutPanel8, 0, 5);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -198,11 +201,11 @@
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.4F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.6F));
-            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.2F));
-            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26F));
+            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.2F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
-            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9F));
-            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.3F));
+            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
+            this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.2F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
             this.customerDetailPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142857F));
@@ -239,48 +242,6 @@
             this.metroLabel2.Text = "客戶";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // selfPickRadio
-            // 
-            this.selfPickRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.selfPickRadio, 2);
-            this.selfPickRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selfPickRadio.Location = new System.Drawing.Point(3, 198);
-            this.selfPickRadio.Name = "selfPickRadio";
-            this.selfPickRadio.Size = new System.Drawing.Size(184, 36);
-            this.selfPickRadio.TabIndex = 3;
-            this.selfPickRadio.Text = "自提";
-            this.selfPickRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.selfPickRadio.UseSelectable = true;
-            this.selfPickRadio.CheckedChanged += new System.EventHandler(this.selfPickRadio_CheckedChanged);
-            // 
-            // warehouseRadio
-            // 
-            this.warehouseRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.warehouseRadio, 2);
-            this.warehouseRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouseRadio.Location = new System.Drawing.Point(193, 198);
-            this.warehouseRadio.Name = "warehouseRadio";
-            this.warehouseRadio.Size = new System.Drawing.Size(178, 36);
-            this.warehouseRadio.TabIndex = 4;
-            this.warehouseRadio.Text = "倉";
-            this.warehouseRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.warehouseRadio.UseSelectable = true;
-            this.warehouseRadio.CheckedChanged += new System.EventHandler(this.warehouseRadio_CheckedChanged);
-            // 
-            // siteRadio
-            // 
-            this.siteRadio.AutoSize = true;
-            this.customerDetailPanel.SetColumnSpan(this.siteRadio, 2);
-            this.siteRadio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.siteRadio.Location = new System.Drawing.Point(377, 198);
-            this.siteRadio.Name = "siteRadio";
-            this.siteRadio.Size = new System.Drawing.Size(198, 36);
-            this.siteRadio.TabIndex = 5;
-            this.siteRadio.Text = "地盤";
-            this.siteRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.siteRadio.UseSelectable = true;
-            this.siteRadio.CheckedChanged += new System.EventHandler(this.siteRadio_CheckedChanged);
-            // 
             // selectedItemList
             // 
             this.selectedItemList.AllowUserToAddRows = false;
@@ -288,14 +249,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -306,27 +267,27 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle5;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectedItemList.Location = new System.Drawing.Point(3, 240);
+            this.selectedItemList.Location = new System.Drawing.Point(3, 268);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 3);
-            this.selectedItemList.Size = new System.Drawing.Size(572, 334);
+            this.selectedItemList.Size = new System.Drawing.Size(572, 307);
             this.selectedItemList.TabIndex = 9;
             this.selectedItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemList_CellContentClick);
             this.selectedItemList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectedItemList_CellEndEdit);
@@ -588,10 +549,10 @@
             this.Column10});
             this.customerDetailPanel.SetColumnSpan(this.unpaidList, 6);
             this.unpaidList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unpaidList.Location = new System.Drawing.Point(3, 580);
+            this.unpaidList.Location = new System.Drawing.Point(3, 581);
             this.unpaidList.Name = "unpaidList";
             this.unpaidList.RowHeadersVisible = false;
-            this.unpaidList.Size = new System.Drawing.Size(572, 127);
+            this.unpaidList.Size = new System.Drawing.Size(572, 126);
             this.unpaidList.TabIndex = 41;
             // 
             // Column7
@@ -931,6 +892,7 @@
             this.dateSelected.Name = "dateSelected";
             this.dateSelected.Size = new System.Drawing.Size(163, 26);
             this.dateSelected.TabIndex = 2;
+            this.dateSelected.ValueChanged += new System.EventHandler(this.dateSelected_ValueChanged);
             // 
             // custListView
             // 
@@ -966,6 +928,112 @@
             this.telTxt.Name = "telTxt";
             this.telTxt.Size = new System.Drawing.Size(180, 28);
             this.telTxt.TabIndex = 1;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.customerDetailPanel.SetColumnSpan(this.tableLayoutPanel8, 6);
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.Controls.Add(this.selfPickRadio, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.warehouseRadio, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.siteRadio, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.deliveryRadio, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.VanRadio, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.storeRadio, 2, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 198);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(572, 64);
+            this.tableLayoutPanel8.TabIndex = 50;
+            // 
+            // selfPickRadio
+            // 
+            this.selfPickRadio.AutoSize = true;
+            this.selfPickRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selfPickRadio.Location = new System.Drawing.Point(3, 3);
+            this.selfPickRadio.Name = "selfPickRadio";
+            this.selfPickRadio.Size = new System.Drawing.Size(184, 26);
+            this.selfPickRadio.TabIndex = 3;
+            this.selfPickRadio.Text = "自提";
+            this.selfPickRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.selfPickRadio.UseSelectable = true;
+            this.selfPickRadio.CheckedChanged += new System.EventHandler(this.selfPickRadio_CheckedChanged);
+            // 
+            // warehouseRadio
+            // 
+            this.warehouseRadio.AutoSize = true;
+            this.warehouseRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warehouseRadio.Location = new System.Drawing.Point(193, 3);
+            this.warehouseRadio.Name = "warehouseRadio";
+            this.warehouseRadio.Size = new System.Drawing.Size(184, 26);
+            this.warehouseRadio.TabIndex = 4;
+            this.warehouseRadio.Text = "倉";
+            this.warehouseRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.warehouseRadio.UseSelectable = true;
+            this.warehouseRadio.CheckedChanged += new System.EventHandler(this.warehouseRadio_CheckedChanged);
+            // 
+            // siteRadio
+            // 
+            this.siteRadio.AutoSize = true;
+            this.siteRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.siteRadio.Location = new System.Drawing.Point(383, 3);
+            this.siteRadio.Name = "siteRadio";
+            this.siteRadio.Size = new System.Drawing.Size(186, 26);
+            this.siteRadio.TabIndex = 5;
+            this.siteRadio.Text = "地盤";
+            this.siteRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.siteRadio.UseSelectable = true;
+            this.siteRadio.CheckedChanged += new System.EventHandler(this.siteRadio_CheckedChanged);
+            // 
+            // deliveryRadio
+            // 
+            this.deliveryRadio.AutoSize = true;
+            this.deliveryRadio.BackColor = System.Drawing.Color.White;
+            this.deliveryRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deliveryRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.deliveryRadio.Location = new System.Drawing.Point(3, 35);
+            this.deliveryRadio.Name = "deliveryRadio";
+            this.deliveryRadio.Size = new System.Drawing.Size(184, 26);
+            this.deliveryRadio.TabIndex = 6;
+            this.deliveryRadio.Text = "外送";
+            this.deliveryRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.deliveryRadio.UseVisualStyleBackColor = false;
+            this.deliveryRadio.CheckedChanged += new System.EventHandler(this.deliveryRadio_CheckedChanged);
+            // 
+            // VanRadio
+            // 
+            this.VanRadio.AutoSize = true;
+            this.VanRadio.BackColor = System.Drawing.Color.White;
+            this.VanRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VanRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.VanRadio.Location = new System.Drawing.Point(193, 35);
+            this.VanRadio.Name = "VanRadio";
+            this.VanRadio.Size = new System.Drawing.Size(184, 26);
+            this.VanRadio.TabIndex = 6;
+            this.VanRadio.Text = "Van";
+            this.VanRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.VanRadio.UseVisualStyleBackColor = false;
+            this.VanRadio.CheckedChanged += new System.EventHandler(this.VanRadio_CheckedChanged);
+            // 
+            // storeRadio
+            // 
+            this.storeRadio.AutoSize = true;
+            this.storeRadio.BackColor = System.Drawing.Color.White;
+            this.storeRadio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.storeRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.storeRadio.Location = new System.Drawing.Point(383, 35);
+            this.storeRadio.Name = "storeRadio";
+            this.storeRadio.Size = new System.Drawing.Size(186, 26);
+            this.storeRadio.TabIndex = 6;
+            this.storeRadio.Text = "門市";
+            this.storeRadio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.storeRadio.UseVisualStyleBackColor = false;
+            this.storeRadio.CheckedChanged += new System.EventHandler(this.storeRadio_CheckedChanged);
             // 
             // panel2
             // 
@@ -1211,6 +1279,8 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -1233,8 +1303,6 @@
         private MetroFramework.Controls.MetroLabel invoiceLabel;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroRadioButton selfPickRadio;
-        private MetroFramework.Controls.MetroRadioButton siteRadio;
         private System.Windows.Forms.DataGridView selectedItemList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1254,7 +1322,6 @@
         private System.Windows.Forms.TextBox paidAmount;
         private System.Windows.Forms.Label payTypeLabel;
         private System.Windows.Forms.Label payMethodLbl;
-        private MetroFramework.Controls.MetroRadioButton warehouseRadio;
         private System.Windows.Forms.Label selectedItemLabel;
         private System.Windows.Forms.TextBox invoiceNoteTxt;
         private System.Windows.Forms.TextBox sandReceiptTxt;
@@ -1304,5 +1371,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         public System.Windows.Forms.TextBox amountTxt;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private MetroFramework.Controls.MetroRadioButton selfPickRadio;
+        private MetroFramework.Controls.MetroRadioButton warehouseRadio;
+        private MetroFramework.Controls.MetroRadioButton siteRadio;
+        private System.Windows.Forms.CheckBox deliveryRadio;
+        private System.Windows.Forms.CheckBox VanRadio;
+        private System.Windows.Forms.CheckBox storeRadio;
     }
 }

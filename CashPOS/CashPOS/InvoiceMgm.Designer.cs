@@ -120,6 +120,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
             this.custListView = new System.Windows.Forms.ListView();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.custTypeBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -137,6 +139,7 @@
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // serachByComp
@@ -1120,8 +1123,8 @@
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Controls.Add(this.compLbl, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel15, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel16, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(553, 79);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
@@ -1133,7 +1136,6 @@
             // 
             // compLbl
             // 
-            this.compLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.compLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.compLbl.FormattingEnabled = true;
             this.compLbl.Items.AddRange(new object[] {
@@ -1142,7 +1144,7 @@
             "超誠"});
             this.compLbl.Location = new System.Drawing.Point(3, 3);
             this.compLbl.Name = "compLbl";
-            this.compLbl.Size = new System.Drawing.Size(453, 32);
+            this.compLbl.Size = new System.Drawing.Size(220, 32);
             this.compLbl.TabIndex = 3;
             // 
             // tableLayoutPanel15
@@ -1208,6 +1210,36 @@
             this.custListView.UseCompatibleStateImageBehavior = false;
             this.custListView.Click += new System.EventHandler(this.CustListView_Click);
             // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 2;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Controls.Add(this.compLbl, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.custTypeBox, 1, 0);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 1;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(453, 38);
+            this.tableLayoutPanel16.TabIndex = 5;
+            // 
+            // custTypeBox
+            // 
+            this.custTypeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custTypeBox.FormattingEnabled = true;
+            this.custTypeBox.Items.AddRange(new object[] {
+            "",
+            "外送",
+            "Van",
+            "門市"});
+            this.custTypeBox.Location = new System.Drawing.Point(229, 3);
+            this.custTypeBox.Name = "custTypeBox";
+            this.custTypeBox.Size = new System.Drawing.Size(220, 32);
+            this.custTypeBox.TabIndex = 3;
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1239,6 +1271,7 @@
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
+            this.tableLayoutPanel16.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1337,5 +1370,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.ComboBox custTypeBox;
     }
 }

@@ -212,6 +212,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            totalLabel.Text = "";
             subPanel.Controls.Clear();
             selectedItemList.Rows.Clear();
             customerTxt.Text = "";
@@ -432,14 +433,14 @@ namespace CashPOS
                             if (fromLabel.Text == "調倉" || fromLabel.Text == "執倉")
                             {
                                 recordQuery = "insert into CashPOSDB.transRecords values('" + orderID + "','" + refNo + "','" +
-                                  cust + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
+                                  cust + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + totalPriceTxt.Text + "','" + notes + "','" + belongTo + "','" +
                                 date + "')";
                             }
                             else
                             {
                                 recordQuery = "insert into CashPOSDB.importRecords values('" + orderID + "','" + refNo + "','" +
                                 selectedCustCode + "','" + cust + "','" +
-                             phone + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + "1" + "','" + notes + "','" + belongTo + "','" +
+                             phone + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + totalPriceTxt.Text + "','" + notes + "','" + belongTo + "','" +
                               date + "')";
                             }
                             myCommand = new MySqlCommand(recordQuery, myConnection);

@@ -55,7 +55,7 @@ namespace CashPOS
 
 
             var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex ==9)
             {
                 printList.Rows.Clear();
                 string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
@@ -97,6 +97,38 @@ namespace CashPOS
                 }
                 rdr.Close();
                 myConnection.Close();
+            }else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 10)
+            {
+                string OrderID = resultList.Rows[e.RowIndex].Cells[0].Value.ToString();
+                if (OrderID != "")
+                {
+                    InputBox input = new InputBox();
+                    input.Text = "請輸入車牌。";
+                    string License = "";
+
+                    if (input.ShowDialog() == DialogResult.OK)
+                    {
+                        License = input.OrderNumberInputTextbox.Text;
+                        MySqlCommand updateCmd = new MySqlCommand("Update CashPOSDB.orderRecords set license = '" + License + "' where orderID ='" + OrderID + "'", myConnection);
+                        myConnection.Open();
+                        updateCmd.ExecuteNonQuery();
+                        myConnection.Close();
+
+                        displayInvoiceBtn.PerformClick();
+                        for (int i = 0; i < resultList.RowCount; i++)
+                        {
+                            if (resultList[0, i].Value.ToString() == OrderID)
+                            {
+                                resultList_CellContentClick(resultList, new DataGridViewCellEventArgs(9, i));
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("請先選擇單號。");
+                }
             }
             printList.ClearSelection();
         }

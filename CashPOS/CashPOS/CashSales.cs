@@ -64,6 +64,7 @@ namespace CashPOS
         MySqlDataReader rdr; MySqlDataReader rdr2;
 
         string destType; // desntnation type
+        string custType = "";
         public CashSales()
         {
             InitializeComponent();
@@ -307,6 +308,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            custType = "";
             addressTxt.Items.Clear();
             unpaidList.Rows.Clear();
             payMethLbl.Text = "";
@@ -323,6 +325,9 @@ namespace CashPOS
             selfPickRadio.Checked = false;
             warehouseRadio.Checked = false;
             siteRadio.Checked = false;
+            VanRadio.Checked = false;
+            storeRadio.Checked = false;
+            deliveryRadio.Checked = false;
             sandReceiptTxt.Text = "";
             invoiceNoteTxt.Text = "";
             toLabel.Text = "";
@@ -335,6 +340,7 @@ namespace CashPOS
             isSearching = false;
             selectedOrderID = "";
             paidAmount.Text = "";
+            dateSelected.Value = DateTime.Today;
 
         }
 
@@ -386,8 +392,10 @@ namespace CashPOS
                     paid = paidAmount.Text;
                 }
                 string invCol = "";
-                string date = dateSelected.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
+                string date = dateSelected.Value.ToString("yyyy-MM-dd " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
+                // MessageBox.Show(dateSelected.Value.ToString());
+                //  MessageBox.Show(date);
                 if (isSearch)
                 {
                     if (id != "")
@@ -421,7 +429,7 @@ namespace CashPOS
                         while (true)
                         {
                             // MessageBox.Show(selectedCustCode);
-                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + sandID + "','" + selectedCustCode + "','" + cust + "','" +
+                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + custType + "','" + selectedCustCode + "','" + cust + "','" +
                              phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + notes + "','" + belongTo + "','" +
                              isPrinted + "','" + date + "','')", myConnection);
                             myCommand.ExecuteNonQuery();
@@ -643,6 +651,15 @@ namespace CashPOS
             }
             checkStatus();
         }
+        private void checkCustType(object sender)
+        {
+            CheckBox btn = (CheckBox)sender;
+            if (btn.Checked)
+            {
+                string cType = btn.Text;
+                custType = cType;
+            }
+        }
         private void checkStatus()
         {
             if (customerTxt.Text != "" && toLabel.Text != "" && fromLabel.Text != "" && destLabel.Text != "")
@@ -711,6 +728,15 @@ namespace CashPOS
                         pickupAddText.Text = rdr["pickupLoc"].ToString();
                         payMethodLbl.Text = rdr["payMethod"].ToString();
                         payMethLbl.Text = rdr["payMethod"].ToString();
+                        payMethLbl.Text = rdr["payment"].ToString();
+                        paidAmount.Text = rdr["paid"].ToString();
+                        //  dateSelected.Value = DateTime.ParseExact(rdr["time"].ToString(), "yyyy - MM - dd", null);
+                        DateTime bd;
+                        //  MessageBox.Show(rdr["time"].ToString());
+                        bd = Convert.ToDateTime(rdr["time"].ToString());
+                        //  MessageBox.Show(bd.ToShortDateString());
+                        dateSelected.Value = bd;
+
                         //select the radio button
                         //update the date
                         fromLabel.Text = rdr["belongTo"].ToString();
@@ -729,9 +755,22 @@ namespace CashPOS
                         {
                             siteRadio.Checked = true;
                         }
+                        string cType = rdr["sandID"].ToString();
+                        if (cType == "Van")
+                        {
+                            VanRadio.Checked = true;
+                        }
+                        else if (cType == "外送")
+                        {
+                            deliveryRadio.Checked = true;
+                        }
+                        else if (cType == "門市")
+                        {
+                            storeRadio.Checked = true;
+                        }
                         payTypeLabel.Text = rdr["payment"].ToString();
                         totalPriceTxt.Text = rdr["totalPrice"].ToString();
-                        sandReceiptTxt.Text = rdr["sandID"].ToString();
+                        //sandReceiptTxt.Text = rdr["sandID"].ToString();
                         invoiceNoteTxt.Text = rdr["notes"].ToString();
                         i++;
                     }
@@ -765,7 +804,7 @@ namespace CashPOS
         {
             string returnStr = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
                 "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone,  CashPOSDB.orderRecords.payMethod, CashPOSDB.orderRecords.license, " +
-                "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
+                "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.pickupLoc, " +
                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
                 "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
@@ -1223,6 +1262,34 @@ namespace CashPOS
                     totalPrice += Convert.ToDecimal(row.Cells[5].Value);
                 totalPriceTxt.Text = totalPrice.ToString("0.00");
             }
+        }
+
+        private void storeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            VanRadio.Checked = false;
+            deliveryRadio.Checked = false;
+            checkCustType(sender);
+        }
+
+        private void VanRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            storeRadio.Checked = false;
+            deliveryRadio.Checked = false;
+            checkCustType(sender);
+
+        }
+
+        private void deliveryRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            VanRadio.Checked = false;
+            storeRadio.Checked = false;
+            checkCustType(sender);
+
+        }
+
+        private void dateSelected_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

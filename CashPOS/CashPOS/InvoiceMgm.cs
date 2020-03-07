@@ -122,6 +122,8 @@ namespace CashPOS
 
         private void clearAll()
         {
+            compLbl.Text = "";
+            custTypeBox.Text = "";
             belongToTxt.Text = "";
             custTypeTxt.Text = "";
             orderListView.Rows.Clear();
@@ -561,6 +563,7 @@ namespace CashPOS
             addStdCol();
 
             string selectedComp = compLbl.Text;
+            string selectedCustType = custTypeBox.Text; 
             string query;
             decimal cash = 0.0m;
             decimal cheque = 0.0m;
@@ -569,18 +572,33 @@ namespace CashPOS
             decimal remind = 0.0m;
             if (selectedComp == "富資")
             {
-                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd 00:00:00") +
             "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
             else if (selectedComp == "超誠")
             {
-                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+                query = "Select * from CashPOSDB.orderRecords where belongTo = '" + selectedComp + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd 00:00:00") +
             "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
             }
             else
             {
                 query = "Select * from CashPOSDB.orderRecords where time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
             "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "'";
+            }
+            if(selectedCustType == "Van")
+            {
+                query += " and sandID = 'Van'";
+            }
+            else if(selectedCustType == "門市")
+            {
+                query += " and sandID = '門市'";
+
+
+            }
+            else if (selectedCustType == "外送")
+            {
+                query += " and sandID = '外送'";
+
             }
             myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();

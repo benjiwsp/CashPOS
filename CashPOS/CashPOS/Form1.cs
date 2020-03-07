@@ -117,26 +117,62 @@ namespace CashPOS
                 {
                     case "HomeBtn":
                         homeScreen.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.Aqua;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
+
                         mainPanel.Controls.Add(homeScreen);
                         break;
 
                     case "cashSalesBtn":
                         cashSales.Dock = DockStyle.Fill;
+
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.Aqua;
+
                         mainPanel.Controls.Add(cashSales);
                         break;
 
                     case "settingBtn":
                         infoSetting.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.Aqua;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(infoSetting);
                         break;
 
                     case "priceSettingBtn":
                         priceSetting.Dock = DockStyle.Fill;
+
                         mainPanel.Controls.Add(priceSetting);
                         break;
 
                     case "invBtn":
                         inventory.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.Aqua;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(inventory);
                         break;
 
@@ -151,6 +187,14 @@ namespace CashPOS
                         break;
                     case "InvoiceCheckBtn":
                         invoiceMgm.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.Aqua;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(invoiceMgm);
                         break;
 
@@ -168,10 +212,26 @@ namespace CashPOS
                         break;
                     case "printInvBtn":
                         printPage.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.Aqua;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(printPage);
                         break;
                     case "importBtn":
                         importPage.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.Aqua;
+                        salesInfoBtn.BackColor = Color.White;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(importPage);
                         break;
 
@@ -181,6 +241,14 @@ namespace CashPOS
                         break;
                     case "salesInfoBtn":
                         salesInfo.Dock = DockStyle.Fill;
+                        HomeBtn.BackColor = Color.White;
+                        invBtn.BackColor = Color.White;
+                        settingBtn.BackColor = Color.White;
+                        InvoiceCheckBtn.BackColor = Color.White;
+                        printInvBtn.BackColor = Color.White;
+                        importBtn.BackColor = Color.White;
+                        salesInfoBtn.BackColor = Color.Aqua;
+                        cashSalesBtn.BackColor = Color.White;
                         mainPanel.Controls.Add(salesInfo);
                         break;
                     //   case "printInvBtn":

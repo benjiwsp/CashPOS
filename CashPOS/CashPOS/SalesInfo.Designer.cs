@@ -48,7 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.searchCSBtn = new System.Windows.Forms.Button();
             this.overViewGrid = new System.Windows.Forms.DataGridView();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,8 +73,12 @@
             this.outputSFCSVBtn = new System.Windows.Forms.Button();
             this.chiuProdCsv = new System.Windows.Forms.Button();
             this.sfProdCsv = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.searchSFBtn = new System.Windows.Forms.Button();
+            this.searchCSBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.opDailyCsv = new System.Windows.Forms.Button();
+            this.sitePicker = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bagsGrid)).BeginInit();
@@ -83,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.importGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overViewGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -99,12 +103,10 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.searchCSBtn, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.overViewGrid, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.searchSFBtn, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.clearBtn, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -287,17 +289,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "公司收入";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // searchCSBtn
-            // 
-            this.searchCSBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchCSBtn.Location = new System.Drawing.Point(3, 890);
-            this.searchCSBtn.Name = "searchCSBtn";
-            this.searchCSBtn.Size = new System.Drawing.Size(407, 107);
-            this.searchCSBtn.TabIndex = 7;
-            this.searchCSBtn.Text = "搜尋超誠";
-            this.searchCSBtn.UseVisualStyleBackColor = true;
-            this.searchCSBtn.Click += new System.EventHandler(this.searchCSBtn_Click);
             // 
             // overViewGrid
             // 
@@ -573,27 +564,87 @@
             this.sfProdCsv.UseVisualStyleBackColor = true;
             this.sfProdCsv.Click += new System.EventHandler(this.sfProdCsv_Click);
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel3, 3);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Controls.Add(this.searchSFBtn, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.searchCSBtn, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.clearBtn, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.opDailyCsv, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.sitePicker, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 890);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1233, 107);
+            this.tableLayoutPanel3.TabIndex = 14;
+            // 
             // searchSFBtn
             // 
             this.searchSFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchSFBtn.Location = new System.Drawing.Point(416, 890);
+            this.searchSFBtn.Location = new System.Drawing.Point(414, 3);
             this.searchSFBtn.Name = "searchSFBtn";
-            this.searchSFBtn.Size = new System.Drawing.Size(407, 107);
+            this.searchSFBtn.Size = new System.Drawing.Size(405, 47);
             this.searchSFBtn.TabIndex = 8;
             this.searchSFBtn.Text = "搜尋富資";
             this.searchSFBtn.UseVisualStyleBackColor = true;
             this.searchSFBtn.Click += new System.EventHandler(this.searchSFBtn_Click);
             // 
+            // searchCSBtn
+            // 
+            this.searchCSBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchCSBtn.Location = new System.Drawing.Point(3, 3);
+            this.searchCSBtn.Name = "searchCSBtn";
+            this.searchCSBtn.Size = new System.Drawing.Size(405, 47);
+            this.searchCSBtn.TabIndex = 7;
+            this.searchCSBtn.Text = "搜尋超誠";
+            this.searchCSBtn.UseVisualStyleBackColor = true;
+            this.searchCSBtn.Click += new System.EventHandler(this.searchCSBtn_Click);
+            // 
             // clearBtn
             // 
             this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearBtn.Location = new System.Drawing.Point(829, 890);
+            this.clearBtn.Location = new System.Drawing.Point(3, 56);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(407, 107);
+            this.clearBtn.Size = new System.Drawing.Size(405, 48);
             this.clearBtn.TabIndex = 14;
             this.clearBtn.Text = "清空";
             this.clearBtn.UseVisualStyleBackColor = true;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // opDailyCsv
+            // 
+            this.opDailyCsv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.opDailyCsv.Enabled = false;
+            this.opDailyCsv.Location = new System.Drawing.Point(825, 56);
+            this.opDailyCsv.Name = "opDailyCsv";
+            this.opDailyCsv.Size = new System.Drawing.Size(405, 48);
+            this.opDailyCsv.TabIndex = 15;
+            this.opDailyCsv.Text = "以倉地匯出日報表";
+            this.opDailyCsv.UseVisualStyleBackColor = true;
+            this.opDailyCsv.Click += new System.EventHandler(this.opDailyCsv_Click);
+            // 
+            // sitePicker
+            // 
+            this.sitePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sitePicker.Enabled = false;
+            this.sitePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sitePicker.FormattingEnabled = true;
+            this.sitePicker.Items.AddRange(new object[] {
+            "屯門",
+            "柴灣",
+            "油麻地",
+            "觀塘"});
+            this.sitePicker.Location = new System.Drawing.Point(825, 3);
+            this.sitePicker.Name = "sitePicker";
+            this.sitePicker.Size = new System.Drawing.Size(405, 45);
+            this.sitePicker.TabIndex = 16;
             // 
             // SalesInfo
             // 
@@ -611,6 +662,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.overViewGrid)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -665,5 +717,8 @@
         private System.Windows.Forms.Button outputSFCSVBtn;
         private System.Windows.Forms.Button chiuProdCsv;
         private System.Windows.Forms.Button sfProdCsv;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button opDailyCsv;
+        private System.Windows.Forms.ComboBox sitePicker;
     }
 }
