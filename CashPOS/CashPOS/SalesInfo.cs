@@ -256,6 +256,7 @@ namespace CashPOS
         }
         private void clear()
         {
+            sitePicker.Text = "";
             salesGrid.Rows.Clear();
             importGrid.Rows.Clear();
             bagsGrid.Rows.Clear();
@@ -475,14 +476,14 @@ namespace CashPOS
             string site = sitePicker.Text;
             if (site != "")
             {
-
+                outputDailyCSV(site);
             }
         }
         private void outputDailyCSV(string site)
         {
-            /*  DateTime start = StartTimePicker.SelectionRange.Start;
+             DateTime start = StartTimePicker.SelectionRange.Start;
               DateTime end = EndTimePicker.SelectionRange.Start;
-
+            string comp;
               string folderPath = "D:\\POS\\交易資料\\每日報表\\" + site + "\\" + start.Year + "\\" + start.Month + "\\";
               if (!Directory.Exists(folderPath))
               {
@@ -492,29 +493,38 @@ namespace CashPOS
               salesGrid.Columns.Clear();
               StringBuilder sb = new StringBuilder();
               StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + site + ".csv", false, System.Text.Encoding.UTF8);
-              sb.AppendLine("產品," + name + ",公司," + comp);
-              sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",至," + end.ToString("dd/MM/yyyy"));
-              sb.AppendLine("日期,地址,產品,單價,數量,總額");
+            if(site == "屯門")
+            {
+                comp = "富資";
+            }
+            else
+            {
+                comp = "超誠";
+            }
+              sb.AppendLine("公司," + comp);
+              sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",,至,," + end.ToString("dd/MM/yyyy"));
+              sb.AppendLine("日期,單種類(超誠用),送貨類別地址,單號,付款方式,客名,地址,金額,已付");
               double totalDisplayPrice = 0.00;
 
-              string query = "Select * from CashPOSDB.orderDetails a join CashPOSDB.orderRecords b where a.orderID = b.orderID and b.time >=  '" +
-                  getStartDate() + "' and b.time <= '" + getEndDate() + "' and a.custCode = '" + custCode + "' order by a.time,a.orderID";
+              string query = "Select * from CashPOSDB.orderRecords b where time >=  '" +
+                  getStartDate() + "' and time <= '" + getEndDate() + "' and belongTo = '" + comp + "' order by time, orderID";
               //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
               MySqlCommand myCommand = new MySqlCommand(query, myConnection);
               myConnection.Open();
               MySqlDataReader rdr = myCommand.ExecuteReader();
               if (rdr.HasRows == true)
               {
-                  while (rdr.Read())
-                  {
-                      sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["address"].ToString() + "," + rdr["itemName"].ToString() + "," + rdr["unitPrice"].ToString() + "," + rdr["amount"].ToString() + "," + rdr["total"].ToString());
+                while (rdr.Read())
+                {
+                    sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["sandID"].ToString() + "," + rdr["priceType"].ToString() + "," + rdr["orderID"].ToString() +
+                         "," + rdr["payment"].ToString() + "," + rdr["custName"].ToString() + "," + rdr["address"].ToString() + "," + rdr["totalPrice"].ToString() + "," + rdr["paid"].ToString());
                   }
 
               }
               sw.WriteLine(sb);
               sw.Close();
               rdr.Close();
-              myConnection.Close();*/
+              myConnection.Close();
         }
     }
 }

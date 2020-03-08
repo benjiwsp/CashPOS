@@ -116,8 +116,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.3F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.1F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.4F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -372,13 +372,13 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 709);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85714F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.56069F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.18497F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.23121F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.13873F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.23121F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.28572F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1233, 175);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1233, 173);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
             // EndTimePicker
@@ -402,7 +402,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(495, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(240, 21);
+            this.label5.Size = new System.Drawing.Size(240, 20);
             this.label5.TabIndex = 15;
             this.label5.Text = "以超誠客戶搜尋";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -414,7 +414,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(741, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(240, 21);
+            this.label6.Size = new System.Drawing.Size(240, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "以富資客戶搜尋";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -422,7 +422,7 @@
             // searchbyCSBtn
             // 
             this.searchbyCSBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchbyCSBtn.Location = new System.Drawing.Point(495, 59);
+            this.searchbyCSBtn.Location = new System.Drawing.Point(495, 51);
             this.searchbyCSBtn.Name = "searchbyCSBtn";
             this.searchbyCSBtn.Size = new System.Drawing.Size(240, 29);
             this.searchbyCSBtn.TabIndex = 16;
@@ -433,7 +433,7 @@
             // searchbySFBtn
             // 
             this.searchbySFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchbySFBtn.Location = new System.Drawing.Point(741, 59);
+            this.searchbySFBtn.Location = new System.Drawing.Point(741, 51);
             this.searchbySFBtn.Name = "searchbySFBtn";
             this.searchbySFBtn.Size = new System.Drawing.Size(240, 29);
             this.searchbySFBtn.TabIndex = 16;
@@ -446,7 +446,7 @@
             this.sfCustList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sfCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sfCustList.FormattingEnabled = true;
-            this.sfCustList.Location = new System.Drawing.Point(741, 24);
+            this.sfCustList.Location = new System.Drawing.Point(741, 23);
             this.sfCustList.Name = "sfCustList";
             this.sfCustList.Size = new System.Drawing.Size(240, 28);
             this.sfCustList.TabIndex = 13;
@@ -456,7 +456,7 @@
             this.csCustList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.csCustList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.csCustList.FormattingEnabled = true;
-            this.csCustList.Location = new System.Drawing.Point(495, 24);
+            this.csCustList.Location = new System.Drawing.Point(495, 23);
             this.csCustList.Name = "csCustList";
             this.csCustList.Size = new System.Drawing.Size(240, 28);
             this.csCustList.TabIndex = 6;
@@ -476,14 +476,14 @@
             // 
             this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemList.FormattingEnabled = true;
-            this.itemList.Location = new System.Drawing.Point(987, 24);
+            this.itemList.Location = new System.Drawing.Point(987, 23);
             this.itemList.Name = "itemList";
             this.itemList.Size = new System.Drawing.Size(240, 28);
             this.itemList.TabIndex = 12;
             // 
             // searchbyItemBtn
             // 
-            this.searchbyItemBtn.Location = new System.Drawing.Point(987, 59);
+            this.searchbyItemBtn.Location = new System.Drawing.Point(987, 51);
             this.searchbyItemBtn.Name = "searchbyItemBtn";
             this.searchbyItemBtn.Size = new System.Drawing.Size(240, 27);
             this.searchbyItemBtn.TabIndex = 18;
@@ -495,9 +495,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(987, 91);
+            this.label8.Location = new System.Drawing.Point(987, 83);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 19);
+            this.label8.Size = new System.Drawing.Size(89, 20);
             this.label8.TabIndex = 17;
             this.label8.Text = "以電話搜尋";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -505,14 +505,14 @@
             // phoneBox
             // 
             this.phoneBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneBox.Location = new System.Drawing.Point(987, 113);
+            this.phoneBox.Location = new System.Drawing.Point(987, 107);
             this.phoneBox.Name = "phoneBox";
             this.phoneBox.Size = new System.Drawing.Size(240, 26);
             this.phoneBox.TabIndex = 14;
             // 
             // searchbyTelBtn
             // 
-            this.searchbyTelBtn.Location = new System.Drawing.Point(987, 145);
+            this.searchbyTelBtn.Location = new System.Drawing.Point(987, 142);
             this.searchbyTelBtn.Name = "searchbyTelBtn";
             this.searchbyTelBtn.Size = new System.Drawing.Size(240, 27);
             this.searchbyTelBtn.TabIndex = 19;
@@ -523,9 +523,9 @@
             // outputChiuCSVBtn
             // 
             this.outputChiuCSVBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outputChiuCSVBtn.Location = new System.Drawing.Point(495, 113);
+            this.outputChiuCSVBtn.Location = new System.Drawing.Point(495, 107);
             this.outputChiuCSVBtn.Name = "outputChiuCSVBtn";
-            this.outputChiuCSVBtn.Size = new System.Drawing.Size(240, 26);
+            this.outputChiuCSVBtn.Size = new System.Drawing.Size(240, 29);
             this.outputChiuCSVBtn.TabIndex = 20;
             this.outputChiuCSVBtn.Text = "匯出超誠交易資料";
             this.outputChiuCSVBtn.UseVisualStyleBackColor = true;
@@ -534,9 +534,9 @@
             // outputSFCSVBtn
             // 
             this.outputSFCSVBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outputSFCSVBtn.Location = new System.Drawing.Point(741, 113);
+            this.outputSFCSVBtn.Location = new System.Drawing.Point(741, 107);
             this.outputSFCSVBtn.Name = "outputSFCSVBtn";
-            this.outputSFCSVBtn.Size = new System.Drawing.Size(240, 26);
+            this.outputSFCSVBtn.Size = new System.Drawing.Size(240, 29);
             this.outputSFCSVBtn.TabIndex = 20;
             this.outputSFCSVBtn.Text = "匯出富資交易資料";
             this.outputSFCSVBtn.UseVisualStyleBackColor = true;
@@ -545,9 +545,9 @@
             // chiuProdCsv
             // 
             this.chiuProdCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chiuProdCsv.Location = new System.Drawing.Point(495, 145);
+            this.chiuProdCsv.Location = new System.Drawing.Point(495, 142);
             this.chiuProdCsv.Name = "chiuProdCsv";
-            this.chiuProdCsv.Size = new System.Drawing.Size(240, 27);
+            this.chiuProdCsv.Size = new System.Drawing.Size(240, 28);
             this.chiuProdCsv.TabIndex = 21;
             this.chiuProdCsv.Text = "匯出超誠貨品資料";
             this.chiuProdCsv.UseVisualStyleBackColor = true;
@@ -556,9 +556,9 @@
             // sfProdCsv
             // 
             this.sfProdCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sfProdCsv.Location = new System.Drawing.Point(741, 145);
+            this.sfProdCsv.Location = new System.Drawing.Point(741, 142);
             this.sfProdCsv.Name = "sfProdCsv";
-            this.sfProdCsv.Size = new System.Drawing.Size(240, 27);
+            this.sfProdCsv.Size = new System.Drawing.Size(240, 28);
             this.sfProdCsv.TabIndex = 21;
             this.sfProdCsv.Text = "匯出富資貨品資料";
             this.sfProdCsv.UseVisualStyleBackColor = true;
@@ -577,12 +577,12 @@
             this.tableLayoutPanel3.Controls.Add(this.opDailyCsv, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.sitePicker, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 890);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 888);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1233, 107);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1233, 109);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // searchSFBtn
@@ -590,7 +590,7 @@
             this.searchSFBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchSFBtn.Location = new System.Drawing.Point(414, 3);
             this.searchSFBtn.Name = "searchSFBtn";
-            this.searchSFBtn.Size = new System.Drawing.Size(405, 47);
+            this.searchSFBtn.Size = new System.Drawing.Size(405, 48);
             this.searchSFBtn.TabIndex = 8;
             this.searchSFBtn.Text = "搜尋富資";
             this.searchSFBtn.UseVisualStyleBackColor = true;
@@ -601,7 +601,7 @@
             this.searchCSBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchCSBtn.Location = new System.Drawing.Point(3, 3);
             this.searchCSBtn.Name = "searchCSBtn";
-            this.searchCSBtn.Size = new System.Drawing.Size(405, 47);
+            this.searchCSBtn.Size = new System.Drawing.Size(405, 48);
             this.searchCSBtn.TabIndex = 7;
             this.searchCSBtn.Text = "搜尋超誠";
             this.searchCSBtn.UseVisualStyleBackColor = true;
@@ -610,9 +610,9 @@
             // clearBtn
             // 
             this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clearBtn.Location = new System.Drawing.Point(3, 56);
+            this.clearBtn.Location = new System.Drawing.Point(3, 57);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(405, 48);
+            this.clearBtn.Size = new System.Drawing.Size(405, 49);
             this.clearBtn.TabIndex = 14;
             this.clearBtn.Text = "清空";
             this.clearBtn.UseVisualStyleBackColor = true;
@@ -620,9 +620,7 @@
             // 
             // opDailyCsv
             // 
-            this.opDailyCsv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.opDailyCsv.Enabled = false;
-            this.opDailyCsv.Location = new System.Drawing.Point(825, 56);
+            this.opDailyCsv.Location = new System.Drawing.Point(825, 57);
             this.opDailyCsv.Name = "opDailyCsv";
             this.opDailyCsv.Size = new System.Drawing.Size(405, 48);
             this.opDailyCsv.TabIndex = 15;
@@ -633,7 +631,6 @@
             // sitePicker
             // 
             this.sitePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sitePicker.Enabled = false;
             this.sitePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sitePicker.FormattingEnabled = true;
             this.sitePicker.Items.AddRange(new object[] {
