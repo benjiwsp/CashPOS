@@ -483,6 +483,13 @@ namespace CashPOS
                         switch (ex.Number)
                         {
                             case 1062:
+                                if(!orderID.StartsWith("M") || !orderID.StartsWith("C") || !orderID.StartsWith("I") || !orderID.StartsWith("T") || !orderID.StartsWith("A"))
+                                {
+                                    MessageBox.Show(orderID + " 已存在");
+
+                                    myConnection.Close();
+                                    return;
+                                }
                                 var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
                                 orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
                                 orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1))).ToString("000000");
