@@ -27,15 +27,12 @@ namespace CashPOS
             myConnection = new MySqlConnection(value);
         }
 
-        private void displayInvoiceBtn_Click(object sender, EventArgs e)
-        {
-            updateUnprintedList();
-        }
+    
 
-        private void updateUnprintedList()
+        private void updateUnprintedList(string comp)
         {
             resultList.Rows.Clear();
-            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y'", myConnection);
+            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && belongTo = '"+comp + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -49,7 +46,23 @@ namespace CashPOS
             rdr.Close();
             myConnection.Close();
         }
-
+        private void updateUnprintedListBySite(string site)
+        {
+            resultList.Rows.Clear();
+            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && pickupLoc = '"+ site + "'", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
+                        rdr["address"].ToString(), rdr["pickupLoc"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
         public void resultList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -192,6 +205,41 @@ namespace CashPOS
             }
             rdr.Close();
             myConnection.Close();
+        }
+
+        private void sfPrintBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedList("富資");
+
+        }
+
+        private void displayChiuInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedList("超誠");
+
+        }
+
+        private void ymtInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedListBySite("油麻地");
+        }
+
+        private void ktInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedListBySite("觀塘");
+
+        }
+
+        private void cwInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedListBySite("柴灣");
+
+        }
+
+        private void tmInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            updateUnprintedListBySite("屯門");
+
         }
     }
 }

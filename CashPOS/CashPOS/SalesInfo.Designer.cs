@@ -40,11 +40,6 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importGrid = new System.Windows.Forms.DataGridView();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -79,6 +74,11 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.opDailyCsv = new System.Windows.Forms.Button();
             this.sitePicker = new System.Windows.Forms.ComboBox();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bagsGrid)).BeginInit();
@@ -228,31 +228,6 @@
             this.tableLayoutPanel1.SetRowSpan(this.importGrid, 4);
             this.importGrid.Size = new System.Drawing.Size(407, 682);
             this.importGrid.TabIndex = 1;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "單號";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "貨品";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "單位";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "數量";
-            this.Column8.Name = "Column8";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "包裝";
-            this.Column16.Name = "Column16";
             // 
             // label1
             // 
@@ -643,6 +618,31 @@
             this.sitePicker.Size = new System.Drawing.Size(405, 45);
             this.sitePicker.TabIndex = 16;
             // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "單號";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "供應商";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "貨品";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "數量";
+            this.Column8.Name = "Column8";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "進貨地";
+            this.Column16.Name = "Column16";
+            // 
             // SalesInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -705,11 +705,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.Button outputChiuCSVBtn;
         private System.Windows.Forms.Button outputSFCSVBtn;
         private System.Windows.Forms.Button chiuProdCsv;
@@ -717,5 +712,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button opDailyCsv;
         private System.Windows.Forms.ComboBox sitePicker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
     }
 }

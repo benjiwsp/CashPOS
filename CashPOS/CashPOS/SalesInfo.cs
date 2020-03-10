@@ -56,6 +56,7 @@ namespace CashPOS
 
             getAllItemSold("超誠", getStartDate(), getEndDate());
             getAllCustSales("超誠", getStartDate(), getEndDate());
+            getAllImport("超誠", getStartDate(), getEndDate());
             getAllIncome(getStartDate(), getEndDate());
         }
         private void searchSFBtn_Click(object sender, EventArgs e)
@@ -68,6 +69,7 @@ namespace CashPOS
             string end = ending.ToString("yyyy-MM-dd HH:mm:ss");
             getAllItemSold("富資", start, end);
             getAllCustSales("富資", start, end);
+            getAllImport("富資", start, end);
             getAllIncome(start, end);
         }
         private void getAllItemSold(string comp, string start, string end)
@@ -127,7 +129,25 @@ namespace CashPOS
             rdr.Close();
             myConnection.Close();
         }
-
+        private void getAllImport(string comp, string start, string end)
+        {
+            importGrid.Rows.Clear();
+            double totalDisplayPrice = 0.00;
+            myCommand = new MySqlCommand("select orderID, supplierCode, itemName, amount, unit, dropOffLoc from CashPOSDB.importDetails " +
+               "where time >= '" + start + "' and time <='" + end + "'  order by orderID", myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    importGrid.Rows.Add(rdr["orderID"].ToString(), rdr["supplierCode"].ToString(), rdr["itemName"].ToString(),
+                        rdr["amount"].ToString(), rdr["dropOffLoc"].ToString());
+                }
+            }
+            rdr.Close();
+            myConnection.Close();
+        }
         private void getAllIncome(string start, string end)
         {
             overViewGrid.Rows.Clear();

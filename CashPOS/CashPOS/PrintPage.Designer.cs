@@ -48,10 +48,6 @@
             this.priceTypeLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.resultList = new System.Windows.Forms.DataGridView();
-            this.displayInvoiceBtn = new System.Windows.Forms.Button();
-            this.invoiceNo = new System.Windows.Forms.TextBox();
-            this.searchCWPrint = new System.Windows.Forms.Button();
-            this.printBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,12 +59,23 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.invoiceNo = new System.Windows.Forms.TextBox();
+            this.searchCWPrint = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tmInvoiceBtn = new System.Windows.Forms.Button();
+            this.cwInvoiceBtn = new System.Windows.Forms.Button();
+            this.ktInvoiceBtn = new System.Windows.Forms.Button();
+            this.ymtInvoiceBtn = new System.Windows.Forms.Button();
+            this.sfPrintBtn = new System.Windows.Forms.Button();
+            this.displayInvoiceBtn = new System.Windows.Forms.Button();
+            this.printBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printList)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -292,9 +299,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.resultList, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.displayInvoiceBtn, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.invoiceNo, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.searchCWPrint, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -332,43 +339,6 @@
             this.resultList.Size = new System.Drawing.Size(867, 608);
             this.resultList.TabIndex = 0;
             this.resultList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultList_CellContentClick);
-            // 
-            // displayInvoiceBtn
-            // 
-            this.displayInvoiceBtn.Location = new System.Drawing.Point(3, 3);
-            this.displayInvoiceBtn.Name = "displayInvoiceBtn";
-            this.displayInvoiceBtn.Size = new System.Drawing.Size(75, 23);
-            this.displayInvoiceBtn.TabIndex = 1;
-            this.displayInvoiceBtn.Text = "更新";
-            this.displayInvoiceBtn.UseVisualStyleBackColor = true;
-            this.displayInvoiceBtn.Click += new System.EventHandler(this.displayInvoiceBtn_Click);
-            // 
-            // invoiceNo
-            // 
-            this.invoiceNo.Location = new System.Drawing.Point(3, 726);
-            this.invoiceNo.Name = "invoiceNo";
-            this.invoiceNo.Size = new System.Drawing.Size(100, 20);
-            this.invoiceNo.TabIndex = 2;
-            // 
-            // searchCWPrint
-            // 
-            this.searchCWPrint.Location = new System.Drawing.Point(439, 726);
-            this.searchCWPrint.Name = "searchCWPrint";
-            this.searchCWPrint.Size = new System.Drawing.Size(75, 23);
-            this.searchCWPrint.TabIndex = 3;
-            this.searchCWPrint.Text = "Search";
-            this.searchCWPrint.UseVisualStyleBackColor = true;
-            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
-            // 
-            // printBtn
-            // 
-            this.printBtn.Location = new System.Drawing.Point(882, 969);
-            this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(75, 23);
-            this.printBtn.TabIndex = 3;
-            this.printBtn.Text = "PRINT";
-            this.printBtn.UseVisualStyleBackColor = true;
-            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // Column1
             // 
@@ -429,6 +399,122 @@
             this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // invoiceNo
+            // 
+            this.invoiceNo.Location = new System.Drawing.Point(3, 726);
+            this.invoiceNo.Name = "invoiceNo";
+            this.invoiceNo.Size = new System.Drawing.Size(100, 20);
+            this.invoiceNo.TabIndex = 2;
+            // 
+            // searchCWPrint
+            // 
+            this.searchCWPrint.Location = new System.Drawing.Point(439, 726);
+            this.searchCWPrint.Name = "searchCWPrint";
+            this.searchCWPrint.Size = new System.Drawing.Size(75, 23);
+            this.searchCWPrint.TabIndex = 3;
+            this.searchCWPrint.Text = "Search";
+            this.searchCWPrint.UseVisualStyleBackColor = true;
+            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel4, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Controls.Add(this.tmInvoiceBtn, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.cwInvoiceBtn, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.ktInvoiceBtn, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.ymtInvoiceBtn, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.sfPrintBtn, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.displayInvoiceBtn, 2, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(867, 103);
+            this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // tmInvoiceBtn
+            // 
+            this.tmInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tmInvoiceBtn.Location = new System.Drawing.Point(3, 54);
+            this.tmInvoiceBtn.Name = "tmInvoiceBtn";
+            this.tmInvoiceBtn.Size = new System.Drawing.Size(210, 46);
+            this.tmInvoiceBtn.TabIndex = 2;
+            this.tmInvoiceBtn.Text = "屯門單";
+            this.tmInvoiceBtn.UseVisualStyleBackColor = true;
+            this.tmInvoiceBtn.Click += new System.EventHandler(this.tmInvoiceBtn_Click);
+            // 
+            // cwInvoiceBtn
+            // 
+            this.cwInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cwInvoiceBtn.Location = new System.Drawing.Point(219, 54);
+            this.cwInvoiceBtn.Name = "cwInvoiceBtn";
+            this.cwInvoiceBtn.Size = new System.Drawing.Size(210, 46);
+            this.cwInvoiceBtn.TabIndex = 2;
+            this.cwInvoiceBtn.Text = "柴灣單";
+            this.cwInvoiceBtn.UseVisualStyleBackColor = true;
+            this.cwInvoiceBtn.Click += new System.EventHandler(this.cwInvoiceBtn_Click);
+            // 
+            // ktInvoiceBtn
+            // 
+            this.ktInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ktInvoiceBtn.Location = new System.Drawing.Point(435, 54);
+            this.ktInvoiceBtn.Name = "ktInvoiceBtn";
+            this.ktInvoiceBtn.Size = new System.Drawing.Size(210, 46);
+            this.ktInvoiceBtn.TabIndex = 2;
+            this.ktInvoiceBtn.Text = "觀塘單";
+            this.ktInvoiceBtn.UseVisualStyleBackColor = true;
+            this.ktInvoiceBtn.Click += new System.EventHandler(this.ktInvoiceBtn_Click);
+            // 
+            // ymtInvoiceBtn
+            // 
+            this.ymtInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ymtInvoiceBtn.Location = new System.Drawing.Point(651, 54);
+            this.ymtInvoiceBtn.Name = "ymtInvoiceBtn";
+            this.ymtInvoiceBtn.Size = new System.Drawing.Size(213, 46);
+            this.ymtInvoiceBtn.TabIndex = 2;
+            this.ymtInvoiceBtn.Text = "油麻地單";
+            this.ymtInvoiceBtn.UseVisualStyleBackColor = true;
+            this.ymtInvoiceBtn.Click += new System.EventHandler(this.ymtInvoiceBtn_Click);
+            // 
+            // sfPrintBtn
+            // 
+            this.sfPrintBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sfPrintBtn.Location = new System.Drawing.Point(219, 3);
+            this.sfPrintBtn.Name = "sfPrintBtn";
+            this.sfPrintBtn.Size = new System.Drawing.Size(210, 45);
+            this.sfPrintBtn.TabIndex = 1;
+            this.sfPrintBtn.Text = "富資單";
+            this.sfPrintBtn.UseVisualStyleBackColor = true;
+            this.sfPrintBtn.Click += new System.EventHandler(this.sfPrintBtn_Click);
+            // 
+            // displayInvoiceBtn
+            // 
+            this.displayInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayInvoiceBtn.Location = new System.Drawing.Point(435, 3);
+            this.displayInvoiceBtn.Name = "displayInvoiceBtn";
+            this.displayInvoiceBtn.Size = new System.Drawing.Size(210, 45);
+            this.displayInvoiceBtn.TabIndex = 1;
+            this.displayInvoiceBtn.Text = "超誠單";
+            this.displayInvoiceBtn.UseVisualStyleBackColor = true;
+            this.displayInvoiceBtn.Click += new System.EventHandler(this.displayChiuInvoiceBtn_Click);
+            // 
+            // printBtn
+            // 
+            this.printBtn.Location = new System.Drawing.Point(882, 969);
+            this.printBtn.Name = "printBtn";
+            this.printBtn.Size = new System.Drawing.Size(75, 23);
+            this.printBtn.TabIndex = 3;
+            this.printBtn.Text = "PRINT";
+            this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
+            // 
             // PrintPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,6 +530,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -485,5 +572,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewButtonColumn Column8;
         private System.Windows.Forms.DataGridViewButtonColumn Column15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button tmInvoiceBtn;
+        private System.Windows.Forms.Button cwInvoiceBtn;
+        private System.Windows.Forms.Button ktInvoiceBtn;
+        private System.Windows.Forms.Button ymtInvoiceBtn;
+        public System.Windows.Forms.Button sfPrintBtn;
     }
 }
