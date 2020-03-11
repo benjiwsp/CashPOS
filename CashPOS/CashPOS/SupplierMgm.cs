@@ -293,7 +293,7 @@ namespace CashPOS
                         if (dialogResult == DialogResult.Yes)
                         {
                             string code = custDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                            deleteSupplierRow("CashPOSDB.SupplierData", code);
+                            deleteSupplierRow("CashPOSDB.supplierData", code);
                             custDataGrid.Rows.RemoveAt(e.RowIndex);
                         }
                     }

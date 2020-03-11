@@ -90,6 +90,8 @@ namespace CashPOS
             getAllProdDetail();
             //serachInvByProdTable();
         }
+
+        //get all the prod nad prodID list from database and show it in the text box
         private void getAllProdDetail()
         {
             myCommand = new MySqlCommand("select ProdID, ProdName from CashPOSDB.prodData order by ProdID", myConnection);
@@ -125,7 +127,7 @@ namespace CashPOS
 
         private void endOfDayInvBtn_Click(object sender, EventArgs e)
         {
-            if (siteLoc.Text != "")
+            /*if (siteLoc.Text != "")
             {
                 DataGridView grid = null;
                 string site = siteLoc.Text;
@@ -160,7 +162,7 @@ namespace CashPOS
 
                 }
                 myConnection.Close();
-            }
+            }*/
         }
         private void oldInvBtn_Click(object sender, EventArgs e)
         {

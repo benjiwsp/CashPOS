@@ -95,7 +95,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    for (int i = 2; i < colCount; i++)
+                    for (int i =3; i < colCount; i++)
                     {
                         decimal amount = Convert.ToDecimal(rdr.GetString(i));
                         if (amount != 0)

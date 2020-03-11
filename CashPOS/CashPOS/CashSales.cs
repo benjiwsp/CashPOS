@@ -51,7 +51,8 @@ namespace CashPOS
         string selectedItem;
         string selectedCompany;
         //  String selected
-
+        decimal tempSecPrice;
+        string tempSecUnit;
         Boolean isSearching = false;
         private MySqlConnection myConnection;
 
@@ -308,6 +309,8 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            tempSecPrice = 0.00m;
+            tempSecUnit = "";
             custType = "";
             addressTxt.Items.Clear();
             unpaidList.Rows.Clear();
@@ -483,7 +486,7 @@ namespace CashPOS
                         switch (ex.Number)
                         {
                             case 1062:
-                                if(!orderID.StartsWith("M") || !orderID.StartsWith("C") || !orderID.StartsWith("I") || !orderID.StartsWith("T") || !orderID.StartsWith("A"))
+                                if(!(orderID.StartsWith("M") || orderID.StartsWith("C") || orderID.StartsWith("I") || orderID.StartsWith("T") || orderID.StartsWith("A")))
                                 {
                                     MessageBox.Show(orderID + " 已存在");
 

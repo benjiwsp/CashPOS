@@ -105,7 +105,7 @@
             // 
             // printLayer
             // 
-            this.printLayer.BackColor = System.Drawing.Color.Transparent;
+            this.printLayer.BackColor = System.Drawing.Color.White;
             this.printLayer.ColumnCount = 2;
             this.printLayer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.printLayer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -175,6 +175,7 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel3.ColumnCount = 5;
             this.printLayer.SetColumnSpan(this.tableLayoutPanel3, 2);
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
