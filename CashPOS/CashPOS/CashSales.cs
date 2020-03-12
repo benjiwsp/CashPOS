@@ -486,7 +486,7 @@ namespace CashPOS
                         switch (ex.Number)
                         {
                             case 1062:
-                                if(!(orderID.StartsWith("M") || orderID.StartsWith("C") || orderID.StartsWith("I") || orderID.StartsWith("T") || orderID.StartsWith("A")))
+                                if (!(orderID.StartsWith("M") || orderID.StartsWith("C") || orderID.StartsWith("I") || orderID.StartsWith("T") || orderID.StartsWith("A")))
                                 {
                                     MessageBox.Show(orderID + " 已存在");
 
@@ -1133,7 +1133,9 @@ namespace CashPOS
             //  print.searchCWPrint.PerformClick();
 
             print.Show();
+            print.printList.ClearSelection();
 
+            //   MessageBox.Show("test");
             print.print();
             print.Close();
         }
@@ -1148,6 +1150,7 @@ namespace CashPOS
             print.search();
             print.sendToPreview(id, true);
             print.Show();
+            print.printList.ClearSelection();
             print.print();
             print.Close();
         }

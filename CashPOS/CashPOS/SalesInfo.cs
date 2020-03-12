@@ -445,6 +445,13 @@ namespace CashPOS
         private void outputProdCSV(ComboBox item, string comp)
         {
             string prod = item.Text;
+         prod =   prod.Replace(".", "");
+         prod = prod.Replace("*", "");
+         prod = prod.Replace("x", "");
+         prod = prod.Replace("/", "");
+         prod = prod.Replace("\"", "");
+         prod = prod.Replace("\\", "");
+    //        MessageBox.Show(prod);
             //  string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
             DateTime start = StartTimePicker.SelectionRange.Start;
             DateTime end = EndTimePicker.SelectionRange.Start;

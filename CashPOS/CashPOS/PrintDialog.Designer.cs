@@ -31,21 +31,22 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.printLayer = new System.Windows.Forms.TableLayoutPanel();
             this.printList = new System.Windows.Forms.DataGridView();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.addLbl = new System.Windows.Forms.Label();
             this.noteLbl = new System.Windows.Forms.Label();
+            this.addLbl = new System.Windows.Forms.Label();
+            this.pickupLbl = new System.Windows.Forms.Label();
+            this.priceTypeLbl = new System.Windows.Forms.Label();
             this.telLbl = new System.Windows.Forms.Label();
             this.licenseLbl = new System.Windows.Forms.Label();
             this.invoiceLbl = new System.Windows.Forms.Label();
             this.dateLbl = new System.Windows.Forms.Label();
             this.custLbl = new System.Windows.Forms.Label();
-            this.pickupLbl = new System.Windows.Forms.Label();
-            this.priceTypeLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.resultList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +62,6 @@
             this.invoiceNo = new System.Windows.Forms.TextBox();
             this.searchCWPrint = new System.Windows.Forms.Button();
             this.printBtn = new System.Windows.Forms.Button();
-            this.searchSFPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printList)).BeginInit();
@@ -83,7 +83,6 @@
             this.tableLayoutPanel1.Controls.Add(this.printLayer, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.printBtn, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.searchSFPrint, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -134,6 +133,7 @@
             this.printList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.printList.ColumnHeadersVisible = false;
             this.printList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column14,
             this.Column9,
             this.Column10,
             this.Column11,
@@ -147,30 +147,42 @@
             this.printList.RowHeadersVisible = false;
             this.printList.Size = new System.Drawing.Size(755, 441);
             this.printList.TabIndex = 0;
+            this.printList.TabStop = false;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "index";
+            this.Column14.MinimumWidth = 40;
+            this.Column14.Name = "Column14";
             // 
             // Column9
             // 
             this.Column9.HeaderText = "Item";
+            this.Column9.MinimumWidth = 200;
             this.Column9.Name = "Column9";
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Amount";
+            this.Column10.MinimumWidth = 100;
             this.Column10.Name = "Column10";
             // 
             // Column11
             // 
             this.Column11.HeaderText = "Unit";
+            this.Column11.MinimumWidth = 100;
             this.Column11.Name = "Column11";
             // 
             // Column12
             // 
             this.Column12.HeaderText = "UnitPrice";
+            this.Column12.MinimumWidth = 40;
             this.Column12.Name = "Column12";
             // 
             // Column13
             // 
             this.Column13.HeaderText = "Total";
+            this.Column13.MinimumWidth = 100;
             this.Column13.Name = "Column13";
             // 
             // tableLayoutPanel3
@@ -179,19 +191,19 @@
             this.tableLayoutPanel3.ColumnCount = 5;
             this.printLayer.SetColumnSpan(this.tableLayoutPanel3, 2);
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.addLbl, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.noteLbl, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.telLbl, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.licenseLbl, 2, 3);
-            this.tableLayoutPanel3.Controls.Add(this.invoiceLbl, 4, 1);
-            this.tableLayoutPanel3.Controls.Add(this.dateLbl, 4, 2);
-            this.tableLayoutPanel3.Controls.Add(this.custLbl, 4, 3);
-            this.tableLayoutPanel3.Controls.Add(this.pickupLbl, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.priceTypeLbl, 2, 0);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.02649F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.58278F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.31126F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.94702F));
+            this.tableLayoutPanel3.Controls.Add(this.noteLbl, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.addLbl, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.pickupLbl, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.priceTypeLbl, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.telLbl, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.licenseLbl, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.invoiceLbl, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dateLbl, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.custLbl, 4, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -203,73 +215,28 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(755, 154);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // addLbl
-            // 
-            this.addLbl.AutoSize = true;
-            this.addLbl.Location = new System.Drawing.Point(154, 38);
-            this.addLbl.Name = "addLbl";
-            this.addLbl.Size = new System.Drawing.Size(25, 13);
-            this.addLbl.TabIndex = 0;
-            this.addLbl.Text = "add";
-            // 
             // noteLbl
             // 
             this.noteLbl.AutoSize = true;
-            this.noteLbl.Location = new System.Drawing.Point(154, 78);
+            this.noteLbl.Location = new System.Drawing.Point(3, 78);
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(33, 13);
             this.noteLbl.TabIndex = 1;
             this.noteLbl.Text = "notes";
             // 
-            // telLbl
+            // addLbl
             // 
-            this.telLbl.AutoSize = true;
-            this.telLbl.Location = new System.Drawing.Point(154, 114);
-            this.telLbl.Name = "telLbl";
-            this.telLbl.Size = new System.Drawing.Size(18, 13);
-            this.telLbl.TabIndex = 1;
-            this.telLbl.Text = "tel";
-            // 
-            // licenseLbl
-            // 
-            this.licenseLbl.AutoSize = true;
-            this.licenseLbl.Location = new System.Drawing.Point(305, 114);
-            this.licenseLbl.Name = "licenseLbl";
-            this.licenseLbl.Size = new System.Drawing.Size(40, 13);
-            this.licenseLbl.TabIndex = 1;
-            this.licenseLbl.Text = "license";
-            // 
-            // invoiceLbl
-            // 
-            this.invoiceLbl.AutoSize = true;
-            this.invoiceLbl.Location = new System.Drawing.Point(607, 38);
-            this.invoiceLbl.Name = "invoiceLbl";
-            this.invoiceLbl.Size = new System.Drawing.Size(41, 13);
-            this.invoiceLbl.TabIndex = 2;
-            this.invoiceLbl.Text = "invoice";
-            // 
-            // dateLbl
-            // 
-            this.dateLbl.AutoSize = true;
-            this.dateLbl.Location = new System.Drawing.Point(607, 78);
-            this.dateLbl.Name = "dateLbl";
-            this.dateLbl.Size = new System.Drawing.Size(28, 13);
-            this.dateLbl.TabIndex = 2;
-            this.dateLbl.Text = "date";
-            // 
-            // custLbl
-            // 
-            this.custLbl.AutoSize = true;
-            this.custLbl.Location = new System.Drawing.Point(607, 114);
-            this.custLbl.Name = "custLbl";
-            this.custLbl.Size = new System.Drawing.Size(27, 13);
-            this.custLbl.TabIndex = 2;
-            this.custLbl.Text = "cust";
+            this.addLbl.AutoSize = true;
+            this.addLbl.Location = new System.Drawing.Point(3, 38);
+            this.addLbl.Name = "addLbl";
+            this.addLbl.Size = new System.Drawing.Size(25, 13);
+            this.addLbl.TabIndex = 0;
+            this.addLbl.Text = "add";
             // 
             // pickupLbl
             // 
             this.pickupLbl.AutoSize = true;
-            this.pickupLbl.Location = new System.Drawing.Point(154, 0);
+            this.pickupLbl.Location = new System.Drawing.Point(275, 38);
             this.pickupLbl.Name = "pickupLbl";
             this.pickupLbl.Size = new System.Drawing.Size(41, 13);
             this.pickupLbl.TabIndex = 3;
@@ -278,11 +245,56 @@
             // priceTypeLbl
             // 
             this.priceTypeLbl.AutoSize = true;
-            this.priceTypeLbl.Location = new System.Drawing.Point(305, 0);
+            this.priceTypeLbl.Location = new System.Drawing.Point(370, 38);
             this.priceTypeLbl.Name = "priceTypeLbl";
             this.priceTypeLbl.Size = new System.Drawing.Size(68, 13);
             this.priceTypeLbl.TabIndex = 4;
             this.priceTypeLbl.Text = "priceTypeLbl";
+            // 
+            // telLbl
+            // 
+            this.telLbl.AutoSize = true;
+            this.telLbl.Location = new System.Drawing.Point(3, 114);
+            this.telLbl.Name = "telLbl";
+            this.telLbl.Size = new System.Drawing.Size(18, 13);
+            this.telLbl.TabIndex = 1;
+            this.telLbl.Text = "tel";
+            // 
+            // licenseLbl
+            // 
+            this.licenseLbl.AutoSize = true;
+            this.licenseLbl.Location = new System.Drawing.Point(154, 114);
+            this.licenseLbl.Name = "licenseLbl";
+            this.licenseLbl.Size = new System.Drawing.Size(40, 13);
+            this.licenseLbl.TabIndex = 1;
+            this.licenseLbl.Text = "license";
+            // 
+            // invoiceLbl
+            // 
+            this.invoiceLbl.AutoSize = true;
+            this.invoiceLbl.Location = new System.Drawing.Point(546, 0);
+            this.invoiceLbl.Name = "invoiceLbl";
+            this.invoiceLbl.Size = new System.Drawing.Size(41, 13);
+            this.invoiceLbl.TabIndex = 2;
+            this.invoiceLbl.Text = "invoice";
+            // 
+            // dateLbl
+            // 
+            this.dateLbl.AutoSize = true;
+            this.dateLbl.Location = new System.Drawing.Point(546, 38);
+            this.dateLbl.Name = "dateLbl";
+            this.dateLbl.Size = new System.Drawing.Size(28, 13);
+            this.dateLbl.TabIndex = 2;
+            this.dateLbl.Text = "date";
+            // 
+            // custLbl
+            // 
+            this.custLbl.AutoSize = true;
+            this.custLbl.Location = new System.Drawing.Point(546, 78);
+            this.custLbl.Name = "custLbl";
+            this.custLbl.Size = new System.Drawing.Size(27, 13);
+            this.custLbl.TabIndex = 2;
+            this.custLbl.Text = "cust";
             // 
             // tableLayoutPanel2
             // 
@@ -412,15 +424,6 @@
             this.printBtn.UseVisualStyleBackColor = true;
             this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
-            // searchSFPrint
-            // 
-            this.searchSFPrint.Location = new System.Drawing.Point(3, 929);
-            this.searchSFPrint.Name = "searchSFPrint";
-            this.searchSFPrint.Size = new System.Drawing.Size(75, 23);
-            this.searchSFPrint.TabIndex = 4;
-            this.searchSFPrint.Text = "Search 富";
-            this.searchSFPrint.UseVisualStyleBackColor = true;
-            // 
             // PrintDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,16 +448,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel printLayer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn z;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewButtonColumn Column8;
-        private System.Windows.Forms.DataGridView printList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label addLbl;
         private System.Windows.Forms.Label noteLbl;
@@ -466,15 +459,38 @@
         private System.Windows.Forms.Button printBtn;
         private System.Windows.Forms.Label pickupLbl;
         private System.Windows.Forms.Label priceTypeLbl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.Button searchSFPrint;
         public System.Windows.Forms.Button displayInvoiceBtn;
         public System.Windows.Forms.DataGridView resultList;
         public System.Windows.Forms.TextBox invoiceNo;
         public System.Windows.Forms.Button searchCWPrint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn z;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewButtonColumn Column8;
+        private System.Windows.Forms.DataGridViewButtonColumn Column15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button tmInvoiceBtn;
+        private System.Windows.Forms.Button cwInvoiceBtn;
+        private System.Windows.Forms.Button ktInvoiceBtn;
+        private System.Windows.Forms.Button ymtInvoiceBtn;
+        public System.Windows.Forms.Button sfPrintBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label 總數;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        public System.Windows.Forms.DataGridView printList;
     }
 }

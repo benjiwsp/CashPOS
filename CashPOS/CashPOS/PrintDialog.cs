@@ -81,12 +81,12 @@ namespace CashPOS
             myCommand = new MySqlCommand(query, myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
-            int i = 0;
+            int i = 1;
             if (rdr.HasRows == true)
             {
                 while (rdr.Read())
                 {
-                    if (i == 0)
+                    if (i == 1)
                     {
                         invoiceLbl.Text = rdr["orderID"].ToString();
 
@@ -98,22 +98,23 @@ namespace CashPOS
                         licenseLbl.Text = rdr["license"].ToString();
                         noteLbl.Text = rdr["notes"].ToString();
                         priceTypeLbl.Text = rdr["priceType"].ToString();
-                        i++;
+                       
                     }
                     if (printPrice)
                     {
-                        printList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-                          rdr["unitPrice"].ToString(), rdr["total"].ToString());
+                        printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
+                         rdr["total"].ToString());
 
                     }
                     else
                     {
-                        printList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
+                        printList.Rows.Add(i, rdr["itemName"].ToString(),"", rdr["amount"].ToString(), rdr["unit"].ToString(),
                          "", "");
                     }
+                    i++;
                 }
                 if (printPrice)
-                    printList.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
+                    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
             }
             rdr.Close();
             myConnection.Close();

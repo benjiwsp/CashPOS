@@ -124,6 +124,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
             this.custListView = new System.Windows.Forms.ListView();
+            this.paidAllBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -185,6 +186,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel13, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel14, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.custListView, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.paidAllBtn, 3, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -1258,6 +1260,17 @@
             this.custListView.UseCompatibleStateImageBehavior = false;
             this.custListView.Click += new System.EventHandler(this.CustListView_Click);
             // 
+            // paidAllBtn
+            // 
+            this.paidAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paidAllBtn.Location = new System.Drawing.Point(1018, 952);
+            this.paidAllBtn.Name = "paidAllBtn";
+            this.paidAllBtn.Size = new System.Drawing.Size(213, 45);
+            this.paidAllBtn.TabIndex = 30;
+            this.paidAllBtn.Text = "全付";
+            this.paidAllBtn.UseVisualStyleBackColor = true;
+            this.paidAllBtn.Click += new System.EventHandler(this.paidAllBtn_Click);
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1390,5 +1403,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.ComboBox custTypeBox;
+        private System.Windows.Forms.Button paidAllBtn;
     }
 }

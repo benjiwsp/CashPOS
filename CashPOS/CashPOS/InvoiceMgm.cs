@@ -1259,6 +1259,19 @@ namespace CashPOS
 
             custList.Text = cust + " - " + custCode;
         }
+
+        private void paidAllBtn_Click(object sender, EventArgs e)
+        {
+            string query = "";
+            foreach (DataGridViewCell row in orderListView.SelectedCells)
+            {
+              query=  "update CashPOSDB.orderRecords set paid = totalPrice where orderID = '" + row.Value.ToString() + "'";
+              myCommand = new MySqlCommand(query, myConnection);
+              myConnection.Open();
+              myCommand.ExecuteNonQuery();
+              myConnection.Close();
+            }
+        }
     }
 }
 

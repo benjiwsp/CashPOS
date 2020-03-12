@@ -349,10 +349,10 @@ namespace CashPOS
                         doc.Add(infoTable);
 
                         doc.Add(addressTable);
+                        detailTable.AddCell(newCell("單號", 2, 1, 0, 2, chfontT));
 
                         detailTable.AddCell(newCell("日期", 2, 1, 0, 2, chfontT));
 
-                        detailTable.AddCell(newCell("單號", 2, 1, 0, 2, chfontT));
                         detailTable.AddCell(newCell("貨品", 2, 3, 0, 2, chfontT));
                         detailTable.AddCell(newCell("類", 2, 1, 0, 2, chfontT));
 
@@ -363,9 +363,10 @@ namespace CashPOS
                         finish = false;
                         filled = false;
                     }
+                    detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
+
                     detailTable.AddCell(newCell(Convert.ToDateTime(rdr["time"]).ToString("dd-MM-yy"), 1, 1, 0, 0, infoFont));
 
-                    detailTable.AddCell(newCell(rdr["orderID"].ToString(), 1, 1, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["itemName"].ToString(), 1, 3, 0, 0, infoFont));
                     detailTable.AddCell(newCell(rdr["priceType"].ToString().Substring(0, 1), 1, 1, 0, 0, infoFont));
 
@@ -411,12 +412,12 @@ namespace CashPOS
                 footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                 if (ch_compName.StartsWith("富"))
                 {
-                    footer.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
+                    footer.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
 
                 }
                 else
                 {
-                    footer.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
+                    footer.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 0, 0, infoFont));
 
                 }
 

@@ -83,12 +83,12 @@ namespace CashPOS
                 myCommand = new MySqlCommand(query, myConnection);
                 myConnection.Open();
                 rdr = myCommand.ExecuteReader();
-                int i = 0;
+                int i = 1;
                 if (rdr.HasRows == true)
                 {
                     while (rdr.Read())
                     {
-                        if (i == 0)
+                        if (i == 1)
                         {
                             invoiceLbl.Text = rdr["orderID"].ToString();
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
@@ -99,14 +99,14 @@ namespace CashPOS
                             licenseLbl.Text = rdr["license"].ToString();
                             noteLbl.Text = rdr["notes"].ToString();
                             priceTypeLbl.Text = rdr["priceType"].ToString();
-                            i++;
                         }
-                        printList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-   rdr["unitPrice"].ToString(), rdr["total"].ToString());
+                        printList.Rows.Add(i,rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
+   rdr["total"].ToString());
 
+                        i++;
 
                     }
-                    printList.Rows.Add("", "", "", "總數:", rdr["totalPrice"]);
+                    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
                 }
                 rdr.Close();
                 myConnection.Close();
@@ -155,7 +155,9 @@ namespace CashPOS
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-            PaperSize papersize = new PaperSize("Custom", 850, 550);
+          //  PaperSize papersize = new PaperSize("Custom", 850, 550);
+            PaperSize papersize = new PaperSize("Custom", 850, 750);
+
             pd.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 300;
             pd.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 300;
             pd.DefaultPageSettings.PaperSize = papersize; // 8.5' x 5.5'
