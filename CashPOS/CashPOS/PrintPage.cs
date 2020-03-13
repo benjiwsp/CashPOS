@@ -69,11 +69,12 @@ namespace CashPOS
         }
         public void resultList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-
+            string orderID = "";
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 9)
             {
+              //  MessageBox.Show(sender.ToString());
+
                 printList.Rows.Clear();
                 string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
                              "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.license, " +
@@ -96,7 +97,8 @@ namespace CashPOS
                         if (i == 1)
                         {
                             pack = rdr["package"].ToString();
-                            invoiceLbl.Text = rdr["orderID"].ToString();
+                            orderID = rdr["orderID"].ToString();
+                            invoiceLbl.Text = orderID;
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
                             dateLbl.Text = rdr["time"].ToString();
                             custLbl.Text = rdr["custName"].ToString();
@@ -120,12 +122,89 @@ namespace CashPOS
 
                     }
                     SumLbl.Text = rdr["totalPrice"].ToString();
+                    if (orderID.Contains("SF")) {
+                        noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
+                    } else if (orderID.Contains("SB")) { 
+                        noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日半年內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
+                    }
+                    else
+                    {
+                        noteDisplayLbl.Text = "";
+                    }
                     //    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
                 }
                 rdr.Close();
                 myConnection.Close();
             }
             else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 10)
+            {
+                //  MessageBox.Show(sender.ToString());
+
+                printList.Rows.Clear();
+                string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
+                             "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.license, " +
+                             "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
+                             "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
+                             "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
+                             "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
+                             "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
+                         "CashPOSDB.orderDetails on  CashPOSDB.orderRecords.orderID =  CashPOSDB.orderDetails.orderID  where CashPOSDB.orderRecords.orderID = '" +
+                         resultList.Rows[e.RowIndex].Cells[0].Value.ToString() + "'";
+                myCommand = new MySqlCommand(query, myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                int i = 1;
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
+                    {
+                        string pack = "";
+                        if (i == 1)
+                        {
+                            pack = rdr["package"].ToString();
+                            orderID = rdr["orderID"].ToString();
+                            invoiceLbl.Text = orderID;
+                            pickupLbl.Text = rdr["pickupLoc"].ToString();
+                            dateLbl.Text = rdr["time"].ToString();
+                            custLbl.Text = rdr["custName"].ToString();
+                            addLbl.Text = rdr["address"].ToString();
+                            telLbl.Text = rdr["phone"].ToString();
+                            licenseLbl.Text = rdr["license"].ToString();
+                            noteLbl.Text = rdr["notes"].ToString();
+                            priceTypeLbl.Text = rdr["priceType"].ToString();
+                        }
+                        if (pack != "0.00")
+                        {
+                            printList.Rows.Add(i, rdr["itemName"].ToString(), "", rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),
+                               "");
+                        }
+                        else
+                        {
+                            printList.Rows.Add(i, rdr["itemName"].ToString(), "", rdr["amount"].ToString(), rdr["unit"].ToString(),
+                              "");
+                        }
+                        i++;
+
+                    }
+                  //  SumLbl.Text = rdr["totalPrice"].ToString();
+                    if (orderID.Contains("SF"))
+                    {
+                        noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
+                    }
+                    else if (orderID.Contains("SB"))
+                    {
+                        noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日半年內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
+                    }
+                    else
+                    {
+                        noteDisplayLbl.Text = "";
+                    }
+                    //    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
+                }
+                rdr.Close();
+                myConnection.Close();
+            }
+            else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 11)
             {
                 string OrderID = resultList.Rows[e.RowIndex].Cells[0].Value.ToString();
                 if (OrderID != "")

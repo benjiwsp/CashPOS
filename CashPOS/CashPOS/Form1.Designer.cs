@@ -291,9 +291,9 @@
         private System.Windows.Forms.Panel selectedPanel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel sideBarSelectionPanel;
-        private System.Windows.Forms.Button printInvBtn;
         private System.Windows.Forms.Button importBtn;
         private System.Windows.Forms.Button salesInfoBtn;
+        public System.Windows.Forms.Button printInvBtn;
     }
 }
 

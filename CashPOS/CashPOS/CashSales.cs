@@ -57,7 +57,6 @@ namespace CashPOS
         private MySqlConnection myConnection;
 
         private MySqlConnection myConnection2;
-
         string value;
         MySqlCommand myCommand;
         MySqlCommand myCommand2;
@@ -325,9 +324,9 @@ namespace CashPOS
             licenseTxt.Text = "";
             pickupAddText.Text = "";
             invoiceLabel.Text = "";
-            selfPickRadio.Checked = false;
-            warehouseRadio.Checked = false;
-            siteRadio.Checked = false;
+            //  selfPickRadio.Checked = false;
+            // warehouseRadio.Checked = false;
+            //siteRadio.Checked = false;
             VanRadio.Checked = false;
             storeRadio.Checked = false;
             deliveryRadio.Checked = false;
@@ -633,6 +632,7 @@ namespace CashPOS
             rdr.Close();
             myConnection.Close();
             fromLabel.Text = from;
+
         }
 
         private void warehouseRadio_CheckedChanged(object sender, EventArgs e)
@@ -672,6 +672,20 @@ namespace CashPOS
         }
         private void checkStatus()
         {
+            if (selfPickRadio.Checked)
+            {
+                destLabel.Text = "自提";
+            }
+            else if (warehouseRadio.Checked)
+            {
+                destLabel.Text = "倉";
+
+            }
+            else if (siteRadio.Checked)
+            {
+                destLabel.Text = "地盤";
+
+            }
             if (customerTxt.Text != "" && toLabel.Text != "" && fromLabel.Text != "" && destLabel.Text != "")
             {
                 itemTypePanel.Enabled = true;
@@ -1124,35 +1138,62 @@ namespace CashPOS
         {
             string id = invoiceLabel.Text;
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
-            PrintDialog print = new PrintDialog();
+            PrintPage pp = new PrintPage();
 
-            print.displayInvoiceBtn.PerformClick();
-            print.invoiceNo.Text = id;
-            print.search();
-            print.sendToPreview(id, false);
-            //  print.searchCWPrint.PerformClick();
+            pp.invoiceNo.Text = id;
+            pp.searchCWPrint.PerformClick();
 
-            print.Show();
-            print.printList.ClearSelection();
+            if (pp.resultList[0, 0].Value.ToString() == id)
+            {
+                pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(10, 0));
 
-            //   MessageBox.Show("test");
-            print.print();
-            print.Close();
+            }
+            pD pd = new pD();
+
+            pp.Dock = DockStyle.Fill;
+            pp.BackColor = Color.White;
+
+            pd.disPlanel.Controls.Add(pp);
+            pd.Show();
+            pp.printBtn.PerformClick();
+            pd.Close();
         }
 
         private void sendAndPP_Click(object sender, EventArgs e)
         {
             string id = invoiceLabel.Text;
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
-            PrintDialog print = new PrintDialog();
-            print.displayInvoiceBtn.PerformClick();
-            print.invoiceNo.Text = id;
-            print.search();
-            print.sendToPreview(id, true);
-            print.Show();
-            print.printList.ClearSelection();
-            print.print();
-            print.Close();
+            PrintPage pp = new PrintPage();
+
+            pp.invoiceNo.Text = id;
+            pp.searchCWPrint.PerformClick();
+
+            if (pp.resultList[0, 0].Value.ToString() == id)
+            {
+                pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(9, 0));
+
+            }
+            pD pd = new pD();
+
+            pp.Dock = DockStyle.Fill;
+            pp.BackColor = Color.White;
+
+            pd.disPlanel.Controls.Add(pp);
+            pd.Show();
+            pp.printBtn.PerformClick();
+            pd.Close();
+
+            /*
+             PrintDialog print = new PrintDialog();
+              print.displayInvoiceBtn.PerformClick();
+              print.invoiceNo.Text = id;
+              print.search();
+              print.sendToPreview(id, true);
+              print.Show();
+              print.printList.ClearSelection();
+              print.print();
+              print.Close();*/
+
         }
 
         private void unitPriceTxt_Validating(object sender, CancelEventArgs e)

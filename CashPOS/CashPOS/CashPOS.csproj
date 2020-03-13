@@ -121,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InventoryHandler.cs" />
+    <Compile Include="pD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pD.Designer.cs">
+      <DependentUpon>pD.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     <Compile Include="SubItems.Designer.cs">
       <DependentUpon>SubItems.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="pD.resx">
+      <DependentUpon>pD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PopList.resx">
       <DependentUpon>PopList.cs</DependentUpon>
     </EmbeddedResource>
