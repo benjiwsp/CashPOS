@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.printLayer = new System.Windows.Forms.TableLayoutPanel();
             this.printList = new System.Windows.Forms.DataGridView();
@@ -140,6 +141,14 @@
             this.Column12,
             this.Column13});
             this.printLayer.SetColumnSpan(this.printList, 2);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.printList.DefaultCellStyle = dataGridViewCellStyle1;
             this.printList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printList.Location = new System.Drawing.Point(3, 163);
             this.printList.Name = "printList";

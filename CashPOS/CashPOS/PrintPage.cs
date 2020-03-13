@@ -27,12 +27,14 @@ namespace CashPOS
             myConnection = new MySqlConnection(value);
         }
 
-    
+
 
         private void updateUnprintedList(string comp)
         {
             resultList.Rows.Clear();
-            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && belongTo = '"+comp + "'", myConnection);
+            SumLbl.Text = "";
+
+            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && belongTo = '" + comp + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -49,7 +51,9 @@ namespace CashPOS
         private void updateUnprintedListBySite(string site)
         {
             resultList.Rows.Clear();
-            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && pickupLoc = '"+ site + "'", myConnection);
+            SumLbl.Text = "";
+
+            myCommand = new MySqlCommand("select * from orderRecords where isPrinted !=  'Y' && pickupLoc = '" + site + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
             if (rdr.HasRows)
@@ -65,14 +69,14 @@ namespace CashPOS
         }
         public void resultList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
 
             var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex ==9)
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 9)
             {
                 printList.Rows.Clear();
                 string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
-                             "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
+                             "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.license, " +
                              "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
                              "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                              "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
@@ -88,8 +92,10 @@ namespace CashPOS
                 {
                     while (rdr.Read())
                     {
+                        string pack = "";
                         if (i == 1)
                         {
+                            pack = rdr["package"].ToString();
                             invoiceLbl.Text = rdr["orderID"].ToString();
                             pickupLbl.Text = rdr["pickupLoc"].ToString();
                             dateLbl.Text = rdr["time"].ToString();
@@ -100,17 +106,26 @@ namespace CashPOS
                             noteLbl.Text = rdr["notes"].ToString();
                             priceTypeLbl.Text = rdr["priceType"].ToString();
                         }
-                        printList.Rows.Add(i,rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
-   rdr["total"].ToString());
-
+                        if (pack != "0.00")
+                        {
+                            printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),
+                                rdr["total"].ToString());
+                        }
+                        else
+                        {
+                            printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
+                                rdr["total"].ToString());
+                        }
                         i++;
 
                     }
-                    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
+                    SumLbl.Text = rdr["totalPrice"].ToString();
+                    //    printList.Rows.Add("", "", "", "", "總數:", rdr["totalPrice"]);
                 }
                 rdr.Close();
                 myConnection.Close();
-            }else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 10)
+            }
+            else if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 10)
             {
                 string OrderID = resultList.Rows[e.RowIndex].Cells[0].Value.ToString();
                 if (OrderID != "")
@@ -155,7 +170,7 @@ namespace CashPOS
         {
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-          //  PaperSize papersize = new PaperSize("Custom", 850, 550);
+            //  PaperSize papersize = new PaperSize("Custom", 850, 550);
             PaperSize papersize = new PaperSize("Custom", 850, 750);
 
             pd.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 300;
@@ -183,17 +198,18 @@ namespace CashPOS
             e.Graphics.DrawImage(bitmap, p);
 
         }
-        
+
         public void searchCWPrint_Click(object sender, EventArgs e)
         {
-           /// MessageBox.Show(invoiceNo.Text);
+            /// MessageBox.Show(invoiceNo.Text);
             searchToPrint(invoiceNo.Text);
         }
 
-     
+
         private void searchToPrint(string orderID)
         {
             resultList.Rows.Clear();
+            SumLbl.Text = "";
             myCommand = new MySqlCommand("select * from orderRecords where orderID = '" + orderID + "'", myConnection);
             myConnection.Open();
             rdr = myCommand.ExecuteReader();
@@ -202,7 +218,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     resultList.Rows.Add(rdr["orderID"].ToString(), rdr["custName"].ToString(), rdr["phone"].ToString(), rdr["license"].ToString(),
-                        rdr["address"].ToString(), rdr["pickupLoc"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString()) ;
+                        rdr["address"].ToString(), rdr["pickupLoc"].ToString(), rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
                 }
             }
             rdr.Close();

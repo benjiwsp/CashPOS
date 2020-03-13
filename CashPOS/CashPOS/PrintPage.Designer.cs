@@ -28,20 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.printLayer = new System.Windows.Forms.TableLayoutPanel();
-            this.printList = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.invoiceLbl = new System.Windows.Forms.Label();
-            this.dateLbl = new System.Windows.Forms.Label();
             this.custLbl = new System.Windows.Forms.Label();
-            this.priceTypeLbl = new System.Windows.Forms.Label();
-            this.pickupLbl = new System.Windows.Forms.Label();
+            this.dateLbl = new System.Windows.Forms.Label();
+            this.invoiceLbl = new System.Windows.Forms.Label();
             this.addLbl = new System.Windows.Forms.Label();
             this.noteLbl = new System.Windows.Forms.Label();
-            this.telLbl = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.priceTypeLbl = new System.Windows.Forms.Label();
             this.licenseLbl = new System.Windows.Forms.Label();
+            this.telLbl = new System.Windows.Forms.Label();
+            this.pickupLbl = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.printList = new System.Windows.Forms.DataGridView();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SumLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.resultList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,26 +76,17 @@
             this.sfPrintBtn = new System.Windows.Forms.Button();
             this.displayInvoiceBtn = new System.Windows.Forms.Button();
             this.printBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.總數 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.printList)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printList)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -141,48 +143,6 @@
             this.printLayer.Size = new System.Drawing.Size(786, 960);
             this.printLayer.TabIndex = 1;
             // 
-            // printList
-            // 
-            this.printList.AllowUserToAddRows = false;
-            this.printList.AllowUserToDeleteRows = false;
-            this.printList.AllowUserToResizeColumns = false;
-            this.printList.AllowUserToResizeRows = false;
-            this.printList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.printList.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.printList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.printList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.printList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.printList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.printList.ColumnHeadersVisible = false;
-            this.printList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column16,
-            this.Column9,
-            this.Column12,
-            this.Column10,
-            this.Column11,
-            this.Column13});
-            this.tableLayoutPanel7.SetColumnSpan(this.printList, 4);
-            this.printList.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.printList.DefaultCellStyle = dataGridViewCellStyle1;
-            this.printList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.printList.EnableHeadersVisualStyles = false;
-            this.printList.Location = new System.Drawing.Point(3, 3);
-            this.printList.Name = "printList";
-            this.printList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.printList.RowHeadersVisible = false;
-            this.tableLayoutPanel7.SetRowSpan(this.printList, 3);
-            this.printList.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.printList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.printList.Size = new System.Drawing.Size(774, 248);
-            this.printList.TabIndex = 0;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
@@ -211,15 +171,15 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(780, 281);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // invoiceLbl
+            // custLbl
             // 
-            this.invoiceLbl.AutoSize = true;
-            this.invoiceLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invoiceLbl.Location = new System.Drawing.Point(591, 48);
-            this.invoiceLbl.Name = "invoiceLbl";
-            this.invoiceLbl.Size = new System.Drawing.Size(54, 16);
-            this.invoiceLbl.TabIndex = 2;
-            this.invoiceLbl.Text = "invoice";
+            this.custLbl.AutoSize = true;
+            this.custLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custLbl.Location = new System.Drawing.Point(591, 127);
+            this.custLbl.Name = "custLbl";
+            this.custLbl.Size = new System.Drawing.Size(33, 16);
+            this.custLbl.TabIndex = 2;
+            this.custLbl.Text = "cust";
             // 
             // dateLbl
             // 
@@ -231,35 +191,15 @@
             this.dateLbl.TabIndex = 2;
             this.dateLbl.Text = "date";
             // 
-            // custLbl
+            // invoiceLbl
             // 
-            this.custLbl.AutoSize = true;
-            this.custLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custLbl.Location = new System.Drawing.Point(591, 127);
-            this.custLbl.Name = "custLbl";
-            this.custLbl.Size = new System.Drawing.Size(33, 16);
-            this.custLbl.TabIndex = 2;
-            this.custLbl.Text = "cust";
-            // 
-            // priceTypeLbl
-            // 
-            this.priceTypeLbl.AutoSize = true;
-            this.priceTypeLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTypeLbl.Location = new System.Drawing.Point(96, 53);
-            this.priceTypeLbl.Name = "priceTypeLbl";
-            this.priceTypeLbl.Size = new System.Drawing.Size(80, 32);
-            this.priceTypeLbl.TabIndex = 4;
-            this.priceTypeLbl.Text = "priceTypeLbl";
-            // 
-            // pickupLbl
-            // 
-            this.pickupLbl.AutoSize = true;
-            this.pickupLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pickupLbl.Location = new System.Drawing.Point(96, 0);
-            this.pickupLbl.Name = "pickupLbl";
-            this.pickupLbl.Size = new System.Drawing.Size(54, 16);
-            this.pickupLbl.TabIndex = 3;
-            this.pickupLbl.Text = "pickUp";
+            this.invoiceLbl.AutoSize = true;
+            this.invoiceLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceLbl.Location = new System.Drawing.Point(591, 48);
+            this.invoiceLbl.Name = "invoiceLbl";
+            this.invoiceLbl.Size = new System.Drawing.Size(54, 16);
+            this.invoiceLbl.TabIndex = 2;
+            this.invoiceLbl.Text = "invoice";
             // 
             // addLbl
             // 
@@ -286,15 +226,36 @@
             this.noteLbl.Text = "notes";
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // telLbl
+            // tableLayoutPanel5
             // 
-            this.telLbl.AutoSize = true;
-            this.telLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telLbl.Location = new System.Drawing.Point(3, 0);
-            this.telLbl.Name = "telLbl";
-            this.telLbl.Size = new System.Drawing.Size(23, 16);
-            this.telLbl.TabIndex = 1;
-            this.telLbl.Text = "tel";
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.priceTypeLbl, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.licenseLbl, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.telLbl, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.pickupLbl, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(591, 172);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel3.SetRowSpan(this.tableLayoutPanel5, 2);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(186, 106);
+            this.tableLayoutPanel5.TabIndex = 5;
+            // 
+            // priceTypeLbl
+            // 
+            this.priceTypeLbl.AutoSize = true;
+            this.priceTypeLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTypeLbl.Location = new System.Drawing.Point(96, 53);
+            this.priceTypeLbl.Name = "priceTypeLbl";
+            this.priceTypeLbl.Size = new System.Drawing.Size(80, 32);
+            this.priceTypeLbl.TabIndex = 4;
+            this.priceTypeLbl.Text = "priceTypeLbl";
             // 
             // licenseLbl
             // 
@@ -305,6 +266,169 @@
             this.licenseLbl.Size = new System.Drawing.Size(51, 16);
             this.licenseLbl.TabIndex = 1;
             this.licenseLbl.Text = "license";
+            // 
+            // telLbl
+            // 
+            this.telLbl.AutoSize = true;
+            this.telLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telLbl.Location = new System.Drawing.Point(3, 0);
+            this.telLbl.Name = "telLbl";
+            this.telLbl.Size = new System.Drawing.Size(23, 16);
+            this.telLbl.TabIndex = 1;
+            this.telLbl.Text = "tel";
+            // 
+            // pickupLbl
+            // 
+            this.pickupLbl.AutoSize = true;
+            this.pickupLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickupLbl.Location = new System.Drawing.Point(96, 0);
+            this.pickupLbl.Name = "pickupLbl";
+            this.pickupLbl.Size = new System.Drawing.Size(54, 16);
+            this.pickupLbl.TabIndex = 3;
+            this.pickupLbl.Text = "pickUp";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.printLayer.SetColumnSpan(this.tableLayoutPanel6, 2);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 790);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(780, 167);
+            this.tableLayoutPanel6.TabIndex = 3;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.printLayer.SetColumnSpan(this.tableLayoutPanel7, 2);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.Controls.Add(this.printList, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 3, 3);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 290);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 4;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.02834F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.17409F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(780, 494);
+            this.tableLayoutPanel7.TabIndex = 4;
+            // 
+            // printList
+            // 
+            this.printList.AllowUserToAddRows = false;
+            this.printList.AllowUserToDeleteRows = false;
+            this.printList.AllowUserToResizeColumns = false;
+            this.printList.AllowUserToResizeRows = false;
+            this.printList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.printList.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.printList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.printList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.printList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.printList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.printList.ColumnHeadersVisible = false;
+            this.printList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column16,
+            this.Column9,
+            this.Column12,
+            this.Column10,
+            this.Column11,
+            this.Column13});
+            this.tableLayoutPanel7.SetColumnSpan(this.printList, 4);
+            this.printList.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.printList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.printList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printList.EnableHeadersVisualStyles = false;
+            this.printList.Location = new System.Drawing.Point(3, 3);
+            this.printList.Name = "printList";
+            this.printList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.printList.RowHeadersVisible = false;
+            this.tableLayoutPanel7.SetRowSpan(this.printList, 3);
+            this.printList.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.printList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.printList.Size = new System.Drawing.Size(774, 333);
+            this.printList.TabIndex = 0;
+            // 
+            // Column16
+            // 
+            this.Column16.FillWeight = 60F;
+            this.Column16.HeaderText = "Index";
+            this.Column16.MinimumWidth = 10;
+            this.Column16.Name = "Column16";
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 140F;
+            this.Column9.HeaderText = "Item";
+            this.Column9.MinimumWidth = 300;
+            this.Column9.Name = "Column9";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "UnitPrice";
+            this.Column12.MinimumWidth = 120;
+            this.Column12.Name = "Column12";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Amount";
+            this.Column10.MinimumWidth = 120;
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Unit";
+            this.Column11.MinimumWidth = 30;
+            this.Column11.Name = "Column11";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Total";
+            this.Column13.MinimumWidth = 120;
+            this.Column13.Name = "Column13";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel7.SetColumnSpan(this.label1, 2);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 339);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(384, 155);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
+            // 
+            // SumLbl
+            // 
+            this.SumLbl.AutoSize = true;
+            this.SumLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SumLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.SumLbl.Location = new System.Drawing.Point(3, 0);
+            this.SumLbl.Name = "SumLbl";
+            this.SumLbl.Size = new System.Drawing.Size(183, 54);
+            this.SumLbl.TabIndex = 3;
+            this.SumLbl.Text = "總數";
+            this.SumLbl.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -528,126 +652,19 @@
             this.printBtn.UseVisualStyleBackColor = true;
             this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
-            // tableLayoutPanel5
+            // tableLayoutPanel8
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.priceTypeLbl, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.licenseLbl, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.telLbl, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.pickupLbl, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(591, 172);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel3.SetRowSpan(this.tableLayoutPanel5, 2);
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(186, 106);
-            this.tableLayoutPanel5.TabIndex = 5;
-            // 
-            // Column16
-            // 
-            this.Column16.FillWeight = 60F;
-            this.Column16.HeaderText = "Index";
-            this.Column16.MinimumWidth = 10;
-            this.Column16.Name = "Column16";
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 140F;
-            this.Column9.HeaderText = "Item";
-            this.Column9.MinimumWidth = 300;
-            this.Column9.Name = "Column9";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "UnitPrice";
-            this.Column12.MinimumWidth = 120;
-            this.Column12.Name = "Column12";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Amount";
-            this.Column10.MinimumWidth = 120;
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Unit";
-            this.Column11.MinimumWidth = 30;
-            this.Column11.Name = "Column11";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Total";
-            this.Column13.MinimumWidth = 120;
-            this.Column13.Name = "Column13";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.label1, 2);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 254);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 240);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "如需要退回吊袋按金，需於取貨日１舍月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 4;
-            this.printLayer.SetColumnSpan(this.tableLayoutPanel6, 2);
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 790);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(780, 167);
-            this.tableLayoutPanel6.TabIndex = 3;
-            // 
-            // 總數
-            // 
-            this.總數.AutoSize = true;
-            this.總數.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.總數.Location = new System.Drawing.Point(588, 254);
-            this.總數.Name = "總數";
-            this.總數.Size = new System.Drawing.Size(189, 240);
-            this.總數.TabIndex = 3;
-            this.總數.Text = "總數";
-            this.總數.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 4;
-            this.printLayer.SetColumnSpan(this.tableLayoutPanel7, 2);
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.Controls.Add(this.總數, 3, 3);
-            this.tableLayoutPanel7.Controls.Add(this.printList, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 3);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 290);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 4;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.821862F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.38057F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(780, 494);
-            this.tableLayoutPanel7.TabIndex = 4;
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.SumLbl, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(588, 342);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.24161F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.75839F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(189, 149);
+            this.tableLayoutPanel8.TabIndex = 4;
             // 
             // PrintPage
             // 
@@ -658,17 +675,19 @@
             this.Size = new System.Drawing.Size(1654, 1000);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.printLayer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.printList)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printList)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -720,7 +739,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label 總數;
+        private System.Windows.Forms.Label SumLbl;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
     }
 }
