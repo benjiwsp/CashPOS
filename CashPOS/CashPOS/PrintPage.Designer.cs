@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.printLayer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,16 +56,6 @@
             this.SumLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.resultList = new System.Windows.Forms.DataGridView();
-            this.invoiceNo = new System.Windows.Forms.TextBox();
-            this.searchCWPrint = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tmInvoiceBtn = new System.Windows.Forms.Button();
-            this.cwInvoiceBtn = new System.Windows.Forms.Button();
-            this.ktInvoiceBtn = new System.Windows.Forms.Button();
-            this.ymtInvoiceBtn = new System.Windows.Forms.Button();
-            this.sfPrintBtn = new System.Windows.Forms.Button();
-            this.displayInvoiceBtn = new System.Windows.Forms.Button();
-            this.printBtn = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +68,17 @@
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.invoiceNo = new System.Windows.Forms.TextBox();
+            this.searchCWPrint = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tmInvoiceBtn = new System.Windows.Forms.Button();
+            this.cwInvoiceBtn = new System.Windows.Forms.Button();
+            this.ktInvoiceBtn = new System.Windows.Forms.Button();
+            this.ymtInvoiceBtn = new System.Windows.Forms.Button();
+            this.sfPrintBtn = new System.Windows.Forms.Button();
+            this.displayInvoiceBtn = new System.Windows.Forms.Button();
+            this.printBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -88,6 +89,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -349,14 +351,14 @@
             this.Column13});
             this.tableLayoutPanel7.SetColumnSpan(this.printList, 4);
             this.printList.Cursor = System.Windows.Forms.Cursors.Arrow;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.printList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.printList.DefaultCellStyle = dataGridViewCellStyle1;
             this.printList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printList.EnableHeadersVisualStyles = false;
             this.printList.Location = new System.Drawing.Point(3, 3);
@@ -450,9 +452,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.resultList, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.invoiceNo, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.searchCWPrint, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel9, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -492,18 +493,88 @@
             this.resultList.TabIndex = 0;
             this.resultList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultList_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "OrderID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "客戶";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "電話";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "送貨地址";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "提貨地點";
+            this.Column6.Name = "Column6";
+            // 
+            // z
+            // 
+            this.z.HeaderText = "總數";
+            this.z.Name = "z";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "已付款";
+            this.Column7.Name = "Column7";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "備註";
+            this.Column14.Name = "Column14";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "顯示價錢";
+            this.Column8.Name = "Column8";
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "不顯示價錢";
+            this.Column17.Name = "Column17";
+            this.Column17.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "更改車牌";
+            this.Column15.Name = "Column15";
+            this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // invoiceNo
             // 
-            this.invoiceNo.Location = new System.Drawing.Point(3, 726);
+            this.invoiceNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoiceNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceNo.Location = new System.Drawing.Point(286, 3);
             this.invoiceNo.Name = "invoiceNo";
-            this.invoiceNo.Size = new System.Drawing.Size(100, 20);
+            this.invoiceNo.Size = new System.Drawing.Size(277, 31);
             this.invoiceNo.TabIndex = 2;
             // 
             // searchCWPrint
             // 
-            this.searchCWPrint.Location = new System.Drawing.Point(431, 726);
+            this.searchCWPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchCWPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCWPrint.Location = new System.Drawing.Point(569, 3);
             this.searchCWPrint.Name = "searchCWPrint";
-            this.searchCWPrint.Size = new System.Drawing.Size(75, 23);
+            this.searchCWPrint.Size = new System.Drawing.Size(278, 70);
             this.searchCWPrint.TabIndex = 3;
             this.searchCWPrint.Text = "Search";
             this.searchCWPrint.UseVisualStyleBackColor = true;
@@ -609,71 +680,24 @@
             this.printBtn.UseVisualStyleBackColor = true;
             this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
-            // Column1
+            // tableLayoutPanel9
             // 
-            this.Column1.HeaderText = "OrderID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "客戶";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "電話";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "送貨地址";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "提貨地點";
-            this.Column6.Name = "Column6";
-            // 
-            // z
-            // 
-            this.z.HeaderText = "總數";
-            this.z.Name = "z";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "已付款";
-            this.Column7.Name = "Column7";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "備註";
-            this.Column14.Name = "Column14";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "顯示價錢";
-            this.Column8.Name = "Column8";
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "不顯示價錢";
-            this.Column17.Name = "Column17";
-            this.Column17.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "更改車牌";
-            this.Column15.Name = "Column15";
-            this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel9, 2);
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.Controls.Add(this.searchCWPrint, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.invoiceNo, 1, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 726);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(850, 231);
+            this.tableLayoutPanel9.TabIndex = 4;
             // 
             // PrintPage
             // 
@@ -694,9 +718,10 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultList)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -752,5 +777,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column8;
         private System.Windows.Forms.DataGridViewButtonColumn Column17;
         private System.Windows.Forms.DataGridViewButtonColumn Column15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
     }
 }

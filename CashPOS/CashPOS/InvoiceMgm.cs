@@ -404,7 +404,7 @@ namespace CashPOS
             myConnection.Close();
         }
 
-        private void searchByPayType_Click(object sender, EventArgs e)
+        private void serachByPayType(string comp)
         {
             addStdCol();
             orderListView.Rows.Clear();
@@ -414,7 +414,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where payment = '" + payType.Text + "' and time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
-            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "' ", myConnection);
+            "' and time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "' and belongTo = '" + comp + "'", myConnection);
             myConnection.Open();
             int i = 0;
             rdr = myCommand.ExecuteReader();
@@ -470,6 +470,11 @@ namespace CashPOS
             rdr.Close();
 
             myConnection.Close();
+
+        }
+        private void searchByPayTypeSF_Click(object sender, EventArgs e)
+        {
+            serachByPayType("富資");
         }
 
         private void searchByPrice_Click(object sender, EventArgs e)
@@ -1271,6 +1276,12 @@ namespace CashPOS
               myCommand.ExecuteNonQuery();
               myConnection.Close();
             }
+        }
+
+        private void searchByPayTypeSBM_Click(object sender, EventArgs e)
+        {
+            serachByPayType("超誠");
+
         }
     }
 }

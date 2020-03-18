@@ -230,11 +230,18 @@ namespace CashPOS
                     totalPrice = amount * unitPrice;
                     selectedItemList.Rows.Add(item, amount, unit, unitPrice, "", totalPrice.ToString("0.00"));
                 }
+                else if (itemUnit.Items.Count == 0)
+                {
+                    unit = itemUnit.Text.ToString();
+                    totalPrice = amount * unitPrice;
+                    selectedItemList.Rows.Add(item, amount, unit, unitPrice, "", totalPrice.ToString("0.00"));
+                }
                 else
                 {
                     //  package = amount;
                     //  amount *= converter;
                     //    unit = itemUnit.Text.ToString();
+
                     totalPrice = amount * unitPrice;
                     selectedItemList.Rows.Add(item, amount, unit, unitPrice, "", totalPrice.ToString("0.00"));
                 }
@@ -308,6 +315,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            selectedItemLabel.Text = "";
             tempSecPrice = 0.00m;
             tempSecUnit = "";
             custType = "";
@@ -465,9 +473,12 @@ namespace CashPOS
                                 if (invCol != "")
                                 {
                                     string amount = getAmountConverter(itemName, unit, inputAmount);
-                                    invHdr.reduce(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(amount), dateSelected.Value);
-                                    myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                                    myCommand.ExecuteNonQuery();
+                                    if (amount != "")
+                                    {
+                                        invHdr.reduce(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(amount), dateSelected.Value);
+                                        myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                        myCommand.ExecuteNonQuery();
+                                    }
                                 }
                             }
                             if (attempted)
@@ -1322,6 +1333,7 @@ namespace CashPOS
         {
             VanRadio.Checked = false;
             deliveryRadio.Checked = false;
+
             checkCustType(sender);
         }
 
@@ -1344,6 +1356,12 @@ namespace CashPOS
         private void dateSelected_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void itemNotesTxt_TextChanged(object sender, EventArgs e)
+        {
+            TextBox item = (TextBox)sender;
+            selectedItemLabel.Text = item.Text.ToString();
         }
     }
 }

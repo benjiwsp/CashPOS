@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.serachByComp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,7 +50,9 @@
             this.searchByItem = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.payType = new System.Windows.Forms.ComboBox();
-            this.searchByPayType = new System.Windows.Forms.Button();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchByPayTypeSBM = new System.Windows.Forms.Button();
+            this.SFCashSearchBtn = new System.Windows.Forms.Button();
             this.deleteOrderBrn = new System.Windows.Forms.Button();
             this.resultGrid = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +135,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderListView)).BeginInit();
@@ -398,7 +401,7 @@
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.payType, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.searchByPayType, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel17, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(1237, 174);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -421,16 +424,42 @@
             this.payType.Size = new System.Drawing.Size(266, 32);
             this.payType.TabIndex = 9;
             // 
-            // searchByPayType
+            // tableLayoutPanel17
             // 
-            this.searchByPayType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchByPayType.Location = new System.Drawing.Point(3, 35);
-            this.searchByPayType.Name = "searchByPayType";
-            this.searchByPayType.Size = new System.Drawing.Size(266, 26);
-            this.searchByPayType.TabIndex = 10;
-            this.searchByPayType.Text = "以付款方式搜尋";
-            this.searchByPayType.UseVisualStyleBackColor = true;
-            this.searchByPayType.Click += new System.EventHandler(this.searchByPayType_Click);
+            this.tableLayoutPanel17.ColumnCount = 2;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.Controls.Add(this.searchByPayTypeSBM, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.SFCashSearchBtn, 1, 0);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 35);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(266, 26);
+            this.tableLayoutPanel17.TabIndex = 10;
+            // 
+            // searchByPayTypeSBM
+            // 
+            this.searchByPayTypeSBM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchByPayTypeSBM.Location = new System.Drawing.Point(3, 3);
+            this.searchByPayTypeSBM.Name = "searchByPayTypeSBM";
+            this.searchByPayTypeSBM.Size = new System.Drawing.Size(127, 20);
+            this.searchByPayTypeSBM.TabIndex = 10;
+            this.searchByPayTypeSBM.Text = "(SBM)付款方式搜尋";
+            this.searchByPayTypeSBM.UseVisualStyleBackColor = true;
+            this.searchByPayTypeSBM.Click += new System.EventHandler(this.searchByPayTypeSBM_Click);
+            // 
+            // SFCashSearchBtn
+            // 
+            this.SFCashSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SFCashSearchBtn.Location = new System.Drawing.Point(136, 3);
+            this.SFCashSearchBtn.Name = "SFCashSearchBtn";
+            this.SFCashSearchBtn.Size = new System.Drawing.Size(127, 20);
+            this.SFCashSearchBtn.TabIndex = 11;
+            this.SFCashSearchBtn.Text = "(SF)付款方式搜尋";
+            this.SFCashSearchBtn.UseVisualStyleBackColor = true;
+            this.SFCashSearchBtn.Click += new System.EventHandler(this.searchByPayTypeSF_Click);
             // 
             // deleteOrderBrn
             // 
@@ -456,14 +485,14 @@
             this.Column18,
             this.Column11});
             this.tableLayoutPanel1.SetColumnSpan(this.resultGrid, 3);
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.resultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultGrid.Location = new System.Drawing.Point(1018, 386);
             this.resultGrid.Name = "resultGrid";
@@ -759,7 +788,7 @@
             // 
             this.orderListView.AllowUserToAddRows = false;
             this.orderListView.AllowUserToDeleteRows = false;
-            this.orderListView.AllowUserToResizeColumns = false;
+            this.orderListView.AllowUserToOrderColumns = true;
             this.orderListView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.orderListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -778,14 +807,14 @@
             this.Column15,
             this.Column14});
             this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.orderListView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.orderListView.DefaultCellStyle = dataGridViewCellStyle4;
             this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderListView.Location = new System.Drawing.Point(3, 244);
             this.orderListView.Name = "orderListView";
@@ -1289,6 +1318,7 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
@@ -1330,7 +1360,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button searchByItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button searchByPayType;
+        private System.Windows.Forms.Button searchByPayTypeSBM;
         private System.Windows.Forms.Button deleteOrderBrn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
@@ -1404,5 +1434,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.ComboBox custTypeBox;
         private System.Windows.Forms.Button paidAllBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.Button SFCashSearchBtn;
     }
 }
