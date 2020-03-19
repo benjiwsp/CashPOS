@@ -38,6 +38,7 @@
             this.subItemPanel.Name = "subItemPanel";
             this.subItemPanel.Size = new System.Drawing.Size(1076, 720);
             this.subItemPanel.TabIndex = 0;
+            this.subItemPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subItemPanel_Paint);
             // 
             // SubItems
             // 

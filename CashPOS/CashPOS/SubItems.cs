@@ -94,7 +94,7 @@ namespace CashPOS
         //event handler for clicking products 
         protected void itemBtnClicked(object sender, EventArgs e)
         {
-            myParent.clearUnit();   
+            myParent.clearUnit();
 
             Button btn = sender as Button;
             string itemSelected = btn.Text;
@@ -118,59 +118,100 @@ namespace CashPOS
             {
                 priceType = "PickPrice";
             }
-            //To-do: load the price from database 
-            myCommand = new MySqlCommand("Select " + priceType + " from CashPOSDB.custProdPrice where belongTo = '" + belongTo + "' and Cust = '" + cust + "' and ProdName = '" + itemSelected + "'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
-            {
-                while (rdr.Read())
-                {
-                    string uPrice = rdr[priceType].ToString();
-                    myParent.unitPriceValue = uPrice;
-                    myParent.unitPrice = uPrice;
-                }
-            }
-            rdr.Close();
-            myConnection.Close();
-            myParent.converter = 0;
-            myCommand = new MySqlCommand("Select Unit,SecUnit, Converter from CashPOSDB.prodData where ProdName = '" + itemSelected + "'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
-            {
 
-                while (rdr.Read())
+            if (itemSelected == "訂金")
+            {
+                string money = "";
+                myCommand = new MySqlCommand("Select Money from CashPOSDB.custData where Code = '" + cust + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows)
                 {
-                    string secUnit = rdr["SecUnit"].ToString();
-                    string unit = rdr["Unit"].ToString();
-                    if (secUnit != "")
+                    if (rdr.Read())
                     {
-                        myParent.clearUnit();
-                        myParent.secUnit = secUnit;
-                        myParent.unit = unit;
-                        myParent.insertUnit(unit, true);
-                        myParent.insertUnit(secUnit, false);
+                        money = rdr["Money"].ToString();
+                    }
 
-                        myParent.converter = Convert.ToDecimal(rdr["Converter"].ToString());
+                } rdr.Close();
+                myConnection.Close();
+                InputBox input = new InputBox();
+                input.Text = "請輸入需要使用的金額。(可用金額為: " + money + " )";
+                string inputAmt = "";
+                if (input.ShowDialog() == DialogResult.OK)
+                {
+                    inputAmt = input.OrderNumberInputTextbox.Text;
+                    if (Convert.ToDecimal(inputAmt) <= Convert.ToDecimal(money)) { 
+                    myParent.selectedItemList.Rows.Add("使用訂金", 1, "HKD", inputAmt, "", inputAmt);
+                    myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) - Convert.ToDecimal(inputAmt)).ToString();
                     }
                     else
                     {
-                        myParent.secUnit = "";
-                        myParent.converter = 0.00m;
-                        myParent.unit = unit;
-                        myParent.insertUnit(unit, true);
+                        MessageBox.Show("使用的訂金不能大於戶口存有的金額。");
+                    }
+                }
+
+            }
+            else
+            {
+                //To-do: load the price from database 
+                myCommand = new MySqlCommand("Select " + priceType + " from CashPOSDB.custProdPrice where belongTo = '" + belongTo + "' and Cust = '" + cust + "' and ProdName = '" + itemSelected + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
+                    {
+                        string uPrice = rdr[priceType].ToString();
+                        myParent.unitPriceValue = uPrice;
+                        myParent.unitPrice = uPrice;
+                    }
+                }
+                rdr.Close();
+                myConnection.Close();
+                myParent.converter = 0;
+                myCommand = new MySqlCommand("Select Unit,SecUnit, Converter from CashPOSDB.prodData where ProdName = '" + itemSelected + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+
+                    while (rdr.Read())
+                    {
+                        string secUnit = rdr["SecUnit"].ToString();
+                        string unit = rdr["Unit"].ToString();
+                        if (secUnit != "")
+                        {
+                            myParent.clearUnit();
+                            myParent.secUnit = secUnit;
+                            myParent.unit = unit;
+                            myParent.insertUnit(unit, true);
+                            myParent.insertUnit(secUnit, false);
+
+                            myParent.converter = Convert.ToDecimal(rdr["Converter"].ToString());
+                        }
+                        else
+                        {
+                            myParent.secUnit = "";
+                            myParent.converter = 0.00m;
+                            myParent.unit = unit;
+                            myParent.insertUnit(unit, true);
+
+                        }
 
                     }
+                } rdr.Close();
+                //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
+                //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
 
-                }
-            } rdr.Close();
-            //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
-            //   MessageBox.Show(myParent.itemUnit.Items[1].ToString());
-
-            myConnection.Close();
+                myConnection.Close();
+            }
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
             myParent.amountTxt.Select();
+        }
+
+        private void subItemPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

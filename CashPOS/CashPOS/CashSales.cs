@@ -449,8 +449,10 @@ namespace CashPOS
                                 string itemName = row.Cells[0].Value.ToString();
                                 string unit = row.Cells[2].Value.ToString();
                                 string inputAmount = row.Cells[1].Value.ToString();
+                                string useDeposit = "";
+                                string depositAmt = row.Cells[3].Value.ToString();
                                 myCommand = new MySqlCommand("Insert into CashPOSDB.orderDetails values('" + orderID + "','" + selectedCustCode + "','" + itemName + "','"
-                                  + inputAmount + "','" + unit + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "','" +
+                                  + inputAmount + "','" + unit + "','" + depositAmt + "','" + row.Cells[4].Value.ToString() + "','" +
                                   row.Cells[5].Value.ToString() + "','" + pickupLoc + "','" + belongTo + "','" + date + "')", myConnection);
                                 myCommand.ExecuteNonQuery();
 
@@ -473,12 +475,17 @@ namespace CashPOS
                                 if (invCol != "")
                                 {
                                     string amount = getAmountConverter(itemName, unit, inputAmount);
-                                    if (amount != "")
+                                    if (amount != "" && itemName != "使用訂金")
                                     {
                                         invHdr.reduce(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(amount), dateSelected.Value);
                                         myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                                         myCommand.ExecuteNonQuery();
                                     }
+                                }
+                                if (itemName == "使用訂金")
+                                {
+                                    myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money - " + Convert.ToDecimal(depositAmt) + " where Name = '" + cust + "'", myConnection);
+                                    myCommand.ExecuteNonQuery();
                                 }
                             }
                             if (attempted)
@@ -1365,5 +1372,7 @@ namespace CashPOS
             TextBox item = (TextBox)sender;
             selectedItemLabel.Text = item.Text.ToString();
         }
+
+
     }
 }
