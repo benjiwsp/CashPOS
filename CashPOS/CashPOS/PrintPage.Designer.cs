@@ -68,8 +68,6 @@
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.invoiceNo = new System.Windows.Forms.TextBox();
-            this.searchCWPrint = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tmInvoiceBtn = new System.Windows.Forms.Button();
             this.cwInvoiceBtn = new System.Windows.Forms.Button();
@@ -77,8 +75,10 @@
             this.ymtInvoiceBtn = new System.Windows.Forms.Button();
             this.sfPrintBtn = new System.Windows.Forms.Button();
             this.displayInvoiceBtn = new System.Windows.Forms.Button();
-            this.printBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchCWPrint = new System.Windows.Forms.Button();
+            this.invoiceNo = new System.Windows.Forms.TextBox();
+            this.printBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -559,27 +559,6 @@
             this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // invoiceNo
-            // 
-            this.invoiceNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.invoiceNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invoiceNo.Location = new System.Drawing.Point(286, 3);
-            this.invoiceNo.Name = "invoiceNo";
-            this.invoiceNo.Size = new System.Drawing.Size(277, 31);
-            this.invoiceNo.TabIndex = 2;
-            // 
-            // searchCWPrint
-            // 
-            this.searchCWPrint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchCWPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchCWPrint.Location = new System.Drawing.Point(569, 3);
-            this.searchCWPrint.Name = "searchCWPrint";
-            this.searchCWPrint.Size = new System.Drawing.Size(278, 70);
-            this.searchCWPrint.TabIndex = 3;
-            this.searchCWPrint.Text = "Search";
-            this.searchCWPrint.UseVisualStyleBackColor = true;
-            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 4;
@@ -669,17 +648,6 @@
             this.displayInvoiceBtn.UseVisualStyleBackColor = true;
             this.displayInvoiceBtn.Click += new System.EventHandler(this.displayChiuInvoiceBtn_Click);
             // 
-            // printBtn
-            // 
-            this.printBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.printBtn.Location = new System.Drawing.Point(865, 969);
-            this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(786, 28);
-            this.printBtn.TabIndex = 3;
-            this.printBtn.Text = "PRINT";
-            this.printBtn.UseVisualStyleBackColor = true;
-            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
-            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 3;
@@ -698,6 +666,38 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(850, 231);
             this.tableLayoutPanel9.TabIndex = 4;
+            // 
+            // searchCWPrint
+            // 
+            this.searchCWPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchCWPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCWPrint.Location = new System.Drawing.Point(569, 3);
+            this.searchCWPrint.Name = "searchCWPrint";
+            this.searchCWPrint.Size = new System.Drawing.Size(278, 71);
+            this.searchCWPrint.TabIndex = 3;
+            this.searchCWPrint.Text = "Search";
+            this.searchCWPrint.UseVisualStyleBackColor = true;
+            this.searchCWPrint.Click += new System.EventHandler(this.searchCWPrint_Click);
+            // 
+            // invoiceNo
+            // 
+            this.invoiceNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoiceNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceNo.Location = new System.Drawing.Point(286, 3);
+            this.invoiceNo.Name = "invoiceNo";
+            this.invoiceNo.Size = new System.Drawing.Size(277, 31);
+            this.invoiceNo.TabIndex = 2;
+            // 
+            // printBtn
+            // 
+            this.printBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printBtn.Location = new System.Drawing.Point(865, 969);
+            this.printBtn.Name = "printBtn";
+            this.printBtn.Size = new System.Drawing.Size(786, 28);
+            this.printBtn.TabIndex = 3;
+            this.printBtn.Text = "PRINT";
+            this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // PrintPage
             // 

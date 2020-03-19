@@ -128,6 +128,9 @@ namespace CashPOS
             payDay = 0;
             belongTo = "";
             setUpdate(false);
+            money = "";
+            contact2 = "";
+            contact1 = "";
         }
         //set the boolean to true of its a search then update action, else set it to false
         private void setUpdate(Boolean b)
@@ -176,8 +179,8 @@ namespace CashPOS
                             if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                             if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                             if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
-                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact2 = row.Cells[3].Value.ToString();
-                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact1 = row.Cells[4].Value.ToString();
+                            if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact1 = row.Cells[3].Value.ToString();
+                            if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact2 = row.Cells[4].Value.ToString();
                             if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
                             if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
                             if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
@@ -222,8 +225,8 @@ namespace CashPOS
                         if (row.Cells[0].Value.ToString() != "") code = row.Cells[0].Value.ToString();
                         if (row.Cells[1].Value != null) if (row.Cells[1].Value.ToString() != "") name = row.Cells[1].Value.ToString();
                         if (row.Cells[2].Value != null) if (row.Cells[2].Value.ToString() != "") money = row.Cells[2].Value.ToString();
-                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact2 = row.Cells[3].Value.ToString();
-                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact1 = row.Cells[4].Value.ToString();
+                        if (row.Cells[3].Value != null) if (row.Cells[3].Value.ToString() != "") contact1 = row.Cells[3].Value.ToString();
+                        if (row.Cells[4].Value != null) if (row.Cells[4].Value.ToString() != "") contact2 = row.Cells[4].Value.ToString();
                         if (row.Cells[5].Value != null) if (row.Cells[5].Value.ToString() != "") phone1 = row.Cells[5].Value.ToString();
                         if (row.Cells[6].Value != null) if (row.Cells[6].Value.ToString() != "") phone2 = row.Cells[6].Value.ToString();
                         if (row.Cells[7].Value != null) if (row.Cells[7].Value.ToString() != "") fax = row.Cells[7].Value.ToString();
@@ -251,7 +254,8 @@ namespace CashPOS
                         phone2 = "";
                         fax = "";
                         email = "";
-                        address = "";   
+                        address = "";
+                        clearData();
                     }
                 }
             }

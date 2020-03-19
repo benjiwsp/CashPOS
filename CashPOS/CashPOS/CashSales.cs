@@ -803,6 +803,8 @@ namespace CashPOS
                         {
                             storeRadio.Checked = true;
                         }
+
+                        custType = "";
                         payTypeLabel.Text = rdr["payment"].ToString();
                         totalPriceTxt.Text = rdr["totalPrice"].ToString();
                         //sandReceiptTxt.Text = rdr["sandID"].ToString();

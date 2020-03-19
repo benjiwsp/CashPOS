@@ -312,7 +312,7 @@ namespace CashPOS
                     }
                     if (needPrice)
                     {
-                        if (pack != "0.00")
+                        if (pack != "0.00" && pack.Length >0)
                         {
                             printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),
                                 rdr["total"].ToString());
@@ -325,7 +325,7 @@ namespace CashPOS
                     }
                     else
                     {
-                        if (pack != "0.00")
+                        if (pack != "0.00" && pack.Length > 0)
                         {
                             printList.Rows.Add(i, rdr["itemName"].ToString(), "", rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),
                                "");
