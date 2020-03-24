@@ -838,6 +838,10 @@ namespace CashPOS
                         form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
                         form.Okbtn.Text = "付款";
                         form.Text = "請輸入金額";
+                        form.cashBtn.Visible = true;
+                        form.CheqBtn.Visible = true;
+                        form.transfBtn.Visible = true;
+                        form.payType.Visible = true;
                         form.ShowDialog();
                         if (form.DialogResult == DialogResult.OK)
                         {

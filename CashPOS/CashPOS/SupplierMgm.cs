@@ -196,6 +196,15 @@ namespace CashPOS
                                       phone2 + "','" + fax + "','" + address + "','" + email + "','" + contact1 + "','" + contact2 + "','" + money + "')", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
+                        code = "";
+                        name = "";
+                        contact2 = "";
+                        contact1 = "";
+                        phone1 = "";
+                        phone2 = "";
+                        fax = "";
+                        email = "";
+                        address = "";
                         clearData();
                     }
                 }

@@ -50,5 +50,14 @@ namespace CashPOS
             if (e.KeyCode == Keys.Enter)
                 Okbtn_Click(this, new EventArgs());
         }
+
+        private void cashBtn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            changeLbl(btn.Text.ToString());
+        }
+        private void changeLbl(string value){
+            payType.Text = value;
+        }
     }
 }
