@@ -177,7 +177,7 @@
             // custLbl
             // 
             this.custLbl.AutoSize = true;
-            this.custLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.custLbl.Location = new System.Drawing.Point(591, 127);
             this.custLbl.Name = "custLbl";
             this.custLbl.Size = new System.Drawing.Size(33, 16);
@@ -187,7 +187,7 @@
             // dateLbl
             // 
             this.dateLbl.AutoSize = true;
-            this.dateLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLbl.Location = new System.Drawing.Point(591, 92);
             this.dateLbl.Name = "dateLbl";
             this.dateLbl.Size = new System.Drawing.Size(34, 16);
@@ -197,7 +197,7 @@
             // invoiceLbl
             // 
             this.invoiceLbl.AutoSize = true;
-            this.invoiceLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoiceLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invoiceLbl.Location = new System.Drawing.Point(591, 48);
             this.invoiceLbl.Name = "invoiceLbl";
             this.invoiceLbl.Size = new System.Drawing.Size(54, 16);
@@ -209,7 +209,7 @@
             this.addLbl.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.addLbl, 3);
             this.addLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addLbl.Location = new System.Drawing.Point(76, 127);
             this.addLbl.Name = "addLbl";
             this.addLbl.Size = new System.Drawing.Size(509, 42);
@@ -221,7 +221,7 @@
             this.noteLbl.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.noteLbl, 3);
             this.noteLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noteLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noteLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteLbl.Location = new System.Drawing.Point(76, 169);
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(509, 44);
@@ -253,7 +253,7 @@
             // priceTypeLbl
             // 
             this.priceTypeLbl.AutoSize = true;
-            this.priceTypeLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTypeLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceTypeLbl.Location = new System.Drawing.Point(96, 53);
             this.priceTypeLbl.Name = "priceTypeLbl";
             this.priceTypeLbl.Size = new System.Drawing.Size(80, 32);
@@ -263,7 +263,7 @@
             // licenseLbl
             // 
             this.licenseLbl.AutoSize = true;
-            this.licenseLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.licenseLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.licenseLbl.Location = new System.Drawing.Point(3, 53);
             this.licenseLbl.Name = "licenseLbl";
             this.licenseLbl.Size = new System.Drawing.Size(51, 16);
@@ -273,7 +273,7 @@
             // telLbl
             // 
             this.telLbl.AutoSize = true;
-            this.telLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telLbl.Location = new System.Drawing.Point(3, 0);
             this.telLbl.Name = "telLbl";
             this.telLbl.Size = new System.Drawing.Size(23, 16);
@@ -283,7 +283,7 @@
             // pickupLbl
             // 
             this.pickupLbl.AutoSize = true;
-            this.pickupLbl.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pickupLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pickupLbl.Location = new System.Drawing.Point(96, 0);
             this.pickupLbl.Name = "pickupLbl";
             this.pickupLbl.Size = new System.Drawing.Size(54, 16);
@@ -353,7 +353,7 @@
             this.printList.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("PMingLiU", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -438,7 +438,7 @@
             // 
             this.SumLbl.AutoSize = true;
             this.SumLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SumLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.SumLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SumLbl.Location = new System.Drawing.Point(3, 0);
             this.SumLbl.Name = "SumLbl";
             this.SumLbl.Size = new System.Drawing.Size(183, 54);

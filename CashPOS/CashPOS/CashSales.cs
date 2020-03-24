@@ -310,6 +310,7 @@ namespace CashPOS
         public void cancelBtn_Click(object sender, EventArgs e)
         {
             //ssageBox.Show(pickupAddText.Text);
+            selectedOrderID = "";
             isSearching = false;
             clearAll();
         }
@@ -322,6 +323,7 @@ namespace CashPOS
             addressTxt.Items.Clear();
             unpaidList.Rows.Clear();
             payMethLbl.Text = "";
+            secPayMtd.Text = "";
             payMethodLbl.Text = "";
             subPanel.Controls.Clear();
             selectedItemList.Rows.Clear();
@@ -348,7 +350,7 @@ namespace CashPOS
             payTypeLabel.Text = "";
             clearItemPanel();
             isSearching = false;
-            selectedOrderID = "";
+            //   selectedOrderID = "";
             paidAmount.Text = "";
             dateSelected.Value = DateTime.Today;
 
@@ -368,16 +370,12 @@ namespace CashPOS
         }
         #endregion
 
-        private void orderConfirmBtn_Click(object sender, EventArgs e)
-        {
-            payMethLbl.Text = "現金";
-            //TO-DO: check if orderID already exist, get all grid info and insert them into database
-        }
+
         private void sendOrder(bool isSearch, string id, string payMethod)
         {
             if (paidAmount.Text.Length > 0 && payMethLbl.Text.Length > 0 && selectedItemList.Rows.Count > 0)
             {
-                string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid;
+                string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid, secPaidAmt, secPaidMtd, totalPaid;
                 orderID = invoiceLabel.Text;// invoiceLabel.Text;
                 sandID = sandReceiptTxt.Text;
                 cust = customerTxt.Text.Substring(customerTxt.Text.IndexOf("- ") + 1, customerTxt.Text.Length - 1 - customerTxt.Text.IndexOf("- ")).Trim();
@@ -389,6 +387,9 @@ namespace CashPOS
                 pickupLoc = pickupAddText.Text;
                 payment = payTypeLabel.Text;
                 totalPrice = totalPriceTxt.Text;
+                secPaidAmt = SecPaidAmt.Text;
+                secPaidMtd = secPayMtd.Text;
+                totalPaid = totalLabel.Text;
                 isPrinted = "";
                 belongTo = fromLabel.Text;
                 notes = invoiceNoteTxt.Text.Trim();
@@ -439,10 +440,6 @@ namespace CashPOS
                         while (true)
                         {
                             // MessageBox.Show(selectedCustCode);
-                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + custType + "','" + selectedCustCode + "','" + cust + "','" +
-                             phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + notes + "','" + belongTo + "','" +
-                             isPrinted + "','" + date + "','')", myConnection);
-                            myCommand.ExecuteNonQuery();
 
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
@@ -475,17 +472,27 @@ namespace CashPOS
                                 if (invCol != "")
                                 {
                                     string amount = getAmountConverter(itemName, unit, inputAmount);
-                                    if (amount != "" && itemName != "使用訂金")
+                                    if (amount != "" && itemName != "扣訂金" && itemName != "訂金")
                                     {
                                         invHdr.reduce(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(amount), dateSelected.Value);
                                         myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + amount + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                                         myCommand.ExecuteNonQuery();
                                     }
                                 }
-                                if (itemName == "使用訂金")
+                                if (itemName == "扣訂金")
                                 {
-                                    myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money - " + Convert.ToDecimal(depositAmt) + " where Name = '" + cust + "'", myConnection);
+                                    myCommand = new MySqlCommand("update CashPOSDB.custData set Money =  Money - " + Convert.ToDecimal(depositAmt) + " where Name = '" + cust + "'", myConnection);
                                     myCommand.ExecuteNonQuery();
+                                }
+                                if (itemName == "訂金")
+                                {
+
+                                    if (Convert.ToDecimal(depositAmt) > Convert.ToDecimal(totalPrice))
+                                    {
+                                        myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money + " + (Convert.ToDecimal(depositAmt) - Convert.ToDecimal(totalPrice)) + " where Name = '" + cust + "'", myConnection);
+                                        myCommand.ExecuteNonQuery();
+                                        paid = totalPrice;
+                                    }
                                 }
                             }
                             if (attempted)
@@ -494,8 +501,17 @@ namespace CashPOS
                             }
                             successed = true;
                             tryAgain = false;
+
+                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + custType + "','" + selectedCustCode + "','" + cust + "','" +
+                           phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + secPaidAmt + "','" +
+                           secPaidMtd + "','" + totalPaid + "','" + notes + "','" + belongTo + "','" +
+                           isPrinted + "','" + date + "','')", myConnection);
+                            myCommand.ExecuteNonQuery();
+
                             myConnection.Close();
                             break;
+
+
                         }
                     }
                     catch (MySqlException ex)
@@ -544,6 +560,10 @@ namespace CashPOS
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
+                }
+                if (!isSearch)
+                {
+                    selectedOrderID = orderID;
                 }
                 clearAll();
                 clearSelection();
@@ -732,6 +752,7 @@ namespace CashPOS
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
             InputBox form = new InputBox();
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
@@ -838,7 +859,7 @@ namespace CashPOS
                     {
                         pickupAddText.Items.Add(add);
                     }
-                    pickupAddText.Text = add;
+                    //  pickupAddText.Text = add;
                 }
             }
             rdr.Close();
@@ -869,23 +890,42 @@ namespace CashPOS
                     if (dialogResult == DialogResult.Yes)
                     {
                         decimal total = Convert.ToDecimal(selectedItemList.Rows[e.RowIndex].Cells[5].Value.ToString());
-                        totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) - total).ToString("0.00");
+
+                        if (selectedItemList.Rows[e.RowIndex].Cells[0].Value.ToString() == "扣訂金")
+                        {
+                            totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + total).ToString("0.00");
+                        }
+                        else
+                        {
+                            totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) - total).ToString("0.00");
+                        }
+
                         selectedItemList.Rows.RemoveAt(e.RowIndex);
                     }
                 }
             }
         }
 
+        private void changePayMethod(string method, Label lbl)
+        {
+            lbl.Text = method;
+        }
+        private void orderConfirmBtn_Click(object sender, EventArgs e)
+        {
+            changePayMethod("現金", payMethLbl);
+
+        }
         private void payByTransfer_Click(object sender, EventArgs e)
         {
-            // sendOrder(isSearching, selectedOrderID, "過戶");
-            payMethLbl.Text = "過戶";
+            changePayMethod("過戶", payMethLbl);
+
         }
 
         private void payByCheque_Click(object sender, EventArgs e)
         {
-            // sendOrder(isSearching, selectedOrderID, "支票");
-            payMethLbl.Text = "支票";
+            changePayMethod("支票", payMethLbl);
+
+
 
 
         }
@@ -958,7 +998,21 @@ namespace CashPOS
 
         private void sendOrderBtn_Click(object sender, EventArgs e)
         {
-            sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
+            if (SecPaidAmt.Text.Length > 0)
+            {
+                if (secPayMtd.Text.Length > 0)
+                {
+                    sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
+                }
+                else
+                {
+                    MessageBox.Show("請選擇第2付款方式。");
+                }
+            }
+            else
+            {
+                sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
+            }
         }
 
         private void customerTxt_SelectionChangeCommitted(object sender, EventArgs e)
@@ -1157,9 +1211,12 @@ namespace CashPOS
         private void sendAndPWP_Click(object sender, EventArgs e)
         {
             string id = invoiceLabel.Text;
+            if (isSearching)
+            {
+                id = selectedOrderID;
+            }
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
             PrintPage pp = new PrintPage();
-
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
@@ -1177,14 +1234,22 @@ namespace CashPOS
             pd.Show();
             pp.printBtn.PerformClick();
             pd.Close();
+            selectedOrderID = "";
         }
 
         private void sendAndPP_Click(object sender, EventArgs e)
         {
             string id = invoiceLabel.Text;
+            //  MessageBox.Show(id);
+            if (isSearching)
+            {
+                id = selectedOrderID;
+            }
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
-            PrintPage pp = new PrintPage();
+            //   MessageBox.Show(id);
 
+            PrintPage pp = new PrintPage();
+            //   MessageBox.Show(id);
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
@@ -1202,7 +1267,7 @@ namespace CashPOS
             pd.Show();
             pp.printBtn.PerformClick();
             pd.Close();
-
+            selectedOrderID = "";
             /*
              PrintDialog print = new PrintDialog();
               print.displayInvoiceBtn.PerformClick();
@@ -1373,6 +1438,47 @@ namespace CashPOS
             selectedItemLabel.Text = item.Text.ToString();
         }
 
+        private void customerDetailPanel_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void payByCashSec_Click(object sender, EventArgs e)
+        {
+            changePayMethod("現金", secPayMtd);
+        }
+
+        private void payByCeqSec_Click(object sender, EventArgs e)
+        {
+            changePayMethod("支票", secPayMtd);
+        }
+
+        private void payByTransSec_Click(object sender, EventArgs e)
+        {
+            changePayMethod("過戶", secPayMtd);
+        }
+
+        private void paidAmount_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalPrice();
+        }
+        private void updateTotalPrice()
+        {
+            decimal firstPayment = 0.0m;
+            decimal SecPayment = 0.0m;
+            decimal total = 0.00m;
+            Decimal.TryParse(totalLabel.Text, out total);
+            Decimal.TryParse(paidAmount.Text, out firstPayment);
+            Decimal.TryParse(SecPaidAmt.Text, out SecPayment);
+
+            total = firstPayment + SecPayment;
+            totalLabel.Text = total.ToString("0.00");
+
+        }
+
+        private void SecPaidAmt_TextChanged(object sender, EventArgs e)
+        {
+            updateTotalPrice();
+        }
     }
 }

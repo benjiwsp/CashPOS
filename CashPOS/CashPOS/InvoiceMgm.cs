@@ -614,7 +614,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
 
 
@@ -679,7 +679,7 @@ namespace CashPOS
                     resultGrid.Rows.Clear();
                     string query = "Select a.orderID, a.referenceID, " +
                                  "a.transFrom, a.transport, a.time," +
-                                 "a.dropOffLoc, a.totalPrice, a.paid, " +
+                                 "a.dropOffLoc, a.totalPrice, a.totalPaid, " +
                                  "a.notes, a.belongTo, " +
                                  "b.itemName, b.amount,b.unit, " +
                                  "b.unitPrice, b.total from  CashPOSDB.transRecords a cross join  " +
@@ -733,7 +733,7 @@ namespace CashPOS
                     resultGrid.Rows.Clear();
                     string query = "Select a.orderID, a.referenceID, " +
                                  "a.supplierName, a.phone, a.transport, a.time, " +
-                                 "a.dropOffLoc, a.totalPrice, a.paid, " +
+                                 "a.dropOffLoc, a.totalPrice, a.totalPaid, " +
                                  "a.notes, a.belongTo, " +
                                  "b.itemName, b.amount,b.unit, " +
                                  "b.unitPrice, b.total from  CashPOSDB.importRecords a cross join  " +
@@ -788,7 +788,7 @@ namespace CashPOS
                     string query = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
                                  "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone, CashPOSDB.orderRecords.license, " +
                                  "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.pickupLoc, " +
-                                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
+                                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.totalPaid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                                  "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +
                                  "CashPOSDB.orderDetails.itemName, CashPOSDB.orderDetails.amount, CashPOSDB.orderDetails.unit, " +
                                  "CashPOSDB.orderDetails.unitPrice, CashPOSDB.orderDetails.total from  CashPOSDB.orderRecords cross join  " +
@@ -842,7 +842,7 @@ namespace CashPOS
                         if (form.DialogResult == DialogResult.OK)
                         {
                             paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set paid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
 
 
                             myConnection.Open();
@@ -959,7 +959,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice != paid and belongTo = '" + comp + "'", myConnection);
+            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where totalPrice != totalPaid and belongTo = '" + comp + "'", myConnection);
             myConnection.Open();
             int i = 0;
             rdr = myCommand.ExecuteReader();
@@ -968,7 +968,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
 
 
@@ -1058,7 +1058,7 @@ namespace CashPOS
                 while (rdr.Read())
                 {
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
 
 
@@ -1128,7 +1128,7 @@ namespace CashPOS
 
 
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
                         rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
@@ -1164,7 +1164,7 @@ namespace CashPOS
 
 
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                    decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
@@ -1270,7 +1270,7 @@ namespace CashPOS
             string query = "";
             foreach (DataGridViewCell row in orderListView.SelectedCells)
             {
-              query=  "update CashPOSDB.orderRecords set paid = totalPrice where orderID = '" + row.Value.ToString() + "'";
+              query=  "update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + row.Value.ToString() + "'";
               myCommand = new MySqlCommand(query, myConnection);
               myConnection.Open();
               myCommand.ExecuteNonQuery();

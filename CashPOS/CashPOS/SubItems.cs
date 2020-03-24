@@ -119,7 +119,7 @@ namespace CashPOS
                 priceType = "PickPrice";
             }
 
-            if (itemSelected == "訂金")
+            if (itemSelected == "扣訂金")
             {
                 string money = "";
                 myCommand = new MySqlCommand("Select Money from CashPOSDB.custData where Code = '" + cust + "'", myConnection);
@@ -141,14 +141,43 @@ namespace CashPOS
                 {
                     inputAmt = input.OrderNumberInputTextbox.Text;
                     if (Convert.ToDecimal(inputAmt) <= Convert.ToDecimal(money)) { 
-                    myParent.selectedItemList.Rows.Add("使用訂金", 1, "HKD", inputAmt, "", inputAmt);
-                    myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) - Convert.ToDecimal(inputAmt)).ToString();
+                    myParent.selectedItemList.Rows.Add("扣訂金", 1, "HKD", inputAmt, "", inputAmt);
+                        //myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) - Convert.ToDecimal(inputAmt)).ToString();
+                        myParent.paidAmount.Text = inputAmt;
+
                     }
                     else
                     {
                         MessageBox.Show("使用的訂金不能大於戶口存有的金額。");
                     }
                 }
+
+            }
+            else if (itemSelected == "訂金")
+            {
+                string money = "";
+                myCommand = new MySqlCommand("Select Money from CashPOSDB.custData where Code = '" + cust + "'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    if (rdr.Read())
+                    {
+                        money = rdr["Money"].ToString();
+                    }
+                }
+                rdr.Close();
+                myConnection.Close();
+                InputBox input = new InputBox();
+                input.Text = "請輸入金額。";
+                string inputAmt = "";
+                if (input.ShowDialog() == DialogResult.OK)
+                {
+                    inputAmt = input.OrderNumberInputTextbox.Text;
+                  
+                        myParent.selectedItemList.Rows.Add("訂金", 1, "HKD", inputAmt, "", inputAmt);
+                       /// myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) + Convert.ToDecimal(inputAmt)).ToString();
+                  }
 
             }
             else
