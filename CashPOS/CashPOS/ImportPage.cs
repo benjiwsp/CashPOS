@@ -230,7 +230,6 @@ namespace CashPOS
             payTypeLabel.Text = "";
             clearItemPanel();
             isSearching = false;
-            selectedOrderID = "";
         }
 
         public string getFromLabel()
@@ -663,6 +662,8 @@ namespace CashPOS
 
         private void importCSBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
+
             clearAll();
             clearSelection();
             isSearching = false;
@@ -673,6 +674,8 @@ namespace CashPOS
         }
         private void importSFBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
+
             clearAll();
             clearSelection();
             isSearching = false;
@@ -765,6 +768,8 @@ namespace CashPOS
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
+
             InputBox form = new InputBox();
             form.ShowDialog();
             if (form.DialogResult == DialogResult.OK)
@@ -901,6 +906,8 @@ namespace CashPOS
 
         private void TransferBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
+
             clearAll();
             clearSelection();
             isSearching = false;
@@ -930,6 +937,8 @@ namespace CashPOS
 
         private void adjustBtn_Click(object sender, EventArgs e)
         {
+            selectedOrderID = "";
+
             clearAll();
             clearSelection();
             isSearching = false;
@@ -954,6 +963,31 @@ namespace CashPOS
             rdr.Close();
             myConnection.Close();
             fromLabel.Text = "執倉";
+        }
+
+        private void sendAndPrintBtn_Click(object sender, EventArgs e)
+        {
+            selectedOrderID = invoiceLabel.Text;
+            sendImport(isSearching, selectedOrderID);
+            PrintPage pp = new PrintPage();
+            pp.invoiceNo.Text = selectedOrderID;
+            pp.searchCWPrint.PerformClick();
+
+            if (pp.resultList[0, 0].Value.ToString() == selectedOrderID)
+            {
+                pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(10, 0));
+
+            }
+            pD pd = new pD();
+
+            pp.Dock = DockStyle.Fill;
+            pp.BackColor = Color.White;
+
+            pd.disPlanel.Controls.Add(pp);
+            pd.Show();
+            pp.printBtn.PerformClick();
+            pd.Close();
+            selectedOrderID = "";
         }
 
 

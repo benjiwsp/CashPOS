@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itemTypePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new MetroFramework.Controls.MetroPanel();
             this.customerDetailPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -89,6 +89,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sendAndPrintBtn = new System.Windows.Forms.Button();
             this.infoPanel.SuspendLayout();
             this.customerDetailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectedItemList)).BeginInit();
@@ -157,6 +158,7 @@
             this.customerDetailPanel.Controls.Add(this.transferBtn, 4, 1);
             this.customerDetailPanel.Controls.Add(this.adjustBtn, 5, 1);
             this.customerDetailPanel.Controls.Add(this.totalLabel, 4, 13);
+            this.customerDetailPanel.Controls.Add(this.sendAndPrintBtn, 2, 13);
             this.customerDetailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerDetailPanel.Location = new System.Drawing.Point(0, 0);
             this.customerDetailPanel.Name = "customerDetailPanel";
@@ -254,14 +256,14 @@
             this.selectedItemList.AllowUserToOrderColumns = true;
             this.selectedItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selectedItemList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(185)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.selectedItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selectedItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -271,25 +273,25 @@
             this.Column5,
             this.Column6});
             this.customerDetailPanel.SetColumnSpan(this.selectedItemList, 6);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.selectedItemList.DefaultCellStyle = dataGridViewCellStyle20;
             this.selectedItemList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectedItemList.Location = new System.Drawing.Point(3, 198);
             this.selectedItemList.Name = "selectedItemList";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selectedItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.customerDetailPanel.SetRowSpan(this.selectedItemList, 5);
             this.selectedItemList.Size = new System.Drawing.Size(572, 509);
             this.selectedItemList.TabIndex = 19;
@@ -813,6 +815,19 @@
             this.listBox2.Size = new System.Drawing.Size(532, 147);
             this.listBox2.TabIndex = 0;
             // 
+            // sendAndPrintBtn
+            // 
+            this.customerDetailPanel.SetColumnSpan(this.sendAndPrintBtn, 2);
+            this.sendAndPrintBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendAndPrintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAndPrintBtn.Location = new System.Drawing.Point(190, 926);
+            this.sendAndPrintBtn.Name = "sendAndPrintBtn";
+            this.sendAndPrintBtn.Size = new System.Drawing.Size(176, 71);
+            this.sendAndPrintBtn.TabIndex = 46;
+            this.sendAndPrintBtn.Text = "發送及列印";
+            this.sendAndPrintBtn.UseVisualStyleBackColor = true;
+            this.sendAndPrintBtn.Click += new System.EventHandler(this.sendAndPrintBtn_Click);
+            // 
             // ImportPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -900,5 +915,6 @@
         private System.Windows.Forms.Button transferBtn;
         private System.Windows.Forms.Button adjustBtn;
         private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Button sendAndPrintBtn;
     }
 }

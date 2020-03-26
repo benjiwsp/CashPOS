@@ -177,32 +177,32 @@
             // custLbl
             // 
             this.custLbl.AutoSize = true;
+            this.custLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.custLbl.Location = new System.Drawing.Point(591, 127);
             this.custLbl.Name = "custLbl";
-            this.custLbl.Size = new System.Drawing.Size(33, 16);
+            this.custLbl.Size = new System.Drawing.Size(186, 42);
             this.custLbl.TabIndex = 2;
-            this.custLbl.Text = "cust";
             // 
             // dateLbl
             // 
             this.dateLbl.AutoSize = true;
+            this.dateLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLbl.Location = new System.Drawing.Point(591, 92);
             this.dateLbl.Name = "dateLbl";
-            this.dateLbl.Size = new System.Drawing.Size(34, 16);
+            this.dateLbl.Size = new System.Drawing.Size(186, 35);
             this.dateLbl.TabIndex = 2;
-            this.dateLbl.Text = "date";
             // 
             // invoiceLbl
             // 
             this.invoiceLbl.AutoSize = true;
+            this.invoiceLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.invoiceLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.invoiceLbl.Location = new System.Drawing.Point(591, 48);
             this.invoiceLbl.Name = "invoiceLbl";
-            this.invoiceLbl.Size = new System.Drawing.Size(54, 16);
+            this.invoiceLbl.Size = new System.Drawing.Size(186, 44);
             this.invoiceLbl.TabIndex = 2;
-            this.invoiceLbl.Text = "invoice";
             // 
             // addLbl
             // 
@@ -214,7 +214,6 @@
             this.addLbl.Name = "addLbl";
             this.addLbl.Size = new System.Drawing.Size(509, 42);
             this.addLbl.TabIndex = 0;
-            this.addLbl.Text = "add";
             // 
             // noteLbl
             // 
@@ -226,7 +225,6 @@
             this.noteLbl.Name = "noteLbl";
             this.noteLbl.Size = new System.Drawing.Size(509, 44);
             this.noteLbl.TabIndex = 1;
-            this.noteLbl.Text = "notes";
             this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel5
@@ -253,42 +251,42 @@
             // priceTypeLbl
             // 
             this.priceTypeLbl.AutoSize = true;
+            this.priceTypeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTypeLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceTypeLbl.Location = new System.Drawing.Point(96, 53);
             this.priceTypeLbl.Name = "priceTypeLbl";
-            this.priceTypeLbl.Size = new System.Drawing.Size(80, 32);
+            this.priceTypeLbl.Size = new System.Drawing.Size(87, 53);
             this.priceTypeLbl.TabIndex = 4;
-            this.priceTypeLbl.Text = "priceTypeLbl";
             // 
             // licenseLbl
             // 
             this.licenseLbl.AutoSize = true;
+            this.licenseLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.licenseLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.licenseLbl.Location = new System.Drawing.Point(3, 53);
             this.licenseLbl.Name = "licenseLbl";
-            this.licenseLbl.Size = new System.Drawing.Size(51, 16);
+            this.licenseLbl.Size = new System.Drawing.Size(87, 53);
             this.licenseLbl.TabIndex = 1;
-            this.licenseLbl.Text = "license";
             // 
             // telLbl
             // 
             this.telLbl.AutoSize = true;
+            this.telLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.telLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telLbl.Location = new System.Drawing.Point(3, 0);
             this.telLbl.Name = "telLbl";
-            this.telLbl.Size = new System.Drawing.Size(23, 16);
+            this.telLbl.Size = new System.Drawing.Size(87, 53);
             this.telLbl.TabIndex = 1;
-            this.telLbl.Text = "tel";
             // 
             // pickupLbl
             // 
             this.pickupLbl.AutoSize = true;
+            this.pickupLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pickupLbl.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pickupLbl.Location = new System.Drawing.Point(96, 0);
             this.pickupLbl.Name = "pickupLbl";
-            this.pickupLbl.Size = new System.Drawing.Size(54, 16);
+            this.pickupLbl.Size = new System.Drawing.Size(87, 53);
             this.pickupLbl.TabIndex = 3;
-            this.pickupLbl.Text = "pickUp";
             // 
             // tableLayoutPanel6
             // 
@@ -353,7 +351,7 @@
             this.printList.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("PMingLiU", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

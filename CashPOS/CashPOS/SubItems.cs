@@ -91,9 +91,18 @@ namespace CashPOS
             }
         }
 
+        private Button _lastButtonClicked;
+
+
         //event handler for clicking products 
         protected void itemBtnClicked(object sender, EventArgs e)
         {
+            if (_lastButtonClicked != null)
+                _lastButtonClicked.BackColor = Color.FromArgb(194, 91, 86);
+
+            _lastButtonClicked = sender as Button;
+            _lastButtonClicked.BackColor = Color.BlueViolet;
+
             myParent.clearUnit();
 
             Button btn = sender as Button;
@@ -140,10 +149,11 @@ namespace CashPOS
                 if (input.ShowDialog() == DialogResult.OK)
                 {
                     inputAmt = input.OrderNumberInputTextbox.Text;
-                    if (Convert.ToDecimal(inputAmt) <= Convert.ToDecimal(money)) { 
-                    myParent.selectedItemList.Rows.Add("扣訂金", 1, "HKD", inputAmt, "", inputAmt);
-                        //myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) - Convert.ToDecimal(inputAmt)).ToString();
-                        myParent.paidAmount.Text = inputAmt;
+                    if (Convert.ToDecimal(inputAmt) <= Convert.ToDecimal(money))
+                    {
+                        myParent.selectedItemList.Rows.Add("扣訂金", 1, "HKD", inputAmt, "", inputAmt);
+                        myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) - Convert.ToDecimal(inputAmt)).ToString();
+                     //   myParent.paidAmount.Text = inputAmt;
 
                     }
                     else
@@ -155,6 +165,7 @@ namespace CashPOS
             }
             else if (itemSelected == "訂金")
             {
+
                 string money = "";
                 myCommand = new MySqlCommand("Select Money from CashPOSDB.custData where Code = '" + cust + "'", myConnection);
                 myConnection.Open();
@@ -174,10 +185,14 @@ namespace CashPOS
                 if (input.ShowDialog() == DialogResult.OK)
                 {
                     inputAmt = input.OrderNumberInputTextbox.Text;
-                  
+                    if (inputAmt.Length > 0)
+                    {
                         myParent.selectedItemList.Rows.Add("訂金", 1, "HKD", inputAmt, "", inputAmt);
-                       /// myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) + Convert.ToDecimal(inputAmt)).ToString();
-                  }
+                        myParent.payMethLbl.Text = "訂金";
+                        myParent.totalPriceTxt.Text = (Convert.ToDecimal(myParent.totalPriceTxt.Text) + Convert.ToDecimal(inputAmt)).ToString();
+                        myParent.paidAmount.Text = myParent.totalPriceTxt.Text;
+                    }
+                }
 
             }
             else

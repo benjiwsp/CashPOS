@@ -316,6 +316,7 @@ namespace CashPOS
         }
         private void clearAll()
         {
+            depositLeftLbl.Text = "";
             selectedItemLabel.Text = "";
             tempSecPrice = 0.00m;
             tempSecUnit = "";
@@ -440,6 +441,17 @@ namespace CashPOS
                         while (true)
                         {
                             // MessageBox.Show(selectedCustCode);
+                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + custType + "','" + selectedCustCode + "','" + cust + "','" +
+                     phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + secPaidAmt + "','" +
+                     secPaidMtd + "','" + totalPaid + "','" + notes + "','" + belongTo + "','" +
+                     isPrinted + "','" + date + "','')", myConnection);
+                            myCommand.ExecuteNonQuery();
+                            successed = true;
+                            tryAgain = false;
+                            if (attempted)
+                            {
+                                MessageBox.Show("收據號碼已改為: " + orderID);
+                            }
 
                             foreach (DataGridViewRow row in selectedItemList.Rows)
                             {
@@ -493,20 +505,17 @@ namespace CashPOS
                                         myCommand.ExecuteNonQuery();
                                         paid = totalPrice;
                                     }
+                                    else if (Convert.ToDecimal(depositAmt) == Convert.ToDecimal(totalPrice))
+                                    {
+                                        myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money + " + Convert.ToDecimal(depositAmt)+ " where Name = '" + cust + "'", myConnection);
+                                        myCommand.ExecuteNonQuery();
+                                        paid = totalPrice;
+
+                                    }
                                 }
                             }
-                            if (attempted)
-                            {
-                                MessageBox.Show("收據號碼已改為: " + orderID);
-                            }
-                            successed = true;
-                            tryAgain = false;
 
-                            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords values ('" + orderID + "','" + custType + "','" + selectedCustCode + "','" + cust + "','" +
-                           phone + "','" + license + "','" + address + "','" + priceType + "','" + pickupLoc + "','" + payment + "','" + totalPrice + "','" + paid + "','" + payMethod + "','" + secPaidAmt + "','" +
-                           secPaidMtd + "','" + totalPaid + "','" + notes + "','" + belongTo + "','" +
-                           isPrinted + "','" + date + "','')", myConnection);
-                            myCommand.ExecuteNonQuery();
+
 
                             myConnection.Close();
                             break;
@@ -516,22 +525,20 @@ namespace CashPOS
                     }
                     catch (MySqlException ex)
                     {
-                        switch (ex.Number)
+                        if (ex.Number == 1062)
                         {
-                            case 1062:
-                                if (!(orderID.StartsWith("M") || orderID.StartsWith("C") || orderID.StartsWith("I") || orderID.StartsWith("T") || orderID.StartsWith("A")))
-                                {
-                                    MessageBox.Show(orderID + " 已存在");
+                            if (!(orderID.StartsWith("M") || orderID.StartsWith("C") || orderID.StartsWith("I") || orderID.StartsWith("T") || orderID.StartsWith("A")))
+                            {
+                                MessageBox.Show(orderID + " 已存在");
 
-                                    myConnection.Close();
-                                    return;
-                                }
-                                var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
-                                orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
-                                orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1))).ToString("000000");
-                                attempted = true;
-
-                                break;
+                                myConnection.Close();
+                                return;
+                            }
+                            var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
+                            orderID = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
+                            orderID = onlyLetters + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1))).ToString("000000");
+                            attempted = true;
+                            successed = false;
                         }
                     }
                     if (successed)
@@ -540,6 +547,11 @@ namespace CashPOS
                         break;
                     }
                 }
+
+
+
+
+
                 if (orderID.StartsWith("M") || orderID.StartsWith("C"))
                 {
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
@@ -898,6 +910,11 @@ namespace CashPOS
                         else
                         {
                             totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) - total).ToString("0.00");
+                            if (selectedItemList.Rows[e.RowIndex].Cells[0].Value.ToString() == "訂金")
+                            {
+                                paidAmount.Text = "";
+                                payMethLbl.Text = "";
+                            }
                         }
 
                         selectedItemList.Rows.RemoveAt(e.RowIndex);
@@ -1065,7 +1082,7 @@ namespace CashPOS
                     //  MessageBox.Show(test);
 
                     selectedCustCode = custCode;
-                    myCommand = new MySqlCommand("select Phone1, Phone2, siteAddress, PayMethod from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
+                    myCommand = new MySqlCommand("select Phone1, Phone2, siteAddress, PayMethod,Money from CashPOSDB.custData where Code = '" + selectedCustCode + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
                     if (rdr.HasRows == true)
@@ -1095,6 +1112,7 @@ namespace CashPOS
                             {
                                 telTxt.Items.Add(phone2);
                             }
+                            depositLeftLbl.Text = rdr["Money"].ToString();
                         }
                     }
                     rdr.Close();

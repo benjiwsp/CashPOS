@@ -203,7 +203,7 @@ namespace CashPOS
                 }
             }
             rdr.Close();
-            if (getID == "")
+            if (orderID.StartsWith("I"))
             {
                 myCommand = new MySqlCommand("select * from importRecords where orderID = '" + orderID + "'", myConnection);
                 rdr = myCommand.ExecuteReader();
@@ -218,24 +218,23 @@ namespace CashPOS
                 }
                 rdr.Close();
             }
-            if (getID == "")
+            if (orderID.StartsWith("A") || orderID.StartsWith("T"))
             {
-                if (getID == "")
-                {
-                    myCommand = new MySqlCommand("select * from transRecords where orderID = '" + orderID + "'", myConnection);
-                    rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows)
-                    {
-                        while (rdr.Read())
-                        {
-                            getID = rdr["orderID"].ToString();
-                            resultList.Rows.Add(getID, rdr["transFrom"].ToString(), "", rdr["transport"].ToString(),
-                                rdr["dropOffLoc"].ToString(), "", rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
-                        }
-                    }
-                    rdr.Close();
 
+                myCommand = new MySqlCommand("select * from transRecords where orderID = '" + orderID + "'", myConnection);
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        getID = rdr["orderID"].ToString();
+                        resultList.Rows.Add(getID, rdr["transFrom"].ToString(), "", rdr["transport"].ToString(),
+                            rdr["dropOffLoc"].ToString(), "", rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                    }
                 }
+                rdr.Close();
+
+
             }
             myConnection.Close();
         }
@@ -312,7 +311,7 @@ namespace CashPOS
                     }
                     if (needPrice)
                     {
-                        if (pack != "0.00" && pack.Length >0)
+                        if (pack != "0.00" && pack.Length > 0)
                         {
                             printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),
                                 rdr["total"].ToString());
