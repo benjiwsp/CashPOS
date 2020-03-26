@@ -58,6 +58,7 @@ namespace CashPOS
             getAllCustSales("超誠", getStartDate(), getEndDate());
             getAllImport("超誠", getStartDate(), getEndDate());
             getAllIncome(getStartDate(), getEndDate());
+            getBagDetails("超誠", getStartDate(), getEndDate());
         }
         private void searchSFBtn_Click(object sender, EventArgs e)
         {
@@ -70,8 +71,14 @@ namespace CashPOS
             getAllItemSold("富資", start, end);
             getAllCustSales("富資", start, end);
             getAllImport("富資", start, end);
+            getBagDetails("富資", start, end);
             getAllIncome(start, end);
         }
+
+
+
+
+
         private void getAllItemSold(string comp, string start, string end)
         {
             //   totalIncomeLbl.Text = "";
@@ -185,6 +192,75 @@ namespace CashPOS
 
             }
             rdr.Close();
+            myConnection.Close();
+        }
+
+        private void getBagDetails(string comp, string startDate, string endDate)
+        {
+            bagsGrid.Rows.Clear();
+            string customerName = "";
+            decimal HangBag = 0.00m;
+            decimal rHangBag = 0.00m;
+
+            decimal YingBag = 0.00m;
+            decimal rYingBag = 0.00m;
+            decimal YuBag = 0.00m;
+            decimal rYuBag = 0.00m;
+            string query = "SELECT Name, itemName, sum(amount) as Amount FROM CashPOSDB.orderDetails a , CashPOSDB.custData b where a.custCode = b.Code and a.itemName like '%吊%' and time >='" +
+     startDate + "' and  time <= '" +
+       endDate + "' and a.belongTo = '" + comp + "' group by custCode, itemName";
+            myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
+                while (rdr.Read())
+                {
+                    if (customerName == "" || customerName == rdr["Name"].ToString())
+                    {
+                        customerName = rdr["Name"].ToString();
+                        if (rdr["itemName"].ToString() == "吊袋")
+                            HangBag = Convert.ToDecimal(rdr["Amount"].ToString());
+
+                        else if (rdr["itemName"].ToString() == "回吊袋(個)")
+                            rHangBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "潤豐吊袋")
+                            YingBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "回潤豐吊袋")
+                            rYingBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "粵秀吊袋")
+                            YuBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "回粵秀吊袋")
+                            rYuBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                    }
+                    else if (customerName != "" && customerName != rdr["Name"].ToString())
+                    {
+                        bagsGrid.Rows.Add(customerName, HangBag, rHangBag, YingBag, rYingBag, YuBag, rYuBag);
+                        customerName = rdr["Name"].ToString();
+                        HangBag = 0.00m;
+                        rHangBag = 0.00m;
+                        YingBag = 0.00m;
+                        rYingBag = 0.00m;
+                        YuBag = 0.00m;
+                        rYuBag = 0.00m;
+                        if (rdr["itemName"].ToString() == "吊袋")
+                            HangBag = Convert.ToDecimal(rdr["Amount"].ToString());
+
+                        else if (rdr["itemName"].ToString() == "回吊袋(個)")
+                            rHangBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "潤豐吊袋")
+                            YingBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "回潤豐吊袋")
+                            rYingBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "粵秀吊袋")
+                            YuBag = Convert.ToDecimal(rdr["Amount"].ToString());
+                        else if (rdr["itemName"].ToString() == "回粵秀吊袋")
+                            rYuBag = Convert.ToDecimal(rdr["Amount"].ToString());
+
+                    }
+                    bagsGrid.Rows.Add(customerName, HangBag, rHangBag, YingBag, rYingBag, YuBag, rYuBag);
+                }
+            } rdr.Close();
             myConnection.Close();
         }
         private void searchbyTelBtn_Click(object sender, EventArgs e)
@@ -445,13 +521,13 @@ namespace CashPOS
         private void outputProdCSV(ComboBox item, string comp)
         {
             string prod = item.Text;
-         prod =   prod.Replace(".", "");
-         prod = prod.Replace("*", "");
-         prod = prod.Replace("x", "");
-         prod = prod.Replace("/", "");
-         prod = prod.Replace("\"", "");
-         prod = prod.Replace("\\", "");
-    //        MessageBox.Show(prod);
+            prod = prod.Replace(".", "");
+            prod = prod.Replace("*", "");
+            prod = prod.Replace("x", "");
+            prod = prod.Replace("/", "");
+            prod = prod.Replace("\"", "");
+            prod = prod.Replace("\\", "");
+            //        MessageBox.Show(prod);
             //  string name = text.Substring(text.IndexOf("- ") + 1, text.Length - 1 - text.IndexOf("- ")).Trim();
             DateTime start = StartTimePicker.SelectionRange.Start;
             DateTime end = EndTimePicker.SelectionRange.Start;
@@ -508,19 +584,19 @@ namespace CashPOS
         }
         private void outputDailyCSV(string site)
         {
-             DateTime start = StartTimePicker.SelectionRange.Start;
-              DateTime end = EndTimePicker.SelectionRange.Start;
+            DateTime start = StartTimePicker.SelectionRange.Start;
+            DateTime end = EndTimePicker.SelectionRange.Start;
             string comp;
-              string folderPath = "D:\\POS\\交易資料\\每日報表\\" + site + "\\" + start.Year + "\\" + start.Month + "\\";
-              if (!Directory.Exists(folderPath))
-              {
-                  Directory.CreateDirectory(folderPath);
-              }
-              salesGrid.Rows.Clear();
-              salesGrid.Columns.Clear();
-              StringBuilder sb = new StringBuilder();
-              StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + site + ".csv", false, System.Text.Encoding.UTF8);
-            if(site == "屯門")
+            string folderPath = "D:\\POS\\交易資料\\每日報表\\" + site + "\\" + start.Year + "\\" + start.Month + "\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            salesGrid.Rows.Clear();
+            salesGrid.Columns.Clear();
+            StringBuilder sb = new StringBuilder();
+            StreamWriter sw = new StreamWriter(folderPath + start.ToString("yyyyMMdd") + "-" + end.ToString("yyyyMMdd") + site + ".csv", false, System.Text.Encoding.UTF8);
+            if (site == "屯門")
             {
                 comp = "富資";
             }
@@ -528,30 +604,30 @@ namespace CashPOS
             {
                 comp = "超誠";
             }
-              sb.AppendLine("公司," + comp);
-              sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",,至,," + end.ToString("dd/MM/yyyy"));
-              sb.AppendLine("日期,單種類(超誠用),送貨類別地址,單號,付款方式,客名,地址,金額,已付");
-              double totalDisplayPrice = 0.00;
+            sb.AppendLine("公司," + comp);
+            sb.AppendLine("選定日期," + start.ToString("dd/MM/yyyy") + ",,至,," + end.ToString("dd/MM/yyyy"));
+            sb.AppendLine("日期,單種類(超誠用),送貨類別地址,單號,付款方式,客名,地址,金額,已付");
+            double totalDisplayPrice = 0.00;
 
-              string query = "Select * from CashPOSDB.orderRecords b where time >=  '" +
-                  getStartDate() + "' and time <= '" + getEndDate() + "' and belongTo = '" + comp + "' order by time, orderID";
-              //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
-              MySqlCommand myCommand = new MySqlCommand(query, myConnection);
-              myConnection.Open();
-              MySqlDataReader rdr = myCommand.ExecuteReader();
-              if (rdr.HasRows == true)
-              {
+            string query = "Select * from CashPOSDB.orderRecords b where time >=  '" +
+                getStartDate() + "' and time <= '" + getEndDate() + "' and belongTo = '" + comp + "' order by time, orderID";
+            //  MessageBox.Show(getStartDate() + "," + getEndDate() + "," + custCode);
+            MySqlCommand myCommand = new MySqlCommand(query, myConnection);
+            myConnection.Open();
+            MySqlDataReader rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows == true)
+            {
                 while (rdr.Read())
                 {
                     sb.AppendLine(Convert.ToDateTime(rdr["time"].ToString()).ToString("dd/MM/yyyy") + "," + rdr["sandID"].ToString() + "," + rdr["priceType"].ToString() + "," + rdr["orderID"].ToString() +
                          "," + rdr["payment"].ToString() + "," + rdr["custName"].ToString() + "," + rdr["address"].ToString() + "," + rdr["totalPrice"].ToString() + "," + rdr["paid"].ToString());
-                  }
+                }
 
-              }
-              sw.WriteLine(sb);
-              sw.Close();
-              rdr.Close();
-              myConnection.Close();
+            }
+            sw.WriteLine(sb);
+            sw.Close();
+            rdr.Close();
+            myConnection.Close();
         }
     }
 }
