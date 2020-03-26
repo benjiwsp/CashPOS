@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.serachByComp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -370,27 +370,27 @@
             this.tableLayoutPanel6.Location = new System.Drawing.Point(1018, 174);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.3125F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.6875F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(213, 64);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
             // itemList
             // 
             this.itemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemList.FormattingEnabled = true;
             this.itemList.Location = new System.Drawing.Point(3, 3);
             this.itemList.Name = "itemList";
-            this.itemList.Size = new System.Drawing.Size(207, 32);
+            this.itemList.Size = new System.Drawing.Size(207, 28);
             this.itemList.TabIndex = 8;
             // 
             // searchByItem
             // 
             this.searchByItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchByItem.Location = new System.Drawing.Point(3, 35);
+            this.searchByItem.Location = new System.Drawing.Point(3, 32);
             this.searchByItem.Name = "searchByItem";
-            this.searchByItem.Size = new System.Drawing.Size(207, 26);
+            this.searchByItem.Size = new System.Drawing.Size(207, 29);
             this.searchByItem.TabIndex = 9;
             this.searchByItem.Text = "以貨品搜尋";
             this.searchByItem.UseVisualStyleBackColor = true;
@@ -406,22 +406,22 @@
             this.tableLayoutPanel7.Location = new System.Drawing.Point(1237, 174);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.75F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.25F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(272, 64);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
             // payType
             // 
             this.payType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.payType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.payType.FormattingEnabled = true;
             this.payType.Items.AddRange(new object[] {
             "現金",
             "簽單"});
             this.payType.Location = new System.Drawing.Point(3, 3);
             this.payType.Name = "payType";
-            this.payType.Size = new System.Drawing.Size(266, 32);
+            this.payType.Size = new System.Drawing.Size(266, 28);
             this.payType.TabIndex = 9;
             // 
             // tableLayoutPanel17
@@ -432,11 +432,11 @@
             this.tableLayoutPanel17.Controls.Add(this.searchByPayTypeSBM, 0, 0);
             this.tableLayoutPanel17.Controls.Add(this.SFCashSearchBtn, 1, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 35);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 31);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(266, 26);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(266, 30);
             this.tableLayoutPanel17.TabIndex = 10;
             // 
             // searchByPayTypeSBM
@@ -444,7 +444,7 @@
             this.searchByPayTypeSBM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchByPayTypeSBM.Location = new System.Drawing.Point(3, 3);
             this.searchByPayTypeSBM.Name = "searchByPayTypeSBM";
-            this.searchByPayTypeSBM.Size = new System.Drawing.Size(127, 20);
+            this.searchByPayTypeSBM.Size = new System.Drawing.Size(127, 24);
             this.searchByPayTypeSBM.TabIndex = 10;
             this.searchByPayTypeSBM.Text = "(SBM)付款方式搜尋";
             this.searchByPayTypeSBM.UseVisualStyleBackColor = true;
@@ -455,7 +455,7 @@
             this.SFCashSearchBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SFCashSearchBtn.Location = new System.Drawing.Point(136, 3);
             this.SFCashSearchBtn.Name = "SFCashSearchBtn";
-            this.SFCashSearchBtn.Size = new System.Drawing.Size(127, 20);
+            this.SFCashSearchBtn.Size = new System.Drawing.Size(127, 24);
             this.SFCashSearchBtn.TabIndex = 11;
             this.SFCashSearchBtn.Text = "(SF)付款方式搜尋";
             this.SFCashSearchBtn.UseVisualStyleBackColor = true;
@@ -485,14 +485,14 @@
             this.Column18,
             this.Column11});
             this.tableLayoutPanel1.SetColumnSpan(this.resultGrid, 3);
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle7;
             this.resultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultGrid.Location = new System.Drawing.Point(1018, 386);
             this.resultGrid.Name = "resultGrid";
@@ -807,14 +807,14 @@
             this.Column15,
             this.Column14});
             this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.orderListView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.orderListView.DefaultCellStyle = dataGridViewCellStyle8;
             this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderListView.Location = new System.Drawing.Point(3, 244);
             this.orderListView.Name = "orderListView";

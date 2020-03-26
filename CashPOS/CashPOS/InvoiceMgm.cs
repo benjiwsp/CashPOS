@@ -84,11 +84,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
 
                     i++;
@@ -176,11 +176,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
@@ -300,12 +300,12 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
 
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
@@ -369,11 +369,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
                     switch (rdr["payMethod"].ToString())
@@ -435,11 +435,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
@@ -509,11 +509,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
 
                     switch (rdr["payMethod"].ToString())
@@ -626,11 +626,12 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
                     switch (rdr["payMethod"].ToString())
@@ -846,9 +847,7 @@ namespace CashPOS
                         if (form.DialogResult == DialogResult.OK)
                         {
                             paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
-
-
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection); 
                             myConnection.Open();
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
@@ -864,13 +863,13 @@ namespace CashPOS
                     myConnection.Open();
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
-                    if (orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor == Color.Green)
+                    if (orderListView.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Green)
                     {
-                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     else
                     {
-                        orderListView.Rows[e.RowIndex].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.Green;
 
                     }
                 }
@@ -984,11 +983,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1s].Style.BackColor = Color.Yellow;
                     }
                     i++;
 
@@ -1074,11 +1073,11 @@ namespace CashPOS
                     }
                     if (rdr["isReturn"].ToString() == "y")
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Green;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
                     }
                     else
                     {
-                        orderListView.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
+                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
                     }
                     i++;
 

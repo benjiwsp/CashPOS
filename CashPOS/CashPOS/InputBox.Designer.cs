@@ -122,6 +122,7 @@
             this.cashBtn.TabIndex = 0;
             this.cashBtn.Text = "現金";
             this.cashBtn.UseVisualStyleBackColor = true;
+            this.cashBtn.Visible = false;
             this.cashBtn.Click += new System.EventHandler(this.cashBtn_Click);
             // 
             // CheqBtn
@@ -133,6 +134,7 @@
             this.CheqBtn.TabIndex = 0;
             this.CheqBtn.Text = "支票";
             this.CheqBtn.UseVisualStyleBackColor = true;
+            this.CheqBtn.Visible = false;
             this.CheqBtn.Click += new System.EventHandler(this.cashBtn_Click);
             // 
             // transfBtn
@@ -144,6 +146,7 @@
             this.transfBtn.TabIndex = 0;
             this.transfBtn.Text = "過數";
             this.transfBtn.UseVisualStyleBackColor = true;
+            this.transfBtn.Visible = false;
             this.transfBtn.Click += new System.EventHandler(this.cashBtn_Click);
             // 
             // payType
@@ -156,6 +159,7 @@
             this.payType.Size = new System.Drawing.Size(266, 69);
             this.payType.TabIndex = 1;
             this.payType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.payType.Visible = false;
             // 
             // InputBox
             // 
