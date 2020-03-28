@@ -46,6 +46,31 @@ namespace CashPOS
                 }
             }
             rdr.Close();
+
+            myCommand = new MySqlCommand("select * from importRecords where isPrinted !=  'Y'", myConnection);
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["orderID"].ToString(), rdr["supplierName"].ToString(), rdr["phone"].ToString(), rdr["transport"].ToString(),
+                        rdr["dropOffLoc"].ToString(), "", rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                }
+            }
+            rdr.Close();
+
+
+            myCommand = new MySqlCommand("select * from transRecords where  isPrinted !=  'Y'", myConnection);
+            rdr = myCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    resultList.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), "", rdr["transport"].ToString(),
+                        rdr["dropOffLoc"].ToString(), "", rdr["totalPrice"].ToString(), rdr["paid"].ToString(), rdr["notes"].ToString());
+                }
+            }
+            rdr.Close();
             myConnection.Close();
         }
         private void updateUnprintedListBySite(string site)

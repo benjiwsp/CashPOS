@@ -433,14 +433,14 @@ namespace CashPOS
                             {
                                 recordQuery = "insert into CashPOSDB.transRecords values('" + orderID + "','" + refNo + "','" +
                                   cust + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + totalPriceTxt.Text + "','" + notes + "','" + belongTo + "','" +
-                                date + "')";
+                                date + "','')";
                             }
                             else
                             {
                                 recordQuery = "insert into CashPOSDB.importRecords values('" + orderID + "','" + refNo + "','" +
                                 selectedCustCode + "','" + cust + "','" +
                              phone + "','" + license + "','" + pickupLoc + "','" + totalPrice + "','" + totalPriceTxt.Text + "','" + notes + "','" + belongTo + "','" +
-                              date + "')";
+                              date + "','')";
                             }
                             myCommand = new MySqlCommand(recordQuery, myConnection);
                             myCommand.ExecuteNonQuery();
