@@ -17,7 +17,7 @@ namespace CashPOS
 
         public InventoryHandler()
         {
-            setProdSet();    
+            setProdSet();
         }
         public string getProdID(String prodName)
         {
@@ -95,7 +95,7 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
-                    for (int i =3; i < colCount; i++)
+                    for (int i = 2; i < colCount; i++)
                     {
                         decimal amount = Convert.ToDecimal(rdr.GetString(i));
                         if (amount != 0)
@@ -109,45 +109,83 @@ namespace CashPOS
             rdr.Close();
             conn.Close();
         }
-        private void getCurrentInv(string site)
+        public void getCurrentInv(string site)
         {
             MySqlConnection conn = new MySqlConnection(value);
-
-            string query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),' FROM CashPOSDB." + getTable(site) + "') as Query" +
-                "FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tmInv' AND c.COLUMN_NAME<>'date' and c.COLUMN_NAME<> 'id';";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
+            
+            string query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),') FROM CashPOSDB.tmInv where checker != Y') as Query" +
+                " FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tmInv' and c.COLUMN_NAME<> 'id';";
+            MySqlCommand cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn); 
             conn.Open();
+            cmd.ExecuteNonQuery();
+           cmd =  new MySqlCommand(query, conn);
+
+
             string getInfoQuery = "";
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.HasRows)
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
                 {
-                    while (rdr.Read())
-                    {
-                        getInfoQuery = rdr["Query"].ToString();
-                    }
-                } rdr.Close();
-
-                getInfoQuery.Replace(", FROM", " FROM");
-                cmd = new MySqlCommand(getInfoQuery, conn);
-                rdr = cmd.ExecuteReader();
-                if (rdr.HasRows)
-                {
-                    while (rdr.Read())
-                    {
-
-                    }
+                    getInfoQuery = rdr["Query"].ToString();
                 }
-          /*      for (int i = 2; i < colCount; i++)
-                {
-                    decimal amount = Convert.ToDecimal(rdr.GetString(i));
-                    if (amount != 0)
-                    {
-                        string prodID = rdr.GetName(i);
-                        list.Rows.Add(prodID, prodSet[prodID].ToString(), amount);
-                    }
-                }*/
+            }
+            rdr.Close();
+            cmd = new MySqlCommand("drop table if exists CashPOSDB.tempInv",conn);
+            cmd.ExecuteNonQuery();
+            cmd = new MySqlCommand("create table CashPOSDB.tempInv like CashPOSDB.tmInv",conn);
+            cmd.ExecuteNonQuery();
+            cmd = new MySqlCommand("delete from CashPOSDB.tempInv", conn);
+            cmd.ExecuteNonQuery();
+            // getInfoQuery.Replace(", FROM", " FROM");
+            getInfoQuery = getInfoQuery.Replace("Y", "'Y'");
+            MessageBox.Show(getInfoQuery);
+            Console.WriteLine(getInfoQuery);
+            Console.Read();
+            string  qu = "insert into  CashPOSDB.tempInv " + getInfoQuery;
+            qu = qu.Replace("))", ")");
+            MessageBox.Show(qu);
+            Console.WriteLine(qu);
+             cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn);
+            cmd.ExecuteNonQuery();
+            cmd = new MySqlCommand(qu, conn);
+            cmd.ExecuteNonQuery();
+            qu = qu.Replace("!=", "=");
+            MessageBox.Show(qu);
+            cmd = new MySqlCommand(qu, conn);
+            cmd.ExecuteNonQuery();
 
-                conn.Close();
+
+           query =  "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),') FROM CashPOSDB.tempInv') as Query" +
+                " FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tempInv' and c.COLUMN_NAME<> 'id';";
+             cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn);
+            cmd.ExecuteNonQuery();
+            cmd = new MySqlCommand(query, conn);
+             rdr = cmd.ExecuteReader();
+            string newInfo = "";
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    newInfo = rdr["Query"].ToString();
+                }
+            }
+            rdr.Close();
+            newInfo = newInfo.Replace("))", ")");
+
+            cmd = new MySqlCommand("create view asaa as " + newInfo, conn);
+            cmd.ExecuteNonQuery();
+            /*      for (int i = 2; i < colCount; i++)
+                  {
+                      decimal amount = Convert.ToDecimal(rdr.GetString(i));
+                      if (amount != 0)
+                      {
+                          string prodID = rdr.GetName(i);
+                          list.Rows.Add(prodID, prodSet[prodID].ToString(), amount);
+                      }
+                  }*/
+
+            conn.Close();
         }
         private void setProdSet()
         {
@@ -161,7 +199,8 @@ namespace CashPOS
                 {
                     prodSet.Add(rdr["ProdID"].ToString(), rdr["ProdName"].ToString());
                 }
-            } rdr.Close();
+            }
+            rdr.Close();
             conn.Close();
         }
 

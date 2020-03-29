@@ -178,6 +178,27 @@ namespace CashPOS
             {
                 totalPrice = amount * unitPrice;
                 selectedItemList.Rows.Add(item, amount, unit, unitPrice, totalPrice);
+                if ((item == "包裝沙" || item == "3分石仔(包)" || item == "6分石仔(包)") && customerTxt.Text == "IS041 - 富資邱太")
+                {
+                    string subItem = "";
+                    double  calc = 0.00;
+                    switch (item)
+                    {
+                        case "包裝沙":
+                            subItem = "天然沙";
+                            break;
+                        case "3分石仔(包)":
+                            subItem = "3分石仔(噸)";
+                            break;
+                        case "6分石仔(包)":
+                            subItem = "6分石仔(噸)";
+                            break;
+                    }
+                    calc = Convert.ToDouble(amount) * 0.018;
+
+                    selectedItemList.Rows.Add(subItem, calc.ToString("0.00"), "噸", "", "");
+
+                }
                 totalPriceTxt.Text = (Convert.ToDecimal(totalPriceTxt.Text) + totalPrice).ToString();
                 clearItemPanel();
             }
@@ -352,7 +373,7 @@ namespace CashPOS
                                 string dropOffLoc = rdr["dropOffLoc"].ToString();
 
                                 invHandler.reduce(dropOffLoc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()), dateSelected.Value);
-                                
+
                                 //reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
                             }
                         }
@@ -422,6 +443,8 @@ namespace CashPOS
                 myConnection.Open();
                 string recordQuery = "";
                 string detailQuery = "";
+                selectedCustCode = customerTxt.Text.Substring(0, customerTxt.Text.IndexOf(" -"));
+                MessageBox.Show(selectedCustCode);
                 for (int attempts = 0; attempts < 100; attempts++)
                 {
                     try
@@ -480,14 +503,17 @@ namespace CashPOS
                                 }
                                 if (invCol != "")
                                 {
-                                    try {
+                                    try
+                                    {
 
                                         invHandler.add(pickupLoc, row.Cells[0].Value.ToString(), Convert.ToDecimal(row.Cells[1].Value.ToString()), dateSelected.Value);
-                                    } catch (Exception ex){
+                                    }
+                                    catch (Exception ex)
+                                    {
                                         MessageBox.Show(ex.Message.ToString());
                                     }
-                                //       myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                                //      myCommand.ExecuteNonQuery();
+                                    //       myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                    //      myCommand.ExecuteNonQuery();
                                     invCol = "";
                                 }
                                 if (fromLabel.Text == "調倉")
@@ -510,11 +536,11 @@ namespace CashPOS
                                     }
                                     if (invCol != "")
                                     {
-                                      //  MessageBox.Show(cust + " reduce ");
+                                        //  MessageBox.Show(cust + " reduce ");
                                         invHandler.reduce(cust, row.Cells[0].Value.ToString(), Convert.ToDecimal(row.Cells[1].Value.ToString()), dateSelected.Value);
 
-                                     ////   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                                     //   myCommand.ExecuteNonQuery();
+                                        ////   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " - " + Convert.ToDecimal(row.Cells[1].Value.ToString()) + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                                        //   myCommand.ExecuteNonQuery();
                                     }
                                 }
                             }
@@ -534,12 +560,12 @@ namespace CashPOS
                             case 1062:
                                 // string orderID = rdr["orderID"].ToString();
                                 var onlyLetters = new String(orderID.Where(Char.IsLetter).ToArray());
-                              //  MessageBox.Show("only Letter:   " + onlyLetters);
+                                //  MessageBox.Show("only Letter:   " + onlyLetters);
                                 string newNum = (Convert.ToInt32(Regex.Match(orderID, @"\d+").Value) + 1).ToString("000000");
-                            //    MessageBox.Show("newNum:   " + newNum);
+                                //    MessageBox.Show("newNum:   " + newNum);
 
                                 orderID = onlyLetters + newNum;
-                            //    MessageBox.Show("orderID:   " + orderID);
+                                //    MessageBox.Show("orderID:   " + orderID);
 
                                 // orderID = orderID.Substring(0, 1) + (Convert.ToInt32(orderID.Substring(1, orderID.Length - 1)) + 1).ToString("000000");
                                 attempted = true;

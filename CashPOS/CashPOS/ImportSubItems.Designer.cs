@@ -38,13 +38,14 @@
             this.subItemPanel.Name = "subItemPanel";
             this.subItemPanel.Size = new System.Drawing.Size(1076, 720);
             this.subItemPanel.TabIndex = 0;
+            this.subItemPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.subItemPanel_Paint);
             // 
-            // SubItems
+            // ImportSubItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.subItemPanel);
-            this.Name = "SubItems";
+            this.Name = "ImportSubItems";
             this.Size = new System.Drawing.Size(1076, 720);
             this.ResumeLayout(false);
 

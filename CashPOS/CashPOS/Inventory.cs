@@ -83,10 +83,11 @@ namespace CashPOS
         private void serachInvBtn_Click(object sender, EventArgs e)
         {
             clearList();
-            invHdr.getInvByDate("屯門", timePIck.Value, tmList);
-            invHdr.getInvByDate("柴灣", timePIck.Value, cwList);
-            invHdr.getInvByDate("油麻地", timePIck.Value, ymtList);
-            invHdr.getInvByDate("觀塘", timePIck.Value, ktList);
+           // invHdr.getInvByDate("屯門", timePIck.Value, tmList);
+            invHdr.getCurrentInv("屯門");
+         //   invHdr.getInvByDate("柴灣", timePIck.Value, cwList);
+         //  invHdr.getInvByDate("油麻地", timePIck.Value, ymtList);
+         // invHdr.getInvByDate("觀塘", timePIck.Value, ktList);
             getAllProdDetail();
             //serachInvByProdTable();
         }

@@ -137,8 +137,14 @@ namespace CashPOS
                 }
             }
             rdr.Close();
+        
             myConnection.Close();
             //unitPriceTxt.Text = unitPrice.ToString("#.##");
+        }
+
+        private void subItemPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
