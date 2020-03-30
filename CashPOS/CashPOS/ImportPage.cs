@@ -194,7 +194,7 @@ namespace CashPOS
                             subItem = "6分石仔(噸)";
                             break;
                     }
-                    calc = Convert.ToDouble(amount) * 0.018;
+                    calc = Convert.ToDouble(amount) * -0.018;
 
                     selectedItemList.Rows.Add(subItem, calc.ToString("0.00"), "噸", "", "");
 

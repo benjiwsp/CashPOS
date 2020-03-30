@@ -92,7 +92,7 @@ namespace CashPOS
             addGridCol("ProdName", "總數");
             double totalDisplayPrice = 0.00;
             MySqlCommand myCommand = new MySqlCommand("Select itemName, unit, pickupLoc, SUM(amount) as Amount, SUM(total) as TotalPrice from CashPOSDB.orderDetails where time >='" +
-         start + "' and  time <= '" + end + "' and belongTo = '" + comp + "' group by ItemName, Unit, pickupLoc order by ItemName", myConnection);
+         start + "' and  time <= '" + end + "' and belongTo = '" + comp + "' and pickupLoc = '屯門' group by ItemName, Unit, pickupLoc order by ItemName", myConnection);
             myConnection.Open();
             MySqlDataReader rdr = myCommand.ExecuteReader();
             if (rdr.HasRows == true)
@@ -130,7 +130,7 @@ namespace CashPOS
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
                 }
                 //       totalIncomeLbl.Text = "總數(港幣):" + totalDisplayPrice.ToString("n2");
-                incomeGrid.Rows.Add("總數:", "", "", totalDisplayPrice);
+                incomeGrid.Rows.Add("總數:", "", totalDisplayPrice);
                 totalDisplayPrice = 0.00;
             }
             rdr.Close();
@@ -216,21 +216,23 @@ namespace CashPOS
             {
                 while (rdr.Read())
                 {
+                    string itemName = rdr["itemName"].ToString();
                     if (customerName == "" || customerName == rdr["Name"].ToString())
                     {
                         customerName = rdr["Name"].ToString();
-                        if (rdr["itemName"].ToString() == "吊袋")
+                     
+                        if (itemName == "按吊袋")
                             HangBag = Convert.ToDecimal(rdr["Amount"].ToString());
 
-                        else if (rdr["itemName"].ToString() == "回吊袋(個)")
+                        else if (itemName == "回吊袋(個)")
                             rHangBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "潤豐吊袋")
+                        else if (itemName == "潤豐吊袋")
                             YingBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "回潤豐吊袋")
+                        else if (itemName == "回潤豐吊袋")
                             rYingBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "粵秀吊袋")
+                        else if (itemName == "粵秀吊袋")
                             YuBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "回粵秀吊袋")
+                        else if (itemName == "回粵秀吊袋")
                             rYuBag = Convert.ToDecimal(rdr["Amount"].ToString());
                     }
                     else if (customerName != "" && customerName != rdr["Name"].ToString())
@@ -243,23 +245,24 @@ namespace CashPOS
                         rYingBag = 0.00m;
                         YuBag = 0.00m;
                         rYuBag = 0.00m;
-                        if (rdr["itemName"].ToString() == "吊袋")
+                        if (itemName == "按吊袋")
                             HangBag = Convert.ToDecimal(rdr["Amount"].ToString());
 
-                        else if (rdr["itemName"].ToString() == "回吊袋(個)")
+                        else if (itemName == "回吊袋(個)")
                             rHangBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "潤豐吊袋")
+                        else if (itemName == "潤豐吊袋")
                             YingBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "回潤豐吊袋")
+                        else if (itemName == "回潤豐吊袋")
                             rYingBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "粵秀吊袋")
+                        else if (itemName == "粵秀吊袋")
                             YuBag = Convert.ToDecimal(rdr["Amount"].ToString());
-                        else if (rdr["itemName"].ToString() == "回粵秀吊袋")
+                        else if (itemName == "回粵秀吊袋")
                             rYuBag = Convert.ToDecimal(rdr["Amount"].ToString());
 
                     }
-                    bagsGrid.Rows.Add(customerName, HangBag, rHangBag, YingBag, rYingBag, YuBag, rYuBag);
                 }
+                bagsGrid.Rows.Add(customerName, HangBag, rHangBag, YingBag, rYingBag, YuBag, rYuBag);
+
             } rdr.Close();
             myConnection.Close();
         }
@@ -446,7 +449,9 @@ namespace CashPOS
                 {
                     if (rdr2["SecUnit"].ToString() != "")
                     {
-                        pack = value / Convert.ToDecimal(rdr2["Converter"].ToString());
+                        decimal cov = Convert.ToDecimal(rdr2["Converter"].ToString());
+                        if(cov != 0)
+                        pack = value / cov;
                     }
                 }
             }
@@ -628,6 +633,11 @@ namespace CashPOS
             sw.Close();
             rdr.Close();
             myConnection.Close();
+        }
+
+        private void incomeGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

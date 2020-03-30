@@ -322,7 +322,6 @@ namespace CashPOS
                     string pack = "";
                     if (i == 1)
                     {
-                        pack = rdr["package"].ToString();
                         orderID = rdr["orderID"].ToString();
                         invoiceLbl.Text = orderID;
                         pickupLbl.Text = rdr["pickupLoc"].ToString();
@@ -336,6 +335,8 @@ namespace CashPOS
                     }
                     if (needPrice)
                     {
+                        pack = rdr["package"].ToString();
+
                         if (pack != "0.00" && pack.Length > 0)
                         {
                             printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString() + "(" + pack + ")", rdr["unit"].ToString(),

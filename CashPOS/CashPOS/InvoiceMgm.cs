@@ -77,7 +77,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
@@ -170,7 +170,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -294,7 +294,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -361,7 +361,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     //   MessageBox.Show(rdr["orderID"].ToString()+","+ rdr["sandID"].ToString()+","+ rdr["custName"].ToString()+","+ rdr["license"].ToString()+","+
                     ////      rdr["pickupLoc"].ToString()+","+ rdr["priceType"].ToString()+","+ rdr["payMethod"].ToString()+","+ totalPrice+","+ paid+","+ reminder+","+ rdr["time"].ToString());
                     if (reminder < 0)
@@ -429,7 +429,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -503,7 +503,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalP, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalP, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -620,7 +620,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -977,7 +977,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1067,7 +1067,7 @@ namespace CashPOS
 
 
                     orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["priceType"].ToString(), rdr["payMethod"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1230,14 +1230,40 @@ namespace CashPOS
                     }
                 }
             }
-            myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
-            myCommand.ExecuteNonQuery();
-            myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
-            myCommand.ExecuteNonQuery();
-            myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords set orderID = '" + idToSearch.Text + "', custCode ='Cancel', custName = 'Canel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
-            myCommand.ExecuteNonQuery();
-            myCommand = new MySqlCommand("insert into CashPOSDB.orderDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
-            myCommand.ExecuteNonQuery();
+            if (idToSearch.Text.StartsWith("I"))
+            {
+                myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("delete from CashPOSDB.importRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.importRecords set orderID = '" + idToSearch.Text + "', supplierCode ='Cancel', supplierName = 'Canel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.importDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+
+            }
+            else if (idToSearch.Text.StartsWith("T") || idToSearch.Text.StartsWith("A"))
+            {
+                myCommand = new MySqlCommand("delete from CashPOSDB.transDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("delete from CashPOSDB.transRecods where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.transRecods set orderID = '" + idToSearch.Text + "', TransFrom ='Cancel', transport = 'Canel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.transDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords set orderID = '" + idToSearch.Text + "', custCode ='Cancel', custName = 'Canel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("insert into CashPOSDB.orderDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
             myConnection.Close();
             belongToTxt.Text = "";
             custTypeTxt.Text = "";

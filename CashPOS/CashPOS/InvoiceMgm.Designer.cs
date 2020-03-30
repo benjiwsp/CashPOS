@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.serachByComp = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -82,20 +82,6 @@
             this.custTypeTxt = new System.Windows.Forms.Label();
             this.clearBtn = new System.Windows.Forms.Button();
             this.orderListView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.StartTimePicker = new System.Windows.Forms.MonthCalendar();
             this.EndTimePicker = new System.Windows.Forms.MonthCalendar();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
@@ -127,6 +113,20 @@
             this.locSerachImpBox = new System.Windows.Forms.ComboBox();
             this.custListView = new System.Windows.Forms.ListView();
             this.paidAllBtn = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.客戶 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.總金額 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -485,14 +485,14 @@
             this.Column18,
             this.Column11});
             this.tableLayoutPanel1.SetColumnSpan(this.resultGrid, 3);
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resultGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.resultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultGrid.Location = new System.Drawing.Point(1018, 412);
             this.resultGrid.Name = "resultGrid";
@@ -808,14 +808,14 @@
             this.Column15,
             this.Column14});
             this.tableLayoutPanel1.SetColumnSpan(this.orderListView, 3);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.orderListView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.orderListView.DefaultCellStyle = dataGridViewCellStyle4;
             this.orderListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderListView.Location = new System.Drawing.Point(3, 244);
             this.orderListView.Name = "orderListView";
@@ -825,82 +825,6 @@
             this.orderListView.Size = new System.Drawing.Size(1009, 702);
             this.orderListView.TabIndex = 1;
             this.orderListView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderListView_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "單號";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "沙單";
-            this.Column17.Name = "Column17";
-            // 
-            // 客戶
-            // 
-            this.客戶.HeaderText = "客戶";
-            this.客戶.Name = "客戶";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "車牌";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取貨地";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "目的地";
-            this.Column3.Name = "Column3";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "方式";
-            this.Column16.Name = "Column16";
-            // 
-            // 總金額
-            // 
-            this.總金額.HeaderText = "總金額";
-            this.總金額.Name = "總金額";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "已付";
-            this.Column13.Name = "Column13";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "欠款";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "日期";
-            this.Column6.Name = "Column6";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "已付款";
-            this.Column12.Name = "Column12";
-            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "已回單";
-            this.Column15.Name = "Column15";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "回單";
-            this.Column14.Name = "Column14";
-            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StartTimePicker
             // 
@@ -1301,6 +1225,82 @@
             this.paidAllBtn.UseVisualStyleBackColor = true;
             this.paidAllBtn.Click += new System.EventHandler(this.paidAllBtn_Click);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "單號";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "沙單";
+            this.Column17.Name = "Column17";
+            // 
+            // 客戶
+            // 
+            this.客戶.HeaderText = "客戶";
+            this.客戶.Name = "客戶";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "車牌";
+            this.Column4.Name = "Column4";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "取貨地";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "目的地";
+            this.Column3.Name = "Column3";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "備註";
+            this.Column16.Name = "Column16";
+            // 
+            // 總金額
+            // 
+            this.總金額.HeaderText = "總金額";
+            this.總金額.Name = "總金額";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "已付";
+            this.Column13.Name = "Column13";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "欠款";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "日期";
+            this.Column6.Name = "Column6";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "已付款";
+            this.Column12.Name = "Column12";
+            this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "已回單";
+            this.Column15.Name = "Column15";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "回單";
+            this.Column14.Name = "Column14";
+            this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // InvoiceMgm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1411,6 +1411,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Label belongToTxt;
         private System.Windows.Forms.Label custTypeTxt;
+        private System.Windows.Forms.ListView custListView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.ComboBox custTypeBox;
+        private System.Windows.Forms.Button paidAllBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.Button SFCashSearchBtn;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn 客戶;
@@ -1425,17 +1437,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewButtonColumn Column14;
-        private System.Windows.Forms.ListView custListView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.ComboBox custTypeBox;
-        private System.Windows.Forms.Button paidAllBtn;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.Button SFCashSearchBtn;
     }
 }

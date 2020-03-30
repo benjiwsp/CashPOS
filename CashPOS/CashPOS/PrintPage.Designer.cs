@@ -258,6 +258,7 @@
             this.priceTypeLbl.Name = "priceTypeLbl";
             this.priceTypeLbl.Size = new System.Drawing.Size(87, 53);
             this.priceTypeLbl.TabIndex = 4;
+            this.priceTypeLbl.Visible = false;
             // 
             // licenseLbl
             // 
@@ -288,6 +289,7 @@
             this.pickupLbl.Name = "pickupLbl";
             this.pickupLbl.Size = new System.Drawing.Size(87, 53);
             this.pickupLbl.TabIndex = 3;
+            this.pickupLbl.Visible = false;
             // 
             // tableLayoutPanel6
             // 
