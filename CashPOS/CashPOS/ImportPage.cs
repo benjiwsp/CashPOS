@@ -338,7 +338,7 @@ namespace CashPOS
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                     }
-                    else if (orderID.StartsWith("T") || orderID.StartsWith("I"))
+                    else if (orderID.StartsWith("T") || orderID.StartsWith("A"))
                     {
                         if (id != "")
                         {
@@ -1014,6 +1014,12 @@ namespace CashPOS
             pp.printBtn.PerformClick();
             pd.Close();
             selectedOrderID = "";
+        }
+
+        private void itemNotesTxt_TextChanged(object sender, EventArgs e)
+        {
+            TextBox item = (TextBox)sender;
+            selectedItemLabel.Text = item.Text.ToString();
         }
 
 

@@ -704,6 +704,7 @@
             this.itemNotesTxt.Name = "itemNotesTxt";
             this.itemNotesTxt.Size = new System.Drawing.Size(209, 53);
             this.itemNotesTxt.TabIndex = 10;
+            this.itemNotesTxt.TextChanged += new System.EventHandler(this.itemNotesTxt_TextChanged);
             // 
             // itemUnit
             // 
@@ -728,7 +729,6 @@
             this.tableLayoutPanel1.SetRowSpan(this.selectedItemLabel, 2);
             this.selectedItemLabel.Size = new System.Drawing.Size(209, 117);
             this.selectedItemLabel.TabIndex = 12;
-            this.selectedItemLabel.Text = "selectedItemLabel";
             this.selectedItemLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2

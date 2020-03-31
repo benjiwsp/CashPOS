@@ -43,15 +43,18 @@ namespace CashPOS
 
             string prodCol = getProdID(col);
             string table = getTable(site);
-            string query = "INSERT INTO CashPOSDB." + table + " (date," + prodCol + ") " +
-            " VALUES('" + date.ToString("yyyy-MM-dd") + "', " + amount + ") " +
-            "ON DUPLICATE KEY UPDATE " +
-            prodCol + " = " + prodCol + " + VALUES(" + prodCol + ")";
+            if (prodCol != "")
+            {
+                string query = "INSERT INTO CashPOSDB." + table + " (date," + prodCol + ") " +
+                " VALUES('" + date.ToString("yyyy-MM-dd") + "', " + amount + ") " +
+                "ON DUPLICATE KEY UPDATE " +
+                prodCol + " = " + prodCol + " + VALUES(" + prodCol + ")";
 
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
         public void reduce(string site, string col, decimal amount, DateTime date)
         {
@@ -59,17 +62,20 @@ namespace CashPOS
 
             string prodCol = getProdID(col);
             string table = getTable(site);
-            string query = "INSERT INTO CashPOSDB." + table + " (Date," + prodCol + ") " +
-            " VALUES('" + date.ToString("yyyy-MM-dd") + "',-" + amount + ") " +
-            "ON DUPLICATE KEY UPDATE " +
-            prodCol + " = " + prodCol + " + VALUES(" + prodCol + ")";
-            //    MessageBox.Show(query);
+            if (prodCol != "")
+            {
+                string query = "INSERT INTO CashPOSDB." + table + " (Date," + prodCol + ") " +
+                " VALUES('" + date.ToString("yyyy-MM-dd") + "',-" + amount + ") " +
+                "ON DUPLICATE KEY UPDATE " +
+                prodCol + " = " + prodCol + " + VALUES(" + prodCol + ")";
+                //    MessageBox.Show(query);
 
 
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
         public void getInvByDate(string site, DateTime date, DataGridView list)
         {
@@ -125,12 +131,13 @@ namespace CashPOS
                     checkerDate = rdr["date"].ToString();
                 }
             } rdr.Close();
-         //   MessageBox.Show(checkerDate);
-             string startTime = "";
-            if (checkerDate.Length > 0) { 
-            DateTime dd = Convert.ToDateTime(checkerDate);
-             startTime =  dd.ToString("yyyy-MM-dd") ;
-        }
+            //   MessageBox.Show(checkerDate);
+            string startTime = "";
+            if (checkerDate.Length > 0)
+            {
+                DateTime dd = Convert.ToDateTime(checkerDate);
+                startTime = dd.ToString("yyyy-MM-dd");
+            }
             string query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),') FROM CashPOSDB.tmInv where checker != Y ') as Query" +
                 " FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tmInv' and c.COLUMN_NAME<> 'id';";
             cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn);
@@ -139,7 +146,7 @@ namespace CashPOS
             cmd.ExecuteNonQuery();
             cmd = new MySqlCommand(query, conn);
 
-            
+
             string getInfoQuery = "";
             rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
@@ -151,8 +158,8 @@ namespace CashPOS
             }
             rdr.Close();
             getInfoQuery = getInfoQuery.Replace("!= Y", "!= Y " + dateSelected);
-          //  MessageBox.Show("this is get info " + getInfoQuery);
-         //   Console.WriteLine(getInfoQuery);
+            //  MessageBox.Show("this is get info " + getInfoQuery);
+            //   Console.WriteLine(getInfoQuery);
             cmd = new MySqlCommand("drop table if exists CashPOSDB.tempInv", conn);
             cmd.ExecuteNonQuery();
             cmd = new MySqlCommand("create table CashPOSDB.tempInv like CashPOSDB.tmInv", conn);
@@ -161,28 +168,28 @@ namespace CashPOS
             cmd.ExecuteNonQuery();
             // getInfoQuery.Replace(", FROM", " FROM");
             getInfoQuery = getInfoQuery.Replace("Y", "'Y'");
-        //    MessageBox.Show(getInfoQuery);
-        //    Console.WriteLine(getInfoQuery);
-       //     Console.Read();
+            //    MessageBox.Show(getInfoQuery);
+            //    Console.WriteLine(getInfoQuery);
+            //     Console.Read();
             string qu = "insert into  CashPOSDB.tempInv " + getInfoQuery;
             qu = qu.Replace("))", ")");
-      //      MessageBox.Show(qu);
-     //       Console.WriteLine(qu);
+            //      MessageBox.Show(qu);
+            //       Console.WriteLine(qu);
             cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn);
             cmd.ExecuteNonQuery();
             cmd = new MySqlCommand(qu, conn);
-     //       MessageBox.Show(qu);
+            //       MessageBox.Show(qu);
             cmd.ExecuteNonQuery();
             qu = qu.Replace("!=", "=");
-     //       MessageBox.Show(qu);
+            //       MessageBox.Show(qu);
             qu = "insert into CashPOSDB.tempInv Select * from CashPOSDB.tmInv where Checker = 'Y'";
 
             cmd = new MySqlCommand(qu, conn);
             cmd.ExecuteNonQuery();
 
 
-           query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),') FROM CashPOSDB.tempInv') as Query" +
-               " FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tempInv' and c.COLUMN_NAME<> 'id';";
+            query = "SELECT CONCAT('SELECT ',GROUP_CONCAT(CONCAT('SUM(',c.COLUMN_NAME,')') SEPARATOR ', '),') FROM CashPOSDB.tempInv') as Query" +
+                " FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tempInv' and c.COLUMN_NAME<> 'id';";
             cmd = new MySqlCommand("SET SESSION group_concat_max_len = 99999999", conn);
             cmd.ExecuteNonQuery();
             cmd = new MySqlCommand(query, conn);

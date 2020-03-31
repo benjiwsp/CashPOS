@@ -62,53 +62,114 @@ namespace CashPOS
             orderListView.Rows.Clear();
 
             int i = 0;
+            string searchID = idToSearch.Text;
             //          MessageBox.Show(comp);
-            myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID like  '%" + idToSearch.Text + "%'", myConnection);
-            myConnection.Open();
-            rdr = myCommand.ExecuteReader();
-            if (rdr.HasRows == true)
+            if (searchID.StartsWith("I"))
             {
-                while (rdr.Read())
+                myCommand = new MySqlCommand("Select * from CashPOSDB.importRecords where orderID like  '%" + searchID + "%'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
                 {
-                    //   itemList.Add
-                    decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
-                    decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
-                    decimal reminder = totalPrice - paid;
-
-
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
-                    if (reminder < 0)
+                    while (rdr.Read())
                     {
-                        orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        //   itemList.Add
+                        decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
+                        decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                        decimal reminder = totalPrice - paid;
+
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
+                             rdr["dropOffLoc"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        if (reminder < 0)
+                        {
+                            orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        }
+                      /*  if (rdr["isReturn"].ToString() == "y")
+                        {
+                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
+                        }
+                        */
+                        i++;
+
+                  /*      switch (rdr["payMethod"].ToString())
+                        {
+                            case "現金":
+                                cash += totalPrice;
+                                break;
+                            case "過戶":
+                                transfer += totalPrice;
+                                break;
+                            case "支票":
+                                cheque += totalPrice;
+                                break;
+                        }
+                        total += totalPrice;
+                        remind += reminder;
+                        */
+
                     }
-                    if (rdr["isReturn"].ToString() == "y")
+                }/*
+                cashLbl.Text = cash.ToString("0.00");
+                chequeLbl.Text = cheque.ToString("0.00");
+                transferLbl.Text = transfer.ToString("0.00");
+                totalLbl.Text = total.ToString("0.00");
+                unpaidLbl.Text = remind.ToString("0.00");*/
+                rdr.Close();
+                myConnection.Close();
+            }
+            else
+            {
+                myCommand = new MySqlCommand("Select * from CashPOSDB.orderRecords where orderID like  '%" + searchID + "%'", myConnection);
+                myConnection.Open();
+                rdr = myCommand.ExecuteReader();
+                if (rdr.HasRows == true)
+                {
+                    while (rdr.Read())
                     {
-                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                        //   itemList.Add
+                        decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
+                        decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
+                        decimal reminder = totalPrice - paid;
+
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        if (reminder < 0)
+                        {
+                            orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
+                        }
+                        if (rdr["isReturn"].ToString() == "y")
+                        {
+                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
+                        }
+
+                        i++;
+
+                        switch (rdr["payMethod"].ToString())
+                        {
+                            case "現金":
+                                cash += totalPrice;
+                                break;
+                            case "過戶":
+                                transfer += totalPrice;
+                                break;
+                            case "支票":
+                                cheque += totalPrice;
+                                break;
+                        }
+                        total += totalPrice;
+                        remind += reminder;
+
                     }
-                    else
-                    {
-                        orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
-                    }
-
-                    i++;
-
-                    switch (rdr["payMethod"].ToString())
-                    {
-                        case "現金":
-                            cash += totalPrice;
-                            break;
-                        case "過戶":
-                            transfer += totalPrice;
-                            break;
-                        case "支票":
-                            cheque += totalPrice;
-                            break;
-                    }
-                    total += totalPrice;
-                    remind += reminder;
-
-
                 }
             }
             cashLbl.Text = cash.ToString("0.00");
