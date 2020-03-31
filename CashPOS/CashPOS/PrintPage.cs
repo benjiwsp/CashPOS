@@ -347,6 +347,8 @@ namespace CashPOS
                             printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
                                 rdr["total"].ToString());
                         }
+                        SumLbl.Text = rdr["totalPrice"].ToString();
+
                     }
                     else
                     {
@@ -364,7 +366,6 @@ namespace CashPOS
                     i++;
 
                 }
-                SumLbl.Text = rdr["totalPrice"].ToString();
                 if (orderID.Contains("SF"))
                 {
                     noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
@@ -420,6 +421,8 @@ namespace CashPOS
                     {
                         printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
                             rdr["total"].ToString());
+                        SumLbl.Text = rdr["totalPrice"].ToString();
+
                     }
                     else
                     {
@@ -429,7 +432,6 @@ namespace CashPOS
                     i++;
 
                 }
-                SumLbl.Text = rdr["totalPrice"].ToString();
                 if (orderID.Contains("SF"))
                 {
                     noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";
@@ -485,6 +487,8 @@ namespace CashPOS
                     {
                         printList.Rows.Add(i, rdr["itemName"].ToString(), rdr["unitPrice"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(),
                             rdr["total"].ToString());
+                        SumLbl.Text = rdr["totalPrice"].ToString();
+
                     }
                     else
                     {
@@ -494,7 +498,6 @@ namespace CashPOS
                     i++;
 
                 }
-                SumLbl.Text = rdr["totalPrice"].ToString();
                 if (orderID.Contains("SF"))
                 {
                     noteDisplayLbl.Text = "如需要退回吊袋按金，需於取貨日1個月內憑有效單據交回以退按金，如人為割破或/及過期恕不受理。";

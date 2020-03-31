@@ -508,7 +508,7 @@ namespace CashPOS
 
                 string item = itemList.Text.Substring(0, itemList.Text.IndexOf(" -")).Trim();
                 myCommand = new MySqlCommand("SELECT a.Cust, a.Prod, a. ProdName, a.DelPrice, a.PickPrice, a.SitePrice,  a.DelPackP, a.PickPackP, a.SitePackP,"
-                + " b.Name, b.PayMethod FROM CashPOSDB.custProdPrice a join CashPOSDB.custData b on a.cust	= b.Code and Prod = '" + item + "' order by a.Prod", myConnection);
+                + " b.Name, b.PayMethod FROM CashPOSDB.custProdPrice a join CashPOSDB.custData b on a.cust	= b.Code and Prod = '" + item + "' and b.Code like '%SF%' order by a.Prod", myConnection);
                 myConnection.Open();
                 rdr = myCommand.ExecuteReader();
                 if (rdr.HasRows)

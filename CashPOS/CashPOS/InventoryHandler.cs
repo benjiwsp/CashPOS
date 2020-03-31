@@ -115,7 +115,7 @@ namespace CashPOS
             rdr.Close();
             conn.Close();
         }
-        public void getCurrentInv(string site, string endDate)
+        public void getCurrentInv(string site, string endDate, DataGridView view)
         {
 
             //read the checker date, read the selected date
@@ -209,13 +209,46 @@ namespace CashPOS
             cmd = new MySqlCommand("create view asaa as " + newInfo, conn);
             cmd.ExecuteNonQuery();
 
-            cmd = new MySqlCommand("Select * from cashPOSDB.asaa");
+
+            query = "SELECT c.COLUMN_NAME  as code FROM information_schema.COLUMNS c WHERE table_schema = 'CashPOSDB' and TABLE_NAME='tempInv' and c.COLUMN_NAME<> 'id'  and c.COLUMN_NAME<> 'Checker'  and c.COLUMN_NAME<> 'date'";
+            cmd = new MySqlCommand(query, conn);
+            List<String> codeList = new List<String>();
             rdr = cmd.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    codeList.Add(rdr["code"].ToString());
+                }
+            } rdr.Close();
+            List<String> nameList = new List<String>();
+
+            foreach (string code in codeList)
+            {
+                query = "select ProdName from CashPOSDB.prodData where ProdID = '" + code + "'";
+                cmd = new MySqlCommand(query, conn);
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    if (rdr.Read())
+                    {
+                        nameList.Add(rdr["ProdName"].ToString());
+                    }
+                } rdr.Close();
+            }
+            cmd = new MySqlCommand("Select * from CashPOSDB.asaa ",conn);
+            rdr = cmd.ExecuteReader();
+            int index = 0;
             if (rdr.HasRows)
             {
                 if (rdr.Read())
                 {
+                    foreach (string code in codeList)
+                    {
+                        view.Rows.Add(code, nameList[index].ToString(), rdr["SUM(" + code + ")"].ToString());
+                        index++;
 
+                    }
                 }
             } rdr.Close();
             /*      for (int i = 2; i < colCount; i++)

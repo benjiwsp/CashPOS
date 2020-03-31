@@ -851,7 +851,7 @@ namespace CashPOS
                         invoiceNoteTxt.Text = rdr["notes"].ToString();
                         i++;
                     }
-                    selectedItemList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(), rdr["unitPrice"].ToString(), "",
+                    selectedItemList.Rows.Add(rdr["itemName"].ToString(), rdr["amount"].ToString(), rdr["unit"].ToString(), rdr["unitPrice"].ToString(), rdr["package"].ToString(),
                         rdr["total"].ToString());
                 }
             }
@@ -880,7 +880,7 @@ namespace CashPOS
         private string getRecord(string extraCond)
         {
             string returnStr = "Select CashPOSDB.orderRecords.orderID, CashPOSDB.orderRecords.sandID, " +
-                "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone,  CashPOSDB.orderRecords.payMethod, CashPOSDB.orderRecords.license, " +
+                "CashPOSDB.orderRecords.custCode, CashPOSDB.orderRecords.phone,  CashPOSDB.orderDetails.package, CashPOSDB.orderRecords.payMethod, CashPOSDB.orderRecords.license, " +
                 "CashPOSDB.orderRecords.address, CashPOSDB.orderRecords.priceType, CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.pickupLoc, " +
                 "CashPOSDB.orderRecords.payment, CashPOSDB.orderRecords.paid, CashPOSDB.orderRecords.custName, CashPOSDB.orderRecords.belongTo, " +
                 "CashPOSDB.orderRecords.totalPrice, CashPOSDB.orderRecords.notes, CashPOSDB.orderRecords.time, " +

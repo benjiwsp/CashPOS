@@ -84,7 +84,7 @@ namespace CashPOS
         {
             clearList();
             // invHdr.getInvByDate("屯門", timePIck.Value, tmList);
-            invHdr.getCurrentInv("屯門", timePIck.Value.ToString("yyyy-MM-dd"));
+            invHdr.getCurrentInv("屯門", timePIck.Value.ToString("yyyy-MM-dd"),tmList);
             //   invHdr.getInvByDate("柴灣", timePIck.Value, cwList);
             //  invHdr.getInvByDate("油麻地", timePIck.Value, ymtList);
             // invHdr.getInvByDate("觀塘", timePIck.Value, ktList);
