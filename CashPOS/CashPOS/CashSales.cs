@@ -351,7 +351,7 @@ namespace CashPOS
             payTypeLabel.Text = "";
             clearItemPanel();
             isSearching = false;
-            //   selectedOrderID = "";
+               selectedOrderID = "";
             paidAmount.Text = "";
             dateSelected.Value = DateTime.Today;
 
@@ -415,13 +415,41 @@ namespace CashPOS
                         orderID = id;
                     }
                     //need to make sure the order number has not changed, if it changed then need to delete the old records
-                    myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
+
+
+                    //read the receipt and update the stock
+                    myCommand = new MySqlCommand("select * from orderDetails where orderID = '" + orderID + "'", myConnection);
                     myConnection.Open();
+                    rdr = myCommand.ExecuteReader();
+                    if (rdr.HasRows )
+                    {
+                        while (rdr.Read())
+                        {
+                            string itemName = rdr["itemName"].ToString();
+                            string amount = rdr["amount"].ToString();
+                            DateTime oldDate = Convert.ToDateTime(rdr["time"].ToString());
+
+                            invHdr.add("屯門", itemName, Convert.ToDecimal(amount), oldDate);
+                        }
+                    } rdr.Close();
+
+
+
+
+
+
+
+
+                    myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + orderID + "'", myConnection);
                     myCommand.ExecuteNonQuery();
 
                     myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + orderID + "'", myConnection);
                     myCommand.ExecuteNonQuery();
                     myConnection.Close();
+
+
+
+
                 }
 
                 orderID = invoiceLabel.Text;
@@ -483,6 +511,8 @@ namespace CashPOS
                                 }
                                 if (invCol != "")
                                 {
+
+                                    //update inventory, insert it into tmInv to for calculation, gotta adjust this place
                                     string amount = getAmountConverter(itemName, unit, inputAmount);
                                     if (amount != "" && itemName != "扣訂金" && itemName != "訂金")
                                     {
@@ -772,6 +802,7 @@ namespace CashPOS
                 isSearching = true;
                 selectedOrderID = form.OrderNumberInputTextbox.Text;
                 searchToEdit(selectedOrderID);
+                checkStatus();
             }
             else
             {
@@ -1238,7 +1269,7 @@ namespace CashPOS
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == id)
+            if (pp.resultList[0, 0].Value.ToString() == selectedOrderID)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(10, 0));
 
@@ -1271,7 +1302,7 @@ namespace CashPOS
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == id)
+            if (pp.resultList[0, 0].Value.ToString() == selectedOrderID)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(9, 0));
 

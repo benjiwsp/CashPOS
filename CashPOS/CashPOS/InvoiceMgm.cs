@@ -19,7 +19,7 @@ namespace CashPOS
         MySqlCommand myCommand;
         MySqlDataReader rdr;
         List<String> custCol = new List<String>();
-
+        InventoryHandler invHdr = new InventoryHandler();
         public InvoiceMgm()
         {
             InitializeComponent();
@@ -407,7 +407,7 @@ namespace CashPOS
             decimal total = 0.0m;
             decimal remind = 0.0m;
             orderListView.Rows.Clear();
-            myCommand = new MySqlCommand("Select b.orderID, b.sandID, b.custName,b.isReturn,  b.phone,b.license, b.address, b.priceType, b.payment,b.pickupLoc, b.totalPrice, b.paid, b.payMethod, b.time from CashPOSDB.orderDetails a  join CashPOSDB.orderRecords b  on a.orderID = b.orderID where a.itemName = '" + itemList.Text + "' and a.time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
+            myCommand = new MySqlCommand("Select b.orderID, b.sandID, b.custName,b.isReturn, b.notes, b.phone,b.license, b.address, b.priceType, b.payment,b.pickupLoc, b.totalPrice, b.paid, b.payMethod, b.time from CashPOSDB.orderDetails a  join CashPOSDB.orderRecords b  on a.orderID = b.orderID where a.itemName = '" + itemList.Text + "' and a.time >= '" + getStartDate().ToString("yyyy-MM-dd HH:mm:ss") +
             "' and a.time <= '" + getEndDate().ToString("yyyy-MM-dd HH:mm:ss") + "' group by a.orderID", myConnection);
             myConnection.Open();
             int i = 0;
@@ -1285,8 +1285,10 @@ namespace CashPOS
                         decimal value;
                         if (Decimal.TryParse(row.Cells[1].Value.ToString(), out value))
                         {
-                            myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + value + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                            myCommand.ExecuteNonQuery();
+                            DateTime oldDate = Convert.ToDateTime(dateLbl.Text);
+                            invHdr.add("屯門", row.Cells[0].Value.ToString(), value, oldDate);
+                         //   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + value + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                          //  myCommand.ExecuteNonQuery();
                         }
                     }
                 }

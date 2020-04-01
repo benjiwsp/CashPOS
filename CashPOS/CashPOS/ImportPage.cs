@@ -338,7 +338,7 @@ namespace CashPOS
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
                     }
-                    else if (orderID.StartsWith("T") || orderID.StartsWith("A"))
+           /*         else if (orderID.StartsWith("T") || orderID.StartsWith("A"))
                     {
                         if (id != "")
                         {
@@ -372,7 +372,7 @@ namespace CashPOS
                                 }
                                 string dropOffLoc = rdr["dropOffLoc"].ToString();
 
-                                invHandler.reduce(dropOffLoc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()), dateSelected.Value);
+              //                  invHandler.reduce(dropOffLoc, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()), dateSelected.Value);
 
                                 //reduceChangedAmount(inv, rdr["itemName"].ToString(), Convert.ToDecimal(rdr["amount"].ToString()));
                             }
@@ -381,7 +381,7 @@ namespace CashPOS
                         myCommand = new MySqlCommand("delete from CashPOSDB.importDetails where orderID = '" + orderID + "'", myConnection);
                         myCommand.ExecuteNonQuery();
                         myConnection.Close();
-                    }
+                    }*/
                     else
                     {
                         myCommand = new MySqlCommand("delete from CashPOSDB.transRecords where orderID = '" + orderID + "'", myConnection);

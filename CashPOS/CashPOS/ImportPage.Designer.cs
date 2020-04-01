@@ -575,6 +575,7 @@
             this.transferBtn.TabIndex = 43;
             this.transferBtn.Text = "調倉";
             this.transferBtn.UseVisualStyleBackColor = true;
+            this.transferBtn.Visible = false;
             this.transferBtn.Click += new System.EventHandler(this.TransferBtn_Click);
             // 
             // adjustBtn
@@ -587,6 +588,7 @@
             this.adjustBtn.TabIndex = 44;
             this.adjustBtn.Text = "執倉";
             this.adjustBtn.UseVisualStyleBackColor = true;
+            this.adjustBtn.Visible = false;
             this.adjustBtn.Click += new System.EventHandler(this.adjustBtn_Click);
             // 
             // totalLabel

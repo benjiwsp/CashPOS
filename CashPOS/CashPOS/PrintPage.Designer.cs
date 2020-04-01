@@ -79,6 +79,7 @@
             this.searchCWPrint = new System.Windows.Forms.Button();
             this.invoiceNo = new System.Windows.Forms.TextBox();
             this.printBtn = new System.Windows.Forms.Button();
+            this.dunPrintBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -572,7 +573,7 @@
             this.tableLayoutPanel4.Controls.Add(this.ktInvoiceBtn, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.ymtInvoiceBtn, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.sfPrintBtn, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.displayInvoiceBtn, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.displayInvoiceBtn, 3, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -591,6 +592,7 @@
             this.tmInvoiceBtn.TabIndex = 2;
             this.tmInvoiceBtn.Text = "屯門單";
             this.tmInvoiceBtn.UseVisualStyleBackColor = true;
+            this.tmInvoiceBtn.Visible = false;
             this.tmInvoiceBtn.Click += new System.EventHandler(this.tmInvoiceBtn_Click);
             // 
             // cwInvoiceBtn
@@ -602,6 +604,7 @@
             this.cwInvoiceBtn.TabIndex = 2;
             this.cwInvoiceBtn.Text = "柴灣單";
             this.cwInvoiceBtn.UseVisualStyleBackColor = true;
+            this.cwInvoiceBtn.Visible = false;
             this.cwInvoiceBtn.Click += new System.EventHandler(this.cwInvoiceBtn_Click);
             // 
             // ktInvoiceBtn
@@ -613,6 +616,7 @@
             this.ktInvoiceBtn.TabIndex = 2;
             this.ktInvoiceBtn.Text = "觀塘單";
             this.ktInvoiceBtn.UseVisualStyleBackColor = true;
+            this.ktInvoiceBtn.Visible = false;
             this.ktInvoiceBtn.Click += new System.EventHandler(this.ktInvoiceBtn_Click);
             // 
             // ymtInvoiceBtn
@@ -624,14 +628,16 @@
             this.ymtInvoiceBtn.TabIndex = 2;
             this.ymtInvoiceBtn.Text = "油麻地單";
             this.ymtInvoiceBtn.UseVisualStyleBackColor = true;
+            this.ymtInvoiceBtn.Visible = false;
             this.ymtInvoiceBtn.Click += new System.EventHandler(this.ymtInvoiceBtn_Click);
             // 
             // sfPrintBtn
             // 
+            this.tableLayoutPanel4.SetColumnSpan(this.sfPrintBtn, 2);
             this.sfPrintBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sfPrintBtn.Location = new System.Drawing.Point(215, 3);
             this.sfPrintBtn.Name = "sfPrintBtn";
-            this.sfPrintBtn.Size = new System.Drawing.Size(206, 45);
+            this.sfPrintBtn.Size = new System.Drawing.Size(418, 45);
             this.sfPrintBtn.TabIndex = 1;
             this.sfPrintBtn.Text = "富資單";
             this.sfPrintBtn.UseVisualStyleBackColor = true;
@@ -640,12 +646,13 @@
             // displayInvoiceBtn
             // 
             this.displayInvoiceBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.displayInvoiceBtn.Location = new System.Drawing.Point(427, 3);
+            this.displayInvoiceBtn.Location = new System.Drawing.Point(639, 3);
             this.displayInvoiceBtn.Name = "displayInvoiceBtn";
-            this.displayInvoiceBtn.Size = new System.Drawing.Size(206, 45);
+            this.displayInvoiceBtn.Size = new System.Drawing.Size(208, 45);
             this.displayInvoiceBtn.TabIndex = 1;
             this.displayInvoiceBtn.Text = "超誠單";
             this.displayInvoiceBtn.UseVisualStyleBackColor = true;
+            this.displayInvoiceBtn.Visible = false;
             this.displayInvoiceBtn.Click += new System.EventHandler(this.displayChiuInvoiceBtn_Click);
             // 
             // tableLayoutPanel9
@@ -657,6 +664,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel9.Controls.Add(this.searchCWPrint, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.invoiceNo, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.dunPrintBtn, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 726);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -698,6 +706,18 @@
             this.printBtn.Text = "PRINT";
             this.printBtn.UseVisualStyleBackColor = true;
             this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
+            // 
+            // dunPrintBtn
+            // 
+            this.dunPrintBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dunPrintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.dunPrintBtn.Location = new System.Drawing.Point(3, 3);
+            this.dunPrintBtn.Name = "dunPrintBtn";
+            this.dunPrintBtn.Size = new System.Drawing.Size(277, 71);
+            this.dunPrintBtn.TabIndex = 4;
+            this.dunPrintBtn.Text = "不需印";
+            this.dunPrintBtn.UseVisualStyleBackColor = true;
+            this.dunPrintBtn.Click += new System.EventHandler(this.dunPrintBtn_Click);
             // 
             // PrintPage
             // 
@@ -778,5 +798,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column17;
         private System.Windows.Forms.DataGridViewButtonColumn Column15;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Button dunPrintBtn;
     }
 }

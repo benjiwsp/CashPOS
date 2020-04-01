@@ -517,7 +517,7 @@ namespace CashPOS
                     {
                         resultList.Rows.Add(rdr["Cust"].ToString(), rdr["Name"].ToString(), rdr["PayMethod"].ToString(), rdr["ProdName"].ToString(),
                             rdr["PickPrice"].ToString(), rdr["DelPrice"].ToString(), rdr["SitePrice"].ToString(),
-                            rdr["DelPackP"].ToString(), rdr["PickPackP"].ToString(), rdr["SitePackP"].ToString());
+                            rdr["PickPackP"].ToString(), rdr["DelPackP"].ToString(), rdr["SitePackP"].ToString());
                     }
                 }
                 rdr.Close();

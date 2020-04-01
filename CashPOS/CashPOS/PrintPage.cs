@@ -168,6 +168,7 @@ namespace CashPOS
         private void printBtn_Click(object sender, EventArgs e)
         {
             print();
+            clearAll();
         }
 
         public void print()
@@ -267,7 +268,7 @@ namespace CashPOS
         private void sfPrintBtn_Click(object sender, EventArgs e)
         {
             updateUnprintedList("富資");
-
+            clearAll();
         }
 
         private void displayChiuInvoiceBtn_Click(object sender, EventArgs e)
@@ -515,6 +516,48 @@ namespace CashPOS
             rdr.Close();
             myConnection.Close();
         }
+
+        private void dunPrintBtn_Click(object sender, EventArgs e)
+        {
+            string id = invoiceLbl.Text;
+            if (id != "")
+            {
+                if (id.StartsWith("I"))
+                {
+                    MySqlCommand cmd = new MySqlCommand("update CashPOSDB.importRecords set isPrinted = 'Y' where orderID = '" + id + "'", myConnection);
+                    myConnection.Open();
+                    cmd.ExecuteNonQuery();
+                    myConnection.Close();
+
+                }
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand("update CashPOSDB.orderRecords set isPrinted = 'Y' where orderID = '" + id + "'", myConnection);
+                    myConnection.Open();
+                    cmd.ExecuteNonQuery();
+                    myConnection.Close();
+                }
+                sfPrintBtn.PerformClick();
+                clearAll();
+            }
+
+
+        }
+         private void clearAll(){
+             addLbl.Text = "";
+             noteLbl.Text = "";
+             printList.Rows.Clear();
+             noteDisplayLbl.Text = "";
+             SumLbl.Text = "";
+             telLbl.Text = "";
+             licenseLbl.Text = "";
+             priceTypeLbl.Text = "";
+             pickupLbl.Text = "";
+             custLbl.Text = "";
+             dateLbl.Text = "";
+             invoiceLbl.Text = "";
+            }
+        
 
     }
 
