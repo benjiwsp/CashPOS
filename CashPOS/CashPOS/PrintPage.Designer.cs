@@ -78,8 +78,8 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.searchCWPrint = new System.Windows.Forms.Button();
             this.invoiceNo = new System.Windows.Forms.TextBox();
-            this.printBtn = new System.Windows.Forms.Button();
             this.dunPrintBtn = new System.Windows.Forms.Button();
+            this.printBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.printLayer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -227,7 +227,6 @@
             this.tableLayoutPanel3.SetRowSpan(this.noteLbl, 2);
             this.noteLbl.Size = new System.Drawing.Size(509, 112);
             this.noteLbl.TabIndex = 1;
-            this.noteLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel5
             // 
@@ -696,17 +695,6 @@
             this.invoiceNo.Size = new System.Drawing.Size(277, 31);
             this.invoiceNo.TabIndex = 2;
             // 
-            // printBtn
-            // 
-            this.printBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.printBtn.Location = new System.Drawing.Point(865, 969);
-            this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(786, 28);
-            this.printBtn.TabIndex = 3;
-            this.printBtn.Text = "PRINT";
-            this.printBtn.UseVisualStyleBackColor = true;
-            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
-            // 
             // dunPrintBtn
             // 
             this.dunPrintBtn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -718,6 +706,17 @@
             this.dunPrintBtn.Text = "不需印";
             this.dunPrintBtn.UseVisualStyleBackColor = true;
             this.dunPrintBtn.Click += new System.EventHandler(this.dunPrintBtn_Click);
+            // 
+            // printBtn
+            // 
+            this.printBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printBtn.Location = new System.Drawing.Point(865, 969);
+            this.printBtn.Name = "printBtn";
+            this.printBtn.Size = new System.Drawing.Size(786, 28);
+            this.printBtn.TabIndex = 3;
+            this.printBtn.Text = "PRINT";
+            this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // PrintPage
             // 

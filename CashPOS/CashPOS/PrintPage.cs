@@ -151,7 +151,7 @@ namespace CashPOS
                         {
                             if (resultList[0, i].Value.ToString() == OrderID)
                             {
-                                resultList_CellContentClick(resultList, new DataGridViewCellEventArgs(9, i));
+                                resultList_CellContentClick(resultList, new DataGridViewCellEventArgs(10, i));
                                 break;
                             }
                         }
@@ -543,7 +543,7 @@ namespace CashPOS
 
 
         }
-         private void clearAll(){
+         public void clearAll(){
              addLbl.Text = "";
              noteLbl.Text = "";
              printList.Rows.Clear();

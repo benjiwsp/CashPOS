@@ -351,7 +351,7 @@ namespace CashPOS
             payTypeLabel.Text = "";
             clearItemPanel();
             isSearching = false;
-               selectedOrderID = "";
+            selectedOrderID = "";
             paidAmount.Text = "";
             dateSelected.Value = DateTime.Today;
 
@@ -421,7 +421,7 @@ namespace CashPOS
                     myCommand = new MySqlCommand("select * from orderDetails where orderID = '" + orderID + "'", myConnection);
                     myConnection.Open();
                     rdr = myCommand.ExecuteReader();
-                    if (rdr.HasRows )
+                    if (rdr.HasRows)
                     {
                         while (rdr.Read())
                         {
@@ -537,7 +537,7 @@ namespace CashPOS
                                     }
                                     else if (Convert.ToDecimal(depositAmt) == Convert.ToDecimal(totalPrice))
                                     {
-                                        myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money + " + Convert.ToDecimal(depositAmt)+ " where Name = '" + cust + "'", myConnection);
+                                        myCommand = new MySqlCommand("update CashPOSDB.custData set Money = Money + " + Convert.ToDecimal(depositAmt) + " where Name = '" + cust + "'", myConnection);
                                         myCommand.ExecuteNonQuery();
                                         paid = totalPrice;
 
@@ -618,9 +618,10 @@ namespace CashPOS
         }
         private string getAmountConverter(string item, string unit, string inputAmount)
         {
+
             telTxt.Items.Clear();
             string amount = "";
-            myCommand2 = new MySqlCommand("Select Unit, Converter from CashPOSDB.prodData where ProdName = '" + item + "'", myConnection2);
+            myCommand2 = new MySqlCommand("Select Unit, Converter, Category from CashPOSDB.prodData where ProdName = '" + item + "'", myConnection2);
             myConnection2.Open();
             rdr2 = myCommand2.ExecuteReader();
             if (rdr2.HasRows)
@@ -629,7 +630,15 @@ namespace CashPOS
                 {
                     if (unit != rdr2["Unit"].ToString())
                     {
-                        amount = (Convert.ToDecimal(inputAmount) * Convert.ToDecimal(rdr2["Converter"].ToString())).ToString("0.00");
+                        if (rdr2["Category"].ToString() == "8")
+                        {
+                            amount = (Convert.ToDecimal(inputAmount) / Convert.ToDecimal(rdr2["Converter"].ToString())).ToString("0.00");
+                        }
+                        else
+                        {
+                            amount = (Convert.ToDecimal(inputAmount) * Convert.ToDecimal(rdr2["Converter"].ToString())).ToString("0.00");
+
+                        }
                     }
                     else
                     {
@@ -1282,6 +1291,7 @@ namespace CashPOS
             pd.disPlanel.Controls.Add(pp);
             pd.Show();
             pp.printBtn.PerformClick();
+            pp.clearAll();
             pd.Close();
             selectedOrderID = "";
         }
@@ -1315,6 +1325,8 @@ namespace CashPOS
             pd.disPlanel.Controls.Add(pp);
             pd.Show();
             pp.printBtn.PerformClick();
+            pp.clearAll();
+
             pd.Close();
             selectedOrderID = "";
             /*
