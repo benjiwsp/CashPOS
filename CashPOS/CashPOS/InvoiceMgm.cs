@@ -77,10 +77,22 @@ namespace CashPOS
                         decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                         decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                         decimal reminder = totalPrice - paid;
+                        string paidStr = "未付";
 
 
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
-                             rdr["dropOffLoc"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        if(paid == 0.00m)
+                        {
+
+                            orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
+                                 rdr["dropOffLoc"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                        }
+                        else
+                        {
+
+                            orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
+                                 rdr["dropOffLoc"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        }
+
                         if (reminder < 0)
                         {
                             orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
@@ -135,10 +147,22 @@ namespace CashPOS
                         decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                         decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                         decimal reminder = totalPrice - paid;
+                        string paidStr = "未付";
 
 
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        if (paid == 0.00m)
+                        {
+                            orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                                   rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                        }
+                        else
+                        {
+
+                            orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                           rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                        }
+
+                   
                         if (reminder < 0)
                         {
                             orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
@@ -228,10 +252,21 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                           rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -352,10 +387,24 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
+
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -419,10 +468,23 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
+
+                 
                     //   MessageBox.Show(rdr["orderID"].ToString()+","+ rdr["sandID"].ToString()+","+ rdr["custName"].ToString()+","+ rdr["license"].ToString()+","+
                     ////      rdr["pickupLoc"].ToString()+","+ rdr["priceType"].ToString()+","+ rdr["payMethod"].ToString()+","+ totalPrice+","+ paid+","+ reminder+","+ rdr["time"].ToString());
                     if (reminder < 0)
@@ -487,10 +549,24 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+
+
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
+
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -561,10 +637,20 @@ namespace CashPOS
                     decimal totalP = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalP - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalP, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                              rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalP, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                              rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalP, paid, reminder, rdr["time"].ToString());
+                    }
+
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -678,10 +764,19 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                          rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1035,10 +1130,21 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                                               rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
+      
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1125,10 +1231,22 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
+                    string paidStr = "未付";
 
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                        rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                     rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                     rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
+
+               
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1195,8 +1313,21 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
-                        rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+
+                    string paidStr = "未付";
+
+
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
+                                rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
+                            rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
 
                 }
             }
@@ -1232,8 +1363,20 @@ namespace CashPOS
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
 
-                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
-                        rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+                    string paidStr = "未付";
+
+
+                    if (paid == 0.00m)
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
+                        rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paidStr, reminder, rdr["time"].ToString());
+                    }
+                    else
+                    {
+                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
+                       rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+                    }
+
 
                 }
             }
@@ -1316,7 +1459,7 @@ namespace CashPOS
                 myCommand = new MySqlCommand("insert into CashPOSDB.transDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
-            else
+            else if(idToSearch.Text.StartsWith("C") || idToSearch.Text.StartsWith("M"))
             {
                 myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();
@@ -1325,6 +1468,13 @@ namespace CashPOS
                 myCommand = new MySqlCommand("insert into CashPOSDB.orderRecords set orderID = '" + idToSearch.Text + "', custCode ='Cancel', custName = 'Canel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
                 myCommand.ExecuteNonQuery();
                 myCommand = new MySqlCommand("insert into CashPOSDB.orderDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
+                myCommand.ExecuteNonQuery();
+                myCommand = new MySqlCommand("delete from CashPOSDB.orderRecords where orderID = '" + idToSearch.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
             myConnection.Close();
