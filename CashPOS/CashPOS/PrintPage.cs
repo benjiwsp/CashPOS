@@ -334,9 +334,10 @@ namespace CashPOS
                         noteLbl.Text = rdr["notes"].ToString();
                         priceTypeLbl.Text = rdr["priceType"].ToString();
                     }
+                    pack = rdr["package"].ToString();
+
                     if (needPrice)
                     {
-                        pack = rdr["package"].ToString();
 
                         if (pack != "0.00" && pack.Length > 0)
                         {
