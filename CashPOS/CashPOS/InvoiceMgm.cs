@@ -80,7 +80,7 @@ namespace CashPOS
                         string paidStr = "未付";
 
 
-                        if(paid == 0.00m)
+                        if (paid == 0.00m)
                         {
 
                             orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(), rdr["transport"].ToString(),
@@ -97,32 +97,32 @@ namespace CashPOS
                         {
                             orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
                         }
-                      /*  if (rdr["isReturn"].ToString() == "y")
-                        {
-                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
-                        }
-                        else
-                        {
-                            orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
-                        }
-                        */
+                        /*  if (rdr["isReturn"].ToString() == "y")
+                          {
+                              orderListView.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                          }
+                          else
+                          {
+                              orderListView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
+                          }
+                          */
                         i++;
 
-                  /*      switch (rdr["payMethod"].ToString())
-                        {
-                            case "現金":
-                                cash += totalPrice;
-                                break;
-                            case "過戶":
-                                transfer += totalPrice;
-                                break;
-                            case "支票":
-                                cheque += totalPrice;
-                                break;
-                        }
-                        total += totalPrice;
-                        remind += reminder;
-                        */
+                        /*      switch (rdr["payMethod"].ToString())
+                              {
+                                  case "現金":
+                                      cash += totalPrice;
+                                      break;
+                                  case "過戶":
+                                      transfer += totalPrice;
+                                      break;
+                                  case "支票":
+                                      cheque += totalPrice;
+                                      break;
+                              }
+                              total += totalPrice;
+                              remind += reminder;
+                              */
 
                     }
                 }/*
@@ -162,7 +162,7 @@ namespace CashPOS
                            rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
                         }
 
-                   
+
                         if (reminder < 0)
                         {
                             orderListView.Rows[i].Cells[8].Style.BackColor = Color.Red;
@@ -484,7 +484,7 @@ namespace CashPOS
                     }
 
 
-                 
+
                     //   MessageBox.Show(rdr["orderID"].ToString()+","+ rdr["sandID"].ToString()+","+ rdr["custName"].ToString()+","+ rdr["license"].ToString()+","+
                     ////      rdr["pickupLoc"].ToString()+","+ rdr["priceType"].ToString()+","+ rdr["payMethod"].ToString()+","+ totalPrice+","+ paid+","+ reminder+","+ rdr["time"].ToString());
                     if (reminder < 0)
@@ -767,16 +767,10 @@ namespace CashPOS
                     string paidStr = "未付";
 
 
-                    if (paid == 0.00m)
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                          rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
-                    }
-                    else
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
-                    }
+
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                         rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
+
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1130,21 +1124,12 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    string paidStr = "未付";
+
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                         rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
 
 
-                    if (paid == 0.00m)
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                                               rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
-                    }
-                    else
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                             rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
-                    }
 
-      
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1231,22 +1216,13 @@ namespace CashPOS
                     decimal totalPrice = Convert.ToDecimal(rdr["totalPrice"].ToString());
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
-                    string paidStr = "未付";
+
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
+                 rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
 
 
-                    if (paid == 0.00m)
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                     rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paidStr, reminder, rdr["time"].ToString());
-                    }
-                    else
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["sandID"].ToString(), rdr["custName"].ToString(), rdr["license"].ToString(),
-                     rdr["pickupLoc"].ToString(), rdr["address"].ToString(), rdr["notes"].ToString(), totalPrice, paid, reminder, rdr["time"].ToString());
-                    }
 
 
-               
                     if (reminder < 0)
                     {
                         orderListView.Rows[i].Cells[9].Style.BackColor = Color.Red;
@@ -1314,19 +1290,9 @@ namespace CashPOS
                     decimal paid = Convert.ToDecimal(rdr["totalPaid"].ToString());
                     decimal reminder = totalPrice - paid;
 
-                    string paidStr = "未付";
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
+                              rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
 
-
-                    if (paid == 0.00m)
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
-                                rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paidStr, reminder, rdr["time"].ToString());
-                    }
-                    else
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["transFrom"].ToString(), rdr["transport"].ToString(),
-                            rdr["transFrom"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
-                    }
 
 
                 }
@@ -1363,19 +1329,12 @@ namespace CashPOS
                     decimal paid = Convert.ToDecimal(rdr["paid"].ToString());
                     decimal reminder = totalPrice - paid;
 
-                    string paidStr = "未付";
 
 
-                    if (paid == 0.00m)
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
-                        rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paidStr, reminder, rdr["time"].ToString());
-                    }
-                    else
-                    {
-                        orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
-                       rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
-                    }
+
+                    orderListView.Rows.Add(rdr["orderID"].ToString(), rdr["referenceID"].ToString(), rdr["supplierName"].ToString(),
+                   rdr["transport"].ToString(), rdr["dropOffLoc"].ToString(), "", totalPrice, paid, reminder, rdr["time"].ToString());
+
 
 
                 }
@@ -1430,8 +1389,8 @@ namespace CashPOS
                         {
                             DateTime oldDate = Convert.ToDateTime(dateLbl.Text);
                             invHdr.add("屯門", row.Cells[0].Value.ToString(), value, oldDate);
-                         //   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + value + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
-                          //  myCommand.ExecuteNonQuery();
+                            //   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + value + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
+                            //  myCommand.ExecuteNonQuery();
                         }
                     }
                 }
@@ -1459,7 +1418,7 @@ namespace CashPOS
                 myCommand = new MySqlCommand("insert into CashPOSDB.transDetails set orderID = '" + idToSearch.Text + "', itemName ='Cancel', time = '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
-            else if(idToSearch.Text.StartsWith("C") || idToSearch.Text.StartsWith("M"))
+            else if (idToSearch.Text.StartsWith("C") || idToSearch.Text.StartsWith("M"))
             {
                 myCommand = new MySqlCommand("delete from CashPOSDB.orderDetails where orderID = '" + idToSearch.Text + "'", myConnection);
                 myCommand.ExecuteNonQuery();

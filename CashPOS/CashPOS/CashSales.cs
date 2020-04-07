@@ -479,6 +479,7 @@ namespace CashPOS
                             if (attempted)
                             {
                                 MessageBox.Show("收據號碼已改為: " + orderID);
+                                invoiceLabel.Text = orderID;
                             }
 
                             foreach (DataGridViewRow row in selectedItemList.Rows)
@@ -1278,7 +1279,7 @@ namespace CashPOS
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == selectedOrderID)
+            if (pp.resultList[0, 0].Value.ToString() == id)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(10, 0));
 
@@ -1312,7 +1313,7 @@ namespace CashPOS
             pp.invoiceNo.Text = id;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == selectedOrderID)
+            if (pp.resultList[0, 0].Value.ToString() == id)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(9, 0));
 
