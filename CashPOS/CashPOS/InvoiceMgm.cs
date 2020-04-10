@@ -995,14 +995,14 @@ namespace CashPOS
                         form.transfBtn.Visible = true;
                         form.payType.Visible = true;
                         form.ShowDialog();
-                        if (form.DialogResult == DialogResult.OK)
-                        {
-                            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
-                            myConnection.Open();
-                            myCommand.ExecuteNonQuery();
-                            myConnection.Close();
-                        }
+                        //          if (form.DialogResult == DialogResult.OK)
+                        //        {
+                        //            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
+                        myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                        myConnection.Open();
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                        //       }
 
 
                     }

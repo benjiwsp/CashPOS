@@ -240,14 +240,16 @@ namespace CashPOS
                         fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                         if (ch_compName.StartsWith("富"))
                         {
-                            fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 1, 0, infoFont));
+                            fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
 
                         }
                         else
                         {
-                            fillFooter.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 1, 0, infoFont));
+                            fillFooter.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 0, 0, infoFont));
 
                         }
+
+          
 
                         custTotal += sum;
                         //      MessageBox.Show(sum.ToString());
