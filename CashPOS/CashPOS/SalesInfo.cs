@@ -118,6 +118,8 @@ namespace CashPOS
         {
             incomeGrid.Rows.Clear();
             double totalDisplayPrice = 0.00;
+            double totalDisplayPaid = 0.00;
+
             myCommand = new MySqlCommand("select custCode, custName, sum(totalPrice) as TotalPrice, sum(paid) as Paid from CashPOSDB.orderRecords " +
                "where belongTo = '" + comp + "' and time >= '" + start + "' and time <='" + end + "' group by custCode order by custCode", myConnection);
             myConnection.Open();
@@ -128,9 +130,10 @@ namespace CashPOS
                 {
                     incomeGrid.Rows.Add(rdr["custName"].ToString(), rdr["TotalPrice"].ToString(), rdr["Paid"].ToString());
                     totalDisplayPrice += Convert.ToDouble(rdr["TotalPrice"].ToString());
+                    totalDisplayPaid += Convert.ToDouble(rdr["Paid"].ToString());
                 }
                 //       totalIncomeLbl.Text = "總數(港幣):" + totalDisplayPrice.ToString("n2");
-                incomeGrid.Rows.Add("總數:", "", totalDisplayPrice);
+                incomeGrid.Rows.Add("總數:", totalDisplayPrice, totalDisplayPaid);
                 totalDisplayPrice = 0.00;
             }
             rdr.Close();

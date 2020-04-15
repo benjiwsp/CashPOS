@@ -995,6 +995,7 @@ namespace CashPOS
                         form.transfBtn.Visible = true;
                         form.payType.Visible = true;
                         form.ShowDialog();
+<<<<<<< HEAD
                  //      if (form.DialogResult == DialogResult.OK)
                   //      {
                         //    paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);*/
@@ -1003,6 +1004,16 @@ namespace CashPOS
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
                 //        }
+=======
+                        //          if (form.DialogResult == DialogResult.OK)
+                        //        {
+                        //            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
+                        myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                        myConnection.Open();
+                        myCommand.ExecuteNonQuery();
+                        myConnection.Close();
+                        //       }
+>>>>>>> 271d6b2ded8332e781906f9023c2b6d55e91894b
 
 
                   //  }
