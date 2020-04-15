@@ -982,9 +982,9 @@ namespace CashPOS
 
                 else if (senderGrid.Columns[11] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 11)
                 {
-                    DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
+                 /*  DialogResult dialogResult = MessageBox.Show("確定已付款嗎?", "警告", MessageBoxButtons.YesNo);
+                   if (dialogResult == DialogResult.Yes)
+                   {
                         decimal paid = 0.00m;
                         InputBox form = new InputBox();
                         form.OrderNumberInputTextbox.KeyPress += amount_KeyPress;
@@ -995,17 +995,17 @@ namespace CashPOS
                         form.transfBtn.Visible = true;
                         form.payType.Visible = true;
                         form.ShowDialog();
-                        if (form.DialogResult == DialogResult.OK)
-                        {
-                            paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);
-                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = '" + paid.ToString("0.00") + "' where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
+                 //      if (form.DialogResult == DialogResult.OK)
+                  //      {
+                        //    paid = Convert.ToDecimal(form.OrderNumberInputTextbox.Text);*/
+                            myCommand = new MySqlCommand("update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + orderListView.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", myConnection);
                             myConnection.Open();
                             myCommand.ExecuteNonQuery();
                             myConnection.Close();
-                        }
+                //        }
 
 
-                    }
+                  //  }
 
                 }
                 else if (senderGrid.Columns[13] is DataGridViewButtonColumn && e.RowIndex >= 0 && e.ColumnIndex == 13)

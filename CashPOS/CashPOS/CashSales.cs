@@ -38,6 +38,7 @@ namespace CashPOS
          *    myConnection = new MySqlConnection("Server=mydbinstance.c7pvwaixaizr.ap-southeast-1.rds.amazonaws.com;Port=3306;Database=SaveFundDevelopmentDB;Uid=root;Pwd=SFAdmin123;charset=utf8; allow zero datetime=true;");
             myConnection.Open(); 
          */
+        string idForPrint = "";
         List<String> typeList = new List<String>();
         List<Label> lblList = new List<Label>();
         SubItems subItems;
@@ -374,8 +375,9 @@ namespace CashPOS
 
         private void sendOrder(bool isSearch, string id, string payMethod)
         {
+            idForPrint = ""; 
             if (paidAmount.Text.Length > 0 && payMethLbl.Text.Length > 0 && selectedItemList.Rows.Count > 0)
-            {
+{
                 string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid, secPaidAmt, secPaidMtd, totalPaid;
                 orderID = invoiceLabel.Text;// invoiceLabel.Text;
                 sandID = sandReceiptTxt.Text;
@@ -413,6 +415,7 @@ namespace CashPOS
                     if (id != "")
                     {
                         orderID = id;
+                        idForPrint = orderID;
                     }
                     //need to make sure the order number has not changed, if it changed then need to delete the old records
 
@@ -453,9 +456,11 @@ namespace CashPOS
                 }
 
                 orderID = invoiceLabel.Text;
+                idForPrint = orderID;
                 if (sandID != "")
                 {
                     orderID = sandID;
+                    idForPrint = sandID;
                 }
                 bool successed = false;
                 bool attempted = false;
@@ -480,6 +485,7 @@ namespace CashPOS
                             {
                                 MessageBox.Show("收據號碼已改為: " + orderID);
                                 invoiceLabel.Text = orderID;
+                                idForPrint = orderID;
                             }
 
                             foreach (DataGridViewRow row in selectedItemList.Rows)
@@ -1276,10 +1282,10 @@ namespace CashPOS
             }
             sendOrder(isSearching, selectedOrderID, payMethLbl.Text);
             PrintPage pp = new PrintPage();
-            pp.invoiceNo.Text = id;
+            pp.invoiceNo.Text = idForPrint;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == id)
+            if (pp.resultList[0, 0].Value.ToString() == idForPrint)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(10, 0));
 
@@ -1310,10 +1316,10 @@ namespace CashPOS
 
             PrintPage pp = new PrintPage();
             //   MessageBox.Show(id);
-            pp.invoiceNo.Text = id;
+            pp.invoiceNo.Text = idForPrint;
             pp.searchCWPrint.PerformClick();
 
-            if (pp.resultList[0, 0].Value.ToString() == id)
+            if (pp.resultList[0, 0].Value.ToString() == idForPrint)
             {
                 pp.resultList_CellContentClick(pp.resultList, new DataGridViewCellEventArgs(9, 0));
 
