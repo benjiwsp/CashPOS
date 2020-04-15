@@ -233,11 +233,6 @@ namespace CashPOS
 
                         fillFooter.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
                         fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-
-
-                        fillFooter.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                        fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                         if (ch_compName.StartsWith("富"))
                         {
                             fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
@@ -247,6 +242,11 @@ namespace CashPOS
                         {
                             fillFooter.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 0, 0, infoFont));
 
+                            fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                            fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                    
+                        fillFooter.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
+                      
                         }
 
           
@@ -406,12 +406,6 @@ namespace CashPOS
 
                 footer.AddCell(newCell("請於收貨後30天內付清貨款.", 0, 10, 0, 0, infoFont));
                 footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-
-
-
-                footer.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
-                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
-                footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
                 if (ch_compName.StartsWith("富"))
                 {
                     footer.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
@@ -420,8 +414,14 @@ namespace CashPOS
                 else
                 {
                     footer.AddCell(newCell("超誠建築材料倉有限公司", 0, 10, 0, 0, infoFont));
-
+                    footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                    footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+            
                 }
+
+
+                footer.AddCell(newCell("多謝惠顧 祝生意興隆", 0, 10, 1, 0, infoFont));
+            
 
 
 
