@@ -236,6 +236,8 @@ namespace CashPOS
                         if (ch_compName.StartsWith("富"))
                         {
                             fillFooter.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
+                            fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                            fillFooter.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
                         }
                         else
@@ -409,6 +411,8 @@ namespace CashPOS
                 if (ch_compName.StartsWith("富"))
                 {
                     footer.AddCell(newCell("富資建業有限公司", 0, 10, 0, 0, infoFont));
+                    footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
+                    footer.AddCell(newCell(" ", 0, 10, 0, 0, infoFont));
 
                 }
                 else

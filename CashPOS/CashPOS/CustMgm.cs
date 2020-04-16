@@ -244,7 +244,7 @@ namespace CashPOS
                 {
                     if (row.Cells[0].Value != null)
                     {
-                        for (int i = 0; i < custDataGrid.ColumnCount - 1; i++)
+                        for (int i = 0; i < custDataGrid.RowCount - 1; i++)
                         {
                             contact1 = "";
                             contact2 = "";
@@ -275,25 +275,25 @@ namespace CashPOS
                             if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") payDay = row.Cells[12].Value.ToString();
                             //if (row.Cells[12].Value != null) if (row.Cells[12].Value.ToString() != "") belongTo = row.Cells[12].Value.ToString();
                             belongTo = currCompLab.Text;
+                            try
+                            {
+                                myConnection.Open();
 
+                                myCommand = new MySqlCommand("insert ignore into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
+                                              phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" + contact1
+                                              + "','" + contact2 + "','" + money + "','" + "" + "','" + "" + "','" + siteAddress + "')", myConnection);
+                                myCommand.ExecuteNonQuery();
+                                myConnection.Close();
+                                createPriceRecord(code, belongTo);
+                                clearData();
+                            }
+                            catch (MySqlException e)
+                            {
+                                myConnection.Close();
+                                MessageBox.Show(code + "已存在, 請用其他編號");
+                            }
                         }
-                        try
-                        {
-                            myConnection.Open();
-
-                            myCommand = new MySqlCommand("insert ignore into " + table + " values('" + code + "','" + name + "','" + phone1 + "','" +
-                                          phone2 + "','" + fax + "','" + email + "','" + address + "','" + payMethod + "','" + payDay + "','" + belongTo + "','" + contact1
-                                          + "','" + contact2 + "','" + money + "','" + "" + "','" + "" + "','" + siteAddress + "')", myConnection);
-                            myCommand.ExecuteNonQuery();
-                            myConnection.Close();
-                            createPriceRecord(code, belongTo);
-                            clearData();
-                        }
-                        catch (MySqlException e)
-                        {
-                            myConnection.Close();
-                            MessageBox.Show(code + "已存在, 請用其他編號");
-                        }
+                     
 
                     }
                 }
