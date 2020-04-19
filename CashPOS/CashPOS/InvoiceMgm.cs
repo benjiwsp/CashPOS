@@ -1486,9 +1486,10 @@ namespace CashPOS
         private void paidAllBtn_Click(object sender, EventArgs e)
         {
             string query = "";
-            foreach (DataGridViewCell row in orderListView.SelectedCells)
+            foreach (DataGridViewRow row in orderListView.Rows)
             {
-                query = "update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + row.Value.ToString() + "'";
+           //     MessageBox.Show(row.Cells[0].Value.ToString());
+                query = "update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + row.Cells[0].Value.ToString() + "'";
                 myCommand = new MySqlCommand(query, myConnection);
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
