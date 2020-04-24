@@ -623,7 +623,7 @@ namespace CashPOS
                 MessageBox.Show("請選擇付款資料");
             }
         }
-        private string getAmountConverter(string item, string unit, string inputAmount)
+        public string getAmountConverter(string item, string unit, string inputAmount)
         {
 
             telTxt.Items.Clear();
@@ -798,6 +798,8 @@ namespace CashPOS
             {
                 e.Handled = true;
             }
+            else if (e.KeyChar == (char)Keys.Return)
+                itemConfirmBtn_Click(this, new EventArgs());
         }
 
         private void unitPriceTxt_KeyPress(object sender, KeyPressEventArgs e)

@@ -43,9 +43,11 @@
             this.selectedCompTxt = new System.Windows.Forms.Label();
             this.sfInvoice = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.totalPaymentBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -188,6 +190,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.totalPaymentBtn, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 503);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -196,6 +199,17 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.75304F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(910, 494);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // totalPaymentBtn
+            // 
+            this.totalPaymentBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalPaymentBtn.Location = new System.Drawing.Point(458, 433);
+            this.totalPaymentBtn.Name = "totalPaymentBtn";
+            this.totalPaymentBtn.Size = new System.Drawing.Size(449, 58);
+            this.totalPaymentBtn.TabIndex = 0;
+            this.totalPaymentBtn.Text = "總數表";
+            this.totalPaymentBtn.UseVisualStyleBackColor = true;
+            this.totalPaymentBtn.Click += new System.EventHandler(this.totalPaymentBtn_Click);
             // 
             // InvoiceOutput
             // 
@@ -208,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchGrid)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -229,5 +244,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.Label selectedCompTxt;
+        private System.Windows.Forms.Button totalPaymentBtn;
     }
 }

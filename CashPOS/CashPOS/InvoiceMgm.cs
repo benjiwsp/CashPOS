@@ -1396,8 +1396,11 @@ namespace CashPOS
                         decimal value;
                         if (Decimal.TryParse(row.Cells[1].Value.ToString(), out value))
                         {
+                            CashSales cs = new CashSales();
+                            string amount = cs.getAmountConverter(row.Cells[0].Value.ToString(), row.Cells[2].Value.ToString(), value.ToString());
+
                             DateTime oldDate = Convert.ToDateTime(dateLbl.Text);
-                            invHdr.add("屯門", row.Cells[0].Value.ToString(), value, oldDate);
+                            invHdr.add("屯門", row.Cells[0].Value.ToString(),  Convert.ToDecimal(amount), oldDate);
                             //   myCommand = new MySqlCommand("Update CashPOSDB.prodData set " + invCol + " = " + invCol + " + " + value + " where ProdName = '" + row.Cells[0].Value.ToString() + "'", myConnection);
                             //  myCommand.ExecuteNonQuery();
                         }
@@ -1489,7 +1492,7 @@ namespace CashPOS
             foreach (DataGridViewRow row in orderListView.Rows)
             {
            //     MessageBox.Show(row.Cells[0].Value.ToString());
-                query = "update CashPOSDB.orderRecords set totalPaid = totalPrice where orderID = '" + row.Cells[0].Value.ToString() + "'";
+                query = "update CashPOSDB.orderRecords set paid = totalPrice where orderID = '" + row.Cells[0].Value.ToString() + "'";
                 myCommand = new MySqlCommand(query, myConnection);
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
