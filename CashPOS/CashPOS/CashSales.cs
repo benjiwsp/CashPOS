@@ -429,8 +429,9 @@ namespace CashPOS
                         while (rdr.Read())
                         {
                             string itemName = rdr["itemName"].ToString();
-                            string amount = rdr["amount"].ToString();
+                            string inputAmount = rdr["amount"].ToString();
                             DateTime oldDate = Convert.ToDateTime(rdr["time"].ToString());
+                            string amount = getAmountConverter(itemName, rdr["unit"].ToString(), inputAmount);
 
                             invHdr.add("屯門", itemName, Convert.ToDecimal(amount), oldDate);
                         }
@@ -461,6 +462,7 @@ namespace CashPOS
                 {
                     orderID = sandID;
                     idForPrint = sandID;
+                    isPrinted = "Y";
                 }
                 bool successed = false;
                 bool attempted = false;
@@ -587,10 +589,13 @@ namespace CashPOS
 
 
 
-
-
-                if (orderID.StartsWith("M") || orderID.StartsWith("C"))
+                 if (Regex.IsMatch(orderID, @"^\d") || orderID.StartsWith("YC"))
                 {
+
+                }
+
+                else  if (orderID.StartsWith("M") || orderID.StartsWith("C"))
+                   {
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
                         orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
                     //   Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
@@ -603,7 +608,7 @@ namespace CashPOS
                 {
 
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
-                        invoiceLabel.Text + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
+                        orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
                     // Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
                     //     invoiceLabel.Text + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'");
                     myConnection.Open();

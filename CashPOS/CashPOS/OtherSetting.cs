@@ -236,5 +236,7 @@ namespace CashPOS
             myConnection.Close();
             reuseTxt.Text = "";
         }
+
+       
     }
 }

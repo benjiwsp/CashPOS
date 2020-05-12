@@ -60,6 +60,7 @@
             this.reuseTxt = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.reuseIDBtn = new System.Windows.Forms.Button();
+            this.JumpBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.catGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickupLocDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyData)).BeginInit();
@@ -318,10 +319,20 @@
             this.reuseIDBtn.UseVisualStyleBackColor = true;
             this.reuseIDBtn.Click += new System.EventHandler(this.reuseIDBtn_Click);
             // 
+            // JumpBtn
+            // 
+            this.JumpBtn.Location = new System.Drawing.Point(376, 170);
+            this.JumpBtn.Name = "JumpBtn";
+            this.JumpBtn.Size = new System.Drawing.Size(363, 97);
+            this.JumpBtn.TabIndex = 15;
+            this.JumpBtn.Text = "重用跳單";
+            this.JumpBtn.UseVisualStyleBackColor = true;
+            // 
             // OtherSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.JumpBtn);
             this.Controls.Add(this.reuseIDBtn);
             this.Controls.Add(this.reuseTxt);
             this.Controls.Add(this.label1);
@@ -382,5 +393,6 @@
         private System.Windows.Forms.TextBox reuseTxt;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button reuseIDBtn;
+        private System.Windows.Forms.Button JumpBtn;
     }
 }
