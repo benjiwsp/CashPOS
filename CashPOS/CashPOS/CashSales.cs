@@ -375,9 +375,9 @@ namespace CashPOS
 
         private void sendOrder(bool isSearch, string id, string payMethod)
         {
-            idForPrint = ""; 
+            idForPrint = "";
             if (paidAmount.Text.Length > 0 && payMethLbl.Text.Length > 0 && selectedItemList.Rows.Count > 0)
-{
+            {
                 string orderID, sandID, custCode, cust, phone, license, address, priceType, pickupLoc, payment, totalPrice, notes, isPrinted, belongTo, paid, secPaidAmt, secPaidMtd, totalPaid;
                 orderID = invoiceLabel.Text;// invoiceLabel.Text;
                 sandID = sandReceiptTxt.Text;
@@ -432,8 +432,8 @@ namespace CashPOS
                             string inputAmount = rdr["amount"].ToString();
                             DateTime oldDate = Convert.ToDateTime(rdr["time"].ToString());
                             string amount = getAmountConverter(itemName, rdr["unit"].ToString(), inputAmount);
-
-                            invHdr.add("屯門", itemName, Convert.ToDecimal(amount), oldDate);
+                            if (amount.Length > 0)
+                                invHdr.add("屯門", itemName, Convert.ToDecimal(amount), oldDate);
                         }
                     } rdr.Close();
 
@@ -589,13 +589,13 @@ namespace CashPOS
 
 
 
-                 if (Regex.IsMatch(orderID, @"^\d") || orderID.StartsWith("YC"))
+                if (Regex.IsMatch(orderID, @"^\d") || orderID.StartsWith("YC"))
                 {
 
                 }
 
-                else  if (orderID.StartsWith("M") || orderID.StartsWith("C"))
-                   {
+                else if (orderID.StartsWith("M") || orderID.StartsWith("C"))
+                {
                     myCommand = new MySqlCommand("update CashPOSDB.orderID set orderID = '" +
                         orderID + "' where belongTo = '" + fromLabel.Text + "' and paymentType = '" + payment + "'", myConnection);
                     //   Console.WriteLine("update CashPOSDB.orderID set orderID = '" +
